@@ -1,0 +1,7 @@
+{
+  "extends": "tsconfig/sanity-studio.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true
+  }
+}
