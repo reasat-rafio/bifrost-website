@@ -1,0 +1,41 @@
+{
+  "extends": "tsconfig/frontend.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@contexts/*": [
+        "src/context/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@animations/*": [
+        "src/animations/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@root/libs/*": [
+        "../../libs/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "next-env.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    ".turbo"
+  ]
+}
