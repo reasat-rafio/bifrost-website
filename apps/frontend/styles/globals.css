@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-titillium;
+  }
+}
+
+.bifrost__gradient {
+  @apply bg-gradient-to-r from-pinkSugar to-neonBlue;
+}
+
+.bifrost__gradient2 {
+  @apply bg-gradient-to-r from-riceFlower to-honeySuckle;
+}
