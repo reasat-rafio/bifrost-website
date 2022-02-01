@@ -22,10 +22,12 @@ module.exports = {
       colors: {
         heading: '#000',
         description: '#183B56',
+
         pinkSugar: '#E7ADFF',
         riceFlower: '#EEFFE9',
         honeySuckle: '#C9FF71',
         neonBlue: '#7187FF',
+
         warning: '#F3CD68',
         warning: '#F3CD68',
         danger: '#E95432',
