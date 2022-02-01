@@ -1,12 +1,11 @@
-import "../styles/globals.css";
-import { imageUrlBuilder } from "@utils/sanity";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { NextSeo } from "next-seo";
+import '../styles/globals.css'
+import { imageUrlBuilder } from '@utils/sanity'
+import type { AppProps } from 'next/app'
+import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const ogImage =
-    pageProps.data?.page.seo.seoImage ?? pageProps.data?.site.ogImage;
+  const ogImage = pageProps.data?.page.seo.seoImage ?? pageProps.data?.site.ogImage
 
   const openGraphImages = ogImage
     ? [
@@ -20,16 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         height: h,
         alt: `${pageProps.data?.page.seo.title}`,
       }))
-    : [];
+    : []
 
   return (
     <div>
       <Head>
-        <link rel="icon" type="image/png" href={pageProps.data?.site.favicon} />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
-        />
+        <link rel="icon" type="image/png" href={pageProps.data?.site.logos.favicon} />
       </Head>
       <div>
         <NextSeo
@@ -42,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </div>
     </div>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
