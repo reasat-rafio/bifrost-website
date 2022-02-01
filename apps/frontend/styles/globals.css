@@ -8,10 +8,71 @@
   }
 }
 
-.bifrost__gradient {
-  @apply bg-gradient-to-r from-pinkSugar to-neonBlue;
+html {
+  scroll-behavior: smooth;
 }
 
-.bifrost__gradient2 {
-  @apply bg-gradient-to-r from-riceFlower to-honeySuckle;
+.bifrost__gradient_pink {
+  /* background: linear-gradient( */
+  /*   90deg, */
+  /*   #f8e9ff 0%, */
+  /*   #e4acff 35.3%, */
+  /*   #7187ff 102.69% */
+  /* ); */
+  @apply bg-gradient-to-r from-[#f8e9ff] via-[#e4acff] to-[#7187ff];
+}
+
+.bifrost__gradient_green {
+  @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71];
+}
+
+.bifrost__gradient_dark_blue {
+  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
+}
+
+.bifrost__background_noise:after {
+  background-image: url('../public/noise.png');
+  animitaion: grain 1s steps(1) infinite;
+  content: '';
+  height: 300%;
+  left: -50%;
+  opacity: 0.3;
+  z: -1;
+  position: fixed;
+  top: -110%;
+  width: 300%;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
 }
