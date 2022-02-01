@@ -3,26 +3,23 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
+      "components/*": [
+        "components/*"
       ],
-      "@contexts/*": [
-        "src/context/*"
+      "contexts/*": [
+        "context/*"
       ],
-      "@styles/*": [
-        "src/styles/*"
+      "styles/*": [
+        "styles/*"
       ],
-      "@lib/*": [
-        "src/lib/*"
+      "lib/*": [
+        "lib/*"
       ],
-      "@animations/*": [
-        "src/animations/*"
+      "animations/*": [
+        "animations/*"
       ],
-      "@utils/*": [
+      "utils/*": [
         "utils/*"
-      ],
-      "@root/libs/*": [
-        "../../libs/*"
       ]
     }
   },
