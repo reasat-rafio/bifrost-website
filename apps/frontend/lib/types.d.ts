@@ -1,41 +1,41 @@
-import { SanityImage } from "sanity-react-extra";
+import { SanityImage } from 'sanity-react-extra'
 declare global {
   interface Site {
-    logo: SanityImage;
+    logos: { logo: SanityImage }
     nav: {
-      menu: MenuItem[];
-      footer: Footer;
-    };
+      menu: MenuItem[]
+      footer: Footer
+    }
   }
 
   interface Footer {
-    copyright: string;
-    menu: MenuItem[];
-    socialButtons: Social[];
+    copyright: string
+    menu: MenuItem[]
+    socialButtons: Social[]
   }
 
   interface MenuItem {
-    href: string;
-    title: string;
-    isCTA: boolean;
-    submenu: array;
+    href: string
+    title: string
+    isCTA: boolean
+    submenu: array
   }
 
-  type SocialType = "facebook" | "twitter" | "linkedin" | "instagram";
+  type SocialType = 'facebook' | 'twitter' | 'linkedin' | 'instagram'
   interface Social {
-    title: string;
-    type: SocialType;
-    url: string;
+    title: string
+    type: SocialType
+    url: string
   }
 
   export type LandingPage = {
     // sections: Section[]
-    seo: SEO;
-  };
+    seo: SEO
+  }
 
   interface SEO {
-    title: string;
-    description: string;
-    ogImage: SanityImage;
+    title: string
+    description: string
+    ogImage: SanityImage
   }
 }
