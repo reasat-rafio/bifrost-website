@@ -55,7 +55,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </Section>
 
-      <div className="absolute left-0 top-0 w-[100vw] h-[100vh] overflow-clip">
+      <div className="absolute left-0 top-0 w-full h-[100vh] overflow-clip">
         <div className="relative translate-y-[15vh]">
           <ThreeJSWaves />
         </div>
