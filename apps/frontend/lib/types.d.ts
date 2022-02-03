@@ -1,41 +1,71 @@
 import { SanityImage } from 'sanity-react-extra'
-declare global {
-  interface Site {
-    logos: { logo: SanityImage }
-    nav: {
-      menu: MenuItem[]
-      footer: Footer
-    }
-  }
 
-  interface Footer {
-    copyright: string
+interface HeroDataImage {
+  type: 'image'
+  image?: SanityImage & ImageAlt
+}
+
+interface HeroDataVideo {
+  type: 'video'
+  video: any
+}
+
+interface Youtube {
+  url: string
+}
+
+interface HeroDataYoutube {
+  type: 'youtube'
+  youtube?: Youtube
+}
+
+type HeroData = HeroDataImage | HeroDataVideo | HeroDataYoutube
+
+export interface HomeSection {
+  body: string
+  ctaButton: CTAButton
+  headline: string
+  subHeadline: string
+  image: SanityImage & ImageAlt
+}
+
+export interface Site {
+  logos: { logo: SanityImage }
+  nav: {
     menu: MenuItem[]
-    socialButtons: Social[]
+    footer: Footer
   }
+}
 
-  interface MenuItem {
-    href: string
-    title: string
-    isCTA: boolean
-    submenu: array
-  }
+export interface Footer {
+  copyright: string
+  menu: MenuItem[]
+  socialButtons: Social[]
+}
 
-  type SocialType = 'facebook' | 'twitter' | 'linkedin' | 'instagram'
-  interface Social {
-    title: string
-    type: SocialType
-    url: string
-  }
+export interface MenuItem {
+  href: string
+  title: string
+  isCTA: boolean
+  submenu: array
+}
 
-  export type LandingPage = {
-    // sections: Section[]
-    seo: SEO
-  }
+type SocialType = 'facebook' | 'twitter' | 'linkedin' | 'instagram'
+export interface Social {
+  title: string
+  type: SocialType
+  url: string
+}
 
-  interface SEO {
-    title: string
-    description: string
-    ogImage: SanityImage
-  }
+export type Section = HomeSection
+
+export type LandingPage = {
+  sections: Section[]
+  seo: SEO
+}
+
+export interface SEO {
+  title: string
+  description: string
+  ogImage: SanityImage
 }

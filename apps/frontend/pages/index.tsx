@@ -9,6 +9,9 @@ import { Section } from 'components/ui/Section'
 import { useCtx } from 'contexts/global'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
+import { renderObjectArray } from 'sanity-react-extra'
+import { LandingPage, Site } from 'lib/types'
+import HomeHero from 'components/home/HomeHero'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -24,12 +27,16 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
 export default function Home(props: SanityProps<{ site: Site; page: LandingPage }>) {
   const {
-    data: { site },
+    data: {
+      site,
+      page: { sections },
+    },
   } = useSanityQuery(query, props)
 
   const [activeSection, { set: setActive }] = useMap<{ home?: boolean; datasets?: boolean }>({})
 
   const { isWhite } = useCtx()
+
   return (
     <motion.div
       animate={{
@@ -41,17 +48,19 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     >
       <div className={clsx(!isWhite ? 'bifrost__background_noise' : 'opacity-0')}></div>
       <Navbar logo={site.logos.logo} menu={site.nav.menu} activeSection={activeSection} />
-      <Section
-        name="home"
-        className="bifrost__background_noise bg-black h-[100vh]"
-        setActive={setActive}
-      >
+      <Section name="hero" className="h-[100vh]" setActive={setActive} isWhite={false}>
+        {renderObjectArray(sections, {
+          home: HomeHero,
+        })}
+      </Section>
+
+      <Section name="products" setActive={setActive} className="h-[100vh]" isWhite={false}>
         Lorem Ipsum
       </Section>
-      <Section name="products" setActive={setActive} className=" bg-black h-[100vh]">
+      <Section name="home" setActive={setActive} className="h-[100vh]">
         Lorem Ipsum
       </Section>
-      <Section name="home" setActive={setActive} className="bg-white h-[100vh]">
+      <Section name="datasets" setActive={setActive} className="h-[100vh]">
         Lorem Ipsum
       </Section>
     </motion.div>
