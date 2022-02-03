@@ -12,6 +12,7 @@ import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
 import { LandingPage, Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
+import ThreeJSWaves from 'components/ThreeJSWaves'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -53,6 +54,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           home: HomeHero,
         })}
       </Section>
+
+      <div className="absolute left-0 top-0 w-[100vw] h-[100vh] overflow-clip">
+        <div className="relative translate-y-[15vh]">
+          <ThreeJSWaves />
+        </div>
+      </div>
 
       <Section name="products" setActive={setActive} className="h-[100vh]" isWhite={false}>
         Lorem Ipsum
