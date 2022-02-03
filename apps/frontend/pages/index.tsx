@@ -39,6 +39,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       }}
       className="relative"
     >
+      <div className={clsx(!isWhite ? 'bifrost__background_noise' : 'opacity-0')}></div>
       <Navbar logo={site.logos.logo} menu={site.nav.menu} activeSection={activeSection} />
       <Section
         name="home"

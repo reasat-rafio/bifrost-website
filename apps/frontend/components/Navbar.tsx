@@ -8,12 +8,14 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
 import { useCtx } from 'contexts/global'
+import { MenuItem } from 'lib/types'
 
 interface NavbarProps {
   logo: SanityImage
   menu: MenuItem[]
   activeSection: {
-    home?: boolean
+    hero?: boolean
+    datasets?: boolean
   }
 }
 

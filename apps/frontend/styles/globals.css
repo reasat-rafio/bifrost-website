@@ -30,14 +30,15 @@ html {
   @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
 }
 
-.bifrost__background_noise:after {
+.bifrost__background_noise {
   background-image: url('../public/noise.png');
+  transition: opacity 1s ease-in-out;
   animitaion: grain 1s steps(1) infinite;
   content: '';
   height: 300%;
   left: -50%;
-  opacity: 0.3;
-  z: -1;
+  opacity: 0.35;
+  z: 1;
   position: fixed;
   top: -110%;
   width: 300%;

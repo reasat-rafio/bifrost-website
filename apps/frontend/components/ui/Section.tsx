@@ -28,9 +28,10 @@ export const Section: React.FC<SectionProps> = ({
   const ref = useRef(null)
   const intersection = useIntersection(ref, { threshold: 0.1 })
   const { setIsWhite } = useCtx()
+  // console.log(intersection.offsetBoundingRect)
 
   useEffect(() => {
-    if (['home', 'datasets'].includes(name)) {
+    if (['hero', 'datasets'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }
     if (intersection?.isIntersecting) {
