@@ -1,39 +1,52 @@
-import { AiOutlineHome } from "react-icons/ai";
-import editor from "../../editor";
+import { AiOutlineHome } from 'react-icons/ai'
+import editor from '../../editor'
 
 export default {
-  name: "home",
-  title: "Home",
-  type: "object",
+  name: 'home',
+  title: 'Home',
+  type: 'object',
   icon: AiOutlineHome,
   fields: [
     {
-      name: "headline",
-      title: "Headline",
-      type: "string",
+      name: 'headline',
+      title: 'Headline',
+      type: 'string',
     },
     {
-      name: "body",
-      title: "body",
-      type: "array",
+      name: 'subHeadline',
+      title: 'Sub-Headline',
+      type: 'string',
+    },
+    {
+      name: 'body',
+      title: 'body',
+      type: 'array',
       of: [editor],
     },
     {
-      name: "ctaButton",
-      title: "CTA Button",
-      type: "ctaButton",
+      name: 'ctaButton',
+      title: 'CTA Button',
+      type: 'ctaButton',
     },
-    // {
-    //   name: "hero",
-    //   type: "hero",
-    //   title: "Hero",
-    // },
+    {
+      name: 'image',
+      type: 'image',
+      title: 'Hero Image',
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+        },
+      ],
+    },
   ],
   preview: {
     select: {
-      title: "headline",
-      subtitle: "body",
-      // media: "hero.image",
+      title: 'headline',
+      subtitle: 'body',
+      media: 'image',
     },
   },
-};
+}
