@@ -1,0 +1,13 @@
+.button {
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+.border_gradient {
+  border-radius: 4px;
+  padding: 0.5px;
+  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
+}

@@ -11,7 +11,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
   hidden?: boolean
   color?: 'primary' | 'secondary'
-  _style?: 'outlined' | 'fill'
+  _fill?: boolean
+  _outlined?: boolean
 }
 
 const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
@@ -22,15 +23,15 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
     loading = false,
     disabled = false,
     color = 'primary',
-    _style = 'fill',
+    _fill = true,
+    _outlined = false,
     hidden,
     ...rest
   } = props
 
   const rootClassName = clsx(
-    'outline-none text-white lg:text-lg text-xs 2xl:px-16 xl:px-8 lg:px-10  px-5 py-5 xl:py-3 2xl:py-5 font-bold transition-all duration-150 lg:w-auto w-full relative',
-    color === 'primary' && _style === 'fill' && styles.bg_gradient,
-    color === 'primary' && _style === 'outlined' && styles.border_gradient,
+    'outline-none text-white 2xl:px-8 xl:px-8 lg:px-10 px-5 py-5 xl:py-3 2xl:py-3 transition-all duration-150 lg:w-auto w-full relative',
+    color === 'primary' && _fill && 'bifrost__gradient_dark_blue',
     color === 'secondary' && 'bg-persianBlue',
     styles.button,
     loading && 'cursor-not-allowed',
@@ -40,29 +41,39 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
   )
 
   return (
-    <motion.button
+    <motion.div
       whileHover={{
-        scale: `${!disabled && 1.04}`,
-        duration: 0.4,
-        transition: { ease: 'easeInOut' },
+        scale: 1.07,
+        transition: { ease: 'easeInOut', duration: 0.05 },
       }}
-      transition={{
-        delay: 0.3,
-      }}
-      type="button"
+      // transition={{
+      //   delay: 0.3,
+      // }}
       aria-pressed={active}
-      ref={ref}
-      className={rootClassName}
-      disabled={disabled}
-      {...rest}
-    >
-      {loading && (
-        <div className="transfrom left-[5%] top-1/2 absolute -translate-y-1/2">
-          <div className="animate-spin h-5 rounded-full w-5 border-t-[3px] border-b-[3px] border-purple-500" />
-        </div>
+      className={clsx(
+        'transition-all duration-150',
+        color === 'primary' && _outlined && styles.border_gradient,
       )}
-      {children}
-    </motion.button>
+    >
+      <motion.button
+        // whileHover={{
+        //   scale: `${!disabled && 1.04}`,
+        //   duration: 0.4,
+        //   transition: { ease: 'easeInOut' },
+        // }}
+        // transition={{
+        //   delay: 0.3,
+        // }}
+        type="button"
+        aria-pressed={active}
+        ref={ref}
+        className={rootClassName}
+        disabled={disabled}
+        {...rest}
+      >
+        {children}
+      </motion.button>
+    </motion.div>
   )
 })
 

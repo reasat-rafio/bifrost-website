@@ -6,6 +6,7 @@ import { ReactElement, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import Button from './ui/Button'
 
 interface NavbarProps {
   logo: SanityImage
@@ -145,6 +146,11 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
               </Link>
             </div>
           </div>
+          <Button _outlined={true}>
+            <Link href={ctaButton.href}>
+              <a>{ctaButton.title}</a>
+            </Link>
+          </Button>
         </div>
       </nav>
     </div>
