@@ -1,6 +1,5 @@
-import { useWindowSize, useWindowSizeEffect, windowSizeEffect } from 'lib/hooks'
+import { useWindowSize, useWindowSizeEffect } from 'lib/hooks'
 import { ReactElement, useRef, useEffect, useState } from 'react'
-import { OrbitControls } from './OrbitControls'
 import * as THREE from 'three'
 
 var vertShader = `
@@ -9,8 +8,10 @@ var vertShader = `
     uniform float amplitude;
     uniform float waveLength;
     varying float ampNormalized;
+    varying vec3 vuv;
   	void main() {
       vec3 p = position;
+      vuv = position;
       float wLength = 1. / waveLength;
       p.y = sin(position.x * wLength + time) * cos(position.z * wLength  + time) * amplitude;
       ampNormalized = abs(- amplitude  + p.y) / (amplitude * 2.);
@@ -20,11 +21,18 @@ var vertShader = `
 		}
   `
 var fragShader = `
-  	uniform vec3 color;
+    precision mediump float;
+    uniform vec3 color1;
+    uniform vec3 color2;
     uniform float opacity;
     varying float ampNormalized;
+
+    varying vec3 vuv;
+
     void main() {
-      vec3 c = color;
+      vec2 st = gl_PointCoord;
+      float mixValue = smoothstep(0.1, 1.9, vuv.y);;
+      vec3 c = mix(color1, color2, mixValue);
       gl_FragColor = vec4(c, opacity);
     }
   `
@@ -77,11 +85,12 @@ export default function ThreeJSWaves({}: // width,
       },
     })
     let scene = new THREE.Scene()
-    camera.position.set(0, 20, 100)
+    camera.position.set(0, 20, 200)
     // camera.translateY(50)
     // camera.setViewOffset(width, height, 0, height, width, height / 3)
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
+      alpha: true,
     })
 
     setRenderer(renderer)
@@ -94,30 +103,33 @@ export default function ThreeJSWaves({}: // width,
     let planeGeom = new THREE.PlaneBufferGeometry(500, 500, pWidth, pHeight).toGrid()
     planeGeom.rotateX(-Math.PI * 0.5)
 
-    let seaDown = new THREE.LineSegments(
-      planeGeom,
-      new THREE.ShaderMaterial({
-        uniforms: {
-          color: {
-            value: new THREE.Color('#999'),
-          },
-          opacity: {
-            value: 0,
-          },
-          time: {
-            value: 0,
-          },
-          amplitude: {
-            value: 15,
-          },
-          waveLength: {
-            value: Math.PI * 10,
-          },
+    let material = new THREE.ShaderMaterial({
+      uniforms: {
+        color1: {
+          value: new THREE.Color('#fff'),
         },
-        vertexShader: vertShader,
-        fragmentShader: fragShader,
-      }),
-    )
+        color2: {
+          value: new THREE.Color('#010711'),
+        },
+        opacity: {
+          value: 0.5,
+        },
+        time: {
+          value: 0,
+        },
+        amplitude: {
+          value: 15,
+        },
+        waveLength: {
+          value: Math.PI * 10,
+        },
+      },
+      vertexShader: vertShader,
+      fragmentShader: fragShader,
+    })
+    material.transparent = true
+
+    let seaDown = new THREE.LineSegments(planeGeom, material)
     scene.add(seaDown)
 
     let clock = new THREE.Clock()
