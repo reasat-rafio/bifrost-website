@@ -6,6 +6,9 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { useMap } from 'react-use'
 import { Section } from 'components/ui/Section'
+import { useCtx } from 'contexts/global'
+import { motion } from 'framer-motion'
+import clsx from 'clsx'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -26,8 +29,16 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
 
   const [activeSection, { set: setActive }] = useMap<{ home?: boolean; datasets?: boolean }>({})
 
+  const { isWhite } = useCtx()
   return (
-    <div>
+    <motion.div
+      animate={{
+        color: isWhite ? '#000' : '#fff',
+        backgroundColor: isWhite ? '#fff' : '#000',
+        transition: { ease: 'easeInOut', duration: 0.3 },
+      }}
+      className="relative"
+    >
       <Navbar logo={site.logos.logo} menu={site.nav.menu} activeSection={activeSection} />
       <Section
         name="home"
@@ -42,6 +53,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       <Section name="home" setActive={setActive} className="bg-white h-[100vh]">
         Lorem Ipsum
       </Section>
-    </div>
+    </motion.div>
   )
 }

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useCtx } from 'contexts/global'
 import { useIntersection } from 'lib/hooks'
 import { useEffect, useRef } from 'react'
 
@@ -12,6 +13,8 @@ interface SectionProps {
   name: string
   className?: string
   hidden?: boolean
+  isWhite?: boolean
+  transition?: boolean
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -20,13 +23,18 @@ export const Section: React.FC<SectionProps> = ({
   children,
   className,
   hidden,
+  isWhite = true,
 }) => {
   const ref = useRef(null)
   const intersection = useIntersection(ref, { threshold: 0.1 })
+  const { setIsWhite } = useCtx()
 
   useEffect(() => {
     if (['home', 'datasets'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
+    }
+    if (intersection?.isIntersecting) {
+      setIsWhite(isWhite)
     }
   }, [intersection?.isIntersecting])
 
@@ -38,7 +46,9 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section className={rootClass} id={name}>
-      <div ref={ref}>{children}</div>
+      <div ref={ref} className="z-10">
+        {children}
+      </div>
     </section>
   )
 }

@@ -7,6 +7,7 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
+import { useCtx } from 'contexts/global'
 
 interface NavbarProps {
   logo: SanityImage
@@ -25,23 +26,28 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
   const [isActive, setIsActive] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
   const router = useRouter()
-  console.log('logo', { logo })
+  const { isWhite } = useCtx()
 
   return (
-    <div
+    <motion.div
+      animate={{
+        color: isWhite ? '#000' : '#fff',
+        backgroundColor: isWhite ? '#fff' : '#000',
+        transition: { ease: 'easeInOut', duration: 0.3 },
+      }}
       className={clsx(
         'fixed w-full py-4 z-50 top-0 transition-all duration-300 ease-out',
         navbarOpen || scroll ? 'shadow-md' : 'bg-transparent',
       )}
     >
-      <nav className="container mx-auto flex flex-wrap justify-between items-center text-white">
+      <nav className="container mx-auto flex flex-wrap justify-between items-center">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <a
-            href="/#home"
+            href="/#hero"
             onClick={(ev) => {
               if (router.pathname == '/') {
                 ev.preventDefault()
-                document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })
+                document.querySelector('#hero')?.scrollIntoView({ behavior: 'smooth' })
               }
             }}
           >
@@ -88,20 +94,8 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                       >
                         {men.title}
                       </span>
-                      {/* {men.submenu && men.submenu?.length > 0 && ( */}
-                      {/*   <img */}
-                      {/*     className={clsx( */}
-                      {/*       !isActive ? 'rotate-0' : '-rotate-180', */}
-                      {/*       'transform ml-1 w-3 lg:hidden absolute left-16 transition-transform delay-100', */}
-                      {/*     )} */}
-                      {/*     src="/downTriangle.svg" */}
-                      {/*   /> */}
-                      {/* )} */}
                     </a>
                   </Link>
-                  {/* {activeName} */}
-                  {/* {men.title.toLowerCase()} */}
-                  {/* {activeName === men.title.toLowerCase() ? 'test' : 'test1'} */}
                   {activeName === men?.title.toLowerCase() && (
                     <motion.div
                       layout
@@ -111,41 +105,11 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                       transition={{ duration: 0.2 }}
                     />
                   )}
-                  {/* {men.submenu?.length > 0 && ( */}
-                  {/*   <div */}
-                  {/*     className={clsx( */}
-                  {/*       !isActive ? 'drop-down-inactive' : 'drop-down-active', */}
-                  {/*       'lg:opacity-0 lg:ml-10 lg:block menu-wrapper lg:absolute transition duration-300', */}
-                  {/*     )} */}
-                  {/*   > */}
-                  {/*     <ul className="flex-row lg:w-32  text-center lg:text-left ease-in-out lg:py-2 lg:pl-7 lg:bg-white lg:shadow-lg lg:rounded-lg"> */}
-                  {/*       <div> */}
-                  {/*         {men.submenu.map((item: any) => ( */}
-                  {/*           <li */}
-                  {/*             key={item.title} */}
-                  {/*             className={'text-dark my-3 hover:opacity-75 font-medium'} */}
-                  {/*           > */}
-                  {/*             <Link href={item.href}> */}
-                  {/*               <a>{item.title}</a> */}
-                  {/*             </Link> */}
-                  {/*           </li> */}
-                  {/*         ))} */}
-                  {/*       </div> */}
-                  {/*     </ul> */}
-                  {/*   </div> */}
-                  {/* )} */}
                 </li>
               ))}
           </ul>
         </div>
         <div className={clsx('lg:flex justify-center', navbarOpen ? 'flex' : 'hidden')}>
-          <div className="rounded-md p-[0.5px] bifrost__gradient_green">
-            <div className="flex flex-col justify-between h-full bifrost__gradient_dark_blue text-white rounded-md py-2 px-10">
-              <Link href={ctaButton.href}>
-                <a>{ctaButton.title}</a>
-              </Link>
-            </div>
-          </div>
           <Button _outlined={true}>
             <Link href={ctaButton.href}>
               <a>{ctaButton.title}</a>
@@ -153,6 +117,6 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
           </Button>
         </div>
       </nav>
-    </div>
+    </motion.div>
   )
 }

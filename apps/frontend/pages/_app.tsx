@@ -1,8 +1,9 @@
 import '../styles/globals.css'
-import { imageUrlBuilder } from '@utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
+import { AppProvider } from 'contexts/global'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const ogImage = pageProps.data?.page.seo.seoImage ?? pageProps.data?.site.ogImage
@@ -26,16 +27,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" type="image/png" href={pageProps.data?.site.logos.favicon} />
       </Head>
-      <div>
-        <NextSeo
-          title={pageProps.data?.page.seo.title}
-          description={pageProps.data?.page.seo.description}
-          openGraph={{
-            images: openGraphImages,
-          }}
-        />
-        <Component {...pageProps} />
-      </div>
+      <AppProvider>
+        <div>
+          <NextSeo
+            title={pageProps.data?.page.seo.title}
+            description={pageProps.data?.page.seo.description}
+            openGraph={{
+              images: openGraphImages,
+            }}
+          />
+          <Component {...pageProps} />
+        </div>
+      </AppProvider>
     </div>
   )
 }
