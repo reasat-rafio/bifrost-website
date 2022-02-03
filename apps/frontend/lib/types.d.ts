@@ -29,6 +29,14 @@ export interface HomeSection {
   image: SanityImage & ImageAlt
 }
 
+export interface ProductSection {
+  body: string
+  ctaButton: CTAButton
+  headline: string
+  subHeadline: string
+  images: [SanityImage & ImageAlt]
+}
+
 export interface Site {
   logos: { logo: SanityImage }
   nav: {
