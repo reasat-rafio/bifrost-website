@@ -42,6 +42,20 @@ export interface DemoSection {
   previews: [SanityImage & ImageAlt]
 }
 
+export interface Service {
+  headline: string
+  body: string
+  ctaButton: CTAButton
+  cardPosition: string
+  image: SanityImage & ImageAlt
+  imagePosition: string
+}
+
+export interface ServiceSection {
+  headline: string
+  items: [Service]
+}
+
 export interface Site {
   logos: { logo: SanityImage }
   nav: {

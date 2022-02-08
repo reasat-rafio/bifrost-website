@@ -53,6 +53,7 @@ export default {
     select: {
       title: 'headline',
       subtitle: 'body',
+      media: 'images[0].image',
     },
   },
 }

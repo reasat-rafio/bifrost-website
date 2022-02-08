@@ -15,6 +15,7 @@ import HomeHero from 'components/home/HomeHero'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
+import HomeService from 'components/home/HomeService'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -85,8 +86,10 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           demo: HomeDemo,
         })}
       </Section>
-      <Section name="datasets" setActive={setActive} className="h-[100vh]">
-        Lorem Ipsum
+      <Section name="service" setActive={setActive} threshold={0.2} isWhite={false}>
+        {renderObjectArray(sections, {
+          services: HomeService,
+        })}
       </Section>
     </motion.div>
   )

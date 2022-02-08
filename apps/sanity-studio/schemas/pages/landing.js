@@ -16,6 +16,7 @@ export default {
         { type: 'home' },
         { type: 'products' },
         { type: 'demo' },
+        { type: 'services' },
         // { type: "contactSection" },
       ],
     },
