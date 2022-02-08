@@ -12,6 +12,22 @@ html {
   scroll-behavior: smooth;
 }
 
+.bifrost__card {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 15px;
+}
+
+.bifrost__transparent_card {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 15px;
+}
+
 .bifrost__gradient_pink {
   /* background: linear-gradient( */
   /*   90deg, */
@@ -33,7 +49,7 @@ html {
 .bifrost__background_noise {
   background-image: url('../public/noise.png');
   transition: opacity 1s ease-in-out;
-  animitaion: grain 1s steps(1) infinite;
+  animitaion: grain 5s steps(1) infinite;
   content: '';
   height: 300%;
   left: -50%;

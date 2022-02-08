@@ -37,6 +37,11 @@ export interface ProductSection {
   images: [SanityImage & ImageAlt]
 }
 
+export interface DemoSection {
+  headline: string
+  previews: [SanityImage & ImageAlt]
+}
+
 export interface Site {
   logos: { logo: SanityImage }
   nav: {

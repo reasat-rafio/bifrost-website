@@ -20,9 +20,10 @@ interface NavbarProps {
 }
 
 export default function Navbar({ logo, menu, activeSection }: NavbarProps): ReactElement {
-  const activeName: string = Object.entries(activeSection).sort(
+  let activeName: string = Object.entries(activeSection).sort(
     ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
   )[0]?.[0]
+  activeName = activeName === 'hero' ? 'home' : activeName
   const ctaButton = menu.filter((men) => men.isCTA)[0]
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [isActive, setIsActive] = useState(false)

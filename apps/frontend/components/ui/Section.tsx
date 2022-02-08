@@ -15,6 +15,7 @@ interface SectionProps {
   hidden?: boolean
   isWhite?: boolean
   transition?: boolean
+  threshold?: number
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -24,32 +25,27 @@ export const Section: React.FC<SectionProps> = ({
   className,
   hidden,
   isWhite = true,
+  threshold = 0.33,
 }) => {
   const ref = useRef(null)
-  const intersection = useIntersection(ref, { threshold: 0.1 })
+  const intersection = useIntersection(ref, { threshold })
   const { setIsWhite } = useCtx()
-  // console.log(intersection.offsetBoundingRect)
 
   useEffect(() => {
     if (['hero', 'datasets'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }
+    console.log(name, intersection?.isIntersecting)
     if (intersection?.isIntersecting) {
       setIsWhite(isWhite)
     }
   }, [intersection?.isIntersecting])
 
-  const rootClass = clsx(
-    'section overflow-hidden relative',
-    className && className,
-    hidden ? 'hidden' : 'block',
-  )
+  const rootClass = clsx('section relative', className && className, hidden ? 'hidden' : 'block')
 
   return (
     <section className={rootClass} id={name}>
-      <div ref={ref} className="z-10">
-        {children}
-      </div>
+      <div ref={ref}>{children}</div>
     </section>
   )
 }

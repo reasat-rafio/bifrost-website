@@ -15,8 +15,7 @@ export default {
       of: [
         { type: 'home' },
         { type: 'products' },
-        // { type: "cta" },
-        // { type: "vco" },
+        { type: 'demo' },
         // { type: "contactSection" },
       ],
     },

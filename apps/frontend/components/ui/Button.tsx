@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
   return (
     <motion.div
       whileHover={{
-        scale: 1.07,
+        scale: 1.02,
         transition: { ease: 'easeInOut', duration: 0.05 },
       }}
       // transition={{

@@ -13,11 +13,25 @@ import { renderObjectArray } from 'sanity-react-extra'
 import { LandingPage, Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import ThreeJSWaves from 'components/ThreeJSWaves'
+import HomeProduct from 'components/home/HomeProduct'
+import HomeDemo from 'components/home/HomeDemo'
 
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "landingPage"][0] {
     ...,
+    sections[] {
+      ...,
+      previews[] {
+        ...
+        asset->{
+          ...,
+          metadata {
+            dimensions
+          }
+        }
+      },
+    },
   },
 }`
 
@@ -62,10 +76,14 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       </div>
 
       <Section name="products" setActive={setActive} className="h-[100vh]" isWhite={false}>
-        Lorem Ipsum
+        {renderObjectArray(sections, {
+          products: HomeProduct,
+        })}
       </Section>
-      <Section name="home" setActive={setActive} className="h-[100vh]">
-        Lorem Ipsum
+      <Section name="demo" setActive={setActive} threshold={0.2}>
+        {renderObjectArray(sections, {
+          demo: HomeDemo,
+        })}
       </Section>
       <Section name="datasets" setActive={setActive} className="h-[100vh]">
         Lorem Ipsum
