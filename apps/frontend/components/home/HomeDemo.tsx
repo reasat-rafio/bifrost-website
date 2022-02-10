@@ -25,9 +25,8 @@ export default function HomeDemo({ previews, headline }: DemoSection): ReactElem
 
         <motion.div
           animate={{
-            transition: { ease: 'easeInOut', duration: 0.1 },
+            transition: { ease: 'easeInOut', duration: 0.05 },
           }}
-          transition={{ ease: 'easeInOut', duration: 0.1 }}
           className="h-[80%] justify-around items-center"
           style={{
             willChange: `transform`,

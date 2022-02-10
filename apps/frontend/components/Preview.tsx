@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'lib/hooks'
 import React, { RefObject, useRef } from 'react'
 
@@ -35,8 +36,9 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
           transitionYValue = 0 + (0.5 - sectionRatio) * 200
         } else {
           sectionRatio = 1
-          transitionYValue = -120
+          transitionYValue = -100
         }
+        console.log({ transitionYValue, yDelta, ratio, y, windowHeight, offsetBoundingRect })
 
         if (sectionRef.current) {
           sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
@@ -46,7 +48,10 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
   )
 
   return (
-    <div
+    <motion.div
+      animate={{
+        transition: { ease: 'easeInOut', duration: 0.1 },
+      }}
       ref={sectionRef}
       className="absolute w-full h-full bg-no-repeat bg-contain"
       style={{
