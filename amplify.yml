@@ -10,14 +10,14 @@ applications:
             - yarn install -f
         build:
           commands:
-            - yarn build --scope=sanity-studio
+            - yarn turbo-build --scope=sanity-studio
             - cp -r apps/sanity-studio/dist apps/frontend/public/studio
-            - yarn build --scope=frontend
+            - yarn turbo-build --scope=frontend
             - cd apps/frontend
       artifacts:
         baseDirectory: .next
         files:
-          - "**/*"
+          - '**/*'
       # cache:
       #   paths:
       #     - node_modules/**/*
