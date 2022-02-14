@@ -4,7 +4,7 @@ import { useIntersection } from 'lib/hooks'
 import { useEffect, useRef } from 'react'
 
 interface SectionProps {
-  setActive: <K extends 'home'>(
+  setActive?: <K extends 'home'>(
     key: string,
     value: {
       home?: boolean
@@ -32,10 +32,10 @@ export const Section: React.FC<SectionProps> = ({
   const { setIsWhite } = useCtx()
 
   useEffect(() => {
-    if (['hero', 'datasets'].includes(name)) {
+    if (['hero', 'datasets', 'demo'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }
-    console.log(name, intersection?.isIntersecting)
+    console.log(name, intersection?.isIntersecting, { intersection })
     if (intersection?.isIntersecting) {
       setIsWhite(isWhite)
     }

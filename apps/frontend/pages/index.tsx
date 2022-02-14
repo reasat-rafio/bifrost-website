@@ -49,7 +49,11 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     },
   } = useSanityQuery(query, props)
 
-  const [activeSection, { set: setActive }] = useMap<{ home?: boolean; datasets?: boolean }>({})
+  const [activeSection, { set: setActive }] = useMap<{
+    home?: boolean
+    datasets?: boolean
+    demo?: boolean
+  }>({})
 
   const { isWhite } = useCtx()
 

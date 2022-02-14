@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
   } = props
 
   const rootClassName = clsx(
-    'outline-none text-white 2xl:px-8 xl:px-8 lg:px-10 px-5 py-5 xl:py-3 2xl:py-3 transition-all duration-150 lg:w-auto w-full relative',
+    'outline-none text-white 2xl:px-8 xl:px-8 lg:px-10 px-5 py-3 xl:py-3 2xl:py-3 transition-all duration-150 lg:w-auto w-full relative',
     color === 'primary' && _fill && 'bifrost__gradient_dark_blue',
     color === 'secondary' && 'bg-persianBlue',
     styles.button,
