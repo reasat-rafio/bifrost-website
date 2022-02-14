@@ -64,11 +64,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     >
       <div className={clsx(!isWhite ? 'bifrost__background_noise' : 'opacity-0')}></div>
       <Navbar logo={site.logos.logo} menu={site.nav.menu} activeSection={activeSection} />
-      <Section name="hero" className="h-[100vh]" setActive={setActive} isWhite={false}>
+      <Section name="hero" className="h-[100vh] snap-center" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           home: HomeHero,
         })}
       </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
 
       <div className="absolute left-0 top-0 w-full h-[100vh] overflow-clip">
         <div className="relative translate-y-[15vh]">
@@ -76,21 +77,52 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         </div>
       </div>
 
-      <Section name="products" setActive={setActive} className="h-[100vh]" isWhite={false}>
+      <Section
+        name="products"
+        setActive={setActive}
+        className="h-[100vh] snap-start"
+        isWhite={false}
+      >
         {renderObjectArray(sections, {
           products: HomeProduct,
         })}
       </Section>
-      <Section name="demo" setActive={setActive} threshold={0.2}>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Section name="demo" setActive={setActive} threshold={0.2} className="snap-start">
         {renderObjectArray(sections, {
           demo: HomeDemo,
         })}
       </Section>
-      <Section name="service" setActive={setActive} threshold={0.2} isWhite={false}>
+      <hr style={{ color: '#1E2531', height: '2px' }} className="translate-y-[-3rem]" />
+      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh] snap-start">
+        {renderObjectArray(sections, {
+          services: (data: ServiceSection) => (
+            <div
+              className={clsx(
+                'container flex justify-center items-center z-10 relative h-[100vh]',
+                isWhite ? 'text-black' : 'text-white',
+              )}
+            >
+              <div className="text-center text-[80px] leading-[96px] font-[275]">
+                {data.headline}
+              </div>
+            </div>
+          ),
+        })}
+      </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Section
+        name="service"
+        setActive={setActive}
+        threshold={0}
+        isWhite={false}
+        className="relative"
+      >
         {renderObjectArray(sections, {
           services: HomeService,
         })}
       </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
     </motion.div>
   )
 }

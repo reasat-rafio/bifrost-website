@@ -21,33 +21,30 @@ export default function HomeDemo({ previews, headline }: DemoSection): ReactElem
         className="container sticky top-[12%] bottom-[7%]  h-[91vh]  px-[40px] block flex-col justify-center items-center overflow-hidden"
         ref={stickySectionRef}
       >
-        <div className="text-center text-head-1">{headline}</div>
+        <div className="text-center text-head-1 pt-10">{headline}</div>
 
         <motion.div
           animate={{
             transition: { ease: 'easeInOut', duration: 0.05 },
           }}
           className="h-[80%] justify-around items-center"
-          style={{
-            willChange: `transform`,
-            transformStyle: `preserve-3d`,
-          }}
         >
           <div
-            className="z-0 overflow-hidden h-full w-full py-10"
-            style={{ willChange: `transform, opacity`, transformStyle: `preserve-3d` }}
+            className="z-0 overflow-hidden h-full w-full mt-[2rem]"
+            style={{
+              willChange: `transform`,
+              transformStyle: `preserve-3d`,
+            }}
           >
-            <div className="overflow-hidden justify-center items-center w-full">
-              {previews.map((previewItem, index) => (
-                <Preview
-                  item={previewItem}
-                  index={index}
-                  key={previewItem._createdAt}
-                  rootRef={previewRef}
-                  length={previews.length + 1}
-                />
-              ))}
-            </div>
+            {previews.map((previewItem, index) => (
+              <Preview
+                item={previewItem}
+                index={index}
+                key={previewItem._createdAt}
+                rootRef={previewRef}
+                length={previews.length + 1}
+              />
+            ))}
           </div>
         </motion.div>
       </div>

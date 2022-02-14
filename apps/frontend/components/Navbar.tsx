@@ -12,6 +12,7 @@ import { MenuItem } from 'lib/types'
 
 interface NavbarProps {
   logo: SanityImage
+  darkLogo: SanityImage
   menu: MenuItem[]
   activeSection: {
     hero?: boolean
@@ -19,11 +20,11 @@ interface NavbarProps {
   }
 }
 
-export default function Navbar({ logo, menu, activeSection }: NavbarProps): ReactElement {
+export default function Navbar({ logo, darkLogo, menu, activeSection }: NavbarProps): ReactElement {
   let activeName: string = Object.entries(activeSection).sort(
     ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
   )[0]?.[0]
-  activeName = activeName === 'hero' ? 'home' : activeName
+  activeName = activeName === 'hero' || 'demo' ? 'home' : activeName
   const ctaButton = menu.filter((men) => men.isCTA)[0]
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [isActive, setIsActive] = useState(false)
@@ -56,7 +57,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
           >
             <SanityImg
               builder={imageUrlBuilder}
-              image={logo}
+              image={isWhite ? darkLogo : logo}
               height={120}
               className={clsx('transition-all w-auto', scroll ? 'h-10' : 'h-16')}
             />
@@ -85,14 +86,16 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                         }
                       }}
                       className={clsx(
-                        'lg:my-0 flex items-center md:items-center font-bold text-dark hover:opacity-759 ',
+                        'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 ',
                         men.isCTA && 'cta-button font-bold',
                       )}
                     >
                       <span
                         className={clsx(
                           activeName === men.title.toLowerCase() &&
-                            'text-transparent bg-clip-text bifrost__gradient_green',
+                            'text-transparent bg-clip-text ',
+                          activeName === men.title.toLowerCase() &&
+                            (isWhite ? 'text-neonBlue' : 'bifrost__gradient_green'),
                         )}
                       >
                         {men.title}
@@ -102,7 +105,11 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                   {activeName === men?.title.toLowerCase() && (
                     <motion.div
                       layout
-                      className="w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] bifrost__gradient_green"
+                      className={clsx(
+                        'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px]',
+                        activeName === men.title.toLowerCase() &&
+                          (isWhite ? 'bg-neonBlue' : 'bifrost__gradient_green'),
+                      )}
                       layoutId="underline"
                       initial={false}
                       transition={{ duration: 0.2 }}

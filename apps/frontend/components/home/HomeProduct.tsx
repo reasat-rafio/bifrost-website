@@ -32,7 +32,7 @@ export default function HomeProduct(data: ProductSection): ReactElement {
           />
         ))}
       </div>
-      <div className="flex flex-col items-center md:items-start md:flex-1 space-y-8 self-center bifrost__card py-[5rem] px-[3.75rem]">
+      <div className="flex flex-col items-center md:items-start md:flex-1 space-y-8 self-center bifrost__transparent_card py-[5rem] px-[3.75rem]">
         <div>
           <h3 className="text-head-5 bifrost__gradient_green text-transparent bg-clip-text uppercase">
             {data.subHeadline}
