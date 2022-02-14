@@ -1,19 +1,23 @@
 version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - yarn install -f
-    build:
-      commands:
-        - yarn build --scope=sanity-studio
-        - cp -r apps/sanity-studio/dist apps/frontend/public/studio
-        - yarn build --scope=frontend
-        - cd apps/frontend
-  artifacts:
-    baseDirectory: apps/frontend/.next
-    files:
-      - "**/*"
-  # cache:
-  #   paths:
-  #     - node_modules/**/*
+applications:
+  - appRoot: apps/frontend
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd ../../
+            - npm install -g @sanity/cli
+            - yarn install -f
+        build:
+          commands:
+            - yarn build --scope=sanity-studio
+            - cp -r apps/sanity-studio/dist apps/frontend/public/studio
+            - yarn build --scope=frontend
+            - cd apps/frontend
+      artifacts:
+        baseDirectory: .next
+        files:
+          - "**/*"
+      # cache:
+      #   paths:
+      #     - node_modules/**/*
