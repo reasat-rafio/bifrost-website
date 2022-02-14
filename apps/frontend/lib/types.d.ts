@@ -37,6 +37,13 @@ export interface ProductSection {
   images: [SanityImage & ImageAlt]
 }
 
+export interface ProjectSection {
+  body: string
+  ctaButton: CTAButton
+  headline: string
+  items: [{ image: SanityImage & ImageAlt; name: string; url: string }]
+}
+
 export interface DemoSection {
   headline: string
   previews: [SanityImage & ImageAlt]

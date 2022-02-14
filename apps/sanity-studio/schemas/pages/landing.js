@@ -18,6 +18,7 @@ export default {
         { type: 'demo' },
         { type: 'services' },
         { type: 'data' },
+        { type: 'projects' },
       ],
     },
   ],

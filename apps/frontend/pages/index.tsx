@@ -17,6 +17,7 @@ import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
 import HomeData from 'components/home/HomeData'
+import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 
 const query = groq`{
@@ -135,6 +136,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       <Section name="data" setActive={setActive} isWhite={false} className="snap-start">
         {renderObjectArray(sections, {
           data: HomeData,
+        })}
+      </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Section name="projects" setActive={setActive} isWhite={false} className="snap-start">
+        {renderObjectArray(sections, {
+          projects: HomeProjects,
         })}
       </Section>
       <hr style={{ color: '#1E2531', height: '2px' }} />

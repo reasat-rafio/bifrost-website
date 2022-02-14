@@ -61,6 +61,14 @@ html {
   width: 300%;
 }
 
+.project__item {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 8px;
+}
+
 @keyframes grain {
   0%,
   100% {
