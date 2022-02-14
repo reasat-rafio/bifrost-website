@@ -20,6 +20,7 @@ export default {
         { type: 'data' },
         { type: 'projects' },
         { type: 'reviews' },
+        { type: 'contact' },
       ],
     },
   ],

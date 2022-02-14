@@ -53,6 +53,11 @@ export interface DemoSection {
   previews: [SanityImage & ImageAlt]
 }
 
+export interface ContactSection {
+  headline: string
+  ctaButton: CTAButton
+}
+
 export interface DataSection {
   headline: string
   body: string

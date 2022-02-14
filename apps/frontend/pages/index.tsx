@@ -19,6 +19,8 @@ import HomeService from 'components/home/HomeService'
 import HomeData from 'components/home/HomeData'
 import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
+import HomeReview from 'components/home/HomeReview'
+import HomeContact from 'components/home/HomeContact'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -142,6 +144,25 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       <Section name="projects" setActive={setActive} isWhite={false} className="snap-start">
         {renderObjectArray(sections, {
           projects: HomeProjects,
+        })}
+      </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Ellipse className="z-20 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
+      <Section
+        name="reviews"
+        setActive={setActive}
+        isWhite={false}
+        className="snap-start"
+        threshold={0}
+      >
+        {renderObjectArray(sections, {
+          reviews: HomeReview,
+        })}
+      </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Section name="contact" setActive={setActive} isWhite={true} threshold={0.4}>
+        {renderObjectArray(sections, {
+          contact: HomeContact,
         })}
       </Section>
       <hr style={{ color: '#1E2531', height: '2px' }} />
