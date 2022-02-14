@@ -21,6 +21,7 @@ import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
 import HomeContact from 'components/home/HomeContact'
+import Footer from 'components/Footer'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -166,6 +167,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </Section>
       <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Footer logo={site.logos.logo} footer={site.nav.footer} />
     </motion.div>
   )
 }

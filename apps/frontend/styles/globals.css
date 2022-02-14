@@ -69,6 +69,13 @@ html {
   border-radius: 8px;
 }
 
+.input__dark {
+  background: linear-gradient(
+    138.39deg,
+    rgba(255, 255, 255, 0.2) -7.57%,
+    rgba(255, 255, 255, 0) 107.25%
+  );
+}
 @keyframes grain {
   0%,
   100% {

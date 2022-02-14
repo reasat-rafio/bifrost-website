@@ -63,6 +63,7 @@ export interface DataSection {
   body: string
   ctaButton: CTAButton
 }
+
 export interface Service {
   headline: string
   body: string
@@ -75,6 +76,12 @@ export interface Service {
 export interface ServiceSection {
   headline: string
   items: [Service]
+}
+
+export interface Footer {
+  copyright: string
+  socialButtons: Social[]
+  menu: MenuItem[]
 }
 
 export interface Site {
