@@ -85,7 +85,7 @@ export interface Footer {
 }
 
 export interface Site {
-  logos: { logo: SanityImage }
+  logos: { logo: SanityImage; darkLogo: SanityImage }
   nav: {
     menu: MenuItem[]
     footer: Footer

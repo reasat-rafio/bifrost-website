@@ -8,7 +8,6 @@ import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
-import Ellipse from './Ellipse'
 import Button from './ui/Button'
 
 interface ServiceProps {

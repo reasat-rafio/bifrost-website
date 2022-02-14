@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { ProjectSection } from 'lib/types'
 import { ReactElement, useRef } from 'react'
-import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
@@ -16,7 +15,6 @@ SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
   const { isWhite } = useCtx()
-  const windowWidth = useWindowSize()?.width ?? 0
   const navigationPrevRef = useRef<HTMLSpanElement>(null)
   const navigationNextRef = useRef<HTMLSpanElement>(null)
 

@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { ReactElement } from 'react'
 
 interface EllipseProps {

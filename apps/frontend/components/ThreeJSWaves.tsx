@@ -100,6 +100,7 @@ export default function ThreeJSWaves({}: // width,
 
     let pWidth = 100
     let pHeight = 100
+    // @ts-ignore
     let planeGeom = new THREE.PlaneBufferGeometry(500, 500, pWidth, pHeight).toGrid()
     planeGeom.rotateX(-Math.PI * 0.5)
 

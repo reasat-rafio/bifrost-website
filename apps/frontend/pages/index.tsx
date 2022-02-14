@@ -16,6 +16,7 @@ import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
+import { useRef } from 'react'
 import HomeData from 'components/home/HomeData'
 import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
@@ -55,6 +56,10 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     },
   } = useSanityQuery(query, props)
 
+  console.log({ site })
+
+  const mainRef = useRef(null)
+
   const [activeSection, { set: setActive }] = useMap<{
     home?: boolean
     datasets?: boolean
@@ -63,6 +68,18 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
 
   const { isWhite } = useCtx()
 
+  // useEffect(() => {
+  //   console.log({ activeSection })
+  //   if (activeSection.demo) {
+  //     mainRef.current.classList.remove('overflow-scroll')
+  //   }
+  //   // else {
+  //   //   if (!mainRef.current.classList.contains('overflow-scroll')) {
+  //   //     mainRef.current.classList.add('overflow-scroll')
+  //   //   }
+  //   // }
+  // }, [activeSection])
+
   return (
     <motion.div
       animate={{
@@ -70,10 +87,16 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         backgroundColor: isWhite ? '#fff' : '#000',
         transition: { ease: 'easeInOut', duration: 0.3 },
       }}
-      className="relative"
+      className="relative "
+      ref={mainRef}
     >
       <div className={clsx(!isWhite ? 'bifrost__background_noise' : 'opacity-0')}></div>
-      <Navbar logo={site.logos.logo} menu={site.nav.menu} activeSection={activeSection} />
+      <Navbar
+        darkLogo={site.logos.darkLogo}
+        logo={site.logos.logo}
+        menu={site.nav.menu}
+        activeSection={activeSection}
+      />
       <Section name="hero" className="h-[100vh] snap-center" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           home: HomeHero,

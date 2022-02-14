@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { Footer as FooterType } from 'lib/types'
+import { Footer as FooterType, SocialType } from 'lib/types'
 import { useCtx } from 'contexts/global'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
