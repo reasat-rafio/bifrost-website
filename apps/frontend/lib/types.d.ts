@@ -42,6 +42,11 @@ export interface DemoSection {
   previews: [SanityImage & ImageAlt]
 }
 
+export interface DataSection {
+  headline: string
+  body: string
+  ctaButton: CTAButton
+}
 export interface Service {
   headline: string
   body: string

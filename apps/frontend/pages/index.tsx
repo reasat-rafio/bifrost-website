@@ -10,12 +10,13 @@ import { useCtx } from 'contexts/global'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
-import { LandingPage, Site } from 'lib/types'
+import { LandingPage, ServiceSection, Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
+import HomeData from 'components/home/HomeData'
 import Ellipse from 'components/Ellipse'
 
 const query = groq`{
@@ -127,6 +128,13 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       >
         {renderObjectArray(sections, {
           services: HomeService,
+        })}
+      </Section>
+      <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
+      <Section name="data" setActive={setActive} isWhite={false} className="snap-start">
+        {renderObjectArray(sections, {
+          data: HomeData,
         })}
       </Section>
       <hr style={{ color: '#1E2531', height: '2px' }} />
