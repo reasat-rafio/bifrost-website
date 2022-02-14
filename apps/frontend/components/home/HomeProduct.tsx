@@ -9,9 +9,6 @@ import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 
 export default function HomeProduct(data: ProductSection): ReactElement {
-  // const heroData: HeroData = { type: 'image', image: data.image }
-  console.log({ data })
-
   const { isWhite } = useCtx()
 
   return (

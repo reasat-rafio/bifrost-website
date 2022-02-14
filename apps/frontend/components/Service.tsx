@@ -89,8 +89,6 @@ export default function Service({
     [windowHeight, isScroll, current],
   )
 
-  console.log({ item })
-
   return (
     <motion.div
       className={clsx(

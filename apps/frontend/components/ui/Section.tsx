@@ -35,7 +35,6 @@ export const Section: React.FC<SectionProps> = ({
     if (['hero', 'datasets', 'demo'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }
-    console.log(name, intersection?.isIntersecting, { intersection })
     if (intersection?.isIntersecting) {
       setIsWhite(isWhite)
     }

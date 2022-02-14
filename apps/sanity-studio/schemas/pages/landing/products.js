@@ -1,11 +1,9 @@
-import { AiOutlineHome } from 'react-icons/ai'
 import editor from '../../editor'
 
 export default {
   name: 'products',
   title: 'Products',
   type: 'object',
-  icon: AiOutlineHome,
   fields: [
     {
       name: 'headline',

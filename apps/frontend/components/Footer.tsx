@@ -13,6 +13,7 @@ interface FooterProps {
 }
 
 function socialIcon(type: SocialType) {
+  console.log({ type })
   switch (type) {
     case 'facebook':
       return 'footer/facebook.svg'
@@ -25,10 +26,10 @@ function socialIcon(type: SocialType) {
   }
 }
 
-export default function Footer(data: FooterProps): ReactElement {
+export default function Footer({ logo, footer }: FooterProps): ReactElement {
   const { isWhite } = useCtx()
   const router = useRouter()
-  console.log({ data })
+  console.log('FOOTER PROPS', { logo, footer })
   return (
     <div
       className={clsx(
@@ -48,13 +49,13 @@ export default function Footer(data: FooterProps): ReactElement {
         >
           <SanityImg
             builder={imageUrlBuilder}
-            image={data.logo}
+            image={logo}
             height={120}
             className={clsx('transition-all w-auto h-10')}
           />
         </a>
         <div className="flex gap-x-5">
-          {data.footer.socialButtons?.map((item) => (
+          {footer.socialButtons?.map((item) => (
             <a href={item.url} target="_blank" rel="noopener noreferrer" key={item.title}>
               <div className="bifrost__gradient_green rounded-full p-[1px]">
                 <div className=" bg-white rounded-full">
@@ -64,12 +65,12 @@ export default function Footer(data: FooterProps): ReactElement {
             </a>
           ))}
         </div>
-        <div>{data.footer.copyright}</div>
+        <div>{footer.copyright}</div>
       </div>
       <div className="flex flex-col gap-y-9">
         <div className="font-bold">Quick Links</div>
         <div className="grid grid-cols-2 gap-y-9">
-          {data.footer.menu?.map((menu) => (
+          {footer.menu?.map((menu) => (
             <div key={menu.title}>{menu.title}</div>
           ))}
         </div>

@@ -41,7 +41,6 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
           sectionRatio = 1
           transitionYValue = -100
         }
-        console.log({ transitionYValue, yDelta, ratio, y, windowHeight, offsetBoundingRect })
 
         if (sectionRef.current) {
           sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
@@ -49,6 +48,8 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
       }),
     [windowHeight],
   )
+
+  console.log({ item })
 
   return (
     <motion.div

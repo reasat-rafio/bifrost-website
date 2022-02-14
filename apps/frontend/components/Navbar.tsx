@@ -55,12 +55,21 @@ export default function Navbar({ logo, darkLogo, menu, activeSection }: NavbarPr
               }
             }}
           >
+            {/* {isWhite ? ( */}
+            {/*   <SanityImg */}
+            {/*     builder={imageUrlBuilder} */}
+            {/*     image={darkLogo} */}
+            {/*     height={120} */}
+            {/*     className={clsx('transition-all w-auto', scroll ? 'h-10' : 'h-16')} */}
+            {/*   /> */}
+            {/* ) : ( */}
             <SanityImg
               builder={imageUrlBuilder}
-              image={isWhite ? darkLogo : logo}
+              image={logo}
               height={120}
               className={clsx('transition-all w-auto', scroll ? 'h-10' : 'h-16')}
             />
+            {/* )} */}
           </a>
           <button
             className="lg:hidden outline-none focus:outline-none"

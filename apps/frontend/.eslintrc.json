@@ -1,7 +1,7 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "jsx-a11y/alt-text": false,
+    "jsx-a11y/alt-text": 0,
     "@next/next/no-img-element": false,
     "@next/next/no-html-link-for-pages": false,
     "react-hooks/exhaustive-deps": false

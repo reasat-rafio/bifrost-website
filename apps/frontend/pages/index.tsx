@@ -56,8 +56,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     },
   } = useSanityQuery(query, props)
 
-  console.log({ site })
-
   const mainRef = useRef(null)
 
   const [activeSection, { set: setActive }] = useMap<{

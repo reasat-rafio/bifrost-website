@@ -40,7 +40,7 @@ export default function HomeDemo({ previews, headline }: DemoSection): ReactElem
               <Preview
                 item={previewItem}
                 index={index}
-                key={previewItem._createdAt}
+                key={previewItem.assetId}
                 rootRef={previewRef}
                 length={previews.length + 1}
               />
