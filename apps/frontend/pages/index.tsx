@@ -16,6 +16,7 @@ import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
+import Ellipse from 'components/Ellipse'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -115,6 +116,8 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </Section>
       <hr style={{ color: '#1E2531', height: '2px' }} />
+      <Ellipse className="z-10 absolute top-[140vh] right-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[340vh] right-[5vw] w-[153px] h-[391px]" />
       <Section
         name="service"
         setActive={setActive}
