@@ -6,7 +6,15 @@ import { NextSeo } from 'next-seo'
 import { AppProvider } from 'contexts/global'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  let faviconImage: string | null = null
   const ogImage = pageProps.data?.page.seo.seoImage ?? pageProps.data?.site.ogImage
+  if (pageProps.data?.site.logos.favicon) {
+    faviconImage = imageUrlBuilder
+      .image(pageProps.data?.site.logos.favicon)
+      .size(256, 256)
+      .ignoreImageParams()
+      .url()
+  }
 
   const openGraphImages = ogImage
     ? [
@@ -25,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Head>
-        <link rel="icon" type="image/png" href={pageProps.data?.site.logos.favicon} />
+        <link rel="icon" type="image/png" href={faviconImage} />
       </Head>
       <AppProvider>
         <div>

@@ -20,7 +20,7 @@ interface NavbarProps {
   }
 }
 
-export default function Navbar({ logo, darkLogo, menu, activeSection }: NavbarProps): ReactElement {
+export default function Navbar({ logo, menu, activeSection }: NavbarProps): ReactElement {
   let activeName: string = Object.entries(activeSection).sort(
     ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
   )[0]?.[0]
