@@ -16,6 +16,7 @@ import demoSection from './pages/landing/demo'
 import servicesSection from './pages/landing/services'
 import dataSection from './pages/landing/data'
 import projectsSection from './pages/landing/projects'
+import reviewsSection from './pages/landing/reviews'
 
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
@@ -49,5 +50,6 @@ export default createSchema({
     servicesSection,
     dataSection,
     projectsSection,
+    reviewsSection,
   ]),
 })

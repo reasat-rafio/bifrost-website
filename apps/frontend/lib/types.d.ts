@@ -44,6 +44,10 @@ export interface ProjectSection {
   items: [{ image: SanityImage & ImageAlt; name: string; url: string }]
 }
 
+export interface ReviewSection {
+  items: [{ body: string; image: SanityImage & ImageAlt; description: string; name: string }]
+}
+
 export interface DemoSection {
   headline: string
   previews: [SanityImage & ImageAlt]

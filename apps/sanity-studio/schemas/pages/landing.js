@@ -19,6 +19,7 @@ export default {
         { type: 'services' },
         { type: 'data' },
         { type: 'projects' },
+        { type: 'reviews' },
       ],
     },
   ],
