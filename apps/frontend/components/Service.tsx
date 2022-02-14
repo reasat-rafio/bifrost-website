@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
@@ -7,6 +8,7 @@ import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import Ellipse from './Ellipse'
 import Button from './ui/Button'
 
 interface ServiceProps {
@@ -62,18 +64,23 @@ export default function Service({
           if (isScroll) {
             if (current !== index) {
               sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+              sectionRef.current.style.opacity = '0'
             } else {
               sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+              sectionRef.current.style.opacity = '1'
             }
           } else if (sectionRef.current) {
             if (transitionYValue === -120) {
               sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+              sectionRef.current.style.opacity = '0'
             } else {
               sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+              sectionRef.current.style.opacity = '1'
               if (ratio >= index + 1 || (ratio < 1 && index === 0)) {
                 setCurrent(index)
               } else {
                 sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+                sectionRef.current.style.opacity = '0'
               }
             }
           }
@@ -83,27 +90,41 @@ export default function Service({
     [windowHeight, isScroll, current],
   )
 
+  console.log({ item })
+
   return (
     <motion.div
-      className="w-full h-full relative flex items-center justify-center transition-all duration-500"
+      className={clsx(
+        'w-full h-full relative flex transition-all duration-500 opacity-0',
+        item.imagePosition === 'center' && 'justify-center',
+        item.imagePosition === 'right' && 'justify-end',
+        item.imagePosition === 'left' && 'justify-start',
+      )}
       ref={sectionRef}
-      transition={{ ease: 'easeInOut', duration: 0.2 }}
       style={{
         zIndex: 10 - index,
         opacity: 1,
       }}
     >
       <SanityImg
-        className="rounded-lg self-center"
+        className={clsx('rounded-lg object-contain')}
         builder={imageUrlBuilder}
         image={item.image}
         height={550}
         alt={item.image?.alt}
       />
-      <div className="absolute bottom-[-2rem] right-0 space-y-10 p-10 w-[600px] bifrost__transparent_card rounded-lg">
+      <div
+        className={clsx(
+          'absolute space-y-10 p-10 w-[600px] bifrost__transparent_card rounded-lg',
+          item.cardPosition === 'bottom-right' && 'bottom-[-10rem] right-[5rem]',
+          item.cardPosition === 'left' && 'top-[15%] left-[5rem]',
+          item.cardPosition === 'right' && 'top-[15%] right-[5rem]',
+          item.cardPosition === 'bottom-left' && 'bottom-[-10rem] left-[5rem]',
+        )}
+      >
         <div className="flex-col space-y-10">
-          <div className="text-head-2 font-[275]">{item.headline}</div>
-          <div className="text-head-5 font-[300]">
+          <div className="text-[55px] leading-[55px] font-[275]">{item.headline}</div>
+          <div className="text-[18px] leading-[32px] font-[300]">
             <PortableText
               blocks={item.body}
               serializers={{
