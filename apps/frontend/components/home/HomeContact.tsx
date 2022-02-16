@@ -1,16 +1,14 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { useCtx } from 'contexts/global'
 import { ContactSection } from 'lib/types'
 import { ReactElement } from 'react'
 
 export default function HomeContact(data: ContactSection): ReactElement {
-  const { isWhite } = useCtx()
   return (
     <div
       className={clsx(
         'container flex flex-col justify-center z-10 relative gap-x-5 h-[100vh]',
-        isWhite ? 'text-black' : 'text-white',
+        'text-white',
       )}
     >
       <div className="text-[80px] leading-[80px] font-[275] w-[50%]">{data.headline}</div>

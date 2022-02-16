@@ -32,6 +32,10 @@ html {
 /* .__carouselBtn { */
 /*   @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-transparent bg-clip-text; */
 /* } */
+.section {
+  color: white;
+  z: 10;
+}
 
 .bifrost__gradient_pink {
   /* background: linear-gradient( */
@@ -59,7 +63,7 @@ html {
   height: 300%;
   left: -50%;
   opacity: 0.55;
-  z: 1;
+  z: 10;
   position: fixed;
   top: -110%;
   width: 300%;

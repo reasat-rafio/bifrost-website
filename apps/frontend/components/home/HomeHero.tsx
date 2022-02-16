@@ -18,7 +18,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
     <div>
       <div
         className={clsx(
-          'container flex flex-col-reverse md:flex-row z-10 md:space-x-12 md:space-y-0 relative h-[100vh]',
+          'container flex flex-col-reverse md:flex-row z-10 md:space-x-12 md:space-y-0 relative h-[100vh] w-[100vw]',
           isWhite ? 'text-black' : 'text-white',
         )}
       >
@@ -47,7 +47,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
         </div>
       </div>
       <div
-        className="z-10 absolute bottom-0 h-[30vh] w-[99vw]"
+        className="z-10 absolute bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
       ></div>
     </div>

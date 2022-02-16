@@ -81,14 +81,16 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
   return (
     <motion.div
       animate={{
-        color: isWhite ? '#000' : '#fff',
-        backgroundColor: isWhite ? '#fff' : '#000',
+        // color: isWhite ? '#000' : '#fff',
+        // backgroundColor: isWhite ? '#fff' : '#000',
+        backgroundColor: '#000',
+        color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },
       }}
       className="relative "
       ref={mainRef}
     >
-      <div className={clsx(!isWhite ? 'bifrost__background_noise' : 'opacity-0')}></div>
+      <div className="bifrost__background_noise"></div>
       <Navbar
         darkLogo={site.logos.darkLogo}
         logo={site.logos.logo}
@@ -131,7 +133,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             <div
               className={clsx(
                 'container flex justify-center items-center z-10 relative h-[100vh]',
-                isWhite ? 'text-black' : 'text-white',
+                'text-white',
               )}
             >
               <div className="text-center text-[80px] leading-[96px] font-[275]">

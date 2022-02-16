@@ -35,8 +35,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
   return (
     <motion.div
       animate={{
-        color: isWhite ? '#000' : '#fff',
-        backgroundColor: isWhite ? '#fff' : '#000',
+        color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },
       }}
       className={clsx(
@@ -103,8 +102,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                         className={clsx(
                           activeName === men.title.toLowerCase() &&
                             'text-transparent bg-clip-text ',
-                          activeName === men.title.toLowerCase() &&
-                            (isWhite ? 'text-neonBlue' : 'bifrost__gradient_green'),
+                          activeName === men.title.toLowerCase() && 'bifrost__gradient_green',
                         )}
                       >
                         {men.title}
@@ -116,8 +114,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                       layout
                       className={clsx(
                         'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px]',
-                        activeName === men.title.toLowerCase() &&
-                          (isWhite ? 'bg-neonBlue' : 'bifrost__gradient_green'),
+                        activeName === men.title.toLowerCase() && 'bifrost__gradient_green',
                       )}
                       layoutId="underline"
                       initial={false}

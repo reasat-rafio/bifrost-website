@@ -40,7 +40,7 @@ export const Section: React.FC<SectionProps> = ({
     }
   }, [intersection?.isIntersecting])
 
-  const rootClass = clsx('section relative', className && className, hidden ? 'hidden' : 'block')
+  const rootClass = clsx('relative', className && className, hidden ? 'hidden' : 'block')
 
   return (
     <section className={rootClass} id={name}>
