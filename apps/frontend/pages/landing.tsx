@@ -11,7 +11,6 @@ import { renderObjectArray } from 'sanity-react-extra'
 import HomeHero from 'components/home/HomeHero'
 import { useMap } from 'react-use'
 import clsx from 'clsx'
-import { useCtx } from 'contexts/global'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeActions from 'components/home/HomeActions'
@@ -49,18 +48,17 @@ export default function Landing(
 ): ReactElement {
   const {
     data: {
-      site,
       page: { sections },
     },
   } = useSanityQuery(query, props)
 
-  const [activeSection, { set: setActive }] = useMap<{
+  const [_, { set: setActive }] = useMap<{
     home?: boolean
     datasets?: boolean
     demo?: boolean
   }>({})
 
-  const { isWhite } = useCtx()
+  // const { isWhite } = useCtx()
 
   return (
     <div className="relative bg-black color-white">
@@ -72,7 +70,7 @@ export default function Landing(
         scrollingSpeed={1000}
         scrollOverflow={true}
         scrollHorizontallyKey={'YOUR KEY HERE'}
-        render={({ _, fullpageApi }) => {
+        render={({}) => {
           return (
             <ReactFullpage.Wrapper>
               <div className="section">

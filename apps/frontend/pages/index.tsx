@@ -6,7 +6,6 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { useMap } from 'react-use'
 import { Section } from 'components/ui/Section'
-import { useCtx } from 'contexts/global'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
@@ -63,8 +62,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     datasets?: boolean
     demo?: boolean
   }>({})
-
-  const { isWhite } = useCtx()
 
   // useEffect(() => {
   //   console.log({ activeSection })

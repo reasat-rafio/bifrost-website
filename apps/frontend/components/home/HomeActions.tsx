@@ -3,9 +3,9 @@ import { Action } from 'components/Action'
 import { DemoSection } from 'lib/types'
 import { ReactElement, useRef } from 'react'
 
-export default function HomeActions({ previews, headline }: DemoSection): ReactElement {
+export default function HomeActions({ previews }: DemoSection): ReactElement {
   const previewRef = useRef<HTMLDivElement>(null)
-  const stickySectionRef = useRef<HTMLDivElement>(null)
+  // const stickySectionRef = useRef<HTMLDivElement>(null)
 
   return (
     <section

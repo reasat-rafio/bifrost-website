@@ -7,7 +7,6 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
-import { useCtx } from 'contexts/global'
 import { MenuItem } from 'lib/types'
 
 interface NavbarProps {
@@ -30,7 +29,6 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
   const [isActive, setIsActive] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
   const router = useRouter()
-  const { isWhite } = useCtx()
 
   return (
     <motion.div

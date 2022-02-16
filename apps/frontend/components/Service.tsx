@@ -3,16 +3,8 @@ import { motion } from 'framer-motion'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
 import { Service as ServiceInterface } from 'lib/types'
-import {
-  Dispatch,
-  ReactElement,
-  RefObject,
-  SetStateAction,
-  useCallback,
-  useRef,
-  useState,
-} from 'react'
-import { useThrottle, useThrottleFn, useWindowSize } from 'react-use'
+import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react'
+import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 import Button from './ui/Button'
@@ -38,91 +30,91 @@ export default function Service({
 }: ServiceProps): ReactElement {
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  const [transition, setTransition] = useState(0)
+  // const [transition, setTransition] = useState(0)
   const { height: windowHeight } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
 
-  useThrottleFn(
-    () => {
-      console.log({ transition })
-      if (transition === -120) {
-        sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-        sectionRef.current.style.opacity = '0'
-      } else {
-        sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-        sectionRef.current.style.opacity = '1'
-      }
-    },
-    500,
-    [transition],
-  )
-
-  useVisibleScrollEffect(
-    rootRef,
-    (offsetBoundingRect, _, y) =>
-      animationFrameEffect(() => {
-        console.log({ offsetBoundingRect, y })
-        setTransition(y)
-      }),
-    [current],
-  )
+  // useThrottleFn(
+  //   () => {
+  //     console.log({ transition })
+  //     if (transition === -120) {
+  //       sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+  //       sectionRef.current.style.opacity = '0'
+  //     } else {
+  //       sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+  //       sectionRef.current.style.opacity = '1'
+  //     }
+  //   },
+  //   500,
+  //   [transition],
+  // )
 
   // useVisibleScrollEffect(
   //   rootRef,
   //   (offsetBoundingRect, _, y) =>
   //     animationFrameEffect(() => {
-  //       const yDelta = y + windowHeight - offsetBoundingRect.top
-  //       const ratio = Math.max(0, Math.min(yDelta / windowHeight, length))
-
-  //       let transitionYValue = 0
-  //       let sectionRatio = 0
-
-  //       if (index === length - 2) {
-  //         sectionRatio = 0
-  //       } else if (ratio >= 0 && ratio < index + 1.5) {
-  //         sectionRatio = 0
-  //         transitionYValue = 0
-  //       } else if (ratio > index + 1.5 && ratio < index + 2) {
-  //         sectionRatio = ratio - (index + 1)
-  //         transitionYValue = 0 + (0.5 - sectionRatio) * 200
-  //       } else {
-  //         sectionRatio = 1
-  //         transitionYValue = -120
-  //       }
-
-  //       if (isScroll) {
-  //         if (current !== index) {
-  //           setTransition(-120)
-  //           // sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //           // sectionRef.current.style.opacity = '0'
-  //         } else {
-  //           setTransition(0)
-  //           // sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //           // sectionRef.current.style.opacity = '1'
-  //         }
-  //       } else if (sectionRef.current) {
-  //         if (transitionYValue === -120) {
-  //           setTransition(-120)
-  //           // sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //           // sectionRef.current.style.opacity = '0'
-  //         } else {
-  //           setTransition(0)
-  //           // sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //           // sectionRef.current.style.opacity = '1'
-  //           if (ratio >= index + 1 || (ratio < 1 && index === 0)) {
-  //             setCurrent(index)
-  //           } else {
-  //             setTransition(-120)
-  //             // sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //             // sectionRef.current.style.opacity = '0'
-  //           }
-  //         }
-  //       }
+  //       console.log({ offsetBoundingRect, y })
+  //       setTransition(y)
   //     }),
-  //   [windowHeight, isScroll, current],
+  //   [current],
   // )
+
+  const toggleVisibility = function (visible: boolean) {
+    if (visible) {
+      sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+      sectionRef.current.style.opacity = '1'
+    } else {
+      sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+      sectionRef.current.style.opacity = '0'
+    }
+  }
+
+  useVisibleScrollEffect(
+    rootRef,
+    (offsetBoundingRect, _, y) =>
+      animationFrameEffect(() => {
+        const yDelta = y + windowHeight - offsetBoundingRect.top
+        const ratio = Math.max(0, Math.min(yDelta / windowHeight, length))
+
+        let transitionYValue = 0
+        let sectionRatio = 0
+
+        if (index === length - 2) {
+          sectionRatio = 0
+        } else if (ratio >= 0 && ratio < index + 1.5) {
+          sectionRatio = 0
+          transitionYValue = 0
+        } else if (ratio > index + 1.5 && ratio < index + 2) {
+          sectionRatio = ratio - (index + 1)
+          transitionYValue = 0 + (0.5 - sectionRatio) * 200
+        } else {
+          sectionRatio = 1
+          transitionYValue = -120
+        }
+
+        if (isScroll) {
+          if (current !== index) {
+            toggleVisibility(false)
+          } else {
+            toggleVisibility(true)
+          }
+        } else if (sectionRef.current) {
+          if (transitionYValue === -120) {
+            toggleVisibility(false)
+          } else {
+            toggleVisibility(true)
+            if (ratio >= index + 1 || (ratio < 1 && index === 0)) {
+              setCurrent(index)
+            } else {
+              toggleVisibility(false)
+            }
+          }
+        }
+      }),
+    [windowHeight, isScroll, current],
+  )
 
   return (
     <motion.div
