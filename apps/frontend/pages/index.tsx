@@ -9,7 +9,7 @@ import { Section } from 'components/ui/Section'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
-import { LandingPage, ServiceSection, Site } from 'lib/types'
+import { DemoSection, LandingPage, ServiceSection, Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
@@ -99,7 +99,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           home: HomeHero,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
 
       <div className="absolute left-0 top-0 w-full h-[100vh] overflow-clip">
         <div className="relative translate-y-[15vh]">
@@ -117,13 +116,33 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           products: HomeProduct,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
-      <Section name="demo" setActive={setActive} threshold={0.2} className="snap-start">
+      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh] snap-start">
+        {renderObjectArray(sections, {
+          demo: (data: DemoSection) => (
+            <div
+              className={clsx(
+                'container flex justify-center items-center z-10 relative h-[100vh]',
+                'text-white',
+              )}
+            >
+              <div className="text-center text-[80px] leading-[96px] font-[275]">
+                {data.headline}
+              </div>
+            </div>
+          ),
+        })}
+      </Section>
+      <Section
+        name="demo"
+        setActive={setActive}
+        threshold={0.2}
+        className="snap-start"
+        hasEllipse={true}
+      >
         {renderObjectArray(sections, {
           demo: HomeDemo,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} className="translate-y-[-3rem]" />
       <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh] snap-start">
         {renderObjectArray(sections, {
           services: (data: ServiceSection) => (
@@ -140,7 +159,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
       <Ellipse className="z-10 absolute top-[140vh] right-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[340vh] right-[5vw] w-[153px] h-[391px]" />
       <Section
@@ -154,21 +172,18 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           services: HomeService,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
       <Section name="data" setActive={setActive} isWhite={false} className="snap-start">
         {renderObjectArray(sections, {
           data: HomeData,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
-      <Section name="projects" setActive={setActive} isWhite={false} className="snap-start">
+      <div>
         {renderObjectArray(sections, {
           projects: HomeProjects,
         })}
-      </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
-      <Ellipse className="z-20 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
+      </div>
+      <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
       <Section
         name="reviews"
         setActive={setActive}
@@ -180,13 +195,17 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           reviews: HomeReview,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
-      <Section name="contact" setActive={setActive} isWhite={true} threshold={0.4}>
+      <Section
+        name="contact"
+        setActive={setActive}
+        isWhite={true}
+        threshold={0.4}
+        hasEllipse={true}
+      >
         {renderObjectArray(sections, {
           contact: HomeContact,
         })}
       </Section>
-      <hr style={{ color: '#1E2531', height: '2px' }} />
       <Footer logo={site.logos.logo} footer={site.nav.footer} />
     </motion.div>
   )

@@ -36,31 +36,6 @@ export default function Service({
     height: 0,
   }
 
-  // useThrottleFn(
-  //   () => {
-  //     console.log({ transition })
-  //     if (transition === -120) {
-  //       sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //       sectionRef.current.style.opacity = '0'
-  //     } else {
-  //       sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-  //       sectionRef.current.style.opacity = '1'
-  //     }
-  //   },
-  //   500,
-  //   [transition],
-  // )
-
-  // useVisibleScrollEffect(
-  //   rootRef,
-  //   (offsetBoundingRect, _, y) =>
-  //     animationFrameEffect(() => {
-  //       console.log({ offsetBoundingRect, y })
-  //       setTransition(y)
-  //     }),
-  //   [current],
-  // )
-
   const toggleVisibility = function (visible: boolean) {
     if (visible) {
       sectionRef.current.style.transform = `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`

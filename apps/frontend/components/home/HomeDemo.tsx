@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { DemoSection } from 'lib/types'
 import { ReactElement, useRef } from 'react'
 
-export default function HomeDemo({ previews, headline }: DemoSection): ReactElement {
+export default function HomeDemo({ previews }: DemoSection): ReactElement {
   const previewRef = useRef<HTMLDivElement>(null)
   const stickySectionRef = useRef<HTMLDivElement>(null)
 
@@ -18,11 +18,9 @@ export default function HomeDemo({ previews, headline }: DemoSection): ReactElem
       ref={previewRef}
     >
       <div
-        className="container sticky top-[12%] bottom-[7%]  h-[91vh]  px-[40px] block flex-col justify-center items-center overflow-hidden"
+        className="container sticky top-[22%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden"
         ref={stickySectionRef}
       >
-        <div className="text-center text-head-1 pt-10">{headline}</div>
-
         <motion.div
           animate={{
             transition: { ease: 'easeInOut', duration: 0.05 },
