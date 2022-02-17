@@ -1,11 +1,8 @@
 import clsx from 'clsx'
-import Ellipse from 'components/Ellipse'
 import PurpleEllipse from 'components/PurpleEllipse'
 import { useCtx } from 'contexts/global'
-import { AnimateSharedLayout } from 'framer-motion'
-import { animationFrameEffect, useIntersection, useVisibleScrollEffect } from 'lib/hooks'
+import { useIntersection } from 'lib/hooks'
 import { useEffect, useRef } from 'react'
-import { useWindowSize } from 'react-use'
 
 interface SectionProps {
   setActive?: <K extends 'home'>(
