@@ -1,7 +1,6 @@
 import { ReactElement } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { Footer as FooterType, SocialType } from 'lib/types'
-import { useCtx } from 'contexts/global'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { imageUrlBuilder } from 'utils/sanity'
@@ -27,14 +26,13 @@ function socialIcon(type: SocialType) {
 }
 
 export default function Footer({ logo, footer }: FooterProps): ReactElement {
-  const { isWhite } = useCtx()
   const router = useRouter()
   console.log('FOOTER PROPS', { logo, footer })
   return (
     <div
       className={clsx(
         'container grid grid-cols-3 justify-between z-10 relative gap-x-10 py-10',
-        isWhite ? 'text-black' : 'text-white',
+        'text-white',
       )}
     >
       <div className="flex flex-col gap-y-9">
@@ -50,16 +48,28 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
           <SanityImg
             builder={imageUrlBuilder}
             image={logo}
-            height={120}
+            width={180}
             className={clsx('transition-all w-auto h-10')}
           />
         </a>
         <div className="flex gap-x-5">
           {footer.socialButtons?.map((item) => (
-            <a href={item.url} target="_blank" rel="noopener noreferrer" key={item.title}>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={item.title}
+              className="cursor-pointer"
+            >
               <div className="bifrost__gradient_green rounded-full p-[1px]">
-                <div className=" bg-white rounded-full">
-                  <img className="p-3 w-[44px] h-[44px]" src={socialIcon(item.type)} />
+                <div className="bg-black text-white rounded-full p-3">
+                  <object
+                    type="image/svg+xml"
+                    height="12"
+                    width="12"
+                    data={socialIcon(item.type)}
+                  />
+                  {/* <img className="p-3 w-[44px] h-[44px]" src={socialIcon(item.type)} /> */}
                 </div>
               </div>
             </a>
@@ -71,7 +81,9 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
         <div className="font-bold">Quick Links</div>
         <div className="grid grid-cols-2 gap-y-9">
           {footer.menu?.map((menu) => (
-            <div key={menu.title}>{menu.title}</div>
+            <div key={menu.title} className="cursor-pointer opacity-[0.7]">
+              {menu.title}
+            </div>
           ))}
         </div>
       </div>
