@@ -111,11 +111,17 @@ export default function HomeReview(data: ReviewSection): ReactElement {
           ))}
         </Swiper>
       </div>
-      <span ref={navigationPrevRef} className="cursor-pointer absolute left-[10%] top-[50%] z-30">
+      <span
+        ref={navigationPrevRef}
+        className="cursor-pointer absolute left-[10%] top-[50%] z-30 p-2"
+      >
         <BsArrowLeft color="#c9ff71" size="32" />
       </span>
 
-      <span ref={navigationNextRef} className="cursor-pointer absolute right-[10%] top-[50%] z-30">
+      <span
+        ref={navigationNextRef}
+        className="cursor-pointer absolute right-[10%] top-[50%] z-30 p-2"
+      >
         <BsArrowRight color="#c9ff71" size="32" />
       </span>
     </div>

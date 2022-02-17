@@ -1,7 +1,11 @@
 import clsx from 'clsx'
+import Ellipse from 'components/Ellipse'
+import PurpleEllipse from 'components/PurpleEllipse'
 import { useCtx } from 'contexts/global'
-import { useIntersection } from 'lib/hooks'
+import { AnimateSharedLayout } from 'framer-motion'
+import { animationFrameEffect, useIntersection, useVisibleScrollEffect } from 'lib/hooks'
 import { useEffect, useRef } from 'react'
+import { useWindowSize } from 'react-use'
 
 interface SectionProps {
   setActive?: <K extends 'home'>(
@@ -16,6 +20,7 @@ interface SectionProps {
   isWhite?: boolean
   transition?: boolean
   threshold?: number
+  hasEllipse?: boolean
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -26,12 +31,14 @@ export const Section: React.FC<SectionProps> = ({
   hidden,
   isWhite = true,
   threshold = 0.33,
+  hasEllipse = false,
 }) => {
   const ref = useRef(null)
   const intersection = useIntersection(ref, { threshold })
   const { setIsWhite } = useCtx()
 
   useEffect(() => {
+    console.log({ intersection })
     if (['hero', 'datasets', 'demo'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }
@@ -44,6 +51,7 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section className={rootClass} id={name}>
+      {hasEllipse && <PurpleEllipse rootRef={ref} />}
       <div ref={ref}>{children}</div>
     </section>
   )
