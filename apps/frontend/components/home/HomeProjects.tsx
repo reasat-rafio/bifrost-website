@@ -21,7 +21,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container grid grid-cols-10 items-center z-10 relative gap-x-5 h-[100vh]',
+        'container grid grid-cols-10 items-center z-10 relative gap-x-5',
         isWhite ? 'text-black' : 'text-white',
       )}
     >
