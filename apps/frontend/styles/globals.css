@@ -84,6 +84,11 @@ html {
   );
 }
 
+.dropdown:hover .menu-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 @keyframes grain {
   0%,
   100% {
