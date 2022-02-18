@@ -13,7 +13,7 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     width: 0,
     height: 0,
   }
-  const [ratio, setRatio] = useState(0.5)
+  const [ratio, setRatio] = useState(0.3)
   useVisibleScrollEffect(
     props.rootRef,
     (offsetBoundingRect, _, y) => () => {
@@ -24,7 +24,7 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
         y > offsetBoundingRect.bottom - windowHeight / 2 ||
         y < offsetBoundingRect.top - windowHeight / 3
       ) {
-        setRatio(0.5)
+        setRatio(0.3)
       } else {
         setRatio(1.3)
       }
@@ -35,12 +35,12 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     <div className="absolute top-0 h-[100%]">
       <div className="sticky top-0 w-[90vw] h-[100vh]">
         <motion.div
-          className="z-0 absolute rounded-full top-[30vh] left-[5vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(88px)', width: windowWidth / 4, height: windowWidth / 4 }}
+          className="z-0 absolute rounded-full md:w-[20vw] md:h-[20vw] w-[40vw] h-[40vw] top-[30vh] left-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
+            filter: 'blur(98px)',
             scale: ratio,
-            translateX: ((ratio - 0.3) * windowWidth) / 5 - 200,
-            translateY: (ratio - 0.3) * 150 - 150,
+            translateX: (windowWidth / 10) * (ratio - 0.3),
+            translateY: (windowHeight / 10) * (ratio - 0.3),
             transition: {
               ease: 'easeInOut',
               delay: 0.5,
@@ -49,12 +49,12 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
           }}
         />
         <motion.div
-          className="z-10 absolute top-[10vh] rounded-full right-[1vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(58px)', width: windowWidth / 6, height: windowWidth / 6 }}
+          className="z-10 absolute top-[10vh] rounded-full md:w-[16vw] md:h-[16vw] w-[30vw] h-[30vw] right-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
+            filter: 'blur(58px)',
             scale: ratio,
-            translateX: -ratio * 200 + 200 * 1.3,
-            translateY: ratio * 150 - 150 * 1.3,
+            translateX: -(windowWidth / 30) * (ratio - 0.3),
+            translateY: (windowHeight / 10) * (ratio - 0.3),
             transition: {
               ease: 'easeIn',
               delay: 0.5,
@@ -63,9 +63,9 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
           }}
         />
         <motion.div
-          className="z-10 absolute top-[80vh] rounded-full right-[5vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(58px)', width: windowWidth / 6, height: windowWidth / 6 }}
+          className="z-10 absolute top-[80vh]  rounded-full md:w-[16vw] md:h-[16vw] w-[30vw] h-[30vw] right-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
+            filter: 'blur(58px)',
             scale: ratio,
             translateX: -ratio * 100 + 100 * 1.3,
             translateY: ratio * 150 - 150 * 1.3,
