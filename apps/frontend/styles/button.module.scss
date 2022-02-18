@@ -11,3 +11,19 @@
   padding: 0.5px;
   background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
 }
+
+.primary {
+  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
+}
+
+.primary:hover {
+  @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-black;
+}
+
+.secondary {
+  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
+}
+
+.secondary:hover {
+  @apply bg-gradient-to-r from-[#63768B] to-[#1A2634];
+}

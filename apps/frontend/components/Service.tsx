@@ -114,16 +114,20 @@ export default function Service({
       />
       <div
         className={clsx(
-          'absolute space-y-10 p-10 w-[600px] bifrost__transparent_card rounded-lg',
-          item.cardPosition === 'bottom-right' && 'bottom-[-10rem] right-[5rem]',
-          item.cardPosition === 'left' && 'top-[15%] left-[5rem]',
-          item.cardPosition === 'right' && 'top-[15%] right-[5rem]',
-          item.cardPosition === 'bottom-left' && 'bottom-[-10rem] left-[5rem]',
+          'absolute space-y-10 md:p-10 p-4 bifrost__transparent_card rounded-lg',
+          item.cardPosition === 'bottom-right' &&
+            'xl:bottom-[-10vh] md:bottom-[-30vh] bottom-[-20vh] right-[5vw]',
+          item.cardPosition === 'left' && 'bottom-[-15vh] left-[5vw]',
+          item.cardPosition === 'right' && 'bottom-[-15vh] right-[5vw]',
+          item.cardPosition === 'bottom-left' &&
+            'xl:bottom-[-10vh] md:bottom-[-30vh] bottom-[-20vh] left-[5vw]',
         )}
       >
-        <div className="flex-col space-y-10">
-          <div className="text-[55px] leading-[55px] font-[275]">{item.headline}</div>
-          <div className="text-[18px] leading-[32px] font-[300]">
+        <div className="flex-col md:space-y-10 space-y-3">
+          <div className="md:text-head-4 text-[22px] leading-[22px] font-[275]">
+            {item.headline}
+          </div>
+          <div className="md:text-body-1 text-[14px] leading-[16px] font-[300]">
             <PortableText
               blocks={item.body}
               serializers={{
@@ -132,9 +136,11 @@ export default function Service({
               }}
             />
           </div>
-          <Button>
-            <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
-          </Button>
+          <div className="flex">
+            <Button>
+              <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
+            </Button>
+          </div>
         </div>
       </div>
     </motion.div>

@@ -76,7 +76,7 @@ export default function Landing(
               <div className="section">
                 <Section
                   name="hero"
-                  className="h-[100vh] snap-center section"
+                  className="h-[100vh] section"
                   setActive={setActive}
                   isWhite={false}
                 >
@@ -94,7 +94,7 @@ export default function Landing(
                 <Section
                   name="products"
                   setActive={setActive}
-                  className="h-[100vh] snap-start"
+                  className="h-[100vh]"
                   isWhite={false}
                 >
                   {renderObjectArray(sections, {
@@ -103,12 +103,7 @@ export default function Landing(
                 </Section>
               </div>
               <div className="section">
-                <Section
-                  name="tech"
-                  threshold={0.2}
-                  isWhite={true}
-                  className="h-[100vh] snap-start"
-                >
+                <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
                   {renderObjectArray(sections, {
                     demo: (data: DemoSection) => (
                       <div
@@ -126,7 +121,7 @@ export default function Landing(
                 </Section>
               </div>
               <div className="section">
-                <Section name="demo" setActive={setActive} threshold={0.2} className="snap-start">
+                <Section name="demo" setActive={setActive} threshold={0.2}>
                   {renderObjectArray(sections, {
                     demo: HomeActions,
                   })}

@@ -9,7 +9,7 @@ interface PurpleEllipseProps {
 }
 
 export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
-  const { height: windowHeight } = useWindowSize() ?? {
+  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
@@ -35,12 +35,12 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     <div className="absolute top-0 h-[100%]">
       <div className="sticky top-0 w-[90vw] h-[100vh]">
         <motion.div
-          className="z-0 absolute top-[30vh] left-[5vw] w-[475px] h-[435px] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(88px)' }}
+          className="z-0 absolute rounded-full top-[30vh] left-[5vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          style={{ filter: 'blur(88px)', width: windowWidth / 4, height: windowWidth / 4 }}
           animate={{
             scale: ratio,
-            translateX: ratio * 200 - 200 * 1.3,
-            translateY: ratio * 150 - 150 * 1.3,
+            translateX: ((ratio - 0.3) * windowWidth) / 5 - 200,
+            translateY: (ratio - 0.3) * 150 - 150,
             transition: {
               ease: 'easeInOut',
               delay: 0.5,
@@ -49,8 +49,8 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
           }}
         />
         <motion.div
-          className="z-10 absolute top-[10vh] right-[1vw] w-[250px] h-[250px] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(58px)' }}
+          className="z-10 absolute top-[10vh] rounded-full right-[1vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          style={{ filter: 'blur(58px)', width: windowWidth / 6, height: windowWidth / 6 }}
           animate={{
             scale: ratio,
             translateX: -ratio * 200 + 200 * 1.3,
@@ -63,8 +63,8 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
           }}
         />
         <motion.div
-          className="z-10 absolute top-[80vh] right-[5vw] w-[250px] h-[250px] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
-          style={{ filter: 'blur(58px)' }}
+          className="z-10 absolute top-[80vh] rounded-full right-[5vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          style={{ filter: 'blur(58px)', width: windowWidth / 6, height: windowWidth / 6 }}
           animate={{
             scale: ratio,
             translateX: -ratio * 100 + 100 * 1.3,

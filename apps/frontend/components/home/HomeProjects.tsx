@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useCtx } from 'contexts/global'
 import { motion } from 'framer-motion'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { ProjectSection } from 'lib/types'
@@ -14,7 +13,6 @@ import 'swiper/swiper.min.css'
 SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
-  const { isWhite } = useCtx()
   const navigationPrevRef = useRef<HTMLSpanElement>(null)
   const navigationNextRef = useRef<HTMLSpanElement>(null)
 
@@ -22,12 +20,12 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
     <div
       className={clsx(
         'container grid grid-cols-10 items-center z-10 relative gap-x-5',
-        isWhite ? 'text-black' : 'text-white',
+        'text-white',
       )}
     >
-      <div className="flex flex-col col-span-3  gap-y-4 z-10 justify-center">
-        <div className="text-[55px] leading-[55px] font-[275]">{data.headline}</div>
-        <div className="text-[18px] leading-[32px] font-[300]">
+      <div className="flex flex-col lg:col-span-3 col-span-10  gap-y-4 z-10 justify-center">
+        <div className="md:text-head-4 text-[28px] leading-[28px] font-[275]">{data.headline}</div>
+        <div className="md:text-body-1 text-[14px] leading-[21px] font-[300]">
           <PortableText
             blocks={data.body}
             serializers={{
@@ -45,7 +43,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           </span>
         </div>
       </div>
-      <div className="overflow-hidden border-[#1E2531] border-l-2 col-span-7">
+      <div className="overflow-hidden border-[#1E2531] border-l-2 lg:col-span-7 col-span-10">
         <Swiper
           breakpoints={{
             400: {

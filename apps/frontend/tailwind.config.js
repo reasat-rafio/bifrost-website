@@ -9,7 +9,14 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '7.5rem',
+      // margin: {
+
+      // },
+      padding: {
+        DEFAULT: '1rem',
+        md: '3rem',
+        lg: '7.5rem',
+      },
       screens: {
         xs: '320px',
         sm: '640px',
@@ -30,7 +37,6 @@ module.exports = {
         neonBlue: '#7187FF',
 
         warning: '#F3CD68',
-        warning: '#F3CD68',
         danger: '#E95432',
         danger2: '#F3E5E8',
         secondary: '#183B56',
@@ -39,15 +45,14 @@ module.exports = {
       },
       fontSize: {
         'head-1': ['92px', '92px'],
-        'head-2': ['52px', '62px'],
-        'head-3': ['32px', '40px'],
-        'head-4': ['24px', '32px'],
-        'head-5': ['20px', '24px'],
-        'head-6': ['16px', '20px'],
-        'body-1': ['14px', '24px'],
-        'body-2': ['16px', '26px'],
-        'body-3': ['18px', '28px'],
-        'body-4': ['24px', '36px'],
+        'head-2': ['80px', '96px'],
+        'head-3': ['62px', '90px'],
+        'head-4': ['55px', '55px'],
+        'head-5': ['26px', '39px'],
+        'head-6': ['18px', '20px'],
+        'body-1': ['18px', '32px'],
+        'body-2': ['22px', '32px'],
+        'body-3': ['16px', '24px'],
       },
       fontFamily: {
         titillium: 'Titillium Web, Helvetica, Arial, sans-serif',

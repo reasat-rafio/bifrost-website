@@ -38,11 +38,11 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
       }}
       className={clsx(
         'fixed w-full py-4 z-50 top-0 transition-all duration-300 ease-out',
-        navbarOpen || scroll ? 'shadow-md' : 'bg-transparent',
+        navbarOpen || scroll ? 'backdrop-blur-2xl' : 'bg-transparent',
       )}
     >
-      <nav className="container mx-auto flex flex-wrap justify-between items-center">
-        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <nav className="lg:container flex flex-wrap justify-between items-center">
+        <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
           <a
             href="/#hero"
             onClick={(ev) => {
@@ -52,27 +52,15 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
               }
             }}
           >
-            {/* {isWhite ? ( */}
-            {/*   <SanityImg */}
-            {/*     builder={imageUrlBuilder} */}
-            {/*     image={darkLogo} */}
-            {/*     height={120} */}
-            {/*     className={clsx('transition-all w-auto', scroll ? 'h-10' : 'h-16')} */}
-            {/*   /> */}
-            {/* ) : ( */}
             <SanityImg
               builder={imageUrlBuilder}
               image={logo}
               height={120}
               className={clsx('transition-all w-auto', scroll ? 'h-10' : 'h-16')}
             />
-            {/* )} */}
           </a>
-          <button
-            className="lg:hidden outline-none focus:outline-none"
-            onClick={() => setNavbarOpen(!navbarOpen)}
-          >
-            <img src="burger.svg" width={25} height={25} />
+          <button className="rounded-full p-3 lg:hidden" onClick={() => setNavbarOpen(!navbarOpen)}>
+            <object type="image/svg+xml" height="22" width="22" data="burger.svg" />
           </button>
         </div>
         <div

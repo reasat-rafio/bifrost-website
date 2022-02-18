@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { useCtx } from 'contexts/global'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 // import { showHero } from 'lib/showHero'
 import { ProductSection } from 'lib/types'
@@ -9,16 +8,14 @@ import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 
 export default function HomeProduct(data: ProductSection): ReactElement {
-  const { isWhite } = useCtx()
-
   return (
     <div
       className={clsx(
-        'container flex flex-col-reverse md:flex-row z-10 md:space-x-12 md:space-y-0 relative h-[100vh]',
-        isWhite ? 'text-black' : 'text-white',
+        'container grid grid-cols-12 z-10 space-y-5 lg:mt-0 mt-10 lg:space-x-12 lg:space-y-0 relative min-h-[100vh]',
+        'text-white',
       )}
     >
-      <div className="md:flex-1 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center grid grid-cols-2 gap-4">
+      <div className="lg:col-span-6 xl:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center grid grid-cols-2 gap-4">
         {data.images.map((image) => (
           <SanityImg
             key={image?.alt}
@@ -29,14 +26,14 @@ export default function HomeProduct(data: ProductSection): ReactElement {
           />
         ))}
       </div>
-      <div className="flex flex-col items-center md:items-start md:flex-1 space-y-8 self-center bifrost__transparent_card py-[5rem] px-[3.75rem]">
-        <div>
-          <h3 className="text-head-5 bifrost__gradient_green text-transparent bg-clip-text uppercase">
+      <div className="flex flex-col items-start lg:col-span-6 xl:col-span-6 col-span-12 space-y-8 self-center bifrost__transparent_card md:py-[5rem] md:px-[3.75rem] py-[3rem] px-[2rem]">
+        <div className="flex flex-col space-y-5">
+          <h3 className="xl:text-head-5 text-[18px] leading-[22.86px] font-[400] bifrost__gradient_green text-transparent bg-clip-text uppercase">
             {data.subHeadline}
           </h3>
-          <h1 className="text-head-2  font-[275]">{data.headline}</h1>
+          <h1 className="xl:text-head-2 text-[28px] leading-[28px] font-[275]">{data.headline}</h1>
         </div>
-        <div className="text-head-6 leading-[32px] opacity-[0.7]">
+        <div className="xl:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">
           <PortableText
             blocks={data.body}
             serializers={{
@@ -45,7 +42,7 @@ export default function HomeProduct(data: ProductSection): ReactElement {
             }}
           />
         </div>
-        <Button>
+        <Button color="secondary">
           <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
         </Button>
       </div>

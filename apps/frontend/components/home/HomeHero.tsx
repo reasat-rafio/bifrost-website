@@ -1,35 +1,69 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { useCtx } from 'contexts/global'
 import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { showHero } from 'lib/showHero'
 import { HeroData, HomeSection } from 'lib/types'
 import { ReactElement } from 'react'
 import { PortableText } from 'utils/sanity'
+import { motion } from 'framer-motion'
+import ThreeJSWaves from 'components/ThreeJSWaves'
 
 export default function HomeHero(data: HomeSection): ReactElement {
   const heroData: HeroData = { type: 'image', image: data.image }
 
-  const { isWhite } = useCtx()
-
   console.log({ heroData })
 
   return (
-    <div>
+    <div className="relative overflow-y-clip">
+      <div className="absolute z-0 left-0 bottom-0 w-full h-full flex items-end">
+        <div className="relative translate-y-[25vh]">
+          <ThreeJSWaves />
+        </div>
+      </div>
       <div
         className={clsx(
-          'container flex flex-col-reverse md:flex-row z-10 md:space-x-12 md:space-y-0 relative h-[100vh] w-[100vw]',
-          isWhite ? 'text-black' : 'text-white',
+          'container items-end lg:pt-16 pt-24 grid grid-cols-12 md:flex-row z-10 md:space-y-0 relative w-[100vw] min-h-[100vh] overflow-y-clip',
+          'text-white',
         )}
       >
-        <div className="flex flex-col items-center md:items-start md:flex-1 space-y-10 self-center">
+        <div className="lg:col-span-6 xl:col-span-6 col-span-12 flex flex-col items-start space-y-5 md:flex-1 lg:space-y-10 self-center">
           <div>
-            <h1 className="text-head-1">{data.headline}</h1>
-            <h2 className="text-head-1 text-transparent bg-clip-text bifrost__gradient_green">
+            <h1 className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">
+              {data.headline}
+            </h1>
+            <h2 className="lg:text-head-1 text-[82px] leading-[82px] text-transparent font-[275] bg-clip-text bifrost__gradient_green">
               {data.subHeadline}
             </h2>
           </div>
-          <div className="text-head-3">
+          <div
+            className={clsx(
+              'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
+            )}
+          >
+            <motion.div
+              className="absolute top-0 w-[9px] left-0 h-[1px] bg-white"
+              animate={{
+                x: [0, 300, 0],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 4,
+                velocity: 50,
+                ease: 'easeInOut',
+              }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 w-[9px] h-[1px] bg-white"
+              animate={{
+                x: [300, 0, 300],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 4,
+                velocity: 50,
+                ease: 'easeInOut',
+              }}
+            />
             <PortableText
               blocks={data.body}
               serializers={{
@@ -38,13 +72,11 @@ export default function HomeHero(data: HomeSection): ReactElement {
               }}
             />
           </div>
-          <Button>
+          <Button color="secondary">
             <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
           </Button>
         </div>
-        <div className="md:flex-1 lg:-mr-1/16 2xl:-mr-1/8 w-full self-end">
-          {showHero(heroData)}
-        </div>
+        <div className="lg:col-span-6 xl:col-span-6 col-span-12 z-10">{showHero(heroData)}</div>
       </div>
       <div
         className="z-10 absolute bottom-0 left-0 h-[30vh] w-full"

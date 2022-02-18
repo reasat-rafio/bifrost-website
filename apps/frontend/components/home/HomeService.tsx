@@ -45,14 +45,14 @@ export default function HomeService(data: ServiceSection): ReactElement {
         }}
         ref={serviceRef}
       >
-        <div className="sticky top-[12%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden">
+        <div className="sticky md:top-[12%] top-[20%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden">
           <div className="relative container w-full h-full">
             <div className="text-center text-[1px] leading-[1px] font-[275] opacity-0 w-[100vw] mt-[10vh]">
               {data.headline}
             </div>
 
-            <div className="absolute left-[2.5rem] top-[25%] z-50 h-full py-10">
-              <div className="flex-row space-y-2 relative z-60">
+            <div className="absolute md:left-[2.5rem] left-[0.5rem] md:top-[25%] top-[20%] z-50 h-full py-10">
+              <div className="md:flex-row flex-col space-y-2 relative z-60">
                 <motion.div
                   animate={{
                     translateY: `${current * 1 - 0.1}rem`,

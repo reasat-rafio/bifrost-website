@@ -11,7 +11,6 @@ import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
 import { DemoSection, LandingPage, ServiceSection, Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
-import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
@@ -63,60 +62,37 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     demo?: boolean
   }>({})
 
-  // useEffect(() => {
-  //   console.log({ activeSection })
-  //   if (activeSection.demo) {
-  //     mainRef.current.classList.remove('overflow-scroll')
-  //   }
-  //   // else {
-  //   //   if (!mainRef.current.classList.contains('overflow-scroll')) {
-  //   //     mainRef.current.classList.add('overflow-scroll')
-  //   //   }
-  //   // }
-  // }, [activeSection])
-
   return (
     <motion.div
       animate={{
-        // color: isWhite ? '#000' : '#fff',
-        // backgroundColor: isWhite ? '#fff' : '#000',
         backgroundColor: '#000',
         color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },
       }}
-      className="relative "
+      className="relative overflow-clip"
       ref={mainRef}
     >
-      <div className="bifrost__background_noise"></div>
+      <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
+        <div className="bifrost__background_noise"></div>
+      </div>
       <Navbar
         darkLogo={site.logos.darkLogo}
         logo={site.logos.logo}
         menu={site.nav.menu}
         activeSection={activeSection}
       />
-      <Section name="hero" className="h-[100vh] snap-center" setActive={setActive} isWhite={false}>
+      <Section name="hero" setActive={setActive} className="min-h-[100vh]" isWhite={false}>
         {renderObjectArray(sections, {
           home: HomeHero,
         })}
       </Section>
 
-      <div className="absolute left-0 top-0 w-full h-[100vh] overflow-clip">
-        <div className="relative translate-y-[15vh]">
-          <ThreeJSWaves />
-        </div>
-      </div>
-
-      <Section
-        name="products"
-        setActive={setActive}
-        className="h-[100vh] snap-start"
-        isWhite={false}
-      >
+      <Section name="products" setActive={setActive} className="min-h-[100vh]" isWhite={false}>
         {renderObjectArray(sections, {
           products: HomeProduct,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh] snap-start">
+      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
         {renderObjectArray(sections, {
           demo: (data: DemoSection) => (
             <div
@@ -125,25 +101,19 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
                 'text-white',
               )}
             >
-              <div className="text-center text-[80px] leading-[96px] font-[275]">
+              <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
                 {data.headline}
               </div>
             </div>
           ),
         })}
       </Section>
-      <Section
-        name="demo"
-        setActive={setActive}
-        threshold={0.2}
-        className="snap-start"
-        hasEllipse={true}
-      >
+      <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}>
         {renderObjectArray(sections, {
           demo: HomeDemo,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh] snap-start">
+      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
         {renderObjectArray(sections, {
           services: (data: ServiceSection) => (
             <div
@@ -152,7 +122,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
                 'text-white',
               )}
             >
-              <div className="text-center text-[80px] leading-[96px] font-[275]">
+              <div className="text-center md:text-head-1 text-[28px] leading-[28px]  font-[275]">
                 {data.headline}
               </div>
             </div>
@@ -173,7 +143,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </Section>
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
-      <Section name="data" setActive={setActive} isWhite={false} className="snap-start">
+      <Section name="data" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           data: HomeData,
         })}
@@ -184,13 +154,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </div>
       <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
-      <Section
-        name="reviews"
-        setActive={setActive}
-        isWhite={false}
-        className="snap-start"
-        threshold={0}
-      >
+      <Section name="reviews" setActive={setActive} isWhite={false} threshold={0}>
         {renderObjectArray(sections, {
           reviews: HomeReview,
         })}

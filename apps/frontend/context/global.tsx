@@ -1,19 +1,11 @@
-import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
 
-interface ContextProps {
-  isWhite: boolean
-  setIsWhite: Dispatch<SetStateAction<boolean>>
-}
+interface ContextProps {}
 
 const Store = createContext<ContextProps>({} as ContextProps)
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isWhite, setIsWhite] = useState(false)
-
-  const value = {
-    isWhite,
-    setIsWhite,
-  }
+  const value = {}
 
   return <Store.Provider value={value}>{children}</Store.Provider>
 }

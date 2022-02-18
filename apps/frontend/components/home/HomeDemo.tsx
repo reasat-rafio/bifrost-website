@@ -18,7 +18,7 @@ export default function HomeDemo({ previews }: DemoSection): ReactElement {
       ref={previewRef}
     >
       <div
-        className="container sticky top-[22%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden"
+        className="container md:px-[3rem] px-0 sticky top-[22%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden"
         ref={stickySectionRef}
       >
         <motion.div

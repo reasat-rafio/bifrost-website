@@ -8,10 +8,10 @@ export const showHero = (heroData: HeroData) => {
     case 'image':
       return (
         <SanityImg
-          className="w-full object-contain"
+          className="w-full h-full lg:object-cover object-contain"
           builder={imageUrlBuilder}
           image={heroData.image}
-          height={600}
+          height={500}
           alt={heroData.image?.alt}
         />
       )

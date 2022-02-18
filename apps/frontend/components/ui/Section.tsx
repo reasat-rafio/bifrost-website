@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import PurpleEllipse from 'components/PurpleEllipse'
-import { useCtx } from 'contexts/global'
 import { useIntersection } from 'lib/hooks'
 import { useEffect, useRef } from 'react'
 
@@ -26,21 +25,16 @@ export const Section: React.FC<SectionProps> = ({
   children,
   className,
   hidden,
-  isWhite = true,
   threshold = 0.33,
   hasEllipse = false,
 }) => {
   const ref = useRef(null)
   const intersection = useIntersection(ref, { threshold })
-  const { setIsWhite } = useCtx()
 
   useEffect(() => {
     console.log({ intersection })
     if (['hero', 'datasets', 'demo'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
-    }
-    if (intersection?.isIntersecting) {
-      setIsWhite(isWhite)
     }
   }, [intersection?.isIntersecting])
 
