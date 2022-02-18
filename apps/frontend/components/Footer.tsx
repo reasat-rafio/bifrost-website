@@ -106,7 +106,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
                 placeholder="Enter your Email Address"
               />
               <div className="xl:absolute lg:top-[15%] right-2">
-                <Button _outlined={true}>
+                <Button>
                   <a href="#send">Send</a>
                 </Button>
               </div>
