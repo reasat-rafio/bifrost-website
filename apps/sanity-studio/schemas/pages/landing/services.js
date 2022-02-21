@@ -1,6 +1,6 @@
 import editor from '../../editor'
 export default {
-  name: 'services',
+  name: 'landing.services',
   title: 'Services',
   type: 'object',
   fields: [

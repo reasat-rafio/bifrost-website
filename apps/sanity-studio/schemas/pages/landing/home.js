@@ -2,7 +2,7 @@ import { AiOutlineHome } from 'react-icons/ai'
 import editor from '../../editor'
 
 export default {
-  name: 'home',
+  name: 'landing.home',
   title: 'Home',
   type: 'object',
   icon: AiOutlineHome,

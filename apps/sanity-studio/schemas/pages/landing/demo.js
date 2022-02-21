@@ -1,5 +1,5 @@
 export default {
-  name: 'demo',
+  name: 'landing.demo',
   title: 'Demo',
   type: 'object',
   fields: [

@@ -1,16 +1,23 @@
+import { AiOutlineHome } from 'react-icons/ai'
 import editor from '../../editor'
 
 export default {
-  name: 'landing.reviews',
-  title: 'Reviews',
+  name: 'contact.home',
+  title: 'Home',
   type: 'object',
+  icon: AiOutlineHome,
   fields: [
+    {
+      name: 'headline',
+      title: 'Headline',
+      type: 'string',
+    },
     {
       name: 'items',
       type: 'array',
       of: [
         {
-          name: 'review',
+          name: 'contactItem',
           type: 'object',
           fields: [
             {
@@ -24,23 +31,6 @@ export default {
               title: 'Name',
               type: 'string',
             },
-            {
-              name: 'description',
-              type: 'string',
-            },
-            {
-              name: 'image',
-              type: 'image',
-              title: 'Product Image',
-              fields: [
-                {
-                  name: 'alt',
-                  title: 'Alternative Text',
-                  description: 'Important for SEO and accessibility',
-                  type: 'string',
-                },
-              ],
-            },
           ],
         },
       ],
@@ -49,6 +39,7 @@ export default {
   preview: {
     select: {
       title: 'headline',
+      subtitle: 'body',
     },
   },
 }

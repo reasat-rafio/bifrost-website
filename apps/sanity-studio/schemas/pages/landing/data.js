@@ -1,7 +1,7 @@
 import editor from '../../editor'
 
 export default {
-  name: 'data',
+  name: 'landing.data',
   title: 'Data',
   type: 'object',
   fields: [
