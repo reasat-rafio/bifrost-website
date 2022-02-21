@@ -245,7 +245,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
         {/*       ))} */}
         {/*   </ul> */}
         {/* </div> */}
-        <div className={clsx('lg:flex justify-center', !navVisible ? 'flex' : 'hidden')}>
+        <div className={clsx('lg:flex justify-center', !smallNav ? 'flex' : 'hidden')}>
           <Button>
             <Link href={ctaButton.href}>
               <a>{ctaButton.title}</a>
