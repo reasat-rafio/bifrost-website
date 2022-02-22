@@ -1,9 +1,6 @@
-import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'lib/hooks'
 import React, { RefObject, useRef } from 'react'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'utils/sanity'
 
 interface PreviewProps {
   item: any
@@ -57,17 +54,12 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
         transition: { ease: 'easeInOut', duration: 0.1 },
       }}
       ref={sectionRef}
-      className="absolute top-[-10%] w-full h-[95%] flex justify-center"
+      className="absolute bg-no-repeat bg-clip-padding md:bg-cover bg-contain md:container w-full lg:h-[70vh] h-[50vh]"
       style={{
         zIndex: 10 - index,
+        backgroundImage: `url(${item.url})`,
+        backgroundPosition: '50%, 50%',
       }}
-    >
-      <SanityImg
-        className={clsx('rounded-lg object-contain')}
-        builder={imageUrlBuilder}
-        image={item}
-        height={550}
-      />
-    </motion.div>
+    ></motion.div>
   )
 }

@@ -94,7 +94,7 @@ export default function Service({
   return (
     <motion.div
       className={clsx(
-        'w-full h-full relative flex transition-all duration-500 opacity-0',
+        'w-full h-full relative flex items-center transition-all duration-500 opacity-0',
         item.imagePosition === 'center' && 'justify-center',
         item.imagePosition === 'right' && 'justify-end',
         item.imagePosition === 'left' && 'justify-start',
@@ -105,41 +105,46 @@ export default function Service({
         opacity: 1,
       }}
     >
-      <SanityImg
-        className={clsx('rounded-lg object-contain')}
-        builder={imageUrlBuilder}
-        image={item.image}
-        height={550}
-        alt={item.image?.alt}
-      />
       <div
         className={clsx(
-          'absolute space-y-10 md:p-10 p-4 bifrost__transparent_card rounded-lg',
-          item.cardPosition === 'bottom-right' &&
-            'xl:bottom-[-10vh] md:bottom-[-30vh] bottom-[-20vh] right-[5vw]',
-          item.cardPosition === 'left' && 'bottom-[-15vh] left-[5vw]',
-          item.cardPosition === 'right' && 'bottom-[-15vh] right-[5vw]',
-          item.cardPosition === 'bottom-left' &&
-            'xl:bottom-[-10vh] md:bottom-[-30vh] bottom-[-20vh] left-[5vw]',
+          'rounded-lg object-contain',
+          item.imagePosition !== 'center' && 'w-[60%] lg:h-[70%] h-[50%]',
+          item.imagePosition === 'center' && 'w-full',
         )}
       >
-        <div className="flex-col md:space-y-10 space-y-3">
-          <div className="md:text-head-4 text-[22px] leading-[22px] font-[275]">
-            {item.headline}
-          </div>
-          <div className="md:text-body-1 text-[14px] leading-[16px] font-[300]">
-            <PortableText
-              blocks={item.body}
-              serializers={{
-                types: typesSerializer,
-                marks: marksSerializer,
-              }}
-            />
-          </div>
-          <div className="flex">
-            <Button>
-              <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
-            </Button>
+        <SanityImg
+          className="w-full h-full rounded-lg md:object-contain object-cover"
+          builder={imageUrlBuilder}
+          image={item.image}
+          alt={item.image?.alt}
+        />
+      </div>
+      <div
+        className={clsx(
+          'absolute flex w-full h-full',
+          item.cardPosition === 'bottom-right' &&
+            'justify-end items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-30%] xl:translate-x-[-10%] translate-x-[-5%]',
+          item.cardPosition === 'bottom-left' &&
+            'justify-start items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-30%] xl:translate-x-[10%] translate-x-[5%]',
+          item.cardPosition === 'left' && 'justify-start items-center',
+          item.cardPosition === 'right' && 'justify-end items-center',
+        )}
+      >
+        <div
+          className={clsx(
+            'xl:space-y-10 lg:p-10 p-4 bifrost__transparent_card rounded-lg w-[70vw] md:max-w-md lg:max-w-xl xl:max-w-2xl',
+          )}
+        >
+          <div className="flex-col md:space-y-10 space-y-3">
+            <div className="xl:text-head-4 text-[22px] leading-[22px] font-[275]">
+              {item.headline}
+            </div>
+            <div className="xl:text-body-1 text-[14px] leading-[16px] font-[300]">{item.body}</div>
+            <div className="flex">
+              <Button>
+                <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

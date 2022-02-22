@@ -45,56 +45,63 @@ export default function HomeService(data: ServiceSection): ReactElement {
         }}
         ref={serviceRef}
       >
-        <div className="sticky md:top-[12%] top-[20%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden">
-          <div className="relative container w-full h-full">
-            <div className="text-center text-[1px] leading-[1px] font-[275] opacity-0 w-[100vw] mt-[10vh]">
-              {data.headline}
-            </div>
-
-            <div className="absolute md:left-[2.5rem] left-[0.5rem] md:top-[25%] top-[20%] z-50 h-full py-10">
-              <div className="md:flex-row flex-col space-y-2 relative z-60">
-                <motion.div
-                  animate={{
-                    translateY: `${current * 1 - 0.1}rem`,
-                    translateX: '-0.1rem',
-                  }}
-                  whileHover={{
-                    scale: 1.25,
-                    transition: { ease: 'easeInOut', duration: 0.05 },
-                  }}
-                  style={{
-                    background:
-                      'linear-gradient(90deg, #F8E9FF 0%, #E4ACFF 35.3%, #7187FF 102.69%)',
-                    padding: '2px',
-                  }}
-                  className="absolute rounded-full z-0"
-                >
-                  <motion.div
-                    className="p-1 rounded-full"
-                    style={{
-                      backgroundColor: '#FFF',
-                      border:
-                        '2px solid linear-gradient(90deg, #F8E9FF 0%, #E4ACFF 35.3%, #7187FF 102.69%)',
-                    }}
-                  ></motion.div>
-                </motion.div>
-                {data.items.map((item, index) => (
-                  <motion.div
-                    whileHover={{
-                      scale: 1.25,
-                      transition: { ease: 'easeInOut', duration: 0.05 },
-                    }}
-                    className={clsx(
-                      current === index && 'opacity-0',
-                      'p-1 rounded-full cursor-pointer',
-                    )}
-                    style={{ backgroundColor: '#757AAC' }}
-                    key={item.headline}
-                    onClick={() => {
-                      if (!isScroll) setItem(index)
-                    }}
-                  ></motion.div>
-                ))}
+        <div className="sticky md:container w-full md:m-[1rem] m-[0.50rem] top-0 h-[100vh] block flex-col justify-center items-center overflow-hidden">
+          <div className="relative w-full h-full">
+            <div className="absolute w-full z-0 h-full flex items-center justify-start">
+              <div className="flex-row space-y-2 relative translate-x-[-5vw] z-60">
+                {data.items.map((item, index) => {
+                  return index === current ? (
+                    <motion.div
+                      whileHover={{
+                        scale: 1.25,
+                        transition: { ease: 'easeInOut', duration: 0.05 },
+                      }}
+                      style={{
+                        background:
+                          'linear-gradient(90deg, #F8E9FF 0%, #E4ACFF 35.3%, #7187FF 102.69%)',
+                        padding: '2px',
+                      }}
+                      className="rounded-full z-0"
+                    >
+                      <motion.div
+                        className="p-1 rounded-full"
+                        style={{
+                          backgroundColor: '#FFF',
+                          border:
+                            '1px solid linear-gradient(90deg, #F8E9FF 0%, #E4ACFF 35.3%, #7187FF 102.69%)',
+                        }}
+                      ></motion.div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      whileHover={{
+                        scale: 1.25,
+                        transition: { ease: 'easeInOut', duration: 0.05 },
+                      }}
+                      style={{
+                        background: 'transparent',
+                        padding: '2px',
+                      }}
+                      className="rounded-full z-0"
+                    >
+                      <motion.div
+                        whileHover={{
+                          scale: 1.25,
+                          transition: { ease: 'easeInOut', duration: 0.05 },
+                        }}
+                        className={clsx(
+                          current === index && 'opacity-0',
+                          'p-1 rounded-full cursor-pointer',
+                        )}
+                        style={{ backgroundColor: '#757AAC' }}
+                        key={item.headline}
+                        onClick={() => {
+                          if (!isScroll) setItem(index)
+                        }}
+                      ></motion.div>
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
             <div
@@ -102,16 +109,16 @@ export default function HomeService(data: ServiceSection): ReactElement {
               style={{ willChange: `transform, opacity`, transformStyle: `preserve-3d` }}
             >
               <div
-                className="h-[80%] justify-center items-center"
+                className="h-full flex justify-center items-center"
                 style={{
                   willChange: `transform`,
                   transformStyle: `preserve-3d`,
                 }}
               >
-                <div className="z-0 overflow-hidden h-full w-full">
+                <div className="z-0 overflow-hidden h-full w-full flex justify-center items-center">
                   {data.items.map((item, index) => (
                     <div
-                      className="absolute justify-center items-center w-full"
+                      className="absolute justify-center items-center w-full h-full"
                       key={item.headline}
                     >
                       <Service

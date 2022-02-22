@@ -1,11 +1,9 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
-// import { showHero } from 'lib/showHero'
 import { ProductSection } from 'lib/types'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
 export default function HomeProduct(data: ProductSection): ReactElement {
   return (
@@ -33,15 +31,7 @@ export default function HomeProduct(data: ProductSection): ReactElement {
           </h3>
           <h1 className="xl:text-head-2 text-[28px] leading-[28px] font-[275]">{data.headline}</h1>
         </div>
-        <div className="xl:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">
-          <PortableText
-            blocks={data.body}
-            serializers={{
-              types: typesSerializer,
-              marks: marksSerializer,
-            }}
-          />
-        </div>
+        <div className="xl:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">{data.body}</div>
         <Button color="secondary">
           <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
         </Button>

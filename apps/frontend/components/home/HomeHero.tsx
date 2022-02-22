@@ -1,10 +1,8 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { showHero } from 'lib/showHero'
 import { HeroData, HomeSection } from 'lib/types'
 import { ReactElement } from 'react'
-import { PortableText } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 
@@ -64,13 +62,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
                 ease: 'easeInOut',
               }}
             />
-            <PortableText
-              blocks={data.body}
-              serializers={{
-                types: typesSerializer,
-                marks: marksSerializer,
-              }}
-            />
+            {data.body}
           </div>
           <Button color="secondary">
             <a href={data.ctaButton.href}>{data.ctaButton.title}</a>

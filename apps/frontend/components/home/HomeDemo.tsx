@@ -18,17 +18,17 @@ export default function HomeDemo({ previews }: DemoSection): ReactElement {
       ref={previewRef}
     >
       <div
-        className="container md:px-[3rem] px-0 sticky top-[22%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden"
+        className="md:container w-full px-0 sticky top-[22%] bottom-[7%] h-[91vh] block flex-col justify-center items-center overflow-hidden"
         ref={stickySectionRef}
       >
         <motion.div
           animate={{
             transition: { ease: 'easeInOut', duration: 0.05 },
           }}
-          className="h-[80%] justify-around items-center"
+          className="h-[80%]"
         >
           <div
-            className="z-0 overflow-hidden h-full w-full mt-[2rem]"
+            className="z-0 overflow-hidden h-full w-full"
             style={{
               willChange: `transform`,
               transformStyle: `preserve-3d`,

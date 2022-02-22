@@ -1,9 +1,7 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { DataSection } from 'lib/types'
 import { ReactElement } from 'react'
-import { PortableText } from 'utils/sanity'
 
 export default function HomeData(data: DataSection): ReactElement {
   console.log({ data })
@@ -11,21 +9,13 @@ export default function HomeData(data: DataSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container flex justify-center items-center z-10 relative h-[100vh] text-center',
+        'md:container md:m-[1rem] m-[0.50rem] flex justify-center items-center z-10 relative h-[100vh] text-center',
         'text-white',
       )}
     >
       <div className="bifrost__transparent_card w-full md:py-20 py-10 px-5 flex flex-col gap-y-6">
         <div className="md:text-head-3 text-[22px] leading-[22px] font-[275]">{data.headline}</div>
-        <div className="md:text-body-2 text-[14px] leading-[16px] font-[300]">
-          <PortableText
-            blocks={data.body}
-            serializers={{
-              types: typesSerializer,
-              marks: marksSerializer,
-            }}
-          />
-        </div>
+        <div className="md:text-body-2 text-[14px] leading-[16px] font-[300]">{data.body}</div>
         <div className="flex items-center justify-center">
           <div className="relative md:w-2/5 w-full md:space-y-0 space-y-5">
             <input

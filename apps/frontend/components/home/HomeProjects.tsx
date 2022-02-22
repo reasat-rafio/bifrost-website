@@ -1,11 +1,10 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { ProjectSection } from 'lib/types'
 import { ReactElement, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import SwiperCore, { Autoplay, Navigation, Mousewheel } from 'swiper'
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import 'swiper/swiper.min.css'
@@ -19,21 +18,13 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container grid grid-cols-10 items-center z-10 relative gap-x-5',
+        'md:container md:m-[1rem] m-[0.50rem] grid grid-cols-10 items-center z-10 relative gap-x-5',
         'text-white',
       )}
     >
       <div className="flex flex-col lg:col-span-3 col-span-10  gap-y-4 z-10 justify-center">
         <div className="md:text-head-4 text-[28px] leading-[28px] font-[275]">{data.headline}</div>
-        <div className="md:text-body-1 text-[14px] leading-[21px] font-[300]">
-          <PortableText
-            blocks={data.body}
-            serializers={{
-              types: typesSerializer,
-              marks: marksSerializer,
-            }}
-          />
-        </div>
+        <div className="md:text-body-1 text-[14px] leading-[21px] font-[300]">{data.body}</div>
         <div className="flex gap-x-4">
           <span ref={navigationPrevRef} className="cursor-pointer">
             <BsArrowLeft color="#c9ff71" size="32" />

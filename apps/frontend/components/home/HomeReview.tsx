@@ -7,8 +7,7 @@ import SwiperCore, { Autoplay, Navigation, Mousewheel } from 'swiper'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 import 'swiper/swiper.min.css'
 import { motion } from 'framer-motion'
-import { imageUrlBuilder, PortableText } from 'utils/sanity'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
+import { imageUrlBuilder } from 'utils/sanity'
 
 SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
@@ -18,11 +17,11 @@ export default function HomeReview(data: ReviewSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container flex items-center z-10 relative w-full overflow-hidden gap-x-5 min-h-[100vh]',
+        'md:container md:m-[1rem] m-[0.50rem] flex items-center z-10 relative w-full overflow-hidden gap-x-5 min-h-[100vh]',
         'text-white',
       )}
     >
-      <div className="w-full">
+      <div className="w-full md:p-0 px-[1rem]">
         <div className="relative">
           <Swiper
             slidesPerView={1}
@@ -65,13 +64,7 @@ export default function HomeReview(data: ReviewSection): ReactElement {
                       }}
                     >
                       <div className="md:text-head-5 text-[22px] leading-[33px] font-[300]">
-                        <PortableText
-                          blocks={item.body}
-                          serializers={{
-                            types: typesSerializer,
-                            marks: marksSerializer,
-                          }}
-                        />
+                        {item.body}
                       </div>
                       <div className="grid-cols-2">
                         <div className="col-span-1 space-y-2">
@@ -97,10 +90,10 @@ export default function HomeReview(data: ReviewSection): ReactElement {
                           </div>
                         </div>
                       </div>
-                      <div className="absolute bottom-[-20%] md:left-[-5%] left-[-1%] bifrost__gradient_green p-[4px] rounded-full">
+                      <div className="absolute md:bottom-[-20%] bottom-[-15%] md:left-[-5%] left-[-1%] bifrost__gradient_green p-[4px] rounded-full">
                         <div>
                           <SanityImg
-                            className="z-10 md:w-[15vw] w-[25vw] rounded-full object-contain"
+                            className="z-10 lg:w-[10vw] md:w-[15vw] w-[25vw] rounded-full object-contain"
                             builder={imageUrlBuilder}
                             image={item.image}
                             alt={item.name}
@@ -118,14 +111,14 @@ export default function HomeReview(data: ReviewSection): ReactElement {
         </div>
         <span
           ref={navigationPrevRef}
-          className="cursor-pointer absolute md:left-[5%] md:right-0 right-[15%] md:bottom-[45%] bottom-[20%] z-30 p-2"
+          className="cursor-pointer absolute md:left-[5%] md:right-0 right-[15%] md:bottom-[45%] bottom-[25%] z-30 p-2"
         >
           <BsArrowLeft color="#c9ff71" size="32" />
         </span>
 
         <span
           ref={navigationNextRef}
-          className="cursor-pointer absolute md:right-[5%] right-0 md:bottom-[45%] bottom-[20%] z-30 p-2"
+          className="cursor-pointer absolute md:right-[5%] right-0 md:bottom-[45%] bottom-[25%] z-30 p-2"
         >
           <BsArrowRight color="#c9ff71" size="32" />
         </span>
