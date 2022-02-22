@@ -1,5 +1,3 @@
-import editor from '../../editor'
-
 export default {
   name: 'landing.data',
   title: 'Data',
@@ -13,8 +11,7 @@ export default {
     {
       name: 'body',
       title: 'body',
-      type: 'array',
-      of: [editor],
+      type: 'string',
     },
     {
       name: 'ctaButton',

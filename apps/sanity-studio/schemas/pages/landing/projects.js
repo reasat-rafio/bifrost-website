@@ -1,5 +1,3 @@
-import editor from '../../editor'
-
 export default {
   name: 'landing.projects',
   title: 'Projects',
@@ -13,8 +11,7 @@ export default {
     {
       name: 'body',
       title: 'body',
-      type: 'array',
-      of: [editor],
+      type: 'string',
     },
     {
       name: 'items',
@@ -22,9 +19,9 @@ export default {
       type: 'array',
       of: [
         {
-          name: 'service',
+          name: 'project',
           type: 'object',
-          title: 'Service',
+          title: 'Project',
           fields: [
             {
               name: 'name',

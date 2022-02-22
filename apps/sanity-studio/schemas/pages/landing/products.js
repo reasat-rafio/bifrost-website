@@ -1,5 +1,3 @@
-import editor from '../../editor'
-
 export default {
   name: 'landing.products',
   title: 'Products',
@@ -18,8 +16,7 @@ export default {
     {
       name: 'body',
       title: 'body',
-      type: 'array',
-      of: [editor],
+      type: 'string',
     },
     {
       name: 'ctaButton',

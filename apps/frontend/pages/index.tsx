@@ -83,18 +83,18 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       />
       <Section name="hero" setActive={setActive} className="min-h-[100vh]" isWhite={false}>
         {renderObjectArray(sections, {
-          home: HomeHero,
+          'landing.home': HomeHero,
         })}
       </Section>
 
       <Section name="products" setActive={setActive} className="min-h-[100vh]" isWhite={false}>
         {renderObjectArray(sections, {
-          products: HomeProduct,
+          'landing.products': HomeProduct,
         })}
       </Section>
       <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
         {renderObjectArray(sections, {
-          demo: (data: DemoSection) => (
+          'landing.demo': (data: DemoSection) => (
             <div
               className={clsx(
                 'container flex justify-center items-center z-10 relative h-[100vh]',
@@ -110,12 +110,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       </Section>
       <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}>
         {renderObjectArray(sections, {
-          demo: HomeDemo,
+          'landing.demo': HomeDemo,
         })}
       </Section>
       <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
         {renderObjectArray(sections, {
-          services: (data: ServiceSection) => (
+          'landing.services': (data: ServiceSection) => (
             <div
               className={clsx(
                 'container flex justify-center items-center z-10 relative h-[100vh]',
@@ -139,24 +139,24 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         className="relative"
       >
         {renderObjectArray(sections, {
-          services: HomeService,
+          'landing.services': HomeService,
         })}
       </Section>
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
       <Section name="data" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
-          data: HomeData,
+          'landing.data': HomeData,
         })}
       </Section>
       <div>
         {renderObjectArray(sections, {
-          projects: HomeProjects,
+          'landing.projects': HomeProjects,
         })}
       </div>
       <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
       <Section name="reviews" setActive={setActive} isWhite={false} threshold={0}>
         {renderObjectArray(sections, {
-          reviews: HomeReview,
+          'landing.reviews': HomeReview,
         })}
       </Section>
       <Section

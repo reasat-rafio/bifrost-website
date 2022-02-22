@@ -1,5 +1,3 @@
-import editor from '../../editor'
-
 export default {
   name: 'landing.reviews',
   title: 'Reviews',
@@ -16,8 +14,7 @@ export default {
             {
               name: 'body',
               title: 'body',
-              type: 'array',
-              of: [editor],
+              type: 'string',
             },
             {
               name: 'name',
