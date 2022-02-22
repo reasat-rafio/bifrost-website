@@ -1,12 +1,11 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { marksSerializer, typesSerializer } from 'lib/blockContent'
 import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
 import { Service as ServiceInterface } from 'lib/types'
 import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/Button'
 
 interface ServiceProps {
