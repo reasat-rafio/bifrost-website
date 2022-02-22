@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'lib/hooks'
 import React, { RefObject, useRef } from 'react'
+import { SanityImg } from 'sanity-react-extra'
+import { imageUrlBuilder } from 'utils/sanity'
 
 interface PreviewProps {
   item: any
@@ -46,20 +48,22 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
     [windowHeight],
   )
 
-  console.log({ item })
-
   return (
     <motion.div
       animate={{
         transition: { ease: 'easeInOut', duration: 0.1 },
       }}
       ref={sectionRef}
-      className="absolute bg-no-repeat bg-clip-padding md:bg-cover bg-contain md:container w-full lg:h-[70vh] h-[50vh]"
+      className="absolute w-full h-[75%]"
       style={{
         zIndex: 10 - index,
-        backgroundImage: `url(${item.url})`,
-        backgroundPosition: '50%, 50%',
       }}
-    ></motion.div>
+    >
+      <SanityImg
+        className="w-full h-full object-fill"
+        builder={imageUrlBuilder}
+        image={item}
+      />
+    </motion.div>
   )
 }
