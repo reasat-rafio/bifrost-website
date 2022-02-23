@@ -1,6 +1,6 @@
 import { Preview } from 'components/Preview'
 import { motion } from 'framer-motion'
-import { DemoSection } from 'lib/types'
+import { DemoSection } from 'lib/landingTypes'
 import { ReactElement, useRef } from 'react'
 
 export default function HomeDemo({ previews }: DemoSection): ReactElement {

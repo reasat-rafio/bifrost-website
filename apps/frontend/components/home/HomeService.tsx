@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Service from 'components/Service'
 import { motion } from 'framer-motion'
-import { ServiceSection } from 'lib/types'
+import { ServiceSection } from 'lib/landingTypes'
 import { ReactElement, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 

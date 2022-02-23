@@ -1,10 +1,11 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { showHero } from 'lib/showHero'
-import { HeroData, HomeSection } from 'lib/types'
+import { HeroData } from 'lib/types'
 import { ReactElement } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
+import { HomeSection } from 'lib/landingTypes'
 
 export default function HomeHero(data: HomeSection): ReactElement {
   const heroData: HeroData = { type: 'image', image: data.image }

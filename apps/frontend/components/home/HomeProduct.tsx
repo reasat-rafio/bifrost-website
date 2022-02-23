@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { ProductSection } from 'lib/types'
+import { ProductSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'

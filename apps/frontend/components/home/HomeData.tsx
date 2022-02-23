@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { DataSection } from 'lib/types'
+import { DataSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 
 export default function HomeData(data: DataSection): ReactElement {

@@ -9,7 +9,7 @@ import { Section } from 'components/ui/Section'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
-import { DemoSection, LandingPage, ServiceSection, Site } from 'lib/types'
+import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
@@ -19,9 +19,10 @@ import HomeData from 'components/home/HomeData'
 import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
-import HomeContact from 'components/home/HomeContact'
 import Footer from 'components/Footer'
 import SlideUp from 'components/SlideUpText'
+import Contact from 'components/Contact'
+import { DemoSection, LandingPage, ServiceSection } from 'lib/landingTypes'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -169,7 +170,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         enableTransition={false}
       >
         {renderObjectArray(sections, {
-          contact: HomeContact,
+          contact: Contact,
         })}
       </Section>
       <Footer logo={site.logos.logo} footer={site.nav.footer} />

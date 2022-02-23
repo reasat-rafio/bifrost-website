@@ -195,54 +195,6 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
             </motion.div>
           )}
         </AnimatePresence>
-        {/* <div */}
-        {/*   className={clsx('lg:flex  justify-center items-center', !navVisible ? 'flex' : 'hidden')} */}
-        {/* > */}
-        {/*   <ul className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0"> */}
-        {/*     {menu */}
-        {/*       .filter((men) => !men.isCTA) */}
-        {/*       .map((men) => ( */}
-        {/*         <li key={men.title} className="dropdown relative items-center mx-10 py-2 my-2 "> */}
-        {/*           <Link href={men.href}> */}
-        {/*             <a */}
-        {/*               onClick={(ev) => { */}
-        {/*                 if (men.submenu && men.submenu?.length > 0) { */}
-        {/*                   ev.preventDefault() */}
-        {/*                   setIsActive(!isActive) */}
-        {/*                 } */}
-        {/*               }} */}
-        {/*               className={clsx( */}
-        {/*                 'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 ', */}
-        {/*                 men.isCTA && 'cta-button font-bold', */}
-        {/*               )} */}
-        {/*             > */}
-        {/*               <span */}
-        {/*                 className={clsx( */}
-        {/*                   activeName === men.title.toLowerCase() && */}
-        {/*                     'text-transparent bg-clip-text ', */}
-        {/*                   activeName === men.title.toLowerCase() && 'bifrost__gradient_green', */}
-        {/*                 )} */}
-        {/*               > */}
-        {/*                 {men.title} */}
-        {/*               </span> */}
-        {/*             </a> */}
-        {/*           </Link> */}
-        {/*           {activeName === men?.title.toLowerCase() && ( */}
-        {/*             <motion.div */}
-        {/*               layout */}
-        {/*               className={clsx( */}
-        {/*                 'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px]', */}
-        {/*                 activeName === men.title.toLowerCase() && 'bifrost__gradient_green', */}
-        {/*               )} */}
-        {/*               layoutId="underline" */}
-        {/*               initial={false} */}
-        {/*               transition={{ duration: 0.2 }} */}
-        {/*             /> */}
-        {/*           )} */}
-        {/*         </li> */}
-        {/*       ))} */}
-        {/*   </ul> */}
-        {/* </div> */}
         <div className={clsx('lg:flex justify-center', !smallNav ? 'flex' : 'hidden')}>
           <Button>
             <Link href={ctaButton.href}>

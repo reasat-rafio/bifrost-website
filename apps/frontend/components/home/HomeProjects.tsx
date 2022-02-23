@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { ProjectSection } from 'lib/types'
 import { ReactElement, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -8,6 +7,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 import SwiperCore, { Autoplay, Navigation, Mousewheel } from 'swiper'
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import 'swiper/swiper.min.css'
+import { ProjectSection } from 'lib/landingTypes'
 
 SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
