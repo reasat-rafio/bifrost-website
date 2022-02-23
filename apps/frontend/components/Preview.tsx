@@ -13,7 +13,7 @@ interface PreviewProps {
 
 export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { height: windowHeight } = useWindowSize() ?? {
+  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
@@ -54,15 +54,17 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
         transition: { ease: 'easeInOut', duration: 0.1 },
       }}
       ref={sectionRef}
-      className="absolute w-full h-[75%]"
+      className="absolute w-full xl:h-[60%] lg:h-[50%] md:h-[40%] h-[30%]"
       style={{
         zIndex: 10 - index,
       }}
     >
       <SanityImg
-        className="w-full h-full object-fill"
+        className="w-full h-full rounded-lg object-fill"
         builder={imageUrlBuilder}
         image={item}
+        height={windowWidth >= 768 ? 1000 : 500}
+        alt={item.alt ?? 'image'}
       />
     </motion.div>
   )

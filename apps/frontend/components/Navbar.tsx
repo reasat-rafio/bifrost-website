@@ -50,8 +50,6 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
     [closeNav],
   )
 
-  console.log({ smallNavOpen, smallNav, navVisible })
-
   return (
     <motion.div
       animate={{

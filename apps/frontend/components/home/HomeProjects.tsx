@@ -18,7 +18,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
   return (
     <div
       className={clsx(
-        'md:container md:m-[1rem] m-[0.50rem] grid grid-cols-10 items-center z-10 relative gap-x-5',
+        'container grid grid-cols-10 items-center z-10 relative gap-x-5',
         'text-white',
       )}
     >
@@ -99,16 +99,6 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
                     height={220}
                   />
                 </div>
-                {/* <a className="h-full"> */}
-                {/*   <SanityImg */}
-                {/*     className="my-auto p-3 object-cover" */}
-                {/*     builder={imageUrlBuilder} */}
-                {/*     image={item.image} */}
-                {/*     alt={item.name} */}
-                {/*     title={item.name} */}
-                {/*     width={windowWidth < 960 ? 345 : 200} */}
-                {/*   /> */}
-                {/* </a> */}
                 <div className="text-center">{item.name}</div>
               </motion.div>
             </SwiperSlide>

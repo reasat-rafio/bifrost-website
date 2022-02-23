@@ -30,7 +30,7 @@ export default function Service({
   const sectionRef = useRef<HTMLDivElement>(null)
 
   // const [transition, setTransition] = useState(0)
-  const { height: windowHeight } = useWindowSize() ?? {
+  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
@@ -112,19 +112,20 @@ export default function Service({
         )}
       >
         <SanityImg
-          className="w-full h-full rounded-lg md:object-contain object-cover"
+          className="w-full h-full rounded-xl md:object-contain object-cover"
           builder={imageUrlBuilder}
           image={item.image}
-          alt={item.image?.alt}
+          alt={item.image?.alt || 'image'}
+          height={windowWidth >= 768 ? 1000 : 500}
         />
       </div>
       <div
         className={clsx(
           'absolute flex w-full h-full',
           item.cardPosition === 'bottom-right' &&
-            'justify-end items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-30%] xl:translate-x-[-10%] translate-x-[-5%]',
+            'justify-end items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[-10%] translate-x-[-5%]',
           item.cardPosition === 'bottom-left' &&
-            'justify-start items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-30%] xl:translate-x-[10%] translate-x-[5%]',
+            'justify-start items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[10%] translate-x-[5%]',
           item.cardPosition === 'left' && 'justify-start items-center',
           item.cardPosition === 'right' && 'justify-end items-center',
         )}

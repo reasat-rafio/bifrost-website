@@ -6,6 +6,7 @@ import { useWindowSize } from 'react-use'
 interface PurpleEllipseProps {
   className?: string
   rootRef: RefObject<Element>
+  enableTransition?: boolean
 }
 
 export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
@@ -13,22 +14,22 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     width: 0,
     height: 0,
   }
-  const [ratio, setRatio] = useState(0.3)
+  const [ratio, setRatio] = useState(props.enableTransition ? 0.3 : 1)
 
   useVisibleScrollEffect(
     props.rootRef,
     (offsetBoundingRect, _, y) =>
       animationFrameEffect(() => {
-        const yDelta = y + windowHeight - offsetBoundingRect.top
-        console.log({ yDelta, windowHeight, offsetBoundingRect, y })
-        if (yDelta < windowHeight) {
-          setRatio(yDelta / windowHeight)
-        } else if (yDelta > offsetBoundingRect.height) {
-          setRatio(1 - (yDelta - offsetBoundingRect.height) / windowHeight)
-        } else {
-          setRatio(1)
+        if (props.enableTransition) {
+          const yDelta = y + windowHeight - offsetBoundingRect.top
+          if (yDelta < windowHeight) {
+            setRatio(yDelta / windowHeight)
+          } else if (yDelta > offsetBoundingRect.height) {
+            setRatio(1 - (yDelta - offsetBoundingRect.height) / windowHeight)
+          } else {
+            setRatio(1)
+          }
         }
-        console.log({ ratio })
       }),
     [ratio],
   )

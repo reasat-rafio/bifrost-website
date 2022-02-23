@@ -165,6 +165,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         isWhite={true}
         threshold={0.4}
         hasEllipse={true}
+        enableTransition={false}
       >
         {renderObjectArray(sections, {
           contact: HomeContact,

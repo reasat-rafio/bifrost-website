@@ -17,6 +17,7 @@ interface SectionProps {
   transition?: boolean
   threshold?: number
   hasEllipse?: boolean
+  enableTransition?: boolean
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -25,6 +26,7 @@ export const Section: React.FC<SectionProps> = ({
   children,
   className,
   hidden,
+  enableTransition = true,
   threshold = 0.33,
   hasEllipse = false,
 }) => {
@@ -42,7 +44,7 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section className={rootClass} id={name}>
-      {hasEllipse && <PurpleEllipse rootRef={ref} />}
+      {hasEllipse && <PurpleEllipse enableTransition={enableTransition} rootRef={ref} />}
       <div ref={ref}>{children}</div>
     </section>
   )

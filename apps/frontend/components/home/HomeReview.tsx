@@ -17,12 +17,12 @@ export default function HomeReview(data: ReviewSection): ReactElement {
   return (
     <div
       className={clsx(
-        'md:container md:m-[1rem] m-[0.50rem] flex items-center z-10 relative w-full overflow-hidden gap-x-5 min-h-[100vh]',
+        'container flex items-center z-10 relative w-full overflow-hidden gap-x-5 min-h-[100vh]',
         'text-white',
       )}
     >
-      <div className="w-full md:p-0 px-[1rem]">
-        <div className="relative">
+      <div className="w-full">
+        <div className="relative w-full">
           <Swiper
             slidesPerView={1}
             loopedSlides={data.items.length}
