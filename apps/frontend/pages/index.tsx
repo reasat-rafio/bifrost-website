@@ -21,6 +21,7 @@ import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
 import HomeContact from 'components/home/HomeContact'
 import Footer from 'components/Footer'
+import SlideUp from 'components/SlideUpText'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -102,7 +103,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
               )}
             >
               <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
-                {data.headline}
+                <SlideUp text={data.headline} />
               </div>
             </div>
           ),
@@ -123,7 +124,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
               )}
             >
               <div className="text-center md:text-head-1 text-[28px] leading-[28px]  font-[275]">
-                {data.headline}
+                <SlideUp text={data.headline} />
               </div>
             </div>
           ),

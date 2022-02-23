@@ -57,7 +57,7 @@ html {
 .bifrost__background_noise {
   background-image: url('../public/noise.png');
   transition: opacity 1s ease-in-out;
-  animation: grain 5s steps(1) infinite;
+  animation: grain 2s steps(1) infinite;
   content: '';
   height: 300%;
   left: -50%;
@@ -120,5 +120,31 @@ html {
   }
   90% {
     transform: translate(-10%, 10%);
+  }
+}
+
+[data-animate] > span {
+  display: block;
+  line-height: 1.2em;
+  overflow: hidden;
+}
+[data-animate] > span > span {
+  display: none;
+  animation: 4s cubic-bezier(0, 1.2, 0.1, 0.9);
+  animation-fill-mode: backwards;
+}
+[data-animate].show > span > span {
+  display: block;
+  animation-delay: 0.2s;
+}
+
+[data-animate='slideUp'] > span > span {
+  animation-name: slideUp;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(0, 100%);
   }
 }

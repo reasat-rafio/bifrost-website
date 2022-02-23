@@ -12,7 +12,7 @@ export const showHero = (heroData: HeroData) => {
           builder={imageUrlBuilder}
           image={heroData.image}
           height={500}
-          alt={heroData.image?.alt}
+          alt={heroData.image?.alt || 'image'}
         />
       )
 
