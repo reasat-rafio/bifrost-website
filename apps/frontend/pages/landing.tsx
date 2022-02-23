@@ -4,7 +4,7 @@ import { siteQuery } from 'lib/query'
 import { groq } from 'next-sanity'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { DemoSection, LandingPage, Site } from 'lib/types'
+import { Site } from 'lib/types'
 import { SanityProps } from 'next-sanity-extra'
 import { Section } from 'components/ui/Section'
 import { renderObjectArray } from 'sanity-react-extra'
@@ -14,6 +14,7 @@ import clsx from 'clsx'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeActions from 'components/home/HomeActions'
+import { DemoSection, LandingPage } from 'lib/landingTypes'
 
 const pluginWrapper = () => {
   require('lib/scrolloverflow.min.js')

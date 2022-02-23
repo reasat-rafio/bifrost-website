@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
-import { Service as ServiceInterface } from 'lib/types'
 import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
+import { Service as ServiceInterface } from 'lib/landingTypes'
 import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/Button'
 
