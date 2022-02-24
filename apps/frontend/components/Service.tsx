@@ -106,7 +106,7 @@ export default function Service({
     >
       <div
         className={clsx(
-          'rounded-lg object-contain',
+          'rounded-lg object-contain lg:translate-y-[5%] 2xl:translate-y-0',
           item.imagePosition !== 'center' && 'w-[60%] lg:h-[70%] h-[50%]',
           item.imagePosition === 'center' && 'w-full',
         )}
@@ -123,9 +123,9 @@ export default function Service({
         className={clsx(
           'absolute flex w-full h-full',
           item.cardPosition === 'bottom-right' &&
-            'justify-end items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[-10%] translate-x-[-5%]',
+            'justify-end items-end 2xl:translate-y-[-5%] xl:translate-y-[-1%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[-10%] translate-x-[-5%]',
           item.cardPosition === 'bottom-left' &&
-            'justify-start items-end xl:translate-y-[-5%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[10%] translate-x-[5%]',
+            'justify-start items-end 2xl:translate-y-[-5%] xl:translate-y-[-1%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[10%] translate-x-[5%]',
           item.cardPosition === 'left' && 'justify-start items-center',
           item.cardPosition === 'right' && 'justify-end items-center',
         )}
