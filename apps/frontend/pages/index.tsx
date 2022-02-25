@@ -15,7 +15,6 @@ import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/HomeDemo'
 import HomeService from 'components/home/HomeService'
 import { useRef } from 'react'
-import HomeData from 'components/home/HomeData'
 import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
@@ -23,6 +22,7 @@ import Footer from 'components/Footer'
 import SlideUp from 'components/SlideUpText'
 import Contact from 'components/Contact'
 import { DemoSection, LandingPage, ServiceSection } from 'lib/landingTypes'
+import Data from 'components/Data'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -147,7 +147,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
       <Section name="data" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
-          'landing.data': HomeData,
+          data: Data,
         })}
       </Section>
       <div>

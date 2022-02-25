@@ -3,7 +3,7 @@ import Button from 'components/ui/Button'
 import { DataSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 
-export default function HomeData(data: DataSection): ReactElement {
+export default function Data(data: DataSection): ReactElement {
   console.log({ data })
 
   return (
