@@ -1,11 +1,19 @@
+import { AiOutlineHome } from 'react-icons/ai'
+
 export default {
-  name: 'landing.data',
-  title: 'Data',
+  name: 'aboutUs.home',
+  title: 'Home',
   type: 'object',
+  icon: AiOutlineHome,
   fields: [
     {
       name: 'headline',
       title: 'Headline',
+      type: 'string',
+    },
+    {
+      name: 'subHeadline',
+      title: 'Sub-Headline',
       type: 'string',
     },
     {
@@ -22,6 +30,7 @@ export default {
   preview: {
     select: {
       title: 'headline',
+      subtitle: 'body',
     },
   },
 }

@@ -1,13 +1,19 @@
-import { FaBook } from 'react-icons/fa'
+import { FaDatabase } from 'react-icons/fa'
 
 export default {
-  name: 'contact',
+  name: 'data',
+  title: 'Data',
   type: 'object',
-  icon: FaBook,
+  icon: FaDatabase,
   fields: [
     {
       name: 'headline',
       title: 'Headline',
+      type: 'string',
+    },
+    {
+      name: 'body',
+      title: 'body',
       type: 'string',
     },
     {

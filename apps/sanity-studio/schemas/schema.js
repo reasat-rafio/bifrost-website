@@ -1,7 +1,8 @@
 import logos from './site/logos'
 import nav from './site/nav'
 import siteRedirects from './site/redirects'
-import contact from './site/contact'
+import contactSection from './site/contact'
+import dataSection from './site/data'
 
 import ctaButton from './ctaButton'
 import menuItem from './menuItem'
@@ -10,17 +11,23 @@ import social from './social'
 import seo from './seo'
 import hero from './hero'
 
-import contactUs from './pages/contact-us'
-import contactUsHomeSection from './pages/contact/home'
-
 import landing from './pages/landing'
 import landingHomeSection from './pages/landing/home'
 import landingProductsSection from './pages/landing/products'
 import landingDemoSection from './pages/landing/demo'
 import landingServicesSection from './pages/landing/services'
-import landingDataSection from './pages/landing/data'
 import landingProjectsSection from './pages/landing/projects'
 import landingReviewsSection from './pages/landing/reviews'
+
+import contactUs from './pages/contact-us'
+import contactUsHomeSection from './pages/contact/home'
+
+import aboutUs from './pages/about-us'
+import aboutUsHomeSection from './pages/about/home'
+import aboutUsclientsSection from './pages/about/clients'
+import aboutUsAboutSection from './pages/about/about'
+import aboutUsReasonSection from './pages/about/reason'
+import aboutUsTeamSection from './pages/about/team'
 
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
@@ -39,7 +46,8 @@ export default createSchema({
     logos,
     nav,
     siteRedirects,
-    contact,
+    contactSection,
+    dataSection,
 
     hero,
     seo,
@@ -56,8 +64,14 @@ export default createSchema({
     landingProductsSection,
     landingDemoSection,
     landingServicesSection,
-    landingDataSection,
     landingProjectsSection,
     landingReviewsSection,
+
+    aboutUs,
+    aboutUsHomeSection,
+    aboutUsclientsSection,
+    aboutUsAboutSection,
+    aboutUsReasonSection,
+    aboutUsTeamSection,
   ]),
 })

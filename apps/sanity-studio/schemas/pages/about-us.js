@@ -1,6 +1,6 @@
 export default {
-  name: 'landingPage',
-  title: 'Landing Page',
+  name: 'aboutUsPage',
+  title: 'About Us Page',
   type: 'document',
   fields: [
     {
@@ -13,13 +13,12 @@ export default {
       title: 'Sections',
       type: 'array',
       of: [
-        { type: 'landing.home' },
-        { type: 'landing.products' },
-        { type: 'landing.demo' },
-        { type: 'landing.services' },
+        { type: 'aboutUs.home' },
+        { type: 'aboutUs.about' },
+        { type: 'aboutUs.reason' },
+        { type: 'aboutUs.team' },
+        { type: 'aboutUs.clients' },
         { type: 'data' },
-        { type: 'landing.projects' },
-        { type: 'landing.reviews' },
         { type: 'contact' },
       ],
     },

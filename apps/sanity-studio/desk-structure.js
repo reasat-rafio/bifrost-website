@@ -11,7 +11,7 @@ import {
 // import { IoPeople } from "react-icons/io5";
 import { RiPagesLine } from 'react-icons/ri'
 // import * as React from "react";
-import { FaSitemap, FaHome } from 'react-icons/fa'
+import { FaSitemap, FaHome, FaInfoCircle, FaQuestionCircle } from 'react-icons/fa'
 
 function SitePreview({ document, options }) {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -106,51 +106,16 @@ export default () =>
                 schemaType: 'contactUsPage',
                 id: 'contactUsPage',
                 title: 'Contact Us',
-                icon: FaHome,
-                slug: '',
+                icon: FaInfoCircle,
+                slug: '/contact-us',
               }),
-              // pageItem({
-              //   schemaType: 'plusPage',
-              //   id: 'plusPage',
-              //   title: 'Plus',
-              //   icon: IoPeople,
-              //   slug: 'plus',
-              // }),
-              // pageItem({
-              //   schemaType: 'faqPage',
-              //   id: 'faqPage',
-              //   title: 'FAQ',
-              //   icon: GrCircleQuestion,
-              //   slug: 'faq',
-              // }),
-              // pageItem({
-              //   schemaType: 'careerPage',
-              //   id: 'careerPage',
-              //   title: 'Career',
-              //   icon: GrUserWorker,
-              //   slug: 'career',
-              // }),
-              // pageItem({
-              //   schemaType: 'contactPage',
-              //   id: 'contactPage',
-              //   title: 'Contact',
-              //   icon: GrContact,
-              //   slug: 'contact',
-              // }),
-              // pageItem({
-              //   schemaType: 'aboutPage',
-              //   id: 'aboutPage',
-              //   title: 'About',
-              //   icon: GrGroup,
-              //   slug: 'about',
-              // }),
-              // pageItem({
-              //   schemaType: 'cardPage',
-              //   id: 'cardPage',
-              //   title: 'Card',
-              //   icon: FaCcAmazonPay,
-              //   slug: 'card',
-              // }),
+              pageItem({
+                schemaType: 'aboutUsPage',
+                id: 'aboutUsPage',
+                title: 'About Us',
+                icon: FaQuestionCircle,
+                slug: '/about-us',
+              }),
             ]),
         ),
     ])
