@@ -34,7 +34,6 @@ export const Section: React.FC<SectionProps> = ({
   const intersection = useIntersection(ref, { threshold })
 
   useEffect(() => {
-    console.log({ intersection })
     if (['hero', 'datasets', 'demo'].includes(name)) {
       setActive(name, intersection?.isIntersecting)
     }

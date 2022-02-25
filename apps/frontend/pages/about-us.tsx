@@ -1,5 +1,6 @@
+import AboutHome from 'components/about/AboutHome'
 import Contact from 'components/Contact'
-import ContactHome from 'components/contact/ContactHome'
+import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
 import Footer from 'components/Footer'
 import Navbar from 'components/Navbar'
@@ -18,7 +19,7 @@ import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_id == "contactUsPage"][0] {
+  "page": *[_id == "aboutUsPage"][0] {
     ...,
     sections[] {
       ...,
@@ -75,12 +76,18 @@ export default function Home(props: SanityProps<{ site: Site; page: ContactUsPag
         menu={site.nav.menu}
         activeSection={activeSection}
       />
-      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       <Section name="home" setActive={setActive} isWhite={true} threshold={0.4}>
         {renderObjectArray(sections, {
-          'contact.home': ContactHome,
+          'aboutUs.home': AboutHome,
         })}
       </Section>
+      <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
+      <Section name="data" setActive={setActive} isWhite={false}>
+        {renderObjectArray(sections, {
+          data: Data,
+        })}
+      </Section>
+      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       <Section
         name="contact"
         setActive={setActive}
