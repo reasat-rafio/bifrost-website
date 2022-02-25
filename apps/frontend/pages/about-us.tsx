@@ -1,3 +1,4 @@
+import AboutAbout from 'components/about/AboutAbout'
 import AboutHome from 'components/about/AboutHome'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
@@ -79,6 +80,11 @@ export default function Home(props: SanityProps<{ site: Site; page: ContactUsPag
       <Section name="home" setActive={setActive} isWhite={true} threshold={0.4}>
         {renderObjectArray(sections, {
           'aboutUs.home': AboutHome,
+        })}
+      </Section>
+      <Section name="about" setActive={setActive} isWhite={true} threshold={0.4}>
+        {renderObjectArray(sections, {
+          'aboutUs.about': AboutAbout,
         })}
       </Section>
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />

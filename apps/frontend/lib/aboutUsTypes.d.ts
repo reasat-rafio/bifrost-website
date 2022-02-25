@@ -9,3 +9,11 @@ export interface HomeSection {
   body: string
   ctaButton: CTAButton
 }
+
+export interface AboutSection {
+  headline: string
+  subHeadline: string
+  body: string
+  ctaButton: CTAButton
+  image: SanityImage & ImageAlt
+}
