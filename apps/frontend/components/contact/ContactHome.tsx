@@ -28,11 +28,11 @@ export default function ContactHome(data: HomeSection): ReactElement {
           </div>
         </div>
         <div
-          className="col-span-12 grid lg:grid-cols-12 grid-cols-4 lg:gap-x-8 lg:h-[35%] w-full"
+          className="col-span-12 grid lg:grid-cols-12 grid-cols-4 lg:gap-x-8 lg:gap-y-0 gap-y-4 lg:h-[35%] w-full"
           style={{ gridAutoRows: '1fr' }}
         >
           {data.items.map((item) => (
-            <div className="col-span-4 flex flex-col space-y-4">
+            <div className="col-span-4 flex flex-col space-y-4" key={item.name}>
               <div className="text-head-5 font-[375]">{item.name}</div>
               <div className="h-full bifrost__transparent_card p-5 flex items-center backdrop-blur-3xl text-body-2">
                 <PortableText blocks={item.body} />
