@@ -77,12 +77,12 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
               </a>
             ))}
           </div>
-          <div>{footer.copyright}</div>
+          <div className="md:block hidden">{footer.copyright}</div>
         </div>
         <hr className="md:hidden w-full col-span-3" />
         <div className="md:col-span-1 col-span-3 flex flex-col md:gap-y-9 gap-y-3">
           <div className="font-bold">Quick Links</div>
-          <div className="grid grid-cols-2 gap-y-9">
+          <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-9 gap-y-5">
             {footer.menu?.map((menu) => (
               <div key={menu.title} className="cursor-pointer opacity-[0.7]">
                 {menu.title}
@@ -94,18 +94,18 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
         <div className="md:col-span-1 col-span-3 flex flex-col gap-y-9">
           <div className="font-bold">Sign up for API access</div>
 
-          <div>
+          <div className="opacity-70">
             Get in touch with us and learn how you can supercharge your AI development today!
           </div>
           <div className="flex items-center justify-self">
             <div className="relative w-full">
               <input
-                className="shadow w-full input__dark rounded-lg appearance-none py-6 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow md:text-base text-sm w-full input__dark rounded-lg appearance-none py-6 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 type="email"
                 placeholder="Enter your Email Address"
               />
-              <div className="xl:absolute lg:top-[15%] right-2">
+              <div className="absolute top-[15%] right-2">
                 <Button>
                   <a href="#send">Send</a>
                 </Button>
@@ -113,6 +113,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
             </div>
           </div>
         </div>
+        <div className="md:hidden col-span-3 w-full">{footer.copyright}</div>
       </div>
     </div>
   )
