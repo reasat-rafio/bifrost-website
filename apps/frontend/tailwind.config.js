@@ -8,25 +8,13 @@ module.exports = {
   ],
   theme: {
     container: {
-      center: true,
-      // margin: {
-
-      // },
-      padding: {
-        DEFAULT: '0.5rem',
-        sm: '0.5rem',
-        xs: '0.5rem',
-        md: '1rem',
-        lg: '7.5rem',
-      },
       screens: {
-        xs: '320px',
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1440px',
+        sm: '272px',
+        md: '720px',
+        lg: '954px',
+        xl: '1170px',
       },
+      center: true,
     },
     extend: {
       colors: {

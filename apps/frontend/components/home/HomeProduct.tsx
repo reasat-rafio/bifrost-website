@@ -13,7 +13,7 @@ export default function HomeProduct(data: ProductSection): ReactElement {
         'text-white',
       )}
     >
-      <div className="lg:col-span-6 xl:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center grid grid-cols-2 gap-4">
+      <div className="lg:col-span-6 xl:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center grid grid-cols-2 md:gap-4 gap-2">
         {data.images.map((image) => (
           <SanityImg
             key={image?.alt}

@@ -20,18 +20,6 @@ const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "contactUsPage"][0] {
     ...,
-    sections[] {
-      ...,
-      previews[] {
-        ...
-        asset->{
-          ...,
-          metadata {
-            dimensions
-          }
-        }
-      },
-    },
   },
 }`
 
@@ -40,7 +28,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Home(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
+export default function ContactUs(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
   const {
     data: {
       site,

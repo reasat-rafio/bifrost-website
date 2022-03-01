@@ -1,5 +1,8 @@
 import AboutAbout from 'components/about/AboutAbout'
+import AboutClients from 'components/about/AboutClients'
 import AboutHome from 'components/about/AboutHome'
+import AboutReason from 'components/about/AboutReason'
+import AboutTeam from 'components/about/AboutTeam'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
@@ -22,18 +25,6 @@ const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "aboutUsPage"][0] {
     ...,
-    sections[] {
-      ...,
-      previews[] {
-        ...
-        asset->{
-          ...,
-          metadata {
-            dimensions
-          }
-        }
-      },
-    },
   },
 }`
 
@@ -42,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Home(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
+export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
   const {
     data: {
       site,
@@ -85,6 +76,21 @@ export default function Home(props: SanityProps<{ site: Site; page: ContactUsPag
       <Section name="about" setActive={setActive} isWhite={true} threshold={0.4}>
         {renderObjectArray(sections, {
           'aboutUs.about': AboutAbout,
+        })}
+      </Section>
+      <Section name="reason" setActive={setActive} isWhite={true} threshold={0.4} hasEllipse={true}>
+        {renderObjectArray(sections, {
+          'aboutUs.reason': AboutReason,
+        })}
+      </Section>
+      <Section name="reason" setActive={setActive} isWhite={true} threshold={0.4}>
+        {renderObjectArray(sections, {
+          'aboutUs.team': AboutTeam,
+        })}
+      </Section>
+      <Section name="reason" setActive={setActive} isWhite={true} threshold={0.4}>
+        {renderObjectArray(sections, {
+          'aboutUs.clients': AboutClients,
         })}
       </Section>
       <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />

@@ -94,12 +94,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.products': HomeProduct,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
+      <Section name="tech" threshold={0.2} isWhite={true} className="">
         {renderObjectArray(sections, {
           'landing.demo': (data: DemoSection) => (
             <div
               className={clsx(
-                'container flex justify-center items-center z-10 relative h-[100vh]',
+                'container flex justify-center items-center z-10 relative md:h-[100vh] h-[50vh]',
                 'text-white',
               )}
             >
@@ -115,12 +115,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.demo': HomeDemo,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true} className="h-[100vh]">
+      <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.services': (data: ServiceSection) => (
             <div
               className={clsx(
-                'container flex justify-center items-center z-10 relative h-[100vh]',
+                'container flex justify-center items-center z-10 relative md:h-[100vh] h-[50vh]',
                 'text-white',
               )}
             >
