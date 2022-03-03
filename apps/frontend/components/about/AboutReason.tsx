@@ -22,7 +22,7 @@ export default function AboutReason(data: ReasonSection): ReactElement {
           {data.subHeadline}
         </div>
         <div className="grid lg:grid-cols-2 grid-cols-1 space-y-4">
-          <div className="col-span-1 lg:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
+          <div className="col-span-1 md:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
             {data.headline}
           </div>
           <div className="col-span-1">
@@ -73,10 +73,10 @@ export default function AboutReason(data: ReasonSection): ReactElement {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-12"
+              className="grid grid-cols-6 md:grid-cols-12"
             >
-              <div className="col-span-6 bifrost__transparent_card rounded-l-lg !rounded-r-none p-8 flex flex-col space-y-4">
-                <div className="text-[42px] leading-[42px] font-[275]">
+              <div className="col-span-6 bifrost__transparent_card md:rounded-l-lg md:!rounded-r-none rounded-lg md:p-8 p-4 flex flex-col space-y-4">
+                <div className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
                   {data.reasons[active].headline}
                 </div>
                 <div className="text-body-1 opacity-70">
@@ -84,9 +84,9 @@ export default function AboutReason(data: ReasonSection): ReactElement {
                 </div>
               </div>
               <div className="col-span-6">
-                <div className="w-full">
+                <div className="w-full h-full">
                   <SanityImg
-                    className="w-full h-full lg:object-cover object-contain rounded-r-lg"
+                    className="w-full h-full md:object-cover object-contain md:rounded-r-lg rounded-lg"
                     builder={imageUrlBuilder}
                     image={data.reasons[active].image}
                     height={500}

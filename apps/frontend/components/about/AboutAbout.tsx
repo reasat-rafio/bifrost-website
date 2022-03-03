@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import Button from 'components/ui/Button'
 import { AboutSection } from 'lib/aboutUsTypes'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -40,9 +39,19 @@ export default function AboutAbout(data: AboutSection): ReactElement {
             </div>
 
             <div className="flex">
-              <Button>
-                <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-              </Button>
+              <button className="space-x-4 py-2">
+                <object
+                  type="image/svg+xml"
+                  height="64"
+                  width="64"
+                  data="play.svg"
+                  className="inline-block"
+                />
+                <span className="underline text-[16px] leading-[16px]">{data.ctaButton.title}</span>
+              </button>
+              {/* <Button> */}
+              {/*   <a href={data.ctaButton.href}>{data.ctaButton.title}</a> */}
+              {/* </Button> */}
             </div>
           </div>
         </div>

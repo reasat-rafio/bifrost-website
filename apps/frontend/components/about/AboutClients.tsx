@@ -12,11 +12,11 @@ export default function AboutClients(data: ClientsSection): ReactElement {
   }
 
   return (
-    <div className="relative container py-32 flex flex-col items-center space-y-4">
+    <div className="relative container py-32 flex flex-col items-center space-y-4 text-center">
       <div className="text-transparent bg-clip-text bifrost__gradient_green text-[18px] leading-[22.86px]">
         {data.subHeadline}
       </div>
-      <div className="text-head-4 font-[275]">{data.headline}</div>
+      <div className="md:text-head-4 text-[38px] leading-[38px] font-[275]">{data.headline}</div>
       <div className="grid grid-cols-12 gap-x-[50px] gap-y-28 py-12">
         {data.clients.map((team) => (
           <div className="col-span-2 flex flex-col items-center justify-center">
