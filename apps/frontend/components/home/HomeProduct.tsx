@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { ProductSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
@@ -7,34 +6,35 @@ import { imageUrlBuilder } from 'utils/sanity'
 
 export default function HomeProduct(data: ProductSection): ReactElement {
   return (
-    <div
-      className={clsx(
-        'container grid grid-cols-12 z-10 space-y-5 lg:mt-0 mt-10 lg:space-x-12 lg:space-y-0 relative min-h-[100vh]',
-        'text-white',
-      )}
-    >
-      <div className="lg:col-span-6 xl:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center grid grid-cols-2 md:gap-4 gap-2">
-        {data.images.map((image) => (
-          <SanityImg
-            key={image?.alt}
-            builder={imageUrlBuilder}
-            image={image}
-            alt={image?.alt}
-            className="w-full object-contain"
-          />
-        ))}
-      </div>
-      <div className="flex flex-col items-start lg:col-span-6 xl:col-span-6 col-span-12 space-y-8 self-center bifrost__transparent_card md:py-[5rem] md:px-[3.75rem] py-[3rem] px-[2rem]">
-        <div className="flex flex-col space-y-5">
-          <h3 className="xl:text-head-5 text-[18px] leading-[22.86px] font-[400] bifrost__gradient_green text-transparent bg-clip-text uppercase">
-            {data.subHeadline}
-          </h3>
-          <h1 className="xl:text-head-2 text-[28px] leading-[28px] font-[275]">{data.headline}</h1>
+    <div className="container z-10 my-20 text-white">
+      <div className="grid grid-cols-12 space-y-5 lg:space-y-0 relative lg:space-x-12">
+        <div className="lg:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center">
+          <div className=" grid grid-cols-2 md:gap-4 gap-2">
+            {data.images.map((image) => (
+              <SanityImg
+                key={image?.alt}
+                builder={imageUrlBuilder}
+                image={image}
+                alt={image?.alt}
+                className="w-full object-contain"
+              />
+            ))}
+          </div>
         </div>
-        <div className="xl:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">{data.body}</div>
-        <Button color="secondary">
-          <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-        </Button>
+        <div className="flex flex-col lg:col-span-6 col-span-12 space-y-8 bifrost__transparent_card md:py-[5rem] md:px-[3.75rem] py-[3rem] px-[2rem]">
+          <div className="flex flex-col space-y-5">
+            <h3 className="md:text-body-1 text-[18px] leading-[22.86px] font-[400] bifrost__gradient_green text-transparent bg-clip-text uppercase">
+              {data.subHeadline}
+            </h3>
+            <h1 className="md:text-head-4 text-[28px] leading-[28px] font-[275]">
+              {data.headline}
+            </h1>
+          </div>
+          <div className="md:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">{data.body}</div>
+          <Button color="secondary">
+            <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+          </Button>
+        </div>
       </div>
     </div>
   )
