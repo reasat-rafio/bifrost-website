@@ -89,7 +89,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         })}
       </Section>
 
-      <Section name="products" setActive={setActive} className="min-h-[100vh]" isWhite={false}>
+      <Section name="products" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           'landing.products': HomeProduct,
         })}

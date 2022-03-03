@@ -9,7 +9,7 @@ export default function Data(data: DataSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container flex justify-center items-center z-10 relative h-[100vh] text-center',
+        'container flex justify-center items-center z-10 relative text-center min-h-[70vh]',
         'text-white',
       )}
     >
