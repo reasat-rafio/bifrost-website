@@ -58,7 +58,7 @@ html {
 .bifrost__background_noise {
   background-image: url('../public/noise.png');
   transition: opacity 1s ease-in-out;
-  animation: grain 2s steps(1) infinite;
+  animation: grain 5s steps(1) infinite;
   content: '';
   height: 300%;
   left: -50%;
