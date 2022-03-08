@@ -11,15 +11,15 @@ export default function AboutAbout(data: AboutSection): ReactElement {
     <div className="relative overflow-y-clip">
       <div
         className={clsx(
-          'container xl:pt-16 pt-24 grid md:grid-cols-12 grid-cols-6 z-10 md:space-y-8 space-y-8 relative w-[100vw] min-h-[100vh]',
+          'container xl:pt-16 pt-24 grid md:grid-cols-12 grid-cols-6 z-10 md:space-y-8 space-y-8 relative w-[100vw]',
           'text-white',
         )}
       >
         <div className="relative col-span-6 w-full">
-          <div className="relative xl:w-[120%] md:w-[120%] w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full flex items-center justify-center">
             <div className="md:translate-x-[20%] w-full">
               <SanityImg
-                className="w-full h-full lg:object-cover object-contain rounded-lg"
+                className="w-full lg:object-cover object-contain rounded-lg"
                 builder={imageUrlBuilder}
                 image={data.image}
                 height={500}
@@ -29,7 +29,7 @@ export default function AboutAbout(data: AboutSection): ReactElement {
           </div>
         </div>
         <div className="col-span-6 flex items-center justify-center">
-          <div className="lg:p-12 p-6 bifrost__transparent_card rounded-lg flex flex-col items-start space-y-6 xl:w-[35vw] lg:w-[45vw] md:w-[60vw] w-[95%] md:translate-y-0 translate-y-[-40%]">
+          <div className="lg:p-12 p-6 bifrost__transparent_card rounded-lg flex flex-col items-start space-y-6 xl:w-[35vw] lg:w-[45vw] md:w-[60vw] w-[95%]">
             <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
               {data.subHeadline}
             </div>

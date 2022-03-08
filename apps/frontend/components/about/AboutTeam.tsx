@@ -26,7 +26,7 @@ export default function AboutTeam(data: TeamSection): ReactElement {
                 builder={imageUrlBuilder}
                 image={team.image}
                 alt={team.image?.alt || 'image'}
-                height={windowWidth >= 768 ? 1000 : 500}
+                height={windowWidth >= 768 ? 320 : 160}
               />
             </div>
             <div className="md:text-[24px] md:leading-[34px] text-body-1">{team.name}</div>
