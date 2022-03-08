@@ -88,12 +88,13 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
           'aboutUs.team': AboutTeam,
         })}
       </Section>
+      <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />
       <Section name="reason" setActive={setActive} isWhite={true} threshold={0.4}>
         {renderObjectArray(sections, {
           'aboutUs.clients': AboutClients,
         })}
       </Section>
-      <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
       <Section name="data" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           data: Data,

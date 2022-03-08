@@ -131,8 +131,10 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Section>
-      <Ellipse className="z-10 absolute top-[140vh] right-[5vw] w-[153px] h-[391px]" />
-      <Ellipse className="z-10 absolute top-[340vh] right-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
       <Section
         name="service"
         setActive={setActive}
@@ -144,12 +146,13 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.services': HomeService,
         })}
       </Section>
-      <Ellipse className="z-10 absolute top-[40vh] right-[5vw] w-[153px] h-[391px]" />
+      <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
       <Section name="data" setActive={setActive} isWhite={false}>
         {renderObjectArray(sections, {
           data: Data,
         })}
       </Section>
+      <Ellipse className="z-10 absolute top-[10vh] left-[5vw] w-[353px] h-[391px]" />
       <div>
         {renderObjectArray(sections, {
           'landing.projects': HomeProjects,
