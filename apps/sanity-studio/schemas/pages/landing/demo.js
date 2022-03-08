@@ -1,7 +1,10 @@
+import { GiClick } from 'react-icons/gi'
+
 export default {
   name: 'landing.demo',
   title: 'Demo',
   type: 'object',
+  icon: GiClick,
   fields: [
     {
       name: 'headline',

@@ -1,10 +1,10 @@
-import { MdOutlineViewCarousel } from 'react-icons/md'
+import { BiImages } from 'react-icons/bi'
 
 export default {
-  name: 'landing.services',
-  title: 'Services',
+  name: 'useCase.example',
+  title: 'Example',
   type: 'object',
-  icon: MdOutlineViewCarousel,
+  icon: BiImages,
   fields: [
     {
       name: 'headline',
@@ -12,18 +12,21 @@ export default {
       type: 'string',
     },
     {
-      name: 'items',
-      title: 'Item',
+      name: 'subHeadline',
+      title: 'Sub-Headline',
+      type: 'string',
+    },
+    {
+      name: 'examples',
       type: 'array',
       of: [
         {
-          name: 'service',
+          name: 'example',
           type: 'object',
-          title: 'Service',
           fields: [
             {
-              name: 'headline',
-              title: 'Headline',
+              name: 'title',
+              title: 'Title',
               type: 'string',
             },
             {
@@ -32,14 +35,9 @@ export default {
               type: 'string',
             },
             {
-              name: 'ctaButton',
-              title: 'CTA Button',
-              type: 'ctaButton',
-            },
-            {
               name: 'image',
               type: 'image',
-              title: 'Service Image',
+              title: 'Example Image',
               fields: [
                 {
                   name: 'alt',
@@ -49,16 +47,6 @@ export default {
                 },
               ],
             },
-            {
-              name: 'cardPosition',
-              title: 'Card Position',
-              type: 'string',
-            },
-            {
-              name: 'imagePosition',
-              title: 'Image Position',
-              type: 'string',
-            },
           ],
         },
       ],
@@ -67,6 +55,7 @@ export default {
   preview: {
     select: {
       title: 'headline',
+      subtitle: 'body',
     },
   },
 }

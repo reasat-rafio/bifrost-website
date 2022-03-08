@@ -8,12 +8,15 @@ import {
   // GrGroup,
   // GrUserWorker,
 } from 'react-icons/gr'
+import { MdContactPhone } from 'react-icons/md'
+import { FcAbout } from 'react-icons/fc'
+import { GrActions } from 'react-icons/gr'
 // import { IoPeople } from "react-icons/io5";
 import { RiPagesLine } from 'react-icons/ri'
 // import * as React from "react";
-import { FaSitemap, FaHome, FaInfoCircle, FaQuestionCircle } from 'react-icons/fa'
+import { FaSitemap, FaHome } from 'react-icons/fa'
 
-function SitePreview({ document, options }) {
+function SitePreview() {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
     console.warn(
       'SANITY_STUDIO_PREVIEW_URL should be set for preview to work! Falling back to localhost:3000',
@@ -106,15 +109,22 @@ export default () =>
                 schemaType: 'contactUsPage',
                 id: 'contactUsPage',
                 title: 'Contact Us',
-                icon: FaInfoCircle,
+                icon: MdContactPhone,
                 slug: '/contact-us',
               }),
               pageItem({
                 schemaType: 'aboutUsPage',
                 id: 'aboutUsPage',
                 title: 'About Us',
-                icon: FaQuestionCircle,
+                icon: FcAbout,
                 slug: '/about-us',
+              }),
+              pageItem({
+                schemaType: 'useCasePage',
+                id: 'useCasePage',
+                title: 'Use Case',
+                icon: GrActions,
+                slug: '/use-case',
               }),
             ]),
         ),

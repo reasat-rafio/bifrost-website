@@ -29,6 +29,13 @@ import aboutUsAboutSection from './pages/about/about'
 import aboutUsReasonSection from './pages/about/reason'
 import aboutUsTeamSection from './pages/about/team'
 
+import useCase from './pages/use-case'
+import useCaseHome from './pages/useCase/home'
+import useCaseAssurance from './pages/useCase/assurance'
+import useCaseEnterprise from './pages/useCase/enterprise'
+import useCaseExample from './pages/useCase/example'
+import useCaseFeature from './pages/useCase/feature'
+
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
 
@@ -73,5 +80,12 @@ export default createSchema({
     aboutUsAboutSection,
     aboutUsReasonSection,
     aboutUsTeamSection,
+
+    useCase,
+    useCaseHome,
+    useCaseAssurance,
+    useCaseEnterprise,
+    useCaseExample,
+    useCaseFeature,
   ]),
 })

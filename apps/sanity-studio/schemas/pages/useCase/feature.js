@@ -1,14 +1,19 @@
-import { GrProjects } from 'react-icons/gr'
+import { MdOutlineFeaturedPlayList } from 'react-icons/md'
 
 export default {
-  name: 'landing.projects',
-  title: 'Projects',
+  name: 'useCase.feature',
+  title: 'Features',
   type: 'object',
-  icon: GrProjects,
+  icon: MdOutlineFeaturedPlayList,
   fields: [
     {
       name: 'headline',
       title: 'Headline',
+      type: 'string',
+    },
+    {
+      name: 'subHeadline',
+      title: 'Sub-Headline',
       type: 'string',
     },
     {
@@ -17,29 +22,27 @@ export default {
       type: 'string',
     },
     {
-      name: 'items',
-      title: 'Item',
+      name: 'ctaButton',
+      title: 'CTA Button',
+      type: 'ctaButton',
+    },
+    {
+      name: 'features',
       type: 'array',
       of: [
         {
-          name: 'project',
+          name: 'feature',
           type: 'object',
-          title: 'Project',
           fields: [
             {
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-            },
-            {
-              name: 'url',
-              title: 'URL',
+              name: 'title',
+              title: 'Title',
               type: 'string',
             },
             {
               name: 'image',
               type: 'image',
-              title: 'Service Image',
+              title: 'Example Image',
               fields: [
                 {
                   name: 'alt',
@@ -57,6 +60,7 @@ export default {
   preview: {
     select: {
       title: 'headline',
+      subtitle: 'body',
     },
   },
 }

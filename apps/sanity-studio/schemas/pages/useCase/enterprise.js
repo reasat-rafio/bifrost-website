@@ -1,8 +1,8 @@
 import { MdOutlineViewCarousel } from 'react-icons/md'
 
 export default {
-  name: 'landing.services',
-  title: 'Services',
+  name: 'useCase.enterprise',
+  title: 'Enterprise',
   type: 'object',
   icon: MdOutlineViewCarousel,
   fields: [
@@ -12,18 +12,21 @@ export default {
       type: 'string',
     },
     {
-      name: 'items',
-      title: 'Item',
+      name: 'subHeadline',
+      title: 'Sub-Headline',
+      type: 'string',
+    },
+    {
+      name: 'enterprises',
       type: 'array',
       of: [
         {
-          name: 'service',
+          name: 'enterprise',
           type: 'object',
-          title: 'Service',
           fields: [
             {
-              name: 'headline',
-              title: 'Headline',
+              name: 'title',
+              title: 'Title',
               type: 'string',
             },
             {
@@ -39,7 +42,7 @@ export default {
             {
               name: 'image',
               type: 'image',
-              title: 'Service Image',
+              title: 'Example Image',
               fields: [
                 {
                   name: 'alt',
@@ -67,6 +70,7 @@ export default {
   preview: {
     select: {
       title: 'headline',
+      subtitle: 'body',
     },
   },
 }

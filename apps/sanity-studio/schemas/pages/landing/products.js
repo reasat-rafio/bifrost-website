@@ -1,7 +1,10 @@
+import { FaProductHunt } from 'react-icons/fa'
+
 export default {
   name: 'landing.products',
   title: 'Products',
   type: 'object',
+  icon: FaProductHunt,
   fields: [
     {
       name: 'headline',

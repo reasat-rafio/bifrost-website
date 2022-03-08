@@ -1,7 +1,9 @@
+import { MdOutlineRateReview } from 'react-icons/md'
 export default {
   name: 'landing.reviews',
   title: 'Reviews',
   type: 'object',
+  icon: MdOutlineRateReview,
   fields: [
     {
       name: 'items',
@@ -45,7 +47,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
+      title: 'review.body',
     },
   },
 }
