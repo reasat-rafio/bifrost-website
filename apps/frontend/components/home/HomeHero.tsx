@@ -53,14 +53,16 @@ export default function HomeHero(data: HomeSection): ReactElement {
             )}
           >
             <motion.div
-              className={`absolute top-0 left-0 h-[1px] bg-white w-[${movingBorderObjWidth}px]`}
+              style={{ width: `${movingBorderObjWidth}px` }}
+              className={`absolute top-0 left-0 h-[1px] bg-white `}
               animate={{
                 x: [0, decorationBlockWidth - movingBorderObjWidth, 0],
               }}
               transition={transition}
             />
             <motion.div
-              className={`absolute bottom-0 left-0 h-[1px] bg-white w-[${movingBorderObjWidth}px]`}
+              style={{ width: `${movingBorderObjWidth}px` }}
+              className={`absolute bottom-0 left-0 h-[1px] bg-white `}
               animate={{
                 x: [
                   decorationBlockWidth - movingBorderObjWidth,
