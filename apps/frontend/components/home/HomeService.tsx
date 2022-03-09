@@ -56,7 +56,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
         <div className="sticky md:container w-full md:m-[1rem] m-[0.50rem] top-0 h-[100vh] block flex-col justify-center items-center ">
           <div className="relative w-full h-full">
             <div className="absolute w-full z-50 h-full flex items-center justify-start">
-              <div className="flex-row space-y-2 relative translate-x-[-5vw]">
+              <div className="flex-row space-y-2 relative xl:translate-x-[-5vw] md:translate-x-[-3vw] translate-x-[-10vw]">
                 {data.items.map((item, index) => {
                   return index === current ? (
                     <motion.div
