@@ -21,11 +21,19 @@ export default function HomeService(data: ServiceSection): ReactElement {
       setIsScroll(true)
       setCurrent(index)
       window.scrollTo({
-        top: serviceRef.current.scrollHeight + (index + 3) * windowHeight,
+        top: serviceRef.current.scrollHeight + index * windowHeight,
         behavior: 'auto',
       })
       const checkIfScrollToIsFinished = setInterval(() => {
-        if (serviceRef.current.scrollHeight + (index + 3) * windowHeight === window.scrollY) {
+        const scrollTo = serviceRef.current.scrollHeight + index * windowHeight
+        console.log(
+          scrollTo < window.scrollY * 1.1 && scrollTo > window.scrollY * 0.9,
+          {
+            scrollTo,
+          },
+          window.scrollY,
+        )
+        if (scrollTo < window.scrollY * 1.1 && scrollTo > window.scrollY * 0.9) {
           // do something
           setIsScroll(false)
           clearInterval(checkIfScrollToIsFinished)
@@ -45,10 +53,10 @@ export default function HomeService(data: ServiceSection): ReactElement {
         }}
         ref={serviceRef}
       >
-        <div className="sticky md:container w-full md:m-[1rem] m-[0.50rem] top-0 h-[100vh] block flex-col justify-center items-center overflow-hidden">
+        <div className="sticky md:container w-full md:m-[1rem] m-[0.50rem] top-0 h-[100vh] block flex-col justify-center items-center ">
           <div className="relative w-full h-full">
-            <div className="absolute w-full z-0 h-full flex items-center justify-start">
-              <div className="flex-row space-y-2 relative translate-x-[-5vw] z-60">
+            <div className="absolute w-full z-50 h-full flex items-center justify-start">
+              <div className="flex-row space-y-2 relative translate-x-[-5vw]">
                 {data.items.map((item, index) => {
                   return index === current ? (
                     <motion.div
@@ -64,7 +72,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
                       className="rounded-full z-0"
                     >
                       <motion.div
-                        className="p-1 rounded-full"
+                        className="p-1 rounded-full cursor-pointer"
                         style={{
                           backgroundColor: '#FFF',
                           border:
@@ -82,22 +90,19 @@ export default function HomeService(data: ServiceSection): ReactElement {
                         background: 'transparent',
                         padding: '2px',
                       }}
-                      className="rounded-full z-0"
+                      className="rounded-full z-0 cursor-pointer"
+                      onClick={() => {
+                        if (!isScroll) setItem(index)
+                      }}
                     >
                       <motion.div
                         whileHover={{
                           scale: 1.25,
                           transition: { ease: 'easeInOut', duration: 0.05 },
                         }}
-                        className={clsx(
-                          current === index && 'opacity-0',
-                          'p-1 rounded-full cursor-pointer',
-                        )}
+                        className={clsx(current === index && 'opacity-0', 'p-1 rounded-full')}
                         style={{ backgroundColor: '#757AAC' }}
                         key={item.headline}
-                        onClick={() => {
-                          if (!isScroll) setItem(index)
-                        }}
                       ></motion.div>
                     </motion.div>
                   )
@@ -105,7 +110,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
               </div>
             </div>
             <div
-              className="z-0 overflow-hidden h-full w-full"
+              className="z-0 h-full w-full"
               style={{ willChange: `transform, opacity`, transformStyle: `preserve-3d` }}
             >
               <div
@@ -115,7 +120,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
                   transformStyle: `preserve-3d`,
                 }}
               >
-                <div className="z-0 overflow-hidden h-full w-full flex justify-center items-center">
+                <div className="z-0 h-full w-full flex justify-center items-center">
                   {data.items.map((item, index) => (
                     <div
                       className="absolute justify-center items-center w-full h-full"
