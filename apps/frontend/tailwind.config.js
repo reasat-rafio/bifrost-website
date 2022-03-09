@@ -12,7 +12,7 @@ module.exports = {
         '2xl': '1320px',
       },
       padding: {
-        DEFAULT: '1rem',
+        DEFAULT: '1.6rem',
         sm: '2rem',
       },
       center: true,

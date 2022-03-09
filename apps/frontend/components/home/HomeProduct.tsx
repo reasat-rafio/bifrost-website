@@ -16,7 +16,8 @@ export default function HomeProduct(data: ProductSection): ReactElement {
                 builder={imageUrlBuilder}
                 image={image}
                 alt={image?.alt}
-                className="w-full object-contain"
+                height={250}
+                className="w-full object-cover"
               />
             ))}
           </div>
@@ -31,9 +32,11 @@ export default function HomeProduct(data: ProductSection): ReactElement {
             </h1>
           </div>
           <div className="md:text-body-1 text-[14px] leading-[20px] opacity-[0.7]">{data.body}</div>
-          <Button color="secondary">
-            <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-          </Button>
+          <div className="flex">
+            <Button color="secondary">
+              <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

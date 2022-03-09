@@ -2,18 +2,15 @@ import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { showHero } from 'lib/showHero'
 import { HeroData } from 'lib/types'
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { ReactElement, useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/landingTypes'
-import { useWindowSize } from 'lib/hooks'
 
 const movingBorderObjWidth = 9
 const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
 
 export default function HomeHero(data: HomeSection): ReactElement {
-  const windowWidth = useWindowSize()?.width ?? 0
-
   const heroData: HeroData = { type: 'image', image: data.image }
 
   const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
@@ -23,12 +20,18 @@ export default function HomeHero(data: HomeSection): ReactElement {
   )
 
   useEffect(() => {
-    setDecorationBlockWidth(movingBorderDecorationBlockRef?.current?.clientWidth ?? 0)
-  }, [windowWidth])
+    const handleWidth = () =>
+      setDecorationBlockWidth(movingBorderDecorationBlockRef?.current?.clientWidth ?? 0)
+    handleWidth()
+    window.addEventListener('resize', handleWidth)
+    return () => {
+      window.removeEventListener('resize', handleWidth)
+    }
+  }, [])
 
   return (
     <div className="relative overflow-y-clip">
-      <div className="absolute left-0 bottom-0 w-full h-full flex items-end ">
+      <div className="absolute left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />
         </div>

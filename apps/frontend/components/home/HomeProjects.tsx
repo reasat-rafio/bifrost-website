@@ -4,12 +4,13 @@ import { ReactElement, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { imageUrlBuilder } from 'utils/sanity'
-import SwiperCore, { Autoplay, Navigation, Mousewheel } from 'swiper'
+import { Autoplay, Navigation, Mousewheel } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
+import 'swiper/css/mousewheel'
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
-import 'swiper/swiper.min.css'
 import { ProjectSection } from 'lib/landingTypes'
-
-SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
   const navigationPrevRef = useRef<HTMLSpanElement>(null)
@@ -36,6 +37,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
       </div>
       <div className="overflow-hidden border-[#1E2531] border-l-2 lg:col-span-7 col-span-10">
         <Swiper
+          modules={[Autoplay, Navigation, Mousewheel]}
           breakpoints={{
             400: {
               slidesPerView: 1.1,

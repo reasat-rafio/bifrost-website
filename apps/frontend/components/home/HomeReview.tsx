@@ -2,14 +2,15 @@ import clsx from 'clsx'
 import { ReactElement, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay, Navigation, Mousewheel } from 'swiper'
+import { Autoplay, Navigation, Mousewheel } from 'swiper'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
-import 'swiper/swiper.min.css'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
+import 'swiper/css/mousewheel'
 import { motion } from 'framer-motion'
 import { imageUrlBuilder } from 'utils/sanity'
 import { ReviewSection } from 'lib/landingTypes'
-
-SwiperCore.use([Autoplay, Navigation, Mousewheel])
 
 export default function HomeReview(data: ReviewSection): ReactElement {
   const navigationPrevRef = useRef<HTMLSpanElement>(null)
@@ -24,6 +25,7 @@ export default function HomeReview(data: ReviewSection): ReactElement {
       <div className="w-full">
         <div className="relative w-full">
           <Swiper
+            modules={[Autoplay, Navigation, Mousewheel]}
             slidesPerView={1}
             loopedSlides={data.items.length}
             mousewheel={{ forceToAxis: true }}

@@ -12,7 +12,7 @@ import { renderObjectArray } from 'sanity-react-extra'
 import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import HomeProduct from 'components/home/HomeProduct'
-import HomeDemo from 'components/home/HomeDemo'
+import HomeDemo from 'components/home/homeDemo/HomeDemo'
 import HomeService from 'components/home/HomeService'
 import { useRef } from 'react'
 import HomeProjects from 'components/home/HomeProjects'
@@ -99,7 +99,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.demo': (data: DemoSection) => (
             <div
               className={clsx(
-                'container flex justify-center items-center z-10 relative md:h-[100vh] h-[50vh]',
+                'container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh]',
                 'text-white',
               )}
             >
@@ -110,11 +110,11 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Section>
-      <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}>
-        {renderObjectArray(sections, {
-          'landing.demo': HomeDemo,
-        })}
-      </Section>
+      {/* <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}> */}
+      {renderObjectArray(sections, {
+        'landing.demo': HomeDemo,
+      })}
+      {/* </Section> */}
       <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.services': (data: ServiceSection) => (
