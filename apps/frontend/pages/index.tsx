@@ -110,11 +110,11 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Section>
-      {/* <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}> */}
-      {renderObjectArray(sections, {
-        'landing.demo': HomeDemo,
-      })}
-      {/* </Section> */}
+      <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}>
+        {renderObjectArray(sections, {
+          'landing.demo': HomeDemo,
+        })}
+      </Section>
       <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.services': (data: ServiceSection) => (

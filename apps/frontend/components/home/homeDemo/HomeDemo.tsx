@@ -14,7 +14,7 @@ export default function HomeDemo({ previews }: DemoSection): ReactElement {
   return (
     <section
       data-element="background"
-      className="relative top-0 flex max-h-[6000px] py-section justify-center items-start !transition duration-300 ease-in-out"
+      className="relative top-0 lg:flex max-h-[6000px] py-section justify-center items-start !transition duration-300 ease-in-out"
       // style={{
       //   willChange: 'background',
       //   minHeight: `${windowWidth >= 1024 ? `${previews.length + 1}00vh` : 'auto'} `,
