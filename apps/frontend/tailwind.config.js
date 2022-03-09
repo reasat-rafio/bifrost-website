@@ -9,10 +9,11 @@ module.exports = {
   theme: {
     container: {
       screens: {
-        sm: '272px',
-        md: '720px',
-        lg: '954px',
-        xl: '1170px',
+        '2xl': '1320px',
+      },
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
       },
       center: true,
     },

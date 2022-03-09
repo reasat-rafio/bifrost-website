@@ -1,14 +1,15 @@
 // import getYouTubeID from 'get-youtube-id'
+import clsx from 'clsx'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from '../utils/sanity'
 import { HeroData } from './types'
 
-export const showHero = (heroData: HeroData) => {
+export const showHero = (heroData: HeroData, className?: string) => {
   switch (heroData.type) {
     case 'image':
       return (
         <SanityImg
-          className="w-full h-full lg:object-cover object-contain"
+          className={clsx(className ?? '', 'w-full h-full  object-cover')}
           builder={imageUrlBuilder}
           image={heroData.image}
           height={500}
@@ -40,7 +41,7 @@ export const showHero = (heroData: HeroData) => {
 
     case 'video':
       return (
-        <video controls className="h-full w-full">
+        <video controls className={clsx(className ?? '', 'h-full w-full')}>
           <source src={heroData.video?.asset.url} type={heroData.video?.asset.mimeType} />
         </video>
       )

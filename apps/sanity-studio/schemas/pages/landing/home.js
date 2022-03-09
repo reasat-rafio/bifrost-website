@@ -30,6 +30,9 @@ export default {
       name: 'image',
       type: 'image',
       title: 'Hero Image',
+      options: {
+        hotspot: true,
+      },
       fields: [
         {
           name: 'alt',
