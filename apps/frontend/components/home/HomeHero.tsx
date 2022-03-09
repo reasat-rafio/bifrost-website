@@ -2,15 +2,27 @@ import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { showHero } from 'lib/showHero'
 import { HeroData } from 'lib/types'
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/landingTypes'
 
+const movingBorderObjWidth = 9
+const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
+
 export default function HomeHero(data: HomeSection): ReactElement {
   const heroData: HeroData = { type: 'image', image: data.image }
 
-  console.log({ heroData })
+  const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
+
+  const [decorationBlockWidth, setDecorationBlockWidth] = useState(0)
+
+  useEffect(() => {
+    setDecorationBlockWidth(movingBorderDecorationBlockRef?.current?.clientWidth ?? 0)
+    window.addEventListener('resize', () => {
+      setDecorationBlockWidth(movingBorderDecorationBlockRef?.current?.clientWidth ?? 0)
+    })
+  }, [])
 
   return (
     <div className="relative overflow-y-clip">
@@ -35,33 +47,28 @@ export default function HomeHero(data: HomeSection): ReactElement {
             </h2>
           </div>
           <div
+            ref={movingBorderDecorationBlockRef}
             className={clsx(
               'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
             )}
           >
             <motion.div
-              className="absolute top-0 w-[9px] left-0 h-[1px] bg-white"
+              className={`absolute top-0 w-[9px] left-0 h-[1px] bg-white w-[${movingBorderObjWidth}px]`}
               animate={{
-                x: [0, 300, 0],
+                x: [0, decorationBlockWidth - movingBorderObjWidth, 0],
               }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-                velocity: 50,
-                ease: 'easeInOut',
-              }}
+              transition={transition}
             />
             <motion.div
-              className="absolute bottom-0 left-0 w-[9px] h-[1px] bg-white"
+              className={`absolute bottom-0 left-0 h-[1px] bg-white w-[${movingBorderObjWidth}px]`}
               animate={{
-                x: [300, 0, 300],
+                x: [
+                  decorationBlockWidth - movingBorderObjWidth,
+                  0,
+                  decorationBlockWidth - movingBorderObjWidth,
+                ],
               }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-                velocity: 50,
-                ease: 'easeInOut',
-              }}
+              transition={transition}
             />
             {data.body}
           </div>
