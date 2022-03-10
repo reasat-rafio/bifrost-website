@@ -36,6 +36,10 @@ import useCaseEnterprise from './pages/useCase/enterprise'
 import useCaseExample from './pages/useCase/example'
 import useCaseFeature from './pages/useCase/feature'
 
+import blog from './pages/blog'
+import blogHome from './pages/blog/home'
+import blogArticles from './pages/blog/articles'
+
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
 
@@ -87,5 +91,9 @@ export default createSchema({
     useCaseEnterprise,
     useCaseExample,
     useCaseFeature,
+
+    blog,
+    blogHome,
+    blogArticles,
   ]),
 })

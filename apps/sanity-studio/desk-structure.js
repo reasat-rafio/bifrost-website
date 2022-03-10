@@ -10,7 +10,7 @@ import {
 } from 'react-icons/gr'
 import { MdContactPhone } from 'react-icons/md'
 import { FcAbout } from 'react-icons/fc'
-import { GrActions } from 'react-icons/gr'
+import { GrActions, GrArticle } from 'react-icons/gr'
 // import { IoPeople } from "react-icons/io5";
 import { RiPagesLine } from 'react-icons/ri'
 // import * as React from "react";
@@ -125,6 +125,13 @@ export default () =>
                 title: 'Use Case',
                 icon: GrActions,
                 slug: '/use-case',
+              }),
+              pageItem({
+                schemaType: 'blogPage',
+                id: 'blogPage',
+                title: 'Blogs',
+                icon: GrArticle,
+                slug: '/blog',
               }),
             ]),
         ),
