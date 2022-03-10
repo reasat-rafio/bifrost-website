@@ -12,7 +12,6 @@ interface FooterProps {
 }
 
 function socialIcon(type: SocialType) {
-  console.log({ type })
   switch (type) {
     case 'facebook':
       return 'footer/facebook.svg'
@@ -27,7 +26,6 @@ function socialIcon(type: SocialType) {
 
 export default function Footer({ logo, footer }: FooterProps): ReactElement {
   const router = useRouter()
-  console.log('FOOTER PROPS', { logo, footer })
   return (
     <div className={clsx('backdrop-blur-2xl')}>
       <div

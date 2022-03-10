@@ -91,7 +91,7 @@ export default function Service({
   )
 
   return (
-    <motion.div
+    <div
       className={clsx(
         'w-full h-full relative flex items-center transition-all duration-500 opacity-0',
         item.imagePosition === 'center' && 'justify-center',
@@ -101,7 +101,6 @@ export default function Service({
       ref={sectionRef}
       style={{
         zIndex: 10 - index,
-        opacity: 1,
       }}
     >
       <div
@@ -148,6 +147,6 @@ export default function Service({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
