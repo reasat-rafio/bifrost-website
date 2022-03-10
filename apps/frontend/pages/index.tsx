@@ -94,7 +94,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.products': HomeProduct,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true} className="">
+      <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.demo': (data: DemoSection) => (
             <div
@@ -110,12 +110,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Section>
-      <Section name="demo" setActive={setActive} threshold={0.2} hasEllipse={true}>
+      <Section name="demo" setActive={setActive} threshold={0.2}>
         {renderObjectArray(sections, {
           'landing.demo': HomeDemo,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true}>
+      {/* <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.services': (data: ServiceSection) => (
             <div
@@ -130,7 +130,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             </div>
           ),
         })}
-      </Section>
+      </Section> */}
       <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />

@@ -24,9 +24,9 @@ export default function SlideUp({
   }, [intersection?.isIntersecting])
 
   return (
-    <>
+    <div ref={divRef}>
       {blocks !== undefined ? (
-        <div ref={divRef} data-animate="slideUp" className={clsx(intersected && 'show')}>
+        <div data-animate="slideUp" className={clsx(intersected && 'show')}>
           <span>
             <span
               className={clsx(heroTitle ? 'md:text-[120px] text-6xl font-normal' : 'section-body')}
@@ -38,12 +38,7 @@ export default function SlideUp({
       ) : (
         <>
           {lines?.map((line: string) => (
-            <div
-              ref={divRef}
-              key={line}
-              data-animate="slideUp"
-              className={clsx(intersected && 'show')}
-            >
+            <div key={line} data-animate="slideUp" className={clsx(intersected && 'show')}>
               <span>
                 <span>{line}</span>
               </span>
@@ -51,6 +46,6 @@ export default function SlideUp({
           ))}
         </>
       )}
-    </>
+    </div>
   )
 }

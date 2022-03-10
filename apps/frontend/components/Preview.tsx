@@ -13,7 +13,7 @@ interface PreviewProps {
 
 export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
+  const { height: windowHeight } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
@@ -43,6 +43,8 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
 
         if (sectionRef.current) {
           sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
+          sectionRef.current.style.transitionDuration = '0.35s'
+          sectionRef.current.style.transitionTimingFunction = 'ease'
         }
       }),
     [windowHeight],
@@ -50,20 +52,17 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
 
   return (
     <motion.div
-      animate={{
-        transition: { ease: 'easeInOut', duration: 0.1 },
-      }}
       ref={sectionRef}
-      className="absolute w-full xl:h-[60%] lg:h-[50%] md:h-[40%] h-[30%]"
+      className="absolute rounded-[15px] 2xl:w-full"
       style={{
         zIndex: 10 - index,
       }}
     >
       <SanityImg
-        className="w-full h-full rounded-lg object-fill"
+        className="w-full  rounded-lg object-fill"
         builder={imageUrlBuilder}
         image={item}
-        height={windowWidth >= 768 ? 1000 : 500}
+        height={600}
         alt={item.alt ?? 'image'}
       />
     </motion.div>

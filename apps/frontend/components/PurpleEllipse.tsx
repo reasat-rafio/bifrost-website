@@ -37,7 +37,7 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     <div className="absolute top-0 h-[100%]">
       <div className="sticky top-0 w-[100vw] h-[100vh]">
         <motion.div
-          className="z-10 absolute rounded-full md:w-[40vw] md:h-[40vw] w-[50vw] h-[50vw] top-[30vh] left-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          className="z-10 absolute rounded-full md:w-[40vw] md:h-[40vw] w-[50vw] h-[50vw] top-[30vh] left-0 bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
             filter: 'blur(98px)',
             scale: ratio,
@@ -46,20 +46,20 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
           }}
         />
         <motion.div
-          className="z-10 absolute rounded-full md:w-[36vw] md:h-[36vw] w-[30vw] h-[30vw] right-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          className="z-10 absolute rounded-full md:w-[36vw] md:h-[30vw] w-[30vw] h-[30vw] right-0 bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
             filter: 'blur(58px)',
             scale: ratio,
-            translateX: `-${20 * ratio}%`,
-            translateY: (windowHeight / 10) * ratio,
+            translateX: `-${35 * ratio}%`,
+            translateY: (windowHeight / 100) * ratio,
           }}
         />
         <motion.div
-          className="z-10 absolute top-[80vh] rounded-full md:w-[26vw] md:h-[26vw] w-[30vw] h-[30vw] right-[0vw] bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          className="z-10 absolute top-[80vh] rounded-full md:w-[26vw] md:h-[26vw] w-[30vw] h-[30vw] right-0 bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
             filter: 'blur(58px)',
             scale: ratio,
-            translateX: `-${70 * ratio}%`,
+            translateX: `-${10 * ratio}%`,
             translateY: -(windowHeight / 10) * ratio,
           }}
         />

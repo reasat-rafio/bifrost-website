@@ -4,7 +4,7 @@ import { DataSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 
 export default function Data(data: DataSection): ReactElement {
-  console.log({ data })
+  // console.log({ data })
 
   return (
     <div
