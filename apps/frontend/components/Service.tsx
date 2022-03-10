@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
 import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react'
 import { useWindowSize } from 'react-use'
