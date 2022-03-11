@@ -37,7 +37,7 @@ export default function PurpleEllipse(props: PurpleEllipseProps): ReactElement {
     <div className="absolute top-0 h-[100%]">
       <div className="sticky top-0 w-[100vw] h-[100vh]">
         <motion.div
-          className="z-10 absolute rounded-full md:w-[40vw] md:h-[40vw] w-[50vw] h-[50vw] top-[30vh] left-0 bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
+          className="z-10 absolute rounded-full md:w-[40vw] md:h-[40vw] w-1/2 h-1/2 top-[30%] left-0 bg-gradient-to-r from-[#594CA6] via-[#5F4C9D] to-[#3E2F5E]"
           animate={{
             filter: 'blur(98px)',
             scale: ratio,

@@ -14,7 +14,7 @@ export default function HomeDemo({ previews }: DemoSection): ReactElement {
   return (
     <section
       data-element="background"
-      className="relative flex py-section justify-center items-start"
+      className="relative lg:flex py-section justify-center items-start container"
       style={{
         willChange: 'background',
         minHeight: `${windowWidth >= 1024 ? `${previews.length + 1}00vh` : 'auto'} `,
@@ -25,7 +25,7 @@ export default function HomeDemo({ previews }: DemoSection): ReactElement {
 
       {windowWidth >= 1024 ? (
         <div
-          className="container w-full sticky top-[20%] h-screen overflow-hidden transform flex items-start justify-center 2xl:mx-6"
+          className="container w-full sticky top-[20%] h-screen overflow-hidden transform flex items-start justify-center"
           ref={stickySectionRef}
         >
           {previews.map((previewItem, index) => (

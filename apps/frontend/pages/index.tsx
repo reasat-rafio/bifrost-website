@@ -115,22 +115,22 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.demo': HomeDemo,
         })}
       </Section>
-      {/* <Section name="tech" threshold={0.2} isWhite={true}>
+      <Section name="tech" threshold={0.2} isWhite={true}>
         {renderObjectArray(sections, {
           'landing.services': (data: ServiceSection) => (
             <div
               className={clsx(
-                'container flex justify-center items-center z-10 relative md:h-[100vh] h-[50vh]',
+                'container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh]',
                 'text-white',
               )}
             >
-              <div className="text-center md:text-head-1 text-[28px] leading-[28px]  font-[275]">
+              <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
                 <SlideUp text={data.headline} />
               </div>
             </div>
           ),
         })}
-      </Section> */}
+      </Section>
       <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
