@@ -3,7 +3,6 @@ import { siteQuery } from 'lib/query'
 import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { Section } from 'components/ui/Section'
 import { motion } from 'framer-motion'
 import { renderObjectArray } from 'sanity-react-extra'
 import { Site } from 'lib/types'
@@ -51,56 +50,38 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
 
   return (
     <motion.div>
-      <Section name="hero" className="min-h-[100vh]" isWhite={false}>
-        {renderObjectArray(sections, {
-          'landing.home': HomeHero,
-        })}
-      </Section>
-
-      <Section name="products" isWhite={false}>
-        {renderObjectArray(sections, {
-          'landing.products': HomeProduct,
-        })}
-      </Section>
-
-      <Section name="demo">
-        {renderObjectArray(sections, {
-          'landing.demo': HomeDemo,
-        })}
-      </Section>
+      {renderObjectArray(sections, {
+        'landing.home': HomeHero,
+        'landing.products': HomeProduct,
+        'landing.demo': HomeDemo,
+      })}
 
       <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
-      <Section name="service" isWhite={false} className="relative">
-        {renderObjectArray(sections, {
-          'landing.services': HomeService,
-        })}
-      </Section>
+
+      {renderObjectArray(sections, {
+        'landing.services': HomeService,
+      })}
+
       <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
-      <Section name="data" isWhite={false}>
-        {renderObjectArray(sections, {
-          data: Data,
-        })}
-      </Section>
+
+      {renderObjectArray(sections, {
+        data: Data,
+      })}
       <Ellipse className="z-10 absolute top-[10vh] left-[5vw] w-[353px] h-[391px]" />
-      <div>
-        {renderObjectArray(sections, {
-          'landing.projects': HomeProjects,
-        })}
-      </div>
+
+      {renderObjectArray(sections, {
+        'landing.projects': HomeProjects,
+      })}
+
       <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
-      <Section name="reviews" isWhite={false}>
-        {renderObjectArray(sections, {
-          'landing.reviews': HomeReview,
-        })}
-      </Section>
-      <Section name="contact" isWhite={true} hasEllipse={true} enableTransition={false}>
-        {renderObjectArray(sections, {
-          contact: Contact,
-        })}
-      </Section>
+
+      {renderObjectArray(sections, {
+        'landing.reviews': HomeReview,
+        contact: Contact,
+      })}
     </motion.div>
   )
 }

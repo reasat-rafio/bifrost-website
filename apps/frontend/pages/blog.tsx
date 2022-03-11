@@ -3,9 +3,6 @@ import BlogHome from 'components/blog/BlogHome'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
-import Footer from 'components/Footer'
-import Navbar from 'components/Navbar'
-import { Section } from 'components/ui/Section'
 import { motion } from 'framer-motion'
 import { BlogPage } from 'lib/blogTypes'
 import { siteQuery } from 'lib/query'
@@ -13,8 +10,6 @@ import { Site } from 'lib/types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useRef } from 'react'
-import { useMap } from 'react-use'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 
@@ -33,64 +28,25 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Blog(props: SanityProps<{ site: Site; page: BlogPage }>) {
   const {
     data: {
-      site,
       page: { sections },
     },
   } = useSanityQuery(query, props)
 
-  const mainRef = useRef(null)
-
-  const [activeSection, { set: setActive }] = useMap<{
-    home?: boolean
-    datasets?: boolean
-    demo?: boolean
-  }>({})
-
   return (
-    <motion.div
-      animate={{
-        backgroundColor: '#000',
-        color: '#fff',
-        transition: { ease: 'easeInOut', duration: 0.3 },
-      }}
-      className="relative overflow-clip"
-      ref={mainRef}
-    >
-      <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-        <div className="bifrost__background_noise"></div>
-      </div>
-
+    <motion.div>
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      <Section name="home" setActive={setActive} isWhite={true} threshold={0.4}>
-        {renderObjectArray(sections, {
-          'blog.home': BlogHome,
-        })}
-      </Section>
+      {renderObjectArray(sections, {
+        'blog.home': BlogHome,
+      })}
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      <Section name="home" setActive={setActive} isWhite={true} threshold={0.4}>
-        {renderObjectArray(sections, {
-          'blog.articles': BlogArticles,
-        })}
-      </Section>
+      {renderObjectArray(sections, {
+        'blog.articles': BlogArticles,
+      })}
       <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
-      <Section name="data" setActive={setActive} isWhite={false}>
-        {renderObjectArray(sections, {
-          data: Data,
-        })}
-      </Section>
-      <Section
-        name="contact"
-        setActive={setActive}
-        isWhite={true}
-        threshold={0.4}
-        hasEllipse={true}
-        enableTransition={false}
-      >
-        {renderObjectArray(sections, {
-          contact: Contact,
-        })}
-      </Section>
-      <Footer logo={site.logos.logo} footer={site.nav.footer} />
+      {renderObjectArray(sections, {
+        data: Data,
+        contact: Contact,
+      })}
     </motion.div>
   )
 }

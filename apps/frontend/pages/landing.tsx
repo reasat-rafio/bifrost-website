@@ -1,24 +1,24 @@
 import { ReactElement } from 'react'
-import ReactFullpage from '@fullpage/react-fullpage'
+// import ReactFullpage from '@fullpage/react-fullpage'
 import { siteQuery } from 'lib/query'
 import { groq } from 'next-sanity'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { Site } from 'lib/types'
+// import { Site } from 'lib/types'
 import { SanityProps } from 'next-sanity-extra'
-import { Section } from 'components/ui/Section'
-import { renderObjectArray } from 'sanity-react-extra'
-import HomeHero from 'components/home/HomeHero'
-import { useMap } from 'react-use'
-import clsx from 'clsx'
-import ThreeJSWaves from 'components/ThreeJSWaves'
-import HomeProduct from 'components/home/HomeProduct'
-import HomeActions from 'components/home/HomeActions'
-import { DemoSection, LandingPage } from 'lib/landingTypes'
+// import { Section } from 'components/ui/Section'
+// import { renderObjectArray } from 'sanity-react-extra'
+// import HomeHero from 'components/home/HomeHero'
+// import { useMap } from 'react-use'
+// import clsx from 'clsx'
+// import ThreeJSWaves from 'components/ThreeJSWaves'
+// import HomeProduct from 'components/home/HomeProduct'
+// import HomeActions from 'components/home/HomeActions'
+// import { DemoSection, LandingPage } from 'lib/landingTypes'
 
-const pluginWrapper = () => {
-  require('lib/scrolloverflow.min.js')
-}
+// const pluginWrapper = () => {
+//   require('lib/scrolloverflow.min.js')
+// }
 
 const query = groq`{
   "site": ${siteQuery},
@@ -44,27 +44,25 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Landing(
-  props: SanityProps<{ site: Site; page: LandingPage }>,
-): ReactElement {
+export default function Landing(props: SanityProps): ReactElement {
   const {
     data: {
-      page: { sections },
+      // page: { sections },
     },
   } = useSanityQuery(query, props)
 
-  const [_, { set: setActive }] = useMap<{
-    home?: boolean
-    datasets?: boolean
-    demo?: boolean
-  }>({})
+  // const [_, { set: setActive }] = useMap<{
+  //   home?: boolean
+  //   datasets?: boolean
+  //   demo?: boolean
+  // }>({})
 
   // const { isWhite } = useCtx()
 
   return (
     <div className="relative bg-black color-white">
       <div className="bifrost__background_noise"></div>
-      <ReactFullpage
+      {/* <ReactFullpage
         pluginWrapper={pluginWrapper}
         //fullpage options
         licenseKey={process.env.FULL_PAGE_KEY}
@@ -131,7 +129,7 @@ export default function Landing(
             </ReactFullpage.Wrapper>
           )
         }}
-      />
+      /> */}
     </div>
   )
 }
