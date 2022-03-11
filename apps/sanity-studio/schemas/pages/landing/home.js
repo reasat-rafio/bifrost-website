@@ -7,10 +7,14 @@ export default {
   icon: AiOutlineHome,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
+
     {
       name: 'subHeadline',
       title: 'Sub-Headline',
@@ -18,7 +22,6 @@ export default {
     },
     {
       name: 'body',
-      title: 'body',
       type: 'string',
     },
     {

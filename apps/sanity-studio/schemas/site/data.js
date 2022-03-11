@@ -7,13 +7,15 @@ export default {
   icon: FaDatabase,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
       name: 'body',
-      title: 'body',
       type: 'string',
     },
     {

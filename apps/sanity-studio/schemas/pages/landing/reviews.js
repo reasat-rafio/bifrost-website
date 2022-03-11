@@ -6,6 +6,10 @@ export default {
   icon: MdOutlineRateReview,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'items',
       type: 'array',
       of: [

@@ -8,8 +8,11 @@ export default {
   icon: AiOutlineHome,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -22,13 +25,11 @@ export default {
           fields: [
             {
               name: 'body',
-              title: 'body',
               type: 'array',
               of: [editor],
             },
             {
               name: 'name',
-              title: 'Name',
               type: 'string',
             },
           ],

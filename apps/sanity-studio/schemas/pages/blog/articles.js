@@ -16,7 +16,6 @@ export default {
           fields: [
             {
               name: 'headline',
-              title: 'Headline',
               type: 'string',
             },
             {
@@ -26,7 +25,6 @@ export default {
             },
             {
               name: 'body',
-              title: 'body',
               type: 'string',
             },
             {

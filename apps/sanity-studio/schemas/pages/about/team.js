@@ -7,8 +7,11 @@ export default {
   icon: AiOutlineTeam,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -26,12 +29,10 @@ export default {
           fields: [
             {
               name: 'name',
-              title: 'Name',
               type: 'string',
             },
             {
               name: 'position',
-              title: 'Position',
               type: 'string',
             },
             {

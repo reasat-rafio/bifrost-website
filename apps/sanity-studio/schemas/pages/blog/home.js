@@ -8,7 +8,6 @@ export default {
   fields: [
     {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {

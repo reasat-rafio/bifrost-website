@@ -7,8 +7,11 @@ export default {
   icon: MdOutlineFeaturedPlayList,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -18,7 +21,6 @@ export default {
     },
     {
       name: 'body',
-      title: 'body',
       type: 'string',
     },
     {
@@ -36,7 +38,6 @@ export default {
           fields: [
             {
               name: 'title',
-              title: 'Title',
               type: 'string',
             },
             {

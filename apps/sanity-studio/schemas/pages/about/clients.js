@@ -7,8 +7,11 @@ export default {
   icon: IoPeopleOutline,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -26,7 +29,6 @@ export default {
           fields: [
             {
               name: 'name',
-              title: 'Name',
               type: 'string',
             },
             {

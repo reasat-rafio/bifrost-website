@@ -8,8 +8,11 @@ export default {
   icon: FaPodcast,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -27,17 +30,14 @@ export default {
           fields: [
             {
               name: 'title',
-              title: 'Title',
               type: 'string',
             },
             {
               name: 'headline',
-              title: 'Headline',
               type: 'string',
             },
             {
               name: 'body',
-              title: 'body',
               type: 'array',
               of: [editor],
             },

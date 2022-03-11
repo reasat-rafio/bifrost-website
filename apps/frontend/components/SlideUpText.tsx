@@ -14,7 +14,6 @@ export default function SlideUp({
   heroTitle?: boolean
   divRef: RefObject<HTMLDivElement>
 }): ReactElement {
-  // const divRef = useRef(null)
   const intersection = useIntersection(divRef, { threshold: 0.2 })
   const lines = text?.split(/\r\n|\n/)
   const [intersected, setIntersected] = useState(false)

@@ -1,28 +1,22 @@
 export default {
-  name: "ctaButton",
-  title: "CTA Button",
-  type: "object",
+  name: 'ctaButton',
+  title: 'CTA Button',
+  type: 'object',
   fields: [
     {
-      name: "title",
-      title: "Title",
-      type: "string",
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     },
     {
-      name: "hide",
-      title: "Hide",
-      type: "boolean",
-      initialValue: false,
-    },
-    {
-      name: "href",
-      title: "href",
-      type: "string",
+      name: 'href',
+      title: 'href',
+      type: 'string',
     },
   ],
   preview: {
     select: {
-      title: "title",
+      title: 'title',
     },
   },
-};
+}

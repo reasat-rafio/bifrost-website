@@ -3,7 +3,6 @@ import { siteQuery } from 'lib/query'
 import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { motion } from 'framer-motion'
 import { renderObjectArray } from 'sanity-react-extra'
 import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
@@ -49,7 +48,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
   } = useSanityQuery(query, props)
 
   return (
-    <motion.div>
+    <div>
       {renderObjectArray(sections, {
         'landing.home': HomeHero,
         'landing.products': HomeProduct,
@@ -82,6 +81,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         'landing.reviews': HomeReview,
         contact: Contact,
       })}
-    </motion.div>
+    </div>
   )
 }

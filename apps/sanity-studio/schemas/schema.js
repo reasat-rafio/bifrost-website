@@ -10,6 +10,7 @@ import footer from './footer'
 import social from './social'
 import seo from './seo'
 import hero from './hero'
+import initial from './initial'
 
 import landing from './pages/landing'
 import landingHomeSection from './pages/landing/home'
@@ -66,6 +67,7 @@ export default createSchema({
     ctaButton,
     footer,
     menuItem,
+    initial,
 
     contactUs,
     contactUsHomeSection,

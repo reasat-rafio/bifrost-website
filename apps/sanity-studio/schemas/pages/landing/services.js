@@ -7,8 +7,11 @@ export default {
   icon: MdOutlineViewCarousel,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
     },
     {
@@ -23,12 +26,10 @@ export default {
           fields: [
             {
               name: 'headline',
-              title: 'Headline',
               type: 'string',
             },
             {
               name: 'body',
-              title: 'body',
               type: 'string',
             },
             {
