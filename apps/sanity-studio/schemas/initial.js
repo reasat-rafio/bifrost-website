@@ -14,5 +14,9 @@ export default {
       name: 'hasEllipse',
       type: 'boolean',
     },
+    {
+      name: 'transitionDisable',
+      type: 'boolean',
+    },
   ],
 }

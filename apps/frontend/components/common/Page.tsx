@@ -33,11 +33,12 @@ const Section: React.FC<{ sectionRef: RefObject<any>; setActiveSection?: any }> 
 }) => {
   const hideSection = (children as any)?.props?.initials?.hide
   const hasEllipse = (children as any)?.props?.initials?.hasEllipse
+  const transitionDisable = (children as any)?.props?.initials?.transitionDisable
   const id = (children as any)?.props.type?.split('.').join('-')
 
   return (
     <div className={clsx('relative', hideSection ? 'hidden' : 'block')} id={id} ref={sectionRef}>
-      {hasEllipse && <PurpleEllipse enableTransition={true} rootRef={sectionRef} />}
+      {hasEllipse && <PurpleEllipse enableTransition={!transitionDisable} rootRef={sectionRef} />}
       <div>{children}</div>
     </div>
   )

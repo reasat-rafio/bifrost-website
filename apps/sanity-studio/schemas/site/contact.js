@@ -6,6 +6,10 @@ export default {
   icon: FaBook,
   fields: [
     {
+      name: 'initials',
+      type: 'initials',
+    },
+    {
       name: 'headline',
       title: 'Headline',
       type: 'string',
