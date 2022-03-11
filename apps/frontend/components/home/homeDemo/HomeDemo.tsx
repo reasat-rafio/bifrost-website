@@ -1,5 +1,4 @@
 import { Preview } from 'components/Preview'
-import PurpleEllipse from 'components/PurpleEllipse'
 import SlideUp from 'components/SlideUpText'
 import { useWindowSize } from 'lib/hooks'
 import { DemoSection } from 'lib/landingTypes'
@@ -28,7 +27,7 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
           minHeight: `${windowWidth >= 1024 ? `${previews.length + 1}00vh` : 'auto'} `,
         }}
       >
-        <PurpleEllipse enableTransition={true} rootRef={previewRef} />
+        {/* <PurpleEllipse enableTransition={true} rootRef={previewRef} /> */}
 
         {windowWidth >= 1024 ? (
           <div
