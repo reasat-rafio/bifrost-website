@@ -107,7 +107,7 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
               )}
             >
               <div className="text-center md:text-head-1 text-[28px] leading-[28px]  font-[275]">
-                <SlideUp text={data.headline} />
+                {/* <SlideUp text={data.headline} /> */}
               </div>
             </div>
           ),

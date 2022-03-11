@@ -13,22 +13,22 @@ interface NavbarProps {
   logo: SanityImage
   darkLogo: SanityImage
   menu: MenuItem[]
-  activeSection: {
-    hero?: boolean
-    datasets?: boolean
-  }
+  // activeSection: {
+  //   hero?: boolean
+  //   datasets?: boolean
+  // }
 }
 
-export default function Navbar({ logo, menu, activeSection }: NavbarProps): ReactElement {
-  let activeName: string = Object.entries(activeSection).sort(
-    ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
-  )[0]?.[0]
-  activeName = activeName === 'hero' || 'demo' ? 'home' : activeName
+export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
+  // let activeName: string = Object.entries(activeSection).sort(
+  //   ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
+  // )[0]?.[0]
+  // activeName = activeName === 'hero' || 'demo' ? 'home' : activeName
   const router = useRouter()
   const ctaButton = menu.filter((men) => men.isCTA)[0]
   const [smallNavOpen, setSmallNavOpen] = useState<boolean>(false)
   const [smallNav, setSmallNav] = useState<boolean>(false)
-  const [isActive, setIsActive] = useState(false)
+  // const [isActive, setIsActive] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
 
   const navVisible = !smallNav || smallNavOpen
@@ -155,7 +155,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                               onClick={(ev) => {
                                 if (men.submenu && men.submenu?.length > 0) {
                                   ev.preventDefault()
-                                  setIsActive(!isActive)
+                                  // setIsActive(!isActive)
                                 }
                               }}
                               className={clsx(
@@ -164,18 +164,18 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                               )}
                             >
                               <span
-                                className={clsx(
-                                  activeName === men.title.toLowerCase() &&
-                                    'text-transparent bg-clip-text ',
-                                  activeName === men.title.toLowerCase() &&
-                                    'bifrost__gradient_green',
-                                )}
+                              // className={clsx(
+                              //   activeName === men.title.toLowerCase() &&
+                              //     'text-transparent bg-clip-text ',
+                              //   activeName === men.title.toLowerCase() &&
+                              //     'bifrost__gradient_green',
+                              // )}
                               >
                                 {men.title}
                               </span>
                             </a>
                           </Link>
-                          {activeName === men?.title.toLowerCase() && (
+                          {/* {activeName === men?.title.toLowerCase() && (
                             <motion.div
                               layout
                               className={clsx(
@@ -186,7 +186,7 @@ export default function Navbar({ logo, menu, activeSection }: NavbarProps): Reac
                               initial={false}
                               transition={{ duration: 0.2 }}
                             />
-                          )}
+                          )} */}
                         </li>
                       ))}
                   </ul>

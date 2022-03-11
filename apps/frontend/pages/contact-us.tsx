@@ -57,12 +57,7 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
       <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
         <div className="bifrost__background_noise"></div>
       </div>
-      <Navbar
-        darkLogo={site.logos.darkLogo}
-        logo={site.logos.logo}
-        menu={site.nav.menu}
-        activeSection={activeSection}
-      />
+
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       <Section name="home" setActive={setActive} isWhite={true} threshold={0.4}>
         {renderObjectArray(sections, {

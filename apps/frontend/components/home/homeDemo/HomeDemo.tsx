@@ -17,7 +17,7 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
     <section ref={previewRef}>
       <div className="flex justify-center items-center relative md:h-[60vh] h-[50vh] text-white">
         <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
-          <SlideUp divRef={headingRef} text={headline} />
+          {headingRef.current && <SlideUp divRef={headingRef} text={headline} />}
         </div>
       </div>
       <div

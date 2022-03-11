@@ -4,6 +4,9 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import { AppProvider } from 'contexts/global'
+import Navbar from 'components/Navbar'
+import { motion } from 'framer-motion'
+import Footer from 'components/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
@@ -36,7 +39,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" href={faviconImage} />
       </Head>
       <AppProvider>
-        <div>
+        <motion.div
+          animate={{
+            backgroundColor: '#000',
+            color: '#fff',
+            transition: { ease: 'easeInOut', duration: 0.3 },
+          }}
+          className="relative overflow-clip"
+        >
           <NextSeo
             title={pageProps.data?.page.seo.title}
             description={pageProps.data?.page.seo.description}
@@ -44,8 +54,24 @@ function MyApp({ Component, pageProps }: AppProps) {
               images: openGraphImages,
             }}
           />
+          {pageProps.data?.site && (
+            <Navbar
+              darkLogo={pageProps.data?.site.logos.darkLogo}
+              logo={pageProps.data?.site.logos.logo}
+              menu={pageProps.data?.site.nav.menu}
+            />
+          )}
+          <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
+            <div className="bifrost__background_noise"></div>
+          </div>
           <Component {...pageProps} />
-        </div>
+          {pageProps.data?.site && (
+            <Footer
+              logo={pageProps.data?.site.logos.logo}
+              footer={pageProps.data?.site.nav.footer}
+            />
+          )}
+        </motion.div>
       </AppProvider>
     </div>
   )

@@ -13,7 +13,7 @@ export default function HomeContact(data: ContactSection): ReactElement {
       )}
     >
       <div className="lg:text-head-2 text-[40px] leading-[40px] font-[275] xl:w-[50%] md:w-[60%] sm:w-[70%]">
-        <SlideUp text={data.headline} />
+        {/* <SlideUp text={data.headline} /> */}
       </div>
       <div className="self-end lg:w-[70%] w-full flex flex-col space-y-5">
         <input
