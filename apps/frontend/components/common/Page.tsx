@@ -7,21 +7,22 @@ interface PageProps {}
 export const Page: React.FC<PageProps> = (props) => {
   let children: any = React.Children.toArray(props.children)
 
-  const [watchonViewRefs, setWatchonViewRef] = useState([])
+  const [sectionsRef, setSectionsRef] = useState([])
 
   useEffect(() => {
-    setWatchonViewRef((watchonViewRef) =>
+    setSectionsRef((watchonViewRef) =>
       Array.from({ length: children.length }).map((_, i) => watchonViewRef[i] || createRef()),
     )
   }, [children.length])
 
   return (
     <div>
-      {children.map((child: any, index: number) => (
-        <Section sectionRef={watchonViewRefs[index]} key={`care-guide-section-${index}`}>
-          {child}
-        </Section>
-      ))}
+      {sectionsRef.length &&
+        children.map((child: any, index: number) => (
+          <Section sectionRef={sectionsRef[index]} key={`care-guide-section-${index}`}>
+            {child}
+          </Section>
+        ))}
     </div>
   )
 }

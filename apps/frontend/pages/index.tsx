@@ -3,7 +3,7 @@ import { siteQuery } from 'lib/query'
 import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray } from 'sanity-react-extra'
+import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import HomeProduct from 'components/home/HomeProduct'
@@ -23,6 +23,7 @@ const query = groq`{
     ...,
     sections[] {
       ...,
+      "image": ${withDimensions('image')},
       previews[] {
         ...
         asset->{
@@ -32,6 +33,19 @@ const query = groq`{
           }
         }
       },
+      images[] {
+        ...
+        asset->{
+          ...,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      items[]{
+        ...,
+        "image": ${withDimensions('image')},
+      }
     },
   },
 }`
