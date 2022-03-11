@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Service from 'components/Service'
+import SlideUp from 'components/SlideUpText'
 import { motion } from 'framer-motion'
 import { ServiceSection } from 'lib/landingTypes'
 import { ReactElement, useRef, useState } from 'react'
@@ -7,6 +8,7 @@ import { useWindowSize } from 'react-use'
 
 export default function HomeService(data: ServiceSection): ReactElement {
   const serviceRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
 
   const [current, setCurrent] = useState(0)
   const [isScroll, setIsScroll] = useState(false)
@@ -43,8 +45,13 @@ export default function HomeService(data: ServiceSection): ReactElement {
   }
 
   return (
-    <div>
-      <section
+    <section>
+      <div className="container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh] text-white">
+        <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
+          <SlideUp divRef={headingRef} text={data.headline} />
+        </div>
+      </div>
+      <div
         data-element="background"
         className="relative top-0 flex max-h-[6000px] py-section justify-center items-start !transition duration-300 ease-in-out"
         style={{
@@ -142,7 +149,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

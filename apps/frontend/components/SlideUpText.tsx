@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { ReactElement, RefObject, useEffect, useState } from 'react'
 import { useIntersection } from 'react-use'
 import { PortableText } from 'utils/sanity'
 
@@ -7,12 +7,14 @@ export default function SlideUp({
   text,
   blocks,
   heroTitle,
+  divRef,
 }: {
   text?: string
   blocks?: any[]
   heroTitle?: boolean
+  divRef: RefObject<HTMLDivElement>
 }): ReactElement {
-  const divRef = useRef(null)
+  // const divRef = useRef(null)
   const intersection = useIntersection(divRef, { threshold: 0.2 })
   const lines = text?.split(/\r\n|\n/)
   const [intersected, setIntersected] = useState(false)

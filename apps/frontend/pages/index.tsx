@@ -7,7 +7,6 @@ import { SanityProps } from 'next-sanity-extra'
 import { useMap } from 'react-use'
 import { Section } from 'components/ui/Section'
 import { motion } from 'framer-motion'
-import clsx from 'clsx'
 import { renderObjectArray } from 'sanity-react-extra'
 import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
@@ -19,9 +18,8 @@ import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
 import Footer from 'components/Footer'
-import SlideUp from 'components/SlideUpText'
 import Contact from 'components/Contact'
-import { DemoSection, LandingPage, ServiceSection } from 'lib/landingTypes'
+import { LandingPage } from 'lib/landingTypes'
 import Data from 'components/Data'
 
 const query = groq`{
@@ -94,43 +92,13 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           'landing.products': HomeProduct,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true}>
-        {renderObjectArray(sections, {
-          'landing.demo': (data: DemoSection) => (
-            <div
-              className={clsx(
-                'container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh]',
-                'text-white',
-              )}
-            >
-              <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
-                <SlideUp text={data.headline} />
-              </div>
-            </div>
-          ),
-        })}
-      </Section>
+
       <Section name="demo" setActive={setActive} threshold={0.2}>
         {renderObjectArray(sections, {
           'landing.demo': HomeDemo,
         })}
       </Section>
-      <Section name="tech" threshold={0.2} isWhite={true}>
-        {renderObjectArray(sections, {
-          'landing.services': (data: ServiceSection) => (
-            <div
-              className={clsx(
-                'container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh]',
-                'text-white',
-              )}
-            >
-              <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
-                <SlideUp text={data.headline} />
-              </div>
-            </div>
-          ),
-        })}
-      </Section>
+
       <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
