@@ -15,6 +15,7 @@ import HomeReview from 'components/home/HomeReview'
 import Contact from 'components/Contact'
 import { LandingPage } from 'lib/landingTypes'
 import Data from 'components/Data'
+import { Page } from 'components/common/Page'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -48,17 +49,18 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
   } = useSanityQuery(query, props)
 
   return (
-    <div>
+    <Page>
       {renderObjectArray(sections, {
         'landing.home': HomeHero,
         'landing.products': HomeProduct,
         'landing.demo': HomeDemo,
       })}
-
-      <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
-      <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
-      <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
-      <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
+      <>
+        <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
+      </>
 
       {renderObjectArray(sections, {
         'landing.services': HomeService,
@@ -81,6 +83,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         'landing.reviews': HomeReview,
         contact: Contact,
       })}
-    </div>
+    </Page>
   )
 }

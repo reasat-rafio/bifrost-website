@@ -21,6 +21,7 @@ export const Section: React.FC<SectionProps> = ({
   hasEllipse = false,
 }) => {
   const ref = useRef(null)
+
   const rootClass = clsx('relative', className && className, hidden ? 'hidden' : 'block')
 
   return (
