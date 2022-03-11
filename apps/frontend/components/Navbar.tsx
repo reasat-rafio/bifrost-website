@@ -13,22 +13,13 @@ interface NavbarProps {
   logo: SanityImage
   darkLogo: SanityImage
   menu: MenuItem[]
-  // activeSection: {
-  //   hero?: boolean
-  //   datasets?: boolean
-  // }
 }
 
 export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
-  // let activeName: string = Object.entries(activeSection).sort(
-  //   ([_s1, r1]: [string, any], [_s2, r2]: [string, any]) => r2 - r1,
-  // )[0]?.[0]
-  // activeName = activeName === 'hero' || 'demo' ? 'home' : activeName
   const router = useRouter()
   const ctaButton = menu.filter((men) => men.isCTA)[0]
   const [smallNavOpen, setSmallNavOpen] = useState<boolean>(false)
   const [smallNav, setSmallNav] = useState<boolean>(false)
-  // const [isActive, setIsActive] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
 
   const navVisible = !smallNav || smallNavOpen
@@ -118,7 +109,6 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
               }}
             >
               <motion.nav
-                // className={clsx(_tyles.menu)}
                 variants={{
                   initial: {
                     y: '-100%',
@@ -155,7 +145,6 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
                               onClick={(ev) => {
                                 if (men.submenu && men.submenu?.length > 0) {
                                   ev.preventDefault()
-                                  // setIsActive(!isActive)
                                 }
                               }}
                               className={clsx(
@@ -164,29 +153,26 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
                               )}
                             >
                               <span
-                              // className={clsx(
-                              //   activeName === men.title.toLowerCase() &&
-                              //     'text-transparent bg-clip-text ',
-                              //   activeName === men.title.toLowerCase() &&
-                              //     'bifrost__gradient_green',
-                              // )}
+                                className={clsx(
+                                  router.asPath === men.href &&
+                                    'text-transparent bg-clip-text bifrost__gradient_green',
+                                )}
                               >
                                 {men.title}
                               </span>
                             </a>
                           </Link>
-                          {/* {activeName === men?.title.toLowerCase() && (
+                          {router.asPath === men?.href && (
                             <motion.div
                               layout
                               className={clsx(
-                                'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px]',
-                                activeName === men.title.toLowerCase() && 'bifrost__gradient_green',
+                                'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] bifrost__gradient_green',
                               )}
                               layoutId="underline"
                               initial={false}
                               transition={{ duration: 0.2 }}
                             />
-                          )} */}
+                          )}
                         </li>
                       ))}
                   </ul>
