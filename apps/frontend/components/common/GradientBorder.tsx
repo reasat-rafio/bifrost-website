@@ -5,21 +5,27 @@ interface GradientBorderProps {
   className?: string
   borderSize?: string
   borderRadious?: string
+  gradient?: string
+  innerClass?: string
+  background?: string
 }
 
 export const GradientBorder: React.FC<GradientBorderProps> = ({
   children,
+  className,
   borderSize = '1px',
   borderRadious = '15px',
-  className,
+  gradient = 'bifrost__gradient_green',
+  innerClass = '',
+  background = 'background__dark',
 }) => {
   return (
     <div
-      className={clsx(className, 'bifrost__gradient_green relative')}
+      className={clsx(className, gradient, 'relative')}
       style={{ padding: borderSize, borderRadius: borderRadious }}
     >
       <div
-        className="flex flex-col justify-between background__dark "
+        className={clsx(innerClass, background, 'flex flex-col justify-between')}
         style={{ borderRadius: borderRadious }}
       >
         {children}

@@ -1,6 +1,4 @@
-import clsx from 'clsx'
-import { motion } from 'framer-motion'
-import { ReactElement, useRef } from 'react'
+import { ReactElement, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { imageUrlBuilder } from 'utils/sanity'
@@ -9,35 +7,35 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import { ProjectSection } from 'lib/landingTypes'
+import { ArrowRight } from 'components/icons/ArrowRight'
+import { ArrowLeft } from 'components/icons/ArrowLeft'
+import { GradientBorder } from 'components/common/GradientBorder'
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
-  const navigationPrevRef = useRef<HTMLSpanElement>(null)
-  const navigationNextRef = useRef<HTMLSpanElement>(null)
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
-    <div
-      className={clsx(
-        'container grid grid-cols-10 items-center z-10 relative gap-x-5',
-        'text-white',
-      )}
-    >
-      <div className="flex flex-col lg:col-span-3 col-span-10  gap-y-4 z-10 justify-center">
-        <div className="md:text-head-4 text-[28px] leading-[28px] font-[275]">{data.headline}</div>
-        <div className="md:text-body-1 text-[14px] leading-[21px] font-[300]">{data.body}</div>
-        <div className="flex gap-x-4">
-          <span ref={navigationPrevRef} className="cursor-pointer">
-            <BsArrowLeft color="#c9ff71" size="32" />
-          </span>
-          <span ref={navigationNextRef} className="cursor-pointer">
-            <BsArrowRight color="#c9ff71" size="32" />
-          </span>
+    <div className="grid grid-cols-12 z-10 gap-12 max-w-screen-2xl ml-auto pl-6">
+      <div className="flex flex-col lg:col-span-4 col-span-12 gap-y-10 z-10 justify-center">
+        <h4 className="md:text-head-4 text-[28px] leading-[28px] font-[275] mt-5">
+          {data.headline}
+        </h4>
+        <p className="md:text-body-1 text-base font-light opacity-70">{data.body}</p>
+        <div className="flex gap-x-4 mt-5">
+          <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
+            <ArrowLeft />
+          </button>
+          <button ref={(node) => setNextEl(node)} className="cursor-pointer">
+            <ArrowRight />
+          </button>
         </div>
       </div>
-      <div className="overflow-hidden border-[#1E2531] border-l-2 lg:col-span-7 col-span-10">
+      <div className="lg:col-span-8 col-span-12">
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
+          navigation={{ prevEl, nextEl }}
           breakpoints={{
             400: {
               slidesPerView: 1.1,
@@ -53,11 +51,11 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
             },
 
             1280: {
-              slidesPerView: 3,
+              slidesPerView: 2.8,
               spaceBetween: 30,
             },
             1536: {
-              slidesPerView: 3,
+              slidesPerView: 3.2,
               spaceBetween: 30,
             },
           }}
@@ -65,35 +63,19 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           mousewheel={{ forceToAxis: true }}
           loop
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
-          onInit={(swiper: any) => {
-            swiper.params.navigation.prevEl = navigationPrevRef.current
-            swiper.params.navigation.nextEl = navigationNextRef.current
-            swiper.init()
-            swiper.navigation.update()
-          }}
         >
           {data.items.map((item) => (
-            <SwiperSlide key={item.name} className="h-full">
-              <motion.div
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    scale: 1,
-                  },
-                  hidden: {
-                    opacity: 0,
-                    scale: 0,
-                  },
-                }}
-                className="grid px-1 rounded-2xl project__item py-5"
+            <SwiperSlide key={item.name}>
+              <GradientBorder
+                gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/35 to-[#7187FF]/30"
+                borderRadious="10px"
+                borderSize="0.85px"
+                className=""
+                innerClass="h-full p-3 rounded-[8px]"
               >
-                <div className="h-full w-full flex justify-center ">
+                <div className="h-full w-full ">
                   <SanityImg
-                    className="mt-auto z-10 rounded-md object-cover"
+                    className="mt-auto z-10 rounded-[20px] object-cover xl:h-[300px] md:h-[250px] h-[300px] w-full"
                     builder={imageUrlBuilder}
                     image={item.image}
                     alt={item.name}
@@ -101,8 +83,8 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
                     height={220}
                   />
                 </div>
-                <div className="text-center">{item.name}</div>
-              </motion.div>
+                <h6 className="text-center my-5">{item.name}</h6>
+              </GradientBorder>
             </SwiperSlide>
           ))}
         </Swiper>
