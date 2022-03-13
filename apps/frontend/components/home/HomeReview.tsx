@@ -2,15 +2,15 @@ import { ReactElement, useEffect, useRef, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Mousewheel, Pagination } from 'swiper'
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
-import { motion } from 'framer-motion'
 import { imageUrlBuilder } from 'utils/sanity'
 import { ReviewSection } from 'lib/landingTypes'
 import { GradientBorder } from 'components/common/GradientBorder'
+import { ArrowRight } from 'components/icons/ArrowRight'
+import { ArrowLeft } from 'components/icons/ArrowLeft'
 
 export default function HomeReview({ items }: ReviewSection): ReactElement {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
@@ -32,7 +32,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
   }, [])
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl relative mx-auto">
       <div className="review-carousel">
         <Swiper
           className=""
@@ -104,19 +104,19 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           ))}
         </Swiper>
       </div>
-      {/* <button
+      <button
         ref={(node) => setPrevEl(node)}
-        className="cursor-pointer absolute md:left-[5%] md:right-0 right-[15%] md:bottom-[45%] bottom-[25%] z-30 p-2"
+        className="cursor-pointer absolute md:left-[5%] md:right-0 right-[15%] md:bottom-[45%] bottom-[25%] z-30"
       >
-        <BsArrowLeft color="#c9ff71" size="32" />
+        <ArrowLeft />
       </button>
 
       <button
         ref={(node) => setNextEl(node)}
-        className="cursor-pointer absolute md:right-[5%] right-0 md:bottom-[45%] bottom-[25%] z-30 p-2"
+        className="cursor-pointer absolute md:right-[5%] right-0 md:bottom-[45%] bottom-[25%] z-30"
       >
-        <BsArrowRight color="#c9ff71" size="32" />
-      </button> */}
+        <ArrowRight />
+      </button>
     </div>
   )
 }

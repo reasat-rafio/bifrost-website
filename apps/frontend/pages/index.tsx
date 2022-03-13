@@ -64,6 +64,13 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
 
   return (
     <Page>
+      <svg className="w-0 h-0 absolute" aria-hidden="true" focusable="false">
+        <linearGradient id="my-cool-gradient" x2="1" y2="1">
+          <stop offset="0%" stop-color="#447799" />
+          <stop offset="50%" stop-color="#224488" />
+          <stop offset="100%" stop-color="#112266" />
+        </linearGradient>
+      </svg>
       {renderObjectArray(sections, {
         'landing.home': HomeHero,
         'landing.products': HomeProduct,
