@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React from 'react'
 
 interface GradientBorderProps {
@@ -8,18 +9,20 @@ interface GradientBorderProps {
 
 export const GradientBorder: React.FC<GradientBorderProps> = ({
   children,
-  borderSize = '5px',
+  borderSize = '1px',
   borderRadious = '15px',
+  className,
 }) => {
   return (
-    <div className="relative">
+    <div
+      className={clsx(className, 'bifrost__gradient_green relative')}
+      style={{ padding: borderSize, borderRadius: borderRadious }}
+    >
       <div
-        className="bifrost__gradient_green"
-        style={{ padding: borderSize, borderRadius: borderRadious }}
+        className="flex flex-col justify-between background__dark "
+        style={{ borderRadius: borderRadious }}
       >
-        <div className="flex flex-col justify-between  bg-white text-white rounded-lg p-1">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   )

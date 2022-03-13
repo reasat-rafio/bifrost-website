@@ -85,6 +85,10 @@ html {
   );
 }
 
+.background__dark {
+  background: linear-gradient(138.39deg, rgba(18, 23, 35, 1) -7.57%, rgba(7, 13, 23, 1) 107.25%);
+}
+
 .dropdown:hover .menu-wrapper {
   opacity: 1;
   pointer-events: auto;
@@ -148,4 +152,16 @@ html {
     opacity: 0;
     transform: translate(0, 100%);
   }
+}
+
+.review-carousel .swiper-pagination-bullet {
+  background-color: #757aac !important;
+  width: 10px !important;
+  opacity: 0.95 !important;
+  height: 10px !important;
+}
+
+.review-carousel .swiper-pagination-bullet-active {
+  background-color: #fff !important;
+  opacity: 1 !important;
 }
