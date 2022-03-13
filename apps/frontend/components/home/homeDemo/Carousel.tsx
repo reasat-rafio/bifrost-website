@@ -23,7 +23,7 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
     })
 
     const currentSlide = swiper.activeIndex
-    const newHeight = swiper.slides[currentSlide].offsetHeight
+    const newHeight = swiper.slides[currentSlide]?.offsetHeight
 
     document
       .querySelectorAll<HTMLElement>(
