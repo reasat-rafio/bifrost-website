@@ -17,13 +17,13 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
-    <div className="grid grid-cols-12 z-10 gap-12 max-w-screen-2xl ml-auto pl-6">
-      <div className="flex flex-col lg:col-span-4 col-span-12 gap-y-10 z-10 justify-center">
+    <div className="grid grid-cols-12 z-10 md:gap-12 max-w-screen-2xl ml-auto pl-6 mb-24">
+      <div className="flex flex-col lg:col-span-4 col-span-12 2xl:gap-y-10 gap-y-6 z-10 justify-center">
         <h4 className="md:text-head-4 text-[28px] leading-[28px] font-[275] mt-5">
           {data.headline}
         </h4>
         <p className="md:text-body-1 text-base font-light opacity-70">{data.body}</p>
-        <div className="flex gap-x-4 mt-5">
+        <div className="flex gap-x-4 2xl:mt-5 mt-3">
           <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
             <ArrowLeft />
           </button>
@@ -32,14 +32,14 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           </button>
         </div>
       </div>
-      <div className="lg:col-span-8 col-span-12">
+      <div className="lg:col-span-8 col-span-12 md:mt-0 mt-10">
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
           navigation={{ prevEl, nextEl }}
           breakpoints={{
-            400: {
+            200: {
               slidesPerView: 1.1,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             560: {
               slidesPerView: 1.5,
@@ -62,6 +62,8 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           loopedSlides={data.items.length}
           mousewheel={{ forceToAxis: true }}
           loop
+          grabCursor
+          speed={600}
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
         >
           {data.items.map((item) => (

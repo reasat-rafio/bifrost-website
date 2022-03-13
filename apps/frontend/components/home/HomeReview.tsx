@@ -56,7 +56,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
             <SwiperSlide key={name}>
               <div
                 className="relative grid grid-cols-12"
-                style={{ padding: `${windowWidth >= 768 && `${transformWidth / 2}px`}` }}
+                style={{ padding: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}` }}
               >
                 <div className="col-span-1 hidden md:block" />
                 <GradientBorder className="md:col-span-11 col-span-12 ">
@@ -64,7 +64,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                     className="relative grid grid-cols-12 transform justify-center items-end md:px-0 px-3"
                     style={{
                       transform: `${
-                        windowWidth >= 768 && `translate(-${transformWidth / 2}px, 0)`
+                        windowWidth >= 768 ? `translate(-${transformWidth / 2}px, 0)` : ''
                       }`,
                     }}
                   >
