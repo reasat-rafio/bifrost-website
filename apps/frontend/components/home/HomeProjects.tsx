@@ -14,6 +14,7 @@ import { GradientBorder } from 'components/common/GradientBorder'
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
+
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
@@ -41,20 +42,24 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
               slidesPerView: 1.1,
               spaceBetween: 10,
             },
-            560: {
-              slidesPerView: 1.5,
+            640: {
+              slidesPerView: 1.7,
               spaceBetween: 20,
             },
-            800: {
-              slidesPerView: 2,
+            768: {
+              slidesPerView: 2.5,
               spaceBetween: 30,
             },
 
-            1280: {
-              slidesPerView: 2.8,
+            1024: {
+              slidesPerView: 2.5,
               spaceBetween: 30,
             },
-            1536: {
+            1280: {
+              slidesPerView: 2.9,
+              spaceBetween: 30,
+            },
+            1440: {
               slidesPerView: 3.2,
               spaceBetween: 30,
             },

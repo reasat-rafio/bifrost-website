@@ -7,17 +7,24 @@ module.exports = {
     './lib/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    container: {
-      screens: {
-        '2xl': '1320px',
-      },
-      padding: {
-        DEFAULT: '1.6rem',
-        sm: '2rem',
-      },
-      center: true,
-    },
     extend: {
+      container: {
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1440px',
+        },
+        padding: {
+          DEFAULT: '1.6rem',
+          sm: '2rem',
+          lg: '2rem',
+          xl: '8rem',
+          '2xl': '4rem',
+        },
+        center: true,
+      },
       colors: {
         heading: '#000',
         description: '#183B56',
