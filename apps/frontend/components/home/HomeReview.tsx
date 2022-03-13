@@ -11,15 +11,16 @@ import { ReviewSection } from 'lib/landingTypes'
 import { GradientBorder } from 'components/common/GradientBorder'
 import { ArrowRight } from 'components/icons/ArrowRight'
 import { ArrowLeft } from 'components/icons/ArrowLeft'
+import { useWindowSize } from 'lib/hooks'
 
 export default function HomeReview({ items }: ReviewSection): ReactElement {
+  const windowWidth = useWindowSize()?.width ?? 0
+
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   const [transformWidth, setTransFromWidth] = useState(0)
   const imageBlockRef = useRef<HTMLDivElement>(null)
-
-  console.log(transformWidth)
 
   useEffect(() => {
     const handleWidth = () => setTransFromWidth(imageBlockRef?.current?.offsetWidth ?? 0)
@@ -32,10 +33,10 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
   }, [])
 
   return (
-    <div className="max-w-7xl relative mx-auto">
+    <div className="max-w-7xl relative md:mx-auto mx-6">
       <div className="review-carousel">
         <Swiper
-          className=""
+          className="md:!pb-0 !pb-24"
           modules={[Autoplay, Navigation, Mousewheel, Pagination]}
           navigation={{ prevEl, nextEl }}
           slidesPerView={1}
@@ -54,15 +55,19 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
             <SwiperSlide key={name}>
               <div
                 className="relative grid grid-cols-12"
-                style={{ padding: `${transformWidth / 2}px` }}
+                style={{ padding: `${windowWidth >= 768 && `${transformWidth / 2}px`}` }}
               >
-                <div className="col-span-1 hidden lg:block" />
-                <GradientBorder className="lg:col-span-11 col-span-12">
+                <div className="col-span-1 hidden md:block" />
+                <GradientBorder className="md:col-span-11 col-span-12 ">
                   <div
-                    className="relative grid grid-cols-12 transform justify-center items-end "
-                    style={{ transform: `translate(-${transformWidth / 2}px, 0)` }}
+                    className="relative grid grid-cols-12 transform justify-center items-end md:px-0 px-3"
+                    style={{
+                      transform: `${
+                        windowWidth >= 768 && `translate(-${transformWidth / 2}px, 0)`
+                      }`,
+                    }}
                   >
-                    <div className="col-span-3">
+                    <div className="col-span-3 md:block hidden">
                       <div
                         className="flex justify-center items-center transfrom translate-y-[40%]"
                         ref={imageBlockRef}
@@ -79,22 +84,45 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                         </GradientBorder>
                       </div>
                     </div>
-                    <div className="col-span-9 pt-10 pb-16 lg:pl-10">
+                    <div className="md:col-span-9 col-span-12 md:pt-10 md:pb-16 md:pl-10 transform md:translate-y-0 translate-y-[15%] px-3 md:px-0">
                       <p
-                        className="md:text-head-5 text-[26px] leading-[39px] font-light mb-8"
+                        className="md:text-head-5 text-[26px] leading-[39px] font-light md:mb-8"
                         style={{ textShadow: `0px 4px 40px rgba(0, 0, 0, 0.7)` }}
                       >
                         {body}
                       </p>
 
-                      <div className="relative inline-block mb-5">
-                        <span className="md:text-body-1 text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient_green font-light ">
+                      <div className="relative  mb-5 hidden md:inline-block">
+                        <span className="text-body-1  leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient_green font-light ">
                           {name}
                         </span>
                         <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient_green" />
                       </div>
-                      <div className="opacity-50 md:text-body-3 text-base md:text-left text-right">
+                      <div className="opacity-50 text-body-3 text-left hidden md:block">
                         {description}
+                      </div>
+                    </div>
+                    <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-1/2">
+                      <GradientBorder className="" borderRadious="100%" borderSize="10px">
+                        <SanityImg
+                          className="rounded-full"
+                          builder={imageUrlBuilder}
+                          image={image}
+                          alt={name}
+                          title={name}
+                          height={130}
+                        />
+                      </GradientBorder>
+                      <div>
+                        <div className="relative mb-2 ">
+                          <span className="text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient_green font-light ">
+                            {name}
+                          </span>
+                          <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient_green" />
+                        </div>
+                        <div className="opacity-50 md:text-body-3 text-base md:text-left text-right">
+                          {description}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -104,19 +132,17 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           ))}
         </Swiper>
       </div>
-      <button
-        ref={(node) => setPrevEl(node)}
-        className="cursor-pointer absolute md:left-[5%] md:right-0 right-[15%] md:bottom-[45%] bottom-[25%] z-30"
-      >
-        <ArrowLeft />
-      </button>
+      <span className="absolute md:left-[5%] md:right-0 right-[15%] transform md:translate-y-1/2 md:bottom-1/2 bottom-[-5%] z-30">
+        <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
+          <ArrowLeft />
+        </button>
+      </span>
 
-      <button
-        ref={(node) => setNextEl(node)}
-        className="cursor-pointer absolute md:right-[5%] right-0 md:bottom-[45%] bottom-[25%] z-30"
-      >
-        <ArrowRight />
-      </button>
+      <span className="absolute md:right-[5%] right-0 md:bottom-1/2 transform md:translate-y-1/2  bottom-[-5%] z-30 ">
+        <button ref={(node) => setNextEl(node)} className="cursor-pointer ">
+          <ArrowRight />
+        </button>
+      </span>
     </div>
   )
 }
