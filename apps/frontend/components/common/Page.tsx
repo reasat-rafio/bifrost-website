@@ -19,7 +19,7 @@ export const Page: React.FC<PageProps> = (props) => {
     <div>
       {sectionsRef.length &&
         children.map((child: any, index: number) => (
-          <Section sectionRef={sectionsRef[index]} key={`care-guide-section-${index}`}>
+          <Section sectionRef={sectionsRef[index]} key={`section-${index}`}>
             {child}
           </Section>
         ))}
