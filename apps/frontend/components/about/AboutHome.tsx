@@ -15,13 +15,11 @@ export default function AboutHome(data: HomeSection): ReactElement {
       </div>
       <div className="container min-h-screen overflow-y-clip lg:py-[5%] py-[20%] flex flex-col justify-center items-center">
         <div className="text-center max-w-2xl flex flex-col lg:space-y-12 space-y-8">
-          <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
+          <h2 className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
             {data.subHeadline}
-          </div>
-          <div className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">
-            {data.headline}
-          </div>
-          <div className="lg:text-body-2 text-body-2 font-[300] opacity-70">{data.body}</div>
+          </h2>
+          <h1 className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">{data.headline}</h1>
+          <p className="lg:text-body-2 text-body-2 font-[300] opacity-70">{data.body}</p>
           <div className="flex mx-auto">
             <Button variant="secondary">
               <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
