@@ -76,7 +76,6 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
                 gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/200 to-[#7187FF]/30"
                 borderRadious="10px"
                 borderSize="0.85px"
-                className=""
                 innerClass="h-full p-3 rounded-[8px]"
               >
                 <div className="h-full w-full ">

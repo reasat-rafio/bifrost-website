@@ -41,7 +41,7 @@ export interface ContactSection {
 }
 
 export interface DataSection {
-  headline: string
+  headline: any
   body: string
   ctaButton: CTAButton
 }

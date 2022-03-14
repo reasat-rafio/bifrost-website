@@ -1,15 +1,30 @@
 import Button from 'components/ui/Button'
 import { DataSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
+import { PortableText } from 'utils/sanity'
+import { GradientBorder } from './common/GradientBorder'
 
 export default function Data(data: DataSection): ReactElement {
   return (
-    <div className="container flex justify-center items-center z-10 relative text-center xl:my-36 lg:my-20 my-16">
-      <div className="bifrost__transparent_card w-full md:py-20 py-10 px-5 flex flex-col gap-y-6">
-        <div className="md:text-head-3 text-[22px] leading-[22px] font-[275]">{data.headline}</div>
-        <div className="md:text-body-2 text-[14px] leading-[16px] font-[300]">{data.body}</div>
-        <div className="flex items-center justify-center">
-          <div className="relative md:w-2/5 w-full md:space-y-0 space-y-5">
+    <div className="container z-10 relative text-center xl:my-36 lg:my-20 my-16 ">
+      <GradientBorder>
+        <div className="bifrost__transparent__card md:py-20 py-10 px-5 flex flex-col rounded-[15px] space-y-12">
+          <h3 className="md:text-[62px] text-[22px] leading-none font-[275]">
+            <PortableText
+              blocks={data.headline}
+              serializers={{
+                marks: {
+                  pop: ({ children }: any) => (
+                    <span className="text-transparent bg-clip-text bifrost__gradient_green">
+                      {children}
+                    </span>
+                  ),
+                },
+              }}
+            />
+          </h3>
+          <p className="md:text-body-2 text-[14px] font-[300] max-w-2xl mx-auto">{data.body}</p>
+          <div className="relative md:space-y-0 space-y-5 w-full max-w-2xl mx-auto">
             <input
               className="shadow w-full input__dark rounded-lg appearance-none py-6 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
@@ -23,7 +38,7 @@ export default function Data(data: DataSection): ReactElement {
             </div>
           </div>
         </div>
-      </div>
+      </GradientBorder>
     </div>
   )
 }
