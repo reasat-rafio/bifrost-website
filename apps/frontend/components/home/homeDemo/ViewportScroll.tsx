@@ -28,8 +28,8 @@ export const ViewportScroll: React.FC<ViewportScrollProps> = ({
   const xInputPosition = (ratio / totalLength) * 300
 
   const x = useMotionValue(0)
-  const xInput = [-100, xInputPosition - 150, 100]
-  const colorOutput = ['#7187FF', '#E4ACFF', '#F8E9FF']
+  const xInput = [-50, xInputPosition - 150, 100]
+  const colorOutput = ['#7187FF', '#E4ACFF', '#C9FF71']
 
   const color = useTransform(x, xInput, colorOutput)
 

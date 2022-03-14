@@ -64,11 +64,10 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
             },
           }}
           loopedSlides={data.items.length}
-          mousewheel={{ forceToAxis: true }}
           loop
           grabCursor
-          speed={600}
-          autoplay={{ disableOnInteraction: false, delay: 6000 }}
+          speed={1600}
+          autoplay={{ disableOnInteraction: false, delay: 2000 }}
         >
           {data.items.map((item) => (
             <SwiperSlide key={item.name}>

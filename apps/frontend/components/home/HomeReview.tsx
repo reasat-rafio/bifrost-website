@@ -33,8 +33,6 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
     }
   }, [])
 
-  // window.dispatchEvent(new Event('resize'))
-
   return (
     <div className="max-w-7xl relative md:mx-auto lg:!px-14 px-6 ">
       <div className="review-carousel">

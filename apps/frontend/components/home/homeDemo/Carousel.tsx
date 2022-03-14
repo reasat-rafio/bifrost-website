@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper'
+import SwiperCore, { Navigation, Pagination, Autoplay, A11y } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -15,19 +15,22 @@ interface CarouselProps {
 }
 
 export const Carousel: React.FC<CarouselProps> = ({ data }) => {
-  const swiperRef = useRef() as any
-
   const setSlideHeight = (swiper: any) => {
-    document.querySelectorAll<HTMLElement>('#hero-demo-craousel .swiper-slide').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('#landing-demo-craousel .swiper-slide').forEach((el) => {
       el.style.height = 'auto'
     })
 
+    console.log(swiper.slides)
+
     const currentSlide = swiper.activeIndex
+    setTimeout(() => {
+      console.log(swiper.activeIndex)
+    }, 500)
     const newHeight = swiper.slides[currentSlide]?.offsetHeight
 
     document
       .querySelectorAll<HTMLElement>(
-        '#hero-demo-craousel .swiper-wrapper, #hero-demo-craousel .swiper-slide',
+        '#landing-demo-craousel .swiper-wrapper, #landing-demo-craousel .swiper-slide',
       )
       .forEach((el) => {
         el.style.height = `${newHeight}px`
@@ -36,28 +39,29 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
     swiper.update()
   }
 
+  useEffect(() => {
+    window.dispatchEvent(new Event('resize'))
+  }, [])
+
   return (
-    <div id="hero-demo-craousel" className="">
+    <div id="landing-demo-craousel">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination, A11y, Navigation]}
         autoplay
         spaceBetween={50}
         direction={'vertical'}
-        autoHeight={true}
+        // autoHeight={true}
+        pagination
         speed={600}
         slidesPerView={1}
-        onSlideChange={(swiper) => console.log(swiper)}
         onInit={(swiper: SwiperCore) => {
-          swiperRef.current = swiper
           setSlideHeight(swiper)
         }}
         onSlideNextTransitionEnd={(swiper) => setSlideHeight(swiper)}
-        onResize={(swiper) => {
-          setSlideHeight(swiper)
-        }}
+        onResize={(swiper) => setSlideHeight(swiper)}
       >
         {data.map((previewItem, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} className="">
             <SanityImg
               style={{ filter: `drop-shadow(0px 14px 100px rgba(29, 49, 81, 0.4))` }}
               className="w-full object-cover rounded-2xl"
