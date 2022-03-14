@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import SlideUp from 'components/SlideUpText'
 import Button from 'components/ui/Button'
 import { ContactSection } from 'lib/landingTypes'
@@ -7,12 +6,7 @@ import { ReactElement, useRef } from 'react'
 export default function HomeContact(data: ContactSection): ReactElement {
   const headingRef = useRef<HTMLDivElement>(null)
   return (
-    <div
-      className={clsx(
-        'container flex flex-col justify-center space-y-4 lg:space-y-0 z-10 relative gap-x-5 xl:my-32 lg:my-16 my-14',
-        'text-white',
-      )}
-    >
+    <div className="container flex flex-col justify-center space-y-4 lg:space-y-0 z-10 relative gap-x-5 xl:my-32 lg:my-16 my-14">
       <div className="lg:text-head-2 text-[40px] leading-[40px] font-[275] xl:w-[50%] md:w-[60%] sm:w-[70%]">
         <SlideUp divRef={headingRef} text={data.headline} />
       </div>

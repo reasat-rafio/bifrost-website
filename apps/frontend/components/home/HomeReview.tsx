@@ -23,17 +23,20 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
   const imageBlockRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleWidth = () => setTransFromWidth(imageBlockRef?.current?.offsetWidth ?? 0)
-
-    handleWidth()
+    const handleWidth = () => {
+      setTransFromWidth(imageBlockRef?.current?.offsetWidth ?? 0)
+    }
     window.addEventListener('resize', handleWidth)
+    handleWidth()
     return () => {
       window.removeEventListener('resize', handleWidth)
     }
   }, [])
 
+  // window.dispatchEvent(new Event('resize'))
+
   return (
-    <div className="max-w-7xl relative md:mx-auto mx-6">
+    <div className="max-w-7xl relative md:mx-auto lg:!px-14 px-6 ">
       <div className="review-carousel">
         <Swiper
           className="md:!pb-0 !pb-24"
@@ -55,11 +58,14 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           {items.map(({ name, image, description, body }) => (
             <SwiperSlide key={name}>
               <div
-                className="relative grid grid-cols-12"
-                style={{ paddingBottom: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}` }}
+                className="relative grid grid-cols-12 md:mr-10 "
+                style={{
+                  paddingBottom: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}`,
+                  marginLeft: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}`,
+                }}
               >
-                <div className="col-span-1 hidden md:block" />
-                <GradientBorder className="md:col-span-11 col-span-12 ">
+                <div className="col-span-1 hidden md:block " />
+                <GradientBorder className="md:col-span-12 col-span-12 ">
                   <div
                     className="relative grid grid-cols-12 transform justify-center items-end md:px-0 px-3"
                     style={{
@@ -68,7 +74,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                       }`,
                     }}
                   >
-                    <div className="col-span-3 md:block hidden">
+                    <div className="col-span-3 md:inline-block hidden">
                       <div
                         className="flex justify-center items-center transfrom translate-y-[40%]"
                         ref={imageBlockRef}
@@ -104,7 +110,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                       </div>
                     </div>
                     <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-[38%]">
-                      <GradientBorder borderRadious="100%" borderSize="10px">
+                      <GradientBorder borderRadious="100%" borderSize="8px">
                         <SanityImg
                           className="rounded-full"
                           builder={imageUrlBuilder}
@@ -133,17 +139,19 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           ))}
         </Swiper>
       </div>
-      <span className="absolute lg:left-[-5%] 2xl:left-[-5%] md:right-0 right-[15%] transform md:-translate-y-1/2 md:bottom-1/2 bottom-[-5%] z-30">
-        <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
-          <ArrowLeft />
-        </button>
-      </span>
+      <div className="lg:static lg:block lg:mr-0 relative flex justify-end items-center md:mr-12 ">
+        <span className="absolute lg:left-8 lg:bottom-1/2 z-30 lg:mr-0 mr-16">
+          <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
+            <ArrowLeft />
+          </button>
+        </span>
 
-      <span className="absolute lg:right-0 2xl:right-[-5%] right-0 md:bottom-1/2 transform md:-translate-y-1/2  bottom-[-5%] z-30 ">
-        <button ref={(node) => setNextEl(node)} className="cursor-pointer ">
-          <ArrowRight />
-        </button>
-      </span>
+        <span className="absolute lg:right-8 lg:bottom-1/2 z-30 lg:ml-0 ml-16">
+          <button ref={(node) => setNextEl(node)} className="cursor-pointer ">
+            <ArrowRight />
+          </button>
+        </span>
+      </div>
     </div>
   )
 }
