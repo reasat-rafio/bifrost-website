@@ -1,18 +1,10 @@
-import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { DataSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 
 export default function Data(data: DataSection): ReactElement {
-  // console.log({ data })
-
   return (
-    <div
-      className={clsx(
-        'container flex justify-center items-center z-10 relative text-center min-h-[70vh]',
-        'text-white',
-      )}
-    >
+    <div className="container flex justify-center items-center z-10 relative text-center xl:my-36 lg:my-20 my-16">
       <div className="bifrost__transparent_card w-full md:py-20 py-10 px-5 flex flex-col gap-y-6">
         <div className="md:text-head-3 text-[22px] leading-[22px] font-[275]">{data.headline}</div>
         <div className="md:text-body-2 text-[14px] leading-[16px] font-[300]">{data.body}</div>

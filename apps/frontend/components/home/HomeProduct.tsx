@@ -6,7 +6,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 
 export default function HomeProduct(data: ProductSection): ReactElement {
   return (
-    <div className="container z-10 my-20 text-white">
+    <div className="container z-10 xl:my-40 lg:my-20 my-16 text-white">
       <div className="grid grid-cols-12 space-y-5 lg:space-y-0 relative xl:space-x-12 lg:space-x-8">
         <div className="lg:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center">
           <div className="grid grid-cols-2 xl:gap-4 gap-3">

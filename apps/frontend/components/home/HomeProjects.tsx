@@ -14,11 +14,10 @@ import { GradientBorder } from 'components/common/GradientBorder'
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
-
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
-    <div className="grid grid-cols-12 z-10 md:gap-12 max-w-screen-2xl ml-auto pl-6 mb-24">
+    <div className="grid grid-cols-12 z-10 md:gap-12 max-w-screen-2xl ml-auto pl-6 xl:my-36 lg:my-20 my-16">
       <div className="flex flex-col lg:col-span-4 col-span-12 2xl:gap-y-10 gap-y-6 z-10 justify-center">
         <h4 className="md:text-head-4 text-[28px] leading-[28px] font-[275] mt-5">
           {data.headline}
@@ -74,7 +73,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           {data.items.map((item) => (
             <SwiperSlide key={item.name}>
               <GradientBorder
-                gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/35 to-[#7187FF]/30"
+                gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/200 to-[#7187FF]/30"
                 borderRadious="10px"
                 borderSize="0.85px"
                 className=""

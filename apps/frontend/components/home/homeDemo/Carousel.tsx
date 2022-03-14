@@ -37,7 +37,7 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
   }
 
   return (
-    <div id="hero-demo-craousel">
+    <div id="hero-demo-craousel" className="">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         autoplay

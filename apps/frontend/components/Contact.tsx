@@ -9,7 +9,7 @@ export default function HomeContact(data: ContactSection): ReactElement {
   return (
     <div
       className={clsx(
-        'container flex flex-col justify-center space-y-4 lg:space-y-0 z-10 relative gap-x-5 h-[100vh]',
+        'container flex flex-col justify-center space-y-4 lg:space-y-0 z-10 relative gap-x-5 xl:my-32 lg:my-16 my-14',
         'text-white',
       )}
     >

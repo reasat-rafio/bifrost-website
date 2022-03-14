@@ -46,7 +46,7 @@ export default function HomeService(data: ServiceSection): ReactElement {
 
   return (
     <section>
-      <div className="container flex justify-center items-center z-10 relative md:h-[60vh] h-[50vh] text-white">
+      <div className="container flex justify-center items-center z-10 relative xl:my-32 lg:my-16 my-14 text-white">
         <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
           <SlideUp divRef={headingRef} text={data.headline} />
         </div>

@@ -14,7 +14,7 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
 
   return (
     <section ref={previewRef}>
-      <div className="flex justify-center items-center relative md:h-[60vh] h-[50vh] text-white">
+      <div className="flex justify-center items-center relative xl:my-32 lg:my-16 my-14 text-white">
         <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275]">
           <SlideUp divRef={headingRef} text={headline} />
         </div>
@@ -27,8 +27,6 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
           minHeight: `${windowWidth >= 1024 ? `${previews.length + 1}00vh` : 'auto'} `,
         }}
       >
-        {/* <PurpleEllipse enableTransition={true} rootRef={previewRef} /> */}
-
         {windowWidth >= 1024 ? (
           <div
             className="container w-full sticky top-[20%] h-screen overflow-hidden transform flex items-start justify-center"
