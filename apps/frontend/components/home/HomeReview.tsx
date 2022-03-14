@@ -33,7 +33,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
   }, [])
 
   return (
-    <div className="max-w-7xl relative md:mx-auto px-6">
+    <div className="max-w-7xl relative md:mx-auto mx-6">
       <div className="review-carousel">
         <Swiper
           className="md:!pb-0 !pb-24"
@@ -103,7 +103,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                         {description}
                       </div>
                     </div>
-                    <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-1/2">
+                    <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-[38%]">
                       <GradientBorder borderRadious="100%" borderSize="10px">
                         <SanityImg
                           className="rounded-full"
@@ -133,13 +133,13 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           ))}
         </Swiper>
       </div>
-      <span className="absolute md:left-[-5%] lg:left-0 md:right-0 right-[15%] transform md:-translate-y-1/2 md:bottom-1/2 bottom-[-5%] z-30">
+      <span className="absolute lg:left-[-5%] 2xl:left-[-5%] md:right-0 right-[15%] transform md:-translate-y-1/2 md:bottom-1/2 bottom-[-5%] z-30">
         <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
           <ArrowLeft />
         </button>
       </span>
 
-      <span className="absolute md:right-0 lg:right-[1%] right-0 md:bottom-1/2 transform md:-translate-y-1/2  bottom-[-5%] z-30 ">
+      <span className="absolute lg:right-0 2xl:right-[-5%] right-0 md:bottom-1/2 transform md:-translate-y-1/2  bottom-[-5%] z-30 ">
         <button ref={(node) => setNextEl(node)} className="cursor-pointer ">
           <ArrowRight />
         </button>
