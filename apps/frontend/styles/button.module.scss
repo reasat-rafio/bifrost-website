@@ -14,10 +14,9 @@
 
 .primary {
   @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
-}
-
-.primary:hover {
-  @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-black;
+  &:hover {
+    @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-black;
+  }
 }
 
 .secondary {
