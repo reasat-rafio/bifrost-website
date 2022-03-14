@@ -26,7 +26,7 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
   } = props
 
   const rootClassName = clsx(
-    'outline-none xl:text-base text-sm text-white xl:px-8 px-10 py-3 xl:py-3 2xl:py-3 transition-all ease-in-out !duration-500 delay-50 xl:w-auto w-full relative rounded-[4px]',
+    'outline-none xl:text-base text-sm text-white xl:px-8 px-10 py-3 xl:py-3 2xl:py-3 transition-all ease-in-out duration-300 xl:w-auto w-full relative rounded-[4px]',
     // variant === 'primary' && styles.primary,
     // variant === 'secondary' && styles.secondary,
     styles.button,
@@ -40,6 +40,9 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
       {variant === 'primary' && (
         <GradientBorder borderRadious="4px">
           <motion.button
+            whileHover={{
+              opacity: [0.9, 1],
+            }}
             ref={ref}
             aria-pressed={active}
             disabled={disabled}
@@ -49,6 +52,20 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
             {children}
           </motion.button>
         </GradientBorder>
+      )}
+      {variant === 'secondary' && (
+        <motion.button
+          whileHover={{
+            opacity: [0.9, 1],
+          }}
+          ref={ref}
+          aria-pressed={active}
+          disabled={disabled}
+          className={clsx(rootClassName, styles.secondary)}
+          {...rest}
+        >
+          {children}
+        </motion.button>
       )}
     </>
   )
