@@ -28,7 +28,7 @@ export default function AboutClients(data: ClientsSection): ReactElement {
       </div>
       <div>
         {windowWidth >= 1024 ? (
-          <div className="grid grid-cols-12 gap-16 mt-5">
+          <div className="grid grid-cols-12 gap-16 py-5">
             {data.clients.map((team) => (
               <div className="col-span-2 flex flex-col items-center justify-center">
                 <div className="w-[90%]">
