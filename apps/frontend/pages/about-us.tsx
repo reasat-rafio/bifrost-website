@@ -6,7 +6,6 @@ import AboutTeam from 'components/about/AboutTeam'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
-import { motion } from 'framer-motion'
 import { ContactUsPage } from 'lib/contactUsTypes'
 import { siteQuery } from 'lib/query'
 import { Site } from 'lib/types'
@@ -36,7 +35,7 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
   } = useSanityQuery(query, props)
 
   return (
-    <motion.div>
+    <div>
       <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
         <div className="bifrost__background_noise"></div>
       </div>
@@ -64,6 +63,6 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
       {renderObjectArray(sections, {
         contact: Contact,
       })}
-    </motion.div>
+    </div>
   )
 }
