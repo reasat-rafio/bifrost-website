@@ -6,7 +6,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 export default function AboutAbout(data: AboutSection): ReactElement {
   return (
     <section className="mx-[1.6rem]">
-      <div className="2xl:max-w-7xl  max-w-5xl mx-auto xl:my-40 lg:my-20 my-16 grid md:grid-cols-12 grid-cols-6 z-10">
+      <div className="3xl:container 2xl:max-w-6xl  max-w-5xl mx-auto xl:my-40 lg:my-20 my-16 grid md:grid-cols-12 grid-cols-6 z-10">
         <div className="col-span-6">
           <div className="md:translate-x-[20%] translate-x-0 w-full md:h-full sm:h-[400px] h-[280px]">
             <SanityImg

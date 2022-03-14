@@ -41,6 +41,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           modules={[Autoplay, Navigation, Mousewheel, Pagination]}
           navigation={{ prevEl, nextEl }}
           slidesPerView={1}
+          centeredSlides
           pagination={{
             dynamicBullets: true,
             clickable: true,

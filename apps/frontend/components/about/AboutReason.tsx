@@ -7,17 +7,9 @@ import { imageUrlBuilder, PortableText } from 'utils/sanity'
 
 export default function AboutReason(data: ReasonSection): ReactElement {
   const [active, setActive] = useState(0)
-
-  console.log({ active, data }, data.reasons[active])
-
   return (
     <div className="relative overflow-y-clip">
-      <div
-        className={clsx(
-          'container lg:pt-16 z-10 md:space-y-8 space-y-4 relative min-h-[100vh] overflow-y-clip',
-          'text-white',
-        )}
-      >
+      <div className="container lg:pt-16 z-10 md:space-y-8 space-y-4 relative min-h-[100vh] overflow-y-clip">
         <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
           {data.subHeadline}
         </div>
@@ -30,7 +22,7 @@ export default function AboutReason(data: ReasonSection): ReactElement {
               {data.reasons.map((reason, index) => (
                 <div key={reason.title} className="w-full">
                   <div
-                    className="lg:my-0 flex w-full items-center justify-center font-bold hover:opacity-75 relative z-10 py-2"
+                    className="lg:my-0 flex w-full items-center justify-center font-bold hover:opacity-75 relative z-10 py-2 cursor-pointer"
                     onClick={(ev) => {
                       ev.preventDefault()
                       setActive(index)

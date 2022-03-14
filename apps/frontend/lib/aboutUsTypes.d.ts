@@ -23,6 +23,7 @@ export interface ClientsSection {
   subHeadline: string
   clients: [
     {
+      _key: string
       name: string
       logo: SanityImage & ImageAlt
     },

@@ -36,6 +36,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
           navigation={{ prevEl, nextEl }}
+          centeredSlides
           breakpoints={{
             200: {
               slidesPerView: 1.1,
