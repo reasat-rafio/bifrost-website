@@ -1,3 +1,4 @@
+import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import ContactHome from 'components/contact/ContactHome'
 import Ellipse from 'components/Ellipse'
@@ -30,12 +31,12 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
   } = useSanityQuery(query, props)
 
   return (
-    <div>
+    <Page>
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       {renderObjectArray(sections, {
         'contact.home': ContactHome,
         contact: Contact,
       })}
-    </div>
+    </Page>
   )
 }

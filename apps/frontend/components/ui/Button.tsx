@@ -40,9 +40,6 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
       {variant === 'primary' && (
         <GradientBorder borderRadious="4px">
           <motion.button
-            whileHover={{
-              opacity: [0.9, 1],
-            }}
             ref={ref}
             aria-pressed={active}
             disabled={disabled}
@@ -54,18 +51,17 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
         </GradientBorder>
       )}
       {variant === 'secondary' && (
-        <motion.button
-          whileHover={{
-            opacity: [0.9, 1],
-          }}
-          ref={ref}
-          aria-pressed={active}
-          disabled={disabled}
-          className={clsx(rootClassName, styles.secondary)}
-          {...rest}
-        >
-          {children}
-        </motion.button>
+        <motion.div>
+          <motion.button
+            ref={ref}
+            aria-pressed={active}
+            disabled={disabled}
+            className={clsx(rootClassName, styles.secondary)}
+            {...rest}
+          >
+            {children}
+          </motion.button>
+        </motion.div>
       )}
     </>
   )

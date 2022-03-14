@@ -6,9 +6,9 @@ import { GradientBorder } from './common/GradientBorder'
 
 export default function Data(data: DataSection): ReactElement {
   return (
-    <div className="container z-10 relative text-center xl:my-36 lg:my-20 my-16 ">
+    <div className="container z-10 relative text-center xl:my-36 lg:my-20 my-16  ">
       <GradientBorder>
-        <div className="bifrost__transparent__card md:py-20 py-10 px-5 flex flex-col rounded-[15px] xl:space-y-12 space-y-6">
+        <div className="md:py-20 py-10 px-5 flex flex-col rounded-[15px] xl:space-y-12 space-y-6">
           <h3 className="md:text-[62px] text-[38px] leading-none font-[275]">
             <PortableText
               blocks={data.headline}
