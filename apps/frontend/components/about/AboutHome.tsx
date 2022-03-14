@@ -13,7 +13,7 @@ export default function AboutHome(data: HomeSection): ReactElement {
           <ThreeJSWaves />
         </div>
       </div>
-      <div className="container min-h-screen overflow-y-clip lg:py-[5%] py-[20%] flex flex-col justify-center items-center">
+      <div className="container min-h-screen overflow-y-clip lg:py-[5%] py-[30%] flex flex-col justify-center items-center">
         <div className="text-center max-w-2xl flex flex-col lg:space-y-12 space-y-8">
           <h2 className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
             {data.subHeadline}

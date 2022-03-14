@@ -30,9 +30,9 @@ html {
 }
 
 .bifrost__transparent__card {
-  backdrop-filter: blur(40px);
   background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
   /* Note: backdrop-filter has minimal browser support */
+  backdrop-filter: blur(40px);
 }
 
 /* .__carouselBtn { */

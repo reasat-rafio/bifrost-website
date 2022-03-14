@@ -8,16 +8,16 @@ import { imageUrlBuilder, PortableText } from 'utils/sanity'
 export default function AboutReason(data: ReasonSection): ReactElement {
   const [active, setActive] = useState(0)
   return (
-    <div className="relative overflow-y-clip">
-      <div className="container lg:pt-16 z-10 md:space-y-8 space-y-4 relative min-h-[100vh] overflow-y-clip">
-        <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
+    <section className="mx-[1.6rem]">
+      <div className=" 3xl:max-w-6xl 2xl:max-w-5xl max-w-5xl mx-auto lg:pt-16 z-10 relative xl:mb-40 lg:mb-20 mb-16 flex flex-col space-y-10">
+        <h6 className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
           {data.subHeadline}
-        </div>
-        <div className="grid lg:grid-cols-2 grid-cols-1 space-y-4">
-          <div className="col-span-1 md:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
+        </h6>
+        <div className="grid lg:grid-cols-2 grid-cols-1 lg:space-y-0 space-y-4 ">
+          <h4 className="col-span-1 md:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
             {data.headline}
-          </div>
-          <div className="col-span-1">
+          </h4>
+          <div className="col-span-1 lg:pb-0 pb-5">
             <div className="flex relative lg:justify-end items-end justify-around lg:w-[60%] w-full right-0 mr-0 ml-auto">
               {data.reasons.map((reason, index) => (
                 <div key={reason.title} className="w-full">
@@ -65,20 +65,20 @@ export default function AboutReason(data: ReasonSection): ReactElement {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-6 md:grid-cols-12"
+              className="grid grid-cols-6 md:grid-cols-12 rounded-[15px]"
             >
-              <div className="col-span-6 bifrost__transparent_card md:rounded-l-lg md:!rounded-r-none rounded-lg md:p-8 p-4 flex flex-col space-y-4">
-                <div className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
+              <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181] mx-1 md:mx-0">
+                <h5 className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
                   {data.reasons[active].headline}
-                </div>
+                </h5>
                 <div className="text-body-1 opacity-70">
                   <PortableText blocks={data.reasons[active].body} />
                 </div>
               </div>
-              <div className="col-span-6">
-                <div className="w-full h-full">
+              <div className="col-span-6 md:-translate-x-5 md:-translate-y-0 -translate-y-5">
+                <div className="w-full md:h-full sm:h-[400px] h-[280px]">
                   <SanityImg
-                    className="w-full h-full md:object-cover object-contain md:rounded-r-lg rounded-lg"
+                    className="w-full h-full object-cover rounded-[15px]"
                     builder={imageUrlBuilder}
                     image={data.reasons[active].image}
                     height={500}
@@ -90,6 +90,6 @@ export default function AboutReason(data: ReasonSection): ReactElement {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   )
 }
