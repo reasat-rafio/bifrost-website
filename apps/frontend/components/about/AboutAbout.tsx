@@ -1,4 +1,6 @@
 import { GradientTitle } from 'components/common/GradientTitle'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
 import { AboutSection } from 'lib/aboutUsTypes'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -28,8 +30,8 @@ export default function AboutAbout({
         <div className="col-span-6 flex items-center justify-center md:mx-0 mx-5 transform -translate-y-[20%] md:translate-y-0">
           <div className="lg:p-12 p-6 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2">
             <GradientTitle>{subHeadline}</GradientTitle>
-            <h4 className="lg:text-head-4 text-[35px] leading-snug font-[275]">{headline}</h4>
-            <p className="lg:text-body-1 text-[14px] lead-[26px] font-[300] opacity-70">{body}</p>
+            <Header>{headline}</Header>
+            <Description>{body}</Description>
 
             <div className="flex">
               <button className="space-x-4 py-2">

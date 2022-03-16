@@ -13,11 +13,11 @@ export const GradientTitle: React.FC<GradientTitleProps> = ({
 }) => {
   return (
     <span className="flex">
-      <h4
+      <h3
         className={clsx('text-head-6 bg-clip-text uppercase text-transparent', className, gradient)}
       >
         {children}
-      </h4>
+      </h3>
     </span>
   )
 }

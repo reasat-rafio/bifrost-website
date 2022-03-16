@@ -1,4 +1,6 @@
 import { GradientBorder } from 'components/common/GradientBorder'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
 import { ImagesSection } from 'lib/useCaseTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
@@ -18,10 +20,10 @@ export default function UseCaseImages({
   return (
     <div className="z-10 relative xl:my-40 lg:my-20 my-16">
       <div className="container md:space-y-12 space-y-6">
-        <div className="grid lg:grid-cols-2 gap-5 grid-cols-1">
-          <h4 className="lg:text-head-4 text-head-6 font-[275]">{headline}</h4>
-          <p className="lg:text-body-1 text-[14px] leading-[24px] opacity-70">{subHeadline}</p>
-        </div>
+        <header className="grid lg:grid-cols-2 gap-5 grid-cols-1">
+          <Header>{headline}</Header>
+          <Description>{subHeadline}</Description>
+        </header>
         <div className="grid grid-cols-12 gap-8">
           {examples.map((item) => {
             return (

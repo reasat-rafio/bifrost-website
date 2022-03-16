@@ -1,4 +1,5 @@
 import { GradientTitle } from 'components/common/GradientTitle'
+import { Header } from 'components/ui/Header'
 import { TeamSection } from 'lib/aboutUsTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
@@ -13,10 +14,10 @@ export default function AboutTeam({ headline, members, subHeadline }: TeamSectio
 
   return (
     <section className="container text-center z-30 relative xl:mb-36 lg:mb-20 mb-16">
-      <div className="max-w-2xl mx-auto">
+      <header className="max-w-2xl mx-auto">
         <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
-        <h4 className="md:text-head-4 text-[38px] leading-[38px] font-[275] my-5">{headline}</h4>
-      </div>
+        <Header>{headline}</Header>
+      </header>
       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5">
         {members.map((team) => (
           <div className="flex flex-col items-center space-y-1">

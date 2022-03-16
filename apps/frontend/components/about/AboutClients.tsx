@@ -10,6 +10,7 @@ import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
 import { GradientTitle } from 'components/common/GradientTitle'
+import { Header } from 'components/ui/Header'
 
 export default function AboutClients({
   clients,
@@ -23,10 +24,10 @@ export default function AboutClients({
 
   return (
     <section className="container text-center !z-40 relative">
-      <div className="max-w-2xl mx-auto">
+      <header className="max-w-2xl mx-auto">
         <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
-        <h4 className="md:text-head-4 text-[38px] leading-[38px] font-[275] my-5">{headline}</h4>
-      </div>
+        <Header>{headline}</Header>
+      </header>
       <div>
         {windowWidth >= 1024 ? (
           <div className="grid grid-cols-12 gap-16 py-5">

@@ -1,5 +1,7 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import Button from 'components/ui/Button'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
 import { ProductSection } from 'lib/landingTypes'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -30,11 +32,11 @@ export default function HomeProduct({
           </div>
         </div>
         <div className="flex flex-col lg:col-span-6 col-span-12 space-y-5 bifrost__transparent_card md:py-[5rem] xl:px-[3.75rem] py-[3rem] px-[2rem]">
-          <div className="flex flex-col space-y-3">
+          <header className="flex flex-col space-y-3">
             <GradientTitle>{subHeadline}</GradientTitle>
-            <h1 className="md:text-head-4 text-[28px] leading-[28px] font-[275]">{headline}</h1>
-          </div>
-          <div className="md:text-body-1 pt-1 text-[14px] leading-[20px] opacity-[0.7]">{body}</div>
+            <Header>{headline}</Header>
+          </header>
+          <Description>{body}</Description>
           <div className="flex">
             <Button color="secondary">
               <a href={ctaButton.href}>{ctaButton.title}</a>

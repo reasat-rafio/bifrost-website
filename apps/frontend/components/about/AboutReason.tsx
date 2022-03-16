@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { GradientTitle } from 'components/common/GradientTitle'
+import { Header } from 'components/ui/Header'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ReasonSection } from 'lib/aboutUsTypes'
 import { ReactElement, useState } from 'react'
@@ -18,9 +19,7 @@ export default function AboutReason({
       <div className=" 3xl:max-w-6xl 2xl:max-w-5xl max-w-5xl mx-auto lg:pt-16 z-10 relative xl:mb-40 lg:mb-20 mb-16 flex flex-col space-y-10">
         <GradientTitle>{subHeadline}</GradientTitle>
         <div className="grid lg:grid-cols-2 grid-cols-1 lg:space-y-0 space-y-4 ">
-          <h4 className="col-span-1 md:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
-            {headline}
-          </h4>
+          <Header>{headline}</Header>
           <div className="col-span-1 lg:pb-0 pb-5">
             <div className="flex relative lg:justify-end items-end justify-around lg:w-[60%] w-full right-0 mr-0 ml-auto">
               {reasons.map((reason, index) => (

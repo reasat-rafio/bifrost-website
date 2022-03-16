@@ -1,5 +1,7 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import Button from 'components/ui/Button'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
 import { FeaturesSection } from 'lib/useCaseTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
@@ -23,8 +25,8 @@ export default function UseCaseFeatures({
       <div className="container z-10 grid lg:grid-cols-2 grid-cols-1 gap-8">
         <div className=" bifrost__transparent__card border-[#4e6181]/30 rounded-[15px] border flex flex-col justify-center xl:p-14 md:p-6 p-4 md:space-y-6 space-y-2">
           <GradientTitle>{subHeadline}</GradientTitle>
-          <h4 className="lg:text-head-4 text-[35px] lead-[35px] font-[275]">{headline}</h4>
-          <p className="lg:text-body-1 text-[14px] lead-[26px] font-[300] opacity-70">{body}</p>
+          <Header>{headline}</Header>
+          <Description>{body}</Description>
           <div className="flex">
             <Button variant="secondary">
               <a href={ctaButton.href}>{ctaButton.title}</a>
