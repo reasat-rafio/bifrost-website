@@ -38,13 +38,11 @@ export default function HomeHero(data: HomeSection): ReactElement {
       </div>
       <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen grid grid-cols-12 z-10 ">
         <div className="lg:col-span-7 xl:col-span-8 col-span-12 flex flex-col items-start space-y-10 self-center">
-          <div>
-            <h1 className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">
-              {data.headline}
-            </h1>
-            <h2 className="lg:text-head-1 text-[82px] leading-[82px] text-transparent font-[275] bg-clip-text bifrost__gradient_green">
+          <div className="font-roboto lg:text-head-1 text-[82px] leading-[82px]">
+            <h1>{data.headline}</h1>
+            <h1 className="text-transparent bg-clip-text bifrost__gradient_green">
               {data.subHeadline}
-            </h2>
+            </h1>
           </div>
           <div
             ref={movingBorderDecorationBlockRef}

@@ -57,6 +57,7 @@ module.exports = {
         'body-3': ['16px', '24px'],
       },
       fontFamily: {
+        roboto: 'Roboto, sans-serif',
         titillium: 'Titillium Web, Helvetica, Arial, sans-serif',
       },
     },
