@@ -6,6 +6,7 @@ import { ReactElement, useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/landingTypes'
+import { PortableText } from 'utils/sanity'
 
 const movingBorderObjWidth = 9
 const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
@@ -38,12 +39,20 @@ export default function HomeHero(data: HomeSection): ReactElement {
       </div>
       <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen grid grid-cols-12 z-10 ">
         <div className="lg:col-span-7 xl:col-span-8 col-span-12 flex flex-col items-start space-y-10 self-center">
-          <div className="font-roboto font-[275] lg:text-head-1 text-[82px] leading-[82px]">
-            <h1>{data.headline}</h1>
-            <h1 className="text-transparent bg-clip-text bifrost__gradient_green">
-              {data.subHeadline}
-            </h1>
-          </div>
+          <h1 className="font-roboto font-[275] lg:text-head-1 text-[82px] leading-[82px]">
+            <PortableText
+              blocks={data.headline}
+              serializers={{
+                marks: {
+                  pop: ({ children }: any) => (
+                    <span className="text-transparent bg-clip-text bifrost__gradient_green">
+                      {children}
+                    </span>
+                  ),
+                },
+              }}
+            />
+          </h1>
           <div
             ref={movingBorderDecorationBlockRef}
             className={clsx(

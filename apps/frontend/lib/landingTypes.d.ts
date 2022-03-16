@@ -6,8 +6,7 @@ export type LandingPage = {
 export interface HomeSection {
   body: string
   ctaButton: CTAButton
-  headline: string
-  subHeadline: string
+  headline: any
   image: SanityImage & ImageAlt
 }
 
