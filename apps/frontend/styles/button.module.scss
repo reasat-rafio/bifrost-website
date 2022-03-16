@@ -1,27 +1,72 @@
-.button {
+$primary-button-background-gradient: linear-gradient(
+  90deg,
+  #eeffe9 0%,
+  #acffeb 35.3%,
+  #c9ff71 102.69%
+);
+$secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%, #06101b 111.5%);
+
+@mixin secondaryBackgroundGradientAnimation($transTime) {
+  background-size: 100%;
+  background-image: $secondary-button-background-gradient;
+  box-shadow: 0px 5px 12px rgb(34, 34, 36);
+
+  &:before {
+    background: $secondary-button-background-gradient;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    border-radius: 4px;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.secondary_bg_gradient {
+  @include secondaryBackgroundGradientAnimation(0.4s);
+}
+
+@mixin borderGradientAnimation($transTime, $bgcolor) {
   position: relative;
-  box-sizing: border-box;
-  text-align: center;
-  z-index: 100;
-  border-radius: 4px;
-}
-
-.border_gradient {
-  border-radius: 4px;
-  padding: 0.5px;
-  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
-}
-
-.primary {
-  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
+  display: inline-block;
+  background-image: $bgcolor;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    padding: 1px;
+    background: $primary-button-background-gradient;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
   &:hover {
-    @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-black;
+    &:before {
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
   }
 }
 
-.secondary {
-  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
-  &:hover {
-    @apply bg-gradient-to-r from-[#63768B] to-[#1A2634];
-  }
+.primary_border_gradient {
+  @include borderGradientAnimation(0.4s, $secondary-button-background-gradient);
+}
+
+.secondary_border_gradient {
+  @include borderGradientAnimation(0.4s, '');
 }
