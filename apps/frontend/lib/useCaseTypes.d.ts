@@ -15,6 +15,7 @@ export interface ImagesSection {
   subHeadline: string
   examples: [
     {
+      _key: string
       title: string
       body: string
       image: SanityImage & ImageAlt

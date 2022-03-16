@@ -4,8 +4,6 @@ import { HomeSection } from 'lib/aboutUsTypes'
 import { ReactElement } from 'react'
 
 export default function AboutHome(data: HomeSection): ReactElement {
-  console.log({ data })
-
   return (
     <div className="relative overflow-y-clip">
       <div className="absolute z-0 left-0 bottom-0 w-full h-full flex items-end">
