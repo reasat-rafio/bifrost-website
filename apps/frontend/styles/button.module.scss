@@ -9,7 +9,6 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
 @mixin secondaryBackgroundGradientAnimation($transTime) {
   background-size: 100%;
   background-image: $secondary-button-background-gradient;
-  box-shadow: 0px 5px 12px rgb(34, 34, 36);
 
   &:before {
     background: $secondary-button-background-gradient;
@@ -30,6 +29,7 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
     &:before {
       opacity: 1;
     }
+    box-shadow: 0px 1px 1px #acffeb;
   }
 }
 

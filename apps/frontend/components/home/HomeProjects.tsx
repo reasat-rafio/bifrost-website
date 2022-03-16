@@ -10,7 +10,8 @@ import 'swiper/css/mousewheel'
 import { ProjectSection } from 'lib/landingTypes'
 import { ArrowRight } from 'components/icons/ArrowRight'
 import { ArrowLeft } from 'components/icons/ArrowLeft'
-import { GradientBorder } from 'components/common/GradientBorder'
+import { Header } from 'components/ui/Header'
+import { Description } from 'components/ui/Description'
 
 export default function HomeProjects(data: ProjectSection): ReactElement {
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
@@ -19,10 +20,8 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
   return (
     <div className="grid grid-cols-12 z-10 md:gap-12 max-w-screen-2xl ml-auto pl-6 xl:my-36 lg:my-20 my-16">
       <div className="flex flex-col lg:col-span-4 col-span-12 2xl:gap-y-10 gap-y-6 z-10 justify-center">
-        <h4 className="md:text-head-4 text-[28px] leading-[28px] font-[275] mt-5">
-          {data.headline}
-        </h4>
-        <p className="md:text-body-1 text-base font-light opacity-70">{data.body}</p>
+        <Header>{data.headline}</Header>
+        <Description>{data.body}</Description>
         <div className="flex gap-x-4 2xl:mt-5 mt-3">
           <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
             <ArrowLeft />
@@ -71,25 +70,21 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           autoplay={{ disableOnInteraction: false, delay: 2000 }}
         >
           {data.items.map((item) => (
-            <SwiperSlide key={item.name}>
-              <GradientBorder
-                gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/200 to-[#7187FF]/30"
-                borderRadious="10px"
-                borderSize="0.85px"
-                innerClass="h-full p-3 rounded-[8px]"
-              >
-                <div className="h-full w-full ">
-                  <SanityImg
-                    className="mt-auto z-10 rounded-[20px] object-cover xl:h-[300px] md:h-[250px] h-[300px] w-full"
-                    builder={imageUrlBuilder}
-                    image={item.image}
-                    alt={item.name}
-                    title={item.name}
-                    height={220}
-                  />
-                </div>
-                <h6 className="text-center my-5">{item.name}</h6>
-              </GradientBorder>
+            <SwiperSlide
+              key={item.name}
+              className="background__dark rounded-[8px] p-3 border border-[#4e6181]/20"
+            >
+              <div className="h-full w-full rounded-[8px] overflow-hidden">
+                <SanityImg
+                  className="mt-auto z-10 object-cover xl:h-[300px] md:h-[250px] h-[300px] w-full"
+                  builder={imageUrlBuilder}
+                  image={item.image}
+                  alt={item.name}
+                  title={item.name}
+                  height={220}
+                />
+              </div>
+              <h6 className="text-center my-5">{item.name}</h6>
             </SwiperSlide>
           ))}
         </Swiper>

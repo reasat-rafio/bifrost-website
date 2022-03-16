@@ -31,14 +31,14 @@ export default function HomeProduct({
             ))}
           </div>
         </div>
-        <div className="flex flex-col lg:col-span-6 col-span-12 space-y-5 bifrost__transparent_card md:py-[5rem] xl:px-[3.75rem] py-[3rem] px-[2rem]">
+        <div className="flex flex-col lg:col-span-6 col-span-12 space-y-5 bifrost__transparent__card md:py-[5rem] xl:px-[3.75rem] py-[3rem] px-[2rem] border border-[#4e6181]/30">
           <header className="flex flex-col space-y-3">
             <GradientTitle>{subHeadline}</GradientTitle>
             <Header>{headline}</Header>
           </header>
-          <Description>{body}</Description>
+          <Description className="!pt-3">{body}</Description>
           <div className="flex">
-            <Button color="secondary">
+            <Button variant="secondary">
               <a href={ctaButton.href}>{ctaButton.title}</a>
             </Button>
           </div>

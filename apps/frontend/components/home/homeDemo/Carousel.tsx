@@ -20,12 +20,7 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
       el.style.height = 'auto'
     })
 
-    console.log(swiper.slides)
-
     const currentSlide = swiper.activeIndex
-    setTimeout(() => {
-      console.log(swiper.activeIndex)
-    }, 500)
     const newHeight = swiper.slides[currentSlide]?.offsetHeight
 
     document
