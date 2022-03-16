@@ -140,13 +140,13 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
       </div>
       <div className="lg:static lg:block lg:mr-0 relative flex justify-end items-center md:mr-12 ">
         <span className="absolute lg:left-8 lg:bottom-1/2 z-30 lg:mr-0 mr-16">
-          <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
+          <button ref={(node) => setNextEl(node)} className="cursor-pointer">
             <ArrowLeft />
           </button>
         </span>
 
         <span className="absolute lg:right-8 lg:bottom-1/2 z-30 lg:ml-0 ml-16">
-          <button ref={(node) => setNextEl(node)} className="cursor-pointer ">
+          <button ref={(node) => setPrevEl(node)} className="cursor-pointer ">
             <ArrowRight />
           </button>
         </span>

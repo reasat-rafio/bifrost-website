@@ -8,7 +8,7 @@ import { Site } from 'lib/types'
 import HomeHero from 'components/home/HomeHero'
 import HomeProduct from 'components/home/HomeProduct'
 import HomeDemo from 'components/home/homeDemo/HomeDemo'
-import HomeService from 'components/home/HomeService'
+// import HomeService from 'components/home/HomeService'
 import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
@@ -76,9 +76,9 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
       </>
 
-      {renderObjectArray(sections, {
+      {/* {renderObjectArray(sections, {
         'landing.services': HomeService,
-      })}
+      })} */}
 
       <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
 
