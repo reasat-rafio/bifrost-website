@@ -32,9 +32,11 @@ export default function Data(data: DataSection): ReactElement {
               placeholder="Enter your email address"
             />
             <div className="xl:absolute xl:top-[15%] right-2 xl:block flex justify-center items-center">
-              <Button>
-                <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-              </Button>
+              <div>
+                <Button>
+                  <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ export interface HomeSection {
 export interface ArticlesSection {
   articles: [
     {
+      _key: string
       headline: string
       subHeadline: string
       body: string

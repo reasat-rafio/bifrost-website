@@ -31,9 +31,11 @@ export default function HomeContact(data: ContactSection): ReactElement {
         />
 
         <div className="flex">
-          <Button variant="secondary">
-            <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-          </Button>
+          <div>
+            <Button variant="secondary">
+              <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
