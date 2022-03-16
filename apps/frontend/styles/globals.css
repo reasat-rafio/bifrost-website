@@ -53,7 +53,7 @@ html {
   @apply bg-gradient-to-r from-[#f8e9ff] via-[#e4acff] to-[#7187ff];
 }
 
-.bifrost__gradient_green {
+.bifrost__gradient__green {
   @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71];
 }
 

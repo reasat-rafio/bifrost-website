@@ -25,7 +25,7 @@ export default function UseCaseAssurance(data: AssuranceSection): ReactElement {
           />
         </div>
         <div className="absolute bottom-0 col-start-6 col-end-12 bifrost__transparent_card translate-y-[7rem] flex flex-col justify-center p-14 space-y-6">
-          <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
+          <div className="bg-clip-text bifrost__gradient__green text-transparent uppercase lg:text-head-6 text-head-6">
             {data.subHeadline}
           </div>
           <div className="lg:text-head-4 text-[35px] lead-[35px] font-[275]">{data.headline}</div>

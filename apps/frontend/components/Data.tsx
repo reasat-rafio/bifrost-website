@@ -15,7 +15,7 @@ export default function Data(data: DataSection): ReactElement {
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text bifrost__gradient_green">
+                    <span className="text-transparent bg-clip-text bifrost__gradient__green">
                       {children}
                     </span>
                   ),

@@ -1,25 +1,29 @@
 import clsx from 'clsx'
+import { GradientTitle } from 'components/common/GradientTitle'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ReasonSection } from 'lib/aboutUsTypes'
 import { ReactElement, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 
-export default function AboutReason(data: ReasonSection): ReactElement {
+export default function AboutReason({
+  headline,
+  reasons,
+  subHeadline,
+}: ReasonSection): ReactElement {
   const [active, setActive] = useState(0)
+
   return (
     <section className="mx-[1.6rem]">
       <div className=" 3xl:max-w-6xl 2xl:max-w-5xl max-w-5xl mx-auto lg:pt-16 z-10 relative xl:mb-40 lg:mb-20 mb-16 flex flex-col space-y-10">
-        <h6 className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
-          {data.subHeadline}
-        </h6>
+        <GradientTitle>{subHeadline}</GradientTitle>
         <div className="grid lg:grid-cols-2 grid-cols-1 lg:space-y-0 space-y-4 ">
           <h4 className="col-span-1 md:text-head-4 text-[38px] lead-[43.7px] font-[275] ">
-            {data.headline}
+            {headline}
           </h4>
           <div className="col-span-1 lg:pb-0 pb-5">
             <div className="flex relative lg:justify-end items-end justify-around lg:w-[60%] w-full right-0 mr-0 ml-auto">
-              {data.reasons.map((reason, index) => (
+              {reasons.map((reason, index) => (
                 <div key={reason.title} className="w-full">
                   <div
                     className="lg:my-0 flex w-full items-center justify-center font-bold hover:opacity-75 relative z-10 py-2 cursor-pointer"
@@ -30,7 +34,8 @@ export default function AboutReason(data: ReasonSection): ReactElement {
                   >
                     <span
                       className={clsx(
-                        active === index && 'text-transparent bg-clip-text bifrost__gradient_green',
+                        active === index &&
+                          'text-transparent bg-clip-text bifrost__gradient__green',
                       )}
                     >
                       {reason.title}
@@ -40,7 +45,7 @@ export default function AboutReason(data: ReasonSection): ReactElement {
                         layout
                         className={clsx(
                           'w-full h-[0.2em] left-0 absolute bottom-[-4px] z-10',
-                          active === index && 'bifrost__gradient_green',
+                          active === index && 'bifrost__gradient__green',
                         )}
                         layoutId="underline"
                         initial={false}
@@ -59,9 +64,9 @@ export default function AboutReason(data: ReasonSection): ReactElement {
           </div>
         </div>
         <AnimatePresence>
-          {data.reasons[active] && (
+          {reasons[active] && (
             <motion.div
-              key={data.reasons[active].title}
+              key={reasons[active].title}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -69,10 +74,10 @@ export default function AboutReason(data: ReasonSection): ReactElement {
             >
               <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181] mx-1 md:mx-0">
                 <h5 className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
-                  {data.reasons[active].headline}
+                  {reasons[active].headline}
                 </h5>
                 <div className="text-body-1 opacity-70">
-                  <PortableText blocks={data.reasons[active].body} />
+                  <PortableText blocks={reasons[active].body} />
                 </div>
               </div>
               <div className="col-span-6 md:-translate-x-5 md:-translate-y-0 -translate-y-5">
@@ -80,9 +85,9 @@ export default function AboutReason(data: ReasonSection): ReactElement {
                   <SanityImg
                     className="w-full h-full object-cover rounded-[15px]"
                     builder={imageUrlBuilder}
-                    image={data.reasons[active].image}
+                    image={reasons[active].image}
                     height={500}
-                    alt={data.reasons[active].image?.alt || 'image'}
+                    alt={reasons[active].image?.alt || 'image'}
                   />
                 </div>
               </div>

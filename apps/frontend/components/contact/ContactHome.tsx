@@ -17,7 +17,7 @@ export default function ContactHome(data: HomeSection): ReactElement {
       <div className="container min-h-screen flex lg:py-[5%] py-[30%]">
         <div className="grid grid-cols-12 justify-center items-center w-full m-auto gap-y-20">
           <div className="col-span-12">
-            <h1 className="lg:text-head-2 text-[82px] leading-[82px] font-[375] bg-clip-text bifrost__gradient_green text-transparent max-w-[420px]">
+            <h1 className="lg:text-head-2 text-[82px] leading-[82px] font-[375] bg-clip-text bifrost__gradient__green text-transparent max-w-[420px]">
               {data.headline}
             </h1>
           </div>

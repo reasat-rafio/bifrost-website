@@ -19,7 +19,7 @@ export default function BlogHome(data: HomeSection): ReactElement {
           'text-white',
         )}
       >
-        <div className="bg-clip-text bifrost__gradient_green text-transparent uppercase lg:text-head-6 text-head-6">
+        <div className="bg-clip-text bifrost__gradient__green text-transparent uppercase lg:text-head-6 text-head-6">
           {data.subHeadline}
         </div>
         <div className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">{data.headline}</div>

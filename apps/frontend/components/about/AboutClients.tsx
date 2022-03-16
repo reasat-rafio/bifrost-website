@@ -9,8 +9,13 @@ import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
+import { GradientTitle } from 'components/common/GradientTitle'
 
-export default function AboutClients(data: ClientsSection): ReactElement {
+export default function AboutClients({
+  clients,
+  headline,
+  subHeadline,
+}: ClientsSection): ReactElement {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -19,17 +24,13 @@ export default function AboutClients(data: ClientsSection): ReactElement {
   return (
     <section className="container text-center !z-40 relative">
       <div className="max-w-2xl mx-auto">
-        <h6 className="text-transparent bg-clip-text bifrost__gradient_green text-[18px] leading-[22.86px]">
-          {data.subHeadline}
-        </h6>
-        <h4 className="md:text-head-4 text-[38px] leading-[38px] font-[275] my-5">
-          {data.headline}
-        </h4>
+        <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
+        <h4 className="md:text-head-4 text-[38px] leading-[38px] font-[275] my-5">{headline}</h4>
       </div>
       <div>
         {windowWidth >= 1024 ? (
           <div className="grid grid-cols-12 gap-16 py-5">
-            {data.clients.map((team) => (
+            {clients.map((team) => (
               <div className="col-span-2 flex flex-col items-center justify-center">
                 <div className="w-[90%]">
                   <SanityImg
@@ -52,7 +53,7 @@ export default function AboutClients(data: ClientsSection): ReactElement {
               centeredSlides
               loop
               slidesPerView={Math.ceil(windowWidth / 250)}
-              loopedSlides={data.clients.length}
+              loopedSlides={clients.length}
               mousewheel={{ forceToAxis: true }}
               autoplay={{ delay: 0 }}
               speed={windowWidth * 5}
@@ -61,7 +62,7 @@ export default function AboutClients(data: ClientsSection): ReactElement {
                 clickable: true,
               }}
             >
-              {data.clients.map((team) => (
+              {clients.map((team) => (
                 <SwiperSlide key={team._key}>
                   <div className="flex justify-center items-center">
                     <SanityImg

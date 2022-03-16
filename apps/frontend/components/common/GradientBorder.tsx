@@ -15,7 +15,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = ({
   className,
   borderSize = '1px',
   borderRadious = '15px',
-  gradient = 'bifrost__gradient_green',
+  gradient = 'bifrost__gradient__green',
   innerClass = '',
   background = 'background__dark',
 }) => {

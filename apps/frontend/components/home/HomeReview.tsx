@@ -99,10 +99,10 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                       </p>
 
                       <div className="relative  mb-5 hidden md:inline-block">
-                        <span className="text-body-1  leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient_green font-light ">
+                        <span className="text-body-1  leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient__green font-light ">
                           {name}
                         </span>
-                        <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient_green" />
+                        <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient__green" />
                       </div>
                       <div className="opacity-50 text-body-3 text-left hidden md:block">
                         {description}
@@ -121,10 +121,10 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                       </GradientBorder>
                       <div>
                         <div className="relative mb-2 ">
-                          <span className="text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient_green font-light ">
+                          <span className="text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text bifrost__gradient__green font-light ">
                             {name}
                           </span>
-                          <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient_green" />
+                          <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] bifrost__gradient__green" />
                         </div>
                         <div className="opacity-50 md:text-body-3 text-base md:text-left text-right">
                           {description}

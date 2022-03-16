@@ -61,7 +61,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
                 key={item.title}
                 className="cursor-pointer"
               >
-                <div className="bifrost__gradient_green rounded-full p-[1px]">
+                <div className="bifrost__gradient__green rounded-full p-[1px]">
                   <div className="bg-black text-white rounded-full p-3">
                     <object
                       type="image/svg+xml"
