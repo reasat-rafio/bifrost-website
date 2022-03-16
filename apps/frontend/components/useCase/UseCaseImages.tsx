@@ -1,4 +1,3 @@
-import { GradientBorder } from 'components/common/GradientBorder'
 import { Description } from 'components/ui/Description'
 import { Header } from 'components/ui/Header'
 import { ImagesSection } from 'lib/useCaseTypes'
@@ -27,13 +26,9 @@ export default function UseCaseImages({
         <div className="grid grid-cols-12 gap-8">
           {examples.map((item) => {
             return (
-              <GradientBorder
+              <div
+                className="xl:col-span-4 md:col-span-6 col-span-12 group bifrost__transparent__card border border-[#4e6181]/30 p-3 rounded-[8px] lg:space-y-4 space-y-2"
                 key={item._key}
-                gradient="bg-gradient-to-r from-[#F8E9FF]/30 via-[#E4ACFF]/200 to-[#7187FF]/30"
-                borderRadious="10px"
-                borderSize="0.85px"
-                innerClass="h-full p-3 rounded-[8px] lg:space-y-4 space-y-2"
-                className="xl:col-span-4 md:col-span-6 col-span-12 group"
               >
                 <div className="w-full flex justify-center h-[70%] overflow-hidden rounded-[14px]">
                   <SanityImg
@@ -46,7 +41,7 @@ export default function UseCaseImages({
                 </div>
                 <h6 className="lg:text-body-2">{item.title}</h6>
                 <p className="lg:text-[14px] lg:leading-[24px]">{item.body} </p>
-              </GradientBorder>
+              </div>
             )
           })}
         </div>

@@ -22,7 +22,7 @@ export default function UseCaseFeatures({
 
   return (
     <div>
-      <div className="container z-10 grid lg:grid-cols-2 grid-cols-1 gap-8">
+      <div className="container z-10 grid lg:grid-cols-2 grid-cols-1 gap-8 xl:mb-32 lg:mb-16 mb-14">
         <div className=" bifrost__transparent__card border-[#4e6181]/30 rounded-[15px] border flex flex-col justify-center xl:p-14 md:p-6 p-4 md:space-y-6 space-y-2">
           <GradientTitle>{subHeadline}</GradientTitle>
           <Header>{headline}</Header>

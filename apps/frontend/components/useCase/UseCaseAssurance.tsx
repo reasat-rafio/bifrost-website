@@ -1,42 +1,51 @@
+import { GradientTitle } from 'components/common/GradientTitle'
 import Button from 'components/ui/Button'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
 import { AssuranceSection } from 'lib/useCaseTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 
-export default function UseCaseAssurance(data: AssuranceSection): ReactElement {
-  console.log({ data })
+export default function UseCaseAssurance({
+  body,
+  ctaButton,
+  headline,
+  image,
+  subHeadline,
+}: AssuranceSection): ReactElement {
+  console.log({})
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
 
   return (
-    <div className="relative my-36">
-      <div className="container lg:py-16 py-10 z-10 relative text-white grid grid-cols-12 gap-8">
+    <section className="xl:mb-40 lg:mb-20 mb-16">
+      <div className="container z-10 relative grid grid-cols-12">
         <div className="col-span-12">
           <SanityImg
-            className="w-full h-full rounded-xl md:object-contain object-cover"
+            className="w-full 2xl:h-[580px] md:h-[400px] h-auto rounded-xl object-cover"
             builder={imageUrlBuilder}
-            image={data.image}
-            alt={data.image?.alt || 'image'}
-            height={windowWidth >= 768 ? 1000 : 500}
+            image={image}
+            alt={image?.alt || 'image'}
+            height={windowWidth >= 768 ? 500 : 350}
           />
         </div>
-        <div className="absolute bottom-0 col-start-6 col-end-12 bifrost__transparent_card translate-y-[7rem] flex flex-col justify-center p-14 space-y-6">
-          <div className="bg-clip-text bifrost__gradient__green text-transparent uppercase lg:text-head-6 text-head-6">
-            {data.subHeadline}
+        <div className="absolute bottom-0 2xl:col-start-6 xl:col-start-3 col-start-2 col-end-12 xl:col-end-12 bifrost__transparent__card xl:translate-y-[50%] xl:translate-x-0 translate-x-[5%] translate-y-[80%] flex flex-col justify-center 2xl:p-14 lg:p-8 p-5 2xl:space-y-6 space-y-3 border border-[#4e6181]/30">
+          <GradientTitle>{subHeadline}</GradientTitle>
+          <Header>{headline}</Header>
+          <Description>{body}</Description>
+          <div className="flex">
+            <span>
+              <Button className=" " variant="secondary">
+                <a href={ctaButton.href}>{ctaButton.title}</a>
+              </Button>
+            </span>
           </div>
-          <div className="lg:text-head-4 text-[35px] lead-[35px] font-[275]">{data.headline}</div>
-          <div className="lg:text-body-1 text-[14px] lead-[26px] font-[300] opacity-70">
-            {data.body}
-          </div>
-          <Button className="flex items-start" color="secondary">
-            <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-          </Button>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
