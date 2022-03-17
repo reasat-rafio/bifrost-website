@@ -35,8 +35,6 @@ export default function Blog(props: SanityProps<{ site: Site; page: BlogPage }>)
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
-  console.log(heroSectionHeight)
-
   return (
     <>
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />

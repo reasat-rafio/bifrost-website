@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { showHero } from 'lib/showHero'
 import { HeroData } from 'lib/types'
-import { ReactElement, useRef, useState, useEffect } from 'react'
+import { ReactElement, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/landingTypes'
@@ -20,13 +20,11 @@ export default function HomeHero(data: HomeSection): ReactElement {
     movingBorderDecorationBlockRef?.current?.clientWidth ?? 0,
   )
 
-  useEffect(() => {
-    const handleWidth = () =>
-      setDecorationBlockWidth(movingBorderDecorationBlockRef?.current?.clientWidth ?? 0)
-    handleWidth()
-    window.addEventListener('resize', handleWidth)
-    return () => {
-      window.removeEventListener('resize', handleWidth)
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const handleWidth = () => setDecorationBlockWidth(node.clientWidth)
+      handleWidth()
+      window.addEventListener('resize', handleWidth)
     }
   }, [])
 
@@ -54,7 +52,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
             />
           </h1>
           <div
-            ref={movingBorderDecorationBlockRef}
+            ref={measuredRef}
             className={clsx(
               'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
             )}

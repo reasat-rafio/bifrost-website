@@ -1,7 +1,7 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/blogTypes'
-import { Dispatch, ReactElement, SetStateAction, useEffect, useRef } from 'react'
+import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 
 interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
@@ -12,19 +12,16 @@ export default function BlogHome({
   subHeadline,
   setHeroSectionHeight,
 }: IHomeSection): ReactElement {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleWidth = () => setHeroSectionHeight(sectionRef?.current?.clientHeight ?? 0)
-    handleWidth()
-    window.addEventListener('resize', handleWidth)
-    return () => {
-      window.removeEventListener('resize', handleWidth)
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const handleWidth = () => setHeroSectionHeight(node.clientHeight)
+      handleWidth()
+      window.addEventListener('resize', handleWidth)
     }
   }, [])
 
   return (
-    <section className="fixed top-0 left-0-0 overflow-y-clip w-full" ref={sectionRef}>
+    <section className="fixed top-0 left-0-0 overflow-y-clip w-full" ref={measuredRef}>
       <div className="absolute left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />

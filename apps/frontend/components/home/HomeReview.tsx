@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { ReactElement, useCallback, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Mousewheel, Pagination } from 'swiper'
@@ -20,16 +20,12 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   const [transformWidth, setTransFromWidth] = useState(0)
-  const imageBlockRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const handleWidth = () => {
-      setTransFromWidth(imageBlockRef?.current?.offsetWidth ?? 0)
-    }
-    window.addEventListener('resize', handleWidth)
-    handleWidth()
-    return () => {
-      window.removeEventListener('resize', handleWidth)
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const handleWidth = () => setTransFromWidth(node.clientWidth)
+      handleWidth()
+      window.addEventListener('resize', handleWidth)
     }
   }, [])
 
@@ -76,7 +72,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                     <div className="col-span-3 md:inline-block hidden">
                       <div
                         className="flex justify-center items-center transfrom translate-y-[40%]"
-                        ref={imageBlockRef}
+                        ref={measuredRef}
                       >
                         <GradientBorder className="" borderRadious="100%" borderSize="10px">
                           <SanityImg
