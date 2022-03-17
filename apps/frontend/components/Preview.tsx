@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'lib/hooks'
 import React, { RefObject, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -51,7 +50,7 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
   )
 
   return (
-    <motion.div
+    <div
       ref={sectionRef}
       className="absolute rounded-[15px] 2xl:w-full"
       style={{
@@ -59,12 +58,12 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
       }}
     >
       <SanityImg
-        className="w-full  rounded-lg object-fill"
+        className="w-full rounded-lg object-fill"
         builder={imageUrlBuilder}
         image={item}
         height={600}
         alt={item.alt ?? 'image'}
       />
-    </motion.div>
+    </div>
   )
 }

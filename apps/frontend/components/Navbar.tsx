@@ -43,6 +43,7 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
 
   return (
     <motion.div
+      id="navbar"
       animate={{
         color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },

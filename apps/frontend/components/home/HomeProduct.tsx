@@ -31,7 +31,7 @@ export default function HomeProduct({
             ))}
           </div>
         </div>
-        <div className="flex flex-col lg:col-span-6 col-span-12 space-y-5 bifrost__transparent__card md:py-[5rem] xl:px-[3.75rem] py-[3rem] px-[2rem] border border-[#4e6181]/30">
+        <div className="flex flex-col lg:col-span-6 col-span-12 bifrost__transparent__card 2xl:p-14 lg:p-8 p-5 2xl:space-y-6 space-y-3 border border-[#4e6181]/30">
           <header className="flex flex-col space-y-3">
             <GradientTitle>{subHeadline}</GradientTitle>
             <Header>{headline}</Header>

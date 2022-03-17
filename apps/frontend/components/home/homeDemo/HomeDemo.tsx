@@ -24,6 +24,8 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   const headingRef = useRef<HTMLDivElement>(null)
 
   const [ratio, setRatio] = useState(0)
+  const [previewSlide, setPreviewSlide] = useState(0)
+  const [navbarHeight, setNavbarHeight] = useState(0)
   const [containerWidth, setContainerWidth] = useState(0)
   const scrollYProgress = useMotionValue(ratio / totalLength)
   const sectionOnView = useIntersection(previewRef, { threshold: 0.2 })
@@ -31,6 +33,10 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   useEffect(() => {
     scrollYProgress.set(ratio / totalLength)
   }, [ratio])
+
+  useEffect(() => {
+    setNavbarHeight(document.querySelector('#navbar')?.clientHeight)
+  }, [])
 
   useVisibleScrollEffect(
     previewRef,
@@ -45,7 +51,10 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
 
   const measuredRef = useCallback((node) => {
     if (node !== null) {
-      const handleWidth = () => setContainerWidth(node.clientWidth)
+      const handleWidth = () => {
+        setPreviewSlide(node.children[0].clientHeight)
+        setContainerWidth(node.clientWidth)
+      }
       handleWidth()
       window.addEventListener('resize', handleWidth)
     }
@@ -69,7 +78,7 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
       </div>
       <div
         data-element="background"
-        className="relative lg:flex py-section justify-center items-start container"
+        className="relative lg:flex justify-center items-start container"
         style={{
           willChange: 'background',
           minHeight: `${windowWidth >= 1024 ? `${totalLength}00vh` : 'auto'} `,
@@ -77,7 +86,10 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
       >
         {windowWidth >= 1024 ? (
           <div
-            className="container w-full sticky top-[20%] h-screen overflow-hidden transform flex items-start justify-center"
+            className="container w-full sticky top-1/2 h-screen overflow-hidden transform flex items-start justify-center "
+            style={{
+              top: `calc(50% - ${previewSlide / 2 - navbarHeight / 2 + 7}px)`,
+            }}
             ref={measuredRef}
           >
             {previews.map((previewItem, index) => (

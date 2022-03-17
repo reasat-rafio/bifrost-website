@@ -79,9 +79,11 @@ export default function HomeHero(data: HomeSection): ReactElement {
             />
             {data.body}
           </div>
-          <Button variant="secondary">
-            <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-          </Button>
+          <div>
+            <Button variant="secondary">
+              <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+            </Button>
+          </div>
         </div>
         <div className="lg:col-span-5 xl:col-span-4 col-span-12 z-10 mt-[10%] hidden lg:block">
           {showHero(heroData)}
