@@ -25,7 +25,7 @@ const Button = forwardRef<HTMLButtonElement, any>((props, ref) => {
   } = props
 
   const rootClassName = clsx(
-    'outline-none sm:text-base text-[10px] text-white xl:px-8 px-10 py-3 xl:py-3 2xl:py-3 transition-all ease-in-out duration-300 xl:w-auto w-full relative rounded-[4px]',
+    'outline-none sm:text-base text-[10px] text-white xl:px-8 px-10 py-3 xl:py-3 2xl:py-3 !transition-all !ease-in-out duration-300 xl:w-auto w-full relative rounded-[4px]',
     loading && 'cursor-not-allowed',
     disabled && 'cursor-not-allowed hover:cursor-not-allowed brightness-75',
     className,

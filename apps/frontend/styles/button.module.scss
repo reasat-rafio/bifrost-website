@@ -37,10 +37,10 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
   @include secondaryBackgroundGradientAnimation(0.4s);
 }
 
-@mixin borderGradientAnimation($transTime, $bgcolor) {
+@mixin primaryBorderGradientAnimation($transTime) {
   position: relative;
   display: inline-block;
-  background-image: $bgcolor;
+  background-image: $secondary-button-background-gradient;
   &:before {
     content: '';
     position: absolute;
@@ -57,16 +57,45 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
     mask-composite: exclude;
   }
   &:hover {
+    opacity: 0.85;
     &:before {
+      background: linear-gradient(90deg, #f8e9ff 0%, #e4acff 35.3%, #7187ff 102.69%);
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+  }
+}
+
+@mixin secondaryBorderGradientAnimation($transTime) {
+  position: relative;
+  display: inline-block;
+  background-image: $secondary-button-background-gradient;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    padding: 1px;
+    background: linear-gradient(90deg, #f8e9ff 0%, #e4acff 35.3%, #7187ff 102.69%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+  &:hover {
+    &:before {
+      background: $primary-button-background-gradient;
       transform: matrix(-1, 0, 0, 1, 0, 0);
     }
   }
 }
 
 .primary_border_gradient {
-  @include borderGradientAnimation(0.4s, $secondary-button-background-gradient);
+  @include primaryBorderGradientAnimation(0.4s);
 }
 
 .secondary_border_gradient {
-  @include borderGradientAnimation(0.4s, '');
+  @include secondaryBorderGradientAnimation(0.4s);
 }
