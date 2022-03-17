@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
 
 interface ScrollDetectiveProps {
@@ -30,13 +30,13 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
   const scrollDetectivePosition = (windowWidth - containerWidth) / 2 / 2
   const scrollDetectiveHeight = windowHeight / 10
 
-  console.log('=============windowWidth=======================')
-  console.log(windowWidth)
-  console.log('=============windowWidth=======================')
+  const xInputPosition = (ratio / totalLength) * 300
 
-  console.log('=============containerWidth=======================')
-  console.log(containerWidth)
-  console.log('=============containerWidth=======================')
+  const x = useMotionValue(0)
+  const xInput = [-70, xInputPosition - 100]
+  const colorOutput = ['#7187FF', '#C9FF71']
+
+  const background = useTransform(x, xInput, colorOutput)
 
   return (
     <motion.div
@@ -46,15 +46,17 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
       variants={ScrollDetectiveVarient}
       style={{ right: `${scrollDetectivePosition}px` }}
     >
-      <div className="h-72 w-2 bg-gradient-to-b from-[#eeffe9] via-[#acffeb] to-[#c9ff71] relative rounded-2xl">
-        <div
-          className="absolute left-0 bg-gradient-to-r from-[#29394A] to-[#06101B] w-full rounded-2xl"
+      <div className="h-72 w-2 bg-gradient-to-r from-[#29394A] to-[#06101B] relative rounded-2xl">
+        <motion.div
+          className="absolute left-0   w-full rounded-2xl"
           style={{
             top: `calc(${(ratio / totalLength) * 100}% - ${scrollDetectiveHeight}px)`,
             height: `${scrollDetectiveHeight}px`,
+            background,
           }}
         />
       </div>
     </motion.div>
   )
 }
+// bg-gradient-to-b from-[#eeffe9] via-[#acffeb] to-[#c9ff71]
