@@ -47,7 +47,7 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
     >
       <div className="h-72 w-2 bg-gradient-to-r from-[#29394A] to-[#06101B] relative rounded-2xl">
         <motion.div
-          className="absolute left-0 top-0 w-full rounded-2xl scale-x-95"
+          className="absolute left-0 bottom-0 w-full rounded-2xl scale-x-95"
           style={{
             height: `${(ratio / totalLength) * 100}%`,
             background,
