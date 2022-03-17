@@ -17,6 +17,7 @@ export default function BlogHome({
       const handleWidth = () => setHeroSectionHeight(node.clientHeight)
       handleWidth()
       window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
     }
   }, [])
 

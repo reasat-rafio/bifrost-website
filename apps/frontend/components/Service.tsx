@@ -6,6 +6,8 @@ import { SanityImg } from 'sanity-react-extra'
 import { Service as ServiceInterface } from 'lib/landingTypes'
 import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/Button'
+import { Header } from './ui/Header'
+import { Description } from './ui/Description'
 
 interface ServiceProps {
   item: ServiceInterface
@@ -18,7 +20,7 @@ interface ServiceProps {
 }
 
 export default function Service({
-  item,
+  item: { body, cardPosition, ctaButton, headline, image, imagePosition },
   index,
   rootRef,
   length,
@@ -28,7 +30,6 @@ export default function Service({
 }: ServiceProps): ReactElement {
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  // const [transition, setTransition] = useState(0)
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -92,57 +93,42 @@ export default function Service({
   return (
     <div
       className={clsx(
-        'w-full h-full relative flex items-center transition-all duration-500 opacity-0',
-        item.imagePosition === 'center' && 'justify-center',
-        item.imagePosition === 'right' && 'justify-end',
-        item.imagePosition === 'left' && 'justify-start',
+        'w-full h-full relative z-30 flex items-center transition-all duration-500',
+        imagePosition === 'full' && 'justify-center',
+        imagePosition === 'right' && 'xl:justify-end justify-center',
+        imagePosition === 'left' && 'xl:justify-start justify-center',
       )}
       ref={sectionRef}
-      style={{
-        zIndex: 10 - index,
-      }}
     >
-      <div
-        className={clsx(
-          'rounded-lg object-contain',
-          item.imagePosition !== 'center' && 'w-[60%] lg:h-[70%] h-[50%]',
-          item.imagePosition === 'center' && 'w-full',
-        )}
-      >
+      <div className={clsx(imagePosition !== 'full' && 'lg:w-[60%] w-full lg:h-[70%] h-full')}>
         <SanityImg
-          className="w-full h-full rounded-xl md:object-contain object-cover"
+          className="w-full max-h-[65vh] rounded-[15px] object-cover"
           builder={imageUrlBuilder}
-          image={item.image}
-          alt={item.image?.alt || 'image'}
+          image={image}
+          alt={image?.alt || 'image'}
           height={windowWidth >= 768 ? 1000 : 500}
         />
       </div>
       <div
         className={clsx(
-          'absolute flex w-full h-full',
-          item.cardPosition === 'bottom-right' &&
-            'justify-end items-end 2xl:translate-y-[-5%] xl:translate-y-[-1%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[-10%] translate-x-[-5%]',
-          item.cardPosition === 'bottom-left' &&
-            'justify-start items-end 2xl:translate-y-[-5%] xl:translate-y-[-1%] lg:translate-y-[-10%] md:translate-y-[-20%] translate-y-[-20%] xl:translate-x-[10%] translate-x-[5%]',
-          item.cardPosition === 'left' && 'justify-start items-center',
-          item.cardPosition === 'right' && 'justify-end items-center',
+          '2xl:w-[55%] lg:w-[70%] w-[90%] absolute lg:p-12 xl:p-6 p-3 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2',
+          cardPosition === 'bottom-right' &&
+            'right-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[25%] translate-y-[60%]',
+          cardPosition === 'bottom-left' &&
+            'left-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[25%] translate-y-[60%]',
+          cardPosition === 'left' &&
+            'xl:left-0 xl:translate-y-0 lg:translate-y-0 translate-y-[-30%]',
+          cardPosition === 'right' &&
+            'lg:right-0 xl:translate-y-0 lg:translate-y-[25%] translate-y-[70%]',
         )}
       >
-        <div
-          className={clsx(
-            'xl:space-y-10 lg:p-10 p-4 bifrost__transparent_card rounded-lg w-[70vw] md:max-w-md lg:max-w-xl xl:max-w-2xl',
-          )}
-        >
-          <div className="flex-col md:space-y-10 space-y-3">
-            <div className="lg:text-head-4 text-[22px] leading-[22px] font-[275]">
-              {item.headline}
-            </div>
-            <div className="lg:text-body-1 text-[14px] leading-[16px] font-[300]">{item.body}</div>
-            <div className="flex">
-              <Button>
-                <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
-              </Button>
-            </div>
+        <Header>{headline}</Header>
+        <Description>{body}</Description>
+        <div className="flex">
+          <div>
+            <Button variant="secondary">
+              <a href={ctaButton.href}>{ctaButton.title}</a>
+            </Button>
           </div>
         </div>
       </div>

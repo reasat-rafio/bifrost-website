@@ -25,6 +25,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
       const handleWidth = () => setDecorationBlockWidth(node.clientWidth)
       handleWidth()
       window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
     }
   }, [])
 

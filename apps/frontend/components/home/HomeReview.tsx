@@ -26,6 +26,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
       const handleWidth = () => setTransFromWidth(node.clientWidth)
       handleWidth()
       window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
     }
   }, [])
 
