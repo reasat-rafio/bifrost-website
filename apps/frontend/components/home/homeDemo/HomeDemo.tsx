@@ -24,11 +24,11 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   const headingRef = useRef<HTMLDivElement>(null)
 
   const [ratio, setRatio] = useState(0)
-  const [previewSlide, setPreviewSlide] = useState(0)
+  const [previewSlideHeight, setPreviewSlideHeight] = useState(0)
   const [navbarHeight, setNavbarHeight] = useState(0)
   const [containerWidth, setContainerWidth] = useState(0)
   const scrollYProgress = useMotionValue(ratio / totalLength)
-  const sectionOnView = useIntersection(previewRef, { threshold: 0.2 })
+  const sectionOnView = useIntersection(previewRef, { threshold: 0.1 })
 
   useEffect(() => {
     scrollYProgress.set(ratio / totalLength)
@@ -50,13 +50,14 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   )
 
   const measuredRef = useCallback((node) => {
-    if (node !== null) {
+    if (node !== null && node.children !== null) {
       const handleWidth = () => {
-        setPreviewSlide(node.children[0].clientHeight)
         setContainerWidth(node.clientWidth)
+        setPreviewSlideHeight(node.children[0].clientHeight)
       }
       handleWidth()
       window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
     }
   }, [])
 
@@ -88,7 +89,7 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
           <div
             className="container w-full sticky top-1/2 h-screen overflow-hidden transform flex items-start justify-center "
             style={{
-              top: `calc(50% - ${previewSlide / 2 - navbarHeight / 2 + 7}px)`,
+              top: `calc(50% - ${previewSlideHeight / 2 - navbarHeight / 2 + 7}px)`,
             }}
             ref={measuredRef}
           >

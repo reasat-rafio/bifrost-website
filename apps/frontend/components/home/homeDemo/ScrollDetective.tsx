@@ -25,16 +25,15 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
   containerWidth,
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0
-  const windowHeight = useWindowSize()?.height ?? 0
+  // const windowHeight = useWindowSize()?.height ?? 0
 
   const scrollDetectivePosition = (windowWidth - containerWidth) / 2 / 2
-  const scrollDetectiveHeight = windowHeight / 10
 
   const xInputPosition = (ratio / totalLength) * 300
 
   const x = useMotionValue(0)
-  const xInput = [-70, xInputPosition - 100]
-  const colorOutput = ['#7187FF', '#C9FF71']
+  const xInput = [-100, xInputPosition - 100]
+  const colorOutput = ['#C9FF71', '#7187FF']
 
   const background = useTransform(x, xInput, colorOutput)
 
@@ -48,10 +47,9 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
     >
       <div className="h-72 w-2 bg-gradient-to-r from-[#29394A] to-[#06101B] relative rounded-2xl">
         <motion.div
-          className="absolute left-0   w-full rounded-2xl"
+          className="absolute left-0 top-0 w-full rounded-2xl scale-x-95"
           style={{
-            top: `calc(${(ratio / totalLength) * 100}% - ${scrollDetectiveHeight}px)`,
-            height: `${scrollDetectiveHeight}px`,
+            height: `${(ratio / totalLength) * 100}%`,
             background,
           }}
         />
@@ -59,4 +57,3 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
     </motion.div>
   )
 }
-// bg-gradient-to-b from-[#eeffe9] via-[#acffeb] to-[#c9ff71]
