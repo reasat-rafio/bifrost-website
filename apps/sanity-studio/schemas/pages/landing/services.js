@@ -50,17 +50,41 @@ export default {
                 },
               ],
             },
+
             {
               name: 'cardPosition',
               title: 'Card Position',
               type: 'string',
+              options: {
+                list: [
+                  { title: 'Right', value: 'right' },
+                  { title: 'Left', value: 'left' },
+                  { title: 'Bottom Right', value: 'bottom-right' },
+                  { title: 'Bottom Left', value: 'bottom-left' },
+                ],
+              },
             },
+
             {
               name: 'imagePosition',
-              title: 'Image Position',
+              title: 'Card Position',
               type: 'string',
+              options: {
+                list: [
+                  { title: 'Right', value: 'right' },
+                  { title: 'Left', value: 'left' },
+                  { title: 'Center', value: 'center' },
+                ],
+              },
             },
           ],
+          preview: {
+            select: {
+              title: 'headline',
+              subtitle: 'body',
+              media: 'image',
+            },
+          },
         },
       ],
     },
