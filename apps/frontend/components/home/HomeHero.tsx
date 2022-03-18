@@ -38,7 +38,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
       </div>
       <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen grid grid-cols-12 z-10 ">
         <div className="lg:col-span-7 xl:col-span-8 col-span-12 flex flex-col items-start space-y-10 self-center">
-          <h1 className="font-roboto font-[275] lg:text-head-1 text-[82px] leading-[82px]">
+          <h1 className="font-[275] lg:text-head-1 text-[82px] leading-[82px]">
             <PortableText
               blocks={data.headline}
               serializers={{
