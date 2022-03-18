@@ -1,3 +1,4 @@
+import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
 import UseCaseAssurance from 'components/useCase/UseCaseAssurance'
@@ -35,7 +36,7 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
   } = useSanityQuery(query, props)
 
   return (
-    <motion.div>
+    <Page>
       {renderObjectArray(sections, {
         'useCase.home': UseCaseHome,
         'useCase.example': UseCaseImages,
@@ -58,6 +59,6 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
       {renderObjectArray(sections, {
         contact: Contact,
       })}
-    </motion.div>
+    </Page>
   )
 }
