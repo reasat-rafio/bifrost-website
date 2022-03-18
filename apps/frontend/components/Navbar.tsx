@@ -56,7 +56,7 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
       <nav className="lg:container flex flex-wrap justify-between items-center">
         <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
           <a
-            href="/#hero"
+            href="/"
             onClick={(ev) => {
               if (router.pathname == '/') {
                 ev.preventDefault()
@@ -141,28 +141,32 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
                           key={men.title}
                           className="dropdown relative items-center mx-10 py-2 my-2 "
                         >
-                          <Link href={men.href}>
-                            <a
-                              onClick={(ev) => {
-                                if (men.submenu && men.submenu?.length > 0) {
-                                  ev.preventDefault()
-                                }
-                              }}
+                          <a
+                            onClick={(ev) => {
+                              if (men.url) {
+                                ev.preventDefault()
+                                if (typeof window !== 'undefined') window.open(men.url, '_blank')
+                              } else {
+                                router.push(men.href)
+                              }
+                              if (men.submenu && men.submenu?.length > 0) {
+                                ev.preventDefault()
+                              }
+                            }}
+                            className={clsx(
+                              'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 cursor-pointer',
+                              men.isCTA && 'cta-button font-bold',
+                            )}
+                          >
+                            <span
                               className={clsx(
-                                'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 ',
-                                men.isCTA && 'cta-button font-bold',
+                                router.asPath === men.href &&
+                                  'text-transparent bg-clip-text bifrost__gradient__green',
                               )}
                             >
-                              <span
-                                className={clsx(
-                                  router.asPath === men.href &&
-                                    'text-transparent bg-clip-text bifrost__gradient__green',
-                                )}
-                              >
-                                {men.title}
-                              </span>
-                            </a>
-                          </Link>
+                              {men.title}
+                            </span>
+                          </a>
                           {router.asPath === men?.href && (
                             <motion.div
                               layout

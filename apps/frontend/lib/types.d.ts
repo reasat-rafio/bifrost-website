@@ -45,6 +45,7 @@ export interface MenuItem {
   title: string
   isCTA: boolean
   submenu: array
+  url: string
 }
 
 type SocialType = 'facebook' | 'twitter' | 'linkedin' | 'instagram'
