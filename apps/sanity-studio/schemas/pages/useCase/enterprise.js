@@ -28,7 +28,7 @@ export default {
           type: 'object',
           fields: [
             {
-              name: 'title',
+              name: 'headline',
               type: 'string',
             },
             {
@@ -54,14 +54,29 @@ export default {
               ],
             },
             {
-              name: 'cardPosition',
-              title: 'Card Position',
-              type: 'string',
-            },
-            {
               name: 'imagePosition',
               title: 'Image Position',
               type: 'string',
+              options: {
+                list: [
+                  { title: 'Full', value: 'full' },
+                  { title: 'Left', value: 'left' },
+                  { title: 'Right', value: 'right' },
+                ],
+              },
+            },
+            {
+              name: 'cardPosition',
+              title: 'Card Position',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Right', value: 'right' },
+                  { title: 'Left', value: 'left' },
+                  { title: 'Bottom Right', value: 'bottom-right' },
+                  { title: 'Bottom Left', value: 'bottom-left' },
+                ],
+              },
             },
           ],
         },

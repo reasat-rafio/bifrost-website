@@ -28,9 +28,11 @@ export default function UseCaseFeatures({
           <Header>{headline}</Header>
           <Description>{body}</Description>
           <div className="flex">
-            <Button variant="secondary">
-              <a href={ctaButton.href}>{ctaButton.title}</a>
-            </Button>
+            <div>
+              <Button variant="secondary">
+                <a href={ctaButton.href}>{ctaButton.title}</a>
+              </Button>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">

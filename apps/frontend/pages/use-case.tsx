@@ -2,11 +2,10 @@ import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
 import UseCaseAssurance from 'components/useCase/UseCaseAssurance'
-// import UseCaseEnterprise from 'components/useCase/UseCaseEnterprise'
+import UseCaseEnterprise from 'components/useCase/UseCaseEnterprise'
 import UseCaseFeatures from 'components/useCase/UseCaseFeatures'
 import UseCaseHome from 'components/useCase/UseCaseHome'
 import UseCaseImages from 'components/useCase/UseCaseImages'
-import { motion } from 'framer-motion'
 import { ContactUsPage } from 'lib/contactUsTypes'
 import { siteQuery } from 'lib/query'
 import { Site } from 'lib/types'
@@ -51,9 +50,9 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
       <Ellipse className="z-10 absolute top-[30vh] right-[5vw] w-[253px] h-[391px]" />
       <Ellipse className="z-10 absolute top-[140vh] left-[5vw] w-[253px] h-[391px]" />
 
-      {/* {renderObjectArray(sections, {
+      {renderObjectArray(sections, {
         'useCase.enterprise': UseCaseEnterprise,
-      })} */}
+      })}
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
 
       {renderObjectArray(sections, {

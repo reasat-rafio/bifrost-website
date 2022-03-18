@@ -117,7 +117,7 @@ export default function Service({
           cardPosition === 'bottom-left' &&
             'left-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[25%] translate-y-[60%]',
           cardPosition === 'left' &&
-            'xl:left-0 xl:translate-y-0 lg:translate-y-0 translate-y-[-30%]',
+            'xl:left-0 xl:translate-y-0 lg:translate-y-0 translate-y-[-90%]',
           cardPosition === 'right' &&
             'lg:right-0 xl:translate-y-0 lg:translate-y-[25%] translate-y-[70%]',
         )}
