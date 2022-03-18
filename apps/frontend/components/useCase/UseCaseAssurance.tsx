@@ -57,7 +57,7 @@ export default function UseCaseAssurance({
           <Description>{body}</Description>
           <div className="flex">
             <span>
-              <Button className=" " variant="secondary">
+              <Button className=" ">
                 <a href={ctaButton.href}>{ctaButton.title}</a>
               </Button>
             </span>

@@ -29,7 +29,7 @@ export default function UseCaseFeatures({
           <Description>{body}</Description>
           <div className="flex">
             <div>
-              <Button variant="secondary">
+              <Button>
                 <a href={ctaButton.href}>{ctaButton.title}</a>
               </Button>
             </div>

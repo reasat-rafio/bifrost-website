@@ -38,7 +38,7 @@ export default function HomeProduct({
           </header>
           <Description className="!pt-3">{body}</Description>
           <div className="flex">
-            <Button variant="secondary">
+            <Button>
               <a href={ctaButton.href}>{ctaButton.title}</a>
             </Button>
           </div>

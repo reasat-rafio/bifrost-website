@@ -81,7 +81,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
             {data.body}
           </div>
           <div>
-            <Button variant="secondary">
+            <Button>
               <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
             </Button>
           </div>

@@ -35,7 +35,7 @@ export default function AboutClients({ articles }: ArticlesSection): ReactElemen
               <h6 className="text-[36px] leading-[43.2px]">{article.headline}</h6>
               <p className="text-[14px] leading-[26px] opacity-70">{article.body}</p>
               <div>
-                <Button variant="secondary">
+                <Button>
                   <a href={article.ctaButton.href}>{article.ctaButton.title}</a>
                 </Button>
               </div>

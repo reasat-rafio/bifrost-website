@@ -25,7 +25,7 @@ export default function UseCaseHome({
           </h1>
           <p className="lg:text-body-2 text-body-2 font-[300] opacity-70">{body}</p>
           <div className="flex mx-auto">
-            <Button variant="secondary">
+            <Button>
               <a href={ctaButton.href}>{ctaButton.title}</a>
             </Button>
           </div>
