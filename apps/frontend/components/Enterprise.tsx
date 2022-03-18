@@ -136,7 +136,9 @@ export default function Enterprise({
           )}
         >
           <div className="flex-col md:space-y-10 space-y-3">
-            <div className="lg:text-head-4 text-[22px] leading-[22px] font-[275]">{item.title}</div>
+            <div className="lg:text-head-4 text-[22px] leading-[22px] font-[275]">
+              {item.headline}
+            </div>
             <div className="lg:text-body-1 text-[14px] leading-[16px] font-[300]">{item.body}</div>
             <div className="flex">
               <Button>
