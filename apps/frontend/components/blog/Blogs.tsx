@@ -5,15 +5,17 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 
-export default function AboutClients({ articles }: ArticlesSection): ReactElement {
+export default function Blogs(props: ArticlesSection): ReactElement {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
-
+  console.log('====================================')
+  console.log(props)
+  console.log('====================================')
   return (
     <section className="relative ">
-      <div className="container pt-12 divide-y divide-[#1E2531] ">
+      {/* <div className="container pt-12 divide-y divide-[#1E2531] ">
         {articles.map((article) => (
           <div
             key={article._key}
@@ -47,7 +49,7 @@ export default function AboutClients({ articles }: ArticlesSection): ReactElemen
         <span>
           <Button>More articles</Button>
         </span>
-      </span>
+      </span> */}
     </section>
   )
 }

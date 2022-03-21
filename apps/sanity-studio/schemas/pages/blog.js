@@ -13,6 +13,12 @@ export default {
       title: 'SEO',
       type: 'seo',
     },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true,
+    },
     { name: 'heading', type: 'string' },
     { name: 'subHeading', type: 'string' },
 

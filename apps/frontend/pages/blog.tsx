@@ -1,5 +1,6 @@
-import BlogArticles from 'components/blog/BlogArticles'
+// import BlogArticles from 'components/blog/BlogArticles'
 import BlogHome from 'components/blog/BlogHome'
+import Blogs from 'components/blog/Blogs'
 import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
@@ -19,6 +20,13 @@ const query = groq`{
   "page": *[_id == "blogPage"][0] {
     ...,
   },
+  "blogs": *[_type== "blog"] | order(order asc) [0...6] {
+    _id,
+    heading,
+    slug,
+    detetime,
+    subHeading
+  }
 }`
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
@@ -26,10 +34,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Blog(props: SanityProps<{ site: Site; page: BlogPage }>) {
+export default function Blog(props: SanityProps<{ site: Site; page: BlogPage; blogs: any }>) {
   const {
     data: {
       page: { sections },
+      blogs,
     },
   } = useSanityQuery(query, props)
 
@@ -55,9 +64,10 @@ export default function Blog(props: SanityProps<{ site: Site; page: BlogPage }>)
       >
         <Page>
           <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-          {renderObjectArray(sections, {
+          {/* {renderObjectArray(sections, {
             'blog.articles': BlogArticles,
-          })}
+          })} */}
+          <Blogs {...blogs} />
           <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
           {renderObjectArray(sections, {
             data: Data,
