@@ -23,4 +23,10 @@ export default {
       description: 'Source on the web. OPTIONAL',
     },
   ],
+  preview: {
+    select: {
+      title: 'text',
+      subtitle: 'author',
+    },
+  },
 }

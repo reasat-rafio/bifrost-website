@@ -14,6 +14,8 @@ export default {
       type: 'seo',
     },
     { name: 'heading', type: 'string' },
+    { name: 'subHeading', type: 'string' },
+
     {
       title: 'Slug',
       name: 'slug',

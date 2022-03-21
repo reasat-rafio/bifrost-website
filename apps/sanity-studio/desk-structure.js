@@ -120,5 +120,5 @@ export default () =>
             ]),
         ),
       S.divider(),
-      S.documentTypeListItem('Blog').title('Blog'),
+      S.documentTypeListItem('blog').title('Blogs'),
     ])
