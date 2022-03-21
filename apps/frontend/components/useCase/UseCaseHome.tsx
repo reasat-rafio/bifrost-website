@@ -1,7 +1,7 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import Button from 'components/ui/Button'
-import { HomeSection } from 'lib/useCaseTypes'
+import { HomeSection } from 'lib/@types/useCaseTypes'
 import { ReactElement } from 'react'
 
 export default function UseCaseHome({

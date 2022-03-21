@@ -1,6 +1,6 @@
 import Service from 'components/Service'
 import SlideUp from 'components/SlideUpText'
-import { ServiceSection } from 'lib/landingTypes'
+import { ServiceSection } from 'lib/@types/landingTypes'
 import { ReactElement, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { Pagination } from './Pagination'

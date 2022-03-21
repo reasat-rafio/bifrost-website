@@ -7,7 +7,7 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import Link from 'next/link'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import Button from './ui/Button'
-import { MenuItem } from 'lib/types'
+import { MenuItem } from 'lib/@types/types'
 
 interface NavbarProps {
   logo: SanityImage

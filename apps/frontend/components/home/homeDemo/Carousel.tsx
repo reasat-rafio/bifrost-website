@@ -6,7 +6,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
 import 'swiper/css/a11y'
-import { DemoSection } from 'lib/landingTypes'
+import { DemoSection } from 'lib/@types/landingTypes'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 

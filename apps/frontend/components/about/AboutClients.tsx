@@ -1,4 +1,4 @@
-import { ClientsSection } from 'lib/aboutUsTypes'
+import { ClientsSection } from 'lib/@types/aboutUsTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'

@@ -1,5 +1,5 @@
 import ThreeJSWaves from 'components/ThreeJSWaves'
-import { HomeSection } from 'lib/contactUsTypes'
+import { HomeSection } from 'lib/@types/contactUsTypes'
 import { ReactElement } from 'react'
 import { PortableText } from 'utils/sanity'
 

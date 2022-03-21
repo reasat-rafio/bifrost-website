@@ -1,6 +1,6 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import { Header } from 'components/ui/Header'
-import { TeamSection } from 'lib/aboutUsTypes'
+import { TeamSection } from 'lib/@types/aboutUsTypes'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'

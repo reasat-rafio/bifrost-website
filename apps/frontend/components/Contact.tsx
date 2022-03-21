@@ -1,6 +1,6 @@
 import SlideUp from 'components/SlideUpText'
 import Button from 'components/ui/Button'
-import { ContactSection } from 'lib/landingTypes'
+import { ContactSection } from 'lib/@types/landingTypes'
 import { ReactElement, useRef } from 'react'
 
 export default function HomeContact(data: ContactSection): ReactElement {

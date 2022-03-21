@@ -1,5 +1,5 @@
 import Button from 'components/ui/Button'
-import { DataSection } from 'lib/landingTypes'
+import { DataSection } from 'lib/@types/landingTypes'
 import { ReactElement } from 'react'
 import { PortableText } from 'utils/sanity'
 import { GradientBorder } from './common/GradientBorder'

@@ -1,11 +1,11 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
 import { showHero } from 'lib/showHero'
-import { HeroData } from 'lib/types'
+import { HeroData } from 'lib/@types/types'
 import { ReactElement, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
-import { HomeSection } from 'lib/landingTypes'
+import { HomeSection } from 'lib/@types/landingTypes'
 import { PortableText } from 'utils/sanity'
 
 const movingBorderObjWidth = 9

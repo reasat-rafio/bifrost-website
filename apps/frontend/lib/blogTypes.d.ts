@@ -8,15 +8,15 @@ export interface HomeSection {
   subHeadline: string
 }
 
-export interface ArticlesSection {
-  articles: [
-    {
-      _key: string
-      headline: string
-      subHeadline: string
-      body: string
-      ctaButton: CTAButton
-      image: SanityImage & ImageAlt
-    },
-  ]
+export interface IBlog {
+  _id: string
+  slug: { _type: string; current: string }
+  detetime: string
+  heading: string
+  subHeading: string
+  image: any
+}
+export interface BlogsSection {
+  blogs: IBlog[]
+  totalBlogs: number
 }

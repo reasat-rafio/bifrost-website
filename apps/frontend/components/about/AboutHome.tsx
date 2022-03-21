@@ -1,7 +1,7 @@
 import { GradientTitle } from 'components/common/GradientTitle'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import Button from 'components/ui/Button'
-import { HomeSection } from 'lib/aboutUsTypes'
+import { HomeSection } from 'lib/@types/aboutUsTypes'
 import { ReactElement } from 'react'
 
 export default function AboutHome({

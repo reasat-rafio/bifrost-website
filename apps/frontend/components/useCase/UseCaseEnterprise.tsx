@@ -2,7 +2,7 @@ import { GradientTitle } from 'components/common/GradientTitle'
 import { Pagination } from 'components/home/HomeService/Pagination'
 import Service from 'components/Service'
 import { Header } from 'components/ui/Header'
-import { EnterpriseSection } from 'lib/useCaseTypes'
+import { EnterpriseSection } from 'lib/@types/useCaseTypes'
 import { ReactElement, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 

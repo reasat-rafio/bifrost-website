@@ -4,7 +4,7 @@ import { animationFrameEffect, useVisibleScrollEffect } from 'lib/hooks'
 import { Dispatch, ReactElement, RefObject, SetStateAction, useRef } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { Enterprise as EnterpriseInterface } from 'lib/useCaseTypes'
+import { Enterprise as EnterpriseInterface } from 'lib/@types/useCaseTypes'
 import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/Button'
 

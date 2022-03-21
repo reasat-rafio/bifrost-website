@@ -9,11 +9,6 @@ export default {
 
   fields: [
     {
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo',
-    },
-    {
       name: 'order',
       title: 'Order',
       type: 'number',
@@ -21,7 +16,7 @@ export default {
     },
     { name: 'heading', type: 'string' },
     { name: 'subHeading', type: 'string' },
-
+    { name: 'image', type: 'image', description: 'will use as preview image' },
     {
       title: 'Slug',
       name: 'slug',
@@ -30,7 +25,7 @@ export default {
         source: (doc) => doc.heading,
       },
     },
-    { name: 'detetime', type: 'datetime' },
+    { name: 'datetime', type: 'datetime' },
     {
       name: 'body',
       title: 'Body',
@@ -78,9 +73,9 @@ export default {
   ],
   preview: {
     select: {
-      title: 'seo.title',
-      subtitle: 'seo.description',
-      media: 'seo.ogImage',
+      title: 'heading',
+      subtitle: 'subHeading',
+      media: 'image',
     },
   },
 }
