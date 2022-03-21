@@ -5,7 +5,7 @@ import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
-import { BlogPage, HomeSection, IBlog } from 'lib/blogTypes'
+import { BlogPage, HomeSection, IBlog } from 'lib/@types/blogTypes'
 import { siteQuery } from 'lib/query'
 import { Site } from 'lib/@types/types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -20,7 +20,7 @@ const query = groq`{
   "page": *[_id == "blogPage"][0] {
     ...,
   },
-  "blogs": *[_type== "blog"] | order(order asc) [0...6] {
+  "blogs": *[_type== "blog"] | order(order asc) [0...5] {
     _id,
     heading,
     slug,

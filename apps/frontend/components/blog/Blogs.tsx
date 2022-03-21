@@ -1,10 +1,11 @@
 import Button from 'components/ui/Button'
-import { BlogsSection } from 'lib/blogTypes'
+import { BlogsSection } from 'lib/@types/blogTypes'
 import { formatDate } from 'lib/helpers'
-import { ReactElement } from 'react'
+import { getMoreBlogListQuery } from 'lib/query'
+import { ReactElement, useEffect, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'utils/sanity'
+import { imageUrlBuilder, sanityClient } from 'utils/sanity'
 
 export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement {
   const { width: windowWidth } = useWindowSize() ?? {
@@ -12,15 +13,53 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
     height: 0,
   }
 
+  const [blogList, setBlogList] = useState(blogs)
+  const [upComingDoctorLength, setUpcomingDoctorLength] = useState<null | number>(null)
+  const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState(2)
+
+  const listLimit = 5
+
+  const onShowMoreAction = async () => {
+    if (totalBlogs > blogs.length) {
+      setPage((prev) => prev + 1)
+
+      try {
+        setLoading(true)
+        const query = getMoreBlogListQuery({
+          limit: +listLimit,
+          page: +page,
+        })
+
+        const result = await sanityClient('anonymous').fetch(query)
+
+        setBlogList((prev) => [...prev, ...result])
+      } catch (err) {
+        console.log(JSON.stringify(err, ['message', 'arguments', 'type', 'name']))
+      } finally {
+        setLoading(false)
+      }
+    } else {
+      setPage(2)
+      setBlogList(blogs.slice(0, listLimit))
+    }
+  }
+
+  useEffect(() => {
+    setUpcomingDoctorLength(
+      totalBlogs - blogList.length >= listLimit ? listLimit : totalBlogs - blogList.length,
+    )
+  }, [blogList, totalBlogs])
+
   return (
-    <section className="relative ">
+    <section className="relative">
       <div className="container pt-12 divide-y divide-[#1E2531] ">
-        {blogs.map(({ _id, detetime, heading, slug, subHeading, image }) => {
+        {blogList.map(({ _id, detetime, heading, slug, subHeading, image }) => {
           const date = formatDate(detetime.split('T')[0])
 
           return (
             <div key={_id} className="grid lg:grid-cols-2 grid-cols-1 py-16 lg:gap-20 gap-10 group">
-              <div className="w-full h-full rounded-[14px] overflow-hidden  ">
+              <div className="w-full max-h-[400px] rounded-[14px] overflow-hidden  ">
                 <SanityImg
                   className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
                   builder={imageUrlBuilder}
@@ -45,7 +84,9 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
       </div>
       <span className="flex justify-center items-center">
         <span>
-          <Button>More articles</Button>
+          <Button disabled={loading} onClick={onShowMoreAction}>
+            {totalBlogs <= blogList.length ? 'Less' : `${upComingDoctorLength} More`} articles
+          </Button>
         </span>
       </span>
     </section>

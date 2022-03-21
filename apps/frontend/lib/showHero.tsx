@@ -2,7 +2,7 @@
 import clsx from 'clsx'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from '../utils/sanity'
-import { HeroData } from './types'
+import { HeroData } from './@types/types'
 
 export const showHero = (heroData: HeroData, className?: string) => {
   switch (heroData.type) {
