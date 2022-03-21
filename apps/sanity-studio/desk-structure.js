@@ -69,27 +69,11 @@ export default () =>
                 id: 'siteNav',
                 title: 'Navigation',
               }),
-              // singleItem({
-              //   schemaType: "site.tags",
-              //   id: "siteTags",
-              //   title: "Tags",
-              // }),
+
               S.documentTypeListItem('site.redirects').title('Redirects'),
             ]),
         ),
       S.documentTypeListItem('social').title('Social'),
-      // singleItem({
-      //   schemaType: "contactData",
-      //   id: "contactData",
-      //   title: "Contact",
-      //   icon: GrContactInfo,
-      // }),
-      // ...S.documentTypeListItems().filter(
-      //   (item) =>
-      //     !["site.logos", "site.nav", "site.redirects", "landingPage"].includes(
-      //       item.getId()
-      //     )
-      // ),
       S.divider(),
       S.listItem()
         .title('Pages')
@@ -129,10 +113,12 @@ export default () =>
               pageItem({
                 schemaType: 'blogPage',
                 id: 'blogPage',
-                title: 'Blogs',
+                title: 'Blog Page',
                 icon: GrArticle,
                 slug: '/blog',
               }),
             ]),
         ),
+      S.divider(),
+      S.documentTypeListItem('Blog').title('Blog'),
     ])

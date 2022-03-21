@@ -11,6 +11,7 @@ import social from './social'
 import seo from './seo'
 import hero from './hero'
 import initial from './initial'
+import quote from './quote'
 
 import landing from './pages/landing'
 import landingHomeSection from './pages/landing/home'
@@ -38,6 +39,8 @@ import useCaseExample from './pages/useCase/example'
 import useCaseFeature from './pages/useCase/feature'
 
 import blog from './pages/blog'
+
+import blogPage from './pages/blog-page'
 import blogHome from './pages/blog/home'
 import blogArticles from './pages/blog/articles'
 
@@ -68,6 +71,7 @@ export default createSchema({
     footer,
     menuItem,
     initial,
+    quote,
 
     contactUs,
     contactUsHomeSection,
@@ -95,6 +99,8 @@ export default createSchema({
     useCaseFeature,
 
     blog,
+
+    blogPage,
     blogHome,
     blogArticles,
   ]),
