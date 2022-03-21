@@ -30,7 +30,7 @@ export const getMoreBlogListQuery = ({ limit, page }: { limit: number; page: num
   const endIndex = limit * page - 1
 
   const query = groq`
-        *[_type == "blog"] | order(order asc) [${startIndex}..${endIndex}] {
+        *[_type== "blog"] | order(order asc) [${startIndex}..${endIndex}] {
             ${BLOG_LIST_FIELDS}
         }
     `

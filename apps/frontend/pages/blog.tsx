@@ -24,7 +24,7 @@ const query = groq`{
     _id,
     heading,
     slug,
-    detetime,
+    datetime,
     subHeading,
     "image": ${withDimensions('image')},
   },
@@ -53,12 +53,12 @@ export default function Blog(
     <>
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       <Page>
-        {/* {renderObjectArray(sections, {
+        {renderObjectArray(sections, {
           'blog.home': useCallback(
             (p: HomeSection) => <BlogHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
-        })} */}
+        })}
       </Page>
       <div
         className="bg-black"

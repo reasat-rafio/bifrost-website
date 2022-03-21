@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 /* eslint-disable react-hooks/exhaustive-deps */
 import { RefObject, useEffect, useState } from 'react'
 
@@ -184,4 +185,11 @@ export function useVisibleScroll(element: RefObject<Element>, options?: Intersec
     options,
   )
   return visibleScroll
+}
+
+export const useScroll = () => {
+  const elRef = useRef<null | HTMLDivElement>(null)
+  const executeScroll: any = () => elRef?.current?.scrollIntoView()
+
+  return [executeScroll, elRef]
 }

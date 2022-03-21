@@ -11,7 +11,7 @@ export interface HomeSection {
 export interface IBlog {
   _id: string
   slug: { _type: string; current: string }
-  detetime: string
+  datetime: string
   heading: string
   subHeading: string
   image: any

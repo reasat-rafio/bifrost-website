@@ -15,8 +15,6 @@ export default {
       hidden: true,
     },
     { name: 'heading', type: 'string' },
-    { name: 'subHeading', type: 'string' },
-    { name: 'image', type: 'image', description: 'will use as preview image' },
     {
       title: 'Slug',
       name: 'slug',
@@ -25,6 +23,9 @@ export default {
         source: (doc) => doc.heading,
       },
     },
+    { name: 'subHeading', type: 'string' },
+    { name: 'image', type: 'image', description: 'will use as preview image' },
+
     { name: 'datetime', type: 'datetime' },
     {
       name: 'body',
