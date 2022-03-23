@@ -5,17 +5,20 @@ import { formatDate } from 'lib/helpers'
 import { useScroll } from 'lib/hooks'
 import { getMoreBlogListQuery } from 'lib/query'
 import { useRouter } from 'next/router'
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, sanityClient } from 'utils/sanity'
 import { motion } from 'framer-motion'
 
 const staggerContainer = {
-  from: {},
+  from: {
+    opacity: 0,
+  },
   to: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.3,
       delayChildren: 0.3,
     },
   },
@@ -23,28 +26,20 @@ const staggerContainer = {
 
 const staggerChild = {
   from: {
-    scale: 0,
-    top: 100,
-    transition: {
-      duration: 0.3,
-    },
+    scale: 0.8,
+    opacity: 0,
   },
   to: {
     scale: 1,
-    top: 30,
-    transition: {
-      duration: 0.3,
-    },
+    opacity: 1,
   },
 }
 
 export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement {
-  const { width: windowWidth } = useWindowSize() ?? {
-    width: 0,
-    height: 0,
-  }
+  const windowWidth = useWindowSize()?.width ?? 0
 
   const [executeScroll, elRef] = useScroll()
+  const blogRef = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
 
@@ -54,14 +49,21 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
   const [page, setPage] = useState(2)
   console.log(blogList)
 
+  const scrollToBottom = () => {
+    const domNode = blogRef.current
+    if (domNode) {
+      domNode.scrollTop = domNode.scrollHeight
+    }
+  }
+
   const listLimit = 5
 
   const onShowMoreAction = async () => {
     if (totalBlogs > blogList.length) {
+      setLoading(true)
       setPage((prev) => prev + 1)
 
       try {
-        setLoading(true)
         const query = getMoreBlogListQuery({
           limit: +listLimit,
           page: +page,
@@ -73,6 +75,7 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
       } catch (err) {
         console.log(JSON.stringify(err, ['message', 'arguments', 'type', 'name']))
       } finally {
+        scrollToBottom()
         setLoading(false)
       }
     } else {
@@ -89,18 +92,20 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
   }, [blogList, totalBlogs])
 
   return (
-    <section className="relative" ref={elRef}>
+    <section className="relative container">
       <motion.div
-        className="container pt-12 divide-y divide-[#1E2531]"
+        key={blogList.length}
+        className="pt-12 divide-y divide-[#1E2531]"
         variants={staggerContainer}
         initial="from"
         animate="to"
+        ref={elRef}
       >
         {blogList.map(({ _id, datetime, heading, slug, subHeading, image }) => {
           const date = formatDate(datetime?.split('T')[0])
 
           return (
-            <>
+            <div ref={blogRef}>
               {!loading && (
                 <motion.div
                   key={_id}
@@ -128,7 +133,7 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
                   </div>
                 </motion.div>
               )}
-            </>
+            </div>
           )
         })}
 

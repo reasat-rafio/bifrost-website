@@ -64,7 +64,7 @@ export default function Blog(
         className="bg-black"
         style={{
           transform: `translate(0, ${heroSectionHeight}px)`,
-          paddingBottom: `${heroSectionHeight}px`,
+          marginBottom: `${heroSectionHeight}px`,
         }}
       >
         <Page>
