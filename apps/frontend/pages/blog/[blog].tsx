@@ -1,4 +1,4 @@
-import { Body } from 'components/blog/Body'
+import { Body } from 'components/blog/body/Body'
 import { Heading } from 'components/blog/Heading'
 import { BlogProps } from 'lib/@types/blogTypes'
 import { siteQuery } from 'lib/query'
