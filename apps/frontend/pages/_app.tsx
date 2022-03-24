@@ -80,6 +80,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               darkLogo={pageProps.data?.site.logos.darkLogo}
               logo={pageProps.data?.site.logos.logo}
               menu={pageProps.data?.site.nav.menu}
+              darkBg={pageProps.data?.page._type === 'blog'}
             />
           )}
           {pageProps.data?.page._type !== 'blog' && (

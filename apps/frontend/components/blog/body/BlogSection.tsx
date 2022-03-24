@@ -33,7 +33,7 @@ const serializers = {
     },
     quote({ node: { text, author, url } }: { node: IQuote }) {
       return (
-        <div className="bifrost__gradient_pink p-16 rounded-[15px] flex flex-col space-y-5 mb-6">
+        <div className="bifrost__gradient_pink xl:p-16 p-5 rounded-[15px] flex flex-col space-y-5 mb-6">
           <q
             onClick={() => {
               if (url && typeof window !== 'undefined') {
@@ -41,14 +41,14 @@ const serializers = {
               }
             }}
             className={clsx(
-              'text-[#000610] text-[40px] font-[275] transition-all duration-300',
+              'text-[#000610] xl:text-[40px] text-[25px] font-[275] transition-all duration-300',
               !url && 'cursor-pointer',
             )}
           >
             {text}
           </q>
 
-          <span className="text-[#5D6588] text-[20px] font-light">{author}</span>
+          <span className="text-[#5D6588] xl:text-[20px] text-base font-light">{author}</span>
         </div>
       )
     },

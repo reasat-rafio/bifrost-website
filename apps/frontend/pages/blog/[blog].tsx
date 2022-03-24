@@ -5,6 +5,7 @@ import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
+import { useEffect, useState } from 'react'
 import { withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 
@@ -39,10 +40,20 @@ export default function Blog(props: SanityProps) {
     },
   }: { data: { page: BlogProps } } = useSanityQuery(query, props)
 
+  const [paddingY, setPaddingY] = useState(0)
+
+  useEffect(() => {
+    const navHeight = document.querySelector('#navbar').clientHeight
+    setPaddingY(navHeight + 60)
+  }, [])
+
   return (
-    <div className="py-32 bg-white text-[#5D6588] selection:bg-[#e4acff] px-6">
+    <div
+      className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6"
+      style={{ paddingTop: `${paddingY}px`, paddingBottom: `${paddingY}px` }}
+    >
       <Heading heading={heading} datetime={datetime} />
-      <Body body={body} />
+      <Body paddingY={paddingY} body={body} />
     </div>
   )
 }

@@ -17,9 +17,9 @@ export const ShareWith: React.FC<ShareWithProps> = ({}) => {
   }, [router.pathname])
 
   return (
-    <div className="mt-10 border border-[#8E8E8E] rounded-[15px] px-20 py-16 flex justify-between">
-      <h6 className="flex-1 text-[20px] text-[#000610]">Share this article:</h6>
-      <div className="flex space-x-10">
+    <div className="mt-10 border border-[#8E8E8E] rounded-[15px] xl:px-20 px-8 xl:py-16 py-8 flex justify-between">
+      <h6 className="flex-1 lg:text-[20px] text-base text-[#000610]">Share this article:</h6>
+      <div className="flex xl:space-x-10 space-x-5">
         <LinkedinShareButton url={pageUrl}>
           <img src="/icons/linkedin.svg" />
         </LinkedinShareButton>

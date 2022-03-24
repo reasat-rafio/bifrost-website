@@ -7,9 +7,10 @@ import { ShareWith } from './ShareWith'
 
 interface BodyProps {
   body: BlogBody[]
+  paddingY: number
 }
 
-export const Body: React.FC<BodyProps> = ({ body }) => {
+export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
   const [sectionRefs, setSectionRefs] = useState([])
   const shareBlock: BlogBody = {
     _key: String(Math.random() * 100),
@@ -29,10 +30,10 @@ export const Body: React.FC<BodyProps> = ({ body }) => {
 
   return (
     <section className="mt-5">
-      <ScrollSpyWrapper sections={sections} sectionRefs={sectionRefs}>
+      <ScrollSpyWrapper paddingY={paddingY} sections={sections} sectionRefs={sectionRefs}>
         <div
           data-cy="section-wrapper"
-          className="lg:col-span-9 relative rounded-lg space-y-10 max-w-5xl text-[#183B56]"
+          className="lg:col-span-9 relative rounded-lg space-y-10 2xl:max-w-5xl max-w-4xl text-[#183B56]"
         >
           {sections.map((section, index) => (
             <div

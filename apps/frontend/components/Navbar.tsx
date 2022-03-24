@@ -13,9 +13,10 @@ interface NavbarProps {
   logo: SanityImage
   darkLogo: SanityImage
   menu: MenuItem[]
+  darkBg?: boolean
 }
 
-export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
+export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElement {
   const router = useRouter()
   const ctaButton = menu.filter((men) => men.isCTA)[0]
   const [smallNavOpen, setSmallNavOpen] = useState<boolean>(false)
@@ -43,18 +44,27 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
 
   return (
     <motion.div
-      id="navbar"
       animate={{
         color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },
       }}
       className={clsx(
         'fixed w-full py-4 z-50 top-0 transition-all duration-300 ease-out',
-        navVisible || scroll ? 'backdrop-blur-2xl' : 'bg-transparent',
+        // @TODO chage thee opacity
+        darkBg
+          ? navVisible || scroll
+            ? 'bg-black'
+            : 'bg-black'
+          : navVisible || scroll
+          ? 'backdrop-blur-2xl'
+          : 'bg-transparent',
       )}
     >
       <nav className="lg:container flex flex-wrap justify-between items-center">
-        <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
+        <div
+          className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start"
+          id="navbar"
+        >
           <a
             href="/"
             onClick={(ev) => {
