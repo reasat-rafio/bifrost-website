@@ -38,9 +38,9 @@ export interface BlogProps {
 
 export interface BlogBody {
   _key: string
-  _type: string
-  description: any[]
-  heading: string
+  _type?: string
+  description?: any[]
+  heading?: string
   image?: any
   hideHeading?: boolean
 }

@@ -3,6 +3,7 @@ import React, { createRef, useEffect, useState } from 'react'
 import { ScrollSpyWrapper } from '../ScrollSpyWrapper'
 import { BlogSection } from './BlogSection'
 import { Introduction } from './Introduction'
+import { ShareWith } from './ShareWith'
 
 interface BodyProps {
   body: BlogBody[]
@@ -10,7 +11,13 @@ interface BodyProps {
 
 export const Body: React.FC<BodyProps> = ({ body }) => {
   const [sectionRefs, setSectionRefs] = useState([])
-  const sections = body
+  const shareBlock: BlogBody = {
+    _key: String(Math.random() * 100),
+    _type: 'share',
+    heading: 'Share With',
+  }
+
+  const sections = [...body, shareBlock]
 
   const totalSectionsLength = sections.length
 
@@ -36,6 +43,8 @@ export const Body: React.FC<BodyProps> = ({ body }) => {
             >
               {section._type === 'introduction' ? (
                 <Introduction {...section} />
+              ) : section._type === 'share' ? (
+                <ShareWith />
               ) : (
                 <BlogSection {...section} />
               )}
