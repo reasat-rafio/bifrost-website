@@ -1,3 +1,4 @@
+import { LightboxImage } from 'components/ui/LightboxImage'
 import { BlogBody } from 'lib/@types/blogTypes'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -36,14 +37,12 @@ const serializers = {
 export const Introduction: React.FC<BlogBody> = ({ description, image }) => {
   return (
     <div className="blog-introduction">
-      <div className="w-full mb-6">
-        <SanityImg
-          className="w-full object-cover rounded-[15px]"
-          height={500}
-          image={image}
-          builder={imageUrlBuilder}
-        />
-      </div>
+      <LightboxImage
+        image={image}
+        containerClassName="w-full mb-6"
+        className="w-full object-cover rounded-[15px]"
+        height={500}
+      />
       <p className="text-[18px] font-light">
         <PortableText blocks={description} serializers={serializers} />
       </p>

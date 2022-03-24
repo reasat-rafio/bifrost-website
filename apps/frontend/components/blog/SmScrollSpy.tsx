@@ -36,7 +36,7 @@ export const SmScrollSpy: React.FC<SmScrollSpyProps> = ({
         initial="from"
         animate={sectionOnview?.isIntersecting ? 'to' : 'from'}
         className="sticky pointer-events-auto bifrost__gradient_pink  shadow"
-        style={{ top: `${paddingY - 20}px` }}
+        style={{ top: `${paddingY - paddingY / 5}px` }}
       >
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative mt-1">

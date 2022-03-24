@@ -44,16 +44,16 @@ export default function Blog(props: SanityProps) {
 
   useEffect(() => {
     const navHeight = document.querySelector('#navbar').clientHeight
-    setPaddingY(navHeight + 60)
+    setPaddingY(navHeight * 2)
   }, [])
 
   return (
-    <div
+    <article
       className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6"
       style={{ paddingTop: `${paddingY}px`, paddingBottom: `${paddingY}px` }}
     >
       <Heading heading={heading} datetime={datetime} />
       <Body paddingY={paddingY} body={body} />
-    </div>
+    </article>
   )
 }
