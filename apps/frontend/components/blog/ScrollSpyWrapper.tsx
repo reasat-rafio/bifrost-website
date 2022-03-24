@@ -12,6 +12,7 @@ interface ScrollSpyProps {
 export const ScrollSpyWrapper: React.FC<ScrollSpyProps> = ({ sections, sectionRefs, children }) => {
   const [sectionWrapperHeight, setSectionWrapperHeight] = useState(0)
   const [currentelElementIndex, setCurrentElementIndex] = useState(0)
+  const [dividerHeight, setDividerHeight] = useState(0)
 
   const [selected, setSelected] = useState<BlogBody | undefined>(sections[0])
 
@@ -21,7 +22,10 @@ export const ScrollSpyWrapper: React.FC<ScrollSpyProps> = ({ sections, sectionRe
     })
     const sectionWrapperScrollHeight =
       document.querySelector("[data-cy='section-wrapper']")?.scrollHeight ?? 0
+    const pageDividerHeight = document.querySelector('.blog-introduction')?.scrollHeight ?? 0
+
     setSelected(selectedSection)
+    setDividerHeight(pageDividerHeight)
     setSectionWrapperHeight(sectionWrapperScrollHeight)
   }, [currentelElementIndex, sections])
 
@@ -30,8 +34,12 @@ export const ScrollSpyWrapper: React.FC<ScrollSpyProps> = ({ sections, sectionRe
       {({ currentElementIndexInViewport }) => {
         setCurrentElementIndex(currentElementIndexInViewport)
         return (
-          <div className="grid lg:grid-cols-12 gap-10">
+          <div className="grid lg:grid-cols-12 lg:gap-10">
             <div className="col-span-3 relative">
+              <span
+                style={{ height: `${dividerHeight}px` }}
+                className="absolute top-0 right-0 bg-gradient-to-b from-[#f8e9ff] via-[#e4acff] to-[#7187ff] w-[2px] rounded-[3px] opacity-60 lg:block hidden"
+              />
               <div className="top-20 p-4 sticky hidden lg:block">
                 <ul data-cy="nav-wrapper" className="space-y-6 w-[60%] mx-auto ">
                   {sections.map((section, i) => (

@@ -40,7 +40,7 @@ export default function Blog(props: SanityProps) {
   }: { data: { page: BlogProps } } = useSanityQuery(query, props)
 
   return (
-    <div className="py-32 bg-white text-[#5D6588]">
+    <div className="py-32 bg-white text-[#5D6588] selection:bg-[#e4acff] px-6">
       <Heading heading={heading} datetime={datetime} />
       <Body body={body} />
     </div>

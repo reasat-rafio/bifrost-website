@@ -44,3 +44,9 @@ export interface BlogBody {
   image?: any
   hideHeading?: boolean
 }
+
+export interface IQuote {
+  text: string
+  author: string
+  url?: string
+}

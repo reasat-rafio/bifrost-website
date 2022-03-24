@@ -25,7 +25,7 @@ export const Body: React.FC<BodyProps> = ({ body }) => {
       <ScrollSpyWrapper sections={sections} sectionRefs={sectionRefs}>
         <div
           data-cy="section-wrapper"
-          className="lg:col-span-9 relative rounded-lg space-y-24 max-w-5xl"
+          className="lg:col-span-9 relative rounded-lg space-y-10 max-w-5xl text-[#183B56]"
         >
           {sections.map((section, index) => (
             <div
@@ -34,7 +34,11 @@ export const Body: React.FC<BodyProps> = ({ body }) => {
               ref={sectionRefs[index]}
               className="scroll-mt-[120px] lg:scroll-mt-[100px] "
             >
-              {section._type === 'introduction' ? <Introduction {...section} /> : <BlogSection />}
+              {section._type === 'introduction' ? (
+                <Introduction {...section} />
+              ) : (
+                <BlogSection {...section} />
+              )}
             </div>
           ))}
         </div>
