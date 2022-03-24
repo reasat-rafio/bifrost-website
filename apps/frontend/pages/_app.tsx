@@ -9,13 +9,32 @@ import { AppProvider } from 'contexts/global'
 import Navbar from 'components/Navbar'
 import { motion } from 'framer-motion'
 import Footer from 'components/Footer'
+import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
-  const ogImage = pageProps.data?.page.seo.seoImage ?? pageProps.data?.site.ogImage
+
+  console.log(pageProps.data.page._type)
+
+  const [seoTitle, setSeoTitle] = useState()
+  const [seoDescription, setSeoDescription] = useState()
+  const [ogImage, setOgImage] = useState()
+
+  useEffect(() => {
+    if (pageProps.data?.page._type === 'blog') {
+      setSeoTitle(pageProps.data?.page.heading)
+      setSeoDescription(pageProps.data?.page.subHeading)
+      setOgImage(pageProps.data?.page.image)
+    } else {
+      setSeoTitle(pageProps.data?.page.seo.title)
+      setSeoDescription(pageProps.data?.page.seo.description)
+      setOgImage(pageProps.data?.page.seo.seoImage ?? pageProps.data?.site?.ogImage)
+    }
+  }, [])
+
   if (pageProps.data?.site.logos.favicon) {
     faviconImage = imageUrlBuilder
-      .image(pageProps.data?.site.logos.favicon)
+      .image(pageProps.data?.site?.logos.favicon)
       .size(256, 256)
       .ignoreImageParams()
       .url()
@@ -31,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
         width: w,
         height: h,
-        alt: `${pageProps.data?.page.seo.title}`,
+        alt: `${seoTitle}`,
       }))
     : []
 
@@ -50,8 +69,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           className="relative overflow-clip"
         >
           <NextSeo
-            title={pageProps.data?.page.seo.title}
-            description={pageProps.data?.page.seo.description}
+            title={seoTitle}
+            description={seoDescription}
             openGraph={{
               images: openGraphImages,
             }}
