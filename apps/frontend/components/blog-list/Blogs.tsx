@@ -47,7 +47,6 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
   const [upComingBlogLength, setUpcomingBlogLength] = useState<null | number>(null)
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(2)
-  console.log(blogList)
 
   const scrollToBottom = () => {
     const domNode = blogRef.current

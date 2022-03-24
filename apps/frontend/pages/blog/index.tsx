@@ -1,6 +1,6 @@
 // import BlogArticles from 'components/blog/BlogArticles'
-import BlogHome from 'components/blog/BlogHome'
-import Blogs from 'components/blog/Blogs'
+import BlogHome from 'components/blog-list/BlogHome'
+import Blogs from 'components/blog-list/Blogs'
 import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Data from 'components/Data'

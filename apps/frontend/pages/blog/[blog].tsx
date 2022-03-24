@@ -1,3 +1,6 @@
+import { Body } from 'components/blog/Body'
+import { Heading } from 'components/blog/Heading'
+import { BlogProps } from 'lib/@types/blogTypes'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
@@ -30,9 +33,16 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 })
 
 export default function Blog(props: SanityProps) {
-  const { data } = useSanityQuery(query, props)
+  const {
+    data: {
+      page: { heading, datetime, body },
+    },
+  }: { data: { page: BlogProps } } = useSanityQuery(query, props)
 
-  console.log(data)
-
-  return <div></div>
+  return (
+    <div className="py-32 bg-white text-[#5D6588]">
+      <Heading heading={heading} datetime={datetime} />
+      <Body body={body} />
+    </div>
+  )
 }

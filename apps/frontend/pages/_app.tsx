@@ -82,9 +82,12 @@ function MyApp({ Component, pageProps }: AppProps) {
               menu={pageProps.data?.site.nav.menu}
             />
           )}
-          <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-            <div className="bifrost__background_noise"></div>
-          </div>
+          {pageProps.data?.page._type !== 'blog' && (
+            <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
+              <div className="bifrost__background_noise"></div>
+            </div>
+          )}
+
           <Component {...pageProps} />
           {pageProps.data?.site && (
             <Footer
