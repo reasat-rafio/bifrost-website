@@ -14,8 +14,6 @@ import { useEffect, useState } from 'react'
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
 
-  console.log(pageProps.data.page._type)
-
   const [seoTitle, setSeoTitle] = useState()
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
