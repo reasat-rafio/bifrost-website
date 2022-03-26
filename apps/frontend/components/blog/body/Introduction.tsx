@@ -1,10 +1,8 @@
 import { LightboxImage } from 'components/ui/LightboxImage'
-import { useCtx } from 'contexts/global'
 import { BlogBody } from 'lib/@types/blogTypes'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
-import { motion } from 'framer-motion'
 
 const serializers = {
   types: {
@@ -37,11 +35,6 @@ const serializers = {
 }
 
 export const Introduction: React.FC<BlogBody> = ({ description, image }) => {
-  const {
-    state: { lightboxImage },
-    action: { setLightboxImage },
-  } = useCtx()
-
   return (
     <div className="blog-introduction">
       <LightboxImage

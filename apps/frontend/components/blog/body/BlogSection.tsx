@@ -2,8 +2,7 @@ import clsx from 'clsx'
 import { LightboxImage } from 'components/ui/LightboxImage'
 import { BlogBody, IQuote } from 'lib/@types/blogTypes'
 import React from 'react'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import { PortableText } from 'utils/sanity'
 
 const serializers = {
   types: {
