@@ -27,12 +27,17 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
   const [isOpen, setOpen] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', () => isOpen && setOpen(false))
-    return window.removeEventListener('scroll', () => isOpen && setOpen(false))
+    window.addEventListener('scroll', () => setOpen(false))
+    return window.removeEventListener('scroll', () => setOpen(false))
   }, [])
 
   return (
-    <div className={`relative z-20  ${isOpen ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
+    <div
+      className={clsx(
+        'relative 2xl:min-h-[485px] xl:min-h-[400px] lg:min-h-[350px] md:min-h-[380px] sm:min-h-[300px] min-h-[220px] w-full',
+        isOpen ? 'cursor-zoom-out z-20' : 'cursor-zoom-in z-0',
+      )}
+    >
       <motion.div
         animate={{ opacity: isOpen ? 1 : 0 }}
         transition={transition}
@@ -42,20 +47,29 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
         )}
         onClick={() => setOpen(false)}
       />
-
-      <motion.div
-        layout
-        transition={transition}
+      <div
         onClick={() => setOpen(!isOpen)}
-        className={clsx(containerClassName, isOpen ? 'fixed w-auto h-auto m-auto' : '')}
+        className={clsx(
+          'flex  ',
+          isOpen && 'fixed top-0 left-0 h-screen w-screen justify-center items-center ',
+        )}
       >
-        <SanityImg
-          className={clsx(className)}
-          height={isOpen ? height : height + height / 20}
-          image={image}
-          builder={imageUrlBuilder}
-        />
-      </motion.div>
+        <motion.div
+          layout
+          transition={transition}
+          className={clsx(
+            containerClassName,
+            isOpen ? 'fixed w-auto h-auto' : 'absolute h-full w-full translate-x-0 translate-y-0',
+          )}
+        >
+          <SanityImg
+            className={clsx(className, isOpen && 'w-full h-full ')}
+            height={isOpen ? height : height + height / 20}
+            image={image}
+            builder={imageUrlBuilder}
+          />
+        </motion.div>
+      </div>
     </div>
   )
 }

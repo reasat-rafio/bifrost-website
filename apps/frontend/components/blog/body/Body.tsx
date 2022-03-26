@@ -33,7 +33,7 @@ export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
       <ScrollSpyWrapper paddingY={paddingY} sections={sections} sectionRefs={sectionRefs}>
         <div
           data-cy="section-wrapper"
-          className="lg:col-span-9 relative rounded-lg space-y-10 2xl:max-w-5xl max-w-4xl text-[#183B56]"
+          className="lg:col-span-9 relative rounded-lg space-y-10 2xl:max-w-5xl max-w-4xl text-[#183B56] lg:mt-0 mt-20"
         >
           {sections.map((section, index) => (
             <div

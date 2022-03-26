@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { LightboxImage } from 'components/ui/LightboxImage'
 import { BlogBody, IQuote } from 'lib/@types/blogTypes'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -10,15 +11,11 @@ const serializers = {
       return (
         <>
           {node && (
-            <div className="">
-              <SanityImg
-                className="rounded-x"
-                image={node}
-                builder={imageUrlBuilder}
-                alt="image"
-                height={470}
-              />
-            </div>
+            <LightboxImage
+              image={node}
+              className="w-full h-full object-cover rounded-[15px]"
+              height={500}
+            />
           )}
         </>
       )
