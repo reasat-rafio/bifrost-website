@@ -13,7 +13,6 @@ export default function SlideUp({
   rootMargin?: string
 }): ReactElement {
   const lines = text?.split(/\r\n|\n/)
-  console.log(lines)
 
   return (
     <div>
