@@ -7,7 +7,6 @@ import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import { AppProvider } from 'contexts/global'
 import Navbar from 'components/Navbar'
-import { motion } from 'framer-motion'
 import Footer from 'components/Footer'
 import { useEffect, useState } from 'react'
 

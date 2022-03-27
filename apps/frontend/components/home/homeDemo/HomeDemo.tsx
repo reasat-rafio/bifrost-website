@@ -20,6 +20,8 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
     height: 0,
   }
 
+  const [imgRef, setImgRef] = useState<any>()
+
   const previewRef = useRef<HTMLDivElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
 
@@ -29,9 +31,6 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   const [containerWidth, setContainerWidth] = useState(0)
   const scrollYProgress = useMotionValue(ratio / totalLength)
   const sectionOnView = useIntersection(previewRef, { threshold: 0.1 })
-
-  console.log(previewSlideHeight)
-  
 
   useEffect(() => {
     scrollYProgress.set(ratio / totalLength)
@@ -48,19 +47,26 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
         const yDelta = y + windowHeight - offsetBoundingRect.top
         const ratio = Math.max(0, Math.min(yDelta / windowHeight, totalLength))
         setRatio(ratio)
+
+        if (imgRef) {
+          setContainerWidth(imgRef.clientWidth)
+          setPreviewSlideHeight(imgRef.children[0].clientHeight)
+        }
       }),
-    [windowHeight],
+    [windowHeight, imgRef],
   )
 
   const measuredRef = useCallback((node) => {
     if (node !== null && node.children !== null) {
+      setImgRef(node)
+
       const handleWidth = () => {
         setContainerWidth(node.clientWidth)
         setPreviewSlideHeight(node.children[0].clientHeight)
       }
       handleWidth()
-      window.addEventListener('resize', handleWidth)
       window.addEventListener('load', handleWidth)
+      window.addEventListener('resize', handleWidth)
     }
   }, [])
 
