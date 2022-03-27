@@ -71,7 +71,7 @@ export default function AboutReason({
               exit={{ opacity: 0 }}
               className="grid grid-cols-6 md:grid-cols-12 rounded-[15px]"
             >
-              <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181] mx-1 md:mx-0">
+              <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181]/30 mx-1 md:mx-0">
                 <h5 className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
                   {reasons[active].headline}
                 </h5>

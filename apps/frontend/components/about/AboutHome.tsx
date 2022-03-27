@@ -18,9 +18,11 @@ export default function AboutHome({
         </div>
       </div>
       <div className="container min-h-screen overflow-y-clip lg:py-[5%] py-[30%] flex flex-col justify-center items-center">
-        <div className="text-center max-w-2xl flex flex-col lg:space-y-12 space-y-8">
+        <div className="text-center max-w-2xl flex flex-col lg:space-y-12 space-y-5 ">
           <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
-          <h1 className="lg:text-head-1 text-[82px] leading-[82px] font-[275]">{headline}</h1>
+          <h1 className="lg:text-head-1 text-[54px] lg:leading-[82px] leading-tight font-[275]">
+            {headline}
+          </h1>
           <p className="lg:text-body-2 text-body-2 font-[300] opacity-70">{body}</p>
           <div className="flex mx-auto">
             <Button>

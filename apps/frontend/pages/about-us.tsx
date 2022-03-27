@@ -14,6 +14,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
+import { Page } from 'components/common/Page'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -35,11 +36,7 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
   } = useSanityQuery(query, props)
 
   return (
-    <div>
-      <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-        <div className="bifrost__background_noise"></div>
-      </div>
-
+    <Page>
       {renderObjectArray(sections, {
         'aboutUs.home': AboutHome,
         'aboutUs.about': AboutAbout,
@@ -63,6 +60,6 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
       {renderObjectArray(sections, {
         contact: Contact,
       })}
-    </div>
+    </Page>
   )
 }

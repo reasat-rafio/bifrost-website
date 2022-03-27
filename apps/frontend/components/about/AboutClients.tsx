@@ -24,11 +24,11 @@ export default function AboutClients({
 
   return (
     <section className="container text-center !z-40 relative">
-      <header className="max-w-2xl mx-auto">
-        <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
+      <header className="max-w-2xl mx-auto mb-5">
+        <GradientTitle className="mx-auto mb-5">{subHeadline}</GradientTitle>
         <Header>{headline}</Header>
       </header>
-      <div>
+      <div className="">
         {windowWidth >= 1024 ? (
           <div className="grid grid-cols-12 gap-16 py-5">
             {clients.map((team) => (
