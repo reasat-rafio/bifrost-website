@@ -59,7 +59,9 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
           transition={transition}
           className={clsx(
             containerClassName,
-            isOpen ? 'fixed w-auto h-auto' : 'absolute h-full w-full translate-x-0 translate-y-0',
+            isOpen
+              ? 'fixed w-auto h-auto'
+              : 'absolute h-full w-full translate-x-0 translate-y-0 pb-2',
           )}
         >
           <SanityImg

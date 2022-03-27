@@ -1,52 +1,34 @@
-import clsx from 'clsx'
-import { ReactElement, RefObject, useEffect, useState } from 'react'
-import { useIntersection } from 'react-use'
-import { PortableText } from 'utils/sanity'
+import { ReactElement, RefObject } from 'react'
+import { motion } from 'framer-motion'
 
 export default function SlideUp({
   text,
-  blocks,
-  heroTitle,
   divRef,
+  rootMargin = '-50px',
 }: {
   text?: string
   blocks?: any[]
   heroTitle?: boolean
   divRef: RefObject<HTMLDivElement>
+  rootMargin?: string
 }): ReactElement {
-  const intersection = useIntersection(divRef, { threshold: 0.2 })
   const lines = text?.split(/\r\n|\n/)
-  const [intersected, setIntersected] = useState(false)
-
-  useEffect(() => {
-    if (intersection?.isIntersecting) {
-      setIntersected(true)
-    }
-  }, [intersection?.isIntersecting])
+  console.log(lines)
 
   return (
-    <div ref={divRef}>
-      {blocks !== undefined ? (
-        <div data-animate="slideUp" className={clsx(intersected && 'show')}>
-          <span>
-            <span
-              className={clsx(heroTitle ? 'md:text-[120px] text-6xl font-normal' : 'section-body')}
-            >
-              <PortableText blocks={blocks} />
-            </span>
-          </span>
-        </div>
-      ) : (
-        <>
-          {lines?.map((line: string) => (
-            <div key={line} data-animate="slideUp" className={clsx(intersected && 'show')}>
-              <span>
-                <span>{line}</span>
-              </span>
-            </div>
-          ))}
-        </>
-      )}
+    <div>
+      {lines?.map((line: string) => (
+        <motion.div key={line}>
+          <motion.h3
+            initial={{ opacity: 0, y: '250%', skew: 20 }}
+            whileInView={{ opacity: 1, y: 0, skew: 0 }}
+            viewport={{ margin: rootMargin, once: false, root: divRef }}
+            transition={{ type: 'tween', duration: 3, ease: [0, 1.2, 0.1, 0.9] }}
+          >
+            {line}
+          </motion.h3>
+        </motion.div>
+      ))}
     </div>
   )
 }
