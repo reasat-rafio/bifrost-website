@@ -30,6 +30,9 @@ export default function HomeDemo({ headline, previews }: DemoSection): ReactElem
   const scrollYProgress = useMotionValue(ratio / totalLength)
   const sectionOnView = useIntersection(previewRef, { threshold: 0.1 })
 
+  console.log(previewSlideHeight)
+  
+
   useEffect(() => {
     scrollYProgress.set(ratio / totalLength)
   }, [ratio])

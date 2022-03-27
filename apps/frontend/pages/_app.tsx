@@ -58,14 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" href={faviconImage} />
       </Head>
       <AppProvider>
-        <motion.div
-          animate={{
-            backgroundColor: '#000',
-            color: '#fff',
-            transition: { ease: 'easeInOut', duration: 0.3 },
-          }}
-          className="relative overflow-clip"
-        >
+        <div className="bg-black relative overflow-clip text-white">
           <NextSeo
             title={seoTitle}
             description={seoDescription}
@@ -94,7 +87,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               footer={pageProps.data?.site.nav.footer}
             />
           )}
-        </motion.div>
+        </div>
       </AppProvider>
     </div>
   )
