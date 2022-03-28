@@ -32,7 +32,7 @@ export default function UseCaseHome({
         </div>
       </div>
       <div
-        className="z-10 absolute bottom-0 left-0 h-[30vh] w-full"
+        className="absolute bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
       ></div>
     </div>
