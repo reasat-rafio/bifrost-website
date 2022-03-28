@@ -77,7 +77,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
       </>
 
       {renderObjectArray(sections, {
-        // 'landing.services': HomeService,
+        'landing.services': HomeService,
       })}
 
       <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />

@@ -129,32 +129,6 @@ html {
   }
 }
 
-[data-animate] > span {
-  display: block;
-  line-height: 1.2em;
-  overflow: hidden;
-}
-[data-animate] > span > span {
-  display: none;
-  animation: 4s cubic-bezier(0, 1.2, 0.1, 0.9);
-  animation-fill-mode: backwards;
-}
-[data-animate].show > span > span {
-  display: block;
-  animation-delay: 0.2s;
-}
-
-[data-animate='slideUp'] > span > span {
-  animation-name: slideUp;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translate(0, 100%);
-  }
-}
-
 .swiper-pagination-bullet {
   background-color: #757aac !important;
   width: 10px !important;
