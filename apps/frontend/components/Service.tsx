@@ -93,7 +93,7 @@ export default function Service({
   return (
     <div
       className={clsx(
-        'w-full h-full relative z-30 flex items-center transition-all duration-500',
+        'w-full h-full relative z-30 flex items-center transition-all duration-500 opacity-0',
         imagePosition === 'full' && 'justify-center',
         imagePosition === 'right' && 'xl:justify-end justify-center',
         imagePosition === 'left' && 'xl:justify-start justify-center',

@@ -86,7 +86,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
             </Button>
           </div>
         </div>
-        <div className="lg:col-span-5 xl:col-span-4 col-span-12 z-10 mt-[10%] hidden lg:block">
+        <div className="lg:col-span-5 xl:col-span-4 col-span-12  mt-[10%] hidden lg:block">
           {showHero(heroData)}
         </div>
         <div className="col-span-12 lg:hidden">
@@ -97,7 +97,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
       </div>
 
       <div
-        className="absolute bottom-0 left-0 h-[30vh] w-full"
+        className=" absolute bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
       ></div>
     </div>

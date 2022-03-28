@@ -69,7 +69,6 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
                       width="12"
                       data={socialIcon(item.type)}
                     />
-                    {/* <img className="p-3 w-[44px] h-[44px]" src={socialIcon(item.type)} /> */}
                   </div>
                 </div>
               </a>
