@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { GradientTitle } from 'components/common/GradientTitle'
 import { Header } from 'components/ui/Header'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ReasonSection } from 'lib/@types/aboutUsTypes'
 import { ReactElement, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
@@ -62,37 +62,33 @@ export default function AboutReason({
             </div>
           </div>
         </div>
-        <AnimatePresence>
-          {reasons[active] && (
-            <motion.div
-              key={reasons[active].title}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="grid grid-cols-6 md:grid-cols-12 rounded-[15px]"
-            >
-              <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181]/30 mx-1 md:mx-0">
-                <h5 className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
-                  {reasons[active].headline}
-                </h5>
-                <div className="text-body-1 opacity-70">
-                  <PortableText blocks={reasons[active].body} />
-                </div>
+        {reasons[active] && (
+          <motion.div
+            key={reasons[active].title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="grid grid-cols-6 md:grid-cols-12 rounded-[15px]"
+          >
+            <div className="bifrost__transparent__card col-span-6 lg:p-12 p-6 flex flex-col lg:space-y-7 space-y-5 sm:border-y sm:border-l rounded-l-[15px] sm:border-[#4e6181]/30 mx-1 md:mx-0 justify-center items-center">
+              <h5 className="md:text-[42px] md:leading-[42px] text-[35px] leading-[35px] font-[275]">
+                {reasons[active].headline}
+              </h5>
+              <div className="text-body-1 opacity-70">
+                <PortableText blocks={reasons[active].body} />
               </div>
-              <div className="col-span-6 md:-translate-x-5 md:-translate-y-0 -translate-y-5">
-                <div className="w-full md:h-full sm:h-[400px] h-[280px]">
-                  <SanityImg
-                    className="w-full h-full object-cover rounded-[15px]"
-                    builder={imageUrlBuilder}
-                    image={reasons[active].image}
-                    height={500}
-                    alt={reasons[active].image?.alt || 'image'}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+            <div className="col-span-6 sm:relative lg:h-auto h-[280px] md:h-auto md:-translate-x-5 md:-translate-y-0 -translate-y-5">
+              <SanityImg
+                className="object-cover object-center sm:absolute top-0 left-0 h-full w-full rounded-[15px]"
+                builder={imageUrlBuilder}
+                image={reasons[active].image}
+                height={500}
+                alt={reasons[active].image?.alt || 'image'}
+              />
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   )
