@@ -11,7 +11,7 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_type== "blog" && slug.current == $blog] | order(order asc) [0] {
+  "page": *[_type== "blog" && slug.current == $blog] [0] {
     ...,
     "image": ${withDimensions('image')},
   }

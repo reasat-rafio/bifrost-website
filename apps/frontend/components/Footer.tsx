@@ -14,13 +14,13 @@ interface FooterProps {
 function socialIcon(type: SocialType) {
   switch (type) {
     case 'facebook':
-      return 'footer/facebook.svg'
+      return '/footer/facebook.svg'
     case 'instagram':
-      return 'footer/instagram.svg'
+      return '/footer/instagram.svg'
     case 'linkedin':
-      return 'footer/linkedin.svg'
-    case 'instagram':
-      return ''
+      return '/footer/linkedin.svg'
+    default:
+      return '/footer/facebook.svg'
   }
 }
 
