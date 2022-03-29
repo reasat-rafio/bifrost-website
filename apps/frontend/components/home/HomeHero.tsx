@@ -1,21 +1,37 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { ReactElement, useRef, useState, useCallback } from 'react'
+import {
+  ReactElement,
+  useRef,
+  useState,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+} from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/@types/landingTypes'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 import { SanityImg } from 'sanity-react-extra'
 import { useWindowSize } from 'lib/hooks'
+import { scrollPassedFromTop } from 'lib/helpers'
+import { NoiseBackground } from 'components/ui/NoiseBackground'
+
+interface IHomeSection extends HomeSection {
+  setHeroSectionHeight: Dispatch<SetStateAction<number>>
+}
 
 const movingBorderObjWidth = 9
 const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
 
-export default function HomeHero(data: HomeSection): ReactElement {
+export default function HomeHero(data: IHomeSection): ReactElement {
   const windowWidth = useWindowSize()?.width ?? 0
+  const windowHeight = useWindowSize()?.height ?? 0
 
   const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
 
+  const [sectionScrollPassed, setSectionSrollPassed] = useState(false)
   const [decorationBlockWidth, setDecorationBlockWidth] = useState(
     movingBorderDecorationBlockRef?.current?.clientWidth ?? 0,
   )
@@ -29,8 +45,40 @@ export default function HomeHero(data: HomeSection): ReactElement {
     }
   }, [])
 
+  const sectionMeasuredRef = useCallback((node) => {
+    if (node !== null) {
+      const handleWidth = () => data.setHeroSectionHeight(node.clientHeight)
+      handleWidth()
+      window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
+    }
+  }, [])
+
+  useEffect(() => {
+    const checkscrollPosition = () => {
+      const elHeight = document
+        .querySelector('[data-type="home-hero"]')
+        .getBoundingClientRect().height
+
+      elHeight * 2 < scrollPassedFromTop()
+        ? setSectionSrollPassed(true)
+        : setSectionSrollPassed(false)
+    }
+
+    window.addEventListener('scroll', checkscrollPosition)
+    return () => window.removeEventListener('scroll', checkscrollPosition)
+  }, [windowHeight, windowWidth])
+
   return (
-    <div className="relative overflow-y-clip">
+    <div
+      className={clsx(
+        'top-0 left-0 w-full overflow-y-clip bg-black',
+        sectionScrollPassed ? ' absolute' : 'fixed',
+      )}
+      data-type="home-hero"
+      ref={sectionMeasuredRef}
+    >
+      <NoiseBackground />
       <div className="absolute left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />

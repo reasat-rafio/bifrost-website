@@ -15,6 +15,8 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { Page } from 'components/common/Page'
+import { useCallback, useState } from 'react'
+import { HomeSection } from 'lib/@types/aboutUsTypes'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -35,31 +37,41 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
     },
   } = useSanityQuery(query, props)
 
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+
   return (
-    <Page>
-      {renderObjectArray(sections, {
-        'aboutUs.home': AboutHome,
-        'aboutUs.about': AboutAbout,
-        'aboutUs.reason': AboutReason,
-        'aboutUs.team': AboutTeam,
-      })}
-
-      <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        'aboutUs.clients': AboutClients,
-      })}
-      <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        data: Data,
-      })}
-
-      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        contact: Contact,
-      })}
-    </Page>
+    <div>
+      <Page>
+        {renderObjectArray(sections, {
+          'aboutUs.home': useCallback(
+            (p: HomeSection) => <AboutHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            [],
+          ),
+        })}
+      </Page>
+      <div
+        className="bg-black"
+        style={{
+          transform: `translate(0, ${heroSectionHeight}px)`,
+          marginBottom: `${heroSectionHeight}px`,
+        }}
+      >
+        <Page>
+          {renderObjectArray(sections, {
+            'aboutUs.about': AboutAbout,
+            'aboutUs.reason': AboutReason,
+            'aboutUs.team': AboutTeam,
+            'aboutUs.clients': AboutClients,
+            data: Data,
+            contact: Contact,
+          })}
+        </Page>
+      </div>
+      <>
+        <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+      </>
+    </div>
   )
 }

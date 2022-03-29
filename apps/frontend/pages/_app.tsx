@@ -73,11 +73,11 @@ function MyApp({ Component, pageProps }: AppProps) {
               darkBg={pageProps.data?.page._type === 'blog'}
             />
           )}
-          {pageProps.data?.page._type !== 'blog' && (
+          {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-              <div className="bifrost__background_noise"></div>
+              <div className="bifrost__background_noise" />
             </div>
-          )}
+          )} */}
 
           <Component {...pageProps} />
           {pageProps.data?.site && (

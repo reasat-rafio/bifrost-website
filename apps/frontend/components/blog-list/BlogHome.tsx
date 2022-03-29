@@ -22,7 +22,7 @@ export default function BlogHome({
   }, [])
 
   return (
-    <section className="fixed top-0 left-0-0 overflow-y-clip w-full" ref={measuredRef}>
+    <section className="fixed top-0 left-0 overflow-y-clip w-full" ref={measuredRef}>
       <div className="absolute left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />

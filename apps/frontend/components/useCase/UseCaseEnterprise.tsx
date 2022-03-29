@@ -40,7 +40,7 @@ export default function UseCaseEnterprise({
   }
 
   return (
-    <section className="container xl:pt-32 lg:pt-16 pt-14">
+    <section className="container xl:pt-32 lg:pt-16 pt-14 ">
       <header className="max-w-2xl mx-auto ">
         <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
         <Header className="text-center">{headline}</Header>

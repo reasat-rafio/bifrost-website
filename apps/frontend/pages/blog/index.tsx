@@ -50,8 +50,7 @@ export default function Blog(
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
   return (
-    <>
-      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+    <div>
       <Page>
         {renderObjectArray(sections, {
           'blog.home': useCallback(
@@ -68,15 +67,18 @@ export default function Blog(
         }}
       >
         <Page>
-          <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
           <Blogs blogs={blogs} totalBlogs={totalBlogs} />
-          <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
           {renderObjectArray(sections, {
             data: Data,
             contact: Contact,
           })}
         </Page>
       </div>
-    </>
+      <>
+        <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+      </>
+    </div>
   )
 }

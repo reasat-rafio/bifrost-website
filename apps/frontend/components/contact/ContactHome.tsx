@@ -1,13 +1,25 @@
 import ThreeJSWaves from 'components/ThreeJSWaves'
+import { NoiseBackground } from 'components/ui/NoiseBackground'
 import { HomeSection } from 'lib/@types/contactUsTypes'
-import { ReactElement } from 'react'
+import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 import { PortableText } from 'utils/sanity'
 
-export default function ContactHome(data: HomeSection): ReactElement {
-  console.log({ data })
+interface IHomeSection extends HomeSection {
+  setHeroSectionHeight: SetStateAction<Dispatch<number>>
+}
 
+export default function ContactHome(data: IHomeSection): ReactElement {
+  const measuredRef = useCallback((node) => {
+    if (node !== null) {
+      const handleWidth = () => data.setHeroSectionHeight(node.clientHeight)
+      handleWidth()
+      window.addEventListener('resize', handleWidth)
+      window.addEventListener('load', handleWidth)
+    }
+  }, [])
   return (
-    <div className="relative overflow-y-clip">
+    <div className="fixed top-0 left-0 w-full overflow-y-clip " ref={measuredRef}>
+      <NoiseBackground />
       <div className="absolute z-0 left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />
@@ -15,7 +27,7 @@ export default function ContactHome(data: HomeSection): ReactElement {
       </div>
 
       <div className="container min-h-screen flex lg:py-[5%] py-[30%]">
-        <div className="grid grid-cols-12 justify-center items-center w-full m-auto gap-y-20">
+        <div className="grid grid-cols-12 justify-center items-center w-full m-auto gap-y-20 z-10">
           <div className="col-span-12">
             <h1 className="lg:text-head-2 text-[55px] leading-tight lg:leading-[82px] font-[275] bg-clip-text bifrost__gradient__green text-transparent max-w-[420px]">
               {data.headline}

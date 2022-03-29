@@ -33,7 +33,7 @@ export default function UseCaseAssurance({
 
   return (
     <section
-      className="xl:mb-40 lg:mb-20 mb-16"
+      className="xl:pb-40 lg:pb-20 pb-16"
       style={{
         marginBottom: `${windowWidth >= 1280 ? `${blockHeight / 2}px` : `${blockHeight}px`}`,
       }}

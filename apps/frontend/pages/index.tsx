@@ -13,9 +13,10 @@ import HomeProjects from 'components/home/HomeProjects'
 import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
 import Contact from 'components/Contact'
-import { LandingPage } from 'lib/@types/landingTypes'
+import { HomeSection, LandingPage } from 'lib/@types/landingTypes'
 import Data from 'components/Data'
 import { Page } from 'components/common/Page'
+import { useCallback, useState } from 'react'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -62,41 +63,47 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
     },
   } = useSanityQuery(query, props)
 
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+
   return (
-    <Page>
-      {renderObjectArray(sections, {
-        'landing.home': HomeHero,
-        'landing.products': HomeProduct,
-        'landing.demo': HomeDemo,
-      })}
+    <div>
+      <Page>
+        {renderObjectArray(sections, {
+          'landing.home': useCallback(
+            (p: HomeSection) => <HomeHero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            [],
+          ),
+        })}
+      </Page>
+
+      <div
+        className="bg-black relative h-full"
+        style={{
+          marginTop: `${heroSectionHeight}px`,
+        }}
+      >
+        <Page>
+          {renderObjectArray(sections, {
+            'landing.products': HomeProduct,
+            'landing.demo': HomeDemo,
+            'landing.services': HomeService,
+            data: Data,
+            'landing.projects': HomeProjects,
+            'landing.reviews': HomeReview,
+            contact: Contact,
+          })}
+        </Page>
+      </div>
+
       <>
         <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[10vh] left-[5vw] w-[353px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
       </>
-
-      {renderObjectArray(sections, {
-        'landing.services': HomeService,
-      })}
-
-      <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        data: Data,
-      })}
-      <Ellipse className="z-10 absolute top-[10vh] left-[5vw] w-[353px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        'landing.projects': HomeProjects,
-      })}
-
-      <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        'landing.reviews': HomeReview,
-        contact: Contact,
-      })}
-    </Page>
+    </div>
   )
 }

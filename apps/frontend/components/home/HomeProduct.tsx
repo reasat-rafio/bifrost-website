@@ -15,7 +15,7 @@ export default function HomeProduct({
   subHeadline,
 }: ProductSection): ReactElement {
   return (
-    <section className="container z-10 xl:my-40 lg:my-20 my-16 text-white">
+    <section className="container z-10 xl:py-40 lg:py-20 py-16 text-white">
       <div className="grid grid-cols-12 space-y-5 lg:space-y-0 relative xl:space-x-12 lg:space-x-8">
         <div className="lg:col-span-6 col-span-12 lg:-mr-1/16 2xl:-mr-1/8 w-full self-center">
           <div className="grid grid-cols-2 xl:gap-4 gap-3">

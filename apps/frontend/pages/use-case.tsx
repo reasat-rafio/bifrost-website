@@ -14,6 +14,8 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
+import { useCallback, useState } from 'react'
+import { HomeSection } from 'lib/@types/useCaseTypes'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -34,30 +36,42 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
     },
   } = useSanityQuery(query, props)
 
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+
   return (
-    <Page>
-      {renderObjectArray(sections, {
-        'useCase.home': UseCaseHome,
-        'useCase.example': UseCaseImages,
-        'useCase.feature': UseCaseFeatures,
-      })}
+    <div>
+      <Page>
+        {renderObjectArray(sections, {
+          'useCase.home': useCallback(
+            (p: HomeSection) => <UseCaseHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            [],
+          ),
+        })}
+      </Page>
 
-      <Ellipse className="z-10 absolute top-[40vh] left-[15vw] w-[253px] h-[391px]" />
-      {renderObjectArray(sections, {
-        'useCase.assurance': UseCaseAssurance,
-      })}
+      <div
+        className="bg-black relative h-full"
+        style={{
+          marginTop: `${heroSectionHeight}px`,
+        }}
+      >
+        <Page>
+          {renderObjectArray(sections, {
+            'useCase.example': UseCaseImages,
+            'useCase.feature': UseCaseFeatures,
+            'useCase.assurance': UseCaseAssurance,
+            'useCase.enterprise': UseCaseEnterprise,
+            contact: Contact,
+          })}
+        </Page>
+      </div>
 
-      <Ellipse className="z-10 absolute top-[30vh] right-[5vw] w-[253px] h-[391px]" />
-      <Ellipse className="z-10 absolute top-[140vh] left-[5vw] w-[253px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        'useCase.enterprise': UseCaseEnterprise,
-      })}
-      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-
-      {renderObjectArray(sections, {
-        contact: Contact,
-      })}
-    </Page>
+      <>
+        <Ellipse className="z-10 absolute top-[40vh] left-[15vw] w-[253px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[30vh] right-[5vw] w-[253px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[140vh] left-[5vw] w-[253px] h-[391px]" />
+        <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+      </>
+    </div>
   )
 }

@@ -17,7 +17,7 @@ export default function UseCaseImages({
   }
 
   return (
-    <div className="z-10 relative xl:my-40 lg:my-20 my-16">
+    <div className="z-10 relative xl:py-40 lg:py-20 py-16">
       <div className="container md:space-y-12 space-y-6">
         <header className="grid lg:grid-cols-2 gap-5 grid-cols-1">
           <Header>{headline}</Header>
