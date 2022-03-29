@@ -17,6 +17,7 @@ import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { Page } from 'components/common/Page'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'lib/@types/aboutUsTypes'
+import SmoothScroll from 'components/ui/SmoothScrolling'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -49,24 +50,27 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
           ),
         })}
       </Page>
-      <div
-        className="bg-black"
-        style={{
-          transform: `translate(0, ${heroSectionHeight}px)`,
-          marginBottom: `${heroSectionHeight}px`,
-        }}
-      >
-        <Page>
-          {renderObjectArray(sections, {
-            'aboutUs.about': AboutAbout,
-            'aboutUs.reason': AboutReason,
-            'aboutUs.team': AboutTeam,
-            'aboutUs.clients': AboutClients,
-            data: Data,
-            contact: Contact,
-          })}
-        </Page>
-      </div>
+      <SmoothScroll>
+        <div
+          className="bg-black"
+          style={{
+            transform: `translate(0, ${heroSectionHeight}px)`,
+            marginBottom: `${heroSectionHeight}px`,
+          }}
+        >
+          <Page>
+            {renderObjectArray(sections, {
+              'aboutUs.about': AboutAbout,
+              'aboutUs.reason': AboutReason,
+              'aboutUs.team': AboutTeam,
+              'aboutUs.clients': AboutClients,
+              data: Data,
+              contact: Contact,
+            })}
+          </Page>
+        </div>
+      </SmoothScroll>
+
       <>
         <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />

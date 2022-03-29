@@ -75,7 +75,6 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
           ),
         })}
       </Page>
-
       <div
         className="bg-black relative h-full"
         style={{

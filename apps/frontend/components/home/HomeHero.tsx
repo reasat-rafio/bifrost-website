@@ -104,12 +104,12 @@ export default function HomeHero(data: IHomeSection): ReactElement {
             <div
               ref={measuredRef}
               className={clsx(
-                'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
+                'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70 ',
               )}
             >
               <motion.div
                 style={{ width: `${movingBorderObjWidth}px` }}
-                className={`space-y-10 self-centerabsolute top-0 left-0 h-[1px] bg-white `}
+                className={`absolute top-0 left-0 h-[1px] bg-white `}
                 animate={{
                   x: [0, decorationBlockWidth - movingBorderObjWidth, 0],
                 }}
@@ -154,7 +154,7 @@ export default function HomeHero(data: IHomeSection): ReactElement {
       <div
         className="z-10 pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
-      ></div>
+      />
     </div>
   )
 }
