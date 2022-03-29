@@ -1,18 +1,18 @@
 import clsx from 'clsx'
 import Button from 'components/ui/Button'
-import { showHero } from 'lib/showHero'
-import { HeroData } from 'lib/@types/types'
 import { ReactElement, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import ThreeJSWaves from 'components/ThreeJSWaves'
 import { HomeSection } from 'lib/@types/landingTypes'
-import { PortableText } from 'utils/sanity'
+import { imageUrlBuilder, PortableText } from 'utils/sanity'
+import { SanityImg } from 'sanity-react-extra'
+import { useWindowSize } from 'lib/hooks'
 
 const movingBorderObjWidth = 9
 const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
 
 export default function HomeHero(data: HomeSection): ReactElement {
-  const heroData: HeroData = { type: 'image', image: data.image }
+  const windowWidth = useWindowSize()?.width ?? 0
 
   const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
 
@@ -36,8 +36,8 @@ export default function HomeHero(data: HomeSection): ReactElement {
           <ThreeJSWaves />
         </div>
       </div>
-      <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen grid grid-cols-12 z-10 ">
-        <div className="lg:col-span-7 xl:col-span-8 col-span-12 flex flex-col items-start space-y-10 self-center">
+      <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen flex lg:flex-row flex-col z-10">
+        <div className="flex-1 flex flex-col justify-center space-y-10 ">
           <h1 className="font-[275] lg:text-head-1 text-[82px] leading-[82px]">
             <PortableText
               blocks={data.headline}
@@ -52,47 +52,54 @@ export default function HomeHero(data: HomeSection): ReactElement {
               }}
             />
           </h1>
-          <div
-            ref={measuredRef}
-            className={clsx(
-              'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
-            )}
-          >
-            <motion.div
-              style={{ width: `${movingBorderObjWidth}px` }}
-              className={`absolute top-0 left-0 h-[1px] bg-white `}
-              animate={{
-                x: [0, decorationBlockWidth - movingBorderObjWidth, 0],
-              }}
-              transition={transition}
-            />
-            <motion.div
-              style={{ width: `${movingBorderObjWidth}px` }}
-              className={`absolute bottom-0 left-0 h-[1px] bg-white `}
-              animate={{
-                x: [
-                  decorationBlockWidth - movingBorderObjWidth,
-                  0,
-                  decorationBlockWidth - movingBorderObjWidth,
-                ],
-              }}
-              transition={transition}
-            />
-            {data.body}
+          <div className="flex">
+            <div
+              ref={measuredRef}
+              className={clsx(
+                'text-body-2 text-[20px] leading-[30px] relative overflow-hidden border-[#2D3746] border p-3 opacity-70',
+              )}
+            >
+              <motion.div
+                style={{ width: `${movingBorderObjWidth}px` }}
+                className={`space-y-10 self-centerabsolute top-0 left-0 h-[1px] bg-white `}
+                animate={{
+                  x: [0, decorationBlockWidth - movingBorderObjWidth, 0],
+                }}
+                transition={transition}
+              />
+              <motion.div
+                style={{ width: `${movingBorderObjWidth}px` }}
+                className={`absolute bottom-0 left-0 h-[1px] bg-white `}
+                animate={{
+                  x: [
+                    decorationBlockWidth - movingBorderObjWidth,
+                    0,
+                    decorationBlockWidth - movingBorderObjWidth,
+                  ],
+                }}
+                transition={transition}
+              />
+              {data.body}
+            </div>
           </div>
-          <div>
-            <Button>
-              <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-            </Button>
+
+          <div className="flex">
+            <div className="">
+              <Button>
+                <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="lg:col-span-5 xl:col-span-4 col-span-12  mt-[10%] hidden lg:block">
-          {showHero(heroData)}
-        </div>
-        <div className="col-span-12 lg:hidden">
-          <div className="sm:w-[30%] w-[50%] bottom-0 right-0 block ml-auto scale-[1.25] origin-bottom">
-            <div className="h-full">{showHero(heroData, 'object-cover ')}</div>
-          </div>
+        <div className="flex lg:items-end">
+          <SanityImg
+            className="mx-auto"
+            builder={imageUrlBuilder}
+            width={
+              windowWidth >= 1280 ? 500 : windowWidth >= 1024 ? 400 : windowWidth >= 720 ? 300 : 250
+            }
+            image={data.image}
+          />
         </div>
       </div>
 
