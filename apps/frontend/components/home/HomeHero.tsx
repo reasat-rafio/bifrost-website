@@ -97,7 +97,7 @@ export default function HomeHero(data: HomeSection): ReactElement {
       </div>
 
       <div
-        className=" absolute bottom-0 left-0 h-[30vh] w-full"
+        className="z-10 pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
       ></div>
     </div>

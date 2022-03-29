@@ -32,7 +32,7 @@ export default function AboutHome({
         </div>
       </div>
       <div
-        className="absolute bottom-0 left-0 h-[30vh] w-full"
+        className="absolute pointer-events-none bottom-0 left-0 h-[30vh] w-full"
         style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
       ></div>
     </div>
