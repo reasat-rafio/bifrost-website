@@ -92,17 +92,16 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             contact: Contact,
           })}
         </Page>
+        <>
+          <Ellipse className="absolute top-[5%] left-[5%] w-[153px] h-[391px]" />
+          <Ellipse className="absolute top-[18%] right-[5%] w-[153px] h-[391px]" />
+          <Ellipse className="absolute top-[34%] left-[5%] w-[153px] h-[391px]" />
+          <Ellipse className="absolute top-[40%] right-[5%] w-[153px] h-[391px]" />
+          <Ellipse className="absolute top-[55%] right-[5%] w-[353px] h-[391px]" />
+          <Ellipse className="absolute top-[80%] left-[5%] w-[353px] h-[391px]" />
+          <Ellipse className="absolute top-[91%] right-[15%] w-[153px] h-[391px]" />
+        </>
       </div>
-
-      <>
-        <Ellipse className="z-10 absolute top-[40vh] left-[5vw] w-[153px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[180vh] right-[5vw] w-[153px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[340vh] left-[5vw] w-[153px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[440vh] right-[5vw] w-[153px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[20vh] right-[5vw] w-[353px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[10vh] left-[5vw] w-[353px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[50vh] right-[15vw] w-[153px] h-[391px]" />
-      </>
     </div>
   )
 }

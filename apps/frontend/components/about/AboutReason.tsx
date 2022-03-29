@@ -41,7 +41,6 @@ export default function AboutReason({
                     </span>
                     {active === index && (
                       <motion.div
-                        layout
                         className={clsx(
                           'w-full h-[0.2em] left-0 absolute bottom-[-4px] z-10',
                           active === index && 'bifrost__gradient__green',
