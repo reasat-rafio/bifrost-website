@@ -47,6 +47,7 @@ import blogArticles from './pages/blog/articles'
 
 import dataset from './pages/dataset'
 import attribute from './pages/dataset/attribute'
+import ctaList from './pages/dataset/ctaList'
 
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
@@ -111,5 +112,6 @@ export default createSchema({
 
     dataset,
     attribute,
+    ctaList,
   ]),
 })

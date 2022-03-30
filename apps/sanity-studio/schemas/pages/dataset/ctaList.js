@@ -1,25 +1,25 @@
 import { BsLink45Deg } from 'react-icons/bs'
 
 export default {
-  name: 'ctaButton',
-  title: 'CTA Button',
+  name: 'ctaList',
+  title: 'Buttons',
   type: 'object',
   icon: BsLink45Deg,
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'href',
-      title: 'href',
-      type: 'string',
+      name: 'ctaButtons',
+      type: 'array',
+      of: [{ type: 'ctaButton' }],
     },
   ],
   preview: {
     select: {
       title: 'title',
+    },
+    prepare() {
+      return {
+        title: 'Buttons',
+      }
     },
   },
 }

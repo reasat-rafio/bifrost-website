@@ -14,14 +14,14 @@ export default {
       type: 'string',
     },
     {
-      name: 'description',
-      type: 'text',
+      name: 'text',
+      type: 'string',
     },
   ],
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description',
+      subtitle: 'text',
       media: 'icon',
     },
   },
