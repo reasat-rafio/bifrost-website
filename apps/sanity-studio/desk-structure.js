@@ -121,4 +121,15 @@ export default () =>
         ),
       S.divider(),
       S.documentTypeListItem('blog').title('Blogs'),
+      S.listItem()
+        .title('Dataset')
+        .icon(RiPagesLine)
+        .child(
+          S.list()
+            .title('Dataset')
+            .items([
+              S.documentTypeListItem('dataset').title('Datasets'),
+              S.documentTypeListItem('tag').title('Tags'),
+            ]),
+        ),
     ])

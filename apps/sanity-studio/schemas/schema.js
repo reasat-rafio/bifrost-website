@@ -12,6 +12,7 @@ import seo from './seo'
 import hero from './hero'
 import initial from './initial'
 import quote from './quote'
+import tag from './tag.js'
 
 import landing from './pages/landing'
 import landingHomeSection from './pages/landing/home'
@@ -44,6 +45,9 @@ import blogPage from './pages/blog-page'
 import blogHome from './pages/blog/home'
 import blogArticles from './pages/blog/articles'
 
+import dataset from './pages/dataset'
+import attribute from './pages/dataset/attribute'
+
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
 
@@ -72,6 +76,7 @@ export default createSchema({
     menuItem,
     initial,
     quote,
+    tag,
 
     contactUs,
     contactUsHomeSection,
@@ -103,5 +108,8 @@ export default createSchema({
     blogPage,
     blogHome,
     blogArticles,
+
+    dataset,
+    attribute,
   ]),
 })

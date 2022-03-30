@@ -6,7 +6,6 @@ export default {
   title: 'Blog',
   type: 'document',
   icon: BsNewspaper,
-
   fields: [
     {
       name: 'order',
