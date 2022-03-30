@@ -44,7 +44,7 @@ export default {
     },
     { name: 'images', type: 'array', of: [{ type: 'image' }] },
     {
-      name: 'tags',
+      name: 'taskTypes',
       type: 'array',
       options: {
         layout: 'tags',
@@ -53,7 +53,22 @@ export default {
       of: [
         {
           type: 'reference',
-          to: { type: 'tag' },
+          to: { type: 'taskType' },
+        },
+      ],
+    },
+
+    {
+      name: 'labelFormats',
+      type: 'array',
+      options: {
+        layout: 'tags',
+        isHighlighted: true,
+      },
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'labelFormat' },
         },
       ],
     },
@@ -117,7 +132,7 @@ export default {
     select: {
       title: 'heading',
       subtitle: 'subHeading',
-      media: 'image',
+      media: 'images[0]',
     },
   },
 }

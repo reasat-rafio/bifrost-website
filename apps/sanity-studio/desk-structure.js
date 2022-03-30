@@ -129,7 +129,9 @@ export default () =>
             .title('Dataset')
             .items([
               S.documentTypeListItem('dataset').title('Datasets'),
-              S.documentTypeListItem('tag').title('Tags'),
+              S.documentTypeListItem('taskType').title('Task Types'),
+              S.documentTypeListItem('labelFormat').title('Label Formats'),
             ]),
         ),
     ])
+// S.documentTypeListItem('tag').title('Tags'),
