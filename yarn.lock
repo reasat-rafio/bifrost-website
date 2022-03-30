@@ -10052,6 +10052,11 @@ sanity-plugin-order-documents@^0.0.22:
     react-select "^5.2.1"
     react-tippy "^1.4.0"
 
+sanity-plugin-table@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/sanity-plugin-table/-/sanity-plugin-table-2.3.0.tgz#432bf3d626b6678f38fecc7a09488603403a6ddb"
+  integrity sha512-5aTTjL7Bpyc52MqWg+d/Gk8qDy3XuyQ0IT23qFCXXYolhPNIQQSOUVgKHMWdXgTC5OvcnXhTMCh5oRBCXXtbOw==
+
 sanity-react-extra@^0.2.4:
   version "0.2.4"
   resolved "https://registry.npmjs.org/sanity-react-extra/-/sanity-react-extra-0.2.4.tgz"
