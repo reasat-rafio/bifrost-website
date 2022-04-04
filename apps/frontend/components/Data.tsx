@@ -23,7 +23,7 @@ export default function Data(data: DataSection): ReactElement {
               }}
             />
           </h3>
-          <p className="md:text-body-2 text-[14px] font-[300] max-w-2xl mx-auto">{data.body}</p>
+          <p className="md:text-body-2 text-[14px] font-[300] max-w-lg mx-auto">{data.body}</p>
           <div className="relative xl:space-y-0 space-y-6 w-full max-w-2xl mx-auto">
             <input
               className="shadow w-full input__dark rounded-lg appearance-none py-6 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

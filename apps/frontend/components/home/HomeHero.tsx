@@ -132,7 +132,7 @@ export default function HomeHero(data: IHomeSection): ReactElement {
           </div>
 
           <div className="flex">
-            <div className="">
+            <div>
               <Button>
                 <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
               </Button>

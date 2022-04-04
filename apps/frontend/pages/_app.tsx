@@ -18,10 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [ogImage, setOgImage] = useState()
 
   useEffect(() => {
-    if (pageProps.data?.page._type === 'blog') {
-      setSeoTitle(pageProps.data?.page.heading)
-      setSeoDescription(pageProps.data?.page.subHeading)
-      setOgImage(pageProps.data?.page.image)
+    if (pageProps.data?.blog._type === 'blog') {
+      setSeoTitle(pageProps.data?.blog.heading)
+      setSeoDescription(pageProps.blog?.page.subHeading)
+      setOgImage(pageProps.data?.blog.image)
     } else {
       setSeoTitle(pageProps.data?.page.seo.title)
       setSeoDescription(pageProps.data?.page.seo.description)
@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               darkLogo={pageProps.data?.site.logos.darkLogo}
               logo={pageProps.data?.site.logos.logo}
               menu={pageProps.data?.site.nav.menu}
-              darkBg={pageProps.data?.page._type === 'blog'}
+              darkBg={pageProps.data?.blog._type === 'blog'}
             />
           )}
           {/* {pageProps.data?.page._type !== 'blog' && (
