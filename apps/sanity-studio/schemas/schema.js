@@ -12,7 +12,7 @@ import seo from './seo'
 import hero from './hero'
 import initial from './initial'
 import quote from './quote'
-import tag from './tag.js'
+import tag from './tag'
 
 import landing from './pages/landing'
 import landingHomeSection from './pages/landing/home'
@@ -23,27 +23,28 @@ import landingProjectsSection from './pages/landing/projects'
 import landingReviewsSection from './pages/landing/reviews'
 
 import contactUs from './pages/contact-us'
-import contactUsHomeSection from './pages/contact/home'
+import contactUsHomeSection from './pages/contact-us/home'
 
 import aboutUs from './pages/about-us'
-import aboutUsHomeSection from './pages/about/home'
-import aboutUsclientsSection from './pages/about/clients'
-import aboutUsAboutSection from './pages/about/about'
-import aboutUsReasonSection from './pages/about/reason'
-import aboutUsTeamSection from './pages/about/team'
+import aboutUsHomeSection from './pages/about-us/home'
+import aboutUsclientsSection from './pages/about-us/clients'
+import aboutUsAboutSection from './pages/about-us/about'
+import aboutUsReasonSection from './pages/about-us/reason'
+import aboutUsTeamSection from './pages/about-us/team'
 
 import useCase from './pages/use-case'
-import useCaseHome from './pages/useCase/home'
-import useCaseAssurance from './pages/useCase/assurance'
-import useCaseEnterprise from './pages/useCase/enterprise'
-import useCaseExample from './pages/useCase/example'
-import useCaseFeature from './pages/useCase/feature'
+import useCaseHome from './pages/use-case/home'
+import useCaseAssurance from './pages/use-case/assurance'
+import useCaseEnterprise from './pages/use-case/enterprise'
+import useCaseExample from './pages/use-case/example'
+import useCaseFeature from './pages/use-case/feature'
 
-import blog from './pages/blog'
+import blog from './documents/blog'
 
-import blogPage from './pages/blog-page'
-import blogHome from './pages/blog/home'
-import blogArticles from './pages/blog/articles'
+import blogListPage from './pages/blog-list'
+import blogListHome from './pages/blog-list/home'
+
+import blogDetails from './pages/blog-details'
 
 import dataset from './pages/dataset'
 import attribute from './pages/dataset/attribute'
@@ -108,9 +109,10 @@ export default createSchema({
 
     blog,
 
-    blogPage,
-    blogHome,
-    blogArticles,
+    blogListPage,
+    blogListHome,
+
+    blogDetails,
 
     dataset,
     attribute,

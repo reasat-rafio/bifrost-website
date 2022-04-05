@@ -24,7 +24,20 @@ export default {
     },
     { name: 'subHeading', type: 'string' },
     { name: 'image', type: 'image', description: 'will use as preview image' },
-
+    {
+      name: 'tags',
+      type: 'array',
+      options: {
+        layout: 'tags',
+        isHighlighted: true,
+      },
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'tag' },
+        },
+      ],
+    },
     { name: 'datetime', type: 'datetime' },
     {
       name: 'body',

@@ -12,7 +12,7 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'blog.home' }, { type: 'blog.articles' }, { type: 'data' }, { type: 'contact' }],
+      of: [{ type: 'blog.home' }, { type: 'data' }, { type: 'contact' }],
     },
   ],
   preview: {

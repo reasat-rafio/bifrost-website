@@ -1,20 +1,13 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {
-  GrEdit,
-  GrView,
-  // GrCircleQuestion,
-  // GrContactInfo,
-  // GrContact,
-  // GrGroup,
-  // GrUserWorker,
-} from 'react-icons/gr'
+import { GrEdit, GrView } from 'react-icons/gr'
 import { MdContactPhone } from 'react-icons/md'
-import { FcAbout } from 'react-icons/fc'
+import { FcAbout, FcViewDetails } from 'react-icons/fc'
 import { GrActions, GrArticle } from 'react-icons/gr'
-// import { IoPeople } from "react-icons/io5";
 import { RiPagesLine } from 'react-icons/ri'
+import { BsNewspaper } from 'react-icons/bs'
 // import * as React from "react";
 import { FaSitemap, FaHome } from 'react-icons/fa'
+import { GiArchiveResearch } from 'react-icons/gi'
 
 function SitePreview() {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -113,17 +106,36 @@ export default () =>
               pageItem({
                 schemaType: 'blogPage',
                 id: 'blogPage',
-                title: 'Blog Page',
+                title: 'Blog List Page',
                 icon: GrArticle,
                 slug: '/blog',
+              }),
+              pageItem({
+                schemaType: 'blogDetailsPage',
+                id: 'blogDetailsPage',
+                title: 'Blog Details Page',
+                icon: FcViewDetails,
+                slug: '/',
               }),
             ]),
         ),
       S.divider(),
-      S.documentTypeListItem('blog').title('Blogs'),
+
+      S.listItem()
+        .title('Blogs')
+        .icon(BsNewspaper)
+        .child(
+          S.list()
+            .title('Blogs')
+            .items([
+              S.documentTypeListItem('blog').title('Blogs'),
+              S.documentTypeListItem('tag').title('Tags'),
+            ]),
+        ),
+
       S.listItem()
         .title('Dataset')
-        .icon(RiPagesLine)
+        .icon(GiArchiveResearch)
         .child(
           S.list()
             .title('Dataset')
@@ -134,4 +146,3 @@ export default () =>
             ]),
         ),
     ])
-// S.documentTypeListItem('tag').title('Tags'),

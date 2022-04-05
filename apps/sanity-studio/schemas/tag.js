@@ -1,9 +1,9 @@
-import { FcShare } from 'react-icons/fc'
+import { GrTag } from 'react-icons/gr'
 
 export default {
   name: 'tag',
   type: 'document',
-  icon: FcShare,
+  icon: GrTag,
   fields: [
     {
       name: 'name',
