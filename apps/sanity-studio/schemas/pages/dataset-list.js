@@ -1,6 +1,6 @@
 export default {
-  name: 'blogPage',
-  title: 'Blog Page',
+  name: 'datasetListPage',
+  title: 'Dataset Details',
   type: 'document',
   fields: [
     {

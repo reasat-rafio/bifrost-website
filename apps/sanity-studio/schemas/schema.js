@@ -46,11 +46,13 @@ import blogListHome from './pages/blog-list/home'
 
 import blogDetails from './pages/blog-details'
 
-import dataset from './pages/dataset'
+import dataset from './documents/dataset'
 import attribute from './pages/dataset/attribute'
 import ctaList from './pages/dataset/ctaList'
 import taskType from './pages/dataset/document/task-type'
 import labelFormat from './pages/dataset/document/label-format'
+
+import datasetListPage from './pages/dataset-list'
 
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
@@ -119,5 +121,7 @@ export default createSchema({
     ctaList,
     taskType,
     labelFormat,
+
+    datasetListPage,
   ]),
 })

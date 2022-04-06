@@ -117,6 +117,13 @@ export default () =>
                 icon: FcViewDetails,
                 slug: '/',
               }),
+              pageItem({
+                schemaType: 'datasetListPage',
+                id: 'datasetListPage',
+                title: 'Dataset List Page',
+                icon: GiArchiveResearch,
+                slug: '/dataset',
+              }),
             ]),
         ),
       S.divider(),
