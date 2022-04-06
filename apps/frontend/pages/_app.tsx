@@ -18,10 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [ogImage, setOgImage] = useState()
 
   useEffect(() => {
-    if (pageProps.data?.blog?._type === 'blog') {
-      setSeoTitle(pageProps.data?.blog.heading)
-      setSeoDescription(pageProps.blog?.page.subHeading)
-      setOgImage(pageProps.data?.blog.image)
+    if (pageProps.data?.blog?._type === 'blog' || pageProps.data?.dataset?._type === 'dataset') {
+      setSeoTitle(pageProps.data?.blog?.heading || pageProps.data?.dataset?.heading)
+      setSeoDescription(pageProps.blog?.page?.subHeading || pageProps?.dataset?.page?.subHeading)
+      setOgImage(pageProps.data?.blog?.image || pageProps.data?.dataset?.image)
     } else {
       setSeoTitle(pageProps.data?.page.seo.title)
       setSeoDescription(pageProps.data?.page.seo.description)
