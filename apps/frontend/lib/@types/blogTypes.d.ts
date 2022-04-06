@@ -21,6 +21,15 @@ export interface BlogsSection {
   totalBlogs: number
 }
 
+export interface ITags {
+  name: string
+  _createdAt: string
+  _id: string
+  _rev: string
+  _type: string
+  _updatedAt: string
+}
+
 export interface BlogProps {
   _createdAt: string
   _id: string
@@ -28,12 +37,14 @@ export interface BlogProps {
   _type: string
   _updatedAt: string
   body: BlogBody[]
+  tags: ITags
   datetime: string
   heading: string
   image: any
   order: number
   slug: { _type: string; current: string }
   subHeading: string
+  relatedBlog: IBlog[]
 }
 
 export interface BlogBody {

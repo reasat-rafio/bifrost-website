@@ -18,19 +18,35 @@ const query = groq`{
   "blog": *[_type== "blog" && slug.current == $blog] [0] {
     ...,
     "image": ${withDimensions('image')},
+    tags[]->,
+    "relatedBlog" : *[_type== "blog" && slug.current != $blog && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
+      _id,
+      heading,
+      slug,
+      datetime,
+      subHeading,
+      "image": ${withDimensions('image')},
+    }
   },
   "page": *[_id == "blogDetailsPage"][0] {
     ...,
   },
 }`
 
-const pathsQuery = groq`*[_type == 'blog'][]{slug}`
+const pathsQuery = groq`*[_type == 'blog'][]{
+  slug,
+  tags[]->{
+    name
+    }
+  }`
 
 export const getStaticPaths = async () => {
   const slugs = await sanityClient('anonymous').fetch(pathsQuery)
 
   return {
-    paths: slugs.filter((s: any) => s).map((s: any) => ({ params: { blog: s.slug.current } })),
+    paths: slugs
+      .filter((s: any) => s)
+      .map((s: any) => ({ params: { blog: s.slug.current, tags: s.tags } })),
     fallback: false,
   }
 }
@@ -43,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Blog(props: SanityProps) {
   const {
     data: {
-      blog: { heading, datetime, body },
+      blog: { heading, datetime, body, relatedBlog },
       page: { sections },
     },
   }: { data: { blog: BlogProps; page: any } } = useSanityQuery(query, props)
@@ -68,6 +84,9 @@ export default function Blog(props: SanityProps) {
       <Page>
         {renderObjectArray(sections, {
           data: Data,
+        })}
+
+        {renderObjectArray(sections, {
           contact: Contact,
         })}
       </Page>
