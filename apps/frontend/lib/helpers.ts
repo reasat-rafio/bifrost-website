@@ -36,3 +36,9 @@ export const scrollPassedFromTop = () => {
       : (document.documentElement || document.body.parentNode || (document.body as any)).scrollTop
   }
 }
+
+export function truncate(str: string, lenght?: number): string {
+  lenght = lenght ?? 100
+
+  return lenght >= str.length ? str : str.substring(0, lenght).trim() + '...'
+}

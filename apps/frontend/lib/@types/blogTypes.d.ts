@@ -44,7 +44,7 @@ export interface BlogProps {
   order: number
   slug: { _type: string; current: string }
   subHeading: string
-  relatedBlog: IBlog[]
+  relatedBlogs: IBlog[]
 }
 
 export interface BlogBody {

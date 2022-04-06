@@ -12,6 +12,7 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
+import { RelatedBlogs } from 'components/blog/RelatedBlog'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -19,7 +20,7 @@ const query = groq`{
     ...,
     "image": ${withDimensions('image')},
     tags[]->,
-    "relatedBlog" : *[_type== "blog" && slug.current != $blog && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
+    "relatedBlogs" : *[_type== "blog" && slug.current != $blog && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
       _id,
       heading,
       slug,
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Blog(props: SanityProps) {
   const {
     data: {
-      blog: { heading, datetime, body, relatedBlog },
+      blog: { heading, datetime, body, relatedBlogs },
       page: { sections },
     },
   }: { data: { blog: BlogProps; page: any } } = useSanityQuery(query, props)
@@ -85,6 +86,8 @@ export default function Blog(props: SanityProps) {
         {renderObjectArray(sections, {
           data: Data,
         })}
+
+        <RelatedBlogs relatedBlogs={relatedBlogs} />
 
         {renderObjectArray(sections, {
           contact: Contact,
