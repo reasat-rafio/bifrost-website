@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './lib/**/*.{js,ts,jsx,tsx}',
   ],
+
   theme: {
     extend: {
       screens: {
@@ -67,4 +68,7 @@ module.exports = {
     },
   },
   plugins: [require('tailwind-scrollbar')],
+  // variants: {
+  //   scrollbar: ['rounded'],
+  // },
 }
