@@ -60,3 +60,8 @@ export interface SEO {
   description: string
   ogImage: SanityImage
 }
+
+export interface CTAButton {
+  title: string
+  href: string
+}
