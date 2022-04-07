@@ -4,7 +4,7 @@ import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray, withDimensions } from 'sanity-react-extra'
+import { withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import { Gallery } from 'components/dataset/Gallery'
@@ -63,9 +63,11 @@ export default function Dataset(props: SanityProps) {
       <Gallery images={images} />
       <Body body={body} heading={heading} subHeading={subHeading} license={license} />
       <Attributes attributes={attributes} />
-      {/* <ParentSize>
+      <div className="">
+        <ParentSize>
           {({ width, height }) => <Graph width={width} height={height} classes={classes} />}
-        </ParentSize> */}
+        </ParentSize>
+      </div>
     </div>
   )
 }

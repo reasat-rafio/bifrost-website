@@ -1,20 +1,20 @@
-import { BarStackHorizontalProps, Classes, TooltipData } from 'lib/@types/datasetTypes'
+import { BarStackHorizontalProps, TooltipData } from 'lib/@types/datasetTypes'
 import React from 'react'
 import { BarStackHorizontal } from '@visx/shape'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale'
 import { withTooltip, Tooltip, defaultStyles } from '@visx/tooltip'
-import { LegendOrdinal } from '@visx/legend'
+// import { LegendOrdinal } from '@visx/legend'
 import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
 import cityTemperature, { CityTemperature } from '@visx/mock-data/lib/mocks/cityTemperature'
 import { timeParse, timeFormat } from 'd3-time-format'
-import letterFrequency, { LetterFrequency } from '@visx/mock-data/lib/mocks/letterFrequency'
-import { GridRows, GridColumns } from '@visx/grid'
+// import letterFrequency, { LetterFrequency } from '@visx/mock-data/lib/mocks/letterFrequency'
+import { GridColumns } from '@visx/grid'
 
-interface GraphProps {
-  classes: Classes
-}
+// interface GraphProps {
+//   classes: Classes
+// }
 type CityName = 'New York' | 'San Francisco' | 'Austin'
 
 const purple1 = '#6c5efb'
@@ -45,8 +45,8 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     tooltipData,
     hideTooltip,
     showTooltip,
-    classes: { rows },
-  }: BarStackHorizontalProps & WithTooltipProvidedProps<TooltipData>) => {
+  }: // classes: { rows },
+  BarStackHorizontalProps & WithTooltipProvidedProps<TooltipData>) => {
     // const totalRows = rows.map(({ cells }) => +cells[1])
 
     // bounds

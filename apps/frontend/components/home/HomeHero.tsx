@@ -84,9 +84,9 @@ export default function HomeHero(data: IHomeSection): ReactElement {
           <ThreeJSWaves />
         </div>
       </div>
-      <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip min-h-screen flex lg:flex-row flex-col z-10">
+      <div className="container lg:pt-16 pt-24 relative w-screen overflow-y-clip h-screen flex lg:flex-row flex-col z-10">
         <div className="flex-1 flex flex-col justify-center space-y-10 ">
-          <h1 className="font-[275] lg:text-head-1 text-[82px] leading-[82px]">
+          <h1 className="font-[275] lg:text-head-1 sm:text-[82px] text-[62px] leading-[82px]">
             <PortableText
               blocks={data.headline}
               serializers={{
@@ -140,14 +140,14 @@ export default function HomeHero(data: IHomeSection): ReactElement {
           </div>
         </div>
         <div className="flex lg:items-end">
-          <SanityImg
-            className="mx-auto"
-            builder={imageUrlBuilder}
-            width={
-              windowWidth >= 1280 ? 500 : windowWidth >= 1024 ? 400 : windowWidth >= 720 ? 300 : 250
-            }
-            image={data.image}
-          />
+          <div className="mx-auto">
+            <SanityImg
+              className="mx-auto sm:w-[50vh] "
+              builder={imageUrlBuilder}
+              width={450}
+              image={data.image}
+            />
+          </div>
         </div>
       </div>
 
