@@ -7,6 +7,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
+import { Gallery } from 'components/dataset/Gallery'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -51,13 +52,14 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Dataset(props: SanityProps) {
   const {
     data: {
-      dataset: { classes },
+      dataset: { classes, images },
     },
   }: { data: { dataset: Idataset; page: any } } = useSanityQuery(query, props)
 
   return (
     <div>
       <div className="container">
+        <Gallery images={images} />
         <ParentSize>
           {({ width, height }) => <Graph width={width} height={height} classes={classes} />}
         </ParentSize>
