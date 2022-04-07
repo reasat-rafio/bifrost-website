@@ -4,6 +4,7 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
+import { LightboxImage } from 'components/ui/LightboxImage'
 
 interface GalleryProps {
   images: SanityImage[]
@@ -35,11 +36,12 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
         className="2xl:col-span-8 xl:col-span-9 col-span-12 rounded-[10px] overflow-hidden"
         style={{ height: windowWidth >= 1024 ? highlightImageSize : 'auto' }}
       >
-        <SanityImg
-          className="h-full w-full object-cover justify-center"
-          builder={imageUrlBuilder}
+        <LightboxImage
+          rootClass=""
+          className="h-full w-full object-cover justify-center "
           image={selectedImg}
-          width={600}
+          wdith={600}
+          style={{ height: windowWidth >= 1024 ? highlightImageSize : 'auto' }}
         />
       </motion.div>
       <AnimateSharedLayout>

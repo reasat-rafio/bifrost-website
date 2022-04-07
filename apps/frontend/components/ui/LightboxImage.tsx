@@ -6,10 +6,12 @@ import { imageUrlBuilder } from 'utils/sanity'
 
 interface LightboxImageProps {
   containerClassName?: string
+  rootClass?: string
   className?: string
   image: SanityImage
   height?: number
   wdith?: number
+  style?: any
 }
 
 const transition = {
@@ -23,6 +25,8 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
   containerClassName,
   image,
   height,
+  rootClass = '2xl:min-h-[485px] xl:min-h-[400px] lg:min-h-[350px] md:min-h-[380px] sm:min-h-[300px] min-h-[220px] w-full',
+  ...rest
 }) => {
   const [isOpen, setOpen] = useState(false)
 
@@ -34,9 +38,11 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
   return (
     <div
       className={clsx(
-        'relative 2xl:min-h-[485px] xl:min-h-[400px] lg:min-h-[350px] md:min-h-[380px] sm:min-h-[300px] min-h-[220px] w-full',
+        'relative ',
+        rootClass,
         isOpen ? 'cursor-zoom-out z-20' : 'cursor-zoom-in z-0',
       )}
+      {...rest}
     >
       <motion.div
         animate={{ opacity: isOpen ? 1 : 0 }}
