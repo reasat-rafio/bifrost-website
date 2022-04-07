@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { AnimateSharedLayout, motion } from 'framer-motion'
+import { useWindowSize } from 'lib/hooks'
 
 interface GalleryProps {
   images: SanityImage[]
@@ -14,9 +15,16 @@ const spring = {
 }
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
+  const windowHeight = useWindowSize()?.height ?? 0
+  const windowWidth = useWindowSize()?.width ?? 0
+
   const [selectedImg, setSelectedImg] = useState(images[0])
 
-  const [highlightImageSize, setHeightlightImageSize] = useState(600)
+  const [highlightImageSize, setHeightlightImageSize] = useState(0)
+
+  useEffect(() => {
+    setHeightlightImageSize((windowHeight / 100) * 65)
+  }, [windowHeight])
 
   return (
     <section className="grid grid-cols-12 gap-5 pt-36 ">
@@ -24,8 +32,8 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
         key={selectedImg._id}
         initial={{ opacity: 0.6 }}
         animate={{ opacity: 1 }}
-        className="col-span-8 rounded-[10px] overflow-hidden"
-        style={{ height: highlightImageSize }}
+        className="2xl:col-span-8 xl:col-span-9 col-span-12 rounded-[10px] overflow-hidden"
+        style={{ height: windowWidth >= 1024 ? highlightImageSize : 'auto' }}
       >
         <SanityImg
           className="h-full w-full object-cover justify-center"
@@ -36,23 +44,27 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
       </motion.div>
       <AnimateSharedLayout>
         <div
-          className="col-span-4 grid grid-cols-2 gap-3 h-[600px] overflow-y-auto pr-4"
+          className="2xl:col-span-4 xl:col-span-3 col-span-12 grid grid-cols-12  gap-3 overflow-y-auto xl:pr-4"
           id="gallery"
+          style={{ height: windowWidth >= 1280 ? highlightImageSize : 'auto' }}
         >
-          {[...images].map((img) => (
-            <div
+          {images.map((img) => (
+            <motion.div
               className={clsx(
-                'overflow-hidden rounded-[10px] cursor-pointer h-full w-full relative',
+                'overflow-hidden rounded-[10px] cursor-pointer h-full w-full relative col-span-4 xl:col-span-12 2xl:col-span-6',
               )}
-              style={{ height: highlightImageSize / 3 - 10 }}
+              style={{ height: windowWidth >= 1024 ? highlightImageSize / 3 - 10 : 'auto' }}
               onClick={() => setSelectedImg(img)}
+              transition={spring}
             >
-              <SanityImg
-                className="h-full w-full object-cover"
-                builder={imageUrlBuilder}
-                image={img}
-                width={200}
-              />
+              <motion.div className="h-full w-full overflow-hidden bg-red-600">
+                <SanityImg
+                  className="h-full w-full object-cover hover:scale-110 transition-all duration-300"
+                  builder={imageUrlBuilder}
+                  image={img}
+                  width={200}
+                />
+              </motion.div>
 
               {img._id === selectedImg._id && (
                 <motion.div
@@ -63,7 +75,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
                   transition={spring}
                 />
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </AnimateSharedLayout>
