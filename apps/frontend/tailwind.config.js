@@ -65,6 +65,13 @@ module.exports = {
         roboto: 'Roboto, sans-serif',
         titillium: 'Titillium Web, Helvetica, Arial, sans-serif',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#ffffff',
+          },
+        },
+      },
     },
   },
   plugins: [require('tailwind-scrollbar'), require('@tailwindcss/typography')],

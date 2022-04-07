@@ -9,26 +9,35 @@ export default {
         <>{node && <LightboxImage image={node} className="h-full object-cover" height={400} />}</>
       )
     },
-    block(props: any) {
-      switch (props.node.style) {
-        case 'normal':
-          return <p className="pb-3">{props.children}</p>
-        default:
-          return <p className="pb-3">{props.children}</p>
-      }
-    },
-    ctaList({ node: { ctaButtons } }: { node: { ctaButtons: CTAButton[] } }) {
-      console.log('node', ctaButtons)
 
+    ctaList({ node: { ctaButtons } }: { node: { ctaButtons: CTAButton[] } }) {
       return (
-        <div className="flex space-x-5">
+        <div className="flex lg:flex-row flex-col lg:space-x-5 lg:space-y-0 space-y-3">
           {ctaButtons.map(({ href, title }) => (
-            <div>
-              <Button>{title}</Button>
+            <div className="flex">
+              <div>
+                <Button
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.open(href, '_blank')
+                    }
+                  }}
+                >
+                  {title}
+                </Button>
+              </div>
             </div>
           ))}
         </div>
       )
     },
+  },
+  marks: {
+    lowOpacity: ({ children }: any) => <span className="text-[#585d66]">{children}</span>,
+    link: (props: any) => (
+      <a target="_brank" href={props.mark.url}>
+        {props.children}
+      </a>
+    ),
   },
 }

@@ -21,7 +21,7 @@ export const Body: React.FC<BodyProps> = ({ body, heading, license, subHeading }
         </span>
       </header>
 
-      <div className="prose">
+      <div className="prose prose-lg  max-w-none prose-a:text-[#C9FF71] prose-headings:text-white prose-headings:font-light prose-a:cursor-pointer">
         <PortableText blocks={body} serializers={Serializers} />
       </div>
     </section>
