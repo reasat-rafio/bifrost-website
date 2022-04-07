@@ -1,4 +1,4 @@
-import { Graph } from 'components/dataset/Graph'
+import Graph from 'components/dataset/Graph'
 import { Idataset } from 'lib/@types/datasetTypes'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -6,6 +6,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
+import ParentSize from '@visx/responsive/lib/components/ParentSize'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -56,8 +57,12 @@ export default function Dataset(props: SanityProps) {
 
   return (
     <div>
-      {/* <article className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6"></article> */}
-      <Graph {...classes} />
+      <div className="container">
+        <ParentSize>
+          {({ width, height }) => <Graph width={width} height={height} classes={classes} />}
+        </ParentSize>
+      </div>
+      ,
     </div>
   )
 }

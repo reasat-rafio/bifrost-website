@@ -1,3 +1,4 @@
+import { Classes } from './datasetTypes.d'
 import { SanityImage } from 'sanity-react-extra'
 
 export interface Idataset {
@@ -41,4 +42,23 @@ export enum RowType {
 export interface Slug {
   _type: string
   current: string
+}
+
+export type BarStackHorizontalProps = {
+  width: number
+  height: number
+  margin?: { top: number; right: number; bottom: number; left: number }
+  events?: boolean
+  classes: Classes
+}
+
+export type TooltipData = {
+  bar: SeriesPoint<CityTemperature>
+  key: CityName
+  index: number
+  height: number
+  width: number
+  x: number
+  y: number
+  color: string
 }
