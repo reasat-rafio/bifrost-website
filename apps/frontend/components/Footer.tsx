@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/Button'
+import Link from 'next/link'
 
 interface FooterProps {
   logo: SanityImage
@@ -81,9 +82,11 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
           <div className="font-bold">Quick Links</div>
           <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-9 gap-y-5">
             {footer.menu?.map((menu) => (
-              <div key={menu.title} className="cursor-pointer opacity-[0.7]">
-                {menu.title}
-              </div>
+              <Link href={menu.href ?? ''}>
+                <a key={menu.title} className="cursor-pointer opacity-[0.7]">
+                  {menu.title}
+                </a>
+              </Link>
             ))}
           </div>
         </div>
