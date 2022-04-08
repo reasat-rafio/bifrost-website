@@ -33,15 +33,15 @@ export default function UseCaseAssurance({
 
   return (
     <section
-      className="xl:pb-40 lg:pb-20 pb-16"
+      className="xl:pb-40 lg:pb-20 pb-16  mx-[1.6rem] sm:mx-[2rem] lg:mx-[4rem] xl:mx-[6rem] 2xl:mx-[11rem] 3xl:mx-[10rem] xl:px-[72px]"
       style={{
         marginBottom: `${windowWidth >= 1280 ? `${blockHeight / 2}px` : `${blockHeight}px`}`,
       }}
     >
-      <div className="container z-10 relative grid grid-cols-12">
+      <div className="container z-10 relative grid grid-cols-12 xl:!p-0">
         <div className="col-span-12">
           <SanityImg
-            className="w-full 2xl:h-[580px] md:h-[400px] h-auto rounded-xl object-cover"
+            className="w-full  h-auto rounded-xl object-cover"
             builder={imageUrlBuilder}
             image={image}
             alt={image?.alt || 'image'}
@@ -49,7 +49,7 @@ export default function UseCaseAssurance({
           />
         </div>
         <div
-          className="absolute bottom-0 2xl:col-start-6 xl:col-start-3 col-start-2 col-end-12 xl:col-end-12 bifrost__transparent__card xl:translate-y-[50%] xl:translate-x-0 translate-x-[5%] translate-y-[80%] flex flex-col justify-center 2xl:p-14 lg:p-8 p-5 2xl:space-y-6 space-y-3 border border-[#4e6181]/30"
+          className="2xl:w-[55%] lg:w-[70%] w-[90%] absolute lg:p-12 xl:p-6 p-3 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2 right-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[55%] md:translate-y-[60%] translate-y-[90%]"
           ref={measuredRef}
         >
           <GradientTitle>{subHeadline}</GradientTitle>
