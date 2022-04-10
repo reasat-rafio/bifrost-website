@@ -59,7 +59,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
               onClick={() => setSelectedImg(img)}
               transition={spring}
             >
-              <motion.div className="h-full w-full overflow-hidden bg-red-600">
+              <motion.div className="h-full w-full overflow-hidden">
                 <SanityImg
                   className="h-full w-full object-cover hover:scale-110 transition-all duration-300"
                   builder={imageUrlBuilder}

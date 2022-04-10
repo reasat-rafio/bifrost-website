@@ -45,9 +45,12 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     tooltipData,
     hideTooltip,
     showTooltip,
-  }: // classes: { rows },
+    classes: { rows },
+  }: //
   BarStackHorizontalProps & WithTooltipProvidedProps<TooltipData>) => {
-    // const totalRows = rows.map(({ cells }) => +cells[1])
+    const totalRows = rows.map(({ cells }) => +cells[1])
+
+    console.log(totalRows)
 
     // bounds
     const xMax = width - margin.left - margin.right
@@ -69,7 +72,6 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
 
     // accessors
     const getDate = (d: CityTemperature) => d.date
-    console.log(data.map(getDate))
 
     // scales
     const temperatureScale = scaleLinear<number>({

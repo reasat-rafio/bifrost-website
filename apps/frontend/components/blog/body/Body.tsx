@@ -29,7 +29,7 @@ export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
   }, [totalSectionsLength])
 
   return (
-    <section className="mt-5">
+    <section className="mt-5  max-w-none">
       <ScrollSpyWrapper paddingY={paddingY} sections={sections} sectionRefs={sectionRefs}>
         <div
           data-cy="section-wrapper"

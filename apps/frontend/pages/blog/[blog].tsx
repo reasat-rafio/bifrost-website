@@ -69,15 +69,14 @@ export default function Blog(props: SanityProps) {
 
   useEffect(() => {
     const navHeight = document.querySelector('#navbar').clientHeight
+    console.log(navHeight)
+
     setPaddingY(navHeight * 2)
   }, [])
 
   return (
     <div>
-      <article
-        className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6"
-        style={{ paddingTop: `${paddingY}px`, paddingBottom: `${paddingY}px` }}
-      >
+      <article className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6 py-32">
         <Heading heading={heading} datetime={datetime} />
         <Body paddingY={paddingY} body={body} />
       </article>

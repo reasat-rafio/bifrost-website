@@ -69,7 +69,7 @@ export const ScrollSpyWrapper: React.FC<ScrollSpyProps> = ({
                           document.querySelector(`#section-${i}`)?.scrollIntoView()
                         }}
                         className={clsx(
-                          'text-[20px] font-light',
+                          'text-[20px] font-light no-underline',
                           currentElementIndexInViewport === i
                             ? 'text-[#000610] font-normal'
                             : 'text-[#B5B5B5]',
