@@ -124,6 +124,14 @@ export default () =>
                 icon: GiArchiveResearch,
                 slug: '/dataset',
               }),
+
+              pageItem({
+                schemaType: 'datasetDetailsPage',
+                id: 'datasetDetailsPage',
+                title: 'Dataset Details Page',
+                icon: GiArchiveResearch,
+                slug: '/dataset',
+              }),
             ]),
         ),
       S.divider(),

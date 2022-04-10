@@ -6,11 +6,11 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import { Gallery } from 'components/dataset/Gallery'
 import { Body } from 'components/dataset/Body'
 import { Attributes } from 'components/dataset/Attributes'
 import Contact from 'components/Contact'
+import { Classes } from 'components/dataset/Classes'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -20,8 +20,8 @@ const query = groq`{
         ...,
         "icon": ${withDimensions('icon')},
     },
-    images[] {
-        ...
+    images        [] {
+        ...        
         asset->{
           ...,
           metadata {
@@ -69,11 +69,10 @@ export default function Dataset(props: SanityProps) {
         <Gallery images={images} />
         <Body body={body} heading={heading} subHeading={subHeading} license={license} />
         <Attributes attributes={attributes} />
-        <div>
-          <ParentSize>
-            {({ width, height }) => <Graph width={width} height={height} classes={classes} />}
-          </ParentSize>
-        </div>
+        <Classes classes={classes} />
+        {/* <div>
+     
+        </div> */}
       </div>
       {renderObjectArray(sections, {
         contact: Contact,

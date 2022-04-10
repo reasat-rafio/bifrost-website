@@ -95,12 +95,10 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
 
     const accentColor = '#1B2B3D'
     return width < 10 ? null : (
-      <div className="h-screen pt-[10vh]">
-        <svg width={width} height={height}>
-          <rect width={width} height={height} fill={background} rx={14} />
-
+      <div className="max-h-full  ">
+        <svg width={width} height={height} className="">
+          {/* <rect width={width} height={height} fill={background} rx={14} /> */}
           <GridColumns
-            top={margin.top}
             scale={temperatureScale}
             height={height}
             strokeDasharray="1,1,1"
@@ -108,66 +106,56 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
             strokeOpacity={1}
             pointerEvents="none"
           />
-          <Group top={margin.top} left={margin.left}>
-            <BarStackHorizontal<CityTemperature, CityName>
-              data={data}
-              keys={keys}
-              height={yMax}
-              y={getDate}
-              xScale={temperatureScale}
-              yScale={dateScale}
-              color={colorScale}
-            >
-              {(barStacks) =>
-                barStacks.map((barStack) =>
-                  barStack.bars.map((bar) => (
-                    <rect
-                      className={`transform`}
-                      style={{ transform: `translate(0, ${bar.height / 4}px)` }}
-                      key={`barstack-horizontal-${barStack.index}-${bar.index}`}
-                      x={bar.x}
-                      y={bar.y}
-                      width={bar.width}
-                      height={bar.height / 2}
-                      fill={bar.color}
-                      rx="3"
-                      onClick={() => {
-                        if (events) alert(`clicked: ${JSON.stringify(bar)}`)
-                      }}
-                      onMouseLeave={() => {
-                        tooltipTimeout = window.setTimeout(() => {
-                          hideTooltip()
-                        }, 300)
-                      }}
-                      onMouseMove={() => {
-                        if (tooltipTimeout) clearTimeout(tooltipTimeout)
-                        const top = bar.y + margin.top
-                        const left = bar.x + bar.width + margin.left
-                        showTooltip({
-                          tooltipData: bar,
-                          tooltipTop: top,
-                          tooltipLeft: left,
-                        })
-                      }}
-                    />
-                  )),
-                )
-              }
-            </BarStackHorizontal>
-            <AxisLeft
-              hideAxisLine
-              hideTicks
-              scale={dateScale}
-              tickFormat={formatDate}
-              stroke={purple3}
-              tickStroke={purple3}
-              tickLabelProps={() => ({
-                fill: purple3,
-                fontSize: 11,
-                textAnchor: 'end',
-                dy: '0.33em',
-              })}
-            />
+          <Group>
+            <Group>
+              <BarStackHorizontal<CityTemperature, CityName>
+                data={data}
+                keys={keys}
+                height={yMax}
+                y={getDate}
+                xScale={temperatureScale}
+                yScale={dateScale}
+                color={colorScale}
+              >
+                {(barStacks) =>
+                  barStacks.map((barStack) =>
+                    barStack.bars.map((bar) => (
+                      <rect
+                        // className={`transform`}
+                        // style={{ transform: `translate(0, ${bar.height / 5}px)` }}
+                        key={`barstack-horizontal-${barStack.index}-${bar.index}`}
+                        x={bar.x}
+                        y={bar.y}
+                        width={bar.width}
+                        // height={bar.height / 2}
+                        height={bar.height}
+                        fill={bar.color}
+                        rx="3"
+                        onClick={() => {
+                          if (events) alert(`clicked: ${JSON.stringify(bar)}`)
+                        }}
+                        onMouseLeave={() => {
+                          tooltipTimeout = window.setTimeout(() => {
+                            hideTooltip()
+                          }, 300)
+                        }}
+                        onMouseMove={() => {
+                          if (tooltipTimeout) clearTimeout(tooltipTimeout)
+                          const top = bar.y + margin.top
+                          const left = bar.x + bar.width + margin.left
+                          showTooltip({
+                            tooltipData: bar,
+                            tooltipTop: top,
+                            tooltipLeft: left,
+                          })
+                        }}
+                      />
+                    )),
+                  )
+                }
+              </BarStackHorizontal>
+            </Group>
+
             <AxisBottom
               top={yMax}
               scale={temperatureScale}

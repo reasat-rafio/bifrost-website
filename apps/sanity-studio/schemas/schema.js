@@ -53,6 +53,7 @@ import taskType from './pages/dataset/document/task-type'
 import labelFormat from './pages/dataset/document/label-format'
 
 import datasetListPage from './pages/dataset-list'
+import datasetDetails from './pages/dataset-details'
 
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
@@ -123,5 +124,6 @@ export default createSchema({
     labelFormat,
 
     datasetListPage,
+    datasetDetails,
   ]),
 })
