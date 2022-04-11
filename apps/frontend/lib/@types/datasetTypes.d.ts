@@ -49,7 +49,9 @@ export type BarStackHorizontalProps = {
   height: number
   margin?: { top: number; right: number; bottom: number; left: number }
   events?: boolean
-  classes: Classes
+  data?: { key: string; value: string }[]
+  valuesTotalScale: ScaleLinear<number, number, never>
+  dateScale: ScaleBand<string>
 }
 
 export type TooltipData = {

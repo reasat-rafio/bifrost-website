@@ -1,4 +1,3 @@
-import Graph from 'components/dataset/Graph'
 import { Idataset } from 'lib/@types/datasetTypes'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -70,10 +69,8 @@ export default function Dataset(props: SanityProps) {
         <Body body={body} heading={heading} subHeading={subHeading} license={license} />
         <Attributes attributes={attributes} />
         <Classes classes={classes} />
-        {/* <div>
-     
-        </div> */}
       </div>
+
       {renderObjectArray(sections, {
         contact: Contact,
       })}
