@@ -28,7 +28,7 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
     nice: true,
   })
 
-  const dateScale = scaleBand<string>({
+  const keyScale = scaleBand<string>({
     domain: data.map(getKey),
     paddingInner: 0.3,
   })
@@ -54,7 +54,8 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
                     height={height}
                     data={data}
                     valuesTotalScale={valuesTotalScale}
-                    dateScale={dateScale}
+                    keyScale={keyScale}
+                    valuesTotal={valuesTotal}
                   />
                 )}
               </ParentSize>
@@ -71,7 +72,7 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
                   height={height}
                   data={data}
                   valuesTotalScale={valuesTotalScale}
-                  dateScale={dateScale}
+                  keyScale={keyScale}
                 />
               )}
             </ParentSize>

@@ -1,31 +1,40 @@
-import { defaultStyles, TooltipWithBounds } from '@visx/tooltip'
+import { TooltipWithBounds } from '@visx/tooltip'
 
 interface _Tooltip_Props {
   tooltipTop: number
   tooltipLeft: number
   tooltipData: any
   colorScale: any
+  totalImages: number
 }
 
-const tooltipStyles = {
-  ...defaultStyles,
-  minWidth: 60,
-  backgroundColor: 'rgba(0,0,0,0.9)',
-  color: 'white',
-}
+export const green = '#9ede87'
+export const cream = '#d9b279'
+export const orange = '#cc901b'
 
 export const TooltipComponent: React.FC<_Tooltip_Props> = ({
   tooltipTop,
   tooltipData,
   tooltipLeft,
-  colorScale,
+  totalImages,
 }) => {
+  const percentage = (100 * tooltipData.bar.data[tooltipData.key]) / totalImages
+
   return (
-    <TooltipWithBounds top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
-      <div style={{ color: colorScale(tooltipData.key) }}>
-        <strong>{tooltipData.key}</strong>
+    <TooltipWithBounds
+      top={tooltipTop}
+      left={tooltipLeft}
+      className="!shadow-2xl !shadow-black/50 !p-0 !backdrop-blur-sm !bg-black/50 !rounded"
+    >
+      <div
+        className="p-2 !rounded text-white !text-base"
+        style={{ background: percentage < 5 ? green : percentage <= 10 ? cream : orange }}
+      >
+        {tooltipData.bar.data.key}
       </div>
-      <div>{tooltipData.bar.data[tooltipData.key]}</div>
+      <div className="text-white text-sm p-2">
+        Images: {tooltipData.bar.data[tooltipData.key]} ( {percentage} %)
+      </div>
     </TooltipWithBounds>
   )
 }

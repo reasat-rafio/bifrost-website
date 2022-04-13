@@ -9,18 +9,18 @@ import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withToolti
 import { GridColumns } from '@visx/grid'
 import { getKey, keys } from './Classes'
 import { TooltipComponent } from './TooltipComponent'
+import { useWindowSize } from 'lib/hooks'
 
-const purple1 = '#6c5efb'
-export const purple3 = '#a44afe'
-export const background = 'rgba(0,0,0,0.9)'
-const defaultMargin = { top: 40, left: 50, right: 40, bottom: 100 }
+export const green = '#CEFFBD'
+export const cream = '#FFDAA4'
+export const orange = '#FFBA34'
 
 export default withTooltip<BarStackHorizontalProps, TooltipData>(
   ({
     width,
     height,
     events = false,
-    margin = defaultMargin,
+    margin,
     tooltipOpen,
     tooltipLeft = 0,
     tooltipTop = 0,
@@ -29,21 +29,26 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     showTooltip,
     data,
     valuesTotalScale,
-    dateScale,
+    keyScale,
+    valuesTotal,
   }: //
   BarStackHorizontalProps & WithTooltipProvidedProps<TooltipData>) => {
+    const windowWidth = useWindowSize()?.width ?? 0
+    margin = { top: 40, left: 0, right: windowWidth >= 720 ? 60 : 20, bottom: 100 }
+
+    const totalImages = valuesTotal.reduce((initital, val) => initital + val, 0)
+
     // bounds
     const xMax = width - margin.left - margin.right
     const yMax = height - margin.top - margin.bottom
-    console.log(height)
 
     const colorScale = scaleOrdinal<string, string>({
       domain: keys,
-      range: [purple1],
+      range: [green],
     })
 
     valuesTotalScale.rangeRound([0, xMax])
-    dateScale.rangeRound([0, yMax + 140])
+    keyScale.rangeRound([0, yMax + 140])
 
     let tooltipTimeout: number
 
@@ -69,12 +74,13 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
 
     const accentColor = '#1B2B3D'
     return width < 10 ? null : (
-      <div style={{ height: height }} ref={containerRef}>
+      <div style={{ height: height, width: width }} ref={containerRef}>
         <svg width={width} height={height}>
           <Group left={4}>
             <GridColumns
               scale={valuesTotalScale}
               height={height}
+              width={width - 100}
               strokeDasharray="1,1,1"
               stroke={accentColor}
               strokeOpacity={1}
@@ -85,38 +91,43 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
               data={data}
               keys={keys}
               height={height}
+              width={width}
               y={getKey}
               xScale={valuesTotalScale}
-              yScale={dateScale}
+              yScale={keyScale}
               color={colorScale}
             >
               {(barStacks) => {
                 return barStacks.map((barStack) =>
-                  barStack.bars.map((bar) => (
-                    <Group>
-                      <rect
-                        key={`barstack-horizontal-${barStack.index}-${bar.index}`}
-                        x={bar.x}
-                        y={bar.y + 6}
-                        width={bar.width}
-                        height={bar.height / 1.5}
-                        fill={bar.color}
-                        rx="3"
-                        onClick={() => {
-                          if (events) alert(`clicked: ${JSON.stringify(bar)}`)
-                        }}
-                        onMouseLeave={() => {
-                          tooltipTimeout = window.setTimeout(() => {
-                            hideTooltip()
-                          }, 300)
-                        }}
-                        onMouseMove={(e) => {
-                          if (tooltipTimeout) clearTimeout(tooltipTimeout)
-                          handlePointerMove(e, bar)
-                        }}
-                      />
-                    </Group>
-                  )),
+                  barStack.bars.map((bar) => {
+                    const percentage = (100 * bar.bar[1]) / totalImages
+
+                    return (
+                      <Group>
+                        <rect
+                          key={`barstack-horizontal-${barStack.index}-${bar.index}`}
+                          x={bar.x}
+                          y={bar.y + 6}
+                          width={bar.width}
+                          height={bar.height / 1.5}
+                          fill={percentage < 5 ? green : percentage <= 10 ? cream : orange}
+                          rx="3"
+                          onClick={() => {
+                            if (events) alert(`clicked: ${JSON.stringify(bar)}`)
+                          }}
+                          onMouseLeave={() => {
+                            tooltipTimeout = window.setTimeout(() => {
+                              hideTooltip()
+                            }, 300)
+                          }}
+                          onMouseMove={(e) => {
+                            if (tooltipTimeout) clearTimeout(tooltipTimeout)
+                            handlePointerMove(e, bar)
+                          }}
+                        />
+                      </Group>
+                    )
+                  }),
                 )
               }}
             </BarStackHorizontal>
@@ -128,6 +139,7 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
             tooltipLeft={tooltipLeft}
             tooltipData={tooltipData}
             colorScale={colorScale}
+            totalImages={totalImages}
           />
         )}
       </div>

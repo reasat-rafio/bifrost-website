@@ -4,26 +4,28 @@ import { Group } from '@visx/group'
 import { AxisBottom } from '@visx/axis'
 import { withTooltip } from '@visx/tooltip'
 import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
+import { useWindowSize } from 'lib/hooks'
 
-export const purple3 = '#a44afe'
-export const background = 'rgba(0,0,0,0.9)'
-const defaultMargin = { top: 40, left: 50, right: 40, bottom: 100 }
+export const darkBlue = '#1B2B3D'
 
 export default withTooltip<BarStackHorizontalProps, TooltipData>(
   ({
     width,
     height,
-    margin = defaultMargin,
+    margin,
     valuesTotalScale,
-    dateScale,
+    keyScale,
   }: //
   BarStackHorizontalProps & WithTooltipProvidedProps<TooltipData>) => {
+    const windowWidth = useWindowSize()?.width ?? 0
+    margin = { top: 40, left: 0, right: windowWidth >= 720 ? 60 : 20, bottom: 100 }
+
     // bounds
     const xMax = width - margin.left - margin.right
     const yMax = height - margin.top - margin.bottom
 
     valuesTotalScale.rangeRound([0, xMax])
-    dateScale.rangeRound([0, yMax + 140])
+    keyScale.rangeRound([0, yMax + 140])
 
     return width < 10 ? null : (
       <div style={{ height: height }}>
@@ -33,10 +35,10 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
               hideTicks
               top={height + 10}
               scale={valuesTotalScale}
-              stroke={purple3}
-              tickStroke={purple3}
+              stroke={darkBlue}
+              tickStroke={darkBlue}
               tickLabelProps={() => ({
-                fill: purple3,
+                fill: '#eee',
                 fontSize: 11,
                 textAnchor: 'middle',
               })}

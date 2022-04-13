@@ -51,7 +51,8 @@ export type BarStackHorizontalProps = {
   events?: boolean
   data?: { key: string; value: string }[]
   valuesTotalScale: ScaleLinear<number, number, never>
-  dateScale: ScaleBand<string>
+  keyScale: ScaleBand<string>
+  valuesTotal?: number[]
 }
 
 export type TooltipData = {
