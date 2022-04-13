@@ -35,7 +35,7 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
 
   return (
     <section>
-      <h6 className="text-[26px] font-light my-5">{classes.rows.length} Total Classes</h6>
+      <h6 className="text-[26px] font-light mt-16 mb-10">{classes.rows.length} Total Classes</h6>
       <div className="bg-[#0C1723] rounded-[10px] p-3 pb-10">
         <div className="relative h-[520px] w-full">
           <div className="h-full w-full grid grid-cols-14 overflow-auto gap-4" id="gallery">

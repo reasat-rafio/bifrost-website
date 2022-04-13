@@ -8,9 +8,9 @@ interface _Tooltip_Props {
   totalImages: number
 }
 
-export const green = '#9ede87'
+export const green = '#52EB49'
 export const cream = '#d9b279'
-export const orange = '#cc901b'
+export const orange = '#FF9900'
 
 export const TooltipComponent: React.FC<_Tooltip_Props> = ({
   tooltipTop,
@@ -33,7 +33,7 @@ export const TooltipComponent: React.FC<_Tooltip_Props> = ({
         {tooltipData.bar.data.key}
       </div>
       <div className="text-white text-sm p-2">
-        Images: {tooltipData.bar.data[tooltipData.key]} ( {percentage} %)
+        Images: {tooltipData.bar.data[tooltipData.key]} ( {percentage.toFixed(2)} %)
       </div>
     </TooltipWithBounds>
   )
