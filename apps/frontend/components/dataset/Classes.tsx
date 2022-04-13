@@ -38,15 +38,15 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
       <h6 className="text-[26px] font-light my-5">{classes.rows.length} Total Classes</h6>
       <div className="bg-[#0C1723] rounded-[10px] p-3 pb-10">
         <div className="relative h-[520px] w-full">
-          <div className="h-full w-full grid grid-cols-12 overflow-auto gap-4" id="gallery">
+          <div className="h-full w-full grid grid-cols-14 overflow-auto gap-4" id="gallery">
             <div className="col-span-2 flex flex-col space-y-3">
               {classes.rows.map(({ cells }) => (
-                <div className="bg-[#29394A] px-3 py-2 rounded-[4px] text-[14px] text-[#fff] text-opacity-70 text-center">
+                <p className="bg-[#29394A] px-3 py-2 rounded-[4px] text-[14px] text-[#fff] text-opacity-70 text-center truncate">
                   {cells[0]}
-                </div>
+                </p>
               ))}
             </div>
-            <div className="col-span-10 ">
+            <div className="col-span-12 ">
               <ParentSize>
                 {({ width, height }) => (
                   <Graph
@@ -61,9 +61,9 @@ export const Classes: React.FC<ClassesProps> = ({ classes }) => {
             </div>
           </div>
         </div>
-        <div className="h-full w-full grid grid-cols-12 ">
+        <div className="h-full w-full grid grid-cols-14 ">
           <div className="col-span-2" />
-          <div className="col-span-10">
+          <div className="col-span-12">
             <ParentSize>
               {({ width, height }) => (
                 <BottomAxist

@@ -48,6 +48,10 @@ module.exports = {
         success: '#2EFFB2',
         gray: '#B3BAC5',
       },
+      gridTemplateColumns: {
+        13: 'repeat(13, minmax(0, 1fr))',
+        14: 'repeat(14, minmax(0, 1fr))',
+      },
       fontSize: {
         'head-1': ['92px', '92px'],
         'head-2': ['80px', '96px'],

@@ -1,26 +1,20 @@
 import { BarStackHorizontalProps, TooltipData } from 'lib/@types/datasetTypes'
-import React from 'react'
+import React, { MouseEvent, useCallback } from 'react'
 import { BarStackHorizontal } from '@visx/shape'
 import { Group } from '@visx/group'
 import { scaleOrdinal } from '@visx/scale'
-import { withTooltip } from '@visx/tooltip'
-// import { LegendOrdinal } from '@visx/legend'
+import { defaultStyles, TooltipWithBounds, useTooltipInPortal, withTooltip } from '@visx/tooltip'
 import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
-// import { timeParse, timeFormat } from 'd3-time-format'
+import { timeParse, timeFormat } from 'd3-time-format'
 
 import { GridColumns } from '@visx/grid'
 import { getKey, keys } from './Classes'
+import { TooltipComponent } from './TooltipComponent'
 
 const purple1 = '#6c5efb'
 export const purple3 = '#a44afe'
 export const background = 'rgba(0,0,0,0.9)'
 const defaultMargin = { top: 40, left: 50, right: 40, bottom: 100 }
-// const tooltipStyles = {
-//   ...defaultStyles,
-//   minWidth: 60,
-//   backgroundColor: 'rgba(0,0,0,0.9)',
-//   color: 'white',
-// }
 
 export default withTooltip<BarStackHorizontalProps, TooltipData>(
   ({
@@ -28,10 +22,10 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     height,
     events = false,
     margin = defaultMargin,
-    // tooltipOpen,
-    // tooltipLeft,
-    // tooltipTop,
-    // tooltipData,
+    tooltipOpen,
+    tooltipLeft = 0,
+    tooltipTop = 0,
+    tooltipData,
     hideTooltip,
     showTooltip,
     data,
@@ -44,10 +38,6 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     const yMax = height - margin.top - margin.bottom
     console.log(height)
 
-    // const parseDate = timeParse('%Y-%m-%d')
-    // const format = timeFormat('%b %d')
-    // const formatDate = (date: string) => format(parseDate(date) as Date)
-
     const colorScale = scaleOrdinal<string, string>({
       domain: keys,
       range: [purple1],
@@ -58,9 +48,29 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
 
     let tooltipTimeout: number
 
+    const { containerRef, containerBounds } = useTooltipInPortal({
+      scroll: true,
+      detectBounds: true,
+    })
+
+    // event handlers
+    const handlePointerMove = useCallback(
+      (event: MouseEvent<any>, tooltipData) => {
+        // coordinates should be relative to the container in which Tooltip is rendered
+        const containerX = ('clientX' in event ? event.clientX : 0) - containerBounds.left
+        const containerY = ('clientY' in event ? event.clientY : 0) - containerBounds.top
+        showTooltip({
+          tooltipLeft: containerX,
+          tooltipTop: containerY,
+          tooltipData,
+        })
+      },
+      [showTooltip, containerBounds],
+    )
+
     const accentColor = '#1B2B3D'
     return width < 10 ? null : (
-      <div style={{ height: height }}>
+      <div style={{ height: height }} ref={containerRef}>
         <svg width={width} height={height}>
           <Group left={4}>
             <GridColumns
@@ -88,9 +98,9 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
                       <rect
                         key={`barstack-horizontal-${barStack.index}-${bar.index}`}
                         x={bar.x}
-                        y={bar.y}
+                        y={bar.y + 6}
                         width={bar.width}
-                        height={bar.height}
+                        height={bar.height / 1.5}
                         fill={bar.color}
                         rx="3"
                         onClick={() => {
@@ -101,15 +111,9 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
                             hideTooltip()
                           }, 300)
                         }}
-                        onMouseMove={() => {
+                        onMouseMove={(e) => {
                           if (tooltipTimeout) clearTimeout(tooltipTimeout)
-                          const top = bar.y + margin.top
-                          const left = bar.x + bar.width + margin.left
-                          showTooltip({
-                            tooltipData: bar,
-                            tooltipTop: top,
-                            tooltipLeft: left,
-                          })
+                          handlePointerMove(e, bar)
                         }}
                       />
                     </Group>
@@ -119,17 +123,14 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
             </BarStackHorizontal>
           </Group>
         </svg>
-        {/* {tooltipOpen && tooltipData && (
-          <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
-            <div style={{ color: colorScale(tooltipData.key) }}>
-              <strong>{tooltipData.key}</strong>
-            </div>
-            <div>{tooltipData.bar.data[tooltipData.key]}℉</div>
-            <div>
-              <small>{formatDate(getKey(tooltipData.bar.data))}</small>
-            </div>
-          </Tooltip>
-        )} */}
+        {tooltipOpen && tooltipData && (
+          <TooltipComponent
+            tooltipTop={tooltipTop}
+            tooltipLeft={tooltipLeft}
+            tooltipData={tooltipData}
+            colorScale={colorScale}
+          />
+        )}
       </div>
     )
   },

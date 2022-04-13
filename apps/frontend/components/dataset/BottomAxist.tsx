@@ -28,8 +28,9 @@ export default withTooltip<BarStackHorizontalProps, TooltipData>(
     return width < 10 ? null : (
       <div style={{ height: height }}>
         <svg width={width} height={height + 35}>
-          <Group>
+          <Group left={4}>
             <AxisBottom
+              hideTicks
               top={height + 10}
               scale={valuesTotalScale}
               stroke={purple3}
