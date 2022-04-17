@@ -12,12 +12,15 @@ import { useCallback, useState } from 'react'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import Home from 'components/dataset-list/Home'
+import { ICategory } from 'lib/@types/datasetTypes'
+import { DatasetList } from 'components/dataset-list/list/DatasetList'
 
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "datasetListPage"][0] {
     ...,
   },
+  "categories": *[_type == "taskType"][] 
 }`
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
@@ -25,10 +28,13 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Dataset(props: SanityProps<{ site: Site; page: any }>) {
+export default function Dataset(
+  props: SanityProps<{ site: Site; page: any; categories: ICategory[] }>,
+) {
   const {
     data: {
       page: { sections },
+      categories,
     },
   } = useSanityQuery(query, props)
 
@@ -52,6 +58,7 @@ export default function Dataset(props: SanityProps<{ site: Site; page: any }>) {
         }}
       >
         <Page>
+          <DatasetList categories={categories} />
           {renderObjectArray(sections, {
             contact: Contact,
           })}
