@@ -9,10 +9,10 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
-import { renderObjectArray } from 'sanity-react-extra'
+import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import Home from 'components/dataset-list/Home'
-import { ICategory } from 'lib/@types/datasetTypes'
+import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
 import { DatasetList } from 'components/dataset-list/list/DatasetList'
 
 const query = groq`{
@@ -20,8 +20,16 @@ const query = groq`{
   "page": *[_id == "datasetListPage"][0] {
     ...,
   },
+  "datasets": *[_type == "dataset"][]{
+    _id,
+    heading,
+    slug,
+    subHeading,
+    taskTypes,
+    "image": ${withDimensions('images[0]')}
+  },
   "categories": *[_type == "taskType"][] ,
-  "labelFormat": *[_type == "labelFormat"][] 
+  "labelFormat": *[_type == "labelFormat"][]
 }`
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
@@ -30,13 +38,20 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 })
 
 export default function Dataset(
-  props: SanityProps<{ site: Site; page: any; categories: ICategory[]; labelFormat: ICategory[] }>,
+  props: SanityProps<{
+    site: Site
+    page: any
+    categories: ICategory[]
+    labelFormat: ICategory[]
+    datasets: IDatasetCard[]
+  }>,
 ) {
   const {
     data: {
       page: { sections },
       categories,
       labelFormat,
+      datasets,
     },
   } = useSanityQuery(query, props)
 
@@ -60,7 +75,7 @@ export default function Dataset(
         }}
       >
         <Page>
-          <DatasetList categories={categories} labelFormat={labelFormat} />
+          <DatasetList datasets={datasets} categories={categories} labelFormat={labelFormat} />
           {renderObjectArray(sections, {
             contact: Contact,
           })}

@@ -28,7 +28,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
           <div className="col-span-4">
             <Combobox value={selectedValue} onChange={setSelectedValue}>
               <div className="relative">
-                <Combobox.Label className="text-sm leading-5 font-bold text-neutral-600 mb-1 inline-block">
+                <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
                   Search
                 </Combobox.Label>
                 <div>
@@ -60,7 +60,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
           <div className="col-span-3">
             <Combobox value={minImgValue} onChange={setMinImgValue}>
               <div className="relative">
-                <Combobox.Label className="text-sm leading-5 font-bold text-neutral-600 mb-1 inline-block">
+                <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
                   Minimum Images
                 </Combobox.Label>
                 <div>

@@ -19,7 +19,7 @@ const query = groq`{
         ...,
         "icon": ${withDimensions('icon')},
     },
-    images        [] {
+    images[] {
         ...        
         asset->{
           ...,

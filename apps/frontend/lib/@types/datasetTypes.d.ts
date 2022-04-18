@@ -74,3 +74,12 @@ export interface ICategory {
   _type?: string
   _updatedAt?: string
 }
+
+export interface IDatasetCard {
+  _id: string
+  heading: string
+  slug: Slug
+  subHeading: string
+  taskTypes: ICategory[]
+  image: SanityImage
+}
