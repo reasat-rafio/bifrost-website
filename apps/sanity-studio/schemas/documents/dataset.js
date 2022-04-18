@@ -59,6 +59,36 @@ export default {
     },
 
     {
+      name: 'categories',
+      type: 'array',
+      options: {
+        layout: 'tags',
+        isHighlighted: true,
+      },
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'category' },
+        },
+      ],
+    },
+
+    {
+      name: 'tasks',
+      type: 'array',
+      options: {
+        layout: 'tags',
+        isHighlighted: true,
+      },
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'tasks' },
+        },
+      ],
+    },
+
+    {
       name: 'labelFormats',
       type: 'array',
       options: {

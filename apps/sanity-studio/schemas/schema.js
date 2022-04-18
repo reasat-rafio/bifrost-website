@@ -51,6 +51,8 @@ import attribute from './pages/dataset/attribute'
 import ctaList from './pages/dataset/ctaList'
 import taskType from './pages/dataset/document/task-type'
 import labelFormat from './pages/dataset/document/label-format'
+import tasks from './pages/dataset/document/tasks'
+import category from './pages/dataset/document/category'
 
 import datasetListPage from './pages/dataset-list'
 import datasetDetails from './pages/dataset-details'
@@ -122,6 +124,8 @@ export default createSchema({
     ctaList,
     taskType,
     labelFormat,
+    tasks,
+    category,
 
     datasetListPage,
     datasetDetails,
