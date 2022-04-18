@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { GradientBorder } from 'components/common/GradientBorder'
 import { ICategory } from 'lib/@types/datasetTypes'
 import React from 'react'

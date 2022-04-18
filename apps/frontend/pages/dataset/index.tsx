@@ -20,7 +20,8 @@ const query = groq`{
   "page": *[_id == "datasetListPage"][0] {
     ...,
   },
-  "categories": *[_type == "taskType"][] 
+  "categories": *[_type == "taskType"][] ,
+  "labelFormat": *[_type == "labelFormat"][] 
 }`
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
@@ -29,12 +30,13 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 })
 
 export default function Dataset(
-  props: SanityProps<{ site: Site; page: any; categories: ICategory[] }>,
+  props: SanityProps<{ site: Site; page: any; categories: ICategory[]; labelFormat: ICategory[] }>,
 ) {
   const {
     data: {
       page: { sections },
       categories,
+      labelFormat,
     },
   } = useSanityQuery(query, props)
 
@@ -58,7 +60,7 @@ export default function Dataset(
         }}
       >
         <Page>
-          <DatasetList categories={categories} />
+          <DatasetList categories={categories} labelFormat={labelFormat} />
           {renderObjectArray(sections, {
             contact: Contact,
           })}

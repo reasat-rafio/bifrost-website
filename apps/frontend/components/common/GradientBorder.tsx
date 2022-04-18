@@ -8,6 +8,7 @@ interface GradientBorderProps {
   gradient?: string
   innerClass?: string
   background?: string
+  children?: any
 }
 
 export const GradientBorder: React.FC<GradientBorderProps> = ({
