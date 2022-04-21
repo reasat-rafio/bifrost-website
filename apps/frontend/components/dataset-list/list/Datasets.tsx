@@ -7,7 +7,6 @@ import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
-import ReactTooltip from 'react-tooltip'
 import Tooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap.css'
 interface DatasetsProps {
@@ -136,16 +135,6 @@ const DatasetCards: React.FC<IDatasetCards> = ({
               {name}{' '}
             </p>
           ))}
-          {/* <p
-            // data-tip
-            // data-for="getContent"
-            className={clsx(
-              `bifrost__gradient__green text-transparent bg-clip-text cursor-pointer show-more-${index}`,
-              overflownTasks.length ? 'visible' : 'invisible',
-            )}
-          >
-            + {overflownTasks.length} More
-          </p> */}
 
           <Tooltip
             placement="topLeft"
