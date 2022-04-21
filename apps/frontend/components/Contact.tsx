@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FormSchema } from 'lib/form-schema'
 import Input from './ui/Input'
+import { useFormspark } from '@formspark/use-formspark'
 
 interface IFormInput {
   name: string
@@ -19,14 +20,25 @@ export default function HomeContact(data: ContactSection): ReactElement {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFormInput>({
     mode: 'onChange',
     resolver: yupResolver(FormSchema),
   })
 
+  const [submit, submitting] = useFormspark({
+    formId: process.env.NEXT_PUBLIC_FORM_ID,
+  })
+
+  // ,
   async function onSubmit({ email, message, name }: IFormInput) {
-    console.log(email, message, name)
+    try {
+      await submit({ email, message, name })
+      reset({})
+    } catch (e) {
+    } finally {
+    }
   }
 
   return (
@@ -39,12 +51,14 @@ export default function HomeContact(data: ContactSection): ReactElement {
         className="self-end lg:w-[70%] w-full flex flex-col space-y-5"
       >
         <Input
+          disabled={submitting}
           errorKey={errors.name?.message}
           placeholder="Name"
           type="text"
           {...register('name')}
         />
         <Input
+          disabled={submitting}
           errorKey={errors.email?.message}
           placeholder="Email"
           type="text"
@@ -53,6 +67,7 @@ export default function HomeContact(data: ContactSection): ReactElement {
 
         <div>
           <textarea
+            disabled={submitting}
             className="shadow w-full input__dark border border-[#8E8E8E] rounded-lg appearance-none lg:py-6 py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1"
             id="message"
             placeholder="Message"
@@ -67,11 +82,9 @@ export default function HomeContact(data: ContactSection): ReactElement {
         </div>
 
         <div className="flex">
-          <div>
-            <Button type="submit">
-              <a href={data.ctaButton.href}>{data.ctaButton.title}</a>
-            </Button>
-          </div>
+          <Button type="submit" disabled={submitting} loading={submitting}>
+            <a href={data.ctaButton.href}>{submitting ? 'Loading..' : data.ctaButton.title}</a>
+          </Button>
         </div>
       </form>
     </div>
