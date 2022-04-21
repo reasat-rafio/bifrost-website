@@ -25,7 +25,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
         borderRadious="6px"
       >
         <div className="grid grid-cols-13 p-4 gap-4">
-          <div className="col-span-4">
+          <div className="xl:col-span-4 col-span-12">
             <Combobox value={selectedValue} onChange={setSelectedValue}>
               <div className="relative">
                 <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
@@ -35,7 +35,9 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
                   <Combobox.Input
                     className="datasetInputs"
                     displayValue={(person: string) => (!person ? '' : person)}
-                    onChange={(e) => {}}
+                    onChange={(e) => {
+                      console.log(e)
+                    }}
                     placeholder="What Data Are You Looking For?"
                   />
                 </div>
@@ -43,21 +45,21 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
             </Combobox>
           </div>
           <FilteringListBox
-            className="col-span-3"
+            className="xl:col-span-3 hidden xl:block"
             label="Task Types"
             selectedData={selectedTaskType}
             setSelectedData={setSelectedTaskType}
             data={taskTypes}
           />
           <FilteringListBox
-            className="col-span-3"
+            className="xl:col-span-3 hidden xl:block"
             label="Task Types"
             selectedData={selectedLabelFormat}
             setSelectedData={setSelectedLabelFormat}
             data={labelFormat}
           />
 
-          <div className="col-span-3">
+          <div className="xl:col-span-3 hidden xl:block">
             <Combobox value={minImgValue} onChange={setMinImgValue}>
               <div className="relative">
                 <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">

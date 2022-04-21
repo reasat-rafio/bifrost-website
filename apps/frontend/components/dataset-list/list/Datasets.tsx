@@ -96,7 +96,7 @@ const DatasetCards: React.FC<IDatasetCards> = ({
   }, [taskListNodes.length, windowWidth])
 
   return (
-    <div className="xl:col-span-4 col-span-6 background__dark rounded-[15px] h-full group">
+    <div className="xl:col-span-4 md:col-span-6 col-span-12 background__dark rounded-[15px] h-full group">
       <div className="flex flex-col space-y-1 border-b border-[#1E2531] p-3 font-light ">
         <div className="h-[215px] rounded-[14px] overflow-hidden mb-1">
           <SanityImg
@@ -132,7 +132,7 @@ const DatasetCards: React.FC<IDatasetCards> = ({
               className={`bifrost__gradient__green text-transparent bg-clip-text datasets-tasks-${index}`}
               key={_id}
             >
-              {name}{' '}
+              {name}
             </p>
           ))}
 
@@ -164,18 +164,6 @@ const DatasetCards: React.FC<IDatasetCards> = ({
               + {overflownTasks.length} More
             </p>
           </Tooltip>
-
-          {/* <ReactTooltip
-            className="customeTheme"
-            id="getContent"
-            getContent={[
-              () => {
-                return overflownTasks.map((e) => e)
-              },
-              1000,
-            ]}
-            // getContent={() => overflownTasks.map((e) => e)}
-          /> */}
         </div>
         <div className="flex space-x-10 text-opacity-70">
           <span className="underline">716 Images</span>
@@ -196,7 +184,7 @@ export const Datasets: React.FC<DatasetsProps> = ({
     <div className={className}>
       <SearchAndFiltering labelFormat={labelFormat} taskTypes={taskTypes} />
       <RelevanceFiltering length={datasets.length} />
-      <div className="grid grid-cols-12 gap-7 ">
+      <div className="grid grid-cols-12 xl:gap-7 gap-3 ">
         {datasets.map((dataset, index) => (
           <DatasetCards key={dataset._id} {...dataset} index={index} />
         ))}
