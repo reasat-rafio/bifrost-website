@@ -40,6 +40,8 @@ const DatasetCards: React.FC<IDatasetCards> = ({
 
   const [overflownTasks, setOverflownTasks] = useState<null | string[]>([])
 
+  console.log(overflownTasks)
+
   useEffect(() => {
     setTotalTasksWidth(0)
     // GETTING THE MORE<NUMBER> LEBEL WIDTH
@@ -64,6 +66,8 @@ const DatasetCards: React.FC<IDatasetCards> = ({
 
     if (taskListNodes.length > 0) {
       if (totalTasksWidth >= tasksContainerWidth) {
+        setOverflownTasks([])
+
         for (let i = 0; i <= taskListNodes.length; i++) {
           if (sum < tasksContainerWidth) {
             sum = sum + taskListNodes[i]?.clientWidth
@@ -75,19 +79,26 @@ const DatasetCards: React.FC<IDatasetCards> = ({
         taskListNodes.forEach((e: HTMLElement, idx: number) => {
           if (idx >= index) {
             setOverflownTasks((prev) => [...prev, e.innerHTML])
-            e.style.display = 'none'
+            e.style.visibility = 'hidden'
+            e.style.position = 'absolute'
           } else {
             setOverflownTasks((prev) => [...prev])
-            e.style.display = 'block'
+            e.style.visibility = 'visible'
+            e.style.position = 'relative'
           }
         })
       } else {
+        taskListNodes.forEach((e: HTMLElement) => {
+          setOverflownTasks([])
+          e.style.visibility = 'visible'
+          e.style.position = 'relative'
+        })
       }
     }
-  }, [taskListNodes.length, windowWidth, overflownTasks])
+  }, [taskListNodes.length, windowWidth])
 
   return (
-    <div className="col-span-4 background__dark rounded-[15px]">
+    <div className="col-span-4 background__dark rounded-[15px] ">
       <div className="flex flex-col space-y-1 border-b border-[#1E2531] p-3 font-light ">
         <SanityImg
           className="rounded-[14px]"
