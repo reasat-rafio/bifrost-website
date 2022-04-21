@@ -26,7 +26,9 @@ const query = groq`{
     slug,
     subHeading,
     taskTypes,
-    "image": ${withDimensions('images[0]')}
+    "image": ${withDimensions('images[0]')},
+   categories[]->,
+   tasks[]-> 
   },
   "categories": *[_type == "taskType"][] ,
   "labelFormat": *[_type == "labelFormat"][]

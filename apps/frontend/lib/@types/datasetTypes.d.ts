@@ -1,3 +1,4 @@
+import { Categories } from './../../components/dataset-list/list/Categories'
 import { Classes } from './datasetTypes.d'
 import { SanityImage } from 'sanity-react-extra'
 
@@ -82,4 +83,6 @@ export interface IDatasetCard {
   subHeading: string
   taskTypes: ICategory[]
   image: SanityImage
+  categories: ICategory[]
+  tasks: ICategory[]
 }
