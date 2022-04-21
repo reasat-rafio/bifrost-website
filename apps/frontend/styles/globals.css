@@ -170,3 +170,16 @@ html {
 .datasetInputs {
   @apply w-full border border-[#1E2531] rounded-[6px] focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-honeySuckle  py-3 pl-3 pr-4 text-base text-gray focus:outline-none transition duration-300 bg-transparent;
 }
+/*
+.customeTheme {
+   //color: #ff6e00 !important;
+  background-color: orange !important;
+  &.place-top {
+    &:after {
+      border-top-color: orange !important;
+      border-top-style: solid !important;
+      border-top-width: 6px !important;
+    }
+  }
+}
+ */
