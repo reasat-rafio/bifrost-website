@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { ReactElement, useCallback, useRef, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import Link from 'next/link'
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Button from './ui/Button'
 import { MenuItem } from 'lib/@types/types'
 
@@ -142,56 +142,57 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                 }}
                 ref={menuRef}
               >
-                <AnimateSharedLayout>
-                  <ul className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0">
-                    {menu
-                      .filter((men) => !men.isCTA)
-                      .map((men, _) => (
-                        <li
-                          key={men.title}
-                          className="dropdown relative items-center mx-10 py-2 my-2 "
+                <motion.ul
+                  className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0"
+                  layout
+                >
+                  {menu
+                    .filter((men) => !men.isCTA)
+                    .map((men, _) => (
+                      <li
+                        key={men.title}
+                        className="dropdown relative items-center mx-10 py-2 my-2 "
+                      >
+                        <a
+                          onClick={(ev) => {
+                            if (men.url) {
+                              ev.preventDefault()
+                              if (typeof window !== 'undefined') window.open(men.url, '_blank')
+                            } else {
+                              router.push(men.href)
+                            }
+                            if (men.submenu && men.submenu?.length > 0) {
+                              ev.preventDefault()
+                            }
+                          }}
+                          className={clsx(
+                            'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 cursor-pointer',
+                            men.isCTA && 'cta-button font-bold',
+                          )}
                         >
-                          <a
-                            onClick={(ev) => {
-                              if (men.url) {
-                                ev.preventDefault()
-                                if (typeof window !== 'undefined') window.open(men.url, '_blank')
-                              } else {
-                                router.push(men.href)
-                              }
-                              if (men.submenu && men.submenu?.length > 0) {
-                                ev.preventDefault()
-                              }
-                            }}
+                          <span
                             className={clsx(
-                              'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 cursor-pointer',
-                              men.isCTA && 'cta-button font-bold',
+                              router.asPath === men.href &&
+                                'text-transparent bg-clip-text bifrost__gradient__green',
                             )}
                           >
-                            <span
-                              className={clsx(
-                                router.asPath === men.href &&
-                                  'text-transparent bg-clip-text bifrost__gradient__green',
-                              )}
-                            >
-                              {men.title}
-                            </span>
-                          </a>
-                          {router.asPath === men?.href && (
-                            <motion.div
-                              layout
-                              className={clsx(
-                                'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] bifrost__gradient__green',
-                              )}
-                              layoutId="underline"
-                              initial={false}
-                              transition={{ duration: 0.2 }}
-                            />
-                          )}
-                        </li>
-                      ))}
-                  </ul>
-                </AnimateSharedLayout>
+                            {men.title}
+                          </span>
+                        </a>
+                        {router.asPath === men?.href && (
+                          <motion.div
+                            layout
+                            className={clsx(
+                              'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] bifrost__gradient__green',
+                            )}
+                            layoutId="underline"
+                            initial={false}
+                            transition={{ duration: 0.2 }}
+                          />
+                        )}
+                      </li>
+                    ))}
+                </motion.ul>
               </motion.nav>
             </motion.div>
           )}

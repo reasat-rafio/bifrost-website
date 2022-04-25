@@ -10,6 +10,7 @@ interface SectionProps {
   transition?: boolean
   hasEllipse?: boolean
   enableTransition?: boolean
+  children: any
 }
 
 export const Section: React.FC<SectionProps> = ({

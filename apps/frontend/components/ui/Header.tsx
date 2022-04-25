@@ -3,6 +3,7 @@ import React from 'react'
 
 interface HeaderProps {
   className?: string
+  children: any
 }
 
 export const Header: React.FC<HeaderProps> = ({ children, className }) => {

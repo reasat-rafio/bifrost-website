@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement } from 'react'
 
 interface LayoutProps {
   className?: string
-  children?: ReactNode
+  children?: any
 }
 
 export default function Layout({ children, className }: LayoutProps): ReactElement {

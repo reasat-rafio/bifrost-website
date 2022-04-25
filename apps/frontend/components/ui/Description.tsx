@@ -3,6 +3,7 @@ import React from 'react'
 
 interface DescriptionProps {
   className?: string
+  children: any
 }
 
 export const Description: React.FC<DescriptionProps> = ({ children, className }) => {

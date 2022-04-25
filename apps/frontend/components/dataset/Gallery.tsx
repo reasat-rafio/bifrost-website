@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
 import { LightboxImage } from 'components/ui/LightboxImage'
 
@@ -44,43 +44,42 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
           style={{ height: windowWidth >= 1024 ? highlightImageSize : 'auto' }}
         />
       </motion.div>
-      <AnimateSharedLayout>
-        <div
-          className="2xl:col-span-4 xl:col-span-3 col-span-12 grid grid-cols-12  gap-3 overflow-y-auto xl:pr-4"
-          id="gallery"
-          style={{ height: windowWidth >= 1280 ? highlightImageSize : 'auto' }}
-        >
-          {images.map((img) => (
-            <motion.div
-              className={clsx(
-                'overflow-hidden rounded-[10px] cursor-pointer h-full w-full relative col-span-4 xl:col-span-12 2xl:col-span-6',
-              )}
-              style={{ height: windowWidth >= 1024 ? highlightImageSize / 3 - 10 : 'auto' }}
-              onClick={() => setSelectedImg(img)}
-              transition={spring}
-            >
-              <motion.div className="h-full w-full overflow-hidden">
-                <SanityImg
-                  className="h-full w-full object-cover hover:scale-110 transition-all duration-300"
-                  builder={imageUrlBuilder}
-                  image={img}
-                  width={200}
-                />
-              </motion.div>
-
-              {img._id === selectedImg._id && (
-                <motion.div
-                  layoutId="outline"
-                  className="absolute top-0 left-0 right-0 bottom-0 border-4 h-full w-full rounded-[10px]"
-                  initial={false}
-                  animate={{ borderColor: '#7187ff' }}
-                  transition={spring}
-                />
-              )}
+      <motion.div
+        layout
+        className="2xl:col-span-4 xl:col-span-3 col-span-12 grid grid-cols-12  gap-3 overflow-y-auto xl:pr-4"
+        id="gallery"
+        style={{ height: windowWidth >= 1280 ? highlightImageSize : 'auto' }}
+      >
+        {images.map((img) => (
+          <motion.div
+            className={clsx(
+              'overflow-hidden rounded-[10px] cursor-pointer h-full w-full relative col-span-4 xl:col-span-12 2xl:col-span-6',
+            )}
+            style={{ height: windowWidth >= 1024 ? highlightImageSize / 3 - 10 : 'auto' }}
+            onClick={() => setSelectedImg(img)}
+            transition={spring}
+          >
+            <motion.div className="h-full w-full overflow-hidden">
+              <SanityImg
+                className="h-full w-full object-cover hover:scale-110 transition-all duration-300"
+                builder={imageUrlBuilder}
+                image={img}
+                width={200}
+              />
             </motion.div>
-          ))}
-        </div>
-      </AnimateSharedLayout>
+
+            {img._id === selectedImg._id && (
+              <motion.div
+                layoutId="outline"
+                className="absolute top-0 left-0 right-0 bottom-0 border-4 h-full w-full rounded-[10px]"
+                initial={false}
+                animate={{ borderColor: '#7187ff' }}
+                transition={spring}
+              />
+            )}
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   )
 }

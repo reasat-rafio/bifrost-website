@@ -27,7 +27,7 @@ export const Page: React.FC<PageProps> = (props) => {
   )
 }
 
-const Section: React.FC<{ sectionRef: RefObject<any>; setActiveSection?: any }> = ({
+const Section: React.FC<{ sectionRef: RefObject<any>; setActiveSection?: any; children: any }> = ({
   children,
   sectionRef,
 }) => {

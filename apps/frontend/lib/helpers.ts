@@ -43,9 +43,9 @@ export function truncate(str: string, lenght?: number): string {
   return lenght >= str.length ? str : str.substring(0, lenght).trim() + '...'
 }
 
-function isOverflown(element) {
-  const flag =
-    element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth
+// function isOverflown(element) {
+//   const flag =
+//     element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth
 
-  return flag
-}
+//   return flag
+// }
