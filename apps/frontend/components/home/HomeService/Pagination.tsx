@@ -9,7 +9,7 @@ interface PaginationProps {
   isScroll: boolean
 }
 
-export const Pagination: React.FC<PaginationProps> = ({ index, current, isScroll, setItem }) => {
+export const Pagination: React.FC<PaginationProps> = ({ index, current, setItem }) => {
   return (
     <>
       {index === current ? (
@@ -45,7 +45,7 @@ export const Pagination: React.FC<PaginationProps> = ({ index, current, isScroll
           }}
           className="rounded-full z-0 cursor-pointer"
           onClick={() => {
-            if (!isScroll) setItem(index)
+            setItem(index)
           }}
         >
           <motion.div

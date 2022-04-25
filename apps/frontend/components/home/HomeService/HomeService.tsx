@@ -21,19 +21,16 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
     if (serviceRef.current) {
       setIsScroll(true)
       setCurrent(index)
+
       window.scrollTo({
-        top: serviceRef.current.scrollHeight + index * windowHeight,
+        top:
+          index === 0
+            ? serviceRef.current.offsetTop + windowHeight
+            : serviceRef.current.offsetTop + index * windowHeight,
         behavior: 'auto',
       })
       const checkIfScrollToIsFinished = setInterval(() => {
         const scrollTo = serviceRef.current.scrollHeight + index * windowHeight
-        console.log(
-          scrollTo < window.scrollY * 1.1 && scrollTo > window.scrollY * 0.9,
-          {
-            scrollTo,
-          },
-          window.scrollY,
-        )
         if (scrollTo < window.scrollY * 1.1 && scrollTo > window.scrollY * 0.9) {
           setIsScroll(false)
           clearInterval(checkIfScrollToIsFinished)
