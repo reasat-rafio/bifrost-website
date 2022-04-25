@@ -2,8 +2,7 @@ import { GradientBorder } from 'components/common/GradientBorder'
 import { useCtx } from 'contexts/global'
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-
-interface ToastProps {}
+import { IToast } from 'lib/@types/types'
 
 const ToastIcon = ({ type }: { type: string }) => {
   switch (type) {
@@ -44,59 +43,75 @@ const ToastIcon = ({ type }: { type: string }) => {
   }
 }
 
-export const Toast: React.FC<ToastProps> = ({}) => {
+export const ToastContaiern = () => {
   const {
     state: { toasts },
-    action: { removeToast },
   } = useCtx()
 
   return (
-    <motion.div className="fixed bottom-5 right-5 flex flex-col w-auto space-y-3">
+    <motion.div className="fixed bottom-5 right-5 flex flex-col w-auto space-y-3 z-50">
       <AnimatePresence>
-        {toasts.map(({ id, content, type }) => (
-          <motion.div
-            layout
-            initial={{ opacity: 0, y: 50, scale: 0.3 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.5 }}
-            key={id}
-            className="w-auto flex ml-auto"
-          >
-            <GradientBorder key={id} borderRadious="8px">
-              <div className="flex items-center p-4">
-                <div
-                  id="toast-simple"
-                  className="flex items-center w-full max-w-xs space-x-4 text-gray-500  divide-x divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
-                  role="alert"
-                >
-                  {ToastIcon({ type })}
-
-                  <div className="pl-4 text-sm font-normal">{content}</div>
-                </div>
-                <button
-                  onClick={() => removeToast(id)}
-                  type="button"
-                  className="rounded-lg focus:ring-2 focus:ring-slate-600 p-1.5 inline-flex hover:bg-slate-700 ml-4 transition-colors duration-200"
-                  aria-label="Close"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </GradientBorder>
-          </motion.div>
+        {toasts.map((toast) => (
+          <Toast key={toast.id} {...toast} />
         ))}
       </AnimatePresence>
+    </motion.div>
+  )
+}
+
+export const Toast: React.FC<IToast> = ({ id, content, type }) => {
+  const {
+    action: { removeToast },
+  } = useCtx()
+
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       setToasts(() => toasts.filter((t) => t.id !== id))
+  //     }, 5000)
+  //     return () => clearInterval(interval)
+  //   }, [])
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 50, scale: 0.3 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.5 }}
+      key={id}
+      className="w-auto flex ml-auto"
+    >
+      <GradientBorder key={id} borderRadious="8px">
+        <div className="flex items-center p-4">
+          <div
+            id="toast-simple"
+            className="flex items-center w-full max-w-xs space-x-4 text-gray-500  divide-x divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
+            role="alert"
+          >
+            {ToastIcon({ type })}
+
+            <div className="pl-4 text-sm font-normal">{content}</div>
+          </div>
+          <button
+            onClick={() => removeToast(id)}
+            type="button"
+            className="rounded-lg focus:ring-2 focus:ring-slate-600 p-1.5 inline-flex hover:bg-slate-700 ml-4 transition-colors duration-200"
+            aria-label="Close"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </GradientBorder>
     </motion.div>
   )
 }

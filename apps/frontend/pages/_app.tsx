@@ -9,7 +9,7 @@ import { AppProvider } from 'contexts/global'
 import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
 import { useEffect, useState } from 'react'
-import { Toast } from 'components/ui/Toast'
+import { ToastContaiern as Toast } from 'components/ui/Toast'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null

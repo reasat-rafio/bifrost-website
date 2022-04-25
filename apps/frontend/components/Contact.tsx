@@ -7,6 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { FormSchema } from 'lib/form-schema'
 import Input from './ui/Input'
 import { useFormspark } from '@formspark/use-formspark'
+import { useCtx } from 'contexts/global'
+import { v4 as uuidv4 } from 'uuid'
 
 interface IFormInput {
   name: string
@@ -15,7 +17,9 @@ interface IFormInput {
 }
 
 export default function HomeContact(data: ContactSection): ReactElement {
-  const headingRef = useRef<HTMLDivElement>(null)
+  const {
+    action: { addToast },
+  } = useCtx()
 
   const {
     register,
@@ -27,16 +31,19 @@ export default function HomeContact(data: ContactSection): ReactElement {
     resolver: yupResolver(FormSchema),
   })
 
+  const headingRef = useRef<HTMLDivElement>(null)
+
   const [submit, submitting] = useFormspark({
     formId: process.env.NEXT_PUBLIC_FORM_ID,
   })
 
-  // ,
   async function onSubmit({ email, message, name }: IFormInput) {
     try {
       await submit({ email, message, name })
-      reset({})
+      addToast({ id: uuidv4(), content: 'Thank you for getting in touch! ', type: 'success' })
+      reset()
     } catch (e) {
+      addToast({ id: uuidv4(), content: 'Error. Please Try again.', type: 'error' })
     } finally {
     }
   }

@@ -24,14 +24,11 @@ const Store = createContext<ContextProps>({} as ContextProps)
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lightboxImage, setLightboxImage] = useState<null | SanityImage>(null)
-  const [toasts, setToasts] = useState<IToast[]>([
-    { id: 'a1asd', content: 'asdasdasd', type: 'success' },
-    { id: 'aa121sd', content: 'asdasdasd', type: 'success' },
-    { id: '11aa1sd', content: 'aoas dfks asjdf lsdfjlskadf jljf lasdfl ksd', type: 'error' },
-  ])
+  const [toasts, setToasts] = useState<IToast[]>([])
 
   const addToast = (content: IToast) => {
-    setToasts([...toasts, content])
+    const newToasts = [...toasts, content]
+    setToasts(newToasts)
   }
 
   const removeToast = (id: string) => {
@@ -40,7 +37,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }
 
   const onDismiss = (id: string) => () => {
-    console.log(id)
     removeToast(id)
   }
 
