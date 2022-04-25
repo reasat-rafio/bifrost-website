@@ -19,6 +19,10 @@ const query = groq`{
   "blog": *[_type== "blog" && slug.current == $blog] [0] {
     ...,
     "image": ${withDimensions('image')},
+    body[]{
+      ...,
+      "image": ${withDimensions('image')},
+    },
     tags[]->,
     "relatedBlogs" : *[_type== "blog" && slug.current != $blog && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
       _id,
@@ -69,8 +73,6 @@ export default function Blog(props: SanityProps) {
 
   useEffect(() => {
     const navHeight = document.querySelector('#navbar').clientHeight
-    console.log(navHeight)
-
     setPaddingY(navHeight * 2)
   }, [])
 
