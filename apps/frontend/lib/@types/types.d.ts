@@ -65,3 +65,8 @@ export interface CTAButton {
   title: string
   href: string
 }
+
+export interface IToast {
+  id: string
+  content: string
+}
