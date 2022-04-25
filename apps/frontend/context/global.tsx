@@ -11,6 +11,7 @@ interface ContextAction {
   setToasts: Dispatch<SetStateAction<IToast[]>>
   addToast: (content: string) => void
   removeToast: (id: string) => void
+  onDismiss: (id: string) => void
 }
 
 interface ContextProps {
@@ -41,7 +42,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const value = {
     state: { lightboxImage, toasts },
-    action: { setLightboxImage, setToasts, addToast, removeToast },
+    action: { setLightboxImage, setToasts, addToast, removeToast, onDismiss },
   }
 
   return <Store.Provider value={value}>{children}</Store.Provider>
