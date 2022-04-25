@@ -69,4 +69,5 @@ export interface CTAButton {
 export interface IToast {
   id: string
   content: string
+  type: 'error' | 'success'
 }

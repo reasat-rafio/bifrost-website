@@ -4,12 +4,13 @@ import { SanityImage } from 'sanity-react-extra'
 
 interface ContextState {
   lightboxImage: null | SanityImage
+  toasts: IToast[]
 }
 
 interface ContextAction {
   setLightboxImage: Dispatch<SetStateAction<null | SanityImage>>
   setToasts: Dispatch<SetStateAction<IToast[]>>
-  addToast: (content: string) => void
+  addToast: (content: IToast) => void
   removeToast: (id: string) => void
   onDismiss: (id: string) => void
 }
@@ -21,16 +22,16 @@ interface ContextProps {
 
 const Store = createContext<ContextProps>({} as ContextProps)
 
-let toastCount = 0
-
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lightboxImage, setLightboxImage] = useState<null | SanityImage>(null)
-  const [toasts, setToasts] = useState<IToast[]>([])
+  const [toasts, setToasts] = useState<IToast[]>([
+    { id: 'a1asd', content: 'asdasdasd', type: 'success' },
+    { id: 'aa121sd', content: 'asdasdasd', type: 'success' },
+    { id: '11aa1sd', content: 'aoas dfks asjdf lsdfjlskadf jljf lasdfl ksd', type: 'error' },
+  ])
 
-  const addToast = (content: string) => {
-    const id = String(toastCount++)
-    const toast = { content, id }
-    setToasts([...toasts, toast])
+  const addToast = (content: IToast) => {
+    setToasts([...toasts, content])
   }
 
   const removeToast = (id: string) => {
@@ -38,7 +39,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setToasts(newToasts)
   }
 
-  const onDismiss = (id: string) => () => removeToast(id)
+  const onDismiss = (id: string) => () => {
+    console.log(id)
+    removeToast(id)
+  }
 
   const value = {
     state: { lightboxImage, toasts },
