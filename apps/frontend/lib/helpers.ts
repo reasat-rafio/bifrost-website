@@ -49,3 +49,7 @@ export function truncate(str: string, lenght?: number): string {
 
 //   return flag
 // }
+
+export function isWhatPercentOf(number: number, percentToGet: number) {
+  return (percentToGet / 100) * number
+}
