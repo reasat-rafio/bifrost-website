@@ -23,10 +23,7 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
       setCurrent(index)
 
       window.scrollTo({
-        top:
-          index === 0
-            ? serviceRef.current.offsetTop + windowHeight
-            : serviceRef.current.offsetTop + index * windowHeight,
+        top: serviceRef.current.getBoundingClientRect().top + window.scrollY + index * windowHeight,
         behavior: 'auto',
       })
       const checkIfScrollToIsFinished = setInterval(() => {

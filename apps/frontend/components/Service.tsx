@@ -75,6 +75,8 @@ export default function Service({
         const yDelta = y + windowHeight - offsetBoundingRect.top
         const ratio = Math.max(0, Math.min(yDelta / windowHeight, length))
 
+        console.log(y)
+
         let transitionYValue = 0
         let sectionRatio = 0
 

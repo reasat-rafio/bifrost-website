@@ -23,6 +23,9 @@ export const Pagination: React.FC<PaginationProps> = ({ index, current, setItem 
             padding: '2px',
           }}
           className="rounded-full"
+          onClick={() => {
+            setItem(index)
+          }}
         >
           <motion.div
             className="p-1 rounded-full cursor-pointer"
