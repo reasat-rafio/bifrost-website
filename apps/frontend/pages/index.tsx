@@ -84,7 +84,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
         <Page>
           {renderObjectArray(sections, {
             'landing.products': HomeProduct,
-            // 'landing.demo': HomeDemo,
+            'landing.demo': HomeDemo,
             'landing.services': HomeService,
             data: Data,
             'landing.projects': HomeProjects,
