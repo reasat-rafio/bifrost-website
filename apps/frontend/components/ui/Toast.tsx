@@ -1,6 +1,6 @@
 import { GradientBorder } from 'components/common/GradientBorder'
 import { useCtx } from 'contexts/global'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { IToast } from 'lib/@types/types'
 
@@ -62,14 +62,15 @@ export const ToastContaiern = () => {
 export const Toast: React.FC<IToast> = ({ id, content, type }) => {
   const {
     action: { removeToast },
+    state: { toasts },
   } = useCtx()
 
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       setToasts(() => toasts.filter((t) => t.id !== id))
-  //     }, 5000)
-  //     return () => clearInterval(interval)
-  //   }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      removeToast(id)
+    }, 4500)
+    return () => clearInterval(interval)
+  }, [toasts])
 
   return (
     <motion.div
@@ -81,7 +82,7 @@ export const Toast: React.FC<IToast> = ({ id, content, type }) => {
       className="w-auto flex ml-auto"
     >
       <GradientBorder key={id} borderRadious="8px">
-        <div className="flex items-center p-4">
+        <div className="flex items-actioncenter p-4">
           <div
             id="toast-simple"
             className="flex items-center w-full max-w-xs space-x-4 text-gray-500  divide-x divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
