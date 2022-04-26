@@ -6,7 +6,7 @@ interface PaginationProps {
   index: number
   current: number
   setItem: (index: number) => void
-  isScroll: boolean
+  // isScroll: boolean
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ index, current, setItem }) => {

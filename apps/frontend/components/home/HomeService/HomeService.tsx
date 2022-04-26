@@ -10,8 +10,6 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
   const headingRef = useRef<HTMLDivElement>(null)
 
   const [current, setCurrent] = useState(0)
-  const [isScroll, setIsScroll] = useState(false)
-
   const { height: windowHeight } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -19,20 +17,11 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
 
   function setItem(index: number) {
     if (serviceRef.current) {
-      setIsScroll(true)
       setCurrent(index)
-
       window.scrollTo({
         top: serviceRef.current.getBoundingClientRect().top + window.scrollY + index * windowHeight,
         behavior: 'auto',
       })
-      const checkIfScrollToIsFinished = setInterval(() => {
-        const scrollTo = serviceRef.current.scrollHeight + index * windowHeight
-        if (scrollTo < window.scrollY * 1.1 && scrollTo > window.scrollY * 0.9) {
-          setIsScroll(false)
-          clearInterval(checkIfScrollToIsFinished)
-        }
-      }, 25)
     }
   }
 
@@ -53,7 +42,7 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
         <div className="sticky w-full top-0 h-screen">
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 -translate-x-10">
             {items.map((_, index) => (
-              <Pagination index={index} current={current} setItem={setItem} isScroll={isScroll} />
+              <Pagination index={index} current={current} setItem={setItem} />
             ))}
           </div>
 
@@ -62,7 +51,6 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
               {items.map((item, index) => (
                 <div className="absolute w-full h-fit" key={item.headline}>
                   <Service
-                    isScroll={isScroll}
                     item={item}
                     index={index}
                     rootRef={serviceRef}

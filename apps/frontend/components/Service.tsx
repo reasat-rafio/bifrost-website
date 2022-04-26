@@ -25,7 +25,6 @@ interface ServiceProps {
   length: number
   setCurrent: Dispatch<SetStateAction<number>>
   current: number
-  isScroll: boolean
 }
 
 export default function Service({
@@ -35,7 +34,6 @@ export default function Service({
   length,
   setCurrent,
   current,
-  isScroll,
 }: ServiceProps): ReactElement {
   const sectionRef = useRef<HTMLDivElement>(null)
   const descriptionRef = useRef<HTMLDivElement>(null)
@@ -91,13 +89,14 @@ export default function Service({
           transitionYValue = -120
         }
 
-        if (isScroll) {
-          if (current !== index) {
-            toggleVisibility(false)
-          } else {
-            toggleVisibility(true)
-          }
-        } else if (sectionRef.current) {
+        // if (isScroll) {
+        //   if (current !== index) {
+        //     toggleVisibility(false)
+        //   } else {
+        //     toggleVisibility(true)
+        //   }
+        // }
+        if (sectionRef.current) {
           if (transitionYValue === -120) {
             toggleVisibility(false)
           } else {
@@ -110,7 +109,7 @@ export default function Service({
           }
         }
       }),
-    [windowHeight, isScroll, current],
+    [windowHeight, current],
   )
 
   return (
