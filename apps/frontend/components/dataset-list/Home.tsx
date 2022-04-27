@@ -31,7 +31,9 @@ export default function Home({
         <h1 className="lg:text-head-1 text-[54px] leading-snug lg:leading-[82px] font-[275] bifrost__gradient__green text-transparent bg-clip-text mb-10">
           {headline}
         </h1>
-        <h2 className="text-head-5 bg-clip-text uppercase opacity-70">{subHeadline}</h2>
+        <h2 className="lg:text-head-5 text-[17px] bg-clip-text uppercase opacity-70">
+          {subHeadline}
+        </h2>
       </div>
       <div
         className="z-10 absolute bottom-0 left-0 h-[30%] w-full"

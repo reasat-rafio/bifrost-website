@@ -38,6 +38,11 @@ html {
   backdrop-filter: blur(80px);
 }
 
+.__transparent__background {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+}
+
 /* .__carouselBtn { */
 /*   @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-transparent bg-clip-text; */
 /* } */

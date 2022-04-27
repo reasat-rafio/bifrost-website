@@ -1,4 +1,3 @@
-import { GradientBorder } from 'components/common/GradientBorder'
 import { ICategory } from 'lib/@types/datasetTypes'
 import React from 'react'
 
@@ -10,10 +9,7 @@ interface CategoriesProps {
 export const Categories: React.FC<CategoriesProps> = ({ categories, className }) => {
   return (
     <div className={className}>
-      <GradientBorder
-        gradient="bg-gradient-to-r from-[#eeffe9]/30 via-[#acffeb]/30 to-[#c9ff71]/30"
-        borderRadious="6px"
-      >
+      <div className="border border-[#C9FF71]/30 __transparent__background rounded-[6px]">
         <h4 className="text-4xl font-[375] p-4 border-b border-[#1E2531]">Categories</h4>
         <ul className="p-4 flex flex-col space-y-3">
           {[{ name: 'All' }, ...categories].map(({ name, _id }) => (
@@ -24,7 +20,7 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, className })
             </li>
           ))}
         </ul>
-      </GradientBorder>
+      </div>
     </div>
   )
 }

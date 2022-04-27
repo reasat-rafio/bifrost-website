@@ -25,30 +25,29 @@ export const RelevanceFiltering: React.FC<RelevanceFilteringProps> = ({ length }
   const [selected, setSelected] = useState(relevances[relevances.length - 1])
   return (
     <div className="flex w-full justify-between my-10 items-center">
-      <span className="flex-1 text-[16px] opacity-70 text-white underline">
+      <span className="flex-1 text-[16px] text-opacity-70 text-white underline ">
         {length} datasets found
       </span>
       <div>
         <Listbox value={selected} onChange={setSelected}>
-          <div className="relative mt-1 w-52">
-            <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-transparent rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-              <span className="block truncate text-[18px] font-light tracking-[0.02em]">
+          <div className="xl:relative mt-1 xl:w-52 w-44">
+            <Listbox.Button className="w-full ml-2 py-2 flex justify-center items-center sm:text-sm space-x-4">
+              <span className="block truncate xl:text-[18px] text-[16px] font-light tracking-[0.02em]">
                 {selected.name}
               </span>
-              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+              <span className="inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 text-gray-400"
+                  className="h-4 w-4"
+                  viewBox="0 0 14 9"
                   fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
+                    d="M1 1.75L7 7.75L13 1.75"
+                    stroke="white"
+                    stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M8 9l4-4 4 4m0 6l-4 4-4-4"
                   />
                 </svg>
               </span>
@@ -62,24 +61,20 @@ export const RelevanceFiltering: React.FC<RelevanceFilteringProps> = ({ length }
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-95 opacity-0"
             >
-              <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base rounded-[6px] border border-[#C9FF71]/20 shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm background__dark">
-                {relevances.map((person, personIdx) => (
+              <Listbox.Options className="absolute xl:w-full w-44 py-1 mt-1 overflow-auto text-base rounded-[6px] border border-[#C9FF71]/20 shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm __transparent__background ">
+                {relevances.map((data, dataIdx) => (
                   <Listbox.Option
-                    key={personIdx}
+                    key={dataIdx}
                     className={({ active }) =>
-                      `cursor-pointer  relative py-2 pl-10 pr-4 ${
+                      `cursor-pointer  relative py-2 pl-10 xl:pr-4 ${
                         active ? 'text-amber-900 bg-honeySuckle' : 'text-gray-900'
                       }`
                     }
-                    value={person}
+                    value={data}
                   >
                     {({ selected }) => (
                       <>
-                        <span
-                          className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
-                        >
-                          {person.name}
-                        </span>
+                        <span className="block truncate xl:text-base text-sm">{data.name}</span>
                         {selected ? (
                           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-neonBlue">
                             <svg

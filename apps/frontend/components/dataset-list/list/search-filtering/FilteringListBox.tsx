@@ -1,4 +1,4 @@
-import { Listbox, Transition } from '@headlessui/react'
+import { Listbox } from '@headlessui/react'
 import React, { Dispatch, SetStateAction } from 'react'
 
 interface FilteringListBoxProps {
@@ -7,6 +7,7 @@ interface FilteringListBoxProps {
   setSelectedData: Dispatch<SetStateAction<any>>
   data: any[]
   className?: string
+  labelStyle?: string
 }
 
 export const FilteringListBox: React.FC<FilteringListBoxProps> = ({
@@ -26,26 +27,17 @@ export const FilteringListBox: React.FC<FilteringListBoxProps> = ({
           <div>
             <Listbox.Button className="datasetInputs mr-auto flex">{selectedData}</Listbox.Button>
 
-            <Transition
-              enter="transition duration-200 ease-out"
-              enterFrom="transform scale-95 opacity-0"
-              enterTo="transform scale-100 opacity-100"
-              leave="transition duration-150 ease-out"
-              leaveFrom="transform scale-100 opacity-100"
-              leaveTo="transform scale-95 opacity-0"
-            >
-              <Listbox.Options className="absolute w-full mt-2 overflow-auto max-h-80 border rounded-[6px] border-[#C9FF71]/20 background__dark  scrollbar-thumb-honeySuckle scrollbar-thin scrollbar-track-gray-100 py-2 z-30">
-                {data.map(({ name, _id }) => (
-                  <Listbox.Option
-                    className="hover:bg-gradient-to-l from-[#f8e9ff] via-[#e4acff] to-[#7187ff] hover:text-transparent duration-300 hover:bg-clip-text opacity-70 text-white text-[18px] font-light cursor-pointer capitalize transition-none px-4 py-1"
-                    key={_id}
-                    value={name}
-                  >
-                    {name}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
+            <Listbox.Options className="absolute w-full mt-2 overflow-auto max-h-80 border rounded-[6px] border-[#C9FF71]/20 background__dark  scrollbar-thumb-honeySuckle scrollbar-thin scrollbar-track-gray-100 py-2 z-30">
+              {data.map(({ name, _id }) => (
+                <Listbox.Option
+                  className="hover:bg-gradient-to-l from-[#f8e9ff] via-[#e4acff] to-[#7187ff] hover:text-transparent duration-300 hover:bg-clip-text opacity-70 text-white text-[18px] font-light cursor-pointer capitalize transition-none px-4 py-1"
+                  key={_id}
+                  value={name}
+                >
+                  {name}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
           </div>
         </div>
       </Listbox>

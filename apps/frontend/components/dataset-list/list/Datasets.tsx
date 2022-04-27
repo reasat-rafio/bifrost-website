@@ -9,6 +9,7 @@ import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
 import Tooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap.css'
+import { SmCategories } from './SmCategories'
 interface DatasetsProps {
   className?: string
   datasets: IDatasetCard[]
@@ -182,6 +183,7 @@ export const Datasets: React.FC<DatasetsProps> = ({
 }) => {
   return (
     <div className={className}>
+      <SmCategories className="block xl:hidden" categories={taskTypes} />
       <SearchAndFiltering labelFormat={labelFormat} taskTypes={taskTypes} />
       <RelevanceFiltering length={datasets.length} />
       <div className="grid grid-cols-12 xl:gap-7 gap-3 ">

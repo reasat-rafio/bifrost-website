@@ -1,4 +1,3 @@
-import { GradientBorder } from 'components/common/GradientBorder'
 import { ICategory } from 'lib/@types/datasetTypes'
 import React, { useState } from 'react'
 import { Combobox } from '@headlessui/react'
@@ -19,13 +18,10 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
   const [minImgValue, setMinImgValue] = useState<string | number>(0)
 
   return (
-    <div className="w-cover-full">
-      <GradientBorder
-        gradient="bg-gradient-to-r from-[#eeffe9]/30 via-[#acffeb]/30 to-[#c9ff71]/30"
-        borderRadious="6px"
-      >
-        <div className="grid grid-cols-13 p-4 gap-4">
-          <div className="xl:col-span-4 col-span-12">
+    <div className="w-full">
+      <div className="rounded-[6px] border-[#C9FF71]/30 __transparent__background border">
+        <div className="grid xl:grid-cols-13 grid-cols-12 p-4 xl:gap-4 gap-3">
+          <div className="xl:col-span-4 col-span-6">
             <Combobox value={selectedValue} onChange={setSelectedValue}>
               <div className="relative">
                 <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
@@ -45,21 +41,21 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
             </Combobox>
           </div>
           <FilteringListBox
-            className="xl:col-span-3 hidden xl:block"
+            className="xl:col-span-3 col-span-6 "
             label="Task Types"
             selectedData={selectedTaskType}
             setSelectedData={setSelectedTaskType}
             data={taskTypes}
           />
           <FilteringListBox
-            className="xl:col-span-3 hidden xl:block"
+            className="xl:col-span-3 col-span-6 "
             label="Task Types"
             selectedData={selectedLabelFormat}
             setSelectedData={setSelectedLabelFormat}
             data={labelFormat}
           />
 
-          <div className="xl:col-span-3 hidden xl:block">
+          <div className="xl:col-span-3 col-span-6 ">
             <Combobox value={minImgValue} onChange={setMinImgValue}>
               <div className="relative">
                 <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
@@ -81,7 +77,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
             </Combobox>
           </div>
         </div>
-      </GradientBorder>
+      </div>
     </div>
   )
 }

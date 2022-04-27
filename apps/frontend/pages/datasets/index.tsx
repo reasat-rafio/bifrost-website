@@ -1,4 +1,3 @@
-// import BlogArticles from 'components/blog/BlogArticles'
 import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
