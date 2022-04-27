@@ -14,7 +14,7 @@ export default function UseCaseEnterprise({
   const serviceRef = useRef<HTMLDivElement>(null)
 
   const [current, setCurrent] = useState(0)
-  const [isScroll, setIsScroll] = useState(false)
+  // const [isScroll, setIsScroll] = useState(false)
 
   const { height: windowHeight } = useWindowSize() ?? {
     width: 0,
@@ -23,7 +23,7 @@ export default function UseCaseEnterprise({
 
   function setItem(index: number) {
     if (serviceRef.current) {
-      setIsScroll(true)
+      // setIsScroll(true)
       setCurrent(index)
       window.scrollTo({
         top: serviceRef.current.scrollHeight + (index + 3) * windowHeight,
@@ -32,7 +32,7 @@ export default function UseCaseEnterprise({
       const checkIfScrollToIsFinished = setInterval(() => {
         if (serviceRef.current.scrollHeight + (index + 3) * windowHeight === window.scrollY) {
           // do something
-          setIsScroll(false)
+          // setIsScroll(false)
           clearInterval(checkIfScrollToIsFinished)
         }
       }, 25)
@@ -57,7 +57,7 @@ export default function UseCaseEnterprise({
         <div className="sticky w-full top-0 h-screen">
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 -translate-x-10">
             {enterprises.map((_, index) => (
-              <Pagination index={index} current={current} setItem={setItem} isScroll={isScroll} />
+              <Pagination index={index} current={current} setItem={setItem} />
             ))}
           </div>
 
@@ -66,7 +66,7 @@ export default function UseCaseEnterprise({
               {enterprises.map((item, index) => (
                 <div className="absolute w-full h-fit" key={item.headline}>
                   <Service
-                    isScroll={isScroll}
+                    // isScroll={isScroll}
                     item={item}
                     index={index}
                     rootRef={serviceRef}
