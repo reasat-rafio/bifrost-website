@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Bifrost Website"
+    "name": "Bifrost Website",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "p86pglis",
@@ -17,9 +18,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
