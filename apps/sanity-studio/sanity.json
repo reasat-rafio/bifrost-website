@@ -2,7 +2,7 @@
   "root": true,
   "project": {
     "name": "Bifrost Website",
-    "basePath": "/studio"
+    "basePath": "/"
   },
   "api": {
     "projectId": "p86pglis",
