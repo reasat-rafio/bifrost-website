@@ -5,11 +5,11 @@ import { FcAbout, FcViewDetails } from 'react-icons/fc'
 import { GrActions, GrArticle } from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
-// import * as React from "react";
+import * as React from 'react'
 import { FaSitemap, FaHome } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
 
-function SitePreview() {
+function SitePreview({ document, options }) {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
     console.warn(
       'SANITY_STUDIO_PREVIEW_URL should be set for preview to work! Falling back to localhost:3000',
@@ -87,42 +87,42 @@ export default () =>
                 id: 'contactUsPage',
                 title: 'Contact Us',
                 icon: MdContactPhone,
-                slug: '/contact-us',
+                slug: 'contact-us',
               }),
               pageItem({
                 schemaType: 'aboutUsPage',
                 id: 'aboutUsPage',
                 title: 'About Us',
                 icon: FcAbout,
-                slug: '/about-us',
+                slug: 'about-us',
               }),
               pageItem({
                 schemaType: 'useCasePage',
                 id: 'useCasePage',
                 title: 'Use Case',
                 icon: GrActions,
-                slug: '/use-case',
+                slug: 'use-case',
               }),
               pageItem({
                 schemaType: 'blogPage',
                 id: 'blogPage',
                 title: 'Blog List Page',
                 icon: GrArticle,
-                slug: '/blog',
+                slug: 'blog',
               }),
               pageItem({
                 schemaType: 'blogDetailsPage',
                 id: 'blogDetailsPage',
                 title: 'Blog Details Page',
                 icon: FcViewDetails,
-                slug: '/',
+                slug: '',
               }),
               pageItem({
                 schemaType: 'datasetListPage',
                 id: 'datasetListPage',
                 title: 'Dataset List Page',
                 icon: GiArchiveResearch,
-                slug: '/dataset',
+                slug: 'datasets',
               }),
 
               pageItem({
@@ -130,7 +130,7 @@ export default () =>
                 id: 'datasetDetailsPage',
                 title: 'Dataset Details Page',
                 icon: GiArchiveResearch,
-                slug: '/dataset',
+                slug: '',
               }),
             ]),
         ),
