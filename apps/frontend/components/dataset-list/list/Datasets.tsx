@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
 import { useWindowSize } from 'lib/hooks'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { RelevanceFiltering } from './RelevanceFiltering'
@@ -41,23 +41,28 @@ const DatasetCards: React.FC<IDatasetCards> = ({
   const [overflownTasks, setOverflownTasks] = useState<null | string[]>([])
   const [showToolTip, setShowToopTip] = useState(false)
 
-  useEffect(() => {
-    setTotalTasksWidth(0)
-    // GETTING THE MORE<NUMBER> LEBEL WIDTH
-    const showMoreTasksLabelWidth = document.querySelector<HTMLElement>(
-      `.show-more-${index}`,
-    )?.clientWidth
+  useLayoutEffect(() => {
+    function calculateOverFlowingLabelsAction() {
+      // GETTING THE MORE<NUMBER> LEBEL WIDTH
+      const showMoreTasksLabelWidth = document.querySelector<HTMLElement>(
+        `.show-more-${index}`,
+      )?.clientWidth
+      setTotalTasksWidth(0)
 
-    // SUMMING THE WIDTH OF THE TASK ITEMS
-    const alltaskList = document.querySelectorAll<HTMLElement>(`.datasets-tasks-${index}`)
-    alltaskList.forEach((e) => {
-      if (e.clientWidth) setTotalTasksWidth((prev) => prev + e.clientWidth)
-    })
+      // SUMMING THE WIDTH OF THE TASK ITEMS
+      const alltaskList = document.querySelectorAll<HTMLElement>(`.datasets-tasks-${index}`)
+      alltaskList.forEach((e) => {
+        if (e.clientWidth) setTotalTasksWidth((prev) => prev + e.clientWidth)
+      })
 
-    setTaskListNodes(alltaskList)
-    setShowMoreTasksLabelWidth(showMoreTasksLabelWidth)
-    setTasksContainerWidth(tasksRef.current.clientWidth)
-  }, [tasksContainerWidth, windowWidth])
+      setTaskListNodes(alltaskList)
+      setShowMoreTasksLabelWidth(showMoreTasksLabelWidth)
+      setTasksContainerWidth(tasksRef.current.clientWidth)
+    }
+    window.addEventListener('ressize', calculateOverFlowingLabelsAction)
+    calculateOverFlowingLabelsAction()
+    return () => window.removeEventListener('resize', calculateOverFlowingLabelsAction)
+  }, [])
 
   useEffect(() => {
     let index = 0
