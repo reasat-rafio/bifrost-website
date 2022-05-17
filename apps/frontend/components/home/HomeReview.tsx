@@ -48,7 +48,7 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
           loop
           speed={600}
           grabCursor
-          onSwiper={(pagination) => console.log(pagination)}
+          // onSwiper={(pagination) => console.log(pagination)}
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
         >
           {items.map(({ name, image, description, body }) => (

@@ -4,7 +4,6 @@ import { useWindowScroll, useWindowSizeEffect } from 'lib/hooks'
 import { useRouter } from 'next/router'
 import { ReactElement, useCallback, useRef, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import Button from './ui/Button'
 import { MenuItem } from 'lib/@types/types'
@@ -198,10 +197,8 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
           )}
         </AnimatePresence>
         <div className={clsx('lg:flex justify-center', !smallNav ? 'flex' : 'hidden')}>
-          <Button>
-            <Link href={ctaButton.href}>
-              <a>{ctaButton.title}</a>
-            </Link>
+          <Button onClick={() => router.push(ctaButton.href)}>
+            <a onClick={(e) => e.preventDefault()}>{ctaButton.title}</a>
           </Button>
         </div>
       </nav>
