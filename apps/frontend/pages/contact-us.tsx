@@ -11,7 +11,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { useCallback, useState } from 'react'
-import SmoothScroll from 'components/ui/SmoothScrolling'
+// import SmoothScroll from 'components/ui/SmoothScrolling'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -46,21 +46,19 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
           ),
         })}
       </Page>
-      <SmoothScroll>
-        <div
-          className="bg-black"
-          style={{
-            transform: `translate(0, ${heroSectionHeight}px)`,
-            marginBottom: `${heroSectionHeight}px`,
-          }}
-        >
-          <Page>
-            {renderObjectArray(sections, {
-              contact: Contact,
-            })}
-          </Page>
-        </div>
-      </SmoothScroll>
+      <div
+        className="bg-black"
+        style={{
+          transform: `translate(0, ${heroSectionHeight}px)`,
+          marginBottom: `${heroSectionHeight}px`,
+        }}
+      >
+        <Page>
+          {renderObjectArray(sections, {
+            contact: Contact,
+          })}
+        </Page>
+      </div>
     </div>
   )
 }
