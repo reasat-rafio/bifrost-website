@@ -1,4 +1,3 @@
-import { Page } from 'components/common/Page'
 import Contact from 'components/Contact'
 import ContactHome from 'components/contact/ContactHome'
 import Ellipse from 'components/Ellipse'
@@ -11,6 +10,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { useCallback, useState } from 'react'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 // import SmoothScroll from 'components/ui/SmoothScrolling'
 
 const query = groq`{
@@ -38,14 +38,14 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
     <div>
       <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
 
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'contact.home': useCallback(
             (p: HomeSection) => <ContactHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
       <div
         className="bg-black"
         style={{
@@ -53,11 +53,11 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
           marginBottom: `${heroSectionHeight}px`,
         }}
       >
-        <Page>
+        <PrimaryWrapper>
           {renderObjectArray(sections, {
             contact: Contact,
           })}
-        </Page>
+        </PrimaryWrapper>
       </div>
     </div>
   )

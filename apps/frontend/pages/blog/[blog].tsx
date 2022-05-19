@@ -1,6 +1,6 @@
 import { Body } from 'components/blog/body/Body'
 import { Heading } from 'components/blog/Heading'
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import Data from 'components/Data'
 import { BlogProps } from 'lib/@types/blogTypes'
 import { siteQuery } from 'lib/query'
@@ -33,7 +33,7 @@ const query = groq`{
       "image": ${withDimensions('image')},
     }
   },
-  "page": *[_id == "blogDetailsPage"][0] {
+  "page": *[_id == "blogDetailsPrimaryWrapper"][0] {
     ...,
   },
 }`
@@ -83,7 +83,7 @@ export default function Blog(props: SanityProps) {
         <Body paddingY={paddingY} body={body} />
       </article>
 
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           data: Data,
         })}
@@ -93,7 +93,7 @@ export default function Blog(props: SanityProps) {
         {renderObjectArray(sections, {
           contact: Contact,
         })}
-      </Page>
+      </PrimaryWrapper>
       <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />

@@ -14,7 +14,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'lib/@types/aboutUsTypes'
 import SmoothScroll from 'components/ui/SmoothScrolling'
@@ -42,14 +42,14 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
 
   return (
     <div>
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'aboutUs.home': useCallback(
             (p: HomeSection) => <AboutHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
       <SmoothScroll>
         <div
           className="bg-black"
@@ -58,7 +58,7 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
             marginBottom: `${heroSectionHeight}px`,
           }}
         >
-          <Page>
+          <PrimaryWrapper>
             {renderObjectArray(sections, {
               'aboutUs.about': AboutAbout,
               'aboutUs.reason': AboutReason,
@@ -67,7 +67,7 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
               data: Data,
               contact: Contact,
             })}
-          </Page>
+          </PrimaryWrapper>
         </div>
       </SmoothScroll>
 

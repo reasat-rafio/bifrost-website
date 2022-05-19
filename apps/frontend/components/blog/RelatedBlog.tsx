@@ -28,7 +28,6 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
       <Header className="mx-auto text-center">You might also like</Header>
       <div>
         <Swiper
-          className=""
           modules={[Autoplay, Navigation, Mousewheel]}
           navigation={{ prevEl, nextEl }}
           breakpoints={{

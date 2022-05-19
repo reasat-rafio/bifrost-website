@@ -1,4 +1,4 @@
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
 import { HomeSection } from 'lib/@types/blogTypes'
@@ -16,7 +16,7 @@ import { DatasetList } from 'components/dataset-list/list/DatasetList'
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_id == "datasetListPage"][0] {
+  "page": *[_id == "datasetListPrimaryWrapper"][0] {
     ...,
   },
   "datasets": *[_type == "dataset"][]{
@@ -60,14 +60,14 @@ export default function Dataset(
 
   return (
     <div>
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'blog.home': useCallback(
             (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
       <div
         className="bg-black"
         style={{
@@ -75,12 +75,12 @@ export default function Dataset(
           marginBottom: `${heroSectionHeight}px`,
         }}
       >
-        <Page>
+        <PrimaryWrapper>
           <DatasetList datasets={datasets} categories={categories} labelFormat={labelFormat} />
           {renderObjectArray(sections, {
             contact: Contact,
           })}
-        </Page>
+        </PrimaryWrapper>
       </div>
       <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />

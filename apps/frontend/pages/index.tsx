@@ -15,7 +15,7 @@ import HomeReview from 'components/home/HomeReview'
 import Contact from 'components/Contact'
 import { HomeSection, LandingPage } from 'lib/@types/landingTypes'
 import Data from 'components/Data'
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 
 const query = groq`{
@@ -67,21 +67,21 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
 
   return (
     <div>
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'landing.home': useCallback(
             (p: HomeSection) => <HomeHero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
       <div
         className="bg-black relative h-full"
         style={{
           marginTop: `${heroSectionHeight}px`,
         }}
       >
-        <Page>
+        <PrimaryWrapper>
           {renderObjectArray(sections, {
             'landing.products': HomeProduct,
             'landing.demo': HomeDemo,
@@ -91,7 +91,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             'landing.reviews': HomeReview,
             contact: Contact,
           })}
-        </Page>
+        </PrimaryWrapper>
         <>
           <Ellipse className="absolute top-[5%] left-[5%] w-[153px] h-[391px]" />
           <Ellipse className="absolute top-[18%] right-[5%] w-[153px] h-[391px]" />

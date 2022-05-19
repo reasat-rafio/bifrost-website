@@ -80,7 +80,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
         <hr className="md:hidden w-full col-span-3" />
         <div className="md:col-span-1 col-span-3 flex flex-col md:gap-y-9 gap-y-3">
           <div className="font-bold">Quick Links</div>
-          <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-9 gap-y-5">
+          <div className="grid md:grid-cols-2 grid-cols-1  gap-y-5">
             {footer.menu?.map((menu) => (
               <Link key={menu.title} href={menu.href ?? ''}>
                 <a className="cursor-pointer opacity-[0.7]">{menu.title}</a>

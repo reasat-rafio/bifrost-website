@@ -72,7 +72,7 @@ export default function HomeHero(data: IHomeSection): ReactElement {
   return (
     <div
       className={clsx(
-        'top-0 left-0 w-full overflow-y-clip bg-black',
+        'top-0 left-0 w-full overflow-y-clip bg-black ',
         sectionScrollPassed ? ' absolute' : 'fixed',
       )}
       data-type="home-hero"

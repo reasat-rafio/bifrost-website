@@ -1,4 +1,4 @@
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import Contact from 'components/Contact'
 import Ellipse from 'components/Ellipse'
 import UseCaseAssurance from 'components/useCase/UseCaseAssurance'
@@ -40,14 +40,14 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
 
   return (
     <div>
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'useCase.home': useCallback(
             (p: HomeSection) => <UseCaseHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
 
       <div
         className="bg-black relative h-full"
@@ -55,7 +55,7 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
           marginTop: `${heroSectionHeight}px`,
         }}
       >
-        <Page>
+        <PrimaryWrapper>
           {renderObjectArray(sections, {
             'useCase.example': UseCaseImages,
             'useCase.feature': UseCaseFeatures,
@@ -63,7 +63,7 @@ export default function UseCase(props: SanityProps<{ site: Site; page: ContactUs
             'useCase.enterprise': UseCaseEnterprise,
             contact: Contact,
           })}
-        </Page>
+        </PrimaryWrapper>
       </div>
 
       <>

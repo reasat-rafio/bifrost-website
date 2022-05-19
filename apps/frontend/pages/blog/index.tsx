@@ -1,7 +1,7 @@
 // import BlogArticles from 'components/blog/BlogArticles'
 import BlogHome from 'components/blog-list/BlogHome'
 import Blogs from 'components/blog-list/Blogs'
-import { Page } from 'components/common/Page'
+import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import Contact from 'components/Contact'
 import Data from 'components/Data'
 import Ellipse from 'components/Ellipse'
@@ -51,14 +51,14 @@ export default function Blog(
 
   return (
     <div>
-      <Page>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'blog.home': useCallback(
             (p: HomeSection) => <BlogHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
-      </Page>
+      </PrimaryWrapper>
       <div
         className="bg-black"
         style={{
@@ -66,13 +66,13 @@ export default function Blog(
           marginBottom: `${heroSectionHeight}px`,
         }}
       >
-        <Page>
+        <PrimaryWrapper>
           <Blogs blogs={blogs} totalBlogs={totalBlogs} />
           {renderObjectArray(sections, {
             data: Data,
             contact: Contact,
           })}
-        </Page>
+        </PrimaryWrapper>
       </div>
       <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />

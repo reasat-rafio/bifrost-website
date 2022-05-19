@@ -26,7 +26,7 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
   }
 
   return (
-    <section className="container">
+    <section className="container ">
       <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275] z-10 relative xl:my-32 lg:my-16 my-14">
         <SlideUp divRef={headingRef} text={headline} />
       </div>
