@@ -33,7 +33,7 @@ const query = groq`{
       "image": ${withDimensions('image')},
     }
   },
-  "page": *[_id == "blogDetailsPrimaryWrapper"][0] {
+  "page": *[_id == "blogDetailsPage"][0] {
     ...,
   },
 }`

@@ -71,7 +71,7 @@ export const LightboxImage: React.FC<LightboxImageProps> = ({
           )}
         >
           <SanityImg
-            className={clsx(className, isOpen && 'w-full h-full ')}
+            className={clsx(className, isOpen && 'max-w-[75vw] max-h-[75vh] ')}
             height={isOpen ? height : height + height / 20}
             image={image}
             builder={imageUrlBuilder}
