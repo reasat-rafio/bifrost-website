@@ -10,6 +10,7 @@ import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
 import Tooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap.css'
 import { SmCategories } from './SmCategories'
+import { useRouter } from 'next/router'
 interface DatasetsProps {
   className?: string
   datasets: IDatasetCard[]
@@ -31,6 +32,7 @@ const DatasetCards: React.FC<IDatasetCards> = ({
   tasks,
   index,
 }) => {
+  const router = useRouter()
   const windowWidth = useWindowSize()?.width ?? 0
   const tasksRef = useRef<HTMLDivElement | null>(null)
 
@@ -102,7 +104,12 @@ const DatasetCards: React.FC<IDatasetCards> = ({
   }, [taskListNodes.length, windowWidth])
 
   return (
-    <div className="xl:col-span-4 md:col-span-6 col-span-12 background__dark rounded-[15px] h-full group">
+    <div
+      className="xl:col-span-4 md:col-span-6 col-span-12 background__dark rounded-[15px] h-full group cursor-pointer"
+      onClick={() => {
+        router.push(`/datasets/${slug.current}`)
+      }}
+    >
       <div className="flex flex-col space-y-1 border-b border-[#1E2531] p-3 font-light ">
         <div className="h-[215px] rounded-[14px] overflow-hidden mb-1">
           <SanityImg
@@ -132,6 +139,7 @@ const DatasetCards: React.FC<IDatasetCards> = ({
         <div
           className="overflow-visible flex-nowrap flex whitespace-nowrap space-x-3 relative w-full"
           ref={tasksRef}
+          onClick={(e) => e.stopPropagation()}
         >
           {tasks?.map(({ name, _id }) => (
             <p

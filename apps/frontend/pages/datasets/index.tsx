@@ -16,7 +16,7 @@ import { DatasetList } from 'components/dataset-list/list/DatasetList'
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_id == "datasetListPrimaryWrapper"][0] {
+  "page": *[_id == "datasetListPage"][0] {
     ...,
   },
   "datasets": *[_type == "dataset"][]{

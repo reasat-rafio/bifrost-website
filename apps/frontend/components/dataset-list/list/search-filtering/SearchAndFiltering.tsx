@@ -18,7 +18,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
   const [minImgValue, setMinImgValue] = useState<string | number>(0)
 
   return (
-    <div className="w-full">
+    <div className="w-full relative z-30">
       <div className="rounded-[6px] border-[#C9FF71]/30 __transparent__background border">
         <div className="grid xl:grid-cols-13 grid-cols-12 p-4 xl:gap-4 gap-3">
           <div className="xl:col-span-4 col-span-6">
