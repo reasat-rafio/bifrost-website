@@ -36,7 +36,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
       if (!smallNav) {
         closeNav()
       }
-      setSmallNav(w < 1280)
+      setSmallNav(w < 1024)
     },
     [closeNav],
   )
@@ -90,8 +90,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
               setSmallNavOpen(!smallNavOpen)
             }}
           >
-            <img width={20} height={12} src="burger.svg" alt="Menu" />
-            {/* <object type="image/svg+xml" height="22" width="22" data="burger.svg" /> */}
+            <img width={20} height={12} src="/burger.svg" alt="Menu" />
           </button>
         </div>
         <AnimatePresence initial={false}>
