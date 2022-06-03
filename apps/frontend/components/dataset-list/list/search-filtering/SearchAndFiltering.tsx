@@ -31,11 +31,16 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
     setTempDatasets(datasets)
   }, [])
 
+  console.log(tempDatasets)
+
   useEffect(() => {
+    // if (seachInputFieldValue.trim().length < 1) setDatasets(tempDatasets)
+    // else {
     const filterdDatasets = tempDatasets.filter(({ heading }) =>
       heading.trim().toLowerCase().includes(seachInputFieldValue.trim().toLowerCase()),
     )
     setDatasets(filterdDatasets)
+    // }
   }, [seachInputFieldValue])
 
   return (

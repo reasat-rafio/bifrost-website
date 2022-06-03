@@ -11,6 +11,7 @@ interface CategoriesProps {
 
 export const Categories: React.FC<CategoriesProps> = ({ categories, className, setDatasets }) => {
   const {
+    action: { setTempDatasets },
     state: { allDatasets },
   } = useCtx()
 
@@ -19,12 +20,15 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, className, s
   const onClickAction = (name: string) => {
     setSelectedCategoryName(name)
 
-    if (name === 'All') setDatasets(allDatasets)
-    else {
+    if (name === 'All') {
+      setDatasets(allDatasets)
+      setTempDatasets(allDatasets)
+    } else {
       const filteredDataset = allDatasets.filter(({ categories }) =>
         categories?.find((ctgories) => ctgories.name.toLowerCase() === name.toLowerCase()),
       )
       setDatasets(filteredDataset)
+      setTempDatasets(filteredDataset)
     }
   }
 
