@@ -125,7 +125,7 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
                     <h6 className="text-[36px] leading-[43.2px]">{heading}</h6>
                     <p className="text-[14px] leading-[26px] opacity-70">{subHeading}</p>
                     <div>
-                      <Button onClick={() => router.push(`/blog/${slug.current}`)}>
+                      <Button onClick={() => router.push(`/post/${slug.current}`)}>
                         Load More
                       </Button>
                     </div>

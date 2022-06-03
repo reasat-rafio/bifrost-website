@@ -16,7 +16,7 @@ import { RelatedBlogs } from 'components/blog/RelatedBlog'
 
 const query = groq`{
   "site": ${siteQuery},
-  "blog": *[_type== "blog" && slug.current == $blog] [0] {
+  "blog": *[_type== "blog" && slug.current == $post] [0] {
     ...,
     "image": ${withDimensions('image')},
     body[]{
@@ -24,7 +24,7 @@ const query = groq`{
       "image": ${withDimensions('image')},
     },
     tags[]->,
-    "relatedBlogs" : *[_type== "blog" && slug.current != $blog && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
+    "relatedBlogs" : *[_type== "blog" && slug.current != $post && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
       _id,
       heading,
       slug,
@@ -51,7 +51,7 @@ export const getStaticPaths = async () => {
   return {
     paths: slugs
       .filter((s: any) => s)
-      .map((s: any) => ({ params: { blog: s.slug.current, tags: s.tags } })),
+      .map((s: any) => ({ params: { post: s.slug.current, tags: s.tags } })),
     fallback: false,
   }
 }
