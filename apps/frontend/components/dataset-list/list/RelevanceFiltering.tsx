@@ -24,7 +24,7 @@ const relevances = [
 export const RelevanceFiltering: React.FC<RelevanceFilteringProps> = ({ length }) => {
   const [selected, setSelected] = useState(relevances[relevances.length - 1])
   return (
-    <div className="flex w-full justify-between my-10 items-center relative z-30">
+    <div className="flex w-full justify-between my-10 items-center relative z-20">
       <span className="flex-1 text-[16px] text-opacity-70 text-white underline ">
         {length} datasets found
       </span>

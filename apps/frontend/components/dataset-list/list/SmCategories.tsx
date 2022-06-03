@@ -13,7 +13,7 @@ export const SmCategories: React.FC<SmCategoriesProps> = ({ className, categorie
   const [selectDatasets, setSelectDatasets] = useState<string>()
 
   return (
-    <div className={clsx(className, 'mb-8')}>
+    <div className={clsx(className, 'mb-8 z-40 relative')}>
       <Listbox value={selectDatasets} onChange={setSelectDatasets}>
         <div className="relative">
           <Listbox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
