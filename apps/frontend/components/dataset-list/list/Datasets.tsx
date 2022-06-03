@@ -55,11 +55,16 @@ export const Datasets: React.FC<DatasetsProps> = ({
 
   return (
     <div className={className}>
-      <SmCategories className="block xl:hidden" categories={taskTypes} />
-      <SearchAndFiltering
+      <SmCategories
+        className="block xl:hidden"
+        categories={taskTypes}
         setDatasets={setDatasets}
+        datasets={datasets}
+      />
+      <SearchAndFiltering
         labelFormat={labelFormat}
         taskTypes={taskTypes}
+        setDatasets={setDatasets}
         datasets={datasets}
       />
       <RelevanceFiltering length={datasets.length} />

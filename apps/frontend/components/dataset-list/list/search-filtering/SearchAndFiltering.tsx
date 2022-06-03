@@ -91,7 +91,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
                   <Combobox.Input
                     className="datasetInputs"
                     placeholder="0"
-                    onChange={(e) => {
+                    onChange={(e: any) => {
                       const re = /^[0-9\b]+$/
                       if (e.target.value === '' || re.test(e.target.value)) {
                         setMinImgValue(e.target.value)
