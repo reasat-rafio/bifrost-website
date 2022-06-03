@@ -28,6 +28,7 @@ export const DatasetList: React.FC<DatasetListProps> = ({
       />
       <Datasets
         className="xl:col-span-9 col-span-12"
+        setDatasets={setDatasets}
         datasets={datasets}
         taskTypes={categories}
         labelFormat={labelFormat}

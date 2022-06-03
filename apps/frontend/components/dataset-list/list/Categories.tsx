@@ -1,6 +1,7 @@
+import clsx from 'clsx'
 import { useCtx } from 'contexts/global'
 import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 
 interface CategoriesProps {
   categories: ICategory[]
@@ -13,7 +14,11 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, className, s
     state: { allDatasets },
   } = useCtx()
 
+  const [selectedCategoryName, setSelectedCategoryName] = useState<string>('All')
+
   const onClickAction = (name: string) => {
+    setSelectedCategoryName(name)
+
     if (name === 'All') setDatasets(allDatasets)
     else {
       const filteredDataset = allDatasets.filter(({ categories }) =>
@@ -30,7 +35,12 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, className, s
         <ul className="p-4 flex flex-col space-y-3">
           {[{ name: 'All' }, ...categories].map(({ name, _id }) => (
             <li className="flex" key={_id ?? name} onClick={() => onClickAction(name)}>
-              <span className="hover:bg-gradient-to-l from-[#f8e9ff] via-[#e4acff] to-[#7187ff] hover:text-transparent duration-300 hover:bg-clip-text opacity-70 text-white text-[18px] font-light cursor-pointer capitalize transition-none">
+              <span
+                className={clsx(
+                  'hover:bg-gradient-to-l from-[#f8e9ff] via-[#e4acff] to-[#7187ff] hover:text-transparent duration-300 hover:bg-clip-text opacity-70 text-white text-[18px] font-light cursor-pointer capitalize transition-none',
+                  selectedCategoryName === name && 'bg-gradient-to-l bg-clip-text text-transparent',
+                )}
+              >
                 {name}
               </span>
             </li>

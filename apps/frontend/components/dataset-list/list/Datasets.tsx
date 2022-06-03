@@ -1,5 +1,5 @@
 import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
 import { SmCategories } from './SmCategories'
@@ -15,6 +15,7 @@ interface DatasetsProps {
   taskTypes: ICategory[]
   labelFormat: ICategory[]
   notFound: INotFound
+  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
 }
 
 export const CardAnimationVariants = {
@@ -22,7 +23,7 @@ export const CardAnimationVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.1,
+      delay: i * 0.08,
     },
   }),
   hidden: (i: number) => ({
@@ -39,6 +40,7 @@ export const Datasets: React.FC<DatasetsProps> = ({
   taskTypes,
   labelFormat,
   datasets,
+  setDatasets,
   notFound: { description, header, image },
 }) => {
   const rbAnim = useAnimation()
@@ -54,7 +56,12 @@ export const Datasets: React.FC<DatasetsProps> = ({
   return (
     <div className={className}>
       <SmCategories className="block xl:hidden" categories={taskTypes} />
-      <SearchAndFiltering labelFormat={labelFormat} taskTypes={taskTypes} />
+      <SearchAndFiltering
+        setDatasets={setDatasets}
+        labelFormat={labelFormat}
+        taskTypes={taskTypes}
+        datasets={datasets}
+      />
       <RelevanceFiltering length={datasets.length} />
       <motion.div className="grid grid-cols-12 xl:gap-7 gap-3 ">
         <AnimatePresence exitBeforeEnter>

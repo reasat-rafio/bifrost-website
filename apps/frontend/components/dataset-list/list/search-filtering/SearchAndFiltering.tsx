@@ -1,28 +1,49 @@
-import { ICategory } from 'lib/@types/datasetTypes'
-import React, { useState } from 'react'
+import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { FilteringListBox } from './FilteringListBox'
+import { useCtx } from 'contexts/global'
 
 interface SearchAndFilteringProps {
   taskTypes: ICategory[]
   labelFormat: ICategory[]
+  datasets: IDatasetCard[]
+  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
 }
 
 export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
   taskTypes,
   labelFormat,
+  datasets,
+  setDatasets,
 }) => {
-  const [selectedValue, setSelectedValue] = useState('')
+  const [seachInputFieldValue, setSearchInputFieldValue] = useState('')
   const [selectedTaskType, setSelectedTaskType] = useState(taskTypes[0].name)
   const [selectedLabelFormat, setSelectedLabelFormat] = useState(labelFormat[0].name)
   const [minImgValue, setMinImgValue] = useState<string | number>(0)
+
+  const {
+    state: { tempDatasets },
+    action: { setTempDatasets },
+  } = useCtx()
+
+  useEffect(() => {
+    setTempDatasets(datasets)
+  }, [])
+
+  useEffect(() => {
+    const filterdDatasets = tempDatasets.filter(({ heading }) =>
+      heading.trim().toLowerCase().includes(seachInputFieldValue.trim().toLowerCase()),
+    )
+    setDatasets(filterdDatasets)
+  }, [seachInputFieldValue])
 
   return (
     <div className="w-full relative z-30">
       <div className="rounded-[6px] border-[#C9FF71]/30 __transparent__background border">
         <div className="grid xl:grid-cols-13 grid-cols-12 p-4 xl:gap-4 gap-3">
           <div className="xl:col-span-4 col-span-6">
-            <Combobox value={selectedValue} onChange={setSelectedValue}>
+            <Combobox value={seachInputFieldValue} onChange={setSearchInputFieldValue}>
               <div className="relative">
                 <Combobox.Label className="text-[14px] leading-7 font-light text-white opacity-70 mb-1 inline-block">
                   Search
@@ -32,7 +53,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
                     className="datasetInputs"
                     displayValue={(person: string) => (!person ? '' : person)}
                     onChange={(e) => {
-                      console.log(e)
+                      setSearchInputFieldValue(e.target.value)
                     }}
                     placeholder="What Data Are You Looking For?"
                   />
