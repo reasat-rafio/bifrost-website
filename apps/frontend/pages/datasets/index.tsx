@@ -7,17 +7,22 @@ import { Site } from 'lib/@types/types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import Home from 'components/dataset-list/Home'
 import { ICategory, IDatasetCard } from 'lib/@types/datasetTypes'
 import { DatasetList } from 'components/dataset-list/list/DatasetList'
+import { useCtx } from 'contexts/global'
 
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "datasetListPage"][0] {
     ...,
+    notFound {
+      ...,
+    "image": ${withDimensions('image')},
+    }
   },
   "datasets": *[_type == "dataset"][]{
     _id,
@@ -49,14 +54,22 @@ export default function Dataset(
 ) {
   const {
     data: {
-      page: { sections },
+      page: { sections, notFound },
       categories,
       labelFormat,
       datasets,
     },
   } = useSanityQuery(query, props)
+  const {
+    action: { setAllDataSets },
+  } = useCtx()
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+  const [_datasets, setDatasets] = useState(datasets)
+
+  useEffect(() => {
+    setAllDataSets(datasets)
+  }, [])
 
   return (
     <div>
@@ -76,7 +89,13 @@ export default function Dataset(
         }}
       >
         <PrimaryWrapper>
-          <DatasetList datasets={datasets} categories={categories} labelFormat={labelFormat} />
+          <DatasetList
+            datasets={_datasets}
+            setDatasets={setDatasets}
+            categories={categories}
+            labelFormat={labelFormat}
+            notFound={notFound}
+          />
           {renderObjectArray(sections, {
             contact: Contact,
           })}

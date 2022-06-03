@@ -12,8 +12,6 @@ interface SmCategoriesProps {
 export const SmCategories: React.FC<SmCategoriesProps> = ({ className, categories }) => {
   const [selectDatasets, setSelectDatasets] = useState<string>()
 
-  console.log(selectDatasets)
-
   return (
     <div className={clsx(className, 'mb-8')}>
       <Listbox value={selectDatasets} onChange={setSelectDatasets}>

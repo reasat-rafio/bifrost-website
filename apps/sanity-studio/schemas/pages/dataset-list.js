@@ -14,6 +14,11 @@ export default {
       type: 'array',
       of: [{ type: 'blog.home' }, { type: 'contact' }],
     },
+    {
+      name: 'notFound',
+      type: 'datasetNotFound',
+      description: 'The placeholder message if the intented dataset is not found after searcing',
+    },
   ],
   preview: {
     select: {

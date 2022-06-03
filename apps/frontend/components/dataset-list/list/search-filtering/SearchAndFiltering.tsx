@@ -49,7 +49,7 @@ export const SearchAndFiltering: React.FC<SearchAndFilteringProps> = ({
           />
           <FilteringListBox
             className="xl:col-span-3 col-span-6 "
-            label="Task Types"
+            label="Label Format"
             selectedData={selectedLabelFormat}
             setSelectedData={setSelectedLabelFormat}
             data={labelFormat}

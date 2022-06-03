@@ -55,6 +55,8 @@ import tasks from './pages/dataset/document/tasks'
 import category from './pages/dataset/document/category'
 
 import datasetListPage from './pages/dataset-list'
+import datasetNotFound from './dataset-not-found'
+
 import datasetDetails from './pages/dataset-details'
 
 // First, we must import the schema creator
@@ -128,6 +130,8 @@ export default createSchema({
     category,
 
     datasetListPage,
+    datasetNotFound,
+
     datasetDetails,
   ]),
 })

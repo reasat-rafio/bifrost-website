@@ -71,3 +71,10 @@ export interface IToast {
   content: string
   type: 'error' | 'success'
 }
+
+interface INotFound {
+  _type: string
+  description: string
+  header: string
+  image: Image
+}

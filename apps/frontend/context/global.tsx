@@ -1,8 +1,10 @@
+import { IDatasetCard } from 'lib/@types/datasetTypes'
 import { IToast } from 'lib/@types/types'
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
 import { SanityImage } from 'sanity-react-extra'
 
 interface ContextState {
+  allDatasets: IDatasetCard[]
   lightboxImage: null | SanityImage
   toasts: IToast[]
 }
@@ -10,6 +12,7 @@ interface ContextState {
 interface ContextAction {
   setLightboxImage: Dispatch<SetStateAction<null | SanityImage>>
   setToasts: Dispatch<SetStateAction<IToast[]>>
+  setAllDataSets: Dispatch<SetStateAction<IDatasetCard[]>>
   addToast: (content: IToast) => void
   removeToast: (id: string) => void
   onDismiss: (id: string) => void
@@ -25,6 +28,7 @@ const Store = createContext<ContextProps>({} as ContextProps)
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lightboxImage, setLightboxImage] = useState<null | SanityImage>(null)
   const [toasts, setToasts] = useState<IToast[]>([])
+  const [allDatasets, setAllDataSets] = useState<IDatasetCard[]>([])
 
   const addToast = (content: IToast) => {
     const newToasts = [...toasts, content]
@@ -41,8 +45,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }
 
   const value = {
-    state: { lightboxImage, toasts },
-    action: { setLightboxImage, setToasts, addToast, removeToast, onDismiss },
+    state: { lightboxImage, toasts, allDatasets },
+    action: { setLightboxImage, setToasts, addToast, removeToast, onDismiss, setAllDataSets },
   }
 
   return <Store.Provider value={value}>{children}</Store.Provider>
