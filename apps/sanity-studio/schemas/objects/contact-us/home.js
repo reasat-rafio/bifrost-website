@@ -1,5 +1,5 @@
 import { AiOutlineHome } from 'react-icons/ai'
-import editor from '../../editor'
+import editor from '../editor'
 
 export default {
   name: 'contact.home',

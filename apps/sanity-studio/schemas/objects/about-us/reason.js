@@ -1,4 +1,4 @@
-import editor from '../../editor'
+import editor from '../editor'
 import { FaPodcast } from 'react-icons/fa'
 
 export default {
