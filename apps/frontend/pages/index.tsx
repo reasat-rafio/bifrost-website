@@ -14,9 +14,9 @@ import Ellipse from 'components/Ellipse'
 import HomeReview from 'components/home/HomeReview'
 import Contact from 'components/Contact'
 import { HomeSection, LandingPage } from 'lib/@types/landingTypes'
-import Data from 'components/Data'
 import { PrimaryWrapper } from 'components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
+import Newsletter from 'components/Newsletter'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -86,7 +86,7 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             'landing.products': HomeProduct,
             'landing.demo': HomeDemo,
             'landing.services': HomeService,
-            data: Data,
+            newsletter: Newsletter,
             'landing.projects': HomeProjects,
             'landing.reviews': HomeReview,
             contact: Contact,

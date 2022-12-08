@@ -2,7 +2,7 @@ import logos from './site/logos'
 import nav from './site/nav'
 import siteRedirects from './site/redirects'
 import contactSection from './site/contact'
-import dataSection from './site/data'
+import newsletter from './site/newsletter'
 
 import ctaButton from './ctaButton'
 import menuItem from './menuItem'
@@ -38,6 +38,9 @@ import useCaseAssurance from './pages/use-case/assurance'
 import useCaseEnterprise from './pages/use-case/enterprise'
 import useCaseExample from './pages/use-case/example'
 import useCaseFeature from './pages/use-case/feature'
+
+import ourProjects from './pages/our-projects'
+import ourProjectsHero from './pages/our-projects/hero'
 
 import blog from './documents/blog'
 
@@ -77,7 +80,7 @@ export default createSchema({
     nav,
     siteRedirects,
     contactSection,
-    dataSection,
+    newsletter,
 
     hero,
     seo,
@@ -113,6 +116,9 @@ export default createSchema({
     useCaseEnterprise,
     useCaseExample,
     useCaseFeature,
+
+    ourProjects,
+    ourProjectsHero,
 
     blog,
 

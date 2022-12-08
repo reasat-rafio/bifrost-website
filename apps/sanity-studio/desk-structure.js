@@ -8,6 +8,7 @@ import { BsNewspaper } from 'react-icons/bs'
 import * as React from 'react'
 import { FaSitemap, FaHome } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 
 function SitePreview({ document, options }) {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -101,6 +102,13 @@ export default () =>
                 id: 'useCasePage',
                 title: 'Use Case',
                 icon: GrActions,
+                slug: 'use-case',
+              }),
+              pageItem({
+                schemaType: 'ourProjectsPage',
+                id: 'ourProjectsPage',
+                title: 'Our Projects',
+                icons: AiOutlineFundProjectionScreen,
                 slug: 'use-case',
               }),
               pageItem({

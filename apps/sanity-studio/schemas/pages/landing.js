@@ -17,7 +17,7 @@ export default {
         { type: 'landing.products' },
         { type: 'landing.demo' },
         { type: 'landing.services' },
-        { type: 'data' },
+        { type: 'newsletter' },
         { type: 'landing.projects' },
         { type: 'landing.reviews' },
         { type: 'contact' },

@@ -1,12 +1,11 @@
-import { FaDatabase } from 'react-icons/fa'
+import { FcNews } from 'react-icons/fc'
 import { MdHighlight } from 'react-icons/md'
 import React from 'react'
 
 export default {
-  name: 'data',
-  title: 'Data',
+  name: 'newsletter',
   type: 'object',
-  icon: FaDatabase,
+  icon: FcNews,
   fields: [
     {
       name: 'initials',

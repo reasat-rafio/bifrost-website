@@ -7,7 +7,7 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'data' }, { type: 'contact' }],
+      of: [{ type: 'newsletter' }, { type: 'contact' }],
     },
   ],
   preview: {

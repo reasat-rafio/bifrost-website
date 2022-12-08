@@ -4,7 +4,7 @@ import { ReactElement } from 'react'
 import { PortableText } from 'utils/sanity'
 import { GradientBorder } from './common/GradientBorder'
 
-export default function Data(data: DataSection): ReactElement {
+export default function Newsletter(data: DataSection): ReactElement {
   return (
     <div className="container z-10 relative text-center xl:my-36 lg:my-20 my-16  ">
       <GradientBorder>
