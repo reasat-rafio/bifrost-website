@@ -39,6 +39,8 @@ import useCaseEnterprise from './objects/use-case/enterprise'
 import useCaseExample from './objects/use-case/example'
 import useCaseFeature from './objects/use-case/feature'
 
+import career from './documents/pages/career'
+
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
 
@@ -116,6 +118,8 @@ export default createSchema({
     useCaseEnterprise,
     useCaseExample,
     useCaseFeature,
+
+    career,
 
     ourProjects,
     ourProjectsHero,

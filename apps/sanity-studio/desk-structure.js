@@ -1,14 +1,12 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { GrEdit, GrView } from 'react-icons/gr'
-import { MdContactPhone } from 'react-icons/md'
+import { MdContactPhone, MdOutlineWorkOutline } from 'react-icons/md'
 import { FcAbout, FcViewDetails } from 'react-icons/fc'
-import { GrActions, GrArticle } from 'react-icons/gr'
+import { GrActions, GrArticle, GrEdit, GrView, GrWorkshop } from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
 import * as React from 'react'
 import { FaSitemap, FaHome } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 
 function SitePreview({ document, options }) {
   if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -105,11 +103,18 @@ export default () =>
                 slug: 'use-case',
               }),
               pageItem({
+                schemaType: 'careerPage',
+                id: 'careerPage',
+                title: 'Career',
+                icon: MdOutlineWorkOutline,
+                slug: 'career',
+              }),
+              pageItem({
                 schemaType: 'ourProjectsPage',
                 id: 'ourProjectsPage',
                 title: 'Our Projects',
-                icons: AiOutlineFundProjectionScreen,
-                slug: 'use-case',
+                icon: GrWorkshop,
+                slug: 'our-project',
               }),
               pageItem({
                 schemaType: 'blogPage',
