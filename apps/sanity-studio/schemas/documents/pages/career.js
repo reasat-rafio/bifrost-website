@@ -12,7 +12,13 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'newsletter' }, { type: 'contact' }],
+      of: [
+        { type: 'careerPage.hero' },
+        { type: 'careerPage.about' },
+        { type: 'careerPage.perks' },
+        { type: 'newsletter' },
+        { type: 'contact' },
+      ],
     },
   ],
   preview: {
