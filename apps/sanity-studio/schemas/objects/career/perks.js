@@ -9,10 +9,12 @@ export default {
     {
       name: 'header',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'perks',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [
         {
           name: 'perk',
@@ -22,14 +24,26 @@ export default {
             {
               name: 'image',
               type: 'image',
+              validation: (Rule) => Rule.required(),
+              fields: [
+                {
+                  title: 'Alternative Text',
+                  name: 'alt',
+                  type: 'string',
+                  validation: (Rule) =>
+                    Rule.required().error('Please add an alternative text for the image'),
+                },
+              ],
             },
             {
               name: 'title',
               type: 'string',
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'subtitle',
               type: 'text',
+              validation: (Rule) => Rule.required(),
             },
           ],
           preview: {

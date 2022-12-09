@@ -18,25 +18,25 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
 
-  useEffect(() => {
-    if (pageProps.data?.blog?._type === 'blog' || pageProps.data?.dataset?._type === 'dataset') {
-      setSeoTitle(pageProps.data?.blog?.heading || pageProps.data?.dataset?.heading)
-      setSeoDescription(pageProps.blog?.page?.subHeading || pageProps?.dataset?.page?.subHeading)
-      setOgImage(pageProps.data?.blog?.image || pageProps.data?.dataset?.image)
-    } else {
-      setSeoTitle(pageProps.data?.page.seo.title)
-      setSeoDescription(pageProps.data?.page.seo.description)
-      setOgImage(pageProps.data?.page.seo.seoImage ?? pageProps.data?.site?.ogImage)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (pageProps.data?.blog?._type === 'blog' || pageProps.data?.dataset?._type === 'dataset') {
+  //     setSeoTitle(pageProps.data?.blog?.heading || pageProps.data?.dataset?.heading)
+  //     setSeoDescription(pageProps.blog?.page?.subHeading || pageProps?.dataset?.page?.subHeading)
+  //     setOgImage(pageProps.data?.blog?.image || pageProps.data?.dataset?.image)
+  //   } else {
+  //     setSeoTitle(pageProps.data?.page.seo.title)
+  //     setSeoDescription(pageProps.data?.page.seo.description)
+  //     setOgImage(pageProps.data?.page.seo.seoImage ?? pageProps.data?.site?.ogImage)
+  //   }
+  // }, [])
 
-  if (pageProps.data?.site.logos.favicon) {
-    faviconImage = imageUrlBuilder
-      .image(pageProps.data?.site?.logos.favicon)
-      .size(256, 256)
-      .ignoreImageParams()
-      .url()
-  }
+  // if (pageProps.data?.site.logos.favicon) {
+  //   faviconImage = imageUrlBuilder
+  //     .image(pageProps.data?.site?.logos.favicon)
+  //     .size(256, 256)
+  //     .ignoreImageParams()
+  //     .url()
+  // }
 
   const openGraphImages = ogImage
     ? [
@@ -59,13 +59,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <AppProvider>
         <div className="bg-black relative overflow-clip text-white">
-          <NextSeo
+          {/* <NextSeo
             title={seoTitle}
             description={seoDescription}
             openGraph={{
               images: openGraphImages,
             }}
-          />
+          /> */}
           {pageProps.data?.site && (
             <Navbar
               darkLogo={pageProps.data?.site.logos.darkLogo}

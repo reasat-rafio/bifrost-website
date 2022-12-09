@@ -9,10 +9,12 @@ export default {
     {
       name: 'headline',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'subHeadline',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {
