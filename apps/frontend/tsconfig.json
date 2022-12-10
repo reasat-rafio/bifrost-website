@@ -3,36 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "components/*": [
-        "components/*"
-      ],
-      "contexts/*": [
-        "context/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "lib/*": [
-        "lib/*"
-      ],
-      "animations/*": [
-        "animations/*"
-      ],
-      "utils/*": [
-        "utils/*"
-      ]
+      "components/*": ["src/components/*"],
+      "contexts/*": ["src/context/*"],
+      "@styles/*": ["src/styles/*"],
+      "lib/*": ["src/lib/*"],
+      "animations/*": ["src/animations/*"],
+      "utils/*": ["src/utils/*"]
     }
   },
-  "include": [
-    "src",
-    "next-env.d.ts",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    ".turbo"
-  ]
+  "include": ["src", "next-env.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next", ".turbo"]
 }

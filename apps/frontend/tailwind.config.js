@@ -1,12 +1,5 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './context/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './lib/**/*.{js,ts,jsx,tsx}',
-  ],
-
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       screens: {
@@ -33,14 +26,10 @@ module.exports = {
         center: true,
       },
       colors: {
-        heading: '#000',
-        description: '#183B56',
-
         pinkSugar: '#E7ADFF',
         riceFlower: '#EEFFE9',
         honeySuckle: '#C9FF71',
         neonBlue: '#7187FF',
-
         warning: '#F3CD68',
         danger: '#E95432',
         danger2: '#F3E5E8',

@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-titillium;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bifrost__card {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 15px;
+}
+
+.blog_page_navbar_background {
+  background: linear-gradient(138.39deg, rgba(0, 0, 0, 0.69) -7.57%, rgba(0, 0, 0, 08) 107.25%);
+}
+
+.bifrost__transparent_card {
+  backdrop-filter: blur(40px);
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+
+  border: 0.3px solid #4e6181;
+  border-radius: 15px;
+}
+
+.bifrost__transparent__card {
+  border-radius: 15px;
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+}
+
+.__transparent__background {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+}
+
+/* .__carouselBtn { */
+/*   @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-transparent bg-clip-text; */
+/* } */
+.section {
+  color: white;
+  z: 10;
+}
+
+.bifrost__gradient_pink {
+  @apply bg-gradient-to-r from-[#f8e9ff] via-[#e4acff] to-[#7187ff];
+}
+
+.bifrost__gradient__green {
+  @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71];
+}
+
+.bifrost__gradient_dark_blue {
+  @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
+}
+
+.bifrost__background_noise {
+  background-image: url('../../public/noise.png');
+  transition: opacity 1s ease-in-out;
+  animation: grain 0s steps(1) infinite;
+  content: '';
+  height: 300%;
+  left: -50%;
+  opacity: 0.55;
+  z: 10;
+  position: fixed;
+  top: -110%;
+  width: 300%;
+}
+
+.project__item {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  /*   backdrop-filter: blur(80px); */
+  backdrop-filter: blur(80px);
+  border-radius: 8px;
+}
+.input__dark {
+  background: linear-gradient(
+    138.39deg,
+    rgba(255, 255, 255, 0.2) -7.57%,
+    rgba(255, 255, 255, 0) 107.25%
+  );
+}
+
+.background__dark {
+  background: linear-gradient(138.39deg, rgba(18, 23, 35, 1) -7.57%, rgba(7, 13, 23, 1) 107.25%);
+}
+
+.dropdown:hover .menu-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: #757aac !important;
+  width: 10px !important;
+  opacity: 0.95 !important;
+  height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff !important;
+  opacity: 1 !important;
+}
+
+#gallery::-webkit-scrollbar {
+  width: 5px;
+  height: 0;
+  left: 0;
+  background-color: #525c5b;
+  border-radius: 8px;
+}
+
+#gallery::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
+  border-radius: 8px;
+}
+
+#customScrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 0;
+  left: 0;
+  background-color: #525c5b;
+  border-radius: 8px;
+}
+
+#customScrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
+  border-radius: 8px;
+}
+
+.datasetInputs {
+  @apply w-full border border-[#1E2531] rounded-[6px] focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-honeySuckle  py-3 pl-3 pr-4 text-base text-gray focus:outline-none transition duration-300 bg-transparent;
+}
