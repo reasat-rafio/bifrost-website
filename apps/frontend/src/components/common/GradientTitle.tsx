@@ -8,7 +8,7 @@ interface GradientTitleProps {
 }
 
 export const GradientTitle: React.FC<GradientTitleProps> = ({
-  gradient = 'bifrost__gradient__green',
+  gradient = 'gradient__white__to__green',
   className,
   children,
 }) => {

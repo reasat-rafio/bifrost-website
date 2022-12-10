@@ -92,7 +92,7 @@ export default function HomeHero(data: IHomeSection): ReactElement {
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text bifrost__gradient__green">
+                    <span className="text-transparent bg-clip-text gradient__white__to__green">
                       {children}
                     </span>
                   ),

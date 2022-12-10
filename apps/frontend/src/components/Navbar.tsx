@@ -171,7 +171,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                           <span
                             className={clsx(
                               router.asPath === men.href &&
-                                'text-transparent bg-clip-text bifrost__gradient__green',
+                                'text-transparent bg-clip-text gradient__white__to__green',
                             )}
                           >
                             {men.title}
@@ -181,7 +181,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                           <motion.div
                             layout
                             className={clsx(
-                              'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] bifrost__gradient__green',
+                              'w-[60%] h-[0.2em] left-0 absolute bottom-[-4px] gradient__white__to__green',
                             )}
                             layoutId="underline"
                             initial={false}

@@ -142,7 +142,7 @@ export const DatasetCards: React.FC<IDatasetCards> = ({
         >
           {tasks?.map(({ name, _id }) => (
             <p
-              className={`bifrost__gradient__green text-transparent bg-clip-text datasets-tasks-${index}`}
+              className={`gradient__white__to__green text-transparent bg-clip-text datasets-tasks-${index}`}
               key={_id}
             >
               {name}
@@ -170,7 +170,7 @@ export const DatasetCards: React.FC<IDatasetCards> = ({
           >
             <p
               className={clsx(
-                `bifrost__gradient__green text-transparent bg-clip-text cursor-pointer show-more-${index}`,
+                `gradient__white__to__green text-transparent bg-clip-text cursor-pointer show-more-${index}`,
                 overflownTasks.length ? 'visible' : 'invisible',
               )}
             >

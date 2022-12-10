@@ -28,7 +28,7 @@ export default function Home({
         </div>
       </div>
       <div className="container min-h-[75vh] overflow-y-clip lg:py-[5%] py-[30%] flex flex-col justify-center items-start">
-        <h1 className="lg:text-head-1 text-[54px] leading-snug lg:leading-[82px] font-[275] bifrost__gradient__green text-transparent bg-clip-text mb-10">
+        <h1 className="lg:text-head-1 text-[54px] leading-snug lg:leading-[82px] font-[275] gradient__white__to__green text-transparent bg-clip-text mb-10">
           {headline}
         </h1>
         <h2 className="lg:text-head-5 text-[17px] bg-clip-text uppercase opacity-70">

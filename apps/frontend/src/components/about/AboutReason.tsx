@@ -34,7 +34,7 @@ export default function AboutReason({
                     <span
                       className={clsx(
                         active === index &&
-                          'text-transparent bg-clip-text bifrost__gradient__green',
+                          'text-transparent bg-clip-text gradient__white__to__green',
                       )}
                     >
                       {reason.title}
@@ -43,7 +43,7 @@ export default function AboutReason({
                       <motion.div
                         className={clsx(
                           'w-full h-[0.2em] left-0 absolute bottom-[-4px] z-10',
-                          active === index && 'bifrost__gradient__green',
+                          active === index && 'gradient__white__to__green',
                         )}
                         layoutId="underline"
                         initial={false}

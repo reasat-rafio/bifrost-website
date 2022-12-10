@@ -1,6 +1,6 @@
 import { WaveScene } from 'src/components/common/WaveScene'
 import { useWindowSize } from 'src/lib/hooks'
-import { Dispatch, SetStateAction, useCallback, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback } from 'react'
 
 export interface HeroProps {
   type: string
@@ -11,7 +11,6 @@ export interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ headline, subHeadline, setHeroSectionHeight }) => {
   const windowWidth = useWindowSize()?.width ?? 0
-
   const sectionRef = useCallback(
     (node) => {
       if (node !== null) setHeroSectionHeight(node.clientHeight)
@@ -24,15 +23,15 @@ export const Hero: React.FC<HeroProps> = ({ headline, subHeadline, setHeroSectio
       ref={sectionRef}
       className="z-0 fixed top-0 left-0 | w-screen | bg-black overflow-hidden"
     >
-      <WaveScene />
+      <WaveScene className="xl:translate-y-[55%] md:translate-y-[45%] translate-y-[20%]" />
 
-      <div className="container | min-h-[50vh] | flex flex-col justify-center items-center">
-        <h1 className="lg:text-head-1 text-[54px] leading-snug lg:leading-[82px] font-[275] bifrost__gradient__green text-transparent bg-clip-text mb-4 text-center">
+      <div className="container | xl:h-[60vh] md:h-[60vh] h-screen | flex flex-col justify-center items-center">
+        <h1 className="xl:text-head-1 md:text-head-3 text-head-mobile font-[275] | mb-3 | text-transparent bg-clip-text text-center | leading-none | gradient__white__to__green">
           {headline}
         </h1>
-        <h2 className="lg:text-head-5 text-[17px] bg-clip-text opacity-70 text-center">
+        <p className="md:text-body-2 text-body-mobile bg-clip-text opacity-70 text-center">
           {subHeadline}
-        </h2>
+        </p>
       </div>
 
       <div
