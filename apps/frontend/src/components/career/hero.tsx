@@ -23,13 +23,13 @@ export const Hero: React.FC<HeroProps> = ({ headline, subHeadline, setHeroSectio
       ref={sectionRef}
       className="z-0 fixed top-0 left-0 | w-screen | bg-black overflow-hidden"
     >
-      <WaveScene className="xl:translate-y-[55%] md:translate-y-[45%] translate-y-[20%]" />
+      <WaveScene className="md:translate-y-[55%] translate-y-[40%]" />
 
-      <div className="container | xl:h-[60vh] md:h-[60vh] h-screen | flex flex-col justify-center items-center">
-        <h1 className="xl:text-head-1 md:text-head-3 text-head-mobile font-[275] | mb-3 | text-transparent bg-clip-text text-center | leading-none | gradient__white__to__green">
+      <div className="container | xl:h-[60vh] md:h-[60vh] h-[70vh] | flex flex-col justify-center items-center">
+        <h1 className="w-full | xl:text-head-1 md:text-head-3 text-head-mobile font-[275] | mb-3 | text-transparent bg-clip-text md:text-center text-left | leading-none | gradient__white__to__green">
           {headline}
         </h1>
-        <p className="md:text-body-2 text-body-mobile bg-clip-text opacity-70 text-center">
+        <p className="w-full | md:text-body-2 text-body-mobile md:text-center text-left | bg-clip-text opacity-70 font-light">
           {subHeadline}
         </p>
       </div>
