@@ -1,4 +1,3 @@
-import { About } from 'src/components/career/about'
 import { Hero, HeroProps } from 'src/components/career/hero'
 import { Perks } from 'src/components/career/perks'
 import { siteQuery } from 'src/lib/query'
@@ -9,6 +8,7 @@ import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import Contact from 'src/components/Contact'
+import { Information } from 'components/common/information'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -17,6 +17,10 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
+      perks[]{
+        ...,
+        "image": ${withDimensions('image')},
+      }
     },
   }
 }`
@@ -43,7 +47,7 @@ const Career = (props: SanityProps<any>) => {
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
         {renderObjectArray(page.sections, {
-          'careerPage.about': About,
+          infoBlock: Information,
           'careerPage.perks': Perks,
           contact: Contact,
         })}

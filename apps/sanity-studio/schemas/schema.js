@@ -14,6 +14,8 @@ import initial from './objects/initial'
 import quote from './objects/quote'
 import tag from './documents/tag'
 
+import imformation from './objects/common/information'
+
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
 import landingProductsSection from './objects/landing/products'
@@ -86,6 +88,8 @@ export default createSchema({
     siteRedirects,
     contactSection,
     newsletter,
+
+    imformation,
 
     hero,
     seo,

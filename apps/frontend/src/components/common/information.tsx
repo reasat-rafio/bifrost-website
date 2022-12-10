@@ -1,11 +1,11 @@
-import Button from 'src/components/ui/Button'
-import { Description } from 'src/components/ui/Description'
-import { Header } from 'src/components/ui/Header'
-import { CTAButton } from 'src/lib/@types/types'
+import Button from 'components/ui/Button'
+import { Description } from 'components/ui/Description'
+import { Header } from 'components/ui/Header'
+import { CTAButton } from 'lib/@types/types'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
-interface AboutProps {
+interface InformationProps {
   type: string
   image: SanityImage
   subtitle: string
@@ -13,7 +13,7 @@ interface AboutProps {
   cta?: CTAButton
 }
 
-export const About: React.FC<AboutProps> = ({ image, subtitle, title, cta }) => {
+export const Information: React.FC<InformationProps> = ({ image, subtitle, title, cta }) => {
   return (
     <section className="container | py-10 ">
       <figure className="w-full overflow-hidden">

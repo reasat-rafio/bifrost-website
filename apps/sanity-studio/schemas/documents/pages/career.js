@@ -14,7 +14,7 @@ export default {
       type: 'array',
       of: [
         { type: 'careerPage.hero' },
-        { type: 'careerPage.about' },
+        { type: 'infoBlock' },
         { type: 'careerPage.perks' },
         { type: 'newsletter' },
         { type: 'contact' },
