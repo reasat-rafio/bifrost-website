@@ -8,7 +8,7 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
 
 @mixin secondaryBackgroundGradientAnimation($transTime) {
   background-size: 100%;
-  background-image: $secondary-button-background-gradient;
+  background-image: $secondary-button-background-gradient !important;
 
   &:before {
     background: linear-gradient(

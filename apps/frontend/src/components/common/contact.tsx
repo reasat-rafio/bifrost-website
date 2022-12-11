@@ -44,14 +44,12 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
 
   return (
     <section className="container py-10">
-      <header>
-        <h4 className="xl:text-head-2 text-head-2-mobile | font-primary | max-w-[60%] | leading-none">
-          {headline}
-        </h4>
-      </header>
+      <h4 className="xl:text-head-2 md:text-head-3 text-head-2-mobile | font-primary | xl:w-[50%] lg:w-[60%] w-full | leading-none">
+        {headline}
+      </h4>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-[60%] | mt-7 ml-auto | flex flex-col space-y-5"
+        className="lg:w-[60%] w-full | mt-7 ml-auto | flex flex-col space-y-5"
       >
         <Input
           disabled={submitting}
@@ -71,7 +69,7 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
         <div>
           <textarea
             disabled={submitting}
-            className="shadow w-full input__dark border border-[#8E8E8E] rounded-lg appearance-none lg:py-6 py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1"
+            className="shadow w-full bg-transparent border border-[#8E8E8E] rounded-lg appearance-none lg:py-6 py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1"
             id="message"
             placeholder="Message"
             rows={4}
@@ -84,11 +82,9 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
           </span>
         </div>
 
-        <div className="flex">
-          <Button type="button" href={''} variant="secondary">
-            {ctaButton.title}
-          </Button>
-        </div>
+        <Button type="button" variant="secondary">
+          {ctaButton.title}
+        </Button>
       </form>
     </section>
   )

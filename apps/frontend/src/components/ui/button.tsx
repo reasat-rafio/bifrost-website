@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const rootClassName = clsx(
-    'xl:w-auto w-full relative | xl:text-body-3 md:text-[12px] text-[10px] | text-white | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none ',
+    'w-fit relative | xl:text-body-3 md:text-[12px] text-[10px] | text-white | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none',
     loading && '!cursor-not-allowed',
     disabled && 'cursor-not-allowed hover:cursor-not-allowed brightness-75',
     className,
@@ -79,19 +79,16 @@ const MotionButton: React.FC<{
 }> = ({ active, disabled, className, loading, children, onClick }) => {
   return (
     <motion.button
-      whileHover={{
-        scale: 1.03,
-      }}
       type="button"
       aria-pressed={active}
       className={className}
       disabled={disabled}
       onClick={onClick}
     >
-      <>
+      <span>
         {loading && <LoadingIcon />}
         {children}
-      </>
+      </span>
     </motion.button>
   )
 }

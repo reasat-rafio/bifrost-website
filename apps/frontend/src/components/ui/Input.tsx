@@ -24,8 +24,7 @@ const Input = React.forwardRef<any, any>(
     },
     ref,
   ) => {
-    const rootClassName =
-      'shadow w-full input__dark border border-[#8E8E8E] rounded-lg appearance-none lg:py-6 py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1'
+    const rootClassName = ''
 
     return (
       <div className={className}>
@@ -36,7 +35,7 @@ const Input = React.forwardRef<any, any>(
           ref={ref}
           // @ts-ignore
           placeholder={placeholderKey}
-          className={rootClassName}
+          className="w-full | border border-[#8E8E8E] rounded-lg | md:py-5 py-3 px-5 | bg-transparent | text-gray-700 leading-tight | shadow | appearance-none focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1"
           autoComplete="off"
           spellCheck="false"
           aria-invalid={errorKey ? 'true' : 'false'}
