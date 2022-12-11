@@ -1,6 +1,8 @@
 import { useWindowSize } from 'src/lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
+import { MouseEvent } from 'react'
+import clsx from 'clsx'
 
 interface Perk {
   _key: string
@@ -16,13 +18,26 @@ interface PerksProps {
 }
 
 export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
+  const onMouseMoveAction = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    const cards = document.getElementsByClassName('card') as HTMLCollectionOf<HTMLDivElement>
+
+    for (const card of Array.from(cards)) {
+      const rect = card.getBoundingClientRect(),
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top
+
+      card.style.setProperty('--mouse-x', `${x}px`)
+      card.style.setProperty('--mouse-y', `${y}px`)
+    }
+  }
+
   return (
     <section className="container | pb-16">
-      <h3 className="lg:text-head-2 text-[40px] leading-[40px] font-[275] text-center max-w-4xl mx-auto | mb-14">
+      <h3 className="max-w-4xl | xl:text-head-2 md:text-head-md text-head-4-mobile | leading-none | font-primary text-center | mx-auto mb-14">
         {header}
       </h3>
 
-      <div className="grid grid-cols-12 gap-5">
+      <div onMouseMove={onMouseMoveAction} className={clsx('cards | grid grid-cols-12 gap-5')}>
         {perks.map((data) => (
           <Perk key={data._key} {...data} />
         ))}
@@ -35,18 +50,20 @@ const Perk: React.FC<Perk> = ({ image, subtitle, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <article className="xl:col-span-4 md:col-span-6 col-span-12 group bifrost__transparent__card border border-[#4e6181]/30 p-3 rounded-[8px] lg:space-y-4 space-y-2">
-      <figure className="w-full flex justify-center h-[230px] overflow-hidden rounded-[14px]">
-        <SanityImg
-          className="object-cover w-full h-full group-hover:scale-110 transition-all duration-300"
-          builder={imageUrlBuilder}
-          image={image}
-          alt={image?.alt || 'image'}
-          height={windowWidth >= 768 ? 250 : 150}
-        />
-      </figure>
-      <h6 className="lg:text-body-2">{title}</h6>
-      <p className="lg:text-[14px] lg:leading-[24px]">{subtitle} </p>
+    <article className={clsx('card  | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}>
+      <div className="card-content | space-y-3 | p-3 | font-light">
+        <figure className="h-[220px]">
+          <SanityImg
+            className="h-full w-full object-cover rounded"
+            image={image}
+            builder={imageUrlBuilder}
+            alt={image.alt}
+            width={400}
+          />
+        </figure>
+        <h6 className="text-body-2">{title}</h6>
+        <p className="text-body-1-mobile opacity-70">{subtitle}</p>
+      </div>
     </article>
   )
 }

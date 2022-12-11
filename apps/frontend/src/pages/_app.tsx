@@ -9,7 +9,8 @@ import Navbar from 'src/components/Navbar'
 import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContaiern as Toast } from 'src/components/ui/Toast'
-import '../styles/global.scss'
+import '@styles/global.scss'
+import '@styles/card.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null

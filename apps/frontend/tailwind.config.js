@@ -63,7 +63,6 @@ module.exports = {
         'body-1-mobile': '14px',
         'body-2-mobile': '17px',
         'head-4-res': '35px',
-        'body-1-res': '14px',
       },
       fontFamily: {
         roboto: 'Roboto, sans-serif',
