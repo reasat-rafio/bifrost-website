@@ -44,7 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
           loading={loading}
           className={
             variant === 'secondary'
-              ? clsx(rootClassName, styles.secondary_bg_gradient, styles.secondary_border_gradient)
+              ? clsx(rootClassName, styles.secondary_bg_gradient)
               : variant === 'primary'
               ? clsx(rootClassName, styles.primary_border_gradient)
               : ''
@@ -58,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
           href={href}
           className={
             variant === 'secondary'
-              ? clsx(rootClassName, styles.secondary_bg_gradient, styles.secondary_border_gradient)
+              ? clsx(rootClassName, styles.secondary_bg_gradient)
               : variant === 'primary'
               ? clsx(rootClassName, styles.primary_border_gradient)
               : ''

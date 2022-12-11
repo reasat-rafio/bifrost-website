@@ -34,13 +34,8 @@ export const Information: React.FC<InformationProps> = ({ image, subtitle, title
           </h6>
           <p className="md:text-body-1 text-body-1-mobile | font-light">{subtitle}</p>
           {!!cta && (
-            <div className="flex">
-              {/* <Button >
-                <Link href={cta?.href ?? '/'}>
-                  <a>{cta.title}</a>
-                </Link>
-              </Button> */}
-              <Button type="href" href={cta?.href ?? ''}>
+            <div className="flex ">
+              <Button variant="secondary" type="href" href={cta?.href ?? ''}>
                 {cta.title}
               </Button>
             </div>
