@@ -12,7 +12,12 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'ourProjectsPage.hero' }, { type: 'newsletter' }, { type: 'contact' }],
+      of: [
+        { type: 'ourProjectsPage.hero' },
+        { type: 'ourProjectsPage.projects' },
+        { type: 'newsletter' },
+        { type: 'contact' },
+      ],
     },
   ],
   preview: {

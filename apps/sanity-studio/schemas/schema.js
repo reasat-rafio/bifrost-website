@@ -49,6 +49,7 @@ import careerResume from './objects/career/resume'
 
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
+import ourProjectsProjects from './objects/our-projects/projects'
 
 import blog from './documents/blog'
 
@@ -135,6 +136,7 @@ export default createSchema({
 
     ourProjects,
     ourProjectsHero,
+    ourProjectsProjects,
 
     blog,
 

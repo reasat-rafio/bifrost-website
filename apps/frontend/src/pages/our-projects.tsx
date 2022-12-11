@@ -1,3 +1,5 @@
+import { Contact } from 'components/common/contact'
+import Newsletter from 'components/Newsletter'
 import { Hero, HeroProps } from 'components/our-projects/hero'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -39,12 +41,10 @@ const OurProjects = (props: SanityProps<any>) => {
       })}
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
-        {/* {renderObjectArray(page.sections, {
-          infoBlock: Information,
-          'careerPage.perks': Perks,
-          'careerPage.resume': Resume,
+        {renderObjectArray(page.sections, {
+          newsletter: Newsletter,
           contact: Contact,
-        })} */}
+        })}
       </div>
     </>
   )
