@@ -35,19 +35,31 @@
 
 .card::before {
   background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.1),
-    transparent 40%
+    200px circle at var(--mouse-x) var(--mouse-y),
+    #f8e9ff0a 0%,
+    #e3acff0e 50%,
+    #7186ff0a 100%,
+    transparent 10%
   );
   z-index: 3;
 }
 
 .card::after {
   background: radial-gradient(
-    600px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 1),
+    200px circle at var(--mouse-x) var(--mouse-y),
+    #eeffe9 0%,
+    #c9ff71 40.69%,
+    #f8e9ff 70%,
+    #e4acff 85.3%,
+    #7187ff 102.69%,
     transparent 40%
   );
+  // background: radial-gradient(
+  //   600px circle at var(--mouse-x) var(--mouse-y),
+  //   rgba(255, 255, 255, 1),
+  //   transparent 40%
+  // );
+
   z-index: 1;
 }
 

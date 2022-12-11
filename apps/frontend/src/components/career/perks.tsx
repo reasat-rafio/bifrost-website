@@ -50,7 +50,7 @@ const Perk: React.FC<Perk> = ({ image, subtitle, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <article className={clsx('card  | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}>
+    <article className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}>
       <div className="card-content | space-y-3 | p-3 | font-light">
         <figure className="h-[220px]">
           <SanityImg
