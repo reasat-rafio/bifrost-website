@@ -9,6 +9,7 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { Contact } from 'src/components/common/contact'
 import { Information } from 'components/common/information'
+import { Resume } from 'components/career/resume'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -49,6 +50,7 @@ const Career = (props: SanityProps<any>) => {
         {renderObjectArray(page.sections, {
           infoBlock: Information,
           'careerPage.perks': Perks,
+          'careerPage.resume': Resume,
           contact: Contact,
         })}
       </div>
