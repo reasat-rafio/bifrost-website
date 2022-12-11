@@ -1,6 +1,6 @@
 import { Button } from 'components/ui/button'
 import { CTAButton } from 'lib/@types/types'
-import { useWindowSize } from 'lib/hooks'
+// import { useWindowSize } from 'lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 
@@ -13,7 +13,7 @@ interface InformationProps {
 }
 
 export const Information: React.FC<InformationProps> = ({ image, subtitle, title, cta }) => {
-  const windowWidth = useWindowSize()?.width ?? 0
+  // const windowWidth = useWindowSize()?.width ?? 0
 
   return (
     <section className="container | pt-10 ">

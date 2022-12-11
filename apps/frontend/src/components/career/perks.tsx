@@ -1,4 +1,3 @@
-import { useWindowSize } from 'src/lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { MouseEvent } from 'react'
@@ -47,7 +46,7 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
 }
 
 const Perk: React.FC<Perk> = ({ image, subtitle, title }) => {
-  const windowWidth = useWindowSize()?.width ?? 0
+  // const windowWidth = useWindowSize()?.width ?? 0
 
   return (
     <article className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}>
