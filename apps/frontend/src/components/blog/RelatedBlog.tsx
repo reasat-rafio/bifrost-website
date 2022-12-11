@@ -11,7 +11,7 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { formatDate, truncate } from 'src/lib/helpers'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { useRouter } from 'next/router'
 
 interface RelatedBlogProps {

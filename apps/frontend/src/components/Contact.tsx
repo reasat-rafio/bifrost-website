@@ -1,5 +1,5 @@
 import SlideUp from 'src/components/SlideUpText'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { ContactSection } from 'src/lib/@types/landingTypes'
 import { ReactElement, useRef } from 'react'
 import { useForm } from 'react-hook-form'

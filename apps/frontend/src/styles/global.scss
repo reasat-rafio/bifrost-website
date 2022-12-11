@@ -32,6 +32,11 @@ html {
   border-radius: 15px;
 }
 
+.background__blur {
+  backdrop-filter: blur(40px);
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+}
+
 .bifrost__transparent__card {
   border-radius: 15px;
   background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);

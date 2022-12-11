@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import {
   ReactElement,
   useRef,

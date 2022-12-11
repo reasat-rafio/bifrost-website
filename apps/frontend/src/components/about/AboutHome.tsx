@@ -1,6 +1,6 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { NoiseBackground } from 'src/components/ui/NoiseBackground'
 import { HomeSection } from 'src/lib/@types/aboutUsTypes'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'

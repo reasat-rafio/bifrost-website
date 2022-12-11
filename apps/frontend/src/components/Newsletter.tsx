@@ -1,4 +1,4 @@
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { DataSection } from 'src/lib/@types/landingTypes'
 import { ReactElement } from 'react'
 import { PortableText } from 'src/utils/sanity'

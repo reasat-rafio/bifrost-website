@@ -1,4 +1,4 @@
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { LightboxImage } from 'src/components/ui/LightboxImage'
 import { CTAButton } from 'src/lib/@types/types'
 

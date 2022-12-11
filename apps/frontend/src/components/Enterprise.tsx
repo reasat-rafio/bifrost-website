@@ -6,7 +6,7 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { Enterprise as EnterpriseInterface } from 'src/lib/@types/useCaseTypes'
 import { imageUrlBuilder } from 'src/utils/sanity'
-import Button from './ui/Button'
+import Button from './ui/_Button'
 
 interface EnterpriseProps {
   item: EnterpriseInterface

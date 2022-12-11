@@ -7,6 +7,7 @@ module.exports = {
         '3xl': '1680px',
       },
       container: {
+        center: true,
         screens: {
           sm: '640px',
           md: '768px',
@@ -23,7 +24,6 @@ module.exports = {
           '2xl': '11rem',
           '3xl': '10rem',
         },
-        center: true,
       },
       colors: {
         pinkSugar: '#E7ADFF',
@@ -41,18 +41,27 @@ module.exports = {
         13: 'repeat(13, minmax(0, 1fr))',
         14: 'repeat(14, minmax(0, 1fr))',
       },
+      borderRadius: {
+        primary: '15px',
+      },
+      fontWeight: {
+        primary: 275,
+      },
       fontSize: {
         'head-1': '92px',
-        'head-mobile': '52px',
         'head-2': '80px',
         'head-3': '62px',
         'head-4': '55px',
+        'head-md': '42px',
         'head-5': '26px',
         'head-6': '18px',
         'body-1': '18px',
         'body-2': '22px',
-        'body-mobile': '17px',
         'body-3': '16px',
+        'head-1-mobile': '52px',
+        'head-4-mobile': '28px',
+        'body-1-mobile': '14px',
+        'body-2-mobile': '17px',
         'head-4-res': '35px',
         'body-1-res': '14px',
       },

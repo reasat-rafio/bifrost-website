@@ -4,7 +4,7 @@ import { Footer as FooterType, SocialType } from 'src/lib/@types/types'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { imageUrlBuilder } from 'src/utils/sanity'
-import Button from './ui/Button'
+import Button from './ui/_Button'
 import Link from 'next/link'
 
 interface FooterProps {

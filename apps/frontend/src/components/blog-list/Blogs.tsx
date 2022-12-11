@@ -1,5 +1,5 @@
 import { LoadMoreCard } from 'src/components/common/loaders/LoadMoreCard'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { BlogsSection } from 'src/lib/@types/blogTypes'
 import { formatDate } from 'src/lib/helpers'
 import { useScroll } from 'src/lib/hooks'

@@ -1,5 +1,5 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import Button from 'src/components/ui/Button'
+import Button from 'components/ui/_Button'
 import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
 import { AssuranceSection } from 'src/lib/@types/useCaseTypes'

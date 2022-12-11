@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { ReactElement, useCallback, useRef, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { AnimatePresence, motion } from 'framer-motion'
-import Button from './ui/Button'
+import Button from './ui/_Button'
 import { MenuItem } from 'src/lib/@types/types'
 
 interface NavbarProps {
