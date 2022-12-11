@@ -19,7 +19,7 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   active,
   children,
-  className,
+  className = 'xl:px-12 px-8 py-2 xl:py-3',
   disabled,
   loading,
   href,
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const rootClassName = clsx(
-    'xl:w-auto w-full relative | text-[10px] sm:text-base | text-white | xl:px-8 px-10 py-3 xl:py-3 2xl:py-3 | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none ',
+    'xl:w-auto w-full relative | xl:text-body-3 md:text-[12px] text-[10px] | text-white | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none ',
     loading && '!cursor-not-allowed',
     disabled && 'cursor-not-allowed hover:cursor-not-allowed brightness-75',
     className,
