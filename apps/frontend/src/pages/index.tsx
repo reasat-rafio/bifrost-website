@@ -16,7 +16,7 @@ import Contact from 'src/components/Contact'
 import { HomeSection, LandingPage } from 'src/lib/@types/landingTypes'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
-import Newsletter from 'src/components/Newsletter'
+import Newsletter from 'components/newsletter'
 
 const query = groq`{
   "site": ${siteQuery},

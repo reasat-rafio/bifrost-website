@@ -12,7 +12,7 @@ export const Resume: React.FC<ResumeProps> = ({ headline, ctaButton }) => {
   return (
     <section className="container z-10 relative text-center xl:mb-36 lg:mb-20 mb-16">
       <GradientBorder>
-        <div className="flex flex-col md:space-y-14 space-y-6 | md:py-20 py-10 px-5">
+        <div className="flex flex-col | md:space-y-8 space-y-4 | md:py-20 py-10 px-5">
           <h4 className="max-w-2xl mx-auto | xl:text-head-3 md:text-head-md text-head-3-mobile | font-primary | leading-none text-center">
             <PortableText
               blocks={headline}

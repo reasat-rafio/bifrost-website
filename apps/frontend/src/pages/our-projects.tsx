@@ -1,5 +1,5 @@
 import { Contact } from 'components/common/contact'
-import Newsletter from 'components/Newsletter'
+import Newsletter from 'components/newsletter'
 import { Hero, HeroProps } from 'components/our-projects/hero'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -16,6 +16,10 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
+      projects[]{
+        ...,
+      "image": ${withDimensions('image')},
+      }
     },
   }
 }`

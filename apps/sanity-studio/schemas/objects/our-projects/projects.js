@@ -43,7 +43,6 @@ export default {
             {
               name: 'ctaButton',
               type: 'ctaButton',
-              validation: (Rule) => Rule.required(),
             },
           ],
           preview: {

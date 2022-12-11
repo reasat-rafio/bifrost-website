@@ -1,7 +1,7 @@
 import { Body } from 'src/components/blog/body/Body'
 import { Heading } from 'src/components/blog/Heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Data from 'src/components/Newsletter'
+import Data from 'components/newsletter'
 import { BlogProps } from 'src/lib/@types/blogTypes'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
