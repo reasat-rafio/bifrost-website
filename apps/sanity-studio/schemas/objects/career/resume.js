@@ -11,6 +11,7 @@ export default {
     {
       name: 'headline',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [
         {
           type: 'block',
@@ -35,8 +36,8 @@ export default {
 
     {
       name: 'ctaButton',
-      title: 'CTA Button',
       type: 'ctaButton',
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {

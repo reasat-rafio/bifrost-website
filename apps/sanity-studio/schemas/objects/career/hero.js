@@ -14,7 +14,6 @@ export default {
     {
       name: 'subHeadline',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {

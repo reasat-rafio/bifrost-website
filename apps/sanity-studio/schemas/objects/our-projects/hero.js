@@ -9,6 +9,7 @@ export default {
     {
       name: 'headline',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'subHeadline',
