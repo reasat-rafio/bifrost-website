@@ -24,8 +24,6 @@ const Input = React.forwardRef<any, any>(
     },
     ref,
   ) => {
-    const rootClassName = ''
-
     return (
       <div className={className}>
         <input

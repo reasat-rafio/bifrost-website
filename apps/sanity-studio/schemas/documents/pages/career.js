@@ -16,7 +16,7 @@ export default {
         { type: 'careerPage.hero' },
         { type: 'infoBlock' },
         { type: 'careerPage.perks' },
-        { type: 'newsletter' },
+        { type: 'careerPage.resume' },
         { type: 'contact' },
       ],
     },

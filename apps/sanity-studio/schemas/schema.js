@@ -45,6 +45,7 @@ import career from './documents/pages/career'
 import careerHero from './objects/career/hero'
 import careerAbout from './objects/career/about'
 import careerPerks from './objects/career/perks'
+import careerResume from './objects/career/resume'
 
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
@@ -130,6 +131,7 @@ export default createSchema({
     careerHero,
     careerAbout,
     careerPerks,
+    careerResume,
 
     ourProjects,
     ourProjectsHero,
