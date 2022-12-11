@@ -7,7 +7,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import Contact from 'src/components/Contact'
+import { Contact } from 'src/components/common/contact'
 import { Information } from 'components/common/information'
 
 const query = groq`{

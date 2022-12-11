@@ -59,6 +59,7 @@ module.exports = {
         'body-2': '22px',
         'body-3': '16px',
         'head-1-mobile': '52px',
+        'head-2-mobile': '54px',
         'head-4-mobile': '28px',
         'body-1-mobile': '14px',
         'body-2-mobile': '17px',

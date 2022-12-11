@@ -16,7 +16,7 @@ export const Information: React.FC<InformationProps> = ({ image, subtitle, title
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <section className="container | py-10 ">
+    <section className="container | pt-10 ">
       <figure className="w-full overflow-hidden">
         <SanityImg
           className="w-full h-full max-h-[560px] | object-cover rounded-2xl"
