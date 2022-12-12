@@ -43,6 +43,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
 
   return (
     <motion.div
+      id="navbar"
       animate={{
         color: '#fff',
         transition: { ease: 'easeInOut', duration: 0.3 },
@@ -60,10 +61,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
       )}
     >
       <nav className="lg:container flex flex-wrap justify-between items-center">
-        <div
-          className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start"
-          id="navbar"
-        >
+        <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
           <a
             href="/"
             onClick={(ev) => {

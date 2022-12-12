@@ -13,7 +13,6 @@ import '@styles/global.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
-
   const [seoTitle, setSeoTitle] = useState()
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
@@ -28,15 +27,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       setSeoDescription(pageProps.data?.page.seo.description)
       setOgImage(pageProps.data?.page.seo.seoImage ?? pageProps.data?.site?.ogImage)
     }
+    if (pageProps.data?.site.logos.favicon) {
+      faviconImage = imageUrlBuilder
+        .image(pageProps.data?.site?.logos.favicon)
+        .size(256, 256)
+        .ignoreImageParams()
+        .url()
+    }
   }, [])
-
-  if (pageProps.data?.site.logos.favicon) {
-    faviconImage = imageUrlBuilder
-      .image(pageProps.data?.site?.logos.favicon)
-      .size(256, 256)
-      .ignoreImageParams()
-      .url()
-  }
 
   const openGraphImages = ogImage
     ? [

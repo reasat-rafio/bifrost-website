@@ -17,6 +17,32 @@ export default {
           icon: AiOutlineFundProjectionScreen,
           fields: [
             {
+              name: 'variant',
+              type: 'string',
+              initialValue: 'full-image-text-right',
+              validation: (Rule) => Rule.required(),
+              options: {
+                list: [
+                  {
+                    title: 'Variant 1 (Full Image and Text at Right Side)',
+                    value: 'full-image-text-right',
+                  },
+                  {
+                    title: 'Variant 2 (Full Image and Text at Left Side)',
+                    value: 'full-image-text-left',
+                  },
+                  {
+                    title: 'Variant 3 (Half Image and Text at Right Side)',
+                    value: 'half-image-text-right',
+                  },
+                  {
+                    title: 'Variant 4 (Half Image and Text at Left Side)',
+                    value: 'half-image-text-left',
+                  },
+                ],
+              },
+            },
+            {
               name: 'image',
               type: 'image',
               validation: (Rule) => Rule.required(),
