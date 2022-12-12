@@ -2,6 +2,7 @@ import { Contact } from 'components/common/contact'
 import Newsletter from 'components/newsletter'
 import { Hero, HeroProps } from 'components/our-projects/hero'
 import { Projects } from 'components/our-projects/projects'
+import { BackgroundNoise } from 'components/ui/background-noise'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
@@ -46,6 +47,7 @@ const OurProjects = (props: SanityProps<any>) => {
       })}
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
+        <BackgroundNoise />
         {renderObjectArray(page.sections, {
           'ourProjectsPage.projects': Projects,
           newsletter: Newsletter,

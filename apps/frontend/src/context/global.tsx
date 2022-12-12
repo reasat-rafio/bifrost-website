@@ -8,6 +8,7 @@ interface ContextState {
   tempDatasets: IDatasetCard[]
   lightboxImage: null | SanityImage
   toasts: IToast[]
+  navbarHeight: number
 }
 
 interface ContextAction {
@@ -15,6 +16,7 @@ interface ContextAction {
   setToasts: Dispatch<SetStateAction<IToast[]>>
   setAllDataSets: Dispatch<SetStateAction<IDatasetCard[]>>
   setTempDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
+  setNavabrHeight: Dispatch<SetStateAction<number>>
   addToast: (content: IToast) => void
   removeToast: (id: string) => void
   onDismiss: (id: string) => void
@@ -30,6 +32,7 @@ const Store = createContext<ContextProps>({} as ContextProps)
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lightboxImage, setLightboxImage] = useState<null | SanityImage>(null)
   const [toasts, setToasts] = useState<IToast[]>([])
+  const [navbarHeight, setNavabrHeight] = useState(0)
   const [allDatasets, setAllDataSets] = useState<IDatasetCard[]>([])
   const [tempDatasets, setTempDatasets] = useState<IDatasetCard[]>([])
 
@@ -48,7 +51,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }
 
   const value = {
-    state: { lightboxImage, toasts, allDatasets, tempDatasets },
+    state: { lightboxImage, toasts, allDatasets, tempDatasets, navbarHeight },
     action: {
       setLightboxImage,
       setToasts,
@@ -57,6 +60,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       onDismiss,
       setAllDataSets,
       setTempDatasets,
+      setNavabrHeight,
     },
   }
 

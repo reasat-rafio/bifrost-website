@@ -2,6 +2,7 @@ import { PortableText } from 'src/utils/sanity'
 import { GradientBorder } from './common/GradientBorder'
 import { CTAButton } from 'lib/@types/types'
 import { Button } from './ui/button'
+import { motion } from 'framer-motion'
 
 interface NewsletterProps {
   headline: any
@@ -11,7 +12,13 @@ interface NewsletterProps {
 
 const Newsletter: React.FC<NewsletterProps> = ({ headline, ctaButton, body }) => {
   return (
-    <section className="container z-10 relative text-center xl:mb-36 lg:mb-20 mb-16">
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-200px' }}
+      transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
+      className="container z-10 relative text-center xl:mb-36 lg:mb-20 mb-16"
+    >
       <GradientBorder>
         <div className="flex flex-col md:space-y-8 space-y-4 | md:py-20 py-10 px-5">
           <h4 className="max-w-2xl mx-auto | xl:text-head-3 md:text-head-md text-head-3-mobile | font-primary | leading-none text-center">
@@ -57,7 +64,7 @@ const Newsletter: React.FC<NewsletterProps> = ({ headline, ctaButton, body }) =>
           )}
         </div>
       </GradientBorder>
-    </section>
+    </motion.section>
   )
 }
 
