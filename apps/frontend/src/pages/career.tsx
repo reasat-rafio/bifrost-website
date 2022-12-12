@@ -10,6 +10,7 @@ import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { Contact } from 'src/components/common/contact'
 import { Information } from 'components/common/information'
 import { Resume } from 'components/career/resume'
+import { BackgroundNoise } from 'components/ui/background-noise'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -47,6 +48,7 @@ const Career = (props: SanityProps<any>) => {
       })}
 
       <div className="relative z-10 bg-black" style={{ marginTop: heroSectionHeight }}>
+        <BackgroundNoise />
         {renderObjectArray(page.sections, {
           infoBlock: Information,
           'careerPage.perks': Perks,

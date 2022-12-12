@@ -1,10 +1,13 @@
-import Input from 'components/ui/Input'
+import Input from 'components/ui/input'
 import { CTAButton } from 'lib/@types/types'
 import { useFormspark } from '@formspark/use-formspark'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FormSchema } from 'src/lib/form-schema'
 import { useForm } from 'react-hook-form'
 import { Button } from 'components/ui/button'
+import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { useIntersection } from 'lib/hooks'
 
 interface ContactProps {
   headline: string
@@ -26,10 +29,11 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
     mode: 'onChange',
     resolver: yupResolver(FormSchema),
   })
-
   const [submit, submitting] = useFormspark({
     formId: process.env.NEXT_PUBLIC_FORM_ID,
   })
+  const sectionRef = useRef<HTMLElement>(null)
+  const intersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting
 
   async function onSubmit({ email, message, name }: IFormInput) {
     try {
@@ -43,10 +47,16 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
   }
 
   return (
-    <section className="container py-10">
-      <h4 className="xl:text-head-2 md:text-head-3 text-head-2-mobile | font-primary | xl:w-[50%] lg:w-[60%] w-full | leading-none">
+    <section ref={sectionRef} className="container py-10">
+      <motion.h4
+        initial={{ y: 200 }}
+        whileInView={{ y: 0 }}
+        viewport={{ once: true }}
+        transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
+        className="xl:text-head-2 md:text-head-3 text-head-2-mobile | font-primary | xl:w-[50%] lg:w-[60%] w-full | leading-none"
+      >
         {headline}
-      </h4>
+      </motion.h4>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="lg:w-[60%] w-full | mt-7 ml-auto | flex flex-col space-y-5"

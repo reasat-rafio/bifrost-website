@@ -1,7 +1,9 @@
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
-import { MouseEvent } from 'react'
+import { MouseEvent, useMemo } from 'react'
 import clsx from 'clsx'
+import { motion, Variants } from 'framer-motion'
+import { useWindowSize } from 'lib/hooks'
 
 interface Perk {
   _key: string
@@ -16,7 +18,23 @@ interface PerksProps {
   perks: Perk[]
 }
 
+const ContainerVariants: Variants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+}
+
 export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
+  const imageWidth = useMemo(
+    () => (windowWidth >= 1280 ? 400 : windowWidth > 768 ? 300 : 250),
+    [windowWidth],
+  )
+
   const onMouseMoveAction = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     const cards = document.getElementsByClassName('card') as HTMLCollectionOf<HTMLDivElement>
 
@@ -31,25 +49,51 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
   }
 
   return (
-    <section className="container | pb-16">
-      <h3 className="max-w-4xl | xl:text-head-2 md:text-head-md text-head-4-mobile | leading-none | font-primary text-center | mx-auto mb-14">
+    <section className="container">
+      <motion.h3
+        initial={{ scale: 0.7, opacity: 0, y: 100 }}
+        whileInView={{
+          scale: 1,
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, type: 'tween', ease: 'easeInOut' }}
+        className="max-w-4xl | xl:text-head-2 md:text-head-md text-head-4-mobile | leading-none | font-primary text-center | mx-auto mb-14"
+      >
         {header}
-      </h3>
+      </motion.h3>
 
-      <div onMouseMove={onMouseMoveAction} className={clsx('cards | grid grid-cols-12 gap-5')}>
+      <motion.div
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={ContainerVariants}
+        onMouseMove={onMouseMoveAction}
+        className={clsx('cards | grid grid-cols-12 gap-5')}
+      >
         {perks.map((data) => (
-          <Perk key={data._key} {...data} />
+          <Perk key={data._key} imageWidth={imageWidth} {...data} />
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-const Perk: React.FC<Perk> = ({ image, subtitle, title }) => {
-  // const windowWidth = useWindowSize()?.width ?? 0
-
+const ItemVariants: Variants = {
+  initial: { opacity: 0, y: 100 },
+  animate: { opacity: 1, y: 0 },
+}
+interface PerkProps extends Perk {
+  imageWidth: number
+}
+const Perk: React.FC<PerkProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
-    <article className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}>
+    <motion.article
+      variants={ItemVariants}
+      transition={{ type: 'tween', duration: 0.7 }}
+      className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
+    >
       <div className="card-content | space-y-3 | p-3 | font-light">
         <figure className="h-[220px]">
           <SanityImg
@@ -57,12 +101,12 @@ const Perk: React.FC<Perk> = ({ image, subtitle, title }) => {
             image={image}
             builder={imageUrlBuilder}
             alt={image.alt}
-            width={400}
+            width={imageWidth}
           />
         </figure>
         <h6 className="text-body-2">{title}</h6>
         <p className="text-body-1-mobile opacity-70">{subtitle}</p>
       </div>
-    </article>
+    </motion.article>
   )
 }
