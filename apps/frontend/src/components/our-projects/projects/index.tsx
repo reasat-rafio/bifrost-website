@@ -37,8 +37,6 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   useEffect(() => {
     const navHeight = document.querySelector('#navbar').clientHeight
-    console.log(navHeight)
-
     setNavbarHeight(navHeight)
   }, [windowWidth])
 
@@ -55,92 +53,46 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     [windowHeight, projects],
   )
 
+  const anchorOnClickAction = (index: number) => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        top:
+          sectionRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          windowHeight * index -
+          5,
+        behavior: 'smooth',
+      })
+    }
+  }
+
   return (
     <section ref={sectionRef} style={{ height: `${projects.length * 100}vh` }} className="pt-14 ">
       <div style={{ top: `calc(5% + ${navbarHeight}px)` }} className="container h-screen sticky">
-        <ul className="flex flex-col space-y-2 absolute top-[30%] left-[5%] -translate-y-1/2">
+        <ul className="flex flex-col space-y-2 absolute top-[30%] left-[5%] -translate-y-1/2 |  z-20">
           {projects.map(({ _key }, index) => (
             <motion.li
               whileHover={{ scale: 1.6 }}
               initial={{ scale: 1 }}
               animate={{ scale: index === activeProjectIndex ? 1.6 : 1 }}
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.scrollTo({
-                    top:
-                      sectionRef.current.getBoundingClientRect().top +
-                      window.pageYOffset +
-                      windowHeight * index -
-                      5,
-                    behavior: 'smooth',
-                  })
-                }
-              }}
+              onClick={() => anchorOnClickAction(index)}
               className="h-[8px] w-[8px] bg-[#757AAC] rounded-full cursor-pointer"
               key={_key}
             />
           ))}
         </ul>
-
-        {activeProject.variant === 'full-image-text-right' ? (
-          <FullImageTextRight {...activeProject} />
-        ) : activeProject.variant === 'full-image-text-left' ? (
-          <FullImageTextLeft {...activeProject} />
-        ) : activeProject.variant === 'half-image-text-left' ? (
-          <HalfImageTextLeft {...activeProject} />
-        ) : activeProject.variant === 'half-image-text-right' ? (
-          <HalfImageTextRight {...activeProject} />
-        ) : null}
+        <div className="lg:w-full w-[95%] ml-auto">
+          {activeProject.variant === 'full-image-text-right' ? (
+            <FullImageTextRight {...activeProject} />
+          ) : activeProject.variant === 'full-image-text-left' ? (
+            <FullImageTextLeft {...activeProject} />
+          ) : activeProject.variant === 'half-image-text-left' ? (
+            <HalfImageTextLeft {...activeProject} />
+          ) : activeProject.variant === 'half-image-text-right' ? (
+            <HalfImageTextRight {...activeProject} />
+          ) : null}
+        </div>
       </div>
     </section>
   )
 }
-
-// {
-//   projects.map(({ _key, ctaButton, description, image, title }) => (
-//     <article className="sticky top-0">
-//       <motion.figure
-//         key={_key}
-//         initial={{ opacity: 0, scale: 0.95 }}
-//         animate={{ opacity: 1, scale: 1 }}
-//         transition={{ duration: 0.4, type: 'tween' }}
-//         className="w-full overflow-hidden"
-//       >
-//         <SanityImg
-//           className="w-full h-full max-h-[560px] | object-cover rounded-2xl"
-//           builder={imageUrlBuilder}
-//           width={1000}
-//           image={image}
-//           alt={image?.alt}
-//         />
-//       </motion.figure>
-
-//       <motion.section
-//         key={_key}
-//         initial={{ scale: 0.8 }}
-//         animate={{ scale: 1 }}
-//         transition={{ duration: 0.4, type: 'tween' }}
-//         className="flex justify-end"
-//       >
-//         <div className="max-w-lg | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[20%]  | lg:mr-[5%] lg:ml-0 mr-[2.5%] ml-[2.5%] | background__blur rounded-primary | transition-transform duration-300 ease-in-out">
-//           <h6 className="xl:text-head-4 md:text-head-md text-head-4-mobile | leading-none | font-primary">
-//             {title}
-//           </h6>
-//           <p className="md:text-body-1 text-body-1-mobile | font-light">{description}</p>
-//           {!!ctaButton && (
-//             <div className="z-20 relative">
-//               <Button
-//                 className="!w-fit md:px-10 md:py-2 px-8 py-2"
-//                 variant="secondary"
-//                 type="href"
-//                 href={ctaButton?.href ?? ''}
-//               >
-//                 {ctaButton.title}
-//               </Button>
-//             </div>
-//           )}
-//         </div>
-//       </motion.section>
-//     </article>
-//   ))
-// }

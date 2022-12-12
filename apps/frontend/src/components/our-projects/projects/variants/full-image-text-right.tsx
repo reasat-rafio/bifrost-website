@@ -15,7 +15,7 @@ export const FullImageTextRight: React.FC<ProjectProps> = ({
     <motion.article key={_key}>
       <motion.figure
         key={_key}
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0.6, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, type: 'tween' }}
         className="w-full overflow-hidden"
