@@ -10,7 +10,6 @@ import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import '@styles/global.scss'
-import '@styles/card.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
@@ -77,7 +76,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           )}
           {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-              <div className="bifrost__background_noise" />
+              <div className="__background__noise__" />
             </div>
           )} */}
 

@@ -1,0 +1,75 @@
+.background__blur {
+  backdrop-filter: blur(40px);
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+}
+
+.bifrost__transparent_card {
+  backdrop-filter: blur(40px);
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+
+  border: 0.3px solid #4e6181;
+  border-radius: 15px;
+}
+
+.bifrost__transparent__card {
+  border-radius: 15px;
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+}
+
+.__transparent__background {
+  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  backdrop-filter: blur(80px);
+}
+
+.background__dark {
+  background: linear-gradient(138.39deg, rgba(18, 23, 35, 1) -7.57%, rgba(7, 13, 23, 1) 107.25%);
+}
+
+.__background__noise__::after {
+  background-image: url('../../public/noise.png');
+  transition: opacity 1s ease-in-out;
+  animation: grain 8s steps(10) infinite;
+  content: '';
+  height: 300%;
+  width: 300%;
+  left: -50%;
+  opacity: 0.3;
+  z-index: -1000;
+  position: fixed;
+  top: -110%;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
