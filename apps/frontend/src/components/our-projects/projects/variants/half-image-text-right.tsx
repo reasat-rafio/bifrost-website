@@ -12,16 +12,16 @@ export const HalfImageTextRight: React.FC<ProjectProps> = ({
   title,
 }) => {
   return (
-    <motion.article className="max-h-[560px] relative" key={_key}>
+    <motion.article className="h-[60vh] relative" key={_key}>
       <motion.figure
         key={_key}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, type: 'tween' }}
-        className="w-full overflow-hidden"
+        className="w-full h-full overflow-hidden"
       >
         <SanityImg
-          className="mr-auto xl:w-[60%] md:w-[80%] w-full h-full | object-cover rounded-2xl"
+          className="mr-auto xl:w-[70%] md:w-[80%] w-full h-full | object-cover rounded-2xl"
           builder={imageUrlBuilder}
           width={1000}
           image={image}
@@ -36,7 +36,7 @@ export const HalfImageTextRight: React.FC<ProjectProps> = ({
         transition={{ duration: 0.4, type: 'tween' }}
         className="absolute xl:top-1/2 md:top-[90%] right-0"
       >
-        <div className="max-w-lg | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[20%]  | lg:ml-[5%] lg:mr-0 ml-[2.5%] mr-[2.5%] | background__blur rounded-primary | transition-transform duration-300 ease-in-out">
+        <div className="max-w-xl | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[20%]  | lg:ml-[5%] lg:mr-0 ml-[2.5%] mr-[2.5%] | background__blur rounded-primary | transition-transform duration-300 ease-in-out">
           <h6 className="xl:text-head-4 md:text-head-md text-head-4-mobile | leading-none | font-primary">
             {title}
           </h6>
