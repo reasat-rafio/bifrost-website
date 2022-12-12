@@ -1,7 +1,7 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
 import Button from 'components/ui/_Button'
-import { NoiseBackground } from 'src/components/ui/NoiseBackground'
+import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeSection } from 'src/lib/@types/aboutUsTypes'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 
@@ -26,7 +26,7 @@ export default function AboutHome({
   }, [])
   return (
     <div className="fixed top-0 left-0 w-full overflow-y-clip bg-black" ref={measuredRef}>
-      <NoiseBackground />
+      <BackgroundNoise />
       <div className="absolute z-0 left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />

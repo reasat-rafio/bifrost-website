@@ -1,5 +1,5 @@
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
-import { NoiseBackground } from 'src/components/ui/NoiseBackground'
+import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeSection } from 'src/lib/@types/contactUsTypes'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 import { PortableText } from 'src/utils/sanity'
@@ -19,7 +19,7 @@ export default function ContactHome(data: IHomeSection): ReactElement {
   }, [])
   return (
     <div className="fixed top-0 left-0 w-full overflow-y-clip " ref={measuredRef}>
-      <NoiseBackground />
+      <BackgroundNoise />
       <div className="absolute z-0 left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />

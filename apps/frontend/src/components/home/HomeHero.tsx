@@ -16,7 +16,7 @@ import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
 import { SanityImg } from 'sanity-react-extra'
 import { useWindowSize } from 'src/lib/hooks'
 import { scrollPassedFromTop } from 'src/lib/helpers'
-import { NoiseBackground } from 'src/components/ui/NoiseBackground'
+import { BackgroundNoise } from 'components/ui/background-noise'
 
 interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
@@ -78,7 +78,7 @@ export default function HomeHero(data: IHomeSection): ReactElement {
       data-type="home-hero"
       ref={sectionMeasuredRef}
     >
-      <NoiseBackground />
+      <BackgroundNoise />
       <div className="absolute left-0 bottom-0 w-full h-full flex items-end">
         <div className="relative translate-y-[25vh]">
           <ThreeJSWaves />
