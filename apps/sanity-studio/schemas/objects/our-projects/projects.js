@@ -20,6 +20,7 @@ export default {
               name: 'variant',
               type: 'string',
               initialValue: 'full-image-text-right',
+              description: 'UI can be controlled based on the variant value',
               validation: (Rule) => Rule.required(),
               options: {
                 list: [
