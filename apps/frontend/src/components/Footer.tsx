@@ -28,7 +28,7 @@ function socialIcon(type: SocialType) {
 export default function Footer({ logo, footer }: FooterProps): ReactElement {
   const router = useRouter()
   return (
-    <div className={clsx('backdrop-blur-2xl')}>
+    <div className={clsx('backdrop-blur-2xl bg-black z-10 relative')}>
       <div
         className={clsx(
           'container grid grid-cols-3 md:gap-y-0 gap-y-5 justify-between z-10 relative gap-x-10 py-10',
