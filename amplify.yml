@@ -22,7 +22,7 @@ applications:
         preBuild:
           commands:
             - cd ../../
-            - npm install -g @sanity/cli
+            - yarn add -g @sanity/cli
             - yarn install
         build:
           commands:
