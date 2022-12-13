@@ -20,6 +20,7 @@ export interface ProjectProps {
   description: string
   image: SanityImage
   title: string
+  subtitle?: string
   variant:
     | 'full-image-text-right'
     | 'full-image-text-left'
@@ -68,7 +69,10 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   return (
     <section ref={sectionRef} style={{ height: `${projects.length * 100}vh` }} className="pt-14 ">
-      <div style={{ top: `calc(5% + ${navbarHeight}px)` }} className="container h-screen sticky">
+      <div
+        style={{ top: `calc(${windowWidth >= 1024 ? '5' : '1'}% + ${navbarHeight}px)` }}
+        className="container h-screen sticky"
+      >
         <ul className="flex flex-col space-y-2 absolute top-[30%] left-[5%] -translate-y-1/2 |  z-20">
           {projects.map(({ _key }, index) => (
             <motion.li

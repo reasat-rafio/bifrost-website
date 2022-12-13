@@ -63,6 +63,10 @@ export default {
               validation: (Rule) => Rule.required(),
             },
             {
+              name: 'subtitle',
+              type: 'string',
+            },
+            {
               name: 'description',
               type: 'text',
               validation: (Rule) => Rule.required(),
@@ -75,7 +79,7 @@ export default {
           preview: {
             select: {
               title: 'title',
-              subtitle: 'description',
+              subtitle: 'subtitle',
               media: 'image',
             },
           },
