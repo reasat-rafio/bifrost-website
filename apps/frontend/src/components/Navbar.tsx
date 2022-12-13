@@ -18,8 +18,8 @@ interface NavbarProps {
 export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElement {
   const router = useRouter()
   const ctaButton = menu.filter((men) => men.isCTA)[0]
-  const [smallNavOpen, setSmallNavOpen] = useState<boolean>(false)
-  const [smallNav, setSmallNav] = useState<boolean>(false)
+  const [smallNavOpen, setSmallNavOpen] = useState(false)
+  const [smallNav, setSmallNav] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
 
   const navVisible = !smallNav || smallNavOpen
@@ -97,7 +97,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
               initial="initial"
               animate="animate"
               exit="exit"
-              className={clsx('backdrop-blur-3xl', smallNavOpen && 'w-full')}
+              className={clsx('backdrop-blur-3xl flex-1', smallNavOpen && 'w-full ')}
               variants={{
                 initial: {
                   opacity: 0,
@@ -139,16 +139,13 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                 ref={menuRef}
               >
                 <motion.ul
-                  className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0"
+                  className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0 justify-around w-full 2xl:px-[5%] space-x-1"
                   layout
                 >
                   {menu
                     .filter((men) => !men.isCTA)
                     .map((men, _) => (
-                      <li
-                        key={men.title}
-                        className="dropdown relative items-center mx-10 py-2 my-2 "
-                      >
+                      <li key={men.title} className="dropdown relative items-center py-2 my-2 ">
                         <a
                           onClick={(ev) => {
                             if (men.url) {
