@@ -2,12 +2,10 @@ import { SanityImage } from 'sanity-react-extra'
 import { CTAButton } from 'lib/@types/types'
 import { useEffect, useRef, useState } from 'react'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'lib/hooks'
-import { motion } from 'framer-motion'
 import { FullImageTextRight } from './variants/full-image-text-right'
 import { FullImageTextLeft } from './variants/full-image-text-left'
 import { HalfImageTextLeft } from './variants/half-image-text-left'
 import { HalfImageTextRight } from './variants/half-image-text-right'
-import clsx from 'clsx'
 import { Anchor } from './anchor'
 
 interface ProjectsProps {
