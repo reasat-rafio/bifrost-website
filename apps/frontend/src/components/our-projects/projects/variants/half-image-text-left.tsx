@@ -35,7 +35,7 @@ export const HalfImageTextLeft: React.FC<ProjectProps> = ({
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.4, type: 'tween' }}
-        className="absolute xl:top-1/2 md:top-[90%] left-0"
+        className="absolute xl:top-1/2 md:top-[90%] sm:top-1/2 top-[70%] left-0"
       >
         <div className="max-w-xl | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[30%] | lg:ml-[5%] lg:mr-0 ml-[2.5%] mr-[2.5%] | background__blur rounded-primary | transition-transform duration-300 ease-in-out">
           <h5 className="xl:text-head-4 md:text-head-md text-head-4-mobile | leading-none | font-primary">

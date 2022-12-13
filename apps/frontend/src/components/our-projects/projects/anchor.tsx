@@ -29,7 +29,7 @@ export const Anchor: React.FC<AnchorProps> = ({
     }
   }
   return (
-    <ul className="flex flex-col space-y-3 absolute top-[30%] 2xl:left-[10%] left-[5%] -translate-y-1/2 |  z-20">
+    <ul className="flex flex-col space-y-3 absolute top-[30%] left-[5%] -translate-y-1/2 |  z-20">
       {projects.map(({ _key }, index) => (
         <motion.li
           key={_key}

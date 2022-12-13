@@ -139,7 +139,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                 ref={menuRef}
               >
                 <motion.ul
-                  className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0 justify-around w-full 2xl:px-[5%] space-x-1"
+                  className="flex flex-col lg:flex-row items-center list-none lg:ml-auto mt-4 md:mt-0 justify-around w-full 2xl:px-[5%] 3xl:px-[10%] space-x-1"
                   layout
                 >
                   {menu
