@@ -13,7 +13,7 @@ export const FullImageTextRight: React.FC<ProjectProps> = ({
   subtitle,
 }) => {
   return (
-    <motion.article className="3xl:h-[520px] 2xl:h-[55vh] h-[50vh] relative" key={_key}>
+    <motion.article className="3xl:h-[560px] 2xl:h-[55vh] h-[50vh] relative" key={_key}>
       <motion.figure
         key={_key}
         initial={{ opacity: 0.6, scale: 0.95 }}
