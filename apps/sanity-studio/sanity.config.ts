@@ -7,7 +7,7 @@ import { table } from '@sanity/table'
 
 export default defineConfig({
   name: 'default',
-  title: 'Bifrsot Studio',
+  title: 'Bifrost Studio',
 
   projectId: 'p86pglis',
   dataset: 'production',
