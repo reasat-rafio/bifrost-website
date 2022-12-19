@@ -3,18 +3,17 @@ import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas/schema'
 import { AppStructure } from './desk-structure'
-// @ts-ignore
-// import table from 'sanity-plugin-table'
+import { table } from '@sanity/table'
 
 export default defineConfig({
   name: 'default',
-  title: 'Portfolio',
+  title: 'Bifrsot Studio',
 
-  projectId: 'j860ecxk',
+  projectId: 'p86pglis',
   dataset: 'production',
 
   plugins: [
-    // table(),
+    table(),
     visionTool(),
     deskTool({
       structure: AppStructure,
