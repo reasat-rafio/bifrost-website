@@ -151,12 +151,13 @@ export default {
       ],
     },
     { name: 'attributes', type: 'array', of: [{ type: 'attribute' }], group: 'attributes' },
-    {
-      name: 'classes',
-      description: 'First column is for name and second column is for value',
-      type: 'table',
-      group: 'classes',
-    },
+    // @TODO add table
+    // {
+    //   name: 'classes',
+    //   description: 'First column is for name and second column is for value',
+    //   type: 'table',
+    //   group: 'classes',
+    // },
   ],
   preview: {
     select: {

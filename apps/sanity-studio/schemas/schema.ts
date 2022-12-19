@@ -72,90 +72,164 @@ import datasetNotFound from './objects/dataset-not-found'
 import datasetDetails from './documents/pages/dataset-details'
 
 // First, we must import the schema creator
-import createSchema from 'part:@sanity/base/schema-creator'
+// import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
-import schemaTypes from 'all:part:@sanity/base/schema-type'
+// import schemaTypes from 'all:part:@sanity/base/schema-type'
 
-// Then we give our schema to the builder and provide the result to Sanity
-export default createSchema({
-  // We name our schema
-  name: 'default',
-  // Then proceed to concatenate our document type
-  // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    /* Your types here! */
-    logos,
-    nav,
-    siteRedirects,
-    contactSection,
-    newsletter,
+// // Then we give our schema to the builder and provide the result to Sanity
+// export default createSchema({
+//   // We name our schema
+//   name: 'default',
+//   // Then proceed to concatenate our document type
+//   // to the ones provided by any plugins that are installed
+//   types: schemaTypes.concat([
+//     /* Your types here! */
+// logos,
+// nav,
+// siteRedirects,
+// contactSection,
+// newsletter,
 
-    imformation,
+// imformation,
 
-    hero,
-    seo,
-    social,
-    ctaButton,
-    footer,
-    menuItem,
-    initial,
-    quote,
-    tag,
+// hero,
+// seo,
+// social,
+// ctaButton,
+// footer,
+// menuItem,
+// initial,
+// quote,
+// tag,
 
-    contactUs,
-    contactUsHomeSection,
+// contactUs,
+// contactUsHomeSection,
 
-    landing,
-    landingHomeSection,
-    landingProductsSection,
-    landingDemoSection,
-    landingServicesSection,
-    landingProjectsSection,
-    landingReviewsSection,
+// landing,
+// landingHomeSection,
+// landingProductsSection,
+// landingDemoSection,
+// landingServicesSection,
+// landingProjectsSection,
+// landingReviewsSection,
 
-    aboutUs,
-    aboutUsHomeSection,
-    aboutUsclientsSection,
-    aboutUsAboutSection,
-    aboutUsReasonSection,
-    aboutUsTeamSection,
+// aboutUs,
+// aboutUsHomeSection,
+// aboutUsclientsSection,
+// aboutUsAboutSection,
+// aboutUsReasonSection,
+// aboutUsTeamSection,
 
-    useCase,
-    useCaseHome,
-    useCaseAssurance,
-    useCaseEnterprise,
-    useCaseExample,
-    useCaseFeature,
+// useCase,
+// useCaseHome,
+// useCaseAssurance,
+// useCaseEnterprise,
+// useCaseExample,
+// useCaseFeature,
 
-    career,
-    careerHero,
-    careerAbout,
-    careerPerks,
-    careerResume,
+// career,
+// careerHero,
+// careerAbout,
+// careerPerks,
+// careerResume,
 
-    ourProjects,
-    ourProjectsHero,
-    ourProjectsProjects,
+// ourProjects,
+// ourProjectsHero,
+// ourProjectsProjects,
 
-    blog,
+// blog,
 
-    blogListPage,
-    blogListHome,
+// blogListPage,
+// blogListHome,
 
-    blogDetails,
+// blogDetails,
 
-    dataset,
-    attribute,
-    ctaList,
-    taskType,
-    labelFormat,
-    tasks,
-    category,
+// dataset,
+// attribute,
+// ctaList,
+// taskType,
+// labelFormat,
+// tasks,
+// category,
 
-    datasetListPage,
-    datasetNotFound,
+// datasetListPage,
+// datasetNotFound,
 
-    datasetDetails,
-  ]),
-})
+// datasetDetails,
+//   ]),
+// })
+export const schemaTypes = [
+  logos,
+  nav,
+  siteRedirects,
+  contactSection,
+  newsletter,
+
+  imformation,
+
+  hero,
+  seo,
+  social,
+  ctaButton,
+  footer,
+  menuItem,
+  initial,
+  quote,
+  tag,
+
+  contactUs,
+  contactUsHomeSection,
+
+  landing,
+  landingHomeSection,
+  landingProductsSection,
+  landingDemoSection,
+  landingServicesSection,
+  landingProjectsSection,
+  landingReviewsSection,
+
+  aboutUs,
+  aboutUsHomeSection,
+  aboutUsclientsSection,
+  aboutUsAboutSection,
+  aboutUsReasonSection,
+  aboutUsTeamSection,
+
+  useCase,
+  useCaseHome,
+  useCaseAssurance,
+  useCaseEnterprise,
+  useCaseExample,
+  useCaseFeature,
+
+  career,
+  careerHero,
+  careerAbout,
+  careerPerks,
+  careerResume,
+
+  ourProjects,
+  ourProjectsHero,
+  ourProjectsProjects,
+
+  blog,
+
+  blogListPage,
+  blogListHome,
+
+  blogDetails,
+
+  dataset,
+  attribute,
+  ctaList,
+  taskType,
+  labelFormat,
+  tasks,
+  category,
+
+  datasetListPage,
+  datasetNotFound,
+
+  datasetDetails,
+]

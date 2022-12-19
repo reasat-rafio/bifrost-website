@@ -4,33 +4,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Riel Bulaybulay <rielj@otterdev.io>",
+  "author": "Reasat Rafio <rafio@otterdev.io>",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity start",
-    "build": "sanity build"
+    "start": "sanity start",
+    "build": "sanity build",
+    "dev": "sanity dev"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.25.0",
-    "@sanity/core": "^2.25.0",
-    "@sanity/default-layout": "^2.25.0",
-    "@sanity/default-login": "^2.24.1",
-    "@sanity/desk-tool": "^2.25.0",
-    "@sanity/eslint-config-studio": "^2.0.0",
-    "@sanity/vision": "^2.25.0",
-    "eslint": "^8.6.0",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
+    "@sanity/vision": "^3.0.6",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
-    "sanity-plugin-order-documents": "^0.0.22",
-    "sanity-plugin-table": "^2.3.0",
+    "sanity": "^3.0.6",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {
-    "tsconfig": "*"
-  }
+  "devDependencies": {}
 }

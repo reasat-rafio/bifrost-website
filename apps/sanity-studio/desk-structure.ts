@@ -1,45 +1,33 @@
-import S from '@sanity/desk-tool/structure-builder'
+import { StructureBuilder } from 'sanity/desk'
 import { MdContactPhone, MdOutlineWorkOutline } from 'react-icons/md'
 import { FcAbout, FcViewDetails } from 'react-icons/fc'
 import { GrActions, GrArticle, GrEdit, GrView, GrWorkshop } from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
-import * as React from 'react'
 import { FaSitemap, FaHome } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
+import { SitePreview } from './components/site-preview'
+import { PageItemProps } from './types'
 
-function SitePreview({ document, options }) {
-  if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
-    console.warn(
-      'SANITY_STUDIO_PREVIEW_URL should be set for preview to work! Falling back to localhost:3000',
-    )
-  }
-  return (
-    <iframe
-      src={`${
-        process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000'
-      }/api/preview?secret=${process.env.SANITY_STUDIO_PREVIEW_TOKEN}&slug=${options.slug}`}
-      style={{ width: '100%', height: '100%', border: 0 }}
-    />
-  )
-}
-
-const singleItem = ({ schemaType, id, title, icon }) =>
+const singleItem = (S: StructureBuilder, { schemaType, id, title, icon }: PageItemProps) =>
   S.listItem({ schemaType, title, id, icon }).child(
     S.editor().id(id).title(title).schemaType(schemaType),
   )
 
-const pageItem = ({ schemaType, id, title, icon, slug }) =>
+const pageItem = (
+  S: StructureBuilder,
+  { schemaType, id, title, icon = GrEdit, slug }: PageItemProps,
+) =>
   S.documentListItem({ schemaType, id, title, icon }).child(
     S.editor()
       .schemaType(schemaType)
       .views([
-        S.view.form().icon(GrEdit),
+        S.view.form().icon(icon),
         S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
       ]),
   )
 
-export default () =>
+export const AppStructure = (S: StructureBuilder) =>
   S.list()
     .title('Content')
     .id('__root__')
@@ -51,12 +39,12 @@ export default () =>
           S.list()
             .title('Site')
             .items([
-              singleItem({
+              singleItem(S, {
                 schemaType: 'site.logos',
                 id: 'siteLogos',
                 title: 'Logos',
               }),
-              singleItem({
+              singleItem(S, {
                 schemaType: 'site.nav',
                 id: 'siteNav',
                 title: 'Navigation',
@@ -74,63 +62,63 @@ export default () =>
           S.list()
             .title('Pages')
             .items([
-              pageItem({
+              pageItem(S, {
                 schemaType: 'landingPage',
                 id: 'landingPage',
                 title: 'Landing',
                 icon: FaHome,
                 slug: '',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'contactUsPage',
                 id: 'contactUsPage',
                 title: 'Contact Us',
                 icon: MdContactPhone,
                 slug: 'contact-us',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'aboutUsPage',
                 id: 'aboutUsPage',
                 title: 'About Us',
                 icon: FcAbout,
                 slug: 'about-us',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'useCasePage',
                 id: 'useCasePage',
                 title: 'Use Case',
                 icon: GrActions,
                 slug: 'use-case',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'careerPage',
                 id: 'careerPage',
                 title: 'Career',
                 icon: MdOutlineWorkOutline,
                 slug: 'career',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'ourProjectsPage',
                 id: 'ourProjectsPage',
                 title: 'Our Projects',
                 icon: GrWorkshop,
                 slug: 'our-project',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'blogPage',
                 id: 'blogPage',
                 title: 'Blog List Page',
                 icon: GrArticle,
                 slug: 'blog',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'blogDetailsPage',
                 id: 'blogDetailsPage',
                 title: 'Blog Details Page',
                 icon: FcViewDetails,
                 slug: '',
               }),
-              pageItem({
+              pageItem(S, {
                 schemaType: 'datasetListPage',
                 id: 'datasetListPage',
                 title: 'Dataset List Page',
@@ -138,7 +126,7 @@ export default () =>
                 slug: 'datasets',
               }),
 
-              pageItem({
+              pageItem(S, {
                 schemaType: 'datasetDetailsPage',
                 id: 'datasetDetailsPage',
                 title: 'Dataset Details Page',
