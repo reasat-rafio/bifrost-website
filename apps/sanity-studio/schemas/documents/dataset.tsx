@@ -50,10 +50,10 @@ const Dataset = defineType({
         layout: 'tags',
       },
       of: [
-        {
+        defineArrayMember({
           type: 'reference',
           to: { type: 'taskType' },
-        },
+        }),
       ],
     }),
 
