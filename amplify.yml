@@ -22,7 +22,6 @@ applications:
         preBuild:
           commands:
             - cd ../../
-            - yarn add -g @sanity/cli
             - yarn install
         build:
           commands:
