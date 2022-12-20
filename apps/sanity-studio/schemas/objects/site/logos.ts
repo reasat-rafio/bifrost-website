@@ -31,8 +31,8 @@ export default {
     },
   ],
   preview: {
-    select: {
-      media: 'logo',
-    },
+    prepare: () => ({
+      title: 'Logos',
+    }),
   },
 }
