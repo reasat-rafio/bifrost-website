@@ -91,6 +91,13 @@ export const AppStructure = (S: StructureBuilder) =>
                 slug: 'use-case',
               }),
               pageItem(S, {
+                schemaType: 'whySyntheticDataPage',
+                id: 'whySyntheticDataPage',
+                title: 'Why Synthetic Data Page',
+                icon: GrActions,
+                slug: 'why-synthetic-data',
+              }),
+              pageItem(S, {
                 schemaType: 'careerPage',
                 id: 'careerPage',
                 title: 'Career',
