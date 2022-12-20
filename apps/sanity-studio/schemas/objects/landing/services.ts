@@ -12,7 +12,7 @@ export default {
     },
     {
       name: 'headline',
-      type: 'string',
+      type: 'text',
     },
     {
       name: 'items',

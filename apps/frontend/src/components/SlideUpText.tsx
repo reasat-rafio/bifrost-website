@@ -19,6 +19,7 @@ export default function SlideUp({
       {lines?.map((line: string) => (
         <motion.div key={line}>
           <motion.h3
+            className="whitespace-pre-wrap"
             initial={{ opacity: 0, y: '150%' }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ margin: rootMargin, once: false, root: divRef }}

@@ -1,13 +1,12 @@
 import Service from 'src/components/Service'
-import SlideUp from 'src/components/SlideUpText'
 import { ServiceSection } from 'src/lib/@types/landingTypes'
 import { ReactElement, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { Pagination } from './Pagination'
+import { motion } from 'framer-motion'
 
 export default function HomeService({ items, headline }: ServiceSection): ReactElement {
   const serviceRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
 
   const [current, setCurrent] = useState(0)
   const { height: windowHeight } = useWindowSize() ?? {
@@ -15,7 +14,7 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
     height: 0,
   }
 
-  function setItem(index: number) {
+  const setItem = (index: number) => {
     if (serviceRef.current) {
       setCurrent(index)
       window.scrollTo({
@@ -24,20 +23,30 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
       })
     }
   }
+  const lines = headline?.split(/\r\n|\n/)
 
   return (
-    <section className="container ">
-      <div className="text-center md:text-head-1 text-[28px] leading-[28px] font-[275] z-10 relative xl:my-32 lg:my-16 my-14">
-        <SlideUp divRef={headingRef} text={headline} />
-      </div>
-      <div
+    <section className="container xl:py-32 lg:py-16 py-14">
+      <header className="text-center md:text-head-1 text-[28px] leading-none font-[275] z-10 relative">
+        {lines.map((line) => (
+          <motion.h3
+            className="whitespace-pre-wrap"
+            initial={{ opacity: 0, y: '150%' }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: 'tween', duration: 1, ease: 'backInOut' }}
+          >
+            {line}
+          </motion.h3>
+        ))}
+      </header>
+      <section
+        ref={serviceRef}
         data-element="background"
         className="relative flex justify-center items-start transition duration-300 ease-in-out"
         style={{
           willChange: 'background',
           minHeight: `${items.length + 1}00vh`,
         }}
-        ref={serviceRef}
       >
         <div className="sticky w-full top-0 h-screen">
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 -translate-x-10">
@@ -63,7 +72,7 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   )
 }
