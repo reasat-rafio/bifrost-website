@@ -16,7 +16,6 @@ import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'src/lib/@types/aboutUsTypes'
-import SmoothScroll from 'src/components/ui/SmoothScrolling'
 import { Contact } from 'components/common/contact'
 
 const query = groq`{
@@ -50,26 +49,24 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
           ),
         })}
       </PrimaryWrapper>
-      <SmoothScroll>
-        <div
-          className="bg-black"
-          style={{
-            transform: `translate(0, ${heroSectionHeight}px)`,
-            marginBottom: `${heroSectionHeight}px`,
-          }}
-        >
-          <PrimaryWrapper>
-            {renderObjectArray(sections, {
-              'aboutUs.about': AboutAbout,
-              'aboutUs.reason': AboutReason,
-              'aboutUs.team': AboutTeam,
-              'aboutUs.clients': AboutClients,
-              newsletter: Newsletter,
-              contact: Contact,
-            })}
-          </PrimaryWrapper>
-        </div>
-      </SmoothScroll>
+      <div
+        className="bg-black"
+        style={{
+          transform: `translate(0, ${heroSectionHeight}px)`,
+          marginBottom: `${heroSectionHeight}px`,
+        }}
+      >
+        <PrimaryWrapper>
+          {renderObjectArray(sections, {
+            'aboutUs.about': AboutAbout,
+            'aboutUs.reason': AboutReason,
+            'aboutUs.team': AboutTeam,
+            'aboutUs.clients': AboutClients,
+            newsletter: Newsletter,
+            contact: Contact,
+          })}
+        </PrimaryWrapper>
+      </div>
 
       <>
         <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />

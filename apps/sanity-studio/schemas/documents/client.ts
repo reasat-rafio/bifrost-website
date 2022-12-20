@@ -1,27 +1,27 @@
 import { IoPeopleOutline } from 'react-icons/io5'
+import { Rule } from 'sanity'
 
-export default {
-  name: 'aboutUs.clients',
-  title: 'Clients',
-  type: 'object',
+const Client = {
+  name: 'client',
+  title: 'Client',
+  type: 'document',
   icon: IoPeopleOutline,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
-    },
-    {
       name: 'headline',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'subHeadline',
       title: 'Sub-Headline',
-      type: 'string',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'clients',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
         {
           name: 'client',
@@ -35,6 +35,7 @@ export default {
               name: 'logo',
               type: 'image',
               title: 'Client logo',
+              validation: (Rule: Rule) => Rule.required(),
               fields: [
                 {
                   name: 'alt',
@@ -52,7 +53,9 @@ export default {
   preview: {
     select: {
       title: 'headline',
-      subtitle: 'body',
+      subtitle: 'subHeadline',
     },
   },
 }
+
+export default Client

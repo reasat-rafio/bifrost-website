@@ -23,7 +23,7 @@ const pageItem = (
       .schemaType(schemaType)
       .views([
         S.view.form().icon(icon),
-        // S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
+        S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
       ]),
   )
 
@@ -136,6 +136,12 @@ export const AppStructure = (S: StructureBuilder) =>
             ]),
         ),
       S.divider(),
+
+      S.documentListItem()
+        .schemaType('client')
+        .id('client')
+        .title('Client')
+        .child(S.editor().schemaType('client').title('Client')),
 
       S.listItem()
         .title('Blogs')

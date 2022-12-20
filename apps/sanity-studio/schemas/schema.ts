@@ -14,6 +14,8 @@ import initial from './objects/initial'
 import quote from './objects/quote'
 import tag from './documents/tag'
 
+import client from './documents/client'
+
 import imformation from './objects/common/information'
 
 import landing from './documents/pages/landing'
@@ -29,7 +31,6 @@ import contactUsHomeSection from './objects/contact-us/home'
 
 import aboutUs from './documents/pages/about-us'
 import aboutUsHomeSection from './objects/about-us/home'
-import aboutUsclientsSection from './objects/about-us/clients'
 import aboutUsAboutSection from './objects/about-us/about'
 import aboutUsReasonSection from './objects/about-us/reason'
 import aboutUsTeamSection from './objects/about-us/team'
@@ -71,16 +72,14 @@ import datasetNotFound from './objects/dataset-not-found'
 
 import datasetDetails from './documents/pages/dataset-details'
 
-import data from './objects/data'
-
 export const schemaTypes = [
   logos,
   nav,
-  data,
   siteRedirects,
   contactSection,
   newsletter,
 
+  client,
   imformation,
 
   hero,
@@ -106,7 +105,6 @@ export const schemaTypes = [
 
   aboutUs,
   aboutUsHomeSection,
-  aboutUsclientsSection,
   aboutUsAboutSection,
   aboutUsReasonSection,
   aboutUsTeamSection,
