@@ -7,11 +7,7 @@ import { ReactElement, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
 
-export default function AboutReason({
-  headline,
-  reasons,
-  subHeadline,
-}: ReasonSection): ReactElement {
+export default function Reason({ headline, reasons, subHeadline }: ReasonSection): ReactElement {
   const [active, setActive] = useState(0)
 
   return (

@@ -7,7 +7,7 @@ import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 
-export default function AboutAbout({
+export default function About({
   body,
   ctaButton,
   headline,

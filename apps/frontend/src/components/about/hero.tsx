@@ -9,7 +9,7 @@ interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
 }
 
-export default function AboutHome({
+export default function Hero({
   body,
   ctaButton,
   headline,

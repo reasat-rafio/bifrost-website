@@ -1,8 +1,8 @@
-import AboutAbout from 'src/components/about/AboutAbout'
-import AboutClients from 'src/components/about/AboutClients'
-import AboutHome from 'src/components/about/AboutHome'
-import AboutReason from 'src/components/about/AboutReason'
-import AboutTeam from 'src/components/about/AboutTeam'
+import About from 'components/about/about'
+import Clients from 'src/components/about/AboutClients'
+import Home from 'components/about/hero'
+import Reason from 'components/about/reason'
+import Team from 'components/about/team'
 import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { ContactUsPage } from 'src/lib/@types/contactUsTypes'
@@ -67,7 +67,7 @@ export default function AboutUs(props: SanityProps<any>) {
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           'aboutUs.home': useCallback(
-            (p: HomeSection) => <AboutHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
@@ -81,10 +81,10 @@ export default function AboutUs(props: SanityProps<any>) {
       >
         <PrimaryWrapper>
           {renderObjectArray(sections, {
-            'aboutUs.about': AboutAbout,
-            'aboutUs.reason': AboutReason,
-            'aboutUs.team': AboutTeam,
-            'aboutUs.clients': AboutClients,
+            'aboutUs.about': About,
+            'aboutUs.reason': Reason,
+            'aboutUs.team': Team,
+            'aboutUs.clients': Clients,
             newsletter: Newsletter,
             contact: Contact,
           })}

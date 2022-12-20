@@ -6,7 +6,7 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 
-export default function AboutTeam({ headline, members, subHeadline }: TeamSection): ReactElement {
+export default function Team({ headline, members, subHeadline }: TeamSection): ReactElement {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
