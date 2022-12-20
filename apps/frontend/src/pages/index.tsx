@@ -4,7 +4,6 @@ import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { Site } from 'src/lib/@types/types'
 import HomeHero from 'src/components/home/HomeHero'
 import HomeProduct from 'src/components/home/HomeProduct'
 import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
@@ -13,10 +12,11 @@ import HomeProjects from 'src/components/home/HomeProjects'
 import Ellipse from 'src/components/Ellipse'
 import HomeReview from 'src/components/home/HomeReview'
 import { Contact } from 'src/components/common/contact'
-import { HomeSection, LandingPage } from 'src/lib/@types/landingTypes'
+import { HomeSection } from 'src/lib/@types/landingTypes'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import Newsletter from 'components/newsletter'
+import Client from 'components/common/client'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -48,6 +48,13 @@ const query = groq`{
         "image": ${withDimensions('image')},
       }
     },
+    "cleint" : *[_id == "client"][0] {
+        ...,
+        clients[]{
+         ...,
+          "image": ${withDimensions('image')},
+      }
+    }
   },
 }`
 
@@ -56,10 +63,10 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Home(props: SanityProps<{ site: Site; page: LandingPage }>) {
+export default function Home(props: SanityProps<any>) {
   const {
     data: {
-      page: { sections },
+      page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
 
@@ -86,9 +93,12 @@ export default function Home(props: SanityProps<{ site: Site; page: LandingPage 
             'landing.products': HomeProduct,
             'landing.demo': HomeDemo,
             'landing.services': HomeService,
-            newsletter: Newsletter,
             'landing.projects': HomeProjects,
             'landing.reviews': HomeReview,
+          })}
+          <Client {...cleint} />
+          {renderObjectArray(sections, {
+            newsletter: Newsletter,
             contact: Contact,
           })}
         </PrimaryWrapper>

@@ -12,23 +12,19 @@ import 'swiper/css/pagination'
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Header } from 'src/components/ui/Header'
 
-export default function AboutClients({
-  clients,
-  headline,
-  subHeadline,
-}: ClientsSection): ReactElement {
+export default function Client({ clients, headline, subHeadline }: ClientsSection): ReactElement {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
 
   return (
-    <section className="container text-center !z-40 relative">
+    <section className="container text-center !z-10 relative | mb-36">
       <header className="max-w-2xl mx-auto mb-5">
-        <GradientTitle className="mx-auto mb-5">{subHeadline}</GradientTitle>
-        <Header>{headline}</Header>
+        <GradientTitle className="mx-auto mb-5">{headline}</GradientTitle>
+        <Header>{subHeadline}</Header>
       </header>
-      <div className="">
+      <div>
         {windowWidth >= 1024 ? (
           <div className="grid grid-cols-12 gap-16 py-5">
             {clients.map((team) => (

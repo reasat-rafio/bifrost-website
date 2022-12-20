@@ -1,13 +1,10 @@
 import About from 'components/about/about'
-import Clients from 'src/components/about/AboutClients'
 import Home from 'components/about/hero'
 import Reason from 'components/about/reason'
 import Team from 'components/about/team'
 import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
-import { ContactUsPage } from 'src/lib/@types/contactUsTypes'
 import { siteQuery } from 'src/lib/query'
-import { Site } from 'src/lib/@types/types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
@@ -17,6 +14,7 @@ import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'src/lib/@types/aboutUsTypes'
 import { Contact } from 'components/common/contact'
+import Client from 'components/common/client'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -35,10 +33,10 @@ const query = groq`{
       },
     },
     "cleint" : *[_id == "client"][0] {
-      ...,
-      clients[]{
         ...,
-        "image": ${withDimensions('image')},
+        clients[]{
+         ...,
+          "image": ${withDimensions('image')},
       }
     }
   },
@@ -56,12 +54,7 @@ export default function AboutUs(props: SanityProps<any>) {
     },
   } = useSanityQuery(query, props)
 
-  console.log('====================================')
-  console.log(cleint)
-  console.log('====================================')
-
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
-
   return (
     <div>
       <PrimaryWrapper>
@@ -84,7 +77,9 @@ export default function AboutUs(props: SanityProps<any>) {
             'aboutUs.about': About,
             'aboutUs.reason': Reason,
             'aboutUs.team': Team,
-            'aboutUs.clients': Clients,
+          })}
+          <Client {...cleint} />
+          {renderObjectArray(sections, {
             newsletter: Newsletter,
             contact: Contact,
           })}
