@@ -4,7 +4,6 @@ export default {
   name: 'landing.products',
   title: 'Products',
   type: 'object',
-  icon: FaProductHunt,
   fields: [
     {
       name: 'initials',
@@ -53,7 +52,15 @@ export default {
     select: {
       title: 'headline',
       subtitle: 'body',
-      media: 'images[0].image',
+      media: 'images.0',
+    },
+    prepare({ title, subtitle, media }: any) {
+      return {
+        title,
+        subtitle,
+        media,
+        icon: FaProductHunt,
+      }
     },
   },
 }

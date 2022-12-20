@@ -16,6 +16,11 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "schemas/documents/pages/landing.tss",
+    "schemas/documents/pages/landing.tss"
+  ],
   "exclude": ["node_modules"]
 }
