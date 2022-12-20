@@ -71,9 +71,12 @@ import datasetNotFound from './objects/dataset-not-found'
 
 import datasetDetails from './documents/pages/dataset-details'
 
+import data from './objects/data'
+
 export const schemaTypes = [
   logos,
   nav,
+  data,
   siteRedirects,
   contactSection,
   newsletter,

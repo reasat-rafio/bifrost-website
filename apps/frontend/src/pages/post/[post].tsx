@@ -1,7 +1,7 @@
 import { Body } from 'src/components/blog/body/Body'
 import { Heading } from 'src/components/blog/Heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Data from 'components/newsletter'
+import Newsletter from 'components/newsletter'
 import { BlogProps } from 'src/lib/@types/blogTypes'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -82,14 +82,11 @@ export default function Blog(props: SanityProps) {
         <Heading heading={heading} datetime={datetime} />
         <Body paddingY={paddingY} body={body} />
       </article>
-
       <PrimaryWrapper>
         {renderObjectArray(sections, {
-          data: Data,
+          newsletter: Newsletter,
         })}
-
         <RelatedBlogs relatedBlogs={relatedBlogs} />
-
         {renderObjectArray(sections, {
           contact: Contact,
         })}

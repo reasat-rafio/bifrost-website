@@ -4,7 +4,7 @@ import AboutHome from 'src/components/about/AboutHome'
 import AboutReason from 'src/components/about/AboutReason'
 import AboutTeam from 'src/components/about/AboutTeam'
 import Contact from 'src/components/Contact'
-import Data from 'components/newsletter'
+import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { ContactUsPage } from 'src/lib/@types/contactUsTypes'
 import { siteQuery } from 'src/lib/query'
@@ -64,7 +64,7 @@ export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUs
               'aboutUs.reason': AboutReason,
               'aboutUs.team': AboutTeam,
               'aboutUs.clients': AboutClients,
-              data: Data,
+              newsletter: Newsletter,
               contact: Contact,
             })}
           </PrimaryWrapper>

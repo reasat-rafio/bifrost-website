@@ -14,7 +14,11 @@ const BlogList = defineType({
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [defineArrayMember({ type: 'blog.home' }), defineArrayMember({ type: 'contact' })],
+      of: [
+        defineArrayMember({ type: 'blog.home' }),
+        defineArrayMember({ type: 'newsletter' }),
+        defineArrayMember({ type: 'contact' }),
+      ],
     }),
   ],
   preview: {

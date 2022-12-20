@@ -3,7 +3,7 @@ import BlogHome from 'src/components/blog-list/BlogHome'
 import Blogs from 'src/components/blog-list/Blogs'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import Contact from 'src/components/Contact'
-import Data from 'components/newsletter'
+import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'src/lib/@types/blogTypes'
 import { siteQuery } from 'src/lib/query'
@@ -69,7 +69,7 @@ export default function Blog(
         <PrimaryWrapper>
           <Blogs blogs={blogs} totalBlogs={totalBlogs} />
           {renderObjectArray(sections, {
-            data: Data,
+            newsletter: Newsletter,
             contact: Contact,
           })}
         </PrimaryWrapper>

@@ -63,10 +63,12 @@ export const useScrollspy = ({
   )
 
   const spy = useCallback(() => {
-    const newElementsStatusInViewport = isScrolledToBottom()
-      ? [...new Array(sectionRefs.length - 1).fill(false).map((v) => v), true]
-      : getElementsStatusInViewport()
-    updateElementsStatusInViewport(newElementsStatusInViewport)
+    if (sectionRefs?.length) {
+      const newElementsStatusInViewport = isScrolledToBottom()
+        ? [...new Array(sectionRefs.length - 1).fill(false).map((v) => v), true]
+        : getElementsStatusInViewport()
+      updateElementsStatusInViewport(newElementsStatusInViewport)
+    }
   }, [getElementsStatusInViewport, isScrolledToBottom, sectionRefs])
 
   useEffect(() => {

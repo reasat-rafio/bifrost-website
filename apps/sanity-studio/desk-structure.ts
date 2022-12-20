@@ -23,7 +23,7 @@ const pageItem = (
       .schemaType(schemaType)
       .views([
         S.view.form().icon(icon),
-        S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
+        // S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
       ]),
   )
 
