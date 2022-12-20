@@ -1,5 +1,4 @@
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Contact from 'src/components/Contact'
 import Ellipse from 'src/components/Ellipse'
 import UseCaseAssurance from 'src/components/useCase/UseCaseAssurance'
 import UseCaseEnterprise from 'src/components/useCase/UseCaseEnterprise'
@@ -16,6 +15,7 @@ import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'src/lib/@types/useCaseTypes'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},

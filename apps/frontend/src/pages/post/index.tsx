@@ -2,7 +2,6 @@
 import BlogHome from 'src/components/blog-list/BlogHome'
 import Blogs from 'src/components/blog-list/Blogs'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Contact from 'src/components/Contact'
 import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'src/lib/@types/blogTypes'
@@ -14,6 +13,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -46,7 +46,6 @@ export default function Blog(
       totalBlogs,
     },
   } = useSanityQuery(query, props)
-
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
   return (

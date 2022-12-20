@@ -1,4 +1,3 @@
-import Contact from 'src/components/Contact'
 import ContactHome from 'src/components/contact/ContactHome'
 import Ellipse from 'src/components/Ellipse'
 import { ContactUsPage, HomeSection } from 'src/lib/@types/contactUsTypes'
@@ -11,6 +10,7 @@ import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { useCallback, useState } from 'react'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
+import { Contact } from 'components/common/contact'
 // import SmoothScroll from 'components/ui/SmoothScrolling'
 
 const query = groq`{

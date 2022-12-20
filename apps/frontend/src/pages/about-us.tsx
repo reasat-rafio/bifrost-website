@@ -3,7 +3,6 @@ import AboutClients from 'src/components/about/AboutClients'
 import AboutHome from 'src/components/about/AboutHome'
 import AboutReason from 'src/components/about/AboutReason'
 import AboutTeam from 'src/components/about/AboutTeam'
-import Contact from 'src/components/Contact'
 import Newsletter from 'components/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { ContactUsPage } from 'src/lib/@types/contactUsTypes'
@@ -18,6 +17,7 @@ import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'src/lib/@types/aboutUsTypes'
 import SmoothScroll from 'src/components/ui/SmoothScrolling'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},

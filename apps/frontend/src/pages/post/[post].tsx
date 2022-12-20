@@ -10,9 +10,9 @@ import { SanityProps } from 'next-sanity-extra'
 import { useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import Contact from 'src/components/Contact'
 import Ellipse from 'src/components/Ellipse'
 import { RelatedBlogs } from 'src/components/blog/RelatedBlog'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},

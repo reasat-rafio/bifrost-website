@@ -8,8 +8,8 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanit
 import { Gallery } from 'src/components/dataset/Gallery'
 import { Body } from 'src/components/dataset/Body'
 import { Attributes } from 'src/components/dataset/Attributes'
-import Contact from 'src/components/Contact'
 import { Classes } from 'src/components/dataset/Classes'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},

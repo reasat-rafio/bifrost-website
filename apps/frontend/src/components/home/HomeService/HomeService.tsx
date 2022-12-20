@@ -7,8 +7,8 @@ import { motion } from 'framer-motion'
 
 export default function HomeService({ items, headline }: ServiceSection): ReactElement {
   const serviceRef = useRef<HTMLDivElement>(null)
-
   const [current, setCurrent] = useState(0)
+  const lines = headline?.split(/\r\n|\n/)
   const { height: windowHeight } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -23,11 +23,10 @@ export default function HomeService({ items, headline }: ServiceSection): ReactE
       })
     }
   }
-  const lines = headline?.split(/\r\n|\n/)
 
   return (
     <section className="container xl:py-32 lg:py-16 py-14">
-      <header className="text-center md:text-head-1 text-[28px] leading-none font-[275] z-10 relative">
+      <header className="text-center md:text-head-1 text-head-4-mobile leading-none font-primary z-10 relative">
         {lines.map((line) => (
           <motion.h3
             className="whitespace-pre-wrap"

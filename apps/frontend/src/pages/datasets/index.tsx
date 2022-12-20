@@ -1,5 +1,4 @@
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Contact from 'src/components/Contact'
 import Ellipse from 'src/components/Ellipse'
 import { HomeSection } from 'src/lib/@types/blogTypes'
 import { siteQuery } from 'src/lib/query'
@@ -14,6 +13,7 @@ import Home from 'src/components/dataset-list/Home'
 import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
 import { DatasetList } from 'src/components/dataset-list/list/DatasetList'
 import { useCtx } from 'src/context/global'
+import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},

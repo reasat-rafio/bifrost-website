@@ -43,7 +43,7 @@ export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
   }
 
   return (
-    <section className="container py-10">
+    <section className="container py-10 relative z-10">
       <motion.h4
         initial={{ y: 200 }}
         whileInView={{ y: 0 }}
