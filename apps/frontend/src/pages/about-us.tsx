@@ -11,7 +11,7 @@ import { Site } from 'src/lib/@types/types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray } from 'sanity-react-extra'
+import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
@@ -22,6 +22,25 @@ const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "aboutUsPage"][0] {
     ...,
+    sections[] {
+      ...,
+      "image": ${withDimensions('image')},
+      reasons[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+      members[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+    },
+    "cleint" : *[_id == "client"][0] {
+      ...,
+      clients[]{
+        ...,
+        "image": ${withDimensions('image')},
+      }
+    }
   },
 }`
 
@@ -30,12 +49,16 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function AboutUs(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
+export default function AboutUs(props: SanityProps<any>) {
   const {
     data: {
-      page: { sections },
+      page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
+
+  console.log('====================================')
+  console.log(cleint)
+  console.log('====================================')
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
