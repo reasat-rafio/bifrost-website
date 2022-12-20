@@ -48,7 +48,6 @@ const Career = (props: SanityProps<any>) => {
       })}
 
       <div className="relative z-10 bg-black" style={{ marginTop: heroSectionHeight }}>
-        <BackgroundNoise />
         {renderObjectArray(page.sections, {
           infoBlock: Information,
           'careerPage.perks': Perks,
