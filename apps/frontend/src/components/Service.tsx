@@ -28,7 +28,7 @@ interface ServiceProps {
 }
 
 export default function Service({
-  item: { body, cardPosition, ctaButton, headline, image, imagePosition },
+  item: { body, cardPosition, ctaButton, headline, image, imagePosition, subtitle },
   index,
   rootRef,
   length,
@@ -146,6 +146,11 @@ export default function Service({
         )}
       >
         <Header>{headline}</Header>
+        {!!subtitle && (
+          <h6 className="xl:text-[30px] md:text-[24px] text-[22px] font-light | leading-none">
+            {subtitle}
+          </h6>
+        )}
         <Description>{body}</Description>
         <div className="flex">
           <Button>

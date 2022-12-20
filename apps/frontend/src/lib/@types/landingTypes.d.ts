@@ -47,6 +47,7 @@ export interface DataSection {
 
 export interface Service {
   headline: string
+  subtitle?: string
   body: string
   ctaButton: CTAButton
   cardPosition: string

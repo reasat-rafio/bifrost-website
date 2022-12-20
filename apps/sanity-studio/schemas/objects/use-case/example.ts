@@ -33,7 +33,7 @@ export default {
             },
             {
               name: 'body',
-              type: 'string',
+              type: 'text',
             },
             {
               name: 'image',

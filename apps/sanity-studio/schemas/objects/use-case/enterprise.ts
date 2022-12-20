@@ -32,8 +32,12 @@ export default {
               type: 'string',
             },
             {
-              name: 'body',
+              name: 'subtitle',
               type: 'string',
+            },
+            {
+              name: 'body',
+              type: 'text',
             },
             {
               name: 'ctaButton',

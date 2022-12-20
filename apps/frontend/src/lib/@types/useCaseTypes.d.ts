@@ -47,6 +47,7 @@ export interface AssuranceSection {
 export interface Enterprise {
   body: string
   headline: string
+  subtitle: string
   ctaButton: CTAButton
   image: SanityImage & ImageAlt
   cardPosition: string
