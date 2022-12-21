@@ -8,6 +8,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { useSanityQuery, sanityStaticProps } from 'utils/sanity'
+import { ProjectsBlock } from 'components/common/projects-block'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -46,7 +47,7 @@ const SatelliteImageDetection = (props: SanityProps<any>) => {
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
         {renderObjectArray(page.sections, {
-          //   'projects': Projects,
+          projects: ProjectsBlock,
           newsletter: Newsletter,
           contact: Contact,
         })}

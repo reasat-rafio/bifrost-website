@@ -1,13 +1,21 @@
 import { StructureBuilder } from 'sanity/desk'
-import { MdContactPhone, MdOutlineWorkOutline } from 'react-icons/md'
+import {
+  MdContactPhone,
+  MdHomeRepairService,
+  MdImageSearch,
+  MdOutlineWorkOutline,
+  MdScreenSearchDesktop,
+} from 'react-icons/md'
 import { FcAbout, FcViewDetails } from 'react-icons/fc'
-import { GrActions, GrArticle, GrEdit, GrView, GrWorkshop } from 'react-icons/gr'
+import { GrActions, GrArticle, GrEdit, GrTestDesktop, GrView, GrWorkshop } from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
-import { FaSitemap, FaHome } from 'react-icons/fa'
+import { FaSitemap, FaHome, FaRobot, FaBlackTie } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
 import { SitePreview } from './components/site-preview'
 import { PageItemProps } from './types'
+import { AiOutlineFileSearch } from 'react-icons/ai'
+import { TiWeatherStormy } from 'react-icons/ti'
 
 const singleItem = (S: StructureBuilder, { schemaType, id, title, icon }: PageItemProps) =>
   S.listItem({ schemaType, title, id, icon }).child(
@@ -144,63 +152,63 @@ export const AppStructure = (S: StructureBuilder) =>
               pageItem(S, {
                 schemaType: 'financeServicePage',
                 id: 'financeServicePage',
-                title: 'Finance Service Page',
-                icon: GiArchiveResearch,
+                title: 'Finance Service',
+                icon: MdHomeRepairService,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'roboticsPage',
                 id: 'roboticsPage',
-                title: 'Robotics Page',
-                icon: GiArchiveResearch,
+                title: 'Robotics',
+                icon: FaRobot,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'logisticsPage',
                 id: 'logisticsPage',
-                title: 'Logistics Page',
-                icon: GiArchiveResearch,
+                title: 'Logistics',
+                icon: FaBlackTie,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'objectDetectionPage',
                 id: 'objectDetectionPage',
-                title: 'Object Detection Page',
-                icon: GiArchiveResearch,
+                title: 'Object Detection',
+                icon: AiOutlineFileSearch,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'satelliteImageDetectionPage',
                 id: 'satelliteImageDetectionPage',
-                title: 'Satellite Image Detection Pagee',
-                icon: GiArchiveResearch,
+                title: 'Satellite Image Detection',
+                icon: MdImageSearch,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'hardwareTestingPage',
                 id: 'hardwareTestingPage',
-                title: 'Hardware Testing Page',
-                icon: GiArchiveResearch,
+                title: 'Hardware Testing',
+                icon: GrTestDesktop,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'defectDetectionPage',
                 id: 'defectDetectionPage',
-                title: 'Defect Detection Page',
-                icon: GiArchiveResearch,
+                title: 'Defect Detection',
+                icon: MdScreenSearchDesktop,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'naturalDisasterPage',
                 id: 'naturalDisasterPage',
-                title: 'Natural Disaster Page',
-                icon: GiArchiveResearch,
+                title: 'Natural Disaster',
+                icon: TiWeatherStormy,
                 slug: '',
               }),
               pageItem(S, {
                 schemaType: 'defensePage',
                 id: 'defensePage',
-                title: 'DefensePage Page',
+                title: 'DefensePage',
                 icon: GiArchiveResearch,
                 slug: '',
               }),
