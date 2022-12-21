@@ -1,6 +1,6 @@
-const UseCase = {
+const FeaturesPage = {
   name: 'useCasePage',
-  title: 'Use Case Page',
+  title: 'Features Page',
   type: 'document',
   fields: [
     {
@@ -30,4 +30,4 @@ const UseCase = {
   },
 }
 
-export default UseCase
+export default FeaturesPage

@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function UseCase(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
+export default function Features(props: SanityProps<{ site: Site; page: ContactUsPage }>) {
   const {
     data: {
       page: { sections },
