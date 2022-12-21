@@ -65,6 +65,7 @@ import satelliteImageDetectionPage from './documents/pages/satellite-image-detec
 import hardwareTestingPage from './documents/pages/hardware-testing'
 import defectDetectionPage from './documents/pages/defect-detection'
 import naturalDisasterPage from './documents/pages/natural-disaster'
+import defensePage from './documents/pages/defense'
 
 import blog from './documents/blog'
 
@@ -153,6 +154,7 @@ export const schemaTypes = [
   hardwareTestingPage,
   defectDetectionPage,
   naturalDisasterPage,
+  defensePage,
 
   blog,
 

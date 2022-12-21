@@ -197,6 +197,13 @@ export const AppStructure = (S: StructureBuilder) =>
                 icon: GiArchiveResearch,
                 slug: '',
               }),
+              pageItem(S, {
+                schemaType: 'defensePage',
+                id: 'defensePage',
+                title: 'DefensePage Page',
+                icon: GiArchiveResearch,
+                slug: '',
+              }),
             ]),
         ),
       S.divider(),
