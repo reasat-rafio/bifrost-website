@@ -13,13 +13,13 @@ export const FullImageTextLeft: React.FC<ProjectProps> = ({
   subtitle,
 }) => {
   return (
-    <motion.article className="3xl:h-[520px] 2xl:h-[55vh] h-[50vh] relative" key={_key}>
+    <motion.article className="relative" key={_key}>
       <motion.figure
         key={_key}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, type: 'tween' }}
-        className="w-full h-full overflow-hidden"
+        className="w-full h-full max-h-[600px] overflow-hidden"
       >
         <SanityImg
           className="w-full h-full | object-cover rounded-2xl"
