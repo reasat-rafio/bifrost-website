@@ -1,6 +1,7 @@
 import { Contact } from 'components/common/contact'
 import { Hero, HeroProps } from 'components/common/primary-hero'
-import Newsletter from 'components/newsletter'
+import { ProjectsBlock } from 'components/common/projects-block'
+import Newsletter from 'components/common/newsletter'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
@@ -46,7 +47,7 @@ const FinanceService = (props: SanityProps<any>) => {
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
         {renderObjectArray(page.sections, {
-          //   'projects': Projects,
+          projects: ProjectsBlock,
           newsletter: Newsletter,
           contact: Contact,
         })}

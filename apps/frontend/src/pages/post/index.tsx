@@ -2,7 +2,7 @@
 import BlogHome from 'src/components/blog-list/BlogHome'
 import Blogs from 'src/components/blog-list/Blogs'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Newsletter from 'components/newsletter'
+import Newsletter from 'components/common/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'src/lib/@types/blogTypes'
 import { siteQuery } from 'src/lib/query'

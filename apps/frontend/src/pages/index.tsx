@@ -15,7 +15,7 @@ import { Contact } from 'src/components/common/contact'
 import { HomeSection } from 'src/lib/@types/landingTypes'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
-import Newsletter from 'components/newsletter'
+import Newsletter from 'components/common/newsletter'
 import Client from 'components/common/client'
 
 const query = groq`{

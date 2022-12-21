@@ -1,5 +1,5 @@
 import { Contact } from 'components/common/contact'
-import Newsletter from 'components/newsletter'
+import Newsletter from 'components/common/newsletter'
 import { Hero, HeroProps } from 'components/our-projects/hero'
 import { Projects } from 'components/our-projects/projects'
 import { siteQuery } from 'lib/query'

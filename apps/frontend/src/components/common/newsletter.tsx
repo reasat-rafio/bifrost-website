@@ -1,7 +1,7 @@
 import { PortableText } from 'src/utils/sanity'
-import { GradientBorder } from './common/GradientBorder'
+import { GradientBorder } from './GradientBorder'
 import { CTAButton } from 'lib/@types/types'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
 
 interface NewsletterProps {

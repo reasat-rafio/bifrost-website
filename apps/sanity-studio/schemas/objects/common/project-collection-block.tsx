@@ -1,4 +1,6 @@
+import React from 'react'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
+import { MdHighlight } from 'react-icons/md'
 import { Rule } from 'sanity'
 
 const Projects = {
@@ -18,33 +20,6 @@ const Projects = {
           icon: AiOutlineFundProjectionScreen,
           fields: [
             {
-              name: 'variant',
-              type: 'string',
-              initialValue: 'full-image-text-right',
-              description: 'UI can be controlled based on the variant value',
-              validation: (Rule: Rule) => Rule.required(),
-              options: {
-                list: [
-                  {
-                    title: 'Variant 1 (Full Image and Text at Right Side)',
-                    value: 'full-image-text-right',
-                  },
-                  {
-                    title: 'Variant 2 (Full Image and Text at Left Side)',
-                    value: 'full-image-text-left',
-                  },
-                  {
-                    title: 'Variant 3 (Half Image and Text at Right Side)',
-                    value: 'half-image-text-right',
-                  },
-                  {
-                    title: 'Variant 4 (Half Image and Text at Left Side)',
-                    value: 'half-image-text-left',
-                  },
-                ],
-              },
-            },
-            {
               name: 'image',
               type: 'image',
               validation: (Rule: Rule) => Rule.required(),
@@ -60,9 +35,32 @@ const Projects = {
             },
             {
               name: 'title',
-              type: 'string',
+              type: 'array',
               validation: (Rule: Rule) => Rule.required(),
+              of: [
+                {
+                  type: 'block',
+                  marks: {
+                    decorators: [
+                      { title: 'Strong', value: 'strong' },
+                      { title: 'Emphasis', value: 'em' },
+                      { title: 'Underline', value: 'underline' },
+                      {
+                        title: 'Pop',
+                        value: 'pop',
+                        blockEditor: {
+                          icon: () => <MdHighlight />,
+                          render: ({ children }: { children: React.ReactNode }) => (
+                            <span style={{ color: '#C9FF71' }}>{children}</span>
+                          ),
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
             },
+
             {
               name: 'subtitle',
               type: 'string',

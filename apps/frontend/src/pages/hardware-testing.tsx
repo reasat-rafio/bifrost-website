@@ -1,6 +1,6 @@
 import { Contact } from 'components/common/contact'
 import { Hero, HeroProps } from 'components/common/primary-hero'
-import Newsletter from 'components/newsletter'
+import Newsletter from 'components/common/newsletter'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
