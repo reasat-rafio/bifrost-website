@@ -58,6 +58,13 @@ import ourProjectsHero from './objects/our-projects/hero'
 import ourProjectsProjects from './objects/our-projects/projects'
 
 import financeServicePage from './documents/pages/finance-services'
+import roboticsPage from './documents/pages/robotics'
+import logisticsPage from './documents/pages/logistics'
+import objectDetectionPage from './documents/pages/object-detection'
+import satelliteImageDetectionPage from './documents/pages/satellite-image-detection'
+import hardwareTestingPage from './documents/pages/hardware-testing'
+import defectDetectionPage from './documents/pages/defect-detection'
+import naturalDisasterPage from './documents/pages/natural-disaster'
 
 import blog from './documents/blog'
 
@@ -78,8 +85,6 @@ import datasetListPage from './documents/pages/dataset-list'
 import datasetNotFound from './objects/dataset-not-found'
 
 import datasetDetails from './documents/pages/dataset-details'
-import roboticsPage from './documents/pages/robotics'
-import logisticsPage from './documents/pages/logistics'
 
 export const schemaTypes = [
   logos,
@@ -143,6 +148,11 @@ export const schemaTypes = [
   financeServicePage,
   roboticsPage,
   logisticsPage,
+  objectDetectionPage,
+  satelliteImageDetectionPage,
+  hardwareTestingPage,
+  defectDetectionPage,
+  naturalDisasterPage,
 
   blog,
 
