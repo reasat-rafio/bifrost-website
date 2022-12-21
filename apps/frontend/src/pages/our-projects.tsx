@@ -1,7 +1,7 @@
 import { Contact } from 'components/common/contact'
 import Newsletter from 'components/common/newsletter'
+import { ProjectsBlock } from 'components/common/projects-block'
 import { Hero, HeroProps } from 'components/our-projects/hero'
-import { Projects } from 'components/our-projects/projects'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
@@ -47,7 +47,7 @@ const OurProjects = (props: SanityProps<any>) => {
 
       <div className="z-20 relative bg-black" style={{ marginTop: heroSectionHeight }}>
         {renderObjectArray(page.sections, {
-          'ourProjectsPage.projects': Projects,
+          projects: ProjectsBlock,
           newsletter: Newsletter,
           contact: Contact,
         })}

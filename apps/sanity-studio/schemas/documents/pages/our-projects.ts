@@ -14,7 +14,7 @@ const OurProjects = {
       type: 'array',
       of: [
         { type: 'ourProjectsPage.hero' },
-        { type: 'ourProjectsPage.projects' },
+        { type: 'projects' },
         { type: 'newsletter' },
         { type: 'contact' },
       ],
