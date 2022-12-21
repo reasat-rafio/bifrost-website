@@ -55,7 +55,6 @@ import whySyntheticDataPageHero from './objects/why-synthetic-data/hero'
 
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
-import ourProjectsProjects from './objects/our-projects/projects'
 
 import financeServicePage from './documents/pages/finance-services'
 import roboticsPage from './documents/pages/robotics'
@@ -144,7 +143,6 @@ export const schemaTypes = [
 
   ourProjects,
   ourProjectsHero,
-  ourProjectsProjects,
 
   financeServicePage,
   roboticsPage,
