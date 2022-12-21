@@ -140,6 +140,14 @@ export const AppStructure = (S: StructureBuilder) =>
                 icon: GiArchiveResearch,
                 slug: '',
               }),
+
+              pageItem(S, {
+                schemaType: 'financeServicePage',
+                id: 'financeServicePage',
+                title: 'Finance Service Page',
+                icon: GiArchiveResearch,
+                slug: '',
+              }),
             ]),
         ),
       S.divider(),

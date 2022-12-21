@@ -19,6 +19,8 @@ import imformation from './objects/common/information'
 import newsletter from './objects/common/newsletter'
 import resume from './objects/common/resume'
 import collection from './objects/common/header-and-collection-of-items'
+import commonHero from './objects/common/hero'
+import projects from './objects/common/project-collection-block'
 
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
@@ -55,6 +57,8 @@ import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
 import ourProjectsProjects from './objects/our-projects/projects'
 
+import financeServicePage from './documents/pages/finance-services'
+
 import blog from './documents/blog'
 
 import blogListPage from './documents/pages/blog-list'
@@ -83,6 +87,8 @@ export const schemaTypes = [
   newsletter,
   resume,
   collection,
+  commonHero,
+  projects,
 
   client,
   imformation,
@@ -131,6 +137,8 @@ export const schemaTypes = [
   ourProjects,
   ourProjectsHero,
   ourProjectsProjects,
+
+  financeServicePage,
 
   blog,
 
