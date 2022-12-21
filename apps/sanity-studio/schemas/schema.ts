@@ -78,6 +78,8 @@ import datasetListPage from './documents/pages/dataset-list'
 import datasetNotFound from './objects/dataset-not-found'
 
 import datasetDetails from './documents/pages/dataset-details'
+import roboticsPage from './documents/pages/robotics'
+import logisticsPage from './documents/pages/logistics'
 
 export const schemaTypes = [
   logos,
@@ -139,6 +141,8 @@ export const schemaTypes = [
   ourProjectsProjects,
 
   financeServicePage,
+  roboticsPage,
+  logisticsPage,
 
   blog,
 
