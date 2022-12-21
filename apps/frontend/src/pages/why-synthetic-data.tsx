@@ -1,7 +1,7 @@
 import { Contact } from 'components/common/contact'
 import { Information } from 'components/common/information'
 import { Hero, HeroProps } from 'components/why-synthetic-data/hero'
-import { Perks } from 'components/why-synthetic-data/perks'
+import { CollectionBlock } from 'components/common/header-and-card-collection-block'
 import { Resume } from 'components/why-synthetic-data/resume'
 import { siteQuery } from 'lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -18,7 +18,7 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      perks[]{
+      collection[]{
         ...,
         "image": ${withDimensions('image')},
       }
@@ -49,8 +49,8 @@ const WhySyntheticData: React.FC<SanityProps> = (props) => {
       <div className="relative z-10 bg-black" style={{ marginTop: heroSectionHeight }}>
         {renderObjectArray(page.sections, {
           infoBlock: Information,
-          'whySyntheticDataPage.perks': Perks,
-          'whySyntheticDataPage.resume': Resume,
+          headerAndcollectionOfItems: CollectionBlock,
+          resume: Resume,
           contact: Contact,
         })}
       </div>

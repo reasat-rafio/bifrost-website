@@ -5,17 +5,17 @@ import clsx from 'clsx'
 import { motion, Variants } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
 
-interface Perk {
+interface Collection {
   _key: string
   _type: string
   image: SanityImage
   subtitle: string
   title: string
 }
-interface PerksProps {
+interface CollectionProps {
   type: string
   header: string
-  perks: Perk[]
+  collection: Collection[]
 }
 
 const ContainerVariants: Variants = {
@@ -28,7 +28,7 @@ const ContainerVariants: Variants = {
   },
 }
 
-export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
+export const CollectionBlock: React.FC<CollectionProps> = ({ header, collection }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 400 : windowWidth > 768 ? 300 : 250),
@@ -72,7 +72,7 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
         onMouseMove={onMouseMoveAction}
         className={clsx('cards | grid grid-cols-12 gap-5')}
       >
-        {perks.map((data) => (
+        {collection.map((data) => (
           <Perk key={data._key} imageWidth={imageWidth} {...data} />
         ))}
       </motion.div>
@@ -84,10 +84,10 @@ const ItemVariants: Variants = {
   initial: { opacity: 0, y: 100 },
   animate: { opacity: 1, y: 0 },
 }
-interface PerkProps extends Perk {
+interface ItemProps extends Collection {
   imageWidth: number
 }
-const Perk: React.FC<PerkProps> = ({ image, subtitle, title, imageWidth }) => {
+const Perk: React.FC<ItemProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
     <motion.article
       variants={ItemVariants}

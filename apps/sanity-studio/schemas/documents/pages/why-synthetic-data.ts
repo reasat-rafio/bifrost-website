@@ -15,7 +15,7 @@ const WhySyntheticDataPage = {
       of: [
         { type: 'whySyntheticDataPage.hero' },
         { type: 'infoBlock' },
-        { type: 'whySyntheticDataPage.perks' },
+        { type: 'headerAndcollectionOfItems' },
         { type: 'resume' },
         { type: 'contact' },
       ],

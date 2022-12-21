@@ -2,8 +2,8 @@ import { RiTeamLine } from 'react-icons/ri'
 import { Rule } from 'sanity'
 
 export default {
-  name: 'whySyntheticDataPage.perks',
-  title: 'Perks',
+  name: 'headerAndcollectionOfItems',
+  title: 'Collection',
   type: 'object',
   icon: RiTeamLine,
   fields: [
@@ -13,12 +13,12 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'perks',
+      name: 'collection',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
       of: [
         {
-          name: 'perk',
+          name: 'item',
           type: 'object',
           icon: RiTeamLine,
           fields: [

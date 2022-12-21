@@ -18,6 +18,7 @@ import client from './documents/client'
 import imformation from './objects/common/information'
 import newsletter from './objects/common/newsletter'
 import resume from './objects/common/resume'
+import collection from './objects/common/header-and-collection-of-items'
 
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
@@ -49,7 +50,6 @@ import careerPerks from './objects/career/perks'
 
 import whySyntheticDataPage from './documents/pages/why-synthetic-data'
 import whySyntheticDataPageHero from './objects/why-synthetic-data/hero'
-import whySyntheticDataPagePerks from './objects/why-synthetic-data/perks'
 
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
@@ -82,6 +82,7 @@ export const schemaTypes = [
   contactSection,
   newsletter,
   resume,
+  collection,
 
   client,
   imformation,
@@ -126,7 +127,6 @@ export const schemaTypes = [
 
   whySyntheticDataPage,
   whySyntheticDataPageHero,
-  whySyntheticDataPagePerks,
 
   ourProjects,
   ourProjectsHero,
