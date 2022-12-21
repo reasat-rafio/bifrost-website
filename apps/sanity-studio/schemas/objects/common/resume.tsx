@@ -4,7 +4,7 @@ import React from 'react'
 import { Rule } from 'sanity'
 
 export default {
-  name: 'whySyntheticDataPage.resume',
+  name: 'resume',
   title: 'Resume',
   type: 'object',
   icon: FcNews,

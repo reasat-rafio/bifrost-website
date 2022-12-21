@@ -18,7 +18,7 @@ const Career = defineType({
         defineArrayMember({ type: 'careerPage.hero' }),
         defineArrayMember({ type: 'infoBlock' }),
         defineArrayMember({ type: 'careerPage.perks' }),
-        defineArrayMember({ type: 'careerPage.resume' }),
+        defineArrayMember({ type: 'resume' }),
         defineArrayMember({ type: 'contact' }),
       ],
     }),

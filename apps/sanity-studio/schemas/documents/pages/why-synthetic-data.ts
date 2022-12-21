@@ -16,7 +16,7 @@ const WhySyntheticDataPage = {
         { type: 'whySyntheticDataPage.hero' },
         { type: 'infoBlock' },
         { type: 'whySyntheticDataPage.perks' },
-        { type: 'whySyntheticDataPage.resume' },
+        { type: 'resume' },
         { type: 'contact' },
       ],
     },

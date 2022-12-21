@@ -2,7 +2,6 @@ import logos from './objects/site/logos'
 import nav from './objects/site/nav'
 import siteRedirects from './objects/site/redirects'
 import contactSection from './objects/site/contact'
-import newsletter from './objects/site/newsletter'
 
 import ctaButton from './objects/ctaButton'
 import menuItem from './objects/menuItem'
@@ -17,6 +16,8 @@ import tag from './documents/tag'
 import client from './documents/client'
 
 import imformation from './objects/common/information'
+import newsletter from './objects/common/newsletter'
+import resume from './objects/common/resume'
 
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
@@ -45,12 +46,10 @@ import useCaseFeature from './objects/use-case/feature'
 import career from './documents/pages/career'
 import careerHero from './objects/career/hero'
 import careerPerks from './objects/career/perks'
-import careerResume from './objects/career/resume'
 
 import whySyntheticDataPage from './documents/pages/why-synthetic-data'
 import whySyntheticDataPageHero from './objects/why-synthetic-data/hero'
 import whySyntheticDataPagePerks from './objects/why-synthetic-data/perks'
-import whySyntheticDataPageResume from './objects/why-synthetic-data/resume'
 
 import ourProjects from './documents/pages/our-projects'
 import ourProjectsHero from './objects/our-projects/hero'
@@ -82,6 +81,7 @@ export const schemaTypes = [
   siteRedirects,
   contactSection,
   newsletter,
+  resume,
 
   client,
   imformation,
@@ -123,12 +123,10 @@ export const schemaTypes = [
   career,
   careerHero,
   careerPerks,
-  careerResume,
 
   whySyntheticDataPage,
   whySyntheticDataPageHero,
   whySyntheticDataPagePerks,
-  whySyntheticDataPageResume,
 
   ourProjects,
   ourProjectsHero,
