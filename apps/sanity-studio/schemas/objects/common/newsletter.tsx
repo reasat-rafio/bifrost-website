@@ -7,6 +7,7 @@ export default {
   name: 'newsletter',
   title: 'newsletter',
   type: 'object',
+  icon: FcNews,
   fields: [
     {
       name: 'initials',

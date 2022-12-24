@@ -1,4 +1,5 @@
 import { GrProjects } from 'react-icons/gr'
+import { Rule } from 'sanity'
 
 export default {
   name: 'landing.projects',
@@ -11,43 +12,47 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'body',
-      type: 'string',
+      name: 'subtile',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'items',
-      title: 'Item',
+      name: 'projects',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
         {
           name: 'project',
           type: 'object',
           title: 'Project',
+
           fields: [
             {
               name: 'name',
-              title: 'Name',
               type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'url',
-              title: 'URL',
               type: 'string',
             },
             {
               name: 'image',
               type: 'image',
-              title: 'Service Image',
+              validation: (Rule: Rule) => Rule.required(),
+
               fields: [
                 {
                   name: 'alt',
                   title: 'Alternative Text',
                   description: 'Important for SEO and accessibility',
                   type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
                 },
               ],
             },
@@ -58,7 +63,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: GrProjects,
+      }
     },
   },
 }

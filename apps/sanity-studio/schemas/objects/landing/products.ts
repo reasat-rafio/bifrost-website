@@ -5,6 +5,7 @@ export default {
   name: 'landing.products',
   title: 'Products',
   type: 'object',
+  icon: FaProductHunt,
   fields: [
     {
       name: 'initials',
