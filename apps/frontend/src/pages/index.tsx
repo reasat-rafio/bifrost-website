@@ -4,7 +4,7 @@ import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import HomeHero from 'src/components/home/HomeHero'
+import HomeHero from 'components/home/hero'
 import HomeProduct from 'src/components/home/HomeProduct'
 import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
 import HomeService from 'src/components/home/HomeService/HomeService'
@@ -82,7 +82,7 @@ export default function Home(props: SanityProps<any>) {
           ),
         })}
       </PrimaryWrapper>
-      <div
+      {/* <div
         className="bg-black relative h-full"
         style={{
           marginTop: `${heroSectionHeight}px`,
@@ -111,7 +111,7 @@ export default function Home(props: SanityProps<any>) {
           <Ellipse className="absolute top-[80%] left-[5%] w-[353px] h-[391px]" />
           <Ellipse className="absolute top-[91%] right-[15%] w-[153px] h-[391px]" />
         </>
-      </div>
+      </div> */}
     </div>
   )
 }

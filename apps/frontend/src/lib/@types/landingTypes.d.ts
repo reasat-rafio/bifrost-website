@@ -4,9 +4,9 @@ export type LandingPage = {
 }
 
 export interface HomeSection {
-  body: string
-  ctaButton: CTAButton
-  headline: any
+  title: any
+  subtitle: string
+  ctaButton?: CTAButton
   image: SanityImage & ImageAlt
 }
 

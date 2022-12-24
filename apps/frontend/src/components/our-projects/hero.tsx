@@ -1,4 +1,4 @@
-import { WaveScene } from 'src/components/common/WaveScene'
+import { WaveScene } from 'components/common/wave-scene'
 import { useWindowSize } from 'src/lib/hooks'
 import { Dispatch, SetStateAction, useCallback } from 'react'
 import { BackgroundNoise } from 'components/ui/background-noise'
