@@ -103,16 +103,17 @@ export default function Hero({
             <MovingBorder decorationBlockWidth={decorationBlockWidth} />
             {subtitle}
           </h4>
-
-          <Button type="href" href={ctaButton.href}>
-            {ctaButton.title}
-          </Button>
+          {!!ctaButton && (
+            <Button type="href" href={ctaButton.href}>
+              {ctaButton.title}
+            </Button>
+          )}
         </div>
         <figure className="flex lg:items-end">
           <SanityImg
-            className="mx-auto sm:w-[50vh] "
+            className="mx-auto sm:w-[50vh] drop-shadow"
             builder={imageUrlBuilder}
-            width={450}
+            width={windowWidth >= 1024 ? 600 : windowWidth >= 640 ? 350 : 250}
             image={image}
             alt={image.alt}
           />

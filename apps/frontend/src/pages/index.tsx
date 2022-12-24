@@ -4,8 +4,8 @@ import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import HomeHero from 'components/home/hero'
-import HomeProduct from 'src/components/home/HomeProduct'
+import Hero from 'components/home/hero'
+import Product from 'components/home/product'
 import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
 import HomeService from 'src/components/home/HomeService/HomeService'
 import HomeProjects from 'src/components/home/HomeProjects'
@@ -34,15 +34,15 @@ const query = groq`{
           }
         }
       },
-      images[] {
-        ...
-        asset->{
-          ...,
-          metadata {
-            dimensions
-          }
+    images[]{
+      ...,
+      asset->{
+        ...,
+        metadata{
+          dimensions
         }
-      },
+      }
+    },
       items[]{
         ...,
         "image": ${withDimensions('image')},
@@ -69,6 +69,7 @@ export default function Home(props: SanityProps<any>) {
       page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
+  console.log(sections)
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
@@ -77,32 +78,32 @@ export default function Home(props: SanityProps<any>) {
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           'landing.home': useCallback(
-            (p: HomeSection) => <HomeHero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
       </PrimaryWrapper>
-      {/* <div
+      <div
         className="bg-black relative h-full"
         style={{
-          marginTop: `${heroSectionHeight}px`,
+          marginTop: heroSectionHeight,
         }}
       >
         <PrimaryWrapper>
           {renderObjectArray(sections, {
-            'landing.products': HomeProduct,
-            'landing.demo': HomeDemo,
-            'landing.services': HomeService,
-            'landing.projects': HomeProjects,
-            'landing.reviews': HomeReview,
+            'landing.products': Product,
+            // 'landing.demo': HomeDemo,
+            // 'landing.services': HomeService,
+            // 'landing.projects': HomeProjects,
+            // 'landing.reviews': HomeReview,
           })}
-          <Client {...cleint} />
+          {/* <Client {...cleint} /> */}
           {renderObjectArray(sections, {
             newsletter: Newsletter,
-            contact: Contact,
+            // contact: Contact,
           })}
         </PrimaryWrapper>
-        <>
+        {/* <>
           <Ellipse className="absolute top-[5%] left-[5%] w-[153px] h-[391px]" />
           <Ellipse className="absolute top-[18%] right-[5%] w-[153px] h-[391px]" />
           <Ellipse className="absolute top-[34%] left-[5%] w-[153px] h-[391px]" />
@@ -110,8 +111,8 @@ export default function Home(props: SanityProps<any>) {
           <Ellipse className="absolute top-[55%] right-[5%] w-[353px] h-[391px]" />
           <Ellipse className="absolute top-[80%] left-[5%] w-[353px] h-[391px]" />
           <Ellipse className="absolute top-[91%] right-[15%] w-[153px] h-[391px]" />
-        </>
-      </div> */}
+        </> */}
+      </div>
     </div>
   )
 }

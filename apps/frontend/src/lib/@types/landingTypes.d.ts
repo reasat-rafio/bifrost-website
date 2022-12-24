@@ -11,10 +11,10 @@ export interface HomeSection {
 }
 
 export interface ProductSection {
-  body: string
-  ctaButton: CTAButton
-  headline: string
-  subHeadline: string
+  title: string
+  subtitle: string
+  description: string
+  ctaButton?: CTAButton
   images: [SanityImage & ImageAlt]
 }
 

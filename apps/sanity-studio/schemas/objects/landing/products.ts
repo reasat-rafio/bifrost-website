@@ -1,4 +1,5 @@
 import { FaProductHunt } from 'react-icons/fa'
+import { Rule } from 'sanity'
 
 export default {
   name: 'landing.products',
@@ -10,17 +11,19 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subHeadline',
-      title: 'Sub-Headline',
+      name: 'subtitle',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'body',
-      type: 'string',
+      name: 'description',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'ctaButton',
@@ -31,6 +34,7 @@ export default {
       name: 'images',
       title: 'Product Images',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
         {
           name: 'image',
@@ -42,6 +46,7 @@ export default {
               title: 'Alternative Text',
               description: 'Important for SEO and accessibility',
               type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
           ],
         },
@@ -50,15 +55,13 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
-      subtitle: 'body',
-      media: 'images.0',
+      title: 'title',
+      subtitle: 'subtitle',
     },
-    prepare({ title, subtitle, media }: any) {
+    prepare({ title, subtitle }: any) {
       return {
         title,
         subtitle,
-        media,
         icon: FaProductHunt,
       }
     },
