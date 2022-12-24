@@ -8,7 +8,7 @@ import Hero from 'components/home/hero'
 import Product from 'components/home/product'
 import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
 import HomeService from 'src/components/home/HomeService/HomeService'
-import HomeProjects from 'src/components/home/HomeProjects'
+import Project from 'components/home/projects'
 import Ellipse from 'src/components/Ellipse'
 import HomeReview from 'src/components/home/HomeReview'
 import { Contact } from 'src/components/common/contact'
@@ -43,7 +43,7 @@ const query = groq`{
         }
       }
     },
-      items[]{
+    projects[]{
         ...,
         "image": ${withDimensions('image')},
       }
@@ -94,7 +94,7 @@ export default function Home(props: SanityProps<any>) {
             'landing.products': Product,
             // 'landing.demo': HomeDemo,
             // 'landing.services': HomeService,
-            // 'landing.projects': HomeProjects,
+            'landing.projects': Project,
             // 'landing.reviews': HomeReview,
           })}
           {/* <Client {...cleint} /> */}

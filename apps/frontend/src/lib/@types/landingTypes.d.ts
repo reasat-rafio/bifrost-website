@@ -19,10 +19,9 @@ export interface ProductSection {
 }
 
 export interface ProjectSection {
-  body: string
-  ctaButton: CTAButton
-  headline: string
-  items: [{ image: SanityImage & ImageAlt; name: string; url: string }]
+  title: string
+  subtitle: string
+  projects: [{ _key: string; image: SanityImage & ImageAlt; name: string; url?: string }]
 }
 
 export interface ReviewSection {

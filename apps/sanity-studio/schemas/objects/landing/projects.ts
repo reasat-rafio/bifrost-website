@@ -17,7 +17,7 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subtile',
+      name: 'subtitle',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -57,6 +57,13 @@ export default {
               ],
             },
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'url',
+              media: 'image',
+            },
+          },
         },
       ],
     },

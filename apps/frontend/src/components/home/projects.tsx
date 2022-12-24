@@ -12,17 +12,27 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { Header } from 'src/components/ui/Header'
 import { Description } from 'src/components/ui/Description'
+import { useWindowSize } from 'lib/hooks'
+import clsx from 'clsx'
 
-export default function HomeProjects(data: ProjectSection): ReactElement {
+export default function Project({ projects, subtitle, title }: ProjectSection): ReactElement {
+  const windowWidth = useWindowSize()?.width ?? 0
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
-    <div className="grid grid-cols-12 z-10 md:gap-12 max-w-screen-2xl ml-auto pl-6 xl:my-36 lg:my-20 my-16">
-      <div className="flex flex-col lg:col-span-4 col-span-12 2xl:gap-y-10 gap-y-6 z-10 justify-center">
-        <Header>{data.headline}</Header>
-        <Description>{data.body}</Description>
-        <div className="flex gap-x-4 2xl:mt-5 mt-3">
+    <section
+      className={clsx(
+        'z-10  | grid grid-cols-12 | md:gap-12 ml-auto pl-6 xl:my-36 lg:my-20 my-16',
+        windowWidth >= 1024
+          ? '3xl:max-w-screen-3xl xl:max-w-screen-xl lg:max-w-screen-lg'
+          : 'container',
+      )}
+    >
+      <div className="z-10 | flex flex-col justify-center | lg:col-span-4 col-span-12 | 2xl:gap-y-10 gap-y-5">
+        <Header>{title}</Header>
+        <Description>{subtitle}</Description>
+        <div className="gap-x-4 2xl:mt-5 mt-3 lg:flex hidden">
           <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
             <ArrowLeft />
           </button>
@@ -31,7 +41,7 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
           </button>
         </div>
       </div>
-      <div className="lg:col-span-8 col-span-12 md:mt-0 mt-10">
+      <div className="lg:col-span-8 col-span-12 | md:mt-0 mt-10">
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
           navigation={{ prevEl, nextEl }}
@@ -55,40 +65,48 @@ export default function HomeProjects(data: ProjectSection): ReactElement {
               spaceBetween: 30,
             },
             1280: {
-              slidesPerView: 2.9,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1440: {
-              slidesPerView: 3.2,
+              slidesPerView: 3.4,
               spaceBetween: 30,
             },
           }}
-          loopedSlides={data.items.length}
+          loopedSlides={projects.length}
           loop
           grabCursor
-          speed={1600}
+          speed={500}
           autoplay={{ disableOnInteraction: false, delay: 2000 }}
         >
-          {data.items.map((item) => (
+          {projects.map((item) => (
             <SwiperSlide
-              key={item.name}
+              key={item._key}
               className="background__dark rounded-[8px] p-3 border border-[#4e6181]/20"
             >
-              <div className="h-full w-full rounded-[8px] overflow-hidden">
+              <figure className="h-full w-full rounded-[8px] overflow-hidden">
                 <SanityImg
                   className="mt-auto z-10 object-cover xl:h-[300px] md:h-[250px] h-[300px] w-full"
                   builder={imageUrlBuilder}
                   image={item.image}
-                  alt={item.name}
+                  alt={item.image.alt}
                   title={item.name}
-                  height={220}
+                  height={windowWidth >= 1280 ? 400 : windowWidth >= 640 ? 300 : 220}
                 />
-              </div>
+              </figure>
               <h6 className="text-center my-5">{item.name}</h6>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="lg:hidden flex justify-center | gap-x-4 mt-5">
+          <button ref={(node) => setPrevEl(node)} className="cursor-pointer">
+            <ArrowLeft />
+          </button>
+          <button ref={(node) => setNextEl(node)} className="cursor-pointer">
+            <ArrowRight />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
