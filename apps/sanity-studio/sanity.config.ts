@@ -6,24 +6,29 @@ import { AppStructure } from './desk-structure'
 import { table } from '@sanity/table'
 import { Logo } from './components/logo'
 
-const devOnlyPlugins = [visionTool()]
-export default defineConfig({
-  name: 'bifrostStudio',
-  title: 'Bifrost Studio',
-  icon: Logo,
-
-  projectId: 'p86pglis',
-  dataset: 'production',
-
-  plugins: [
-    ...(process.env.NODE_ENV !== 'production' ? devOnlyPlugins : []),
-    table(),
-    deskTool({
-      structure: AppStructure,
-    }),
-  ],
-
-  schema: {
-    types: schemaTypes,
+export default defineConfig([
+  {
+    projectId: 'p86pglis',
+    dataset: 'production',
+    name: 'bifrost-production-workspace',
+    title: 'Bifrost Studio',
+    basePath: '/production',
+    icon: Logo,
+    plugins: [table(), deskTool({ structure: AppStructure })],
+    schema: {
+      types: schemaTypes,
+    },
   },
-})
+  {
+    projectId: 'p86pglis',
+    dataset: 'staging',
+    name: 'bifrost-staging-workspace',
+    basePath: '/staging',
+    title: 'Staging',
+    icon: Logo,
+    plugins: [table(), deskTool({ structure: AppStructure }), visionTool()],
+    schema: {
+      types: schemaTypes,
+    },
+  },
+])
