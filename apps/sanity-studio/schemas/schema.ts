@@ -1,6 +1,5 @@
 import logos from './objects/site/logos'
 import nav from './objects/site/nav'
-import siteRedirects from './objects/site/redirects'
 import contactSection from './objects/site/contact'
 
 import ctaButton from './objects/ctaButton'
@@ -89,7 +88,6 @@ import datasetDetails from './documents/pages/dataset-details'
 export const schemaTypes = [
   logos,
   nav,
-  siteRedirects,
   contactSection,
   newsletter,
   resume,

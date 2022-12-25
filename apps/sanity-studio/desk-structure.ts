@@ -57,8 +57,6 @@ export const AppStructure = (S: StructureBuilder) =>
                 id: 'siteNav',
                 title: 'Navigation',
               }),
-
-              S.documentTypeListItem('site.redirects').title('Redirects'),
             ]),
         ),
       S.documentTypeListItem('social').title('Social'),

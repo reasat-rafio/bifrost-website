@@ -1,49 +1,40 @@
-import { IoLogoFacebook, IoLogoInstagram, IoLogoLinkedin, IoShareSocial } from 'react-icons/io5'
-import { defineField, defineType } from 'sanity'
+import { IoShareSocial } from 'react-icons/io5'
+import { Rule, defineType } from 'sanity'
 
 const Social = defineType({
   name: 'social',
-  title: 'Social',
   type: 'document',
   icon: IoShareSocial,
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'type',
-      title: 'Type',
-      type: 'string',
-      options: {
-        list: ['facebook', 'linkedin', 'instagram'],
-      },
-    }),
-    defineField({
+    {
       name: 'url',
-      title: 'URL',
-      type: 'string',
-    }),
+      type: 'url',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'icon',
+      type: 'image',
+      validation: (Rule: Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
+    },
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'url',
-      type: 'type',
+      title: 'url',
+      media: 'icon',
     },
-    prepare({ title, subtitle, type }) {
+    prepare({ title, media }) {
       return {
         title,
-        subtitle,
-        media:
-          type === 'facebook'
-            ? IoLogoFacebook
-            : type === 'linkedin'
-            ? IoLogoLinkedin
-            : type === 'instagram'
-            ? IoLogoInstagram
-            : IoShareSocial,
+        media,
       }
     },
   },

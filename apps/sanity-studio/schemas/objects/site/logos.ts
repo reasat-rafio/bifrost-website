@@ -1,4 +1,5 @@
 import { FaRegStar } from 'react-icons/fa'
+import { Rule } from 'sanity'
 
 export default {
   name: 'site.logos',
@@ -8,8 +9,8 @@ export default {
   fields: [
     {
       name: 'logo',
-      title: 'Logo',
       type: 'image',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'logoDark',
@@ -20,6 +21,7 @@ export default {
       name: 'favicon',
       title: 'Favicon',
       type: 'image',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'ogImage',
@@ -28,11 +30,13 @@ export default {
       options: {
         accept: 'image/png, image/jpeg, image/webp',
       },
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {
     prepare: () => ({
       title: 'Logos',
+      icon: FaRegStar,
     }),
   },
 }
