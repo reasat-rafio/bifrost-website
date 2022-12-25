@@ -6,7 +6,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import Hero from 'components/home/hero'
 import Product from 'components/home/product'
-import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
+import Demo from 'components/home/demo'
 import HomeService from 'src/components/home/HomeService/HomeService'
 import Project from 'components/home/projects'
 import Ellipse from 'src/components/Ellipse'
@@ -31,34 +31,34 @@ const query = groq`{
           ...,
           metadata {
             dimensions
-          }
-        }
+          },
+        },
       },
-    images[]{
-      ...,
-      asset->{
+      images[]{
         ...,
-        metadata{
+        asset->{
+         ...,
+         metadata{
           dimensions
-        }
-      }
-    },
-    projects[]{
+          },
+        },
+      },
+      projects[]{
         ...,
         "image": ${withDimensions('image')},
       },
-    reviews[]{
-      ...,
-      "image": ${withDimensions('image')}
+      reviews[]{
+        ...,
+        "image": ${withDimensions('image')},
       },
     },
     "cleint" : *[_id == "client"][0] {
+      ...,
+      clients[]{
         ...,
-        clients[]{
-         ...,
-          "image": ${withDimensions('image')},
-      }
-    }
+        "image": ${withDimensions('image')},
+      },
+    },
   },
 }`
 
@@ -96,7 +96,7 @@ export default function Home(props: SanityProps<any>) {
         <PrimaryWrapper>
           {renderObjectArray(sections, {
             'landing.products': Product,
-            // 'landing.demo': HomeDemo,
+            'landing.demo': Demo,
             // 'landing.services': HomeService,
             'landing.projects': Project,
             'landing.reviews': Reviews,

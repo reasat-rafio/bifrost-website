@@ -1,4 +1,5 @@
 import { GiClick } from 'react-icons/gi'
+import { Rule } from 'sanity'
 
 export default {
   name: 'landing.demo',
@@ -11,24 +12,27 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'previews',
-      title: 'Preview Images',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
+
       of: [
         {
           name: 'image',
           type: 'image',
-          title: 'Preview Image',
+          validation: (Rule: Rule) => Rule.required(),
           fields: [
             {
               name: 'alt',
               title: 'Alternative Text',
               description: 'Important for SEO and accessibility',
               type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
           ],
         },
@@ -37,7 +41,10 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
+      title: 'title',
+    },
+    prepare({ title }: any) {
+      return { title, icon: GiClick }
     },
   },
 }

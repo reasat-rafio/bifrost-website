@@ -1,12 +1,14 @@
 import React from 'react'
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useWindowSize } from 'src/lib/hooks'
+import clsx from 'clsx'
 
 interface ScrollDetectiveProps {
   onView: boolean
   ratio: number
   totalLength: number
   containerWidth: number
+  className?: string
 }
 
 const ScrollDetectiveVarient = {
@@ -23,23 +25,22 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
   ratio,
   totalLength,
   containerWidth,
+  className,
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0
-  // const windowHeight = useWindowSize()?.height ?? 0
-
   const scrollDetectivePosition = (windowWidth - containerWidth) / 2 / 2
-
   const xInputPosition = (ratio / totalLength) * 300
-
   const x = useMotionValue(0)
   const xInput = [-100, xInputPosition - 100]
   const colorOutput = ['#C9FF71', '#7187FF']
-
   const background = useTransform(x, xInput, colorOutput)
 
   return (
     <motion.div
-      className="fixed top-1/2 transform -translate-y-1/2 h-auto z-40 overflow-hidden rounded-2xl"
+      className={clsx(
+        'fixed top-1/2 transform -translate-y-1/2 h-auto z-40 overflow-hidden rounded-2xl',
+        className,
+      )}
       initial="hide"
       animate={onView ? 'show' : 'hide'}
       variants={ScrollDetectiveVarient}

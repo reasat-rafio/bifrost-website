@@ -9,20 +9,22 @@ import 'swiper/css/a11y'
 import { DemoSection } from 'src/lib/@types/landingTypes'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
+import { useWindowSize } from 'lib/hooks'
 
 interface CarouselProps {
   data: DemoSection['previews']
+  className?: string
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ data }) => {
+export const Carousel: React.FC<CarouselProps> = ({ data, className }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
+
   const setSlideHeight = (swiper: any) => {
     document.querySelectorAll<HTMLElement>('#landing-demo-craousel .swiper-slide').forEach((el) => {
       el.style.height = 'auto'
     })
-
     const currentSlide = swiper.activeIndex
     const newHeight = swiper.slides[currentSlide]?.offsetHeight
-
     document
       .querySelectorAll<HTMLElement>(
         '#landing-demo-craousel .swiper-wrapper, #landing-demo-craousel .swiper-slide',
@@ -30,7 +32,6 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
       .forEach((el) => {
         el.style.height = `${newHeight}px`
       })
-
     swiper.update()
   }
 
@@ -39,7 +40,7 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
   }, [])
 
   return (
-    <div id="landing-demo-craousel">
+    <div id="landing-demo-craousel" className={className}>
       <Swiper
         modules={[Autoplay, Pagination, A11y, Navigation]}
         autoplay
@@ -55,15 +56,15 @@ export const Carousel: React.FC<CarouselProps> = ({ data }) => {
         onSlideNextTransitionEnd={(swiper) => setSlideHeight(swiper)}
         onResize={(swiper) => setSlideHeight(swiper)}
       >
-        {data.map((previewItem, index) => (
-          <SwiperSlide key={index} className="">
+        {data.map((previewItem) => (
+          <SwiperSlide key={previewItem._key} className="">
             <SanityImg
-              style={{ filter: `drop-shadow(0px 14px 100px rgba(29, 49, 81, 0.4))` }}
+              style={{ filter: `drop-shadow(0px 4px 10px rgba(29, 49, 81, 0.4))` }}
               className="w-full object-cover rounded-2xl"
               builder={imageUrlBuilder}
               image={previewItem}
-              height={300}
-              alt={'image'}
+              width={windowWidth > 640 ? 500 : 250}
+              alt={previewItem.alt}
             />
           </SwiperSlide>
         ))}

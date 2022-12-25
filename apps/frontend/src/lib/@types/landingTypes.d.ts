@@ -31,7 +31,7 @@ export interface ReviewSection {
 }
 
 export interface DemoSection {
-  headline: string
+  title: string
   previews: [SanityImage & ImageAlt]
 }
 

@@ -12,7 +12,7 @@ interface PreviewProps {
 
 export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { height: windowHeight } = useWindowSize() ?? {
+  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
   }
@@ -41,9 +41,26 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
         }
 
         if (sectionRef.current) {
-          sectionRef.current.style.transform = `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-          sectionRef.current.style.transitionDuration = '0.35s'
-          sectionRef.current.style.transitionTimingFunction = 'ease'
+          sectionRef.current.animate(
+            {
+              transform: `translate3d(0px, ${transitionYValue}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+            },
+            {
+              duration: 350,
+              fill: 'forwards',
+            },
+          )
+          sectionRef.current.animate(
+            {
+              scale: Math.max(1 - sectionRatio / 20, 0.8),
+              opacity: Math.max(1 - sectionRatio * 1.1, 0),
+            },
+            {
+              duration: 300,
+              delay: 150,
+              fill: 'forwards',
+            },
+          )
         }
       }),
     [windowHeight],
@@ -57,13 +74,15 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
         zIndex: 10 - index,
       }}
     >
-      <SanityImg
-        className="w-full rounded-lg object-fill"
-        builder={imageUrlBuilder}
-        image={item}
-        height={600}
-        alt={item.alt ?? 'image'}
-      />
+      <figure className="aspect-video w-full max-h-[70vh]">
+        <SanityImg
+          className="w-full h-full object-cover | rounded-lg"
+          builder={imageUrlBuilder}
+          image={item}
+          width={windowWidth >= 1440 ? 1200 : windowWidth >= 1025 ? 800 : 600}
+          alt={item.alt ?? 'image'}
+        />
+      </figure>
     </div>
   )
 }
