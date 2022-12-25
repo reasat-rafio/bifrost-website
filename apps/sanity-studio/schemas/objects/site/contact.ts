@@ -1,4 +1,5 @@
 import { FaBook } from 'react-icons/fa'
+import { Rule } from 'sanity'
 
 export default {
   name: 'contact',
@@ -12,18 +13,24 @@ export default {
     },
     {
       name: 'headline',
-      title: 'Headline',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'ctaButton',
-      title: 'CTA Button',
       type: 'ctaButton',
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {
     select: {
       title: 'headline',
+    },
+    prepare({ title }: any) {
+      return {
+        title,
+        icon: FaBook,
+      }
     },
   },
 }

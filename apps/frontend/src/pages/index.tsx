@@ -10,7 +10,7 @@ import HomeDemo from 'src/components/home/homeDemo/HomeDemo'
 import HomeService from 'src/components/home/HomeService/HomeService'
 import Project from 'components/home/projects'
 import Ellipse from 'src/components/Ellipse'
-import HomeReview from 'src/components/home/HomeReview'
+import Reviews from 'components/home/reviews'
 import { Contact } from 'src/components/common/contact'
 import { HomeSection } from 'src/lib/@types/landingTypes'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
@@ -46,7 +46,11 @@ const query = groq`{
     projects[]{
         ...,
         "image": ${withDimensions('image')},
-      }
+      },
+    reviews[]{
+      ...,
+      "image": ${withDimensions('image')}
+      },
     },
     "cleint" : *[_id == "client"][0] {
         ...,
@@ -95,12 +99,12 @@ export default function Home(props: SanityProps<any>) {
             // 'landing.demo': HomeDemo,
             // 'landing.services': HomeService,
             'landing.projects': Project,
-            // 'landing.reviews': HomeReview,
+            'landing.reviews': Reviews,
           })}
           {/* <Client {...cleint} /> */}
           {renderObjectArray(sections, {
             newsletter: Newsletter,
-            // contact: Contact,
+            contact: Contact,
           })}
         </PrimaryWrapper>
         {/* <>

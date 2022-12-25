@@ -13,61 +13,54 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { useWindowSize } from 'src/lib/hooks'
 
-export default function HomeReview({ items }: ReviewSection): ReactElement {
+export default function Reviews({ reviews }: ReviewSection): ReactElement {
   const windowWidth = useWindowSize()?.width ?? 0
-
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
+  const [transformWidth, setTransformWidth] = useState(0)
 
-  const [transformWidth, setTransFromWidth] = useState(0)
-
-  const measuredRef = useCallback((node) => {
-    if (node !== null) {
-      const handleWidth = () => setTransFromWidth(node.clientWidth)
-      handleWidth()
-      window.addEventListener('resize', handleWidth)
-      window.addEventListener('load', handleWidth)
-    }
-  }, [])
+  const measuredRef = useCallback(
+    (node) => {
+      if (node !== null) setTransformWidth(node.clientWidth)
+    },
+    [windowWidth],
+  )
 
   return (
-    <div className="max-w-7xl relative md:mx-auto lg:!px-14 px-6 ">
+    <div className="max-w-screen-2xl relative md:mx-auto lg:!px-14 px-6 pb-16">
       <div className="review-carousel">
         <Swiper
           className="md:!pb-0 !pb-24"
           modules={[Autoplay, Navigation, Mousewheel, Pagination]}
           navigation={{ prevEl, nextEl }}
           slidesPerView={1}
-          centeredSlides
           pagination={{
             dynamicBullets: true,
             clickable: true,
           }}
           spaceBetween={50}
-          loopedSlides={items.length}
+          loopedSlides={reviews.length}
           loop
           speed={600}
           grabCursor
-          // onSwiper={(pagination) => console.log(pagination)}
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
         >
-          {items.map(({ name, image, description, body }) => (
-            <SwiperSlide key={name}>
-              <div
+          {reviews.map(({ _key, name, image, role, review }) => (
+            <SwiperSlide key={_key}>
+              <article
                 className="relative grid grid-cols-12 md:mr-10 "
                 style={{
-                  paddingBottom: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}`,
-                  marginLeft: `${windowWidth >= 768 ? `${transformWidth / 2}px` : ''}`,
+                  paddingBottom: windowWidth >= 768 ? transformWidth / 2 : 0,
+                  marginLeft: windowWidth >= 768 ? transformWidth / 2 : 0,
                 }}
               >
-                <div className="col-span-1 hidden md:block " />
-                <GradientBorder className="md:col-span-12 col-span-12 ">
+                <span className="col-span-1 hidden md:block " />
+                <GradientBorder className="md:col-span-12 col-span-12">
                   <div
                     className="relative grid grid-cols-12 transform justify-center items-end md:px-0 px-3"
                     style={{
-                      transform: `${
-                        windowWidth >= 768 ? `translate(-${transformWidth / 2}px, 0)` : ''
-                      }`,
+                      transform:
+                        windowWidth >= 768 ? `translate(-${transformWidth / 2}px, 0)` : undefined,
                     }}
                   >
                     <div className="col-span-3 md:inline-block hidden">
@@ -76,45 +69,49 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                         ref={measuredRef}
                       >
                         <GradientBorder className="" borderRadious="100%" borderSize="10px">
-                          <SanityImg
-                            className="rounded-full"
-                            builder={imageUrlBuilder}
-                            image={image}
-                            alt={name}
-                            title={name}
-                            height={175}
-                          />
+                          <figure className="xl:h-[200px] xl:w-[200px] lg:w-[150px] lg:h-[150px] md:w-[120px] md:h-[120px]">
+                            <SanityImg
+                              className="rounded-full | h-full w-full object-cover"
+                              builder={imageUrlBuilder}
+                              image={image}
+                              alt={image.alt}
+                              title={name}
+                              width={windowWidth >= 1280 ? 250 : 200}
+                            />
+                          </figure>
                         </GradientBorder>
                       </div>
                     </div>
-                    <div className="md:col-span-9 col-span-12 md:pt-10 md:pb-16 md:pl-10 transform md:translate-y-0 translate-y-[15%] px-3 md:px-0">
+                    <section className="md:col-span-9 col-span-12 md:pt-10 md:pb-16 md:pl-10 transform md:translate-y-0 translate-y-[15%] px-3 md:px-0">
                       <p
-                        className="md:text-head-5 text-[26px] leading-[39px] font-light md:mb-8"
+                        className="md:text-head-5 text-body-2 font-light md:mb-8"
                         style={{ textShadow: `0px 4px 40px rgba(0, 0, 0, 0.7)` }}
                       >
-                        {body}
+                        {review}
                       </p>
 
                       <div className="relative  mb-5 hidden md:inline-block">
-                        <span className="text-body-1  leading-[22px] uppercase w-auto text-transparent bg-clip-text gradient__white__to__green font-light ">
+                        <span className="sm:text-body-1 text-body-3 | uppercase w-auto text-transparent bg-clip-text gradient__white__to__green font-light ">
                           {name}
                         </span>
                         <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] gradient__white__to__green" />
                       </div>
-                      <div className="opacity-50 text-body-3 text-left hidden md:block">
-                        {description}
-                      </div>
-                    </div>
-                    <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-[38%]">
-                      <GradientBorder borderRadious="100%" borderSize="8px">
-                        <SanityImg
-                          className="rounded-full"
-                          builder={imageUrlBuilder}
-                          image={image}
-                          alt={name}
-                          title={name}
-                          height={130}
-                        />
+                      <span className="opacity-50 sm:text-body-3 text-body-1-mobile text-left hidden md:block">
+                        {role}
+                      </span>
+                    </section>
+                    <div className="col-span-12 md:hidden flex space-x-2 transform translate-y-[38%] pb-5">
+                      <GradientBorder borderRadious="100%" borderSize="6px">
+                        <figure className="sm:w-[100px] sm:h-[100px] w-[70px] h-[70px]">
+                          <SanityImg
+                            className="rounded-full | h-full w-full object-cover"
+                            builder={imageUrlBuilder}
+                            image={image}
+                            alt={image.alt}
+                            title={name}
+                            width={150}
+                          />
+                        </figure>
                       </GradientBorder>
                       <div>
                         <div className="relative mb-2 ">
@@ -124,13 +121,13 @@ export default function HomeReview({ items }: ReviewSection): ReactElement {
                           <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] gradient__white__to__green" />
                         </div>
                         <div className="opacity-50 md:text-body-3 text-base md:text-left text-right">
-                          {description}
+                          {role}
                         </div>
                       </div>
                     </div>
                   </div>
                 </GradientBorder>
-              </div>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>

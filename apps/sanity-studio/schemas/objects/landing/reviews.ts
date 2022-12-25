@@ -1,4 +1,5 @@
 import { MdOutlineRateReview } from 'react-icons/md'
+import { Rule } from 'sanity'
 export default {
   name: 'landing.reviews',
   title: 'Reviews',
@@ -10,48 +11,65 @@ export default {
       type: 'initials',
     },
     {
-      name: 'items',
+      name: 'reviews',
       type: 'array',
+      vlidation: (Rule: Rule) => Rule.required(),
       of: [
         {
           name: 'review',
           type: 'object',
           fields: [
             {
-              name: 'body',
-              title: 'body',
-              type: 'string',
-            },
-            {
               name: 'name',
-              title: 'Name',
               type: 'string',
+              vlidation: (Rule: Rule) => Rule.required(),
             },
             {
-              name: 'description',
+              name: 'role',
               type: 'string',
+              vlidation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'image',
               type: 'image',
               title: 'Product Image',
+              vlidation: (Rule: Rule) => Rule.required(),
               fields: [
                 {
                   name: 'alt',
                   title: 'Alternative Text',
                   description: 'Important for SEO and accessibility',
                   type: 'string',
+                  vlidation: (Rule: Rule) => Rule.required(),
                 },
               ],
             },
+            {
+              name: 'review',
+              type: 'text',
+              vlidation: (Rule: Rule) => Rule.required(),
+            },
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'review',
+              media: 'image',
+            },
+          },
         },
       ],
     },
   ],
   preview: {
     select: {
-      title: 'review.body',
+      title: '',
+    },
+    prepare() {
+      return {
+        title: 'Reviews',
+        icon: MdOutlineRateReview,
+      }
     },
   },
 }

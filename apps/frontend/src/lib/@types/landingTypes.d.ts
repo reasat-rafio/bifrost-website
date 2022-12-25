@@ -25,7 +25,9 @@ export interface ProjectSection {
 }
 
 export interface ReviewSection {
-  items: [{ body: string; image: SanityImage & ImageAlt; description: string; name: string }]
+  reviews: [
+    { _key: string; review: string; image: SanityImage & ImageAlt; name: string; role: string },
+  ]
 }
 
 export interface DemoSection {
