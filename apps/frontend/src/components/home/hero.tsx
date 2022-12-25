@@ -25,17 +25,17 @@ interface IHomeSection extends HomeSection {
 const movingBorderObjWidth = 9
 const transition = { repeat: Infinity, duration: 4, velocity: 50, ease: 'easeInOut' }
 
-export default function Hero({
+export const Hero: React.FC<IHomeSection> = ({
   title,
   subtitle,
   ctaButton,
   image,
   setHeroSectionHeight,
-}: IHomeSection): ReactElement {
+}) => {
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
   const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
 
-  const [sectionScrollPassed, setSectionSrollPassed] = useState(false)
+  // const [sectionScrollPassed, setSectionSrollPassed] = useState(false)
   const [decorationBlockWidth, setDecorationBlockWidth] = useState(
     movingBorderDecorationBlockRef?.current?.clientWidth ?? 0,
   )

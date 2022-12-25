@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Mousewheel, Pagination } from 'swiper'
@@ -13,7 +13,7 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { useWindowSize } from 'src/lib/hooks'
 
-export default function Reviews({ reviews }: ReviewSection): ReactElement {
+export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)

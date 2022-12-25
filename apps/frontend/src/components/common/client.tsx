@@ -1,5 +1,4 @@
 import { ClientsSection } from 'src/lib/@types/aboutUsTypes'
-import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
@@ -12,7 +11,7 @@ import 'swiper/css/pagination'
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Header } from 'src/components/ui/Header'
 
-export default function Client({ clients, headline, subHeadline }: ClientsSection): ReactElement {
+export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadline }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,

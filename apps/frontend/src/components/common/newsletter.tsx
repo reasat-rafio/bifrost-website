@@ -10,7 +10,7 @@ interface NewsletterProps {
   ctaButton: CTAButton
 }
 
-const Newsletter: React.FC<NewsletterProps> = ({ title, ctaButton, subtitle }) => {
+export const Newsletter: React.FC<NewsletterProps> = ({ title, ctaButton, subtitle }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
@@ -66,5 +66,3 @@ const Newsletter: React.FC<NewsletterProps> = ({ title, ctaButton, subtitle }) =
     </motion.section>
   )
 }
-
-export default Newsletter

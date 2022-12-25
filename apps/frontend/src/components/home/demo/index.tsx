@@ -8,12 +8,12 @@ import {
   useWindowSize,
 } from 'src/lib/hooks'
 import { DemoSection } from 'src/lib/@types/landingTypes'
-import { ReactElement, useCallback, useEffect, useRef, useState } from 'react'
-import { Carousel } from './Carousel'
-import { ScrollDetective } from './ScrollDetective'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Carousel } from './carousel'
+import { ScrollDetective } from './scroll-detective'
 import { motion } from 'framer-motion'
 
-export default function Demo({ title, previews }: DemoSection): ReactElement {
+export const Demo: React.FC<DemoSection> = ({ title, previews }) => {
   const totalLength = previews.length + 1
   const { width: windowWidth, height: windowHeight } = useWindowSize() ?? {
     width: 0,

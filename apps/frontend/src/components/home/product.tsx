@@ -2,19 +2,18 @@ import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
 import { ProductSection } from 'src/lib/@types/landingTypes'
-import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { useWindowSize } from 'lib/hooks'
 import { Button } from 'components/ui/button'
 
-export default function Product({
+export const Product: React.FC<ProductSection> = ({
   title,
   subtitle,
   description,
   ctaButton,
   images,
-}: ProductSection): ReactElement {
+}) => {
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (

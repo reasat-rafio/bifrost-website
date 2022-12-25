@@ -15,7 +15,7 @@ import { Description } from 'src/components/ui/Description'
 import { useWindowSize } from 'lib/hooks'
 import clsx from 'clsx'
 
-export default function Project({ projects, subtitle, title }: ProjectSection): ReactElement {
+export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
