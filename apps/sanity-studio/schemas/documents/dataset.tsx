@@ -21,6 +21,11 @@ const Dataset = defineType({
   ],
 
   fields: [
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
     defineField({
       name: 'order',
       title: 'Order',

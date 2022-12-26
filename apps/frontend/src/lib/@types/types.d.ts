@@ -41,17 +41,15 @@ export interface Footer {
 }
 
 export interface MenuItem {
-  href: string
   title: string
-  isCTA: boolean
-  submenu: array
-  url: string
+  pageUrl: string
+  externalUrl: string
+  highlight: boolean
+  submenu: MenuItem[]
 }
 
-type SocialType = 'facebook' | 'twitter' | 'linkedin' | 'instagram'
 export interface Social {
-  title: string
-  type: SocialType
+  icon: SanityImage
   url: string
 }
 

@@ -17,7 +17,7 @@ interface NavbarProps {
 
 export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElement {
   const router = useRouter()
-  const ctaButton = menu.filter((men) => men.isCTA)[0]
+  const ctaButton = menu.filter((men) => men.highlight)[0]
   const [smallNavOpen, setSmallNavOpen] = useState(false)
   const [smallNav, setSmallNav] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
@@ -143,16 +143,17 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                   layout
                 >
                   {menu
-                    .filter((men) => !men.isCTA)
+                    .filter((men) => !men.highlight)
                     .map((men, _) => (
                       <li key={men.title} className="dropdown relative items-center py-2 my-2 ">
                         <a
                           onClick={(ev) => {
-                            if (men.url) {
+                            if (men.externalUrl) {
                               ev.preventDefault()
-                              if (typeof window !== 'undefined') window.open(men.url, '_blank')
+                              if (typeof window !== 'undefined')
+                                window.open(men.externalUrl, '_blank')
                             } else {
-                              router.push(men.href)
+                              router.push(men.pageUrl)
                             }
                             if (men.submenu && men.submenu?.length > 0) {
                               ev.preventDefault()
@@ -160,19 +161,19 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                           }}
                           className={clsx(
                             'lg:my-0 flex items-center md:items-center font-bold hover:opacity-75 cursor-pointer',
-                            men.isCTA && 'cta-button font-bold',
+                            men.highlight && 'cta-button font-bold',
                           )}
                         >
                           <span
                             className={clsx(
-                              router.asPath === men.href &&
+                              router.asPath === men.pageUrl &&
                                 'text-transparent bg-clip-text gradient__white__to__green',
                             )}
                           >
                             {men.title}
                           </span>
                         </a>
-                        {router.asPath === men?.href && (
+                        {router.asPath === men?.pageUrl && (
                           <motion.div
                             layout
                             className={clsx(
@@ -191,7 +192,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
           )}
         </AnimatePresence>
         <div className={clsx('lg:flex justify-center', !smallNav ? 'flex' : 'hidden')}>
-          <Button onClick={() => router.push(ctaButton.href)}>
+          <Button onClick={() => router.push(ctaButton.pageUrl)}>
             <a onClick={(e) => e.preventDefault()}>{ctaButton.title}</a>
           </Button>
         </div>

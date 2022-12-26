@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { Footer as FooterType, SocialType } from 'src/lib/@types/types'
+import { Footer as FooterType } from 'src/lib/@types/types'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { imageUrlBuilder } from 'src/utils/sanity'
@@ -10,19 +10,6 @@ import Link from 'next/link'
 interface FooterProps {
   logo: SanityImage
   footer: FooterType
-}
-
-function socialIcon(type: SocialType) {
-  switch (type) {
-    case 'facebook':
-      return '/footer/facebook.svg'
-    case 'instagram':
-      return '/footer/instagram.svg'
-    case 'linkedin':
-      return '/footer/linkedin.svg'
-    default:
-      return '/footer/facebook.svg'
-  }
 }
 
 export default function Footer({ logo, footer }: FooterProps): ReactElement {
@@ -54,7 +41,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
             />
           </a>
           <div className="flex gap-x-5">
-            {footer.socialButtons?.map((item) => (
+            {/* {footer.socialButtons?.map((item) => (
               <a
                 href={item.url}
                 target="_blank"
@@ -73,7 +60,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
                   </div>
                 </div>
               </a>
-            ))}
+            ))} */}
           </div>
           <div className="md:block hidden">{footer.copyright}</div>
         </div>
@@ -82,7 +69,7 @@ export default function Footer({ logo, footer }: FooterProps): ReactElement {
           <div className="font-bold">Quick Links</div>
           <div className="grid md:grid-cols-2 grid-cols-1  gap-y-5">
             {footer.menu?.map((menu) => (
-              <Link key={menu.title} href={menu.href ?? ''}>
+              <Link key={menu.title} href={menu.pageUrl ?? ''}>
                 <a className="cursor-pointer opacity-[0.7]">{menu.title}</a>
               </Link>
             ))}

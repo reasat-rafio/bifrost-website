@@ -8,6 +8,11 @@ const Blog = defineType({
   type: 'document',
   icon: BsNewspaper,
   fields: [
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
     defineField({
       name: 'order',
       title: 'Order',

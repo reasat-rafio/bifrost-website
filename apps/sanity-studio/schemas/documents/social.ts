@@ -31,12 +31,6 @@ const Social = defineType({
       title: 'url',
       media: 'icon',
     },
-    prepare({ title, media }) {
-      return {
-        title,
-        media,
-      }
-    },
   },
 })
 
