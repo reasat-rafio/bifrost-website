@@ -41,6 +41,7 @@ export interface Footer {
 }
 
 export interface MenuItem {
+  _key: string
   title: string
   pageUrl: string
   externalUrl: string

@@ -4,12 +4,13 @@ import { imageUrlBuilder } from 'src/utils/sanity'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
-import { AppProvider } from 'src/context/global'
-import Navbar from 'src/components/Navbar'
+import { AppProvider } from 'src/store/global'
+import Navbar from 'components/nav/navbar'
 import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
 import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import '@styles/global.scss'
+import { Dropdown } from 'components/nav/dropdown'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
@@ -58,14 +59,14 @@ function MyApp({ Component, pageProps }: AppProps) {
               images: openGraphImages,
             }}
           />
-          {/* {pageProps.data?.site && (
-            <Navbar
-              darkLogo={pageProps.data?.site.logos.darkLogo}
-              logo={pageProps.data?.site.logos.logo}
-              menu={pageProps.data?.site.nav.menu}
-              darkBg={pageProps.data?.blog?._type === 'blog'}
-            />
-          )} */}
+          <Navbar
+            darkLogo={pageProps.data?.site.logos.darkLogo}
+            logo={pageProps.data?.site.logos.logo}
+            menu={pageProps.data?.site.nav.menu}
+            darkBg={pageProps.data?.blog?._type === 'blog'}
+          />
+          <Dropdown menu={pageProps.data?.site.nav.menu} />
+
           {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
               <div className="__background__noise__" />

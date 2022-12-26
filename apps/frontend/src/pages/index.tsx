@@ -73,12 +73,11 @@ export default function Home(props: SanityProps<any>) {
       page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
-  console.log(sections)
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
   return (
-    <div>
+    <div className="">
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           'landing.home': useCallback(
