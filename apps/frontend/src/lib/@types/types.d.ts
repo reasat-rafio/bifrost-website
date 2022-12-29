@@ -24,6 +24,11 @@ export interface Footer {
   copyright: string
   socialButtons: Social[]
   menu: MenuItem[]
+  newsletter: {
+    title: string
+    subtitle: string
+    ctaButton: CTAButton
+  }
 }
 
 export interface Site {
@@ -50,6 +55,7 @@ export interface MenuItem {
 }
 
 export interface Social {
+  _key?: string
   icon: SanityImage
   url: string
 }

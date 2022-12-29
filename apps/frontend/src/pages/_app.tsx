@@ -75,11 +75,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           <Component {...pageProps} />
           {/* <Toast /> */}
+          <Footer logo={pageProps.data?.site.logos.logo} footer={pageProps.data?.site.nav.footer} />
           {/* {pageProps.data?.site && (
-            <Footer
-              logo={pageProps.data?.site.logos.logo}
-              footer={pageProps.data?.site.nav.footer}
-            />
+           
           )} */}
         </div>
       </AppProvider>

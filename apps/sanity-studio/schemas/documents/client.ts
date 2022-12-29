@@ -42,8 +42,7 @@ const Client = {
                   title: 'Alternative Text',
                   description: 'Important for SEO and accessibility',
                   type: 'string',
-      validation: (Rule: Rule) => Rule.required(),
-
+                  validation: (Rule: Rule) => Rule.required(),
                 },
               ],
             },
@@ -57,7 +56,6 @@ const Client = {
       title: 'headline',
       subtitle: 'subHeadline',
     },
-    
   },
 }
 

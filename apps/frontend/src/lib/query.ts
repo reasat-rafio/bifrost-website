@@ -9,9 +9,12 @@ export const siteQuery = groq`{
     },
     "nav": *[_id == "siteNav"][0] {
       ...,
-      "footer": footer {
+      footer {
         ...,
-        "socialButtons": socialButtons[]->
+        socialButtons[]->{
+          ...,
+        "icon": ${withDimensions('icon')},
+        }
       }
     },
   }`

@@ -25,12 +25,12 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      previews[] {
-        ...
+      previews[]{
+        ...,
         asset->{
-          ...,
-          metadata {
-            dimensions
+         ...,
+         metadata{
+          dimensions
           },
         },
       },
@@ -56,7 +56,7 @@ const query = groq`{
       ...,
       clients[]{
         ...,
-        "image": ${withDimensions('image')},
+        "logo": ${withDimensions('logo')},
       },
     },
   },
