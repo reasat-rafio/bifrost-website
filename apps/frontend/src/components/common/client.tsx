@@ -30,11 +30,11 @@ export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadlin
               <div className="col-span-2 flex flex-col items-center justify-center">
                 <div className="w-[90%]">
                   <SanityImg
+                    height={windowWidth >= 1280 ? 200 : 150}
                     className="md:object-contain object-cover lg:max-h-[110px] max-h-[35px] hover:scale-110 transition duration-300 cursor-pointer"
-                    builder={imageUrlBuilder}
                     image={team.logo}
+                    builder={imageUrlBuilder}
                     alt={team.logo?.alt || 'image'}
-                    height={120}
                   />
                 </div>
               </div>
@@ -59,14 +59,13 @@ export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadlin
               }}
             >
               {clients.map((team) => (
-                <SwiperSlide key={team._key}>
+                <SwiperSlide className="my-auto" key={team._key}>
                   <div className="flex justify-center items-center">
                     <SanityImg
-                      className=""
                       builder={imageUrlBuilder}
                       image={team.logo}
                       alt={team.logo?.alt || 'image'}
-                      height={50}
+                      height={windowWidth >= 640 ? 100 : 60}
                     />
                   </div>
                 </SwiperSlide>

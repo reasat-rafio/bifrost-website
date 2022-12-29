@@ -100,7 +100,7 @@ export default function Home(props: SanityProps<any>) {
             'landing.projects': Project,
             'landing.reviews': Reviews,
           })}
-          {/* <Client {...cleint} /> */}
+          <Client {...cleint} />
           {renderObjectArray(sections, {
             newsletter: Newsletter,
             contact: Contact,
