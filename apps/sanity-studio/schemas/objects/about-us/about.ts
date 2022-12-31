@@ -1,4 +1,5 @@
 import { FaQuestionCircle } from 'react-icons/fa'
+import { Rule } from 'sanity'
 
 export default {
   name: 'aboutUs.about',
@@ -11,41 +12,51 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'heading',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subHeadline',
-      title: 'Sub-Headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'body',
-      type: 'string',
+      name: 'subtitle',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'ctaButton',
-      title: 'CTA Button',
       type: 'ctaButton',
     },
     {
       name: 'image',
       type: 'image',
-      title: 'About Us Image',
+      validation: (Rule: Rule) => Rule.required(),
       fields: [
         {
           name: 'alt',
           title: 'Alternative Text',
           description: 'Important for SEO and accessibility',
           type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
         },
       ],
     },
   ],
+
   preview: {
     select: {
-      title: 'headline',
-      subtitle: 'body',
+      title: 'title',
+      subtitle: 'subtitle',
+    },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: FaQuestionCircle,
+      }
     },
   },
 }

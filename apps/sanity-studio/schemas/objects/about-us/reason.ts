@@ -1,4 +1,4 @@
-import editor from '../editor'
+import { Rule } from 'sanity'
 import { FaPodcast } from 'react-icons/fa'
 
 export default {
@@ -12,45 +12,52 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subHeadline',
-      title: 'Sub Headline',
-      type: 'string',
+      name: 'subtitle',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'reasons',
+      name: 'agendas',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
         {
-          name: 'reason',
+          name: 'agenda',
           type: 'object',
+          validation: (Rule: Rule) => Rule.required(),
           fields: [
+            {
+              name: 'name',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
             {
               name: 'title',
               type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
             {
-              name: 'headline',
-              type: 'string',
-            },
-            {
-              name: 'body',
+              name: 'description',
               type: 'array',
-              of: [editor],
+              of: [{ type: 'block' }],
+              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'image',
               type: 'image',
-              title: 'Reason Why Image',
+              validation: (Rule: Rule) => Rule.required(),
               fields: [
                 {
                   name: 'alt',
                   title: 'Alternative Text',
                   description: 'Important for SEO and accessibility',
                   type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
                 },
               ],
             },
@@ -61,8 +68,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
-      subtitle: 'body',
+      title: 'title',
+      subtitle: 'subTitle',
+    },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: FaPodcast,
+      }
     },
   },
 }

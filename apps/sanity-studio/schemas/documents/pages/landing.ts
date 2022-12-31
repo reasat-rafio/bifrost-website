@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineType } from 'sanity'
 
 const LandingPage = defineType({
   name: 'landingPage',
