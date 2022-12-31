@@ -7,5 +7,5 @@ export type ContactUsPage = {
 
 export interface HomeSection {
   headline: string
-  contactInfos: [{ title: string; description: any[] }]
+  contactInfos: [{ _key?: string; title: string; description: any[] }]
 }

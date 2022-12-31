@@ -1,6 +1,5 @@
-import ContactHome from 'src/components/contact/ContactHome'
-import Ellipse from 'src/components/Ellipse'
-import { ContactUsPage, HomeSection } from 'lib/@types/contact-us-types'
+import Home from 'components/contact/home'
+import { ContactUsPage } from 'lib/@types/contact-us-types'
 import { siteQuery } from 'src/lib/query'
 import { Site } from 'lib/@types/global-types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -8,10 +7,10 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import { useCallback, useState } from 'react'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { Contact } from 'components/common/contact'
 // import SmoothScroll from 'components/ui/SmoothScrolling'
+// import Ellipse from 'src/components/Ellipse'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -30,27 +29,14 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
     },
   } = useSanityQuery(query, props)
 
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
-
   return (
     <div>
-      {/* <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" /> */}
-
       <PrimaryWrapper>
         {renderObjectArray(sections, {
-          'contact.home': useCallback(
-            (p: HomeSection) => <ContactHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
-            [],
-          ),
+          'contact.home': Home,
         })}
       </PrimaryWrapper>
-      <div
-        className="bg-black"
-        style={{
-          transform: `translate(0, ${heroSectionHeight}px)`,
-          marginBottom: `${heroSectionHeight}px`,
-        }}
-      >
+      <div className="bg-black z-10 relative">
         <PrimaryWrapper>
           {renderObjectArray(sections, {
             contact: Contact,
