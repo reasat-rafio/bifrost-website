@@ -1,11 +1,11 @@
+import { AiOutlineTeam } from 'react-icons/ai'
 import { Rule } from 'sanity'
-import { FaPodcast } from 'react-icons/fa'
 
 export default {
-  name: 'aboutUs.reason',
-  title: 'Reason Why',
+  name: 'aboutUs.team',
+  title: 'Team',
   type: 'object',
-  icon: FaPodcast,
+  icon: AiOutlineTeam,
   fields: [
     {
       name: 'initials',
@@ -22,12 +22,12 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'agendas',
+      name: 'members',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
       of: [
         {
-          name: 'agenda',
+          name: 'member',
           type: 'object',
           fields: [
             {
@@ -36,14 +36,8 @@ export default {
               validation: (Rule: Rule) => Rule.required(),
             },
             {
-              name: 'title',
+              name: 'role',
               type: 'string',
-              validation: (Rule: Rule) => Rule.required(),
-            },
-            {
-              name: 'description',
-              type: 'array',
-              of: [{ type: 'block' }],
               validation: (Rule: Rule) => Rule.required(),
             },
             {
@@ -74,7 +68,7 @@ export default {
       return {
         title,
         subtitle,
-        icon: FaPodcast,
+        icon: AiOutlineTeam,
       }
     },
   },

@@ -36,6 +36,7 @@ import aboutUs from './documents/pages/about-us'
 import aboutUsHomeSection from './objects/about-us/home'
 import aboutUsAboutSection from './objects/about-us/about'
 import aboutUsReasonSection from './objects/about-us/reason'
+import aboutUsTeamSection from './objects/about-us/team'
 
 import useCase from './documents/pages/use-case'
 import useCaseHome from './objects/use-case/home'
@@ -122,6 +123,7 @@ export const schemaTypes = [
   aboutUsHomeSection,
   aboutUsAboutSection,
   aboutUsReasonSection,
+  aboutUsTeamSection,
 
   useCase,
   useCaseHome,

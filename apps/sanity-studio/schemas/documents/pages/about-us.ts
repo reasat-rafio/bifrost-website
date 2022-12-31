@@ -16,6 +16,7 @@ const AboutUs = {
         { type: 'aboutUs.home' },
         { type: 'aboutUs.about' },
         { type: 'aboutUs.reason' },
+        { type: 'aboutUs.team' },
         { type: 'newsletter' },
         { type: 'contact' },
       ],
