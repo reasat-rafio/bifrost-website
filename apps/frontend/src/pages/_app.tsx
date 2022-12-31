@@ -59,13 +59,13 @@ function MyApp({ Component, pageProps }: AppProps) {
               images: openGraphImages,
             }}
           />
-          <Navbar
+          {/* <Navbar
             darkLogo={pageProps.data?.site.logos.darkLogo}
             logo={pageProps.data?.site.logos.logo}
             menu={pageProps.data?.site.nav.menu}
             darkBg={pageProps.data?.blog?._type === 'blog'}
           />
-          <Dropdown menu={pageProps.data?.site.nav.menu} />
+          <Dropdown menu={pageProps.data?.site.nav.menu} /> */}
 
           {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </div>
           )} */}
 
-          <Component {...pageProps} />
+          {/* <Component {...pageProps} /> */}
           {/* <Toast /> */}
           <Footer logo={pageProps.data?.site.logos.logo} footer={pageProps.data?.site.nav.footer} />
           {/* {pageProps.data?.site && (

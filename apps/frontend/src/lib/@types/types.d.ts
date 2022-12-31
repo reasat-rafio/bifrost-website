@@ -55,7 +55,7 @@ export interface MenuItem {
 }
 
 export interface Social {
-  _key?: string
+  _id: string
   icon: SanityImage
   url: string
 }
