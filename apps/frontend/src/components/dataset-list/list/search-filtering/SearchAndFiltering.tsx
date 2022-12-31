@@ -1,4 +1,4 @@
-import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
+import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { FilteringListBox } from './FilteringListBox'

@@ -1,4 +1,4 @@
-import { BlogBody } from 'src/lib/@types/blogTypes'
+import { BlogBody } from 'lib/@types/blog-types'
 import React, { createRef, useEffect, useState } from 'react'
 import { ScrollSpyWrapper } from '../ScrollSpyWrapper'
 import { BlogSection } from './BlogSection'

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { Button } from 'components/ui/button'
-import { CTAButton } from 'lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { PortableText, imageUrlBuilder } from 'utils/sanity'
 

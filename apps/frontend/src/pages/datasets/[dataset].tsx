@@ -1,4 +1,4 @@
-import { Idataset } from 'src/lib/@types/datasetTypes'
+import { Idataset } from 'lib/@types/dataset-types'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'

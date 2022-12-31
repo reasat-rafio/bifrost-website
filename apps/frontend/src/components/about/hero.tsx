@@ -2,7 +2,7 @@ import { GradientTitle } from 'src/components/common/GradientTitle'
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
 import Button from 'components/ui/_Button'
 import { BackgroundNoise } from 'components/ui/background-noise'
-import { HomeSection } from 'src/lib/@types/aboutUsTypes'
+import { HomeSection } from 'lib/@types/about-us-types'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 
 interface IHomeSection extends HomeSection {

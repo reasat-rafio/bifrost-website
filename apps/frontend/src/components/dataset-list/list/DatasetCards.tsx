@@ -1,4 +1,4 @@
-import { IDatasetCard } from 'src/lib/@types/datasetTypes'
+import { IDatasetCard } from 'lib/@types/dataset-types'
 import { useWindowSize } from 'src/lib/hooks'
 import { useRouter } from 'next/router'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'

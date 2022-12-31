@@ -1,5 +1,5 @@
 import { Header } from 'src/components/ui/Header'
-import { IBlog } from 'src/lib/@types/blogTypes'
+import { IBlog } from 'lib/@types/blog-types'
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Mousewheel } from 'swiper'

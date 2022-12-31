@@ -1,4 +1,4 @@
-import { Idataset } from 'src/lib/@types/datasetTypes'
+import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'

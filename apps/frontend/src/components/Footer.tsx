@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { Footer as FooterType } from 'src/lib/@types/types'
+import { Footer as FooterType } from 'lib/@types/global-types'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import Link from 'next/link'
 import { useWindowSize } from 'lib/hooks'

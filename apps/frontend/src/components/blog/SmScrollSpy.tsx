@@ -1,6 +1,6 @@
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import { BlogBody } from 'src/lib/@types/blogTypes'
+import { BlogBody } from 'lib/@types/blog-types'
 import { useIntersection } from 'src/lib/hooks'
 import React, { Dispatch, Fragment, useRef } from 'react'
 import { motion } from 'framer-motion'

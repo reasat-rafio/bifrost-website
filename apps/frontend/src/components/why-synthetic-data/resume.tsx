@@ -1,4 +1,4 @@
-import { CTAButton } from 'lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 import { GradientBorder } from 'components/common/GradientBorder'
 import { Button } from 'components/ui/button'
 import { PortableText } from 'utils/sanity'

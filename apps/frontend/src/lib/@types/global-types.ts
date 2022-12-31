@@ -1,25 +1,5 @@
 import { SanityImage } from 'sanity-react-extra'
 
-interface HeroDataImage {
-  type: 'image'
-  image?: SanityImage & ImageAlt
-}
-
-interface HeroDataVideo {
-  type: 'video'
-  video: any
-}
-
-interface Youtube {
-  url: string
-}
-
-interface HeroDataYoutube {
-  type: 'youtube'
-  youtube?: Youtube
-}
-
-type HeroData = HeroDataImage | HeroDataVideo | HeroDataYoutube
 export interface Footer {
   copyright: string
   socialButtons: Social[]
@@ -75,11 +55,4 @@ export interface IToast {
   id: string
   content: string
   type: 'error' | 'success'
-}
-
-interface INotFound {
-  _type: string
-  description: string
-  header: string
-  image: Image
 }

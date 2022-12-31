@@ -1,4 +1,4 @@
-import { MenuItem } from 'lib/@types/types'
+import { MenuItem } from 'lib/@types/global-types'
 import useGlobalStore from '../../store/global-store'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'

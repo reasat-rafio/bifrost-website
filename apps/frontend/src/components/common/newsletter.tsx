@@ -1,6 +1,6 @@
 import { PortableText } from 'src/utils/sanity'
 import { GradientBorder } from './GradientBorder'
-import { CTAButton } from 'lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
 

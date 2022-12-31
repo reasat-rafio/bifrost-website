@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { LightboxImage } from 'src/components/ui/LightboxImage'
-import { BlogBody, IQuote } from 'src/lib/@types/blogTypes'
+import { BlogBody, IQuote } from 'lib/@types/blog-types'
 import React from 'react'
 import { PortableText } from 'src/utils/sanity'
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { Action } from 'src/components/Action'
-import { DemoSection } from 'src/lib/@types/landingTypes'
+import { DemoSection } from 'lib/@types/landing-types'
 import { ReactElement, useRef } from 'react'
 
 export default function HomeActions({ previews }: DemoSection): ReactElement {

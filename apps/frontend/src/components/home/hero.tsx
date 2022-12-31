@@ -9,7 +9,7 @@ import React, {
   useEffect,
 } from 'react'
 import { motion } from 'framer-motion'
-import { HomeSection } from 'src/lib/@types/landingTypes'
+import { HomeSection } from 'lib/@types/landing-types'
 import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
 import { SanityImg } from 'sanity-react-extra'
 import { useWindowSize } from 'src/lib/hooks'

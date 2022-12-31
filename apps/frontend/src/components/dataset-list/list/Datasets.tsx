@@ -1,11 +1,11 @@
-import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
+import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
 import { SmCategories } from './SmCategories'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import { DatasetCards } from './DatasetCards'
-import { INotFound } from 'src/lib/@types/types'
+import { INotFound } from 'lib/@types/global-types'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 

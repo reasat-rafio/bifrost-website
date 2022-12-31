@@ -1,4 +1,4 @@
-import { BarStackHorizontalProps, TooltipData } from 'src/lib/@types/datasetTypes'
+import { BarStackHorizontalProps, TooltipData } from 'lib/@types/dataset-types'
 import React, { MouseEvent, useCallback } from 'react'
 import { BarStackHorizontal } from '@visx/shape'
 import { Group } from '@visx/group'

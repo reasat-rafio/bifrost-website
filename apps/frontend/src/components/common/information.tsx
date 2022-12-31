@@ -1,5 +1,5 @@
 import { Button } from 'components/ui/button'
-import { CTAButton } from 'lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 import { useWindowSize } from 'lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'

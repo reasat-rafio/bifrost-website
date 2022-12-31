@@ -1,4 +1,4 @@
-import { Idataset } from 'src/lib/@types/datasetTypes'
+import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
 import { PortableText } from 'src/utils/sanity'
 import Serializers from './Serializers'

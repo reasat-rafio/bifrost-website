@@ -1,4 +1,4 @@
-import { Idataset } from 'src/lib/@types/datasetTypes'
+import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import Graph from './Graph'

@@ -1,6 +1,6 @@
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
 import { BackgroundNoise } from 'components/ui/background-noise'
-import { HomeSection } from 'src/lib/@types/contactUsTypes'
+import { HomeSection } from 'lib/@types/contact-us-types'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 import { PortableText } from 'src/utils/sanity'
 

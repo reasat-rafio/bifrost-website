@@ -11,7 +11,7 @@ import {
 } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { Service as ServiceInterface } from 'src/lib/@types/landingTypes'
+import { Service as ServiceInterface } from 'lib/@types/landing-types'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import Button from './ui/_Button'
 import { Header } from './ui/Header'

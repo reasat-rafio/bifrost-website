@@ -1,8 +1,8 @@
 import ContactHome from 'src/components/contact/ContactHome'
 import Ellipse from 'src/components/Ellipse'
-import { ContactUsPage, HomeSection } from 'src/lib/@types/contactUsTypes'
+import { ContactUsPage, HomeSection } from 'lib/@types/contact-us-types'
 import { siteQuery } from 'src/lib/query'
-import { Site } from 'src/lib/@types/types'
+import { Site } from 'lib/@types/global-types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
@@ -15,9 +15,7 @@ import { Contact } from 'components/common/contact'
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_id == "contactUsPage"][0] {
-    ...,
-  },
+  "page": *[_id == "contactUsPage"][0]
 }`
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
@@ -36,7 +34,7 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
 
   return (
     <div>
-      <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+      {/* <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" /> */}
 
       <PrimaryWrapper>
         {renderObjectArray(sections, {

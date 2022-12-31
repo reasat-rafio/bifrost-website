@@ -1,5 +1,8 @@
+import { SanityImage } from 'sanity-react-extra'
+import { CTAButton, SEO } from './global-types'
+
 export type UseCasePage = {
-  sections: Section[]
+  sections: any[]
   seo: SEO
 }
 
@@ -18,7 +21,7 @@ export interface ImagesSection {
       _key: string
       title: string
       body: string
-      image: SanityImage & ImageAlt
+      image: SanityImage
     },
   ]
 }
@@ -31,7 +34,7 @@ export interface FeaturesSection {
   features: [
     {
       title: string
-      image: SanityImage & ImageAlt
+      image: SanityImage
     },
   ]
 }
@@ -41,7 +44,7 @@ export interface AssuranceSection {
   subHeadline: string
   body: string
   ctaButton: CTAButton
-  image: SanityImage & ImageAlt
+  image: SanityImage
 }
 
 export interface Enterprise {
@@ -49,7 +52,7 @@ export interface Enterprise {
   headline: string
   subtitle: string
   ctaButton: CTAButton
-  image: SanityImage & ImageAlt
+  image: SanityImage
   cardPosition: string
   imagePosition: string
 }

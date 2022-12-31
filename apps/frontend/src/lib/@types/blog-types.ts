@@ -1,5 +1,7 @@
+import { SEO } from './global-types'
+
 export type BlogPage = {
-  sections: Section[]
+  sections: any[]
   seo: SEO
 }
 

@@ -1,5 +1,8 @@
+import { SanityImage } from 'sanity-react-extra'
+import { CTAButton, SEO } from './global-types'
+
 export type LandingPage = {
-  sections: Section[]
+  sections: any[]
   seo: SEO
 }
 
@@ -7,7 +10,7 @@ export interface HomeSection {
   title: any
   subtitle: string
   ctaButton?: CTAButton
-  image: SanityImage & ImageAlt
+  image: SanityImage
 }
 
 export interface ProductSection {
@@ -15,24 +18,22 @@ export interface ProductSection {
   subtitle: string
   description: string
   ctaButton?: CTAButton
-  images: [SanityImage & ImageAlt]
+  images: [SanityImage]
 }
 
 export interface ProjectSection {
   title: string
   subtitle: string
-  projects: [{ _key: string; image: SanityImage & ImageAlt; name: string; url?: string }]
+  projects: [{ _key: string; image: SanityImage; name: string; url?: string }]
 }
 
 export interface ReviewSection {
-  reviews: [
-    { _key: string; review: string; image: SanityImage & ImageAlt; name: string; role: string },
-  ]
+  reviews: [{ _key: string; review: string; image: SanityImage; name: string; role: string }]
 }
 
 export interface DemoSection {
   title: string
-  previews: [SanityImage & ImageAlt]
+  previews: [SanityImage]
 }
 
 export interface ContactSection {
@@ -52,7 +53,7 @@ export interface Service {
   body: string
   ctaButton: CTAButton
   cardPosition: string
-  image: SanityImage & ImageAlt
+  image: SanityImage
   imagePosition: string
 }
 

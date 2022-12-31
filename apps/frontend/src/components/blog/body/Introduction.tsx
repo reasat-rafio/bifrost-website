@@ -1,5 +1,5 @@
 import { LightboxImage } from 'src/components/ui/LightboxImage'
-import { BlogBody } from 'src/lib/@types/blogTypes'
+import { BlogBody } from 'lib/@types/blog-types'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'src/utils/sanity'

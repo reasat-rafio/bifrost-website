@@ -1,6 +1,6 @@
 import { LoadMoreCard } from 'src/components/common/loaders/LoadMoreCard'
 import Button from 'components/ui/_Button'
-import { BlogsSection } from 'src/lib/@types/blogTypes'
+import { BlogsSection } from 'lib/@types/blog-types'
 import { formatDate } from 'src/lib/helpers'
 import { useScroll } from 'src/lib/hooks'
 import { getMoreBlogListQuery } from 'src/lib/query'

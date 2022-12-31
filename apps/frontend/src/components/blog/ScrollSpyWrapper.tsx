@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { BlogBody } from 'src/lib/@types/blogTypes'
+import { BlogBody } from 'lib/@types/blog-types'
 import React, { RefObject, useEffect, useState } from 'react'
 import { Scrollspy } from './body/scrollspy'
 import { SmScrollSpy } from './SmScrollSpy'

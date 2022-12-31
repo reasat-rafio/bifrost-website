@@ -1,5 +1,5 @@
 import Input from 'components/ui/input'
-import { CTAButton } from 'lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 import { useFormspark } from '@formspark/use-formspark'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FormSchema } from 'src/lib/form-schema'

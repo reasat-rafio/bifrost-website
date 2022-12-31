@@ -2,7 +2,7 @@ import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
 
-import { AboutSection } from 'src/lib/@types/aboutUsTypes'
+import { AboutSection } from 'lib/@types/about-us-types'
 import { ReactElement } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'

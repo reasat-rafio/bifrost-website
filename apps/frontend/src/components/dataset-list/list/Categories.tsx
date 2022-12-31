@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useCtx } from 'src/context/global'
-import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
+import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 
 interface CategoriesProps {

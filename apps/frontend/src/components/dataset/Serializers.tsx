@@ -1,6 +1,6 @@
 import Button from 'components/ui/_Button'
 import { LightboxImage } from 'src/components/ui/LightboxImage'
-import { CTAButton } from 'src/lib/@types/types'
+import { CTAButton } from 'lib/@types/global-types'
 
 export default {
   types: {

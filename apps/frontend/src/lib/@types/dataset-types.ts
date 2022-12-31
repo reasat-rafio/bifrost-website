@@ -1,5 +1,4 @@
-import { Categories } from '../../components/dataset-list/list/Categories'
-import { Classes } from './datasetTypes'
+import { SeriesPoint } from '@visx/shape/lib/types'
 import { SanityImage } from 'sanity-react-extra'
 
 export interface Idataset {
@@ -51,14 +50,14 @@ export type BarStackHorizontalProps = {
   margin?: { top: number; right: number; bottom: number; left: number }
   events?: boolean
   data?: { key: string; value: string }[]
-  valuesTotalScale: ScaleLinear<number, number, never>
-  keyScale: ScaleBand<string>
+  valuesTotalScale: any
+  keyScale: any
   valuesTotal?: number[]
 }
 
 export type TooltipData = {
-  bar: SeriesPoint<CityTemperature>
-  key: CityName
+  bar: SeriesPoint<any>
+  key: any
   index: number
   height: number
   width: number

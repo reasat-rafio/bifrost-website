@@ -7,7 +7,7 @@ import {
   useVisibleScrollEffect,
   useWindowSize,
 } from 'src/lib/hooks'
-import { DemoSection } from 'src/lib/@types/landingTypes'
+import { DemoSection } from 'lib/@types/landing-types'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Carousel } from './carousel'
 import { ScrollDetective } from './scroll-detective'

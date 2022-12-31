@@ -1,6 +1,6 @@
 import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
-import { ImagesSection } from 'src/lib/@types/useCaseTypes'
+import { ImagesSection } from 'lib/@types/use-case-types'
 import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'

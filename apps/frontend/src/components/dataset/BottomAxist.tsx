@@ -1,4 +1,4 @@
-import { BarStackHorizontalProps, TooltipData } from 'src/lib/@types/datasetTypes'
+import { BarStackHorizontalProps, TooltipData } from 'lib/@types/dataset-types'
 import React from 'react'
 import { Group } from '@visx/group'
 import { AxisBottom } from '@visx/axis'

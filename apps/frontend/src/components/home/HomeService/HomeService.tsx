@@ -1,5 +1,5 @@
 import Service from 'src/components/Service'
-import { ServiceSection } from 'src/lib/@types/landingTypes'
+import { ServiceSection } from 'lib/@types/landing-types'
 import { ReactElement, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { Pagination } from './Pagination'

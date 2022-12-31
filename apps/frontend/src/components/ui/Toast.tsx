@@ -2,7 +2,7 @@ import { GradientBorder } from 'src/components/common/GradientBorder'
 import { useCtx } from 'src/context/global'
 import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { IToast } from 'src/lib/@types/types'
+import { IToast } from 'lib/@types/global-types'
 
 const ToastIcon = ({ type }: { type: string }) => {
   switch (type) {

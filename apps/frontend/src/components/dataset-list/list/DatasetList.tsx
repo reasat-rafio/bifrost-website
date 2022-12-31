@@ -1,5 +1,5 @@
-import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
-import { INotFound } from 'src/lib/@types/types'
+import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
+import { INotFound } from 'lib/@types/global-types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { Categories } from './Categories'
 import { Datasets } from './Datasets'

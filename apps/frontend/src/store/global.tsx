@@ -1,5 +1,5 @@
-import { IDatasetCard } from 'src/lib/@types/datasetTypes'
-import { IToast } from 'src/lib/@types/types'
+import { IDatasetCard } from 'lib/@types/dataset-types'
+import { IToast } from 'lib/@types/global-types'
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
 import { SanityImage } from 'sanity-react-extra'
 

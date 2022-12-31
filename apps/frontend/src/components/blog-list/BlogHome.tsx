@@ -1,6 +1,6 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import ThreeJSWaves from 'src/components/ThreeJSWaves'
-import { HomeSection } from 'src/lib/@types/blogTypes'
+import { HomeSection } from 'lib/@types/blog-types'
 import { Dispatch, ReactElement, SetStateAction, useCallback } from 'react'
 
 interface IHomeSection extends HomeSection {

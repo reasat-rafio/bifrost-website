@@ -12,7 +12,7 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
-import { HomeSection } from 'src/lib/@types/aboutUsTypes'
+import { HomeSection } from 'lib/@types/about-us-types'
 import { Contact } from 'components/common/contact'
 import Client from 'components/common/client'
 

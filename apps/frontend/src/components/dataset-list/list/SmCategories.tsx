@@ -1,7 +1,7 @@
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { useCtx } from 'src/context/global'
-import { ICategory, IDatasetCard } from 'src/lib/@types/datasetTypes'
+import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 interface SmCategoriesProps {
