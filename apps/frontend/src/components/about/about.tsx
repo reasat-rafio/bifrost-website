@@ -1,38 +1,31 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
-
-import { AboutSection } from 'lib/@types/about-us-types'
-import { ReactElement } from 'react'
+import { AboutSectionProps } from 'lib/@types/about-us-types'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
+import { useWindowSize } from 'lib/hooks'
 
-export default function About({
-  body,
-  ctaButton,
-  headline,
-  image,
-  subHeadline,
-}: AboutSection): ReactElement {
+const About: React.FC<AboutSectionProps> = ({ description, ctaButton, heading, image, title }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
+
   return (
-    <section className="mx-[1.6rem]">
-      <div className="3xl:container 2xl:max-w-6xl  max-w-5xl mx-auto xl:py-40 lg:py-20 py-16 grid md:grid-cols-12 grid-cols-6 z-10">
-        <div className="col-span-6">
-          <div className="md:translate-x-[20%] translate-x-0 w-full md:h-full sm:h-[400px] h-[280px]">
-            <SanityImg
-              className="w-full h-full object-cover rounded-[15px]"
-              builder={imageUrlBuilder}
-              image={image}
-              height={500}
-              alt={image?.alt || 'image'}
-            />
-          </div>
-        </div>
-        <div className="col-span-6 flex items-center justify-center md:mx-0 mx-5 transform -translate-y-[20%] md:translate-y-0">
+    <article className="mx-5">
+      <div className="z-10 grid md:grid-cols-2 grid-cols-1 | 3xl:container 2xl:max-w-6xl max-w-5xl | mx-auto xl:py-40 lg:py-20 py-16">
+        <figure className="md:translate-x-[20%] translate-x-0 w-full md:aspect-[2.5/3] aspect-video rounded-[15px] max-h-[720px] | overflow-hidden">
+          <SanityImg
+            className="w-full h-full object-cover"
+            builder={imageUrlBuilder}
+            image={image}
+            width={windowWidth >= 1024 ? 650 : windowWidth >= 768 ? 450 : 250}
+            alt={image?.alt || 'image'}
+          />
+        </figure>
+        <section className="flex items-center justify-center | md:mx-0 mx-5 transform -translate-y-[20%] md:translate-y-0">
           <div className="lg:p-12 p-6 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2">
-            <GradientTitle>{subHeadline}</GradientTitle>
-            <Header>{headline}</Header>
-            <Description>{body}</Description>
+            <GradientTitle>{heading}</GradientTitle>
+            <Header>{title}</Header>
+            <Description>{description}</Description>
 
             <div className="flex">
               <button className="space-x-4 py-2">
@@ -47,8 +40,10 @@ export default function About({
               </button>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </article>
   )
 }
+
+export default About

@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ children, className }) => {
     <h4
       className={clsx(
         className,
-        'md:text-head-4 md:tracking-[0.02em] tracking-[0.01em] text-head-4-res font-[275] leading-none',
+        'xl:text-head-4 md:text-head-md md:tracking-[0.02em] tracking-[0.01em] text-head-4-res font-[275] leading-none',
       )}
     >
       {children}

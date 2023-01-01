@@ -13,11 +13,11 @@ export interface HomeProps {
   ctaButton?: CTAButton
 }
 
-export interface AboutSection {
-  headline: string
-  subHeadline: string
-  body: string
-  ctaButton: CTAButton
+export interface AboutSectionProps {
+  heading: string
+  title: string
+  description: string
+  ctaButton?: CTAButton
   image: SanityImage
 }
 
@@ -34,12 +34,12 @@ export interface ClientsSection {
 }
 
 export interface TeamSection {
-  headline: string
-  subHeadline: string
+  title: string
+  subtitle: string
   members: [
     {
       name: string
-      position: string
+      role: string
       image: SanityImage
     },
   ]

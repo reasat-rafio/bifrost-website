@@ -2,8 +2,6 @@ import About from 'components/about/about'
 import Home from 'components/about/hero'
 import Reason from 'components/about/reason'
 import Team from 'components/about/team'
-import Newsletter from 'components/common/newsletter'
-import Ellipse from 'src/components/Ellipse'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
@@ -14,7 +12,8 @@ import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
 import { HomeProps } from 'lib/@types/about-us-types'
 import { Contact } from 'components/common/contact'
-// import Client from 'components/common/client'
+import { Client } from 'components/common/client'
+import { Newsletter } from 'components/common/newsletter'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -33,12 +32,12 @@ const query = groq`{
       },
     },
     "cleint" : *[_id == "client"][0] {
+      ...,
+      clients[]{
         ...,
-        clients[]{
-         ...,
-          "image": ${withDimensions('image')},
-      }
-    }
+        "logo": ${withDimensions('logo')},
+      },
+    },
   },
 }`
 
@@ -69,13 +68,13 @@ export default function AboutUs(props: SanityProps<any>) {
         className="bg-black"
         style={{
           transform: `translate(0, ${heroSectionHeight}px)`,
-          marginBottom: `${heroSectionHeight}px`,
+          marginBottom: heroSectionHeight,
         }}
       >
-        {/* <PrimaryWrapper>
+        <PrimaryWrapper>
           {renderObjectArray(sections, {
             'aboutUs.about': About,
-            'aboutUs.reason': Reason,
+            // 'aboutUs.reason': Reason,
             'aboutUs.team': Team,
           })}
           <Client {...cleint} />
@@ -83,7 +82,7 @@ export default function AboutUs(props: SanityProps<any>) {
             newsletter: Newsletter,
             contact: Contact,
           })}
-        </PrimaryWrapper> */}
+        </PrimaryWrapper>
       </div>
 
       <>

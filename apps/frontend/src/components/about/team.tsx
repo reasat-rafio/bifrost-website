@@ -1,12 +1,11 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Header } from 'src/components/ui/Header'
 import { TeamSection } from 'lib/@types/about-us-types'
-import { ReactElement } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 
-export default function Team({ headline, members, subHeadline }: TeamSection): ReactElement {
+const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -15,8 +14,8 @@ export default function Team({ headline, members, subHeadline }: TeamSection): R
   return (
     <section className="container text-center z-30 relative xl:mb-36 lg:mb-20 mb-16">
       <header className="max-w-2xl mx-auto">
-        <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
-        <Header>{headline}</Header>
+        <GradientTitle className="mx-auto">{title}</GradientTitle>
+        <Header>{subtitle}</Header>
       </header>
       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5">
         {members.map((team) => (
@@ -31,10 +30,12 @@ export default function Team({ headline, members, subHeadline }: TeamSection): R
               />
             </div>
             <span className="md:text-[24px] text-body-1">{team.name}</span>
-            <span className="md:text-body-1 text-[14px] ">{team.position}</span>
+            <span className="md:text-body-1 text-[14px] ">{team.role}</span>
           </div>
         ))}
       </div>
     </section>
   )
 }
+
+export default Team
