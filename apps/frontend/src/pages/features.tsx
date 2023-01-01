@@ -11,7 +11,7 @@ import { Site } from 'lib/@types/global-types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray } from 'sanity-react-extra'
+import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'lib/@types/use-case-types'
@@ -21,6 +21,18 @@ const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "useCasePage"][0] {
     ...,
+    sections[] {
+      ...,
+      "image": ${withDimensions('image')},
+      examples[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+      features[]{
+        ...,
+        "image": ${withDimensions('image')},
+      }
+    }
   },
 }`
 
@@ -40,7 +52,7 @@ export default function Features(props: SanityProps<{ site: Site; page: ContactU
 
   return (
     <div>
-      <PrimaryWrapper>
+      {/* <PrimaryWrapper>
         {renderObjectArray(sections, {
           'useCase.home': useCallback(
             (p: HomeSection) => <UseCaseHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
@@ -71,7 +83,7 @@ export default function Features(props: SanityProps<{ site: Site; page: ContactU
         <Ellipse className="z-10 absolute top-[30vh] right-[5vw] w-[253px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[140vh] left-[5vw] w-[253px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      </>
+      </> */}
     </div>
   )
 }

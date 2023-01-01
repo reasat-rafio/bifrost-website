@@ -23,7 +23,7 @@ export default {
     },
     {
       name: 'description',
-      type: 'string',
+      type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
