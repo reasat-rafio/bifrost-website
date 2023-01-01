@@ -12,9 +12,9 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
-import { HomeSection } from 'lib/@types/about-us-types'
+import { HomeProps } from 'lib/@types/about-us-types'
 import { Contact } from 'components/common/contact'
-import Client from 'components/common/client'
+// import Client from 'components/common/client'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -23,7 +23,7 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      reasons[]{
+      agendas[]{
         ...,
         "image": ${withDimensions('image')},
       },
@@ -60,7 +60,7 @@ export default function AboutUs(props: SanityProps<any>) {
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           'aboutUs.home': useCallback(
-            (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            (p: HomeProps) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
@@ -72,7 +72,7 @@ export default function AboutUs(props: SanityProps<any>) {
           marginBottom: `${heroSectionHeight}px`,
         }}
       >
-        <PrimaryWrapper>
+        {/* <PrimaryWrapper>
           {renderObjectArray(sections, {
             'aboutUs.about': About,
             'aboutUs.reason': Reason,
@@ -83,13 +83,13 @@ export default function AboutUs(props: SanityProps<any>) {
             newsletter: Newsletter,
             contact: Contact,
           })}
-        </PrimaryWrapper>
+        </PrimaryWrapper> */}
       </div>
 
       <>
-        <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
-        <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
+        {/* <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" /> */}
+        {/* <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" /> */}
+        {/* <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" /> */}
       </>
     </div>
   )

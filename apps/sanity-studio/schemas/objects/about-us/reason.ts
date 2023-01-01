@@ -3,7 +3,7 @@ import { FaPodcast } from 'react-icons/fa'
 
 export default {
   name: 'aboutUs.reason',
-  title: 'Reason Why',
+  title: 'Reasons',
   type: 'object',
   icon: FaPodcast,
   fields: [
@@ -61,6 +61,21 @@ export default {
               ],
             },
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'title',
+              media: 'image',
+            },
+            prepare({ title, subtitle, media }: any) {
+              return {
+                title,
+                subtitle,
+                media,
+                icon: FaPodcast,
+              }
+            },
+          },
         },
       ],
     },

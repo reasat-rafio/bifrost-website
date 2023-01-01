@@ -29,6 +29,7 @@ export default function ContactUs(props: SanityProps<{ site: Site; page: Contact
     },
   } = useSanityQuery(query, props)
 
+  // TODO make the home section sticky for desktop
   return (
     <div>
       <PrimaryWrapper>

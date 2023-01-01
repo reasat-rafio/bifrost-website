@@ -22,7 +22,7 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subtitle',
+      name: 'description',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -49,12 +49,14 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'subtitle',
+      subtitle: 'description',
+      media: 'image',
     },
-    prepare({ title, subtitle }: any) {
+    prepare({ title, subtitle, media }: any) {
       return {
         title,
         subtitle,
+        media,
         icon: FaQuestionCircle,
       }
     },

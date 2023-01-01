@@ -6,11 +6,11 @@ export type AboutUsPage = {
   seo: SEO
 }
 
-export interface HomeSection {
-  headline: string
-  subHeadline: string
-  body: string
-  ctaButton: CTAButton
+export interface HomeProps {
+  heading: string
+  title: any[]
+  subtitle: string
+  ctaButton?: CTAButton
 }
 
 export interface AboutSection {
