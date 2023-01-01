@@ -1,17 +1,17 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
+import Button from 'components/ui/_Button'
 import { BackgroundNoise } from 'components/ui/background-noise'
-import { HomeProps } from 'lib/@types/about-us-types'
+import { HomeSection } from 'lib/@types/use-case-types'
 import { Dispatch, SetStateAction, useCallback } from 'react'
-import { useWindowSize } from 'lib/hooks'
-import { WaveScene } from 'components/common/wave-scene'
+import { useWindowSize } from 'src/lib/hooks'
 import { PortableText } from 'utils/sanity'
-import { Button } from 'components/ui/button'
+import { WaveScene } from 'components/common/wave-scene'
 
-interface IHomeSection extends HomeProps {
+interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
 }
 
-const Hero: React.FC<IHomeSection> = ({
+const Home: React.FC<IHomeSection> = ({
   ctaButton,
   heading,
   subtitle,
@@ -68,4 +68,4 @@ const Hero: React.FC<IHomeSection> = ({
   )
 }
 
-export default Hero
+export default Home

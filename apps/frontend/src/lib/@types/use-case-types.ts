@@ -7,23 +7,23 @@ export type UseCasePage = {
 }
 
 export interface HomeSection {
-  headline: string
-  subHeadline: string
-  body: string
-  ctaButton: CTAButton
+  heading: string
+  title: any[]
+  subtitle: string
+  ctaButton?: CTAButton
 }
 
-export interface ImagesSection {
-  headline: string
-  subHeadline: string
-  examples: [
-    {
-      _key: string
-      title: string
-      body: string
-      image: SanityImage
-    },
-  ]
+export interface ExamplesProps {
+  title: string
+  description: string
+  examples: ExampleProps[]
+}
+
+export interface ExampleProps {
+  _key: string
+  title: string
+  description: string
+  image: SanityImage
 }
 
 export interface FeaturesSection {

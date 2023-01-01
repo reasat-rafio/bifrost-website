@@ -1,10 +1,8 @@
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import Ellipse from 'src/components/Ellipse'
-import UseCaseAssurance from 'src/components/useCase/UseCaseAssurance'
-import UseCaseEnterprise from 'src/components/useCase/UseCaseEnterprise'
-import UseCaseFeatures from 'src/components/useCase/UseCaseFeatures'
-import UseCaseHome from 'src/components/useCase/UseCaseHome'
-import UseCaseImages from 'src/components/useCase/UseCaseImages'
+import UseCaseAssurance from 'components/features/UseCaseAssurance'
+import UseCaseEnterprise from 'components/features/UseCaseEnterprise'
+import UseCaseFeatures from 'components/features/UseCaseFeatures'
 import { ContactUsPage } from 'lib/@types/contact-us-types'
 import { siteQuery } from 'src/lib/query'
 import { Site } from 'lib/@types/global-types'
@@ -16,6 +14,8 @@ import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { useCallback, useState } from 'react'
 import { HomeSection } from 'lib/@types/use-case-types'
 import { Contact } from 'components/common/contact'
+import Home from 'components/features/home'
+import Examples from 'components/features/examples'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -52,10 +52,10 @@ export default function Features(props: SanityProps<{ site: Site; page: ContactU
 
   return (
     <div>
-      {/* <PrimaryWrapper>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
           'useCase.home': useCallback(
-            (p: HomeSection) => <UseCaseHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
@@ -64,21 +64,21 @@ export default function Features(props: SanityProps<{ site: Site; page: ContactU
       <div
         className="bg-black relative h-full"
         style={{
-          marginTop: `${heroSectionHeight}px`,
+          marginTop: heroSectionHeight,
         }}
       >
         <PrimaryWrapper>
           {renderObjectArray(sections, {
-            'useCase.example': UseCaseImages,
-            'useCase.feature': UseCaseFeatures,
-            'useCase.assurance': UseCaseAssurance,
-            'useCase.enterprise': UseCaseEnterprise,
+            'useCase.example': Examples,
+            // 'useCase.feature': UseCaseFeatures,
+            // 'useCase.assurance': UseCaseAssurance,
+            // 'useCase.enterprise': UseCaseEnterprise,
             contact: Contact,
           })}
         </PrimaryWrapper>
       </div>
 
-      <>
+      {/* <>
         <Ellipse className="z-10 absolute top-[40vh] left-[15vw] w-[253px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[30vh] right-[5vw] w-[253px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[140vh] left-[5vw] w-[253px] h-[391px]" />
