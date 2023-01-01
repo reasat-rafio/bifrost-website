@@ -46,14 +46,15 @@ export interface TeamSection {
 }
 
 export interface ReasonSection {
-  headline: string
-  subHeadline: string
-  reasons: [
-    {
-      title: string
-      headline: string
-      body: string
-      image: SanityImage
-    },
-  ]
+  title: string
+  subtitle: string
+  agendas: AgendaProps[]
+}
+
+export interface AgendaProps {
+  _key: string
+  name: string
+  title: string
+  description: string
+  image: SanityImage
 }

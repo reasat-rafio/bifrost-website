@@ -13,22 +13,22 @@ const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
 
   return (
     <section className="container text-center z-30 relative xl:mb-36 lg:mb-20 mb-16">
-      <header className="max-w-2xl mx-auto">
+      <header className="max-w-2xl mx-auto mb-7">
         <GradientTitle className="mx-auto">{title}</GradientTitle>
         <Header>{subtitle}</Header>
       </header>
       <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5">
         {members.map((team) => (
-          <div className="flex flex-col items-center space-y-1">
-            <div>
+          <div className="flex flex-col items-center">
+            <figure className="rounded-xl overflow-hidden !w-full max-h-[310px] aspect-square">
               <SanityImg
-                className="w-full h-full rounded-xl md:object-contain object-cover mb-5"
+                className="w-full h-full object-cover mb-5"
                 builder={imageUrlBuilder}
                 image={team.image}
                 alt={team.image?.alt || 'image'}
-                height={windowWidth >= 768 ? 320 : 160}
+                height={windowWidth >= 1280 ? 400 : windowWidth >= 640 ? 350 : 150}
               />
-            </div>
+            </figure>
             <span className="md:text-[24px] text-body-1">{team.name}</span>
             <span className="md:text-body-1 text-[14px] ">{team.role}</span>
           </div>

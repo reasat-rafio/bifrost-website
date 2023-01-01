@@ -74,7 +74,7 @@ export default function AboutUs(props: SanityProps<any>) {
         <PrimaryWrapper>
           {renderObjectArray(sections, {
             'aboutUs.about': About,
-            // 'aboutUs.reason': Reason,
+            'aboutUs.reason': Reason,
             'aboutUs.team': Team,
           })}
           <Client {...cleint} />
