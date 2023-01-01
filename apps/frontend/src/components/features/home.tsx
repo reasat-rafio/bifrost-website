@@ -1,11 +1,11 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import Button from 'components/ui/_Button'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeSection } from 'lib/@types/use-case-types'
 import { Dispatch, SetStateAction, useCallback } from 'react'
 import { useWindowSize } from 'src/lib/hooks'
 import { PortableText } from 'utils/sanity'
 import { WaveScene } from 'components/common/wave-scene'
+import { Button } from 'components/ui/button'
 
 interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>

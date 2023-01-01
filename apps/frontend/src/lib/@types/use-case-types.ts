@@ -26,24 +26,25 @@ export interface ExampleProps {
   image: SanityImage
 }
 
-export interface FeaturesSection {
-  headline: string
-  subHeadline: string
-  body: string
-  ctaButton: CTAButton
-  features: [
-    {
-      title: string
-      image: SanityImage
-    },
-  ]
+export interface FeaturesProps {
+  heading: string
+  title: string
+  description: string
+  ctaButton?: CTAButton
+  features: FeatureProps[]
+}
+
+export interface FeatureProps {
+  _key: string
+  title: string
+  image: SanityImage
 }
 
 export interface AssuranceSection {
-  headline: string
-  subHeadline: string
-  body: string
-  ctaButton: CTAButton
+  heading: string
+  title: string
+  description: string
+  ctaButton?: CTAButton
   image: SanityImage
 }
 

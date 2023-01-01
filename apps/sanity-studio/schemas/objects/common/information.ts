@@ -22,6 +22,10 @@ export default {
       ],
     },
     {
+      name: 'heading',
+      type: 'string',
+    },
+    {
       name: 'title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),

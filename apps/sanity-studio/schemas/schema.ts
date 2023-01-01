@@ -40,7 +40,6 @@ import aboutUsTeamSection from './objects/about-us/team'
 
 import useCase from './documents/pages/features'
 import useCaseHome from './objects/features/home'
-import useCaseAssurance from './objects/features/assurance'
 import useCaseEnterprise from './objects/features/enterprise'
 import useCaseExample from './objects/features/example'
 import useCaseFeature from './objects/features/feature'
@@ -127,7 +126,6 @@ export const schemaTypes = [
 
   useCase,
   useCaseHome,
-  useCaseAssurance,
   useCaseEnterprise,
   useCaseExample,
   useCaseFeature,

@@ -1,8 +1,7 @@
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Ellipse from 'src/components/Ellipse'
-import UseCaseAssurance from 'components/features/UseCaseAssurance'
-import UseCaseEnterprise from 'components/features/UseCaseEnterprise'
-import UseCaseFeatures from 'components/features/UseCaseFeatures'
+// import Ellipse from 'src/components/Ellipse'
+// import UseCaseEnterprise from 'components/features/UseCaseEnterprise'
+import Feature from 'components/features/feature'
 import { ContactUsPage } from 'lib/@types/contact-us-types'
 import { siteQuery } from 'src/lib/query'
 import { Site } from 'lib/@types/global-types'
@@ -16,6 +15,7 @@ import { HomeSection } from 'lib/@types/use-case-types'
 import { Contact } from 'components/common/contact'
 import Home from 'components/features/home'
 import Examples from 'components/features/examples'
+import { Information } from 'components/common/information'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -70,8 +70,8 @@ export default function Features(props: SanityProps<{ site: Site; page: ContactU
         <PrimaryWrapper>
           {renderObjectArray(sections, {
             'useCase.example': Examples,
-            // 'useCase.feature': UseCaseFeatures,
-            // 'useCase.assurance': UseCaseAssurance,
+            'useCase.feature': Feature,
+            infoBlock: Information,
             // 'useCase.enterprise': UseCaseEnterprise,
             contact: Contact,
           })}
