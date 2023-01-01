@@ -1,3 +1,4 @@
+import { Rule } from 'sanity'
 import { MdOutlineFeaturedPlayList } from 'react-icons/md'
 
 export default {
@@ -11,45 +12,50 @@ export default {
       type: 'initials',
     },
     {
-      name: 'headline',
+      name: 'heading',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subHeadline',
-      title: 'Sub-Headline',
+      name: 'title',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'body',
+      name: 'description',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'ctaButton',
-      title: 'CTA Button',
       type: 'ctaButton',
     },
     {
       name: 'features',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
         {
           name: 'feature',
           type: 'object',
+          validation: (Rule: Rule) => Rule.required(),
           fields: [
             {
               name: 'title',
               type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'image',
               type: 'image',
-              title: 'Example Image',
+              validation: (Rule: Rule) => Rule.required(),
               fields: [
                 {
                   name: 'alt',
                   title: 'Alternative Text',
                   description: 'Important for SEO and accessibility',
                   type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
                 },
               ],
             },
@@ -60,8 +66,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'headline',
-      subtitle: 'body',
+      title: 'title',
+      subtitle: 'description',
+    },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: MdOutlineFeaturedPlayList,
+      }
     },
   },
 }

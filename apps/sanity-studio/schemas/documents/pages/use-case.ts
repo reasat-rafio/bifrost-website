@@ -17,7 +17,7 @@ const FeaturesPage = {
         { type: 'useCase.example' },
         { type: 'useCase.feature' },
         { type: 'useCase.assurance' },
-        { type: 'useCase.enterprise' },
+        // { type: 'useCase.enterprise' },
         { type: 'contact' },
       ],
     },
