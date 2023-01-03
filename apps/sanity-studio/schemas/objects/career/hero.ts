@@ -22,5 +22,12 @@ export default {
       title: 'headline',
       subtitle: 'subHeadline',
     },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: AiOutlineHome,
+      }
+    },
   },
 }

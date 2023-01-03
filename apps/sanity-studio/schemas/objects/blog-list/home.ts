@@ -1,4 +1,5 @@
 import { AiOutlineHome } from 'react-icons/ai'
+import { Rule } from 'sanity'
 
 export default {
   name: 'blog.home',
@@ -9,17 +10,25 @@ export default {
     {
       name: 'headline',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'subHeadline',
-      title: 'Sub-Headline',
       type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {
     select: {
       title: 'headline',
-      subtitle: 'body',
+      subtitle: 'subHeadline',
+    },
+    prepare({ title, subtitle }: any) {
+      return {
+        title,
+        subtitle,
+        icon: AiOutlineHome,
+      }
     },
   },
 }
