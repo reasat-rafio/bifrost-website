@@ -10,9 +10,10 @@ import clsx from 'clsx'
 
 interface DropdownProps {
   menu: MenuItem[]
+  darkBg: boolean
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ menu }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ menu, darkBg }) => {
   const router = useRouter()
   const windowWidth = useWindowSize()?.width ?? 0
   const { showNavDropDown } = useGlobalStore()
@@ -32,7 +33,10 @@ export const Dropdown: React.FC<DropdownProps> = ({ menu }) => {
           exit={{ y: '-120%', opacity: 0 }}
           transition={{ type: 'spring', damping: 30, mass: 0.4, stiffness: 300 }}
           style={{ top: `${navbarHeight}px` }}
-          className="z-30 fixed w-full | backdrop-blur-3xl bg-secondary/5"
+          className={clsx(
+            'z-30 fixed w-full | backdrop-blur-3xl',
+            darkBg ? 'bg-black/90' : 'bg-secondary/5',
+          )}
         >
           <ul className="flex flex-col space-y-4 container | justify-center items-center p-5">
             {menu

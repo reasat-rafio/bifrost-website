@@ -17,7 +17,7 @@ interface NavbarProps {
   darkBg?: boolean
 }
 
-export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
+export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElement {
   const router = useRouter()
   const { showNavDropDown, setShowNavDropDown } = useGlobalStore()
   const highlightBtn = menu.filter((men) => men.highlight)[0]
@@ -39,8 +39,14 @@ export default function Navbar({ logo, menu }: NavbarProps): ReactElement {
       id="navbar"
       className={clsx(
         'fixed top-0 left-0 z-40 | w-full',
-        scroll ? (smallNav ? 'backdrop-blur-3xl bg-secondary/5' : '') : 'shadow',
-        smallNav ? '' : 'backdrop-blur-3xl bg-secondary/5',
+        scroll
+          ? smallNav && darkBg
+            ? 'bg-black/90 backdrop-blur-3xl'
+            : 'backdrop-blur-3xl bg-secondary/5'
+          : 'shadow',
+        smallNav && darkBg
+          ? 'bg-black/90 backdrop-blur-3xl'
+          : `backdrop-blur-3xl ${darkBg ? 'bg-black/90' : 'bg-secondary/5'}`,
         showNavDropDown && 'backdrop-blur-3xl bg-secondary/5',
       )}
     >

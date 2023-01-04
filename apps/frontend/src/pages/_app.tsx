@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [seoTitle, setSeoTitle] = useState()
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
+  console.log(pageProps)
 
   useEffect(() => {
     setSeoTitle(pageProps.data?.page.seo?.title)
@@ -63,9 +64,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             darkLogo={pageProps.data?.site.logos.darkLogo}
             logo={pageProps.data?.site.logos.logo}
             menu={pageProps.data?.site.nav.menu}
-            darkBg={pageProps.data?.blog?._type === 'blog'}
+            darkBg={!!pageProps?.darkNavbar}
           />
-          <Dropdown menu={pageProps.data?.site.nav.menu} />
+          <Dropdown menu={pageProps.data?.site.nav.menu} darkBg={!!pageProps?.darkNavbar} />
 
           {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">

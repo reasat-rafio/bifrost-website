@@ -38,14 +38,14 @@ export interface BlogProps {
   _rev: string
   _type: string
   _updatedAt: string
+  heading: string
+  datetime: string
+  shortDescription: string
   body: BlogBody[]
   tags: ITags
-  datetime: string
-  heading: string
   image: any
   order: number
   slug: { _type: string; current: string }
-  subHeading: string
   relatedBlogs: IBlog[]
 }
 

@@ -10,7 +10,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import Ellipse from 'src/components/Ellipse'
+// import Ellipse from 'src/components/Ellipse'
 import { RelatedBlogs } from 'src/components/blog/RelatedBlog'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
@@ -58,7 +58,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
-  props: await sanityStaticProps({ context, query }),
+  props: { darkNavbar: true, ...(await sanityStaticProps({ context, query })) },
   revalidate: 10,
 })
 
@@ -83,7 +83,7 @@ export default function Blog(props: SanityProps) {
         <Heading heading={heading} datetime={datetime} />
         <Body paddingY={paddingY} body={body} />
       </article>
-      <PrimaryWrapper>
+      {/* <PrimaryWrapper>
         {renderObjectArray(sections, {
           newsletter: Newsletter,
         })}
@@ -91,12 +91,12 @@ export default function Blog(props: SanityProps) {
         {renderObjectArray(sections, {
           contact: Contact,
         })}
-      </PrimaryWrapper>
-      <>
+      </PrimaryWrapper> */}
+      {/* <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      </>
+      </> */}
     </div>
   )
 }
