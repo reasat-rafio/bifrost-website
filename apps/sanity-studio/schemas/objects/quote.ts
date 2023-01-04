@@ -1,4 +1,5 @@
 import { GoQuote } from 'react-icons/go'
+import { Rule } from 'sanity'
 
 export default {
   name: 'quote',
@@ -9,17 +10,16 @@ export default {
     {
       name: 'text',
       type: 'text',
-      title: 'Text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'author',
       type: 'string',
-      title: 'Author',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'url',
       type: 'url',
-      title: 'URL',
       description: 'Source on the web. OPTIONAL',
     },
   ],
@@ -27,6 +27,14 @@ export default {
     select: {
       title: 'text',
       subtitle: 'author',
+    },
+    prepare(value: any) {
+      const { title, subtitle } = value
+      return {
+        title: title,
+        subtitle: subtitle,
+        icon: GoQuote,
+      }
     },
   },
 }

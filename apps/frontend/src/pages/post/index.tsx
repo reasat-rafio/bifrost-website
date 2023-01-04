@@ -20,12 +20,12 @@ const query = groq`{
   "page": *[_id == "blogPage"][0] {
     ...,
   },
-  "blogs": *[_type== "blog"] | order(order asc) [0...5] {
+  "blogs": *[_type== "blog"] | order(order asc) [] {
     _id,
     heading,
     slug,
     datetime,
-    subHeading,
+    shortDescription,
     "image": ${withDimensions('image')},
   },
   "totalBlogs": length(*[_type== "blog"]),
@@ -66,7 +66,7 @@ export default function Blog(
         }}
       >
         <PrimaryWrapper>
-          <Posts blogs={blogs} totalBlogs={totalBlogs} />
+          {!!blogs.length && <Posts blogs={blogs} totalBlogs={totalBlogs} />}
           {renderObjectArray(sections, {
             newsletter: Newsletter,
             contact: Contact,

@@ -1,6 +1,6 @@
 import { BsNewspaper, BsIntersect } from 'react-icons/bs'
 import { TiWaves } from 'react-icons/ti'
-import { defineType, SanityDocument, defineArrayMember, Rule } from 'sanity'
+import { defineType, SanityDocument, Rule } from 'sanity'
 
 const Blog = defineType({
   name: 'blog',
@@ -33,8 +33,23 @@ const Blog = defineType({
     {
       name: 'datetime',
       type: 'datetime',
-      initialValue: () => Date.now(),
+      initialValue: () => new Date().toISOString(),
       validation: (Rule: Rule) => Rule.required(),
+    },
+    { name: 'shortDescription', type: 'text', validation: (Rule: Rule) => Rule.required() },
+    {
+      type: 'image',
+      name: 'image',
+      validation: (Rule: Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
     },
     {
       name: 'tags',
@@ -143,6 +158,17 @@ const Blog = defineType({
               ],
             },
           ],
+          preview: {
+            select: {
+              title: 'heading',
+            },
+            prepare({ title }: any) {
+              return {
+                title,
+                icon: BsIntersect,
+              }
+            },
+          },
         },
       ],
     },

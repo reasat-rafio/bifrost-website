@@ -15,7 +15,7 @@ export interface IBlog {
   slug: { _type: string; current: string }
   datetime: string
   heading: string
-  subHeading: string
+  shortDescription: string
   image: any
 }
 export interface BlogsSection {

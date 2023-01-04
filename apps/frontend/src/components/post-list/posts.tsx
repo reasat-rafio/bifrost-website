@@ -1,150 +1,86 @@
-import { LoadMoreCard } from 'src/components/common/loaders/LoadMoreCard'
-import Button from 'components/ui/_Button'
 import { BlogsSection } from 'lib/@types/blog-types'
-import { formatDate } from 'src/lib/helpers'
-import { useScroll } from 'src/lib/hooks'
-import { getMoreBlogListQuery } from 'src/lib/query'
-import { useRouter } from 'next/router'
+import { formatDate, truncate } from 'src/lib/helpers'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, sanityClient } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'src/utils/sanity'
 import { motion } from 'framer-motion'
+import { Button } from 'components/ui/button'
 
-const staggerContainer = {
-  from: {
-    opacity: 0,
-  },
-  to: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const staggerChild = {
-  from: {
-    scale: 0.8,
-    opacity: 0,
-  },
-  to: {
-    scale: 1,
-    opacity: 1,
-  },
-}
-
+const cardsPerPage = 5
 const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
-  const windowWidth = useWindowSize()?.width ?? 0
-  const router = useRouter()
-  const [executeScroll, elRef] = useScroll()
+  const sectionRef = useRef<HTMLElement>(null)
   const blogRef = useRef<HTMLDivElement>(null)
-  const [blogList, setBlogList] = useState(blogs)
-  const [upComingBlogLength, setUpcomingBlogLength] = useState<null | number>(null)
-  const [loading, setLoading] = useState(false)
-  const [page, setPage] = useState(2)
+  const windowWidth = useWindowSize()?.width ?? 0
+  const [sortedBlogs, setSortedBlogs] = useState(blogs)
+  const [page, setPage] = useState(1)
 
-  const scrollToBottom = () => {
-    const domNode = blogRef.current
-    if (domNode) {
-      domNode.scrollTop = domNode.scrollHeight
+  const showShowMoreButton = totalBlogs > cardsPerPage
+  const showMoreLessButtonAction = () => {
+    if (sortedBlogs.length < totalBlogs) setPage(page + 1)
+    else {
+      sectionRef.current.scrollIntoView()
+      setPage(1)
     }
   }
-
-  const listLimit = 5
-
-  const onShowMoreAction = async () => {
-    if (totalBlogs > blogList.length) {
-      setLoading(true)
-      setPage((prev) => prev + 1)
-
-      try {
-        const query = getMoreBlogListQuery({
-          limit: +listLimit,
-          page: +page,
-        })
-
-        const result = await sanityClient('anonymous').fetch(query)
-
-        setBlogList((prev) => [...prev, ...result])
-      } catch (err) {
-        console.log(JSON.stringify(err, ['message', 'arguments', 'type', 'name']))
-      } finally {
-        scrollToBottom()
-        setLoading(false)
-      }
-    } else {
-      executeScroll()
-      setPage(2)
-      setBlogList(blogList.slice(0, listLimit))
-    }
-  }
-
   useEffect(() => {
-    setUpcomingBlogLength(
-      totalBlogs - blogList.length >= listLimit ? listLimit : totalBlogs - blogList.length,
-    )
-  }, [blogList, totalBlogs])
+    setSortedBlogs(blogs.slice(0, cardsPerPage * page))
+  }, [page])
 
   return (
-    <section className="relative container">
-      <motion.div
-        key={blogList.length}
-        className="pt-12 divide-y divide-[#1E2531]"
-        variants={staggerContainer}
-        initial="from"
-        animate="to"
-        ref={elRef}
-      >
-        {blogList.map(({ _id, datetime, heading, slug, subHeading, image }) => {
-          const date = formatDate(datetime?.split('T')[0])
-
-          return (
-            <div ref={blogRef}>
-              {!loading && (
-                <motion.div
-                  key={_id}
-                  variants={staggerChild}
-                  className="grid lg:grid-cols-2 grid-cols-1 py-16 lg:gap-20 gap-10 group"
-                >
-                  <div className="w-full max-h-[400px] rounded-[14px] overflow-hidden  ">
-                    <SanityImg
-                      className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                      builder={imageUrlBuilder}
-                      image={image}
-                      alt={image?.alt || 'image'}
-                      height={windowWidth >= 768 ? 300 : 150}
-                    />
-                  </div>
-                  <div className="w-full flex flex-col items-start space-y-6">
-                    <span className="text-[14px] leading-[26px] text-[#B9B9B9]">{date}</span>
-                    <h6 className="text-[36px] leading-[43.2px]">{heading}</h6>
-                    <p className="text-[14px] leading-[26px] opacity-70">{subHeading}</p>
-                    <div>
-                      <Button onClick={() => router.push(`/post/${slug.current}`)}>
-                        Load More
-                      </Button>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          )
-        })}
-
+    <section ref={sectionRef} className="relative container | py-12">
+      <motion.div className="divide-y divide-[#1E2531]">
+        {sortedBlogs.map(({ _id, datetime, heading, slug, shortDescription, image }) => (
+          <motion.article
+            key={_id}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
+            viewport={{ margin: '100px', once: true }}
+            className="grid lg:grid-cols-2 grid-cols-1 py-16 lg:gap-20 gap-10"
+            ref={blogRef}
+          >
+            <figure className="w-full max-h-[400px] rounded-[14px] overflow-hidden">
+              <SanityImg
+                className="w-full h-full object-cover"
+                builder={imageUrlBuilder}
+                image={image}
+                alt={image?.alt || 'image'}
+                height={windowWidth >= 1280 ? 450 : windowWidth >= 768 ? 300 : 150}
+              />
+            </figure>
+            <section className="w-full flex flex-col items-start space-y-6 | font-light">
+              <span className="sm:text-base text-sm text-[#B9B9B9]">
+                {formatDate(datetime?.split('T')[0])}
+              </span>
+              <h6 className="md:text-[36px] text-3xl">{heading}</h6>
+              <p className="sm:text-base text-sm opacity-70">{truncate(shortDescription, 280)}</p>
+              <Button variant="secondary" type="href" href={`/post/${slug.current}`}>
+                Read More
+              </Button>
+            </section>
+          </motion.article>
+        ))}
+        {/* 
         {loading &&
           Array.from({ length: upComingBlogLength as number }).map((_, idx) => (
             <LoadMoreCard key={idx} uniqueKey={`list-${idx}`} />
-          ))}
+          ))} */}
       </motion.div>
 
       <span className="flex justify-center items-center">
-        <span>
-          <Button disabled={loading} onClick={onShowMoreAction}>
-            Show {totalBlogs <= blogList.length ? 'Less' : `${upComingBlogLength} More`} articles
-          </Button>
-        </span>
+        {showShowMoreButton && (
+          <motion.div
+            key={page}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ type: 'tween', duration: 0.6, ease: 'easeInOut' }}
+          >
+            <Button type="button" variant="primary" onClick={showMoreLessButtonAction}>
+              {sortedBlogs.length === totalBlogs ? 'Show Less' : 'Show More'}
+            </Button>
+          </motion.div>
+        )}
       </span>
     </section>
   )
