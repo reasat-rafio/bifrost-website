@@ -3,21 +3,33 @@ import { GradientBorder } from './GradientBorder'
 import { CTAButton } from 'lib/@types/global-types'
 import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
+import clsx from 'clsx'
 
 interface NewsletterProps {
   title: any
   subtitle?: string
   ctaButton: CTAButton
+  padding?: 'top' | 'bottom' | 'top-and-bottom'
 }
 
-export const Newsletter: React.FC<NewsletterProps> = ({ title, ctaButton, subtitle }) => {
+export const Newsletter: React.FC<NewsletterProps> = ({
+  title,
+  ctaButton,
+  subtitle,
+  padding = 'bottom',
+}) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-200px' }}
       transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
-      className="container z-10 relative text-center xl:pb-36 lg:pb-20 pb-16"
+      className={clsx(
+        'container z-10 relative text-center',
+        padding === 'top' && 'xl:pt-36 lg:pt-20 pt-16',
+        padding === 'bottom' && 'xl:pb-36 lg:pb-20 pb-16',
+        padding === 'top-and-bottom' && 'xl:py-36 lg:py-20 py-16',
+      )}
     >
       <GradientBorder>
         <div className="flex flex-col md:space-y-8 space-y-4 | md:py-20 py-10 px-5">

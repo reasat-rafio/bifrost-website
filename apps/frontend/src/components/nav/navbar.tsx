@@ -40,9 +40,11 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
       className={clsx(
         'fixed top-0 left-0 z-40 | w-full',
         scroll
-          ? smallNav && darkBg
-            ? 'bg-black/90 backdrop-blur-3xl'
-            : 'backdrop-blur-3xl bg-secondary/5'
+          ? smallNav
+            ? darkBg
+              ? 'bg-black/90 backdrop-blur-3xl'
+              : 'backdrop-blur-3xl bg-secondary/5'
+            : ''
           : 'shadow',
         smallNav && darkBg
           ? 'bg-black/90 backdrop-blur-3xl'

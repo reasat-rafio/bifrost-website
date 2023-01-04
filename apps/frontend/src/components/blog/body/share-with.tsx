@@ -8,7 +8,6 @@ interface ShareWithProps {}
 export const ShareWith: React.FC<ShareWithProps> = ({}) => {
   const router = useRouter()
   const [pageUrl, setPageUrl] = useState<string>()
-  console.log(pageUrl)
 
   useEffect(() => {
     const host = window.location.host

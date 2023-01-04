@@ -11,8 +11,8 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { formatDate, truncate } from 'src/lib/helpers'
-import Button from 'components/ui/_Button'
 import { useRouter } from 'next/router'
+import { Button } from 'components/ui/button'
 
 interface RelatedBlogProps {
   relatedBlogs: IBlog[]
@@ -30,6 +30,7 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
           navigation={{ prevEl, nextEl }}
+          spaceBetween={20}
           breakpoints={{
             640: {
               slidesPerView: 1,
@@ -56,7 +57,7 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
           onSwiper={(pagination) => console.log(pagination)}
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
         >
-          {relatedBlogs.map(({ _id, datetime, heading, image, slug, subHeading }) => (
+          {relatedBlogs.map(({ _id, datetime, heading, image, slug, shortDescription }) => (
             <SwiperSlide
               key={_id}
               className="border border-[#4e6181]/30 p-4 bifrost__transparent__card !h-[450px] sm:!h-[500px] lg:!h-[530px] 2xl:!h-[550px] "
@@ -74,12 +75,12 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
                   {formatDate(datetime?.split('T')[0])}
                 </span>
                 <h4 className="text-[22px] font-light">{heading}</h4>
-                <p className="font-light text-base">{truncate(subHeading)}</p>
+                <p className="font-light text-base">{truncate(shortDescription)}</p>
               </div>
               <div className="!h-[15%] flex items-center ">
                 <div>
-                  <Button onClick={() => router.push(`/blog/${slug.current}`)} variant="secondary">
-                    Learn More
+                  <Button variant="secondary" type="href" href={`/post/${slug.current}`}>
+                    Read More
                   </Button>
                 </div>
               </div>

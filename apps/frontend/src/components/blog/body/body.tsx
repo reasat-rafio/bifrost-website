@@ -38,7 +38,7 @@ export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
   }, [totalSectionsLength])
 
   return (
-    <section className="mt-5  max-w-none">
+    <section className="mt-5 max-w-none">
       <ScrollSpyWrapper paddingY={paddingY} sections={sections} sectionRefs={sectionRefs}>
         <div
           data-cy="section-wrapper"
@@ -49,7 +49,7 @@ export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
               id={`section-${index}`}
               key={section._key}
               ref={sectionRefs[index]}
-              className="scroll-mt-[120px] lg:scroll-mt-[100px] "
+              className="scroll-mt-[120px] lg:scroll-mt-[100px]"
             >
               {renderBlogArray(section)}
             </div>

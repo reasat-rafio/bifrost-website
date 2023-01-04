@@ -1,5 +1,5 @@
 import { Body } from 'components/blog/body/body'
-import { Heading } from 'src/components/blog/Heading'
+import { Heading } from 'components/blog/heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 // import Newslettr from 'components/common/newsletter'
 import { BlogProps } from 'lib/@types/blog-types'
@@ -7,7 +7,7 @@ import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 // import Ellipse from 'src/components/Ellipse'
@@ -39,7 +39,7 @@ const query = groq`{
       heading,
       slug,
       datetime,
-      subHeading,
+      shortDescription,
       "image": ${withDimensions('image')},
     }
   },
@@ -88,19 +88,22 @@ export default function Blog(props: SanityProps) {
 
   return (
     <div>
-      <article className="bg-white text-[#5D6588] selection:bg-[#e4acff] px-6 py-32">
+      <article className="bg-white px-6 py-32">
         <Heading heading={heading} datetime={datetime} />
         <Body paddingY={paddingY} body={body} />
       </article>
-      {/* <PrimaryWrapper>
+      <PrimaryWrapper>
         {renderObjectArray(sections, {
-          newsletter: Newsletter,
+          newsletter: useCallback(
+            (data: any) => <Newsletter {...data} padding="top-and-bottom" />,
+            [],
+          ),
         })}
         <RelatedBlogs relatedBlogs={relatedBlogs} />
         {renderObjectArray(sections, {
           contact: Contact,
         })}
-      </PrimaryWrapper> */}
+      </PrimaryWrapper>
       {/* <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />

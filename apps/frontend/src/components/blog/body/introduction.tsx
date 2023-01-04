@@ -10,14 +10,6 @@ const serializers = {
       const windowWidth = useWindowSize()?.width ?? 0
       return <>{node && <LightboxImage image={node} width={windowWidth >= 1280 ? 900 : 250} />}</>
     },
-    block(props: any) {
-      switch (props.node.style) {
-        case 'normal':
-          return <p className="pb-6">{props.children}</p>
-        default:
-          return <p className="pb-6">{props.children}</p>
-      }
-    },
   },
 }
 
@@ -25,12 +17,12 @@ export const Introduction: React.FC<BlogBody> = ({ description, image }) => {
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <div className="blog-introduction">
+    <div className="blog-introduction prose-lg prose-cyan max-w-none">
       <LightboxImage image={image} width={windowWidth >= 1280 ? 900 : 250} variant="full" />
 
-      <p className="text-[18px] font-light">
+      <div className="">
         <PortableText blocks={description} serializers={serializers} />
-      </p>
+      </div>
     </div>
   )
 }

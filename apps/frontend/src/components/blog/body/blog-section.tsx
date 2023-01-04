@@ -9,17 +9,9 @@ const serializers = {
   types: {
     image({ node }: any) {
       const windowWidth = useWindowSize()?.width ?? 0
-
       return <>{node && <LightboxImage image={node} width={windowWidth >= 1280 ? 900 : 250} />}</>
     },
-    block(props: any) {
-      switch (props.node.style) {
-        case 'normal':
-          return <p className="pb-3">{props.children}</p>
-        default:
-          return <p className="pb-3">{props.children}</p>
-      }
-    },
+
     quote({ node: { text, author, url } }: { node: IQuote }) {
       return (
         <div className="bifrost__gradient_pink xl:p-16 p-5 rounded-[15px] flex flex-col space-y-5 mb-6">
@@ -46,13 +38,13 @@ const serializers = {
 
 export const BlogSection: React.FC<BlogBody> = ({ description, heading, hideHeading }) => {
   return (
-    <div>
+    <div className="prose-lg prose-cyan max-w-none">
       {!hideHeading && (
         <h4 className="text-[#000610] text-[32px] tracking-[0.02em] mb-6">{heading}</h4>
       )}
-      <p className="text-[18px] font-light">
+      <div className="">
         <PortableText blocks={description} serializers={serializers} />
-      </p>
+      </div>
     </div>
   )
 }
