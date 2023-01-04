@@ -1,8 +1,8 @@
 import { Listbox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { BlogBody } from 'lib/@types/blog-types'
-import { useIntersection } from 'src/lib/hooks'
-import React, { Dispatch, Fragment, useRef } from 'react'
+import { useIntersection, useWindowSize } from 'src/lib/hooks'
+import React, { Dispatch, Fragment, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInOut } from 'src/animations/fade-in-out'
 
@@ -16,14 +16,19 @@ interface SmScrollSpyProps {
 
 export const SmScrollSpy: React.FC<SmScrollSpyProps> = ({
   sectionWrapperHeight,
-  paddingY,
   selected,
   setSelected,
   sections,
 }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionOnview = useIntersection(sectionRef, { threshold: 0 })
+  const [navbarHeight, setNavbarHeight] = useState(0)
 
-  const sectionOnview = useIntersection(sectionRef, { threshold: 0.2 })
+  useEffect(() => {
+    const height = document.querySelector('#navbar').clientHeight
+    setNavbarHeight(height)
+  }, [windowWidth])
 
   return (
     <div
@@ -36,7 +41,7 @@ export const SmScrollSpy: React.FC<SmScrollSpyProps> = ({
         initial="from"
         animate={sectionOnview?.isIntersecting ? 'to' : 'from'}
         className="sticky pointer-events-auto bifrost__gradient_pink  shadow"
-        style={{ top: `${paddingY - paddingY / 5}px` }}
+        style={{ top: navbarHeight + 5 }}
       >
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
