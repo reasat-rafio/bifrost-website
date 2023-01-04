@@ -11,7 +11,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 // import Ellipse from 'src/components/Ellipse'
-import { RelatedBlogs } from 'src/components/blog/RelatedBlog'
+import { RelatedBlogs } from 'components/blog/related-blog'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
 

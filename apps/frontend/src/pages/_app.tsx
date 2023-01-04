@@ -8,7 +8,7 @@ import { AppProvider } from 'src/store/global'
 import Navbar from 'components/nav/navbar'
 import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
-import { ToastContaiern as Toast } from 'src/components/ui/Toast'
+// import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import '@styles/global.scss'
 import { Dropdown } from 'components/nav/dropdown'
 
@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [seoTitle, setSeoTitle] = useState()
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
-  console.log(pageProps)
 
   useEffect(() => {
     setSeoTitle(pageProps.data?.page.seo?.title)

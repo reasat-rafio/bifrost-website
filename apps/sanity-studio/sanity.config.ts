@@ -9,18 +9,6 @@ import { Logo } from './components/logo'
 export default defineConfig([
   {
     projectId: 'p86pglis',
-    dataset: 'production',
-    name: 'bifrost-production-workspace',
-    title: 'Bifrost Studio',
-    basePath: '/production',
-    icon: Logo,
-    plugins: [table(), deskTool({ structure: AppStructure })],
-    schema: {
-      types: schemaTypes,
-    },
-  },
-  {
-    projectId: 'p86pglis',
     dataset: 'staging',
     name: 'bifrost-staging-workspace',
     basePath: '/staging',

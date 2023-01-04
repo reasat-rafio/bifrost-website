@@ -11,7 +11,6 @@ import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { formatDate, truncate } from 'src/lib/helpers'
-import { useRouter } from 'next/router'
 import { Button } from 'components/ui/button'
 
 interface RelatedBlogProps {
@@ -19,8 +18,6 @@ interface RelatedBlogProps {
 }
 
 export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
-  const router = useRouter()
-
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null)
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
   return (
@@ -54,7 +51,7 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
           loop
           speed={600}
           grabCursor
-          onSwiper={(pagination) => console.log(pagination)}
+          // onSwiper={(pagination) => console.log(pagination)}
           autoplay={{ disableOnInteraction: false, delay: 6000 }}
         >
           {relatedBlogs.map(({ _id, datetime, heading, image, slug, shortDescription }) => (
