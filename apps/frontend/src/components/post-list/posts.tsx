@@ -5,7 +5,7 @@ import { formatDate } from 'src/lib/helpers'
 import { useScroll } from 'src/lib/hooks'
 import { getMoreBlogListQuery } from 'src/lib/query'
 import { useRouter } from 'next/router'
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, sanityClient } from 'src/utils/sanity'
@@ -35,14 +35,11 @@ const staggerChild = {
   },
 }
 
-export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement {
+const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
   const windowWidth = useWindowSize()?.width ?? 0
-
+  const router = useRouter()
   const [executeScroll, elRef] = useScroll()
   const blogRef = useRef<HTMLDivElement>(null)
-
-  const router = useRouter()
-
   const [blogList, setBlogList] = useState(blogs)
   const [upComingBlogLength, setUpcomingBlogLength] = useState<null | number>(null)
   const [loading, setLoading] = useState(false)
@@ -152,3 +149,5 @@ export default function Blogs({ blogs, totalBlogs }: BlogsSection): ReactElement
     </section>
   )
 }
+
+export default Posts

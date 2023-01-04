@@ -1,7 +1,7 @@
 import { Body } from 'src/components/blog/body/Body'
 import { Heading } from 'src/components/blog/Heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Newsletter from 'components/common/newsletter'
+// import Newslettr from 'components/common/newsletter'
 import { BlogProps } from 'lib/@types/blog-types'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
@@ -13,6 +13,7 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanit
 import Ellipse from 'src/components/Ellipse'
 import { RelatedBlogs } from 'src/components/blog/RelatedBlog'
 import { Contact } from 'components/common/contact'
+import { Newsletter } from 'components/common/newsletter'
 
 const query = groq`{
   "site": ${siteQuery},

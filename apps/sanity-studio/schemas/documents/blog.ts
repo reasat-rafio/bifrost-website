@@ -1,6 +1,6 @@
 import { BsNewspaper, BsIntersect } from 'react-icons/bs'
 import { TiWaves } from 'react-icons/ti'
-import { defineField, defineType, SanityDocument, defineArrayMember } from 'sanity'
+import { defineType, SanityDocument, defineArrayMember, Rule } from 'sanity'
 
 const Blog = defineType({
   name: 'blog',
@@ -12,27 +12,34 @@ const Blog = defineType({
       name: 'seo',
       title: 'SEO',
       type: 'seo',
+      validation: (Rule: Rule) => Rule.required(),
     },
-    defineField({
+    {
       name: 'order',
       title: 'Order',
       type: 'number',
       hidden: true,
-    }),
-    defineField({ name: 'heading', type: 'string' }),
-    defineField({
+    },
+    { name: 'heading', type: 'string', validation: (Rule: Rule) => Rule.required() },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
       options: {
         source: (doc: SanityDocument) => doc.heading as string,
       },
-    }),
-    defineField({ name: 'subHeading', type: 'string' }),
-    defineField({ name: 'image', type: 'image', description: 'will use as preview image' }),
-    defineField({
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'datetime',
+      type: 'datetime',
+      initialValue: () => Date.now(),
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'tags',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
@@ -42,12 +49,13 @@ const Blog = defineType({
           to: { type: 'tag' },
         },
       ],
-    }),
-    defineField({ name: 'datetime', type: 'datetime' }),
-    defineField({
+    },
+
+    {
       name: 'body',
       title: 'Body',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       initialValue: [
         {
           _type: 'introduction',
@@ -60,12 +68,44 @@ const Blog = defineType({
           type: 'object',
           icon: TiWaves,
           fields: [
-            { name: 'heading', type: 'string' },
-            { name: 'image', type: 'image' },
+            {
+              name: 'heading',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'image',
+              type: 'image',
+              validation: (Rule: Rule) => Rule.required(),
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  description: 'Important for SEO and accessibility',
+                  type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
+            },
             {
               name: 'description',
               type: 'array',
-              of: [defineArrayMember({ type: 'block' }), defineArrayMember({ type: 'image' })],
+              validation: (Rule: Rule) => Rule.required(),
+              of: [
+                { type: 'block' },
+                {
+                  type: 'image',
+                  fields: [
+                    {
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      description: 'Important for SEO and accessibility',
+                      type: 'string',
+                      validation: (Rule: Rule) => Rule.required(),
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
@@ -74,29 +114,42 @@ const Blog = defineType({
           type: 'object',
           icon: BsIntersect,
           fields: [
-            { name: 'heading', type: 'string' },
+            {
+              name: 'heading',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
             { name: 'hideHeading', type: 'boolean' },
-
             {
               name: 'description',
               type: 'array',
               of: [
-                defineArrayMember({ type: 'block' }),
-                defineArrayMember({ type: 'image' }),
-                defineArrayMember({
+                { type: 'block' },
+                {
+                  type: 'image',
+                  fields: [
+                    {
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      description: 'Important for SEO and accessibility',
+                      type: 'string',
+                      validation: (Rule: Rule) => Rule.required(),
+                    },
+                  ],
+                },
+                {
                   type: 'quote',
-                }),
+                },
               ],
             },
           ],
         },
       ],
-    }),
+    },
   ],
   preview: {
     select: {
       title: 'heading',
-      subtitle: 'subHeading',
       media: 'image',
     },
   },

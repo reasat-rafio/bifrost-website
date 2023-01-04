@@ -1,8 +1,6 @@
 // import BlogArticles from 'components/blog/BlogArticles'
-import BlogHome from 'src/components/blog-list/BlogHome'
-import Blogs from 'src/components/blog-list/Blogs'
+import Home from 'components/post-list/home'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Newsletter from 'components/common/newsletter'
 import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'lib/@types/blog-types'
 import { siteQuery } from 'src/lib/query'
@@ -14,6 +12,8 @@ import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { Contact } from 'components/common/contact'
+import { Newsletter } from 'components/common/newsletter'
+import Posts from 'components/post-list/posts'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -53,7 +53,7 @@ export default function Blog(
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           'blog.home': useCallback(
-            (p: HomeSection) => <BlogHome setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+            (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
@@ -62,22 +62,22 @@ export default function Blog(
         className="bg-black"
         style={{
           transform: `translate(0, ${heroSectionHeight}px)`,
-          marginBottom: `${heroSectionHeight}px`,
+          marginBottom: heroSectionHeight,
         }}
       >
         <PrimaryWrapper>
-          <Blogs blogs={blogs} totalBlogs={totalBlogs} />
+          <Posts blogs={blogs} totalBlogs={totalBlogs} />
           {renderObjectArray(sections, {
             newsletter: Newsletter,
             contact: Contact,
           })}
         </PrimaryWrapper>
       </div>
-      <>
+      {/* <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      </>
+      </> */}
     </div>
   )
 }
