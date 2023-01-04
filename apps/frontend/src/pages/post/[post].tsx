@@ -1,4 +1,4 @@
-import { Body } from 'src/components/blog/body/Body'
+import { Body } from 'components/blog/body/body'
 import { Heading } from 'src/components/blog/Heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 // import Newslettr from 'components/common/newsletter'
@@ -23,6 +23,15 @@ const query = groq`{
     body[]{
       ...,
       "image": ${withDimensions('image')},
+      description[]{
+        ...,
+        asset->{
+            ...,
+            metadata {
+              dimensions
+            }
+        }
+      }
     },
     tags[]->,
     "relatedBlogs" : *[_type== "blog" && slug.current != $post && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{

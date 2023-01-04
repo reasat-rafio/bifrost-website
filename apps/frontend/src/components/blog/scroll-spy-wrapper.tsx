@@ -3,6 +3,7 @@ import { BlogBody } from 'lib/@types/blog-types'
 import React, { RefObject, useEffect, useState } from 'react'
 import { Scrollspy } from './body/scrollspy'
 import { SmScrollSpy } from './SmScrollSpy'
+import { motion } from 'framer-motion'
 
 interface ScrollSpyProps {
   sections: BlogBody[]
@@ -41,21 +42,18 @@ const ScrollspyBody = ({
                     currentElementIndexInViewport === i ? 'bifrost__gradient_pink' : 'bg-[#B5B5B5]',
                   )}
                 />
-                <a
-                  href={`#section-${i}`}
-                  onClick={(ev) => {
-                    ev.preventDefault()
-                    document.querySelector(`#section-${i}`)?.scrollIntoView()
+                <motion.span
+                  animate={{
+                    color: currentElementIndexInViewport === i ? '#000610' : '#B5B5B5',
                   }}
+                  onClick={() => document.querySelector(`#section-${i}`)?.scrollIntoView()}
                   className={clsx(
-                    'text-[20px] font-light no-underline',
-                    currentElementIndexInViewport === i
-                      ? 'text-[#000610] font-normal'
-                      : 'text-[#B5B5B5]',
+                    'text-[20px] cursor-pointer',
+                    currentElementIndexInViewport === i ? 'font-normal' : 'font-light ',
                   )}
                 >
                   {section.heading}
-                </a>
+                </motion.span>
               </li>
             ))}
           </ul>

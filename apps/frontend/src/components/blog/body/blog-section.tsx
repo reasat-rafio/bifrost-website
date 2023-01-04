@@ -3,21 +3,14 @@ import { LightboxImage } from 'src/components/ui/LightboxImage'
 import { BlogBody, IQuote } from 'lib/@types/blog-types'
 import React from 'react'
 import { PortableText } from 'src/utils/sanity'
+import { useWindowSize } from 'lib/hooks'
 
 const serializers = {
   types: {
     image({ node }: any) {
-      return (
-        <>
-          {node && (
-            <LightboxImage
-              image={node}
-              className="w-full h-full object-cover rounded-[15px]"
-              height={500}
-            />
-          )}
-        </>
-      )
+      const windowWidth = useWindowSize()?.width ?? 0
+
+      return <>{node && <LightboxImage image={node} width={windowWidth >= 1280 ? 900 : 250} />}</>
     },
     block(props: any) {
       switch (props.node.style) {

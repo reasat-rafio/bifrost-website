@@ -1,27 +1,14 @@
 import { LightboxImage } from 'src/components/ui/LightboxImage'
 import { BlogBody } from 'lib/@types/blog-types'
 import React from 'react'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
+import { PortableText } from 'src/utils/sanity'
+import { useWindowSize } from 'lib/hooks'
 
 const serializers = {
   types: {
     image({ node }: any) {
-      return (
-        <>
-          {node && (
-            <div className="">
-              <SanityImg
-                className="rounded-x"
-                image={node}
-                builder={imageUrlBuilder}
-                alt="image"
-                height={470}
-              />
-            </div>
-          )}
-        </>
-      )
+      const windowWidth = useWindowSize()?.width ?? 0
+      return <>{node && <LightboxImage image={node} width={windowWidth >= 1280 ? 900 : 250} />}</>
     },
     block(props: any) {
       switch (props.node.style) {
@@ -35,13 +22,11 @@ const serializers = {
 }
 
 export const Introduction: React.FC<BlogBody> = ({ description, image }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
+
   return (
     <div className="blog-introduction">
-      <LightboxImage
-        image={image}
-        className="w-full h-full object-cover rounded-[15px]"
-        height={500}
-      />
+      <LightboxImage image={image} width={windowWidth >= 1280 ? 900 : 250} variant="full" />
 
       <p className="text-[18px] font-light">
         <PortableText blocks={description} serializers={serializers} />
@@ -49,3 +34,4 @@ export const Introduction: React.FC<BlogBody> = ({ description, image }) => {
     </div>
   )
 }
+1
