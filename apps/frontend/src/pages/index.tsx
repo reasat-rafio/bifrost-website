@@ -73,7 +73,6 @@ export default function Home(props: SanityProps<any>) {
       page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
-
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
   return (

@@ -10,6 +10,8 @@ import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { Header } from 'src/components/ui/Header'
+import { motion } from 'framer-motion'
+import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
 export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadline }) => {
   const { width: windowWidth } = useWindowSize() ?? {
@@ -19,15 +21,31 @@ export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadlin
 
   return (
     <section className="container text-center !z-10 relative | mb-36">
-      <header className="max-w-2xl mx-auto mb-5">
+      <motion.header
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ type: 'tween', duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-2xl mx-auto mb-5"
+      >
         <GradientTitle className="mx-auto mb-5">{headline}</GradientTitle>
         <Header>{subHeadline}</Header>
-      </header>
+      </motion.header>
       <div>
         {windowWidth >= 1024 ? (
-          <div className="grid grid-cols-12 gap-16 py-5">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={SlideUpParent(0.15)}
+            className="grid grid-cols-12 gap-16 py-5"
+          >
             {clients.map((team) => (
-              <div className="col-span-2 flex flex-col items-center justify-center">
+              <motion.div
+                key={team._key}
+                variants={SlideUpChild()}
+                className="col-span-2 flex flex-col items-center justify-center"
+              >
                 <div className="w-[90%]">
                   <SanityImg
                     height={windowWidth >= 1280 ? 200 : 150}
@@ -37,9 +55,9 @@ export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadlin
                     alt={team.logo?.alt || 'image'}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div>
             <Swiper

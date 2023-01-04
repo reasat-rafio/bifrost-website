@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Mousewheel, Pagination } from 'swiper'
@@ -12,6 +12,7 @@ import { GradientBorder } from 'src/components/common/GradientBorder'
 import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { useWindowSize } from 'src/lib/hooks'
+import { motion } from 'framer-motion'
 
 export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
   const windowWidth = useWindowSize()?.width ?? 0
@@ -28,7 +29,13 @@ export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
 
   return (
     <div className="max-w-screen-2xl relative md:mx-auto lg:!px-14 px-6 pb-16">
-      <div className="review-carousel">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ type: 'tween', duration: 1 }}
+        viewport={{ once: true }}
+        className="review-carousel"
+      >
         <Swiper
           className="md:!pb-0 !pb-24"
           modules={[Autoplay, Navigation, Mousewheel, Pagination]}
@@ -131,7 +138,7 @@ export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
       <div className="lg:static lg:block lg:mr-0 relative flex justify-end items-center md:mr-12 ">
         <span className="absolute lg:left-8 lg:bottom-1/2 z-30 lg:mr-0 mr-16">
           <button ref={(node) => setNextEl(node)} className="cursor-pointer">

@@ -2,8 +2,9 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { MouseEvent, useMemo } from 'react'
 import clsx from 'clsx'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
+import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
 interface Collection {
   _key: string
@@ -16,16 +17,6 @@ interface CollectionProps {
   type: string
   header: string
   collection: Collection[]
-}
-
-const ContainerVariants: Variants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
 }
 
 export const CollectionBlock: React.FC<CollectionProps> = ({ header, collection }) => {
@@ -68,7 +59,7 @@ export const CollectionBlock: React.FC<CollectionProps> = ({ header, collection 
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={ContainerVariants}
+        variants={SlideUpParent()}
         onMouseMove={onMouseMoveAction}
         className={clsx('cards | grid grid-cols-12 gap-5')}
       >
@@ -80,17 +71,13 @@ export const CollectionBlock: React.FC<CollectionProps> = ({ header, collection 
   )
 }
 
-const ItemVariants: Variants = {
-  initial: { opacity: 0, y: 100 },
-  animate: { opacity: 1, y: 0 },
-}
 interface ItemProps extends Collection {
   imageWidth: number
 }
 const Perk: React.FC<ItemProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
     <motion.article
-      variants={ItemVariants}
+      variants={SlideUpChild()}
       transition={{ type: 'tween', duration: 0.7 }}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >

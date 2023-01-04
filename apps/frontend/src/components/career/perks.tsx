@@ -2,8 +2,9 @@ import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { MouseEvent, useMemo } from 'react'
 import clsx from 'clsx'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
+import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
 interface Perk {
   _key: string
@@ -16,16 +17,6 @@ interface PerksProps {
   type: string
   header: string
   perks: Perk[]
-}
-
-const ContainerVariants: Variants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
 }
 
 export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
@@ -68,7 +59,7 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={ContainerVariants}
+        variants={SlideUpParent()}
         onMouseMove={onMouseMoveAction}
         className={clsx('cards | grid grid-cols-12 gap-5')}
       >
@@ -80,18 +71,13 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
   )
 }
 
-const ItemVariants: Variants = {
-  initial: { opacity: 0, y: 100 },
-  animate: { opacity: 1, y: 0 },
-}
 interface PerkProps extends Perk {
   imageWidth: number
 }
 const Perk: React.FC<PerkProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
     <motion.article
-      variants={ItemVariants}
-      transition={{ type: 'tween', duration: 0.7 }}
+      variants={SlideUpChild()}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >
       <div className="card-content | space-y-3 | p-3 | font-light">

@@ -82,7 +82,11 @@ export const Demo: React.FC<DemoSection> = ({ title, previews }) => {
       >
         {title}
       </motion.h4>
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ type: 'tween', duration: 1 }}
+        viewport={{ once: true }}
         data-element="background"
         className="relative lg:flex justify-center items-start container"
         style={{
@@ -112,7 +116,7 @@ export const Demo: React.FC<DemoSection> = ({ title, previews }) => {
 
         {/* Mobile regular carousel */}
         <Carousel data={previews} className="block lg:hidden" />
-      </div>
+      </motion.div>
     </section>
   )
 }

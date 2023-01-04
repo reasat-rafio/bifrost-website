@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react'
+import { useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { imageUrlBuilder } from 'src/utils/sanity'
@@ -14,6 +14,7 @@ import { Header } from 'src/components/ui/Header'
 import { Description } from 'src/components/ui/Description'
 import { useWindowSize } from 'lib/hooks'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
 export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
@@ -21,7 +22,11 @@ export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title })
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ type: 'tween', duration: 1 }}
+      viewport={{ once: true }}
       className={clsx(
         'z-10  | grid grid-cols-12 | md:gap-12 ml-auto pl-6 xl:my-36 lg:my-20 my-16',
         windowWidth >= 1024
@@ -29,7 +34,7 @@ export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title })
           : 'container',
       )}
     >
-      <div className="z-10 | flex flex-col justify-center | lg:col-span-4 col-span-12 | 2xl:gap-y-10 gap-y-5">
+      <motion.div className="z-10 | flex flex-col justify-center | lg:col-span-4 col-span-12 | 2xl:gap-y-10 gap-y-5">
         <Header>{title}</Header>
         <Description>{subtitle}</Description>
         <div className="gap-x-4 2xl:mt-5 mt-3 lg:flex hidden">
@@ -40,7 +45,7 @@ export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title })
             <ArrowRight />
           </button>
         </div>
-      </div>
+      </motion.div>
       <div className="lg:col-span-8 col-span-12 | md:mt-0 mt-10">
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
@@ -107,6 +112,6 @@ export const Project: React.FC<ProjectSection> = ({ projects, subtitle, title })
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

@@ -5,18 +5,9 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
 import { MouseEvent, useMemo } from 'react'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import clsx from 'clsx'
-
-const ContainerVariants: Variants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-}
+import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
 const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => {
   const windowWidth = useWindowSize()?.width ?? 0
@@ -48,7 +39,7 @@ const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => 
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          variants={ContainerVariants}
+          variants={SlideUpParent()}
           onMouseMove={onMouseMoveAction}
           className={clsx('cards | grid grid-cols-12 gap-5')}
         >
@@ -63,18 +54,13 @@ const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => 
 
 export default Examples
 
-const ItemVariants: Variants = {
-  initial: { opacity: 0, y: 100 },
-  animate: { opacity: 1, y: 0 },
-}
 interface PerkProps extends ExampleProps {
   imageWidth: number
 }
 const Example: React.FC<PerkProps> = ({ image, description, title, imageWidth }) => {
   return (
     <motion.article
-      variants={ItemVariants}
-      transition={{ type: 'tween', duration: 0.7 }}
+      variants={SlideUpChild()}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >
       <div className="card-content | space-y-3 | p-3 | font-light">
