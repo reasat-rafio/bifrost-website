@@ -182,6 +182,7 @@ const Dataset = {
         { type: 'ctaList' },
         {
           type: 'image',
+          validation: (Rule: Rule) => Rule.required(),
           fields: [
             {
               name: 'alt',

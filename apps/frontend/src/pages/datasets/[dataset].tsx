@@ -6,7 +6,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { Gallery } from 'components/dataset/gallery'
-import { Body } from 'src/components/dataset/Body'
+import { Body } from 'components/dataset/body'
 import { Attributes } from 'src/components/dataset/Attributes'
 import { Classes } from 'src/components/dataset/Classes'
 import { Contact } from 'components/common/contact'
@@ -22,6 +22,15 @@ const query = groq`{
     images[]{
       ...,
       asset-> {
+        ...,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    body[]{
+      ...,
+      asset->{
         ...,
         metadata {
           dimensions
@@ -66,7 +75,7 @@ export default function Dataset(props: SanityProps) {
     <div>
       <div className="container">
         <Gallery images={images} />
-        {/* <Body body={body} heading={heading} subHeading={subHeading} license={license} /> */}
+        <Body body={body} heading={heading} subHeading={subHeading} license={license} />
         {/* <Attributes attributes={attributes} /> */}
         {/* <Classes classes={classes} /> */}
       </div>
