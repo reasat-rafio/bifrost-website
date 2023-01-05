@@ -12,8 +12,7 @@ import { motion } from 'framer-motion'
 import { HomeSection } from 'lib/@types/landing-types'
 import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
 import { SanityImg } from 'sanity-react-extra'
-import { useWindowSize } from 'src/lib/hooks'
-import { scrollPassedFromTop } from 'src/lib/helpers'
+import { useVisibleScroll, useWindowSize } from 'src/lib/hooks'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { Button } from 'components/ui/button'
 import { WaveScene } from 'components/common/wave-scene'
@@ -34,11 +33,17 @@ export const Hero: React.FC<IHomeSection> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
   const movingBorderDecorationBlockRef = useRef<null | HTMLDivElement>(null)
-
-  // const [sectionScrollPassed, setSectionSrollPassed] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const [decorationBlockWidth, setDecorationBlockWidth] = useState(
     movingBorderDecorationBlockRef?.current?.clientWidth ?? 0,
   )
+  const visibleScroll = useVisibleScroll(sectionRef)
+  const ratio = visibleScroll
+    ? Math.min(
+        1,
+        Math.max(0, (visibleScroll.y - visibleScroll.offsetBoundingRect.top) / windowHeight),
+      )
+    : 0
 
   const subtitleRef = useCallback(
     (node) => {
@@ -46,39 +51,24 @@ export const Hero: React.FC<IHomeSection> = ({
     },
     [windowWidth],
   )
-
-  const sectionRef = useCallback(
-    (node) => {
-      if (node !== null) setHeroSectionHeight(node.clientHeight)
-    },
-    [windowWidth],
-  )
-
-  // useEffect(() => {
-  //   const checkscrollPosition = () => {
-  //     const elHeight = document
-  //       .querySelector('[data-type="home-hero"]')
-  //       .getBoundingClientRect().height
-
-  //     elHeight * 2 < scrollPassedFromTop()
-  //       ? setSectionSrollPassed(true)
-  //       : setSectionSrollPassed(false)
-  //   }
-
-  //   window.addEventListener('scroll', checkscrollPosition)
-  //   return () => window.removeEventListener('scroll', checkscrollPosition)
-  // }, [windowHeight, windowWidth])
+  useEffect(() => {
+    if (sectionRef?.current) setHeroSectionHeight(sectionRef.current.clientHeight)
+  }, [windowWidth, sectionRef])
 
   return (
     <section
       ref={sectionRef}
-      className={clsx(
-        'w-full | top-0 left-0 | overflow-y-clip bg-black fixed',
-        // sectionScrollPassed ? ' absolute' : 'fixed',
-      )}
+      className={clsx('w-full | top-0 left-0 | overflow-y-clip bg-black fixed')}
     >
       <BackgroundNoise />
       <WaveScene />
+      <div
+        style={{
+          opacity: ratio * 5,
+          display: ratio ? 'block' : 'none',
+        }}
+        className="absolute top-0 left-0 bg-black/10 h-full w-full z-20 backdrop-blur-lg"
+      />
 
       <section className="container z-10 | relative | w-screen h-screen | flex lg:flex-row flex-col | lg:pt-16 pt-24 | overflow-y-clip">
         <div className="flex-1 flex flex-col justify-center space-y-10 ">
