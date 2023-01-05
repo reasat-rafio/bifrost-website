@@ -1,9 +1,9 @@
 import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
-import Graph from './Graph'
+import Graph from './graph'
 import { scaleBand, scaleLinear } from '@visx/scale'
-import BottomAxist from './BottomAxist'
+import BottomAxist from './bottom-axist'
 
 interface ClassesProps {
   classes: Idataset['classes']

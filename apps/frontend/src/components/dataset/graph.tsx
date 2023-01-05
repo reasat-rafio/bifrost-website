@@ -7,8 +7,8 @@ import { useTooltipInPortal, withTooltip } from '@visx/tooltip'
 import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
 
 import { GridColumns } from '@visx/grid'
-import { getKey, keys } from './Classes'
-import { TooltipComponent } from './TooltipComponent'
+import { getKey, keys } from './classes'
+import { TooltipComponent } from './tooltip-component'
 import { useWindowSize } from 'src/lib/hooks'
 
 export const green = '#CEFFBD'

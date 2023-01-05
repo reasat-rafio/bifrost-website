@@ -7,8 +7,8 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { Gallery } from 'components/dataset/gallery'
 import { Body } from 'components/dataset/body'
-import { Attributes } from 'src/components/dataset/Attributes'
-import { Classes } from 'src/components/dataset/Classes'
+import { Attributes } from 'components/dataset/attributes'
+import { Classes } from 'components/dataset/classes'
 import { Contact } from 'components/common/contact'
 
 const query = groq`{
@@ -71,13 +71,15 @@ export default function Dataset(props: SanityProps) {
     },
   }: { data: { dataset: Idataset; page: any } } = useSanityQuery(query, props)
 
+  // TODO add the related datasets section
   return (
     <div>
       <div className="container">
         <Gallery images={images} />
         <Body body={body} heading={heading} subHeading={subHeading} license={license} />
-        {/* <Attributes attributes={attributes} /> */}
-        {/* <Classes classes={classes} /> */}
+        <Attributes attributes={attributes} />
+        {/* TODO Fix the responiveness on the mobile  */}
+        <Classes classes={classes} />
       </div>
 
       {renderObjectArray(sections, {

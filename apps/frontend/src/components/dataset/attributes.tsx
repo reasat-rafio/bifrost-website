@@ -12,9 +12,9 @@ export const Attributes: React.FC<AttributesProps> = ({ attributes }) => {
     <section className="my-8">
       <h4 className="mb-8 text-[26px] font-light">Dataset Attributes</h4>
 
-      <div className="flex flex-wrap max-w-2xl gap-4">
+      <ul className="flex flex-wrap max-w-2xl gap-4">
         {attributes.map(({ _key, icon, name, text }) => (
-          <div
+          <li
             key={_key}
             className="border border-[#0E1727] p-4 rounded-[4px] flex justify-center items-center space-x-3"
           >
@@ -25,9 +25,9 @@ export const Attributes: React.FC<AttributesProps> = ({ attributes }) => {
               <span className="opacity-70">{name}</span>
               <span>{text}</span>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }
