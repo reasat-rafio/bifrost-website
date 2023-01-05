@@ -5,7 +5,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import { Gallery } from 'src/components/dataset/Gallery'
+import { Gallery } from 'components/dataset/gallery'
 import { Body } from 'src/components/dataset/Body'
 import { Attributes } from 'src/components/dataset/Attributes'
 import { Classes } from 'src/components/dataset/Classes'
@@ -19,19 +19,19 @@ const query = groq`{
         ...,
         "icon": ${withDimensions('icon')},
     },
-    images[] {
-        ...        
-        asset->{
-          ...,
-          metadata {
-            dimensions
-          }
-        }
-      },
-    },
-    "page": *[_id == "datasetDetailsPage"][0] {
+    images[]{
       ...,
+      asset-> {
+        ...,
+        metadata {
+          dimensions
+        }
+      }
+    }
   },
+  "page": *[_id == "datasetDetailsPage"][0] {
+    ...,
+  }
 }`
 
 const pathsQuery = groq`*[_type == 'dataset'][]{
@@ -66,9 +66,9 @@ export default function Dataset(props: SanityProps) {
     <div>
       <div className="container">
         <Gallery images={images} />
-        <Body body={body} heading={heading} subHeading={subHeading} license={license} />
-        <Attributes attributes={attributes} />
-        <Classes classes={classes} />
+        {/* <Body body={body} heading={heading} subHeading={subHeading} license={license} /> */}
+        {/* <Attributes attributes={attributes} /> */}
+        {/* <Classes classes={classes} /> */}
       </div>
 
       {renderObjectArray(sections, {
