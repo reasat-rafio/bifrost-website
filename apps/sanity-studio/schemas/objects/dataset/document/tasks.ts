@@ -11,4 +11,15 @@ export default {
       type: 'string',
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+    },
+    prepare({ title }: any) {
+      return {
+        title,
+        icon: MdOutlineCategory,
+      }
+    },
+  },
 }

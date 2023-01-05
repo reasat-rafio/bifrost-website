@@ -1,5 +1,5 @@
 import { FiDatabase } from 'react-icons/fi'
-import { MdHighlight } from 'react-icons/md'
+import { MdHighlight, MdOutlineCategory } from 'react-icons/md'
 import { CgEditFade } from 'react-icons/cg'
 import React from 'react'
 import { defineType, SanityDocument, Rule } from 'sanity'
@@ -78,7 +78,6 @@ const Dataset = {
     {
       name: 'taskTypes',
       type: 'array',
-      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
@@ -99,7 +98,9 @@ const Dataset = {
       of: [
         {
           type: 'reference',
-          to: { type: 'category' },
+          to: {
+            type: 'category',
+          },
         },
       ],
     },
@@ -120,7 +121,6 @@ const Dataset = {
     {
       name: 'labelFormats',
       type: 'array',
-      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
@@ -180,7 +180,18 @@ const Dataset = {
           },
         },
         { type: 'ctaList' },
-        { type: 'image' },
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alternative Text',
+              description: 'Important for SEO and accessibility',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+          ],
+        },
       ],
     },
     {
@@ -188,7 +199,6 @@ const Dataset = {
       type: 'array',
       of: [{ type: 'attribute' }],
       group: 'attributes',
-      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'classes',
