@@ -74,13 +74,13 @@ export default function Dataset(props: SanityProps) {
   // TODO add the related datasets section
   return (
     <div>
-      <div className="container">
+      <article className="container">
         <Gallery images={images} />
         <Body body={body} heading={heading} subHeading={subHeading} license={license} />
         <Attributes attributes={attributes} />
         {/* TODO Fix the responiveness on the mobile  */}
         <Classes classes={classes} />
-      </div>
+      </article>
 
       {renderObjectArray(sections, {
         contact: Contact,

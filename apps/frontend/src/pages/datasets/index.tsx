@@ -6,14 +6,14 @@ import { Site } from 'lib/@types/global-types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import Home from 'src/components/dataset-list/Home'
 import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
 import { DatasetList } from 'src/components/dataset-list/list/DatasetList'
-import { useCtx } from 'src/context/global'
+// import { useCtx } from 'src/context/global'
 import { Contact } from 'components/common/contact'
+import { Hero, HeroProps } from 'components/dataset-list/home'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -60,23 +60,23 @@ export default function Dataset(
       datasets,
     },
   } = useSanityQuery(query, props)
-  const {
-    action: { setAllDataSets },
-  } = useCtx()
+  // const {
+  //   action: { setAllDataSets },
+  // } = useCtx()
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
   const [_datasets, setDatasets] = useState(datasets)
 
-  useEffect(() => {
-    setAllDataSets(datasets)
-  }, [])
+  // useEffect(() => {
+  //   setAllDataSets(datasets)
+  // }, [])
 
   return (
     <div>
       <PrimaryWrapper>
         {renderObjectArray(sections, {
-          'blog.home': useCallback(
-            (p: HomeSection) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+          primaryHero: useCallback(
+            (p: HeroProps) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
             [],
           ),
         })}
@@ -85,27 +85,27 @@ export default function Dataset(
         className="bg-black"
         style={{
           transform: `translate(0, ${heroSectionHeight}px)`,
-          marginBottom: `${heroSectionHeight}px`,
+          marginBottom: heroSectionHeight,
         }}
       >
         <PrimaryWrapper>
-          <DatasetList
+          {/* <DatasetList
             datasets={_datasets}
             setDatasets={setDatasets}
             categories={categories}
             labelFormat={labelFormat}
             notFound={notFound}
-          />
+          /> */}
           {renderObjectArray(sections, {
             contact: Contact,
           })}
         </PrimaryWrapper>
       </div>
-      <>
+      {/* <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
-      </>
+      </> */}
     </div>
   )
 }
