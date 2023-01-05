@@ -37,9 +37,12 @@ var fragShader = `
     }
   `
 
-export default function ThreeJSWaves({}: // width,
+export default function ThreeJSWaves({
+  play,
+}: // width,
 // height,
 {
+  play: boolean
   // width: number
   // height: number
 }): ReactElement {
@@ -138,14 +141,12 @@ export default function ThreeJSWaves({}: // width,
     let delta = 0
 
     function animate() {
-      requestAnimationFrame(animate)
+      play && requestAnimationFrame(animate)
       delta = clock.getDelta()
       t += delta
 
       seaDown.material.uniforms.time.value = t
-
       scene.rotation.y += delta * 0.05
-      // camera.position.z -= t * 0.5;
 
       renderer.render(scene, camera)
     }
@@ -153,7 +154,7 @@ export default function ThreeJSWaves({}: // width,
     animate()
 
     return () => (ref.current ? ref.current.removeChild(renderer.domElement) : null)
-  }, [ref])
+  }, [ref, play])
 
   return <div ref={ref}></div>
 }
