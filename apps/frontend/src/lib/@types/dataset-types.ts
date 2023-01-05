@@ -90,7 +90,11 @@ export interface CategoriesProps {
   _id: string
   name: string
 }
-export interface VenueProps {
+export interface TaskTypeProps {
+  _id: string
+  name: string
+}
+export interface LabelFormatProps {
   _id: string
   name: string
 }

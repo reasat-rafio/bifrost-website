@@ -9,7 +9,7 @@ import 'rc-tooltip/assets/bootstrap.css'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { CardAnimationVariants } from './Datasets'
+import { CardAnimationVariants } from './datasets'
 interface IDatasetCards extends IDatasetListPreview {
   index: number
 }

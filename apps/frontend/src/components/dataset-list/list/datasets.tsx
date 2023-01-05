@@ -1,21 +1,17 @@
 import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { RelevanceFiltering } from './RelevanceFiltering'
-import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
-import { SmCategories } from './SmCategories'
+import { SearchAndFiltering } from './search-filtering/search-and-filtering'
+import { SmCategories } from './sm-categories'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import { DatasetCards } from './DatasetCards'
-import { INotFound } from 'lib/@types/global-types'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'src/utils/sanity'
+import useDatasetStore from 'store/dataset.store'
 
 interface DatasetsProps {
   className?: string
-  datasets: IDatasetListPreview[]
-  taskTypes: ICategory[]
-  labelFormat: ICategory[]
-  notFound: INotFound
-  setDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
+  notFound: any
 }
 
 export const CardAnimationVariants = {
@@ -37,14 +33,12 @@ export const CardAnimationVariants = {
 
 export const Datasets: React.FC<DatasetsProps> = ({
   className,
-  taskTypes,
-  labelFormat,
-  datasets,
-  setDatasets,
-  notFound: { description, header, image },
+  // notFound: { description, header, image },
 }) => {
-  const rbAnim = useAnimation()
+  const { sortedDatasets, selectedCategory } = useDatasetStore()
+  console.log(selectedCategory)
 
+  const rbAnim = useAnimation()
   const imgContainerStateOn = (e: any) => {
     const { clientX, clientY } = e
     const offsetX = clientX - window.innerWidth / 2
@@ -55,23 +49,13 @@ export const Datasets: React.FC<DatasetsProps> = ({
 
   return (
     <div className={className}>
-      <SmCategories
-        className="block xl:hidden"
-        categories={taskTypes}
-        setDatasets={setDatasets}
-        datasets={datasets}
-      />
-      <SearchAndFiltering
-        labelFormat={labelFormat}
-        taskTypes={taskTypes}
-        setDatasets={setDatasets}
-        datasets={datasets}
-      />
-      <RelevanceFiltering length={datasets.length} />
+      <SmCategories className="block xl:hidden" />
+      <SearchAndFiltering />
+      <RelevanceFiltering length={sortedDatasets.length} />
       <motion.div className="grid grid-cols-12 xl:gap-7 gap-3 ">
         <AnimatePresence exitBeforeEnter>
-          {datasets?.length ? (
-            datasets.map((dataset, index) => (
+          {!!sortedDatasets?.length ? (
+            sortedDatasets.map((dataset, index) => (
               <DatasetCards key={dataset._id} index={index} {...dataset} />
             ))
           ) : (
@@ -84,7 +68,7 @@ export const Datasets: React.FC<DatasetsProps> = ({
               }}
               className="col-span-12 flex flex-col space-y-2 justify-center items-center h-full w-full mt-[5%]"
             >
-              <h6 className="lg:text-2xl text-xl font-medium">{header}</h6>
+              {/* <h6 className="lg:text-2xl text-xl font-medium">{header}</h6>
               <p className="text-base">{description}</p>
               <motion.div animate={rbAnim}>
                 <SanityImg
@@ -93,7 +77,7 @@ export const Datasets: React.FC<DatasetsProps> = ({
                   width={400}
                   alt="Search result not found"
                 />
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           )}
         </AnimatePresence>

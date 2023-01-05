@@ -6,14 +6,16 @@ import { Site } from 'lib/@types/global-types'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
 import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
-import { DatasetList } from 'src/components/dataset-list/list/DatasetList'
+import { DatasetList } from 'components/dataset-list/list/dataset-list'
 // import { useCtx } from 'src/context/global'
 import { Contact } from 'components/common/contact'
 import { Hero, HeroProps } from 'components/dataset-list/home'
+import useDatasetStore from 'store/dataset.store'
+import { FilteringLogic } from 'components/dataset-list/filter'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -34,7 +36,8 @@ const query = groq`{
    categories[]->,
    tasks[]-> 
   },
-  "categories": *[_type == "taskType"][] ,
+  "categories": *[_type == "category"][] ,
+  "taskTypes": *[_type == "taskType"][] ,
   "labelFormat": *[_type == "labelFormat"][]
 }`
 
@@ -43,33 +46,34 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   revalidate: 10,
 })
 
-export default function Dataset(
-  props: SanityProps<{
-    site: Site
-    page: any
-    categories: ICategory[]
-    labelFormat: ICategory[]
-    datasets: IDatasetListPreview[]
-  }>,
-) {
+export default function Dataset(props: SanityProps<any>) {
   const {
     data: {
       page: { sections, notFound },
       categories,
       labelFormat,
       datasets,
+      taskTypes,
     },
   } = useSanityQuery(query, props)
-  // const {
-  //   action: { setAllDataSets },
-  // } = useCtx()
 
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
-  const [_datasets, setDatasets] = useState(datasets)
 
-  // useEffect(() => {
-  //   setAllDataSets(datasets)
-  // }, [])
+  const {
+    setAllCategories,
+    setAllLabelFormat,
+    setAllDatasets,
+    setSortedDatasets,
+    setAllTaskTypes,
+  } = useDatasetStore()
+
+  useEffect(() => {
+    setAllCategories(categories)
+    setAllLabelFormat(labelFormat)
+    setSortedDatasets(datasets)
+    setAllDatasets(datasets)
+    setAllTaskTypes(taskTypes)
+  }, [setAllCategories, setAllLabelFormat, setSortedDatasets, setAllDatasets, setAllTaskTypes])
 
   return (
     <div>
@@ -89,13 +93,10 @@ export default function Dataset(
         }}
       >
         <PrimaryWrapper>
-          {/* <DatasetList
-            datasets={_datasets}
-            setDatasets={setDatasets}
-            categories={categories}
-            labelFormat={labelFormat}
-            notFound={notFound}
-          /> */}
+          <FilteringLogic>
+            <DatasetList notFound={notFound} />
+          </FilteringLogic>
+
           {renderObjectArray(sections, {
             contact: Contact,
           })}
