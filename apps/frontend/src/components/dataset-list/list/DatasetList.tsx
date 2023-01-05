@@ -1,5 +1,5 @@
-import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
-import { INotFound } from 'lib/@types/global-types'
+import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
+// import { INotFound } from 'lib/@types/global-types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { Categories } from './Categories'
 import { Datasets } from './Datasets'
@@ -7,9 +7,10 @@ import { Datasets } from './Datasets'
 interface DatasetListProps {
   categories: ICategory[]
   labelFormat: ICategory[]
-  datasets: IDatasetCard[]
-  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
-  notFound: INotFound
+  datasets: IDatasetListPreview[]
+  setDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
+  // notFound: INotFound
+  notFound: any
 }
 
 export const DatasetList: React.FC<DatasetListProps> = ({

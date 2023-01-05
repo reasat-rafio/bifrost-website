@@ -1,14 +1,14 @@
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { useCtx } from 'src/context/global'
-import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
+import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 interface SmCategoriesProps {
   className?: string
   categories: ICategory[]
-  datasets: IDatasetCard[]
-  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
+  datasets: IDatasetListPreview[]
+  setDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
 }
 
 export const SmCategories: React.FC<SmCategoriesProps> = ({

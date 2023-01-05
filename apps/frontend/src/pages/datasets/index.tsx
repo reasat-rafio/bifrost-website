@@ -9,7 +9,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
-import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
+import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
 import { DatasetList } from 'src/components/dataset-list/list/DatasetList'
 // import { useCtx } from 'src/context/global'
 import { Contact } from 'components/common/contact'
@@ -49,7 +49,7 @@ export default function Dataset(
     page: any
     categories: ICategory[]
     labelFormat: ICategory[]
-    datasets: IDatasetCard[]
+    datasets: IDatasetListPreview[]
   }>,
 ) {
   const {

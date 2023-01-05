@@ -1,4 +1,4 @@
-import { IDatasetCard } from 'lib/@types/dataset-types'
+import { IDatasetListPreview } from 'lib/@types/dataset-types'
 import { useWindowSize } from 'src/lib/hooks'
 import { useRouter } from 'next/router'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { CardAnimationVariants } from './Datasets'
-interface IDatasetCards extends IDatasetCard {
+interface IDatasetCards extends IDatasetListPreview {
   index: number
 }
 

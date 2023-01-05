@@ -1,11 +1,11 @@
-import { IDatasetCard } from 'lib/@types/dataset-types'
+import { IDatasetListPreview } from 'lib/@types/dataset-types'
 import { IToast } from 'lib/@types/global-types'
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
 import { SanityImage } from 'sanity-react-extra'
 
 interface ContextState {
-  allDatasets: IDatasetCard[]
-  tempDatasets: IDatasetCard[]
+  allDatasets: IDatasetListPreview[]
+  tempDatasets: IDatasetListPreview[]
   lightboxImage: null | SanityImage
   toasts: IToast[]
   navbarHeight: number
@@ -14,8 +14,8 @@ interface ContextState {
 interface ContextAction {
   setLightboxImage: Dispatch<SetStateAction<null | SanityImage>>
   setToasts: Dispatch<SetStateAction<IToast[]>>
-  setAllDataSets: Dispatch<SetStateAction<IDatasetCard[]>>
-  setTempDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
+  setAllDataSets: Dispatch<SetStateAction<IDatasetListPreview[]>>
+  setTempDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
   setNavabrHeight: Dispatch<SetStateAction<number>>
   addToast: (content: IToast) => void
   removeToast: (id: string) => void
@@ -33,8 +33,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [lightboxImage, setLightboxImage] = useState<null | SanityImage>(null)
   const [toasts, setToasts] = useState<IToast[]>([])
   const [navbarHeight, setNavabrHeight] = useState(0)
-  const [allDatasets, setAllDataSets] = useState<IDatasetCard[]>([])
-  const [tempDatasets, setTempDatasets] = useState<IDatasetCard[]>([])
+  const [allDatasets, setAllDataSets] = useState<IDatasetListPreview[]>([])
+  const [tempDatasets, setTempDatasets] = useState<IDatasetListPreview[]>([])
 
   const addToast = (content: IToast) => {
     const newToasts = [...toasts, content]

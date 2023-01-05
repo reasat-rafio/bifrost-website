@@ -75,7 +75,7 @@ export interface ICategory {
   _updatedAt?: string
 }
 
-export interface IDatasetCard {
+export interface IDatasetListPreview {
   _id: string
   heading: string
   slug: Slug
@@ -85,3 +85,14 @@ export interface IDatasetCard {
   categories: ICategory[]
   tasks: ICategory[]
 }
+
+export interface CategoriesProps {
+  _id: string
+  name: string
+}
+export interface VenueProps {
+  _id: string
+  name: string
+}
+
+export type ISortingType = 'most-recent' | 'alphabet' | null

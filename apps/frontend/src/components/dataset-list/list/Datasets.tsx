@@ -1,4 +1,4 @@
-import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
+import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/SearchAndFiltering'
@@ -11,11 +11,11 @@ import { imageUrlBuilder } from 'src/utils/sanity'
 
 interface DatasetsProps {
   className?: string
-  datasets: IDatasetCard[]
+  datasets: IDatasetListPreview[]
   taskTypes: ICategory[]
   labelFormat: ICategory[]
   notFound: INotFound
-  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
+  setDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
 }
 
 export const CardAnimationVariants = {

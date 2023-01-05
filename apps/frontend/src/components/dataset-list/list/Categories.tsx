@@ -1,12 +1,12 @@
 import clsx from 'clsx'
-import { ICategory, IDatasetCard } from 'lib/@types/dataset-types'
+import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { useCtx } from 'store/global'
 
 interface CategoriesProps {
   categories: ICategory[]
   className?: string
-  setDatasets: Dispatch<SetStateAction<IDatasetCard[]>>
+  setDatasets: Dispatch<SetStateAction<IDatasetListPreview[]>>
 }
 
 export const Categories: React.FC<CategoriesProps> = ({ categories, className, setDatasets }) => {

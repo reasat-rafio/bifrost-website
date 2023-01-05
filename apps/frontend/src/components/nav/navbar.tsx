@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { MenuItem } from 'lib/@types/global-types'
 import Link from 'next/link'
 import { Button } from '../ui/button'
-import useGlobalStore from '../../store/global-store'
+import useGlobalStore from '../../store/global.store'
 
 interface NavbarProps {
   logo: SanityImage
