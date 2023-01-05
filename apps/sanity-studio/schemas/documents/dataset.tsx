@@ -2,9 +2,9 @@ import { FiDatabase } from 'react-icons/fi'
 import { MdHighlight } from 'react-icons/md'
 import { CgEditFade } from 'react-icons/cg'
 import React from 'react'
-import { defineField, defineType, SanityDocument, defineArrayMember } from 'sanity'
+import { defineType, SanityDocument, Rule } from 'sanity'
 
-const Dataset = defineType({
+const Dataset = {
   name: 'dataset',
   title: 'Dataset',
   type: 'document',
@@ -26,45 +26,73 @@ const Dataset = defineType({
       title: 'SEO',
       type: 'seo',
     },
-    defineField({
+    {
       name: 'order',
       title: 'Order',
       type: 'number',
       hidden: true,
-    }),
-    defineField({ name: 'heading', type: 'string' }),
-    defineField({
+    },
+    {
+      name: 'heading',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
       options: {
         source: (doc: SanityDocument) => doc.heading as string,
       },
-    }),
-    defineField({ name: 'subHeading', type: 'string' }),
-    defineField({
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'subHeading',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'license',
       type: 'string',
       description: 'If the field is empty it will mark as Unknown License',
-    }),
-    defineField({ name: 'images', type: 'array', of: [{ type: 'image' }] }),
-    defineField({
+    },
+    {
+      name: 'images',
+      type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alternative Text',
+              description: 'Important for SEO and accessibility',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'taskTypes',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: { type: 'taskType' },
-        }),
+        },
       ],
-    }),
-
-    defineField({
+    },
+    {
       name: 'categories',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
@@ -74,41 +102,41 @@ const Dataset = defineType({
           to: { type: 'category' },
         },
       ],
-    }),
-
-    defineField({
+    },
+    {
       name: 'tasks',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: { type: 'tasks' },
-        }),
+        },
       ],
-    }),
-
-    defineField({
+    },
+    {
       name: 'labelFormats',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         layout: 'tags',
       },
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: { type: 'labelFormat' },
-        }),
+        },
       ],
-    }),
-
-    defineField({
+    },
+    {
       name: 'body',
       type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
       of: [
-        defineArrayMember({
+        {
           type: 'block',
           marks: {
             annotations: [
@@ -150,23 +178,25 @@ const Dataset = defineType({
               },
             ],
           },
-        }),
-        defineArrayMember({ type: 'ctaList' }),
-        defineArrayMember({ type: 'image' }),
+        },
+        { type: 'ctaList' },
+        { type: 'image' },
       ],
-    }),
-    defineField({
+    },
+    {
       name: 'attributes',
       type: 'array',
-      of: [defineArrayMember({ type: 'attribute' })],
+      of: [{ type: 'attribute' }],
       group: 'attributes',
-    }),
-    defineField({
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'classes',
       description: 'First column is for name and second column is for value',
       type: 'table',
       group: 'classes',
-    }),
+      validation: (Rule: Rule) => Rule.required(),
+    },
   ],
   preview: {
     select: {
@@ -175,6 +205,6 @@ const Dataset = defineType({
       media: 'images[0]',
     },
   },
-})
+}
 
 export default Dataset

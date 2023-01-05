@@ -52,7 +52,7 @@ export const Preview: React.FC<PreviewProps> = ({ item, index, length, rootRef }
           )
           sectionRef.current.animate(
             {
-              scale: Math.max(1 - sectionRatio / 20, 0.8),
+              // scale: Math.max(1 - sectionRatio / 20, 0.8),
               opacity: Math.max(1 - sectionRatio * 1.1, 0),
             },
             {
