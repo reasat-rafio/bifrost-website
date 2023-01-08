@@ -63,7 +63,7 @@ export const DatasetCards: React.FC<IDatasetCards> = ({
           ))}
         </div>
 
-        <OverflownTasks index={index} tasks={tasks} />
+        <OverflownTasks tasks={tasks} />
         <div className="flex space-x-10 text-opacity-70">
           <span className="underline">716 Images</span>
           <span>YOLO Format</span>

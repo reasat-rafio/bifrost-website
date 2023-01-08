@@ -1,9 +1,10 @@
 import { GradientBorder } from 'src/components/common/GradientBorder'
-import { useCtx } from 'src/context/global'
-import React, { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+// import { useCtx } from 'src/context/global'
+import React from 'react'
+import { motion } from 'framer-motion'
 import { IToast } from 'lib/@types/global-types'
 
+// TODO Fix this Toast component
 const ToastIcon = ({ type }: { type: string }) => {
   switch (type) {
     case 'success':
@@ -44,33 +45,33 @@ const ToastIcon = ({ type }: { type: string }) => {
 }
 
 export const ToastContaiern = () => {
-  const {
-    state: { toasts },
-  } = useCtx()
+  // const {
+  //   state: { toasts },
+  // } = useCtx()
 
   return (
     <motion.div className="fixed bottom-5 right-5 flex flex-col w-auto space-y-3 z-50">
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {toasts.map((toast) => (
           <Toast key={toast.id} {...toast} />
         ))}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </motion.div>
   )
 }
 
 export const Toast: React.FC<IToast> = ({ id, content, type }) => {
-  const {
-    action: { removeToast },
-    state: { toasts },
-  } = useCtx()
+  // const {
+  //   action: { removeToast },
+  //   state: { toasts },
+  // } = useCtx()
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      removeToast(id)
-    }, 4500)
-    return () => clearInterval(interval)
-  }, [toasts])
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     removeToast(id)
+  //   }, 4500)
+  //   return () => clearInterval(interval)
+  // }, [toasts])
 
   return (
     <motion.div
@@ -93,7 +94,7 @@ export const Toast: React.FC<IToast> = ({ id, content, type }) => {
             <div className="pl-4 text-sm font-normal">{content}</div>
           </div>
           <button
-            onClick={() => removeToast(id)}
+            // onClick={() => removeToast(id)}
             type="button"
             className="rounded-lg focus:ring-2 focus:ring-slate-600 p-1.5 inline-flex hover:bg-slate-700 ml-4 transition-colors duration-200"
             aria-label="Close"

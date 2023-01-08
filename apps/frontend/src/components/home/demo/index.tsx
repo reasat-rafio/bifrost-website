@@ -1,5 +1,4 @@
 import { Preview } from 'src/components/Preview'
-import SlideUp from 'src/components/SlideUpText'
 import { useMotionValue } from 'framer-motion'
 import {
   animationFrameEffect,

@@ -24,8 +24,8 @@ export const ProjectsBlock: React.FC<ProjectsProps> = ({ projects }) => {
     <section className="lg:py-40 md:py-14 py-10">
       <div className="container ">
         <div className="flex flex-col lg:space-y-40 md:space-y-14 space-y-10">
-          {projects.map(({ title, image, description, subtitle, ctaButton }, index) => (
-            <article className="relative flex flex-col justify-end">
+          {projects.map(({ _key, title, image, description, subtitle, ctaButton }, index) => (
+            <article key={_key} className="relative flex flex-col justify-end">
               <figure
                 className={clsx(
                   index % 2 ? 'left-0' : 'right-0',
@@ -60,7 +60,6 @@ export const ProjectsBlock: React.FC<ProjectsProps> = ({ projects }) => {
                         },
                       }}
                     />
-                    <PortableText />
                   </div>
                   {!!subtitle && (
                     <h6 className="xl:text-[30px] md:text-[24px] text-[22px] font-light | leading-none">

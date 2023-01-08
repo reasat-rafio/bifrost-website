@@ -47,5 +47,18 @@ export default {
     select: {
       title: 'headline',
     },
+    prepare({ title }: any) {
+      const block = (title || []).find((block: any) => block._type === 'block')
+
+      return {
+        title: block
+          ? block.children
+              .filter((child: any) => child._type === 'span')
+              .map((span: any) => span.text)
+              .join('')
+          : 'No title',
+        icon: FcNews,
+      }
+    },
   },
 }

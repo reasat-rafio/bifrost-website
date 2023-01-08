@@ -1,7 +1,7 @@
 // import BlogArticles from 'components/blog/BlogArticles'
 import Home from 'components/post-list/home'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
-import Ellipse from 'src/components/Ellipse'
+// import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'lib/@types/blog-types'
 import { siteQuery } from 'src/lib/query'
 import { Site } from 'lib/@types/global-types'
@@ -73,6 +73,7 @@ export default function Blog(
           })}
         </PrimaryWrapper>
       </div>
+      {/* TODO Make the Ellipses work */}
       {/* <>
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
         <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" />

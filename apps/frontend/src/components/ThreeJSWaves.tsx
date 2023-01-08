@@ -37,15 +37,10 @@ var fragShader = `
     }
   `
 
-export default function ThreeJSWaves({
-  play,
-}: // width,
+export default function ThreeJSWaves({}: // play,
+// width,
 // height,
-{
-  play: boolean
-  // width: number
-  // height: number
-}): ReactElement {
+{}): ReactElement {
   const ref = useRef(null)
   const width = useWindowSize()?.width ?? 0
   const height = useWindowSize()?.height ?? 0

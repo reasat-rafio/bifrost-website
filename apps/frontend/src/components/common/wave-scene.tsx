@@ -3,10 +3,13 @@ import ThreeJSWaves from 'src/components/ThreeJSWaves'
 
 interface WaveSceneProps {
   className?: string
-  play: boolean
+  play?: boolean
 }
 
-export const WaveScene: React.FC<WaveSceneProps> = ({ className = 'translate-y-[25vh]', play }) => {
+export const WaveScene: React.FC<WaveSceneProps> = ({
+  className = 'translate-y-[25vh]',
+  play = true,
+}) => {
   return (
     <div
       className={clsx(
@@ -16,7 +19,7 @@ export const WaveScene: React.FC<WaveSceneProps> = ({ className = 'translate-y-[
       )}
     >
       <div className="relative ">
-        <ThreeJSWaves play={play} />
+        <ThreeJSWaves />
       </div>
     </div>
   )

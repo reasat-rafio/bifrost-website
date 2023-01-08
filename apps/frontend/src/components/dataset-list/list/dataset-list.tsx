@@ -1,6 +1,4 @@
-import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
-// import { INotFound } from 'lib/@types/global-types'
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { Categories } from './categories'
 import { Datasets } from './datasets'
 

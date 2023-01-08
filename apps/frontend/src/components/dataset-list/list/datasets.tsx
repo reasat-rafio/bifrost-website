@@ -1,12 +1,9 @@
-import { ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { RelevanceFiltering } from './RelevanceFiltering'
 import { SearchAndFiltering } from './search-filtering/search-and-filtering'
 import { SmCategories } from './sm-categories'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import { DatasetCards } from './cards'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
 import useDatasetStore from 'store/dataset.store'
 
 interface DatasetsProps {

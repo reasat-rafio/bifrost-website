@@ -11,12 +11,15 @@ import { useEffect, useState } from 'react'
 // import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import '@styles/global.scss'
 import { Dropdown } from 'components/nav/dropdown'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
   const [seoTitle, setSeoTitle] = useState()
   const [seoDescription, setSeoDescription] = useState()
   const [ogImage, setOgImage] = useState()
+  const router = useRouter()
+  const is404Page = router.pathname === '/_error'
 
   useEffect(() => {
     setSeoTitle(pageProps.data?.page.seo?.title)
@@ -59,13 +62,17 @@ function MyApp({ Component, pageProps }: AppProps) {
               images: openGraphImages,
             }}
           />
-          <Navbar
-            darkLogo={pageProps.data?.site.logos.darkLogo}
-            logo={pageProps.data?.site.logos.logo}
-            menu={pageProps.data?.site.nav.menu}
-            darkBg={!!pageProps?.darkNavbar}
-          />
-          <Dropdown menu={pageProps.data?.site.nav.menu} darkBg={!!pageProps?.darkNavbar} />
+          {!is404Page && (
+            <>
+              <Navbar
+                darkLogo={pageProps.data?.site.logos.darkLogo}
+                logo={pageProps.data?.site.logos.logo}
+                menu={pageProps.data?.site.nav.menu}
+                darkBg={!!pageProps?.darkNavbar}
+              />
+              <Dropdown menu={pageProps.data?.site.nav.menu} darkBg={!!pageProps?.darkNavbar} />
+            </>
+          )}
 
           {/* {pageProps.data?.page._type !== 'blog' && (
             <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
@@ -75,10 +82,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           <Component {...pageProps} />
           {/* <Toast /> */}
-          <Footer logo={pageProps.data?.site.logos.logo} footer={pageProps.data?.site.nav.footer} />
-          {/* {pageProps.data?.site && (
-           
-          )} */}
+          {!is404Page && (
+            <Footer
+              logo={pageProps.data?.site.logos.logo}
+              footer={pageProps.data?.site.nav.footer}
+            />
+          )}
         </div>
       </AppProvider>
     </div>

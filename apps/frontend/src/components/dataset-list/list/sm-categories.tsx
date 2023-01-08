@@ -1,7 +1,7 @@
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
-import { CategoriesProps, ICategory, IDatasetListPreview } from 'lib/@types/dataset-types'
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { CategoriesProps } from 'lib/@types/dataset-types'
+import React from 'react'
 import useDatasetStore from 'store/dataset.store'
 
 interface SmCategoriesProps {

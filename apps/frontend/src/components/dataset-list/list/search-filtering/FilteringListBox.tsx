@@ -1,7 +1,7 @@
 import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { CategoriesProps } from 'lib/@types/dataset-types'
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 
 interface FilteringListBoxProps {
   label: string

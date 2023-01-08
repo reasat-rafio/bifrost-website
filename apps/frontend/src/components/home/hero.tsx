@@ -1,13 +1,5 @@
 import clsx from 'clsx'
-import React, {
-  ReactElement,
-  useRef,
-  useState,
-  useCallback,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-} from 'react'
+import React, { useRef, useState, useCallback, Dispatch, SetStateAction, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { HomeSection } from 'lib/@types/landing-types'
 import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
