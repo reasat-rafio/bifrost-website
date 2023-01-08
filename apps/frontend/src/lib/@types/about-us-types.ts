@@ -38,6 +38,7 @@ export interface TeamSection {
   subtitle: string
   members: [
     {
+      _key: string
       name: string
       role: string
       image: SanityImage
