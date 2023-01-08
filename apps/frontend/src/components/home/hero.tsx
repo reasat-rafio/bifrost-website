@@ -61,9 +61,9 @@ export const Hero: React.FC<IHomeSection> = ({
       className={clsx('w-full | top-0 left-0 | overflow-y-clip bg-black fixed')}
     >
       <BackgroundNoise />
-      <WaveScene play={ratio < 0.4} />
-      <div
-        style={{
+      <WaveScene play={ratio < 0.7} />
+      <motion.div
+        animate={{
           opacity: ratio * 5,
           display: ratio ? 'block' : 'none',
         }}

@@ -24,6 +24,7 @@ export default {
     {
       name: 'heading',
       type: 'string',
+      description: 'Optional',
     },
     {
       name: 'title',

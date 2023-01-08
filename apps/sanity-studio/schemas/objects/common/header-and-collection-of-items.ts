@@ -62,5 +62,11 @@ export default {
     select: {
       title: 'header',
     },
+    prepare({ title }: any) {
+      return {
+        title,
+        icon: RiTeamLine,
+      }
+    },
   },
 }

@@ -141,7 +141,7 @@ export default function ThreeJSWaves({
     let delta = 0
 
     function animate() {
-      play && requestAnimationFrame(animate)
+      requestAnimationFrame(animate)
       delta = clock.getDelta()
       t += delta
 
@@ -154,7 +154,7 @@ export default function ThreeJSWaves({
     animate()
 
     return () => (ref.current ? ref.current.removeChild(renderer.domElement) : null)
-  }, [ref, play])
+  }, [ref])
 
   return <div ref={ref}></div>
 }

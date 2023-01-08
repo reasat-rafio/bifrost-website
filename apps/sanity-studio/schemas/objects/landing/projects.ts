@@ -45,7 +45,6 @@ export default {
               name: 'image',
               type: 'image',
               validation: (Rule: Rule) => Rule.required(),
-
               fields: [
                 {
                   name: 'alt',
@@ -68,6 +67,7 @@ export default {
       ],
     },
   ],
+
   preview: {
     select: {
       title: 'title',
