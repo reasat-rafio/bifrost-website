@@ -8,13 +8,13 @@ import { setupNextSanity } from 'next-sanity-extra'
 if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
   throw new Error("Couldn't find env var NEXT_PUBLIC_SANITY_PROJECT_ID!")
 }
-if (!process.env.SANITY_STAGING_DATASET) {
-  throw new Error("Couldn't find env var NEXT_PUBLIC_SANITY_DATASET")
+if (!process.env.NEXT_PUBLIC_SANITY_STAGING_DATASET) {
+  throw new Error("Couldn't find env var NEXT_PUBLIC_SANITY_STAGING_DATASET")
 }
 
 const config = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_STAGING_DATASET,
+  dataset: process.env.NEXT_PUBLIC_SANITY_STAGING_DATASET,
   useCdn: process.env.NODE_ENV === 'production',
   token: process.env.SANITY_API_TOKEN,
 }

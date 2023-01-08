@@ -1,11 +1,12 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeProps } from 'lib/@types/about-us-types'
-import { Dispatch, SetStateAction, useCallback } from 'react'
-import { useWindowSize } from 'lib/hooks'
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
+import { useVisibleScroll, useWindowSize } from 'lib/hooks'
 import { WaveScene } from 'components/common/wave-scene'
 import { PortableText } from 'utils/sanity'
 import { Button } from 'components/ui/button'
+import { OnScrollBlurEffect } from 'components/ui/on-scroll-blur-effect'
 
 interface IHomeSection extends HomeProps {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
@@ -18,17 +19,26 @@ const Hero: React.FC<IHomeSection> = ({
   title,
   setHeroSectionHeight,
 }) => {
-  const { width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
-  const sectionRef = useCallback(
-    (node) => {
-      if (node !== null) setHeroSectionHeight(node.clientHeight)
-    },
-    [windowWidth],
-  )
+  const { width: windowWidth, height: windowHeight } = useWindowSize() ?? { height: 0, width: 0 }
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const visibleScroll = useVisibleScroll(sectionRef)
+  const ratio = visibleScroll
+    ? Math.min(
+        1,
+        Math.max(0, (visibleScroll.y - visibleScroll.offsetBoundingRect.top) / windowHeight),
+      )
+    : 0
+
+  useEffect(() => {
+    if (sectionRef?.current) setHeroSectionHeight(sectionRef.current.clientHeight)
+  }, [windowWidth, sectionRef])
+
   return (
     <section className="fixed top-0 left-0 w-full overflow-y-clip bg-black" ref={sectionRef}>
       <BackgroundNoise />
-      <WaveScene />
+      <WaveScene play={ratio < 0.7} />
+      <OnScrollBlurEffect ratio={ratio} />
 
       <div className="relative z-10 | container min-h-screen | flex flex-col justify-center items-center | lg:py-[5%] py-[30%] | overflow-y-clip">
         <div className="flex flex-col | text-center | lg:space-y-12 space-y-5 ">
