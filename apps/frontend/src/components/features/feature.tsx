@@ -4,7 +4,7 @@ import { Header } from 'src/components/ui/Header'
 import { FeaturesProps } from 'lib/@types/use-case-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { Button } from 'components/ui/button'
 
 const UseCaseFeatures: React.FC<FeaturesProps> = ({

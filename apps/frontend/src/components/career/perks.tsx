@@ -1,5 +1,5 @@
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { MouseEvent, useMemo } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'

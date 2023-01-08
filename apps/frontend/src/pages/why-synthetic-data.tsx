@@ -9,7 +9,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
+import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 
 const query = groq`{
   "site": ${siteQuery},

@@ -1,7 +1,7 @@
 import { ClientsSection } from 'lib/@types/about-us-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { Navigation, Autoplay, Mousewheel, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'

@@ -9,7 +9,7 @@ import 'swiper/css/mousewheel'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { formatDate, truncate } from 'src/lib/helpers'
 import { Button } from 'components/ui/button'
 

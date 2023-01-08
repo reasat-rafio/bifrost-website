@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { useWindowSize } from 'src/lib/hooks'
 interface GalleryProps {

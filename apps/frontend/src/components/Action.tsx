@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { animationFrameEffect, useVisibleScrollEffect, useWindowSize } from 'src/lib/hooks'
 import React, { RefObject, useRef } from 'react'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
 interface ActionProps {
   item: any

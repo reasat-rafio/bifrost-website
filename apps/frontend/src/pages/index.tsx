@@ -1,4 +1,4 @@
-import { sanityStaticProps, useSanityQuery } from 'src/utils/sanity'
+import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { siteQuery } from 'src/lib/query'
 import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'

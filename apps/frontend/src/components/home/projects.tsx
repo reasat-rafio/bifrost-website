@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { Autoplay, Navigation, Mousewheel } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'

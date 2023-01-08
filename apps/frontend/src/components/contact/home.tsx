@@ -1,7 +1,7 @@
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeSection } from 'lib/@types/contact-us-types'
 import { ReactElement } from 'react'
-import { PortableText } from 'src/utils/sanity'
+import { PortableText } from 'utils/sanity'
 import { WaveScene } from 'components/common/wave-scene'
 
 export default function Home({ contactInfos, headline }: HomeSection): ReactElement {

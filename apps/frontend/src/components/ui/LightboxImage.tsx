@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
 interface LightboxImageProps {
   variant?: 'full' | 'auto'

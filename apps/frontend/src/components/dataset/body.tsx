@@ -1,6 +1,6 @@
 import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
-import { PortableText } from 'src/utils/sanity'
+import { PortableText } from 'utils/sanity'
 import Serializers from './serializers'
 
 interface BodyProps {

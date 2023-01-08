@@ -1,7 +1,7 @@
 import { Idataset } from 'lib/@types/dataset-types'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
 interface AttributesProps {
   attributes: Idataset['attributes']

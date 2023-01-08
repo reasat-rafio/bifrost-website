@@ -3,7 +3,7 @@ import { Header } from 'src/components/ui/Header'
 import { TeamSection } from 'lib/@types/about-us-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 
 const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
   const { width: windowWidth } = useWindowSize() ?? {

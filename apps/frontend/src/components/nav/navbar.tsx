@@ -1,4 +1,4 @@
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import clsx from 'clsx'
 import { useWindowScroll, useWindowSizeEffect } from 'src/lib/hooks'
 import { useRouter } from 'next/router'

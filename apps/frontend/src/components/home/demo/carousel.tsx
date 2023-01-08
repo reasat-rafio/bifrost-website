@@ -8,7 +8,7 @@ import 'swiper/css/autoplay'
 import 'swiper/css/a11y'
 import { DemoSection } from 'lib/@types/landing-types'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { useWindowSize } from 'lib/hooks'
 
 interface CarouselProps {

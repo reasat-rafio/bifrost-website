@@ -1,7 +1,7 @@
 import { IDatasetListPreview } from 'lib/@types/dataset-types'
 import { useRouter } from 'next/router'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { CardAnimationVariants } from './datasets'

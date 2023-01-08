@@ -1,4 +1,4 @@
-import { PortableText } from 'src/utils/sanity'
+import { PortableText } from 'utils/sanity'
 import { GradientBorder } from './GradientBorder'
 import { CTAButton } from 'lib/@types/global-types'
 import { Button } from '../ui/button'

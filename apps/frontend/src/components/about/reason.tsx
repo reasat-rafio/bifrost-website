@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { AgendaProps, ReasonSection } from 'lib/@types/about-us-types'
 import { useState } from 'react'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder, PortableText } from 'src/utils/sanity'
+import { imageUrlBuilder, PortableText } from 'utils/sanity'
 
 const Reason: React.FC<ReasonSection> = ({ agendas, subtitle, title }) => {
   const [active, setActive] = useState(0)

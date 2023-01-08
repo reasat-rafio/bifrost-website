@@ -3,7 +3,7 @@ import { Description } from 'src/components/ui/Description'
 import { Header } from 'src/components/ui/Header'
 import { AboutSectionProps } from 'lib/@types/about-us-types'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { useWindowSize } from 'lib/hooks'
 
 const About: React.FC<AboutSectionProps> = ({ description, ctaButton, heading, image, title }) => {

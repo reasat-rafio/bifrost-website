@@ -3,7 +3,7 @@ import { formatDate, truncate } from 'src/lib/helpers'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'src/utils/sanity'
+import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { Button } from 'components/ui/button'
 
