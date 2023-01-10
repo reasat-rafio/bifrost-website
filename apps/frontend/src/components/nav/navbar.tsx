@@ -1,15 +1,15 @@
 import { imageUrlBuilder } from 'utils/sanity'
 import clsx from 'clsx'
-import { useWindowScroll, useWindowSizeEffect } from 'src/lib/hooks'
+import { useWindowScroll, useWindowSize, useWindowSizeEffect } from 'src/lib/hooks'
 import { useRouter } from 'next/router'
-import { ReactElement, useState } from 'react'
+import { ReactElement, useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { AnimatePresence, motion } from 'framer-motion'
-import { MenuItem } from 'lib/@types/global-types'
+import { motion } from 'framer-motion'
+import { DropdownListProps, MenuItem } from 'lib/@types/global-types'
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import useGlobalStore from '../../store/global.store'
-import { MenuDropdown } from './menu-dropdown'
+import useMegamenuDropownStore from 'store/megamenu-dropdown.sore'
 
 interface NavbarProps {
   logo: SanityImage
@@ -20,11 +20,32 @@ interface NavbarProps {
 
 export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElement {
   const router = useRouter()
-  const { showNavDropDown, setShowNavDropDown } = useGlobalStore()
-  const highlightBtn = menu.filter((men) => men.highlight)[0]
+  const navbarRef = useRef<HTMLElement>(null)
+  const { showNavDropDown, setShowNavDropDown, setNabarDimensions } = useGlobalStore()
+  const { setModalState, setPosition, setData } = useMegamenuDropownStore()
   const [smallNav, setSmallNav] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
-  const [dropdownMenuItemHoverd, setDropDownMenuItemHovered] = useState(false)
+  const highlightBtn = menu.filter((men) => men.highlight)[0]
+  const { height: windowHeight, width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
+
+  const triggerDropdownAction = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: DropdownListProps[]) => {
+      const { x, y } = event.currentTarget.getBoundingClientRect()
+      setData(data)
+      setModalState('visible')
+      setPosition({ x, y })
+    },
+    [windowHeight, windowWidth],
+  )
+
+  useLayoutEffect(() => {
+    if (navbarRef.current) {
+      setNabarDimensions({
+        width: navbarRef.current.offsetWidth,
+        height: navbarRef.current.offsetHeight,
+      })
+    }
+  }, [windowHeight, windowWidth])
 
   useWindowSizeEffect(
     (w, _) => {
@@ -38,6 +59,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
 
   return (
     <nav
+      ref={navbarRef}
       id="navbar"
       className={clsx(
         'fixed top-0 left-0 z-40 | w-full border-b border-white/5',
@@ -100,15 +122,20 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                   {!dropdownList?.length ? (
                     <Link href={pageUrl || externalUrl}>{title}</Link>
                   ) : (
-                    <div
-                      onMouseLeave={() => setDropDownMenuItemHovered(false)}
-                      onMouseEnter={() => setDropDownMenuItemHovered(true)}
+                    <button
+                      ref={useCallback(
+                        (node: HTMLButtonElement) => {
+                          if (node) {
+                            const { x, y } = node.getBoundingClientRect()
+                            setPosition({ x, y })
+                          }
+                        },
+                        [windowHeight, windowWidth],
+                      )}
+                      onMouseEnter={(e) => triggerDropdownAction(e, dropdownList)}
                     >
-                      <button>{title}</button>
-                      <AnimatePresence>
-                        {dropdownMenuItemHoverd && <MenuDropdown dropdownList={dropdownList} />}
-                      </AnimatePresence>
-                    </div>
+                      {title}
+                    </button>
                   )}
                   {router.asPath === pageUrl && (
                     <motion.div

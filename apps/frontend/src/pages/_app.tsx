@@ -10,8 +10,9 @@ import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
 // import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import '@styles/global.scss'
-import { Dropdown } from 'components/nav/dropdown'
+import { Dropdown as NavbarDropdown } from 'components/nav/dropdown'
 import { useRouter } from 'next/router'
+import { MenuDropdown } from 'components/nav/menu-dropdown'
 
 function MyApp({ Component, pageProps }: AppProps) {
   let faviconImage: string | null = null
@@ -70,7 +71,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 menu={pageProps.data?.site.nav.menu}
                 darkBg={!!pageProps?.darkNavbar}
               />
-              <Dropdown menu={pageProps.data?.site.nav.menu} darkBg={!!pageProps?.darkNavbar} />
+              <MenuDropdown />
+              <NavbarDropdown
+                menu={pageProps.data?.site.nav.menu}
+                darkBg={!!pageProps?.darkNavbar}
+              />
             </>
           )}
 

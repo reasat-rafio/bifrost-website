@@ -54,7 +54,7 @@ export const Information: React.FC<InformationProps> = ({
           animate={{ opacity: intersecting ? 1 : 0 }}
           viewport={{ once: true }}
           transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
-          className="max-w-lg | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[20%]  | lg:mr-[5%] lg:ml-0 mr-[2.5%] ml-[2.5%] | background__blur rounded-primary | transition-transform duration-700 ease-in-out"
+          className="max-w-lg | flex flex-col xl:space-y-6 md:space-y-4 space-y-3 | xl:p-7 md:p-5 p-3 | border-gray/10 border | lg:-translate-y-1/2 sm:-translate-y-[30%] -translate-y-[20%] | lg:mr-[5%] lg:ml-0 mr-[2.5%] ml-[2.5%] | background__blur rounded-primary | transition-transform duration-700 ease-in-out"
         >
           {!!heading && <GradientTitle>{heading}</GradientTitle>}
           <h6 className="xl:text-head-4 md:text-head-md text-head-4-mobile | leading-none | font-primary">
