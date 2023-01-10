@@ -1,6 +1,6 @@
 import { Portal } from '@reach/portal'
-import { AnimatePresence, Variants, motion } from 'framer-motion'
-import { DropdownListProps } from 'lib/@types/global-types'
+import { AnimatePresence, motion } from 'framer-motion'
+// import { DropdownListProps } from 'lib/@types/global-types'
 import Link from 'next/link'
 import { SanityImg } from 'sanity-react-extra'
 import useGlobalStore from 'store/global.store'
