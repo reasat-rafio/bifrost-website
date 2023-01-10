@@ -22,12 +22,23 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
   const router = useRouter()
   const navbarRef = useRef<HTMLElement>(null)
   const { showNavDropDown, setShowNavDropDown, setNabarDimensions } = useGlobalStore()
-  const { setModalState, setPosition, setData } = useMegamenuDropownStore()
+  const { interseting, modalState, setModalState, setPosition, setData } = useMegamenuDropownStore()
   const [smallNav, setSmallNav] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
   const highlightBtn = menu.filter((men) => men.highlight)[0]
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
 
+  // Use a ref to access the current interseting value in an async callback.
+  const _intersetingRef = useRef(interseting)
+  _intersetingRef.current = interseting
+
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      if (!_intersetingRef.current && modalState === 'visible') {
+        setModalState('hidden')
+      }
+    }, 1000)
+  }
   const triggerDropdownAction = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: DropdownListProps[]) => {
       const { x, y } = event.currentTarget.getBoundingClientRect()
@@ -61,6 +72,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
     <nav
       ref={navbarRef}
       id="navbar"
+      onMouseLeave={handleMouseLeave}
       className={clsx(
         'fixed top-0 left-0 z-40 | w-full border-b border-white/5',
         scroll
@@ -132,6 +144,16 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                         },
                         [windowHeight, windowWidth],
                       )}
+                      onClick={() => {
+                        switch (modalState) {
+                          case 'hidden':
+                            setModalState('visible')
+                            break
+                          case 'visible':
+                            setModalState('hidden')
+                            break
+                        }
+                      }}
                       onMouseEnter={(e) => triggerDropdownAction(e, dropdownList)}
                     >
                       {title}

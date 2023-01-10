@@ -9,15 +9,18 @@ interface IMengaMenuStore {
   modalState: IModalState
   position: IPosition
   data: DropdownListProps[] | null
+  interseting: boolean
   setModalState: (modalState: IModalState) => void
   setPosition: (position: IPosition) => void
   setData: (data: DropdownListProps[]) => void
+  setInterseting: (data: boolean) => void
 }
 
 const useMegamenuDropownStore = create(
   devtools<IMengaMenuStore>((set) => ({
     modalState: 'hidden',
     data: null,
+    interseting: false,
     position: {
       x: 0,
       y: 0,
@@ -36,6 +39,11 @@ const useMegamenuDropownStore = create(
       set((state) => ({
         ...state,
         data,
+      })),
+    setInterseting: (interseting) =>
+      set((state) => ({
+        ...state,
+        interseting,
       })),
   })),
 )
