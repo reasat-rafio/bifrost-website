@@ -9,6 +9,13 @@ export const siteQuery = groq`{
     },
     "nav": *[_id == "siteNav"][0] {
       ...,
+      menu[]{
+        ...,
+        dropdownList[]{
+          ...,
+          "image": ${withDimensions('image')},
+        },
+      },
       footer {
         ...,
         socialButtons[]->{

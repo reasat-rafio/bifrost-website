@@ -26,20 +26,59 @@ export default {
     { name: 'externalUrl', type: 'url' },
     { name: 'highlight', type: 'boolean' },
     {
-      name: 'submenu',
-      title: 'Submenu',
+      name: 'dropdownList',
+      description:
+        'Optional Field | If this field is fill then the pageUrl and externalUrl will be ignore',
       type: 'array',
-      of: [{ type: 'menuItem' }],
+      of: [
+        {
+          name: 'listItem',
+          type: 'object',
+          validation: (Rule: Rule) => Rule.required(),
+          fields: [
+            {
+              name: 'image',
+              type: 'image',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'title',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'description',
+              type: 'text',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'ctaButton',
+              type: 'ctaButton',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              subtitle: 'description',
+              media: 'image',
+            },
+          },
+        },
+      ],
     },
   ],
   preview: {
     select: {
       title: 'title',
       subtitle: 'href',
+      highlight: 'highlight',
+      dropdownList: 'dropdownList',
     },
-    prepare({ title, subtitle }: any) {
+    prepare({ title, subtitle, highlight, dropdownList }: any) {
       return {
-        title,
+        title: `${title} ${!!dropdownList?.length || highlight ? '|' : ''} ${
+          highlight ? 'Is Highlighted' : ''
+        } ${!!dropdownList?.length ? 'Has Dropdown' : ''}`,
         subtitle,
         icon: MdLink,
       }

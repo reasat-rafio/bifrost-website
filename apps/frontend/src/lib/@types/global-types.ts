@@ -31,7 +31,15 @@ export interface MenuItem {
   pageUrl: string
   externalUrl: string
   highlight: boolean
-  submenu: MenuItem[]
+  dropdownList?: DropdownListProps[]
+}
+
+export interface DropdownListProps {
+  _key: string
+  image: SanityImage
+  title: string
+  description: string
+  ctaButton?: CTAButton
 }
 
 export interface Social {

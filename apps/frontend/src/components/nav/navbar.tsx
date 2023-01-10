@@ -4,11 +4,12 @@ import { useWindowScroll, useWindowSizeEffect } from 'src/lib/hooks'
 import { useRouter } from 'next/router'
 import { ReactElement, useState } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { MenuItem } from 'lib/@types/global-types'
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import useGlobalStore from '../../store/global.store'
+import { MenuDropdown } from './menu-dropdown'
 
 interface NavbarProps {
   logo: SanityImage
@@ -23,6 +24,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
   const highlightBtn = menu.filter((men) => men.highlight)[0]
   const [smallNav, setSmallNav] = useState(false)
   const scroll = useWindowScroll()?.y ?? 0
+  const [dropdownMenuItemHoverd, setDropDownMenuItemHovered] = useState(false)
 
   useWindowSizeEffect(
     (w, _) => {
@@ -38,7 +40,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
     <nav
       id="navbar"
       className={clsx(
-        'fixed top-0 left-0 z-40 | w-full',
+        'fixed top-0 left-0 z-40 | w-full border-b border-white/5',
         scroll
           ? smallNav
             ? darkBg
@@ -82,7 +84,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
           >
             {menu
               .filter((men) => !men.highlight)
-              .map(({ _key, title, pageUrl, externalUrl }) => (
+              .map(({ _key, title, pageUrl, externalUrl, dropdownList }) => (
                 <motion.li
                   key={_key}
                   initial={{ y: 0 }}
@@ -95,7 +97,19 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                       : 'text-white',
                   )}
                 >
-                  <Link href={pageUrl || externalUrl}>{title}</Link>
+                  {!dropdownList?.length ? (
+                    <Link href={pageUrl || externalUrl}>{title}</Link>
+                  ) : (
+                    <div
+                      onMouseLeave={() => setDropDownMenuItemHovered(false)}
+                      onMouseEnter={() => setDropDownMenuItemHovered(true)}
+                    >
+                      <button>{title}</button>
+                      <AnimatePresence>
+                        {dropdownMenuItemHoverd && <MenuDropdown dropdownList={dropdownList} />}
+                      </AnimatePresence>
+                    </div>
+                  )}
                   {router.asPath === pageUrl && (
                     <motion.div
                       layout
