@@ -37,7 +37,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
       if (!_intersetingRef.current && modalState === 'visible') {
         setModalState('hidden')
       }
-    }, 1000)
+    }, 300)
   }
   const triggerDropdownAction = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: DropdownListProps[]) => {
@@ -48,6 +48,10 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
     },
     [windowHeight, windowWidth],
   )
+
+  const onHoverCloseDropdownAction = useCallback(() => {
+    setModalState('hidden')
+  }, [interseting])
 
   useLayoutEffect(() => {
     if (navbarRef.current) {
@@ -132,7 +136,9 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                   )}
                 >
                   {!dropdownList?.length ? (
-                    <Link href={pageUrl || externalUrl}>{title}</Link>
+                    <Link href={pageUrl || externalUrl}>
+                      <a onMouseEnter={onHoverCloseDropdownAction}>{title}</a>
+                    </Link>
                   ) : (
                     <button
                       ref={useCallback(
