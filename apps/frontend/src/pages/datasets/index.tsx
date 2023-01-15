@@ -7,12 +7,12 @@ import { SanityProps } from 'next-sanity-extra'
 import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { DatasetList } from 'components/dataset-list/list/dataset-list'
+import { DatasetList } from 'components/dataset/list/dataset-list'
 // import { useCtx } from 'src/context/global'
 import { Contact } from 'components/common/contact'
-import { Hero, HeroProps } from 'components/dataset-list/home'
+import { Hero, HeroProps } from 'components/dataset/home'
 import useDatasetStore from 'store/dataset.store'
-import { FilteringLogic } from 'components/dataset-list/filter'
+import { FilteringLogic } from 'components/dataset/filter'
 
 const query = groq`{
   "site": ${siteQuery},

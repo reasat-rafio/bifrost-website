@@ -1,5 +1,5 @@
-import { Body } from 'components/blog/body/body'
-import { Heading } from 'components/blog/heading'
+import { Body } from 'components/[blog]/body/body'
+import { Heading } from 'components/[blog]/heading'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 // import Newslettr from 'components/common/newsletter'
 import { BlogProps } from 'lib/@types/blog-types'
@@ -11,7 +11,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 // import Ellipse from 'src/components/Ellipse'
-import { RelatedBlogs } from 'components/blog/related-blog'
+import { RelatedBlogs } from 'components/[blog]/related-blog'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
 
@@ -78,7 +78,6 @@ export default function Blog(props: SanityProps) {
       page: { sections },
     },
   }: { data: { blog: BlogProps; page: any } } = useSanityQuery(query, props)
-
   const [paddingY, setPaddingY] = useState(0)
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 // import BlogArticles from 'components/blog/BlogArticles'
-import Home from 'components/post-list/home'
+import Home from 'components/post/home'
 import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 // import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'lib/@types/blog-types'
@@ -13,7 +13,7 @@ import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
-import Posts from 'components/post-list/posts'
+import Posts from 'components/post/posts'
 
 const query = groq`{
   "site": ${siteQuery},
