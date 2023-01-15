@@ -24,7 +24,7 @@ const renderBlogArray = (body: BlogBody) => {
 export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
   const [sectionRefs, setSectionRefs] = useState([])
   const shareBlock: BlogBody = {
-    _key: String(Math.random() * 100),
+    _key: null,
     _type: 'share',
     heading: 'Share With',
   }
@@ -47,7 +47,7 @@ export const Body: React.FC<BodyProps> = ({ body, paddingY }) => {
           {sections.map((section, index) => (
             <div
               id={`section-${index}`}
-              key={section._key}
+              key={section?._key ?? index}
               ref={sectionRefs[index]}
               className="scroll-mt-[120px] lg:scroll-mt-[100px]"
             >
