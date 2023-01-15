@@ -1,45 +1,49 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
-import { AnimatePresence, motion, useSpring } from 'framer-motion'
-import { useWindowSize } from 'lib/hooks'
+import { AnimatePresence, MotionValue, motion, useSpring } from 'framer-motion'
+import { useWindowScroll } from 'lib/hooks'
 
 interface ScrollDetectiveProps {
-  ratio: number
   intersecting: boolean
+  scrollYProgress: MotionValue<number>
 }
 
-export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({ ratio, intersecting }) => {
-  const windowWidth = useWindowSize()?.width ?? 0
+export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
+  intersecting,
+  scrollYProgress,
+}) => {
+  const scroll = useWindowScroll()?.y ?? 0
+  const scrolled = scroll > 1
   const [navHeight, setNavbarHeight] = useState(0)
-  const width = useSpring(0, { damping: 50, mass: 0.4, stiffness: 300 })
+  const scaleX = useSpring(scrollYProgress, { damping: 50, mass: 0.4, stiffness: 300 })
 
-  useEffect(() => {
-    width.set((ratio / 2) * windowWidth)
-  }, [ratio, windowWidth])
+  const getNavbarHeight = () => {
+    const height = document.querySelector('#navbar').clientHeight
+    setNavbarHeight(height)
+  }
 
   useLayoutEffect(() => {
-    const getNavbarHeight = () => {
-      const height = document.querySelector('#navbar').clientHeight
-      setNavbarHeight(height - 3)
-    }
+    getNavbarHeight()
+  }, [])
 
+  useEffect(() => {
     window.addEventListener('scroll', getNavbarHeight)
     window.addEventListener('load', getNavbarHeight)
     return () => {
       window.removeEventListener('scroll', getNavbarHeight)
       window.removeEventListener('load', getNavbarHeight)
     }
-  }, [])
+  }, [scrolled])
 
   return (
     <AnimatePresence>
       {intersecting && (
         <motion.span
-          style={{ top: navHeight, width }}
+          style={{ top: navHeight, scaleX }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ ease: 'easeInOut', duration: 0.7 }}
-          className="fixed left-0 h-2 bg-gradient-to-r from-pinkSugar  to-neonBlue z-20 shadow"
+          className="fixed left-0 h-[5px] w-full origin-left bg-gradient-to-r from-pinkSugar to-neonBlue z-20 shadow"
         />
       )}
     </AnimatePresence>

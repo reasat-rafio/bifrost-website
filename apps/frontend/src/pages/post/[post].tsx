@@ -7,7 +7,7 @@ import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
 import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 // import Ellipse from 'src/components/Ellipse'
@@ -15,7 +15,8 @@ import { RelatedBlogs } from 'components/[blog]/related-blog'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
 import { ScrollDetective } from 'components/[blog]/body/scroll-detective'
-import { useIntersection, useVisibleScroll, useWindowSize } from 'lib/hooks'
+import { useIntersection } from 'lib/hooks'
+import { useScroll } from 'framer-motion'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -80,18 +81,13 @@ export default function Blog(props: SanityProps) {
       page: { sections },
     },
   }: { data: { blog: BlogProps; page: any } } = useSanityQuery(query, props)
-  const { height: windowHeight } = useWindowSize() ?? { height: 1, width: 1 }
   const articleRef = useRef<HTMLElement>(null)
   const [paddingY, setPaddingY] = useState(0)
-  const visibleScroll = useVisibleScroll(articleRef)
   const articleIntersecting = useIntersection(articleRef)?.isIntersecting
-  const ratio = visibleScroll
-    ? Math.min(
-        2,
-        Math.max(0, (visibleScroll.y - visibleScroll.offsetBoundingRect.top) / windowHeight),
-      )
-    : 0
 
+  const { scrollYProgress } = useScroll({
+    target: articleRef,
+  })
   useLayoutEffect(() => {
     const navHeight = document.querySelector('#navbar').clientHeight
     setPaddingY(navHeight * 2)
@@ -99,8 +95,8 @@ export default function Blog(props: SanityProps) {
 
   return (
     <div>
-      <ScrollDetective intersecting={articleIntersecting} ratio={ratio} />
-      <article ref={articleRef} className="bg-white px-6 py-32">
+      <ScrollDetective intersecting={articleIntersecting} scrollYProgress={scrollYProgress} />
+      <article ref={articleRef} className="bg-white px-6 my-32 h-full">
         <Heading heading={heading} datetime={datetime} />
         <Body paddingY={paddingY} body={body} />
       </article>
