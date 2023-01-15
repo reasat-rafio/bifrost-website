@@ -9,38 +9,6 @@ import useMegamenuDropownStore from 'store/megamenu-dropdown.sore'
 import { imageUrlBuilder } from 'utils/sanity'
 
 interface MenuDropdownProps {}
-
-// const container: Variants = {
-//   hidden: {
-//     opacity: 0.5,
-//   },
-//   visible: (i: number = 1) => ({
-//     opacity: 1,
-//     transition: { staggerChildren: 0.05, delayChildren: i * 0.1 },
-//   }),
-// }
-
-// const child: Variants = {
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: {
-//       type: 'spring',
-//       damping: 12,
-//       stiffness: 200,
-//     },
-//   },
-//   hidden: {
-//     opacity: 0.6,
-//     y: 20,
-//     transition: {
-//       type: 'spring',
-//       damping: 12,
-//       stiffness: 200,
-//     },
-//   },
-// }
-
 export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   const {
     modalState,
@@ -94,24 +62,8 @@ export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                     {!!ctaButton && (
                       <Link href={ctaButton?.href ?? '/'}>
                         <a className="text-[#B37AF8] overflow-hidden | flex space-x-3">
-                          {/* TODO animate the text */}
-                          {/* <span className="uppercase">{ctaButton.title}</span> */}
                           <AnimatedText text={ctaButton.title} />
-
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                            />
-                          </svg>
+                          <ArrowICon />
                         </a>
                       </Link>
                     )}
@@ -127,35 +79,47 @@ export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   )
 }
 
-// A
-const VAnimatedContainer = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: () => ({
-    opacity: 1,
-    // transition: { staggerChildren: duration, delayChildren: i * delay },
-  }),
-}
-
 const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
   const [hovered, setHover] = useState(false)
   const letters = Array.from(text)
 
   return (
-    <motion.div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      initial="initial"
-      animate={hovered ? 'animate' : 'initial'}
-      variants={VAnimatedContainer}
-    >
+    <div className="flex" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       {letters.map((letter, index) => (
-        <motion.span initial={{ y: 0 }} animate={{ y: '100vh' }} key={letter + index}>
+        <motion.span
+          className="block"
+          key={letter + index}
+          initial={{ y: 0 }}
+          animate={{
+            y: hovered ? [0, 5, 0] : 0,
+            transition: {
+              delay: index * 0.1,
+            },
+          }}
+        >
           {letter}
         </motion.span>
       ))}
-    </motion.div>
+    </div>
+  )
+}
+
+const ArrowICon: React.FC<{}> = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+      />
+    </svg>
   )
 }
 
