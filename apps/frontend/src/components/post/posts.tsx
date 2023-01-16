@@ -9,7 +9,7 @@ import { Button } from 'components/ui/button'
 import { firstPageBlogsQuery, nextPageBlogsQuery } from 'lib/query'
 import { PostSkeleton } from './post-skeleton'
 
-const cardsPerPage = 3
+const cardsPerPage = 5
 const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
   const sectionRef = useRef<HTMLElement>(null)
   const blogRef = useRef<HTMLDivElement>(null)
@@ -95,7 +95,7 @@ const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
             </section>
           </motion.article>
         ))}
-        {Array.from({ length: 3 }).map((_, idx) => (
+        {Array.from({ length: 5 }).map((_, idx) => (
           <PostSkeleton key={idx} loading={loading} />
         ))}
       </motion.div>

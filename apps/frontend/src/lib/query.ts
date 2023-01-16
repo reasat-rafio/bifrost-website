@@ -36,7 +36,7 @@ const BLOG_LIST_FIELDS = `
     "image": ${withDimensions('image')},
 `
 
-export const firstPageBlogsQuery = groq`*[_type== "blog"] | order(_createdAt) [0...3] {
+export const firstPageBlogsQuery = groq`*[_type== "blog"] | order(_createdAt) [0...5] {
    ${BLOG_LIST_FIELDS}
   }`
 
@@ -50,6 +50,6 @@ export const nextPageBlogsQuery = ({
     *[_type == "blog"
     && (_createdAt > "${lastPublishedAt}" || 
     ((_createdAt == "${lastPublishedAt}") && (_id > "${lastBlogId}")))]
-    | order(_createdAt) [0...3] {
+    | order(_createdAt) [0...5] {
       ${BLOG_LIST_FIELDS}
   }`
