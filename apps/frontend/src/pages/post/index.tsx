@@ -20,8 +20,9 @@ const query = groq`{
   "page": *[_id == "blogPage"][0] {
     ...,
   },
-  "blogs": *[_type== "blog"] | order(order asc) [] {
+  "blogs": *[_type== "blog"] | order(_createdAt) [0...3] {
     _id,
+    _createdAt,
     heading,
     slug,
     datetime,

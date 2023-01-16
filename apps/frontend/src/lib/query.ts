@@ -27,23 +27,29 @@ export const siteQuery = groq`{
   }`
 
 const BLOG_LIST_FIELDS = `
-   _id,
+    _id,
+    _createdAt,
     heading,
     slug,
-    detetime,
-    subHeading,
+    datetime,
+    shortDescription,
     "image": ${withDimensions('image')},
 `
 
-export const getMoreBlogListQuery = ({ limit, page }: { limit: number; page: number }) => {
-  const startIndex = limit * (page - 1)
-  const endIndex = limit * page - 1
+export const firstPageBlogsQuery = groq`*[_type== "blog"] | order(_createdAt) [0...3] {
+   ${BLOG_LIST_FIELDS}
+  }`
 
-  const query = groq`
-        *[_type== "blog"] | order(order asc) [${startIndex}..${endIndex}] {
-            ${BLOG_LIST_FIELDS}
-        }
-    `
-
-  return query
-}
+export const nextPageBlogsQuery = ({
+  lastPublishedAt,
+  lastBlogId,
+}: {
+  lastPublishedAt: string
+  lastBlogId: string
+}) => groq`
+    *[_type == "blog"
+    && (_createdAt > "${lastPublishedAt}" || 
+    ((_createdAt == "${lastPublishedAt}") && (_id > "${lastBlogId}")))]
+    | order(_createdAt) [0...3] {
+      ${BLOG_LIST_FIELDS}
+  }`

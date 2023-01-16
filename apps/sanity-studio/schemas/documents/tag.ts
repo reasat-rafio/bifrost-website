@@ -12,6 +12,15 @@ const Tags = defineType({
       type: 'string',
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+    },
+    prepare: ({ title }: { [_key: string]: string }) => ({
+      title,
+      icon: GrTag,
+    }),
+  },
 })
 
 export default Tags

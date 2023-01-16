@@ -14,6 +14,7 @@ export interface IBlog {
   _id: string
   slug: { _type: string; current: string }
   datetime: string
+  _createdAt: string
   heading: string
   shortDescription: string
   image: any

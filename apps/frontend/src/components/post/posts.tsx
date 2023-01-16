@@ -3,34 +3,67 @@ import { formatDate, truncate } from 'src/lib/helpers'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'utils/sanity'
+import { imageUrlBuilder, sanityClient } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { Button } from 'components/ui/button'
+import { firstPageBlogsQuery, nextPageBlogsQuery } from 'lib/query'
 
-const cardsPerPage = 5
+const cardsPerPage = 3
 const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
   const sectionRef = useRef<HTMLElement>(null)
   const blogRef = useRef<HTMLDivElement>(null)
   const windowWidth = useWindowSize()?.width ?? 0
-  const [sortedBlogs, setSortedBlogs] = useState(blogs)
-  const [page, setPage] = useState(1)
-
   const showShowMoreButton = totalBlogs > cardsPerPage
-  const showMoreLessButtonAction = () => {
-    if (sortedBlogs.length < totalBlogs) setPage(page + 1)
-    else {
-      sectionRef.current.scrollIntoView()
-      setPage(1)
+  const [allBlogs, setAllBlogs] = useState(blogs)
+  //? Last blog it is used for pagination. We set the last id blog id after each api call and next time we fetch after that list id
+  const [lastBlogId, setLastBlogId] = useState<null | string>(null)
+  const [lastPublishedAt, setLastPublishedAt] = useState<null | string>(null)
+  const [loading, setLoading] = useState(false)
+
+  const fetchNextBlogPage = async () => {
+    try {
+      const newBlogs = await sanityClient('anonymous').fetch(
+        nextPageBlogsQuery({ lastBlogId, lastPublishedAt }),
+      )
+      setLoading(true)
+      setAllBlogs([...allBlogs, ...newBlogs])
+      setLastBlogId(newBlogs[newBlogs.length - 1]._id)
+      setLastPublishedAt(newBlogs[newBlogs.length - 1]._createdAt)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
     }
   }
+
+  const fetchFirstBlogPage = async () => {
+    const blogs = await sanityClient('anonymous').fetch(firstPageBlogsQuery)
+    setLoading(true)
+    setAllBlogs(blogs)
+    setLastBlogId(blogs[blogs.length - 1]._id)
+    setLastPublishedAt(blogs[blogs.length - 1]._createdAt)
+    try {
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const showMoreLessButtonAction = () => {
+    if (allBlogs.length === totalBlogs) fetchFirstBlogPage()
+    else fetchNextBlogPage()
+  }
+
   useEffect(() => {
-    setSortedBlogs(blogs.slice(0, cardsPerPage * page))
-  }, [page])
+    setLastBlogId(blogs[blogs.length - 1]._id)
+    setLastPublishedAt(blogs[blogs.length - 1]._createdAt)
+  }, [])
 
   return (
     <section ref={sectionRef} className="relative container | py-12">
       <motion.div className="divide-y divide-[#1E2531]">
-        {sortedBlogs.map(({ _id, datetime, heading, slug, shortDescription, image }) => (
+        {allBlogs.map(({ _id, datetime, heading, slug, shortDescription, image }) => (
           <motion.article
             key={_id}
             initial={{ y: 100, opacity: 0 }}
@@ -71,13 +104,13 @@ const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
       <span className="flex justify-center items-center">
         {showShowMoreButton && (
           <motion.div
-            key={page}
+            // key={page}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ type: 'tween', duration: 0.6, ease: 'easeInOut' }}
           >
             <Button type="button" variant="primary" onClick={showMoreLessButtonAction}>
-              {sortedBlogs.length === totalBlogs ? 'Show Less' : 'Show More'}
+              {allBlogs.length === totalBlogs ? 'Show Less' : 'Show More'}
             </Button>
           </motion.div>
         )}
