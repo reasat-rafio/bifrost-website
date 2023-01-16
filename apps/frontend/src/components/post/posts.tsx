@@ -7,6 +7,7 @@ import { imageUrlBuilder, sanityClient } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { Button } from 'components/ui/button'
 import { firstPageBlogsQuery, nextPageBlogsQuery } from 'lib/query'
+import { PostSkeleton } from './post-skeleton'
 
 const cardsPerPage = 3
 const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
@@ -94,22 +95,25 @@ const Posts: React.FC<BlogsSection> = ({ blogs, totalBlogs }) => {
             </section>
           </motion.article>
         ))}
-        {/* 
-        {loading &&
-          Array.from({ length: upComingBlogLength as number }).map((_, idx) => (
-            <LoadMoreCard key={idx} uniqueKey={`list-${idx}`} />
-          ))} */}
+        {Array.from({ length: 3 }).map((_, idx) => (
+          <PostSkeleton key={idx} loading={loading} />
+        ))}
       </motion.div>
 
       <span className="flex justify-center items-center">
         {showShowMoreButton && (
           <motion.div
-            // key={page}
+            key={lastBlogId}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ type: 'tween', duration: 0.6, ease: 'easeInOut' }}
           >
-            <Button type="button" variant="primary" onClick={showMoreLessButtonAction}>
+            <Button
+              disabled={loading}
+              type="button"
+              variant="primary"
+              onClick={showMoreLessButtonAction}
+            >
               {allBlogs.length === totalBlogs ? 'Show Less' : 'Show More'}
             </Button>
           </motion.div>
