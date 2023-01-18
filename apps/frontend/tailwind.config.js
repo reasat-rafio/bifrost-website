@@ -33,9 +33,17 @@ module.exports = {
         warning: '#F3CD68',
         danger: '#E95432',
         danger2: '#F3E5E8',
-        secondary: '#183B56',
         success: '#2EFFB2',
         gray: '#B3BAC5',
+
+        primary: '#B37AF8',
+        secondary: '#29394A',
+        'color-description': '#99A2D4',
+
+        warning: '#F3CD68',
+        'worning-soft': '#FCF5E4',
+        danger: '#E95432',
+        'danger-soft': '#F3E5E8',
       },
       gridTemplateColumns: {
         13: 'repeat(13, minmax(0, 1fr))',
