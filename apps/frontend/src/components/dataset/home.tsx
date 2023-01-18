@@ -2,7 +2,7 @@ import { WaveScene } from 'components/common/wave-scene'
 import { useVisibleScroll, useWindowSize } from 'src/lib/hooks'
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
 import { BackgroundNoise } from 'components/ui/background-noise'
-import { OnScrollBlurEffect } from 'components/ui/on-scroll-blur-effect'
+import { OnScrollBackdropEffect } from 'components/ui/on-scroll-backdrop-effect'
 
 export interface HeroProps {
   type: string
@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ headline, subHeadline, setHeroSectio
     >
       <WaveScene play={ratio < 0.7} className="md:translate-y-[55%] translate-y-[40%]" />
       <BackgroundNoise />
-      <OnScrollBlurEffect ratio={ratio} />
+      <OnScrollBackdropEffect ratio={ratio} />
 
       <div className="container relative | xl:h-[60vh] md:h-[60vh] h-[70vh] | flex flex-col justify-center items-start">
         <h1 className="w-full | md:text-head-4 text-head-5 font-primary | mb-3 | text-transparent bg-clip-text text-left | leading-none | gradient__white__to__green">

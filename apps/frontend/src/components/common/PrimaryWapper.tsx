@@ -2,11 +2,11 @@ import PurpleEllipse from 'src/components/PurpleEllipse'
 import React, { createRef, RefObject, useEffect, useState } from 'react'
 import clsx from 'clsx'
 
+// TODO Adjust sanity so that this componnent become workable again
 interface PrimaryWrapperProps {}
 
 export const PrimaryWrapper: React.FC<PrimaryWrapperProps> = (props) => {
   let children: any = React.Children.toArray(props.children)
-
   const [sectionsRef, setSectionsRef] = useState([])
 
   useEffect(() => {

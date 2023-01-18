@@ -8,7 +8,7 @@ import { useVisibleScroll, useWindowSize } from 'src/lib/hooks'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { Button } from 'components/ui/button'
 import { WaveScene } from 'components/common/wave-scene'
-import { OnScrollBlurEffect } from 'components/ui/on-scroll-blur-effect'
+import { OnScrollBackdropEffect } from 'components/ui/on-scroll-backdrop-effect'
 
 interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
@@ -55,7 +55,7 @@ export const Hero: React.FC<IHomeSection> = ({
     >
       <BackgroundNoise />
       <WaveScene play={ratio < 0.7} />
-      <OnScrollBlurEffect ratio={ratio} />
+      <OnScrollBackdropEffect ratio={ratio} />
 
       <section className="container z-10 | relative | w-screen h-screen | flex lg:flex-row flex-col | lg:pt-16 pt-24 | overflow-y-clip">
         <div className="flex-1 flex flex-col justify-center space-y-10 ">

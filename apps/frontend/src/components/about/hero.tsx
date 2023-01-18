@@ -6,7 +6,7 @@ import { useVisibleScroll, useWindowSize } from 'lib/hooks'
 import { WaveScene } from 'components/common/wave-scene'
 import { PortableText } from 'utils/sanity'
 import { Button } from 'components/ui/button'
-import { OnScrollBlurEffect } from 'components/ui/on-scroll-blur-effect'
+import { OnScrollBackdropEffect } from 'components/ui/on-scroll-backdrop-effect'
 
 interface IHomeSection extends HomeProps {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
@@ -38,7 +38,7 @@ const Hero: React.FC<IHomeSection> = ({
     <section className="fixed top-0 left-0 w-full overflow-y-clip bg-black" ref={sectionRef}>
       <BackgroundNoise />
       <WaveScene play={ratio < 0.7} />
-      <OnScrollBlurEffect ratio={ratio} />
+      <OnScrollBackdropEffect ratio={ratio} />
 
       <div className="relative z-10 | container min-h-screen | flex flex-col justify-center items-center | lg:py-[5%] py-[30%] | overflow-y-clip">
         <div className="flex flex-col | text-center | lg:space-y-12 space-y-5 ">
