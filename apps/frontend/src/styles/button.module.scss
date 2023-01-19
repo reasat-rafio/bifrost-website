@@ -1,10 +1,4 @@
 $transTime: 0.4s;
-$primary-button-background-gradient: linear-gradient(
-  90deg,
-  #eeffe9 0%,
-  #acffeb 35.3%,
-  #c9ff71 102.69%
-);
 
 .common_button_style {
   background-size: 100%;
@@ -23,7 +17,7 @@ $primary-button-background-gradient: linear-gradient(
   }
   &:hover {
     &:before {
-      transform: matrix(1.03, 0.05, 0, 1, 0, 0);
+      transform: matrix(1.05, 0.06, 0, 1, 0, 0);
     }
   }
 }
@@ -41,17 +35,10 @@ $primary-button-background-gradient: linear-gradient(
   }
 }
 
-.secondary_bg_gradient_green {
-  @include secondaryBackgroundGradientGreenAnimation();
-}
-.secondary_bg_gradient_pink {
-  @include secondaryBackgroundGradientPinkAnimation();
-}
-
 @mixin primaryBorderGradientAnimation() {
   position: relative;
   display: inline-block;
-  // background-image: $secondary-button-background-gradient;
+
   &:before {
     content: '';
     position: absolute;
@@ -59,9 +46,9 @@ $primary-button-background-gradient: linear-gradient(
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 1px;
-    background: $primary-button-background-gradient;
+    background: linear-gradient(90deg, #eeeeee 0%, #eeeeee 35.3%, #eeeeee 102.69%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
@@ -69,13 +56,19 @@ $primary-button-background-gradient: linear-gradient(
     transition: background $transTime;
   }
   &:hover {
-    opacity: 0.85;
     &:before {
-      background: linear-gradient(90deg, #f8e9ff 0%, #e4acff 35.3%, #7187ff 102.69%);
+      background: linear-gradient(90deg, #b37af8 0%, #e4acff 35.3%, #70fceb 102.69%);
     }
   }
 }
 
 .primary_border_gradient {
   @include primaryBorderGradientAnimation();
+}
+
+.secondary_bg_gradient_green {
+  @include secondaryBackgroundGradientGreenAnimation();
+}
+.secondary_bg_gradient_pink {
+  @include secondaryBackgroundGradientPinkAnimation();
 }
