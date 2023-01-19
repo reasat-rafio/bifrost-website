@@ -12,7 +12,8 @@ interface ButtonProps {
   loading?: boolean
   disabled?: boolean
   href?: string
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'outline'
+  color?: 'pink' | 'green'
   onClick?: () => void
 }
 
@@ -25,10 +26,11 @@ export const Button: React.FC<ButtonProps> = ({
   href,
   type,
   variant = 'primary',
+  color = 'green',
   onClick,
 }) => {
   const rootClassName = clsx(
-    'w-fit relative | xl:text-body-3 md:text-[12px] text-[10px] | text-white | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none',
+    'w-fit relative | xl:text-body-3 md:text-[12px] text-[10px] | text-black | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none uppercase | hover:shadow',
     loading && '!cursor-not-allowed',
     disabled && 'cursor-not-allowed hover:cursor-not-allowed brightness-75',
     className,
@@ -43,11 +45,12 @@ export const Button: React.FC<ButtonProps> = ({
           disabled={disabled}
           loading={loading}
           className={
-            variant === 'secondary'
-              ? clsx(rootClassName, styles.secondary_bg_gradient)
-              : variant === 'primary'
-              ? clsx(rootClassName, styles.primary_border_gradient)
-              : ''
+            ''
+            // variant === 'secondary'
+            //   ? clsx(rootClassName, styles.secondary_bg_gradient, '')
+            //   : variant === 'primary'
+            //   ? clsx(rootClassName, styles.primary_border_gradient)
+            //   : ''
           }
         />
       )}
@@ -58,7 +61,13 @@ export const Button: React.FC<ButtonProps> = ({
           href={href}
           className={
             variant === 'secondary'
-              ? clsx(rootClassName, styles.secondary_bg_gradient)
+              ? clsx(
+                  rootClassName,
+                  color === 'pink' &&
+                    `${styles.secondary_bg_gradient_pink} bg-gradient-to-r from-primary to-primary`,
+                  color === 'green' &&
+                    `${styles.secondary_bg_gradient_green} bg-gradient-to-r from-teal to-teal`,
+                )
               : variant === 'primary'
               ? clsx(rootClassName, styles.primary_border_gradient)
               : ''

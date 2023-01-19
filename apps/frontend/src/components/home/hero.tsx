@@ -81,7 +81,7 @@ export const Hero: React.FC<IHomeSection> = ({
             {subtitle}
           </h4>
           {!!ctaButton && (
-            <Button type="href" href={ctaButton.href}>
+            <Button variant="secondary" type="href" href={ctaButton.href}>
               {ctaButton.title}
             </Button>
           )}

@@ -1,24 +1,14 @@
+$transTime: 0.4s;
 $primary-button-background-gradient: linear-gradient(
   90deg,
   #eeffe9 0%,
   #acffeb 35.3%,
   #c9ff71 102.69%
 );
-$secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%, #06101b 111.5%);
 
-@mixin secondaryBackgroundGradientAnimation($transTime) {
+.common_button_style {
   background-size: 100%;
-  background-image: $secondary-button-background-gradient !important;
   &:before {
-    background: linear-gradient(
-      90deg,
-      #eeffe9 0%,
-      #acffeb 35.3%,
-      #c9ff71 50.69%,
-      #f8e9ff 55%,
-      #e4acff 85.3%,
-      #7187ff 102.69%
-    );
     transform: matrix(0);
     border-radius: 5px;
     content: '';
@@ -33,19 +23,35 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
   }
   &:hover {
     &:before {
-      transform: matrix(1.01, 0.05, 0, 1, 0, 0);
+      transform: matrix(1.03, 0.05, 0, 1, 0, 0);
     }
   }
 }
 
-.secondary_bg_gradient {
-  @include secondaryBackgroundGradientAnimation(0.4s);
+@mixin secondaryBackgroundGradientGreenAnimation() {
+  @extend .common_button_style;
+  &:before {
+    background: linear-gradient(90deg, #b37af8 0%, #acffeb 50%, #b37af8 100%);
+  }
+}
+@mixin secondaryBackgroundGradientPinkAnimation() {
+  @extend .common_button_style;
+  &:before {
+    background: linear-gradient(90deg, #70fceb 0%, #6f98ff 50%, #70fceb 100%);
+  }
 }
 
-@mixin primaryBorderGradientAnimation($transTime) {
+.secondary_bg_gradient_green {
+  @include secondaryBackgroundGradientGreenAnimation();
+}
+.secondary_bg_gradient_pink {
+  @include secondaryBackgroundGradientPinkAnimation();
+}
+
+@mixin primaryBorderGradientAnimation() {
   position: relative;
   display: inline-block;
-  background-image: $secondary-button-background-gradient;
+  // background-image: $secondary-button-background-gradient;
   &:before {
     content: '';
     position: absolute;
@@ -71,5 +77,5 @@ $secondary-button-background-gradient: linear-gradient(97.84deg, #29394a -53.94%
 }
 
 .primary_border_gradient {
-  @include primaryBorderGradientAnimation(0.4s);
+  @include primaryBorderGradientAnimation();
 }
