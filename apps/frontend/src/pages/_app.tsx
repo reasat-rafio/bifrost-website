@@ -1,5 +1,4 @@
 import '@fontsource/roboto/300.css'
-import '@fontsource/titillium-web'
 import { imageUrlBuilder } from 'utils/sanity'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
