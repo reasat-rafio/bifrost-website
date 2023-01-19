@@ -11,6 +11,7 @@ import hero from './objects/hero'
 import initial from './objects/initial'
 import quote from './objects/quote'
 import tag from './documents/tag'
+import video from './objects/video'
 
 import client from './documents/client'
 
@@ -23,6 +24,9 @@ import projects from './objects/common/project-collection-block'
 
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
+import landingWhyUs from './objects/landing/why-us'
+import landingAboutUs from './objects/landing/about-us'
+import landingGallery from './objects/landing/gallery'
 import landingProductsSection from './objects/landing/products'
 import landingDemoSection from './objects/landing/demo'
 import landingServicesSection from './objects/landing/services'
@@ -106,12 +110,16 @@ export const schemaTypes = [
   initial,
   quote,
   tag,
+  video,
 
   contactUs,
   contactUsHomeSection,
 
   landing,
   landingHomeSection,
+  landingWhyUs,
+  landingAboutUs,
+  landingGallery,
   landingProductsSection,
   landingDemoSection,
   landingServicesSection,
