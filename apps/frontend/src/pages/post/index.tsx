@@ -1,6 +1,6 @@
 // import BlogArticles from 'components/blog/BlogArticles'
 import Home from 'components/post/home'
-import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
+import { PrimaryWrapper } from 'components/common/primary-wapper'
 // import Ellipse from 'src/components/Ellipse'
 import { BlogPage, HomeSection, IBlog } from 'lib/@types/blog-types'
 import { siteQuery } from 'src/lib/query'
