@@ -17,6 +17,7 @@ const LandingPage = {
         { type: 'landing.whyUs' },
         { type: 'landing.aboutUs' },
         { type: 'landing.mediaGallery' },
+        { type: 'landing.integrate' },
         { type: 'landing.products' },
         { type: 'landing.demo' },
         { type: 'landing.services' },

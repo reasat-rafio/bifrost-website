@@ -27,6 +27,7 @@ import landingHomeSection from './objects/landing/home'
 import landingWhyUs from './objects/landing/why-us'
 import landingAboutUs from './objects/landing/about-us'
 import landingGallery from './objects/landing/gallery'
+import landingIntegrate from './objects/landing/integrate'
 import landingProductsSection from './objects/landing/products'
 import landingDemoSection from './objects/landing/demo'
 import landingServicesSection from './objects/landing/services'
@@ -120,6 +121,7 @@ export const schemaTypes = [
   landingWhyUs,
   landingAboutUs,
   landingGallery,
+  landingIntegrate,
   landingProductsSection,
   landingDemoSection,
   landingServicesSection,
