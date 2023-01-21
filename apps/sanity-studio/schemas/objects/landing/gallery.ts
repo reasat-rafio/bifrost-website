@@ -8,6 +8,21 @@ const landingGallery = {
   type: 'object',
   fields: [
     {
+      name: 'title',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'heading',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'description',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'assets',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
@@ -30,8 +45,13 @@ const landingGallery = {
     },
   ],
   preview: {
-    prepare: () => ({
-      title: 'Media Gallery',
+    select: {
+      title: 'title',
+      subtitle: 'heading',
+    },
+    prepare: ({ title, subtitle }: { [_key: string]: string }) => ({
+      title,
+      subtitle,
       icon: FcGallery,
     }),
   },
