@@ -1,11 +1,11 @@
-import { MdOutlineRateReview } from 'react-icons/md'
+import { FcCollaboration } from 'react-icons/fc'
 import { Rule } from 'sanity'
 
 const landingTestimonial = {
   name: 'landing.testimonial',
   title: 'Testimonials',
   type: 'object',
-  icon: MdOutlineRateReview,
+  icon: FcCollaboration,
   fields: [
     {
       name: 'title',
@@ -71,7 +71,7 @@ const landingTestimonial = {
     prepare() {
       return {
         title: 'Reviews',
-        icon: MdOutlineRateReview,
+        icon: FcCollaboration,
       }
     },
   },

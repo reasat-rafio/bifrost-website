@@ -1,10 +1,10 @@
-import { FcBullish } from 'react-icons/fc'
+import { FcDoughnutChart } from 'react-icons/fc'
 import { Rule } from 'sanity'
 
 const landingResults = {
   name: 'landing.results',
-  title: 'Outputs',
-  icon: FcBullish,
+  title: 'Result',
+  icon: FcDoughnutChart,
   type: 'object',
   fields: [
     {

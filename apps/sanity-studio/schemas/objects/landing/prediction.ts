@@ -1,9 +1,9 @@
-import { FcInspection } from 'react-icons/fc'
+import { FcLineChart } from 'react-icons/fc'
 
-const landingIntegrate = {
-  name: 'landing.integrate',
-  title: 'Integrate',
-  icon: FcInspection,
+const landingPrediction = {
+  name: 'landing.prediction',
+  title: 'Prediction',
+  icon: FcLineChart,
   type: 'object',
   fields: [
     { name: 'title', type: 'string' },
@@ -23,9 +23,9 @@ const landingIntegrate = {
     prepare: ({ title, subtitle }: { [_key: string]: string }) => ({
       title,
       subtitle,
-      icon: FcInspection,
+      icon: FcLineChart,
     }),
   },
 }
 
-export default landingIntegrate
+export default landingPrediction

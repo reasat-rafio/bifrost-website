@@ -7,9 +7,9 @@ const landingWhyUs = {
   type: 'object',
   icon: FcQuestions,
   fields: [
-    { name: 'title', type: 'string', validation: (Rule: Rule) => Rule.required() },
-    { name: 'subtitle', type: 'text', validation: (Rule: Rule) => Rule.required() },
-    { name: 'description', type: 'text', validation: (Rule: Rule) => Rule.required() },
+    { name: 'title', type: 'string' },
+    { name: 'subtitle', type: 'text' },
+    { name: 'description', type: 'text' },
     {
       name: 'collection',
       type: 'array',
