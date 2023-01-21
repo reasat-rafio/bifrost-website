@@ -1,10 +1,10 @@
 import { Rule } from 'sanity'
-import { FcGallery } from 'react-icons/fc'
+import { FcBarChart } from 'react-icons/fc'
 
-const landingGallery = {
-  name: 'landing.mediaGallery',
-  title: 'Media Gallery',
-  icon: FcGallery,
+const landingOutputs = {
+  name: 'landing.outputs',
+  title: 'Outputs',
+  icon: FcBarChart,
   type: 'object',
   fields: [
     {
@@ -52,9 +52,9 @@ const landingGallery = {
     prepare: ({ title, subtitle }: { [_key: string]: string }) => ({
       title,
       subtitle,
-      icon: FcGallery,
+      icon: FcBarChart,
     }),
   },
 }
 
-export default landingGallery
+export default landingOutputs
