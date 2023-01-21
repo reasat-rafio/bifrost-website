@@ -26,13 +26,14 @@ import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
 import landingWhyUs from './objects/landing/why-us'
 import landingAboutUs from './objects/landing/about-us'
-import landingOutputs from './objects/landing/outputs'
+import landingOutputs from './objects/landing/output'
+import landingResults from './objects/landing/results'
+import landingTestimonial from './objects/landing/testimonial'
 import landingIntegrate from './objects/landing/integrate'
-import landingProductsSection from './objects/landing/products'
+import landingProductsSection from './objects/landing/product'
 import landingDemoSection from './objects/landing/demo'
-import landingServicesSection from './objects/landing/services'
-import landingProjectsSection from './objects/landing/projects'
-import landingReviewsSection from './objects/landing/reviews'
+import landingServicesSection from './objects/landing/service'
+import landingProjectsSection from './objects/landing/project'
 
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
@@ -121,12 +122,13 @@ export const schemaTypes = [
   landingWhyUs,
   landingAboutUs,
   landingOutputs,
+  landingResults,
   landingIntegrate,
   landingProductsSection,
   landingDemoSection,
   landingServicesSection,
   landingProjectsSection,
-  landingReviewsSection,
+  landingTestimonial,
 
   aboutUs,
   aboutUsHomeSection,

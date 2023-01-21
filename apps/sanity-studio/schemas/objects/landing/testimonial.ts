@@ -1,22 +1,25 @@
 import { MdOutlineRateReview } from 'react-icons/md'
 import { Rule } from 'sanity'
-export default {
-  name: 'landing.reviews',
-  title: 'Reviews',
+
+const landingTestimonial = {
+  name: 'landing.testimonial',
+  title: 'Testimonials',
   type: 'object',
   icon: MdOutlineRateReview,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
+      name: 'title',
+      type: 'text',
+      vlidation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'reviews',
+      name: 'testimonials',
       type: 'array',
       vlidation: (Rule: Rule) => Rule.required(),
+
       of: [
         {
-          name: 'review',
+          name: 'testimonial',
           type: 'object',
           fields: [
             {
@@ -45,7 +48,7 @@ export default {
               ],
             },
             {
-              name: 'review',
+              name: 'quote',
               type: 'text',
               vlidation: (Rule: Rule) => Rule.required(),
             },
@@ -53,7 +56,7 @@ export default {
           preview: {
             select: {
               title: 'name',
-              subtitle: 'review',
+              subtitle: 'quote',
               media: 'image',
             },
           },
@@ -73,3 +76,5 @@ export default {
     },
   },
 }
+
+export default landingTestimonial
