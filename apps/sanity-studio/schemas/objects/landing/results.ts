@@ -56,10 +56,26 @@ const landingResults = {
               validation: (Rule: Rule) => Rule.required(),
             },
           ],
+          preview: {
+            select: {
+              title: 'description',
+            },
+          },
         },
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'heading',
+    },
+    prepare: ({ title, subtitle }: any) => ({
+      title,
+      subtitle,
+      icon: FcDoughnutChart,
+    }),
+  },
 }
 
 export default landingResults

@@ -28,6 +28,7 @@ import landingWhyUs from './objects/landing/why-us'
 import landingAboutUs from './objects/landing/about-us'
 import landingOutputs from './objects/landing/output'
 import landingResults from './objects/landing/results'
+import landingPrediction from './objects/landing/prediction'
 import landingUseCase from './objects/landing/use-case'
 import landingCallout from './objects/landing/call-out'
 import landingPartners from './objects/landing/partners'
@@ -128,6 +129,7 @@ export const schemaTypes = [
   landingCallout,
   landingPartners,
   landingResults,
+  landingPrediction,
   landingIntegrate,
   landingProductsSection,
   landingDemoSection,

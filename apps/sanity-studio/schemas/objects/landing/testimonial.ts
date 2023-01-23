@@ -66,11 +66,11 @@ const landingTestimonial = {
   ],
   preview: {
     select: {
-      title: '',
+      title: 'title',
     },
-    prepare() {
+    prepare({ title }: any) {
       return {
-        title: 'Reviews',
+        title,
         icon: FcCollaboration,
       }
     },

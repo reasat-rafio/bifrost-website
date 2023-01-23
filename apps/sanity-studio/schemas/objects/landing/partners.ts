@@ -49,6 +49,7 @@ const landingPartners = {
   preview: {
     prepare: () => ({
       title: 'Partners',
+      icon: TbHeartHandshake,
     }),
   },
 }

@@ -24,6 +24,17 @@ const landingCallout = {
       validation: (Rule: Rule) => Rule.isRequired(),
     },
   ],
+  preview: {
+    select: {
+      // TODO fix this so the heading work with prepare
+      // title: 'heading',
+      title: 'description',
+    },
+    prepare: ({ title }: any) => ({
+      title,
+      icon: FcIdea,
+    }),
+  },
 }
 
 export default landingCallout
