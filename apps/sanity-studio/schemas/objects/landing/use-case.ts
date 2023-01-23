@@ -1,36 +1,35 @@
 import { GrProjects } from 'react-icons/gr'
 import { Rule } from 'sanity'
 
-export default {
-  name: 'landing.projects',
-  title: 'Projects',
+const landingUseCase = {
+  name: 'landing.useCase',
+  title: 'Use Cases',
   type: 'object',
   icon: GrProjects,
   fields: [
-    {
-      name: 'initials',
-      type: 'initials',
-    },
     {
       name: 'title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subtitle',
+      name: 'heading',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'description',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'projects',
+      name: 'useCases',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
       of: [
         {
-          name: 'project',
+          name: 'useCase',
           type: 'object',
-          title: 'Project',
-
           fields: [
             {
               name: 'name',
@@ -82,3 +81,5 @@ export default {
     },
   },
 }
+
+export default landingUseCase
