@@ -25,7 +25,15 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      previews[]{
+      partners[]{
+        ...,
+       "logo": ${withDimensions('logo')},
+      },  
+      collection[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+      assets[]{
         ...,
         asset->{
          ...,
@@ -33,7 +41,14 @@ const query = groq`{
           dimensions
           },
         },
+        "webm": video_webm.asset->url,
+        "mp4": video_mp4.asset->url
       },
+      useCases[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+
       images[]{
         ...,
         asset->{
@@ -43,11 +58,7 @@ const query = groq`{
           },
         },
       },
-      projects[]{
-        ...,
-        "image": ${withDimensions('image')},
-      },
-      reviews[]{
+      testimonials[]{
         ...,
         "image": ${withDimensions('image')},
       },

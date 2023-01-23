@@ -16,7 +16,6 @@ const landingTestimonial = {
       name: 'testimonials',
       type: 'array',
       vlidation: (Rule: Rule) => Rule.required(),
-
       of: [
         {
           name: 'testimonial',
