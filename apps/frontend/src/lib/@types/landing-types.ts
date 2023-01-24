@@ -69,3 +69,11 @@ export interface Partner {
   name?: string
   url?: string
 }
+
+export interface Collection {
+  _key: string
+  _type: string
+  description: string
+  image: SanityImage
+  title: string
+}
