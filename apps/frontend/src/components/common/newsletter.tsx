@@ -39,7 +39,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text gradient__white__to__green">
+                    <span className="text-transparent bg-clip-text primary__gradient">
                       {children}
                     </span>
                   ),

@@ -51,7 +51,7 @@ export const OverflownTasks: React.FC<OverflownTasksProps> = ({ tasks }) => {
           className={clsx('relative flex | flex-wrap overflow-hidden space-x-2 max-h-[20px]')}
         >
           {tasks?.map(({ name, _id }) => (
-            <p className="gradient__white__to__green text-transparent bg-clip-text" key={_id}>
+            <p className="primary__gradient text-transparent bg-clip-text" key={_id}>
               {name}
             </p>
           ))}
@@ -79,7 +79,7 @@ export const OverflownTasks: React.FC<OverflownTasksProps> = ({ tasks }) => {
           <span
             onClick={(e) => e.stopPropagation()}
             className={clsx(
-              `gradient__white__to__green text-transparent bg-clip-text cursor-pointer w-full`,
+              `primary__gradient text-transparent bg-clip-text cursor-pointer w-full`,
               overflownItems?.length ? 'visible' : 'invisible',
             )}
           >

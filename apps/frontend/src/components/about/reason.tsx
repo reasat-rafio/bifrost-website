@@ -32,8 +32,7 @@ const Reason: React.FC<ReasonSection> = ({ agendas, subtitle, title }) => {
                   >
                     <span
                       className={clsx(
-                        active === index &&
-                          'text-transparent bg-clip-text gradient__white__to__green',
+                        active === index && 'text-transparent bg-clip-text primary__gradient',
                       )}
                     >
                       {reason.name}
@@ -42,7 +41,7 @@ const Reason: React.FC<ReasonSection> = ({ agendas, subtitle, title }) => {
                       <motion.div
                         className={clsx(
                           'w-full h-[0.2em] left-0 absolute bottom-[-4px] z-10',
-                          active === index && 'gradient__white__to__green',
+                          active === index && 'primary__gradient',
                         )}
                         layoutId="underline"
                         initial={false}

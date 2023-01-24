@@ -131,7 +131,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                   className={clsx(
                     'relative xl:text-body-3 text-body-1-mobile font-semibold',
                     router.asPath === pageUrl
-                      ? 'text-transparent bg-clip-text gradient__white__to__green'
+                      ? 'text-transparent bg-clip-text primary__gradient'
                       : 'text-white',
                   )}
                 >
@@ -168,7 +168,7 @@ export default function Navbar({ logo, menu, darkBg }: NavbarProps): ReactElemen
                   {router.asPath === pageUrl && (
                     <motion.div
                       layout
-                      className="w-[60%] h-[0.2em] left-0 absolute gradient__white__to__green"
+                      className="w-[60%] h-[0.2em] left-0 absolute primary__gradient"
                       layoutId="underline"
                       transition={{ duration: 0.2 }}
                     />
