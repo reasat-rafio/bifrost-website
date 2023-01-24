@@ -7,5 +7,9 @@ interface HeadingProps {
 }
 
 export const Heading: React.FC<HeadingProps> = ({ children, className }) => {
-  return <h4 className={clsx(className, 'text-[48px]')}>{children}</h4>
+  return (
+    <h4 className={clsx(className, 'xl:text-[48px] lg:text-5xl md:text-5xl text-4xl')}>
+      {children}
+    </h4>
+  )
 }

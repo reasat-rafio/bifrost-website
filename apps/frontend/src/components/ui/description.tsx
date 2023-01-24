@@ -7,5 +7,5 @@ interface DescriptionProps {
 }
 
 export const Description: React.FC<DescriptionProps> = ({ children, className }) => {
-  return <p className={clsx(className, 'text-[24px]')}>{children}</p>
+  return <p className={clsx(className, 'lg:text-[24px] sm:text-xl text-lg')}>{children}</p>
 }

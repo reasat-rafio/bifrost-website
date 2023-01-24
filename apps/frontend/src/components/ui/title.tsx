@@ -6,5 +6,9 @@ interface TitleProps {
 }
 
 export const Title: React.FC<TitleProps> = ({ children, className }) => {
-  return <h2 className={clsx(className, 'capitalize text-teal text-[24px]')}>{children}</h2>
+  return (
+    <h2 className={clsx(className, 'capitalize text-teal lg:text-[24px] sm:text-xl text-lg')}>
+      {children}
+    </h2>
+  )
 }
