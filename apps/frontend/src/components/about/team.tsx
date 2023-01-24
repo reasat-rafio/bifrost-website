@@ -1,5 +1,5 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Header } from 'components/ui/heading'
+// import { Heading } from 'components/ui/heading'
 import { TeamSection } from 'lib/@types/about-us-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
@@ -7,7 +7,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
-const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
+const Team: React.FC<TeamSection> = ({ title, members }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -23,7 +23,7 @@ const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
         className="max-w-2xl mx-auto mb-7"
       >
         <GradientTitle className="mx-auto">{title}</GradientTitle>
-        <Header>{subtitle}</Header>
+        {/* <Header>{subtitle}</Header> */}
       </motion.header>
       <motion.div
         initial="initial"

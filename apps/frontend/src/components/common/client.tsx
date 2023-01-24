@@ -9,11 +9,11 @@ import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Header } from 'components/ui/heading'
+// import { Heading } from 'components/ui/heading'
 import { motion } from 'framer-motion'
 import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
-export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadline }) => {
+export const Client: React.FC<ClientsSection> = ({ clients, headline }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -29,7 +29,7 @@ export const Client: React.FC<ClientsSection> = ({ clients, headline, subHeadlin
         className="max-w-2xl mx-auto mb-5"
       >
         <GradientTitle className="mx-auto mb-5">{headline}</GradientTitle>
-        <Header>{subHeadline}</Header>
+        {/* <Header>{subHeadline}</Header> */}
       </motion.header>
       <div>
         {windowWidth >= 1024 ? (

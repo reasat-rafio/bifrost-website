@@ -77,7 +77,10 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Home(props: SanityProps<any>) {
   const {
     data: {
-      page: { sections, cleint },
+      page: {
+        sections,
+        // cleint
+      },
     },
   } = useSanityQuery(query, props)
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)

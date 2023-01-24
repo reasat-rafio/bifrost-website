@@ -6,7 +6,7 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { Enterprise as EnterpriseInterface } from 'lib/@types/use-case-types'
 import { imageUrlBuilder } from 'utils/sanity'
-import Button from './ui/_Button'
+// import Button from './ui/_Button'
 
 interface EnterpriseProps {
   item: EnterpriseInterface
@@ -146,9 +146,9 @@ export default function Enterprise({
             )}
             <div className="lg:text-body-1 text-[14px] leading-[16px] font-[300]">{item.body}</div>
             <div className="flex">
-              <Button>
+              {/* <Button>
                 <a href={item.ctaButton.href}>{item.ctaButton.title}</a>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

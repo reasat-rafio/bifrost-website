@@ -1,5 +1,5 @@
 import { Description } from 'components/ui/description'
-import { Header } from 'components/ui/heading'
+import { Heading } from 'components/ui/heading'
 import { ExampleProps, ExamplesProps } from 'lib/@types/use-case-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 
-const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => {
+const Examples: React.FC<ExamplesProps> = ({ examples, description, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 400 : windowWidth > 768 ? 300 : 250),
@@ -32,7 +32,7 @@ const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => 
     <section className="z-10 relative xl:py-40 lg:py-20 py-16">
       <div className="container md:space-y-12 space-y-6">
         <header className="grid lg:grid-cols-2 gap-5 grid-cols-1">
-          <Header>{title}</Header>
+          <Heading>{title}</Heading>
           <Description>{description}</Description>
         </header>
         <motion.div

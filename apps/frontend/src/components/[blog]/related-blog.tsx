@@ -1,4 +1,4 @@
-import { Header } from 'components/ui/heading'
+// import { Heading } from 'components/ui/heading'
 import { IBlog } from 'lib/@types/blog-types'
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -22,7 +22,7 @@ export const RelatedBlogs: React.FC<RelatedBlogProps> = ({ relatedBlogs }) => {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null)
   return (
     <section className="container space-y-10">
-      <Header className="mx-auto text-center">You might also like</Header>
+      {/* <HeadingclassName="mx-auto text-center">You might also like</Header> */}
       <div>
         <Swiper
           modules={[Autoplay, Navigation, Mousewheel]}
