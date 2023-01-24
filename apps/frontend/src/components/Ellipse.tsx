@@ -5,6 +5,7 @@ interface EllipseProps {
   color?: string
 }
 
+// TODO delete this component
 export default function Ellipse(props: EllipseProps): ReactElement {
   const { className, color = 'rgba(255, 255, 255, 0.26)' } = props
   return (
