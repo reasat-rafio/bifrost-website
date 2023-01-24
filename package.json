@@ -2,10 +2,15 @@
   "name": "bifrost",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/next"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
     "build-frontend": "turbo run build-frontend",
