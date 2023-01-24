@@ -61,3 +61,11 @@ export interface ServiceSection {
   headline: string
   items: [Service]
 }
+
+export interface Partner {
+  _key: string
+  _type: string
+  logo: SanityImage
+  name?: string
+  url?: string
+}

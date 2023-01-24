@@ -14,9 +14,9 @@ import { HomeSection } from 'lib/@types/landing-types'
 import { useCallback, useState } from 'react'
 import { Newsletter } from 'components/common/newsletter'
 import { Client } from 'components/common/client'
-import { Partners } from 'components/landing/partner'
 import { WhyUs } from 'components/landing/why-us'
 import { AboutUs } from 'components/landing/about-us'
+import { Partners } from 'components/landing/partners'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -25,7 +25,7 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      partnerP[]{
+      partners[]{
         ...,
        "logo": ${withDimensions('logo')},
       },  
