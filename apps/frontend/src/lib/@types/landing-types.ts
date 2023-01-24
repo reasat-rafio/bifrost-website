@@ -77,3 +77,12 @@ export interface Collection {
   image: SanityImage
   title: string
 }
+
+export interface AboutCollection {
+  _key: string
+  _type: string
+  description: any
+  heading: string
+  image: SanityImage
+  title?: string
+}

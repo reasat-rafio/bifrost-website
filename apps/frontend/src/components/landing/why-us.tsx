@@ -4,7 +4,7 @@ import { Heading } from 'components/ui/heading'
 import { Title } from 'components/ui/title'
 import { CTAButton } from 'lib/@types/global-types'
 import { Collection } from 'lib/@types/landing-types'
-import { useWindowSize } from 'lib/hooks'
+// import { useWindowSize } from 'lib/hooks'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 
@@ -24,10 +24,10 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   collection,
   ctaButton,
 }) => {
-  const windowWidth = useWindowSize()?.width ?? 0
+  // const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <section className="relative z-10 | container mx-auto lg:py-32 py-20">
+    <section className="relative z-10 | container mx-auto lg:py-32 py-20 | border-b border-secondary/80">
       <div className="space-y-8 | font-light">
         <Title>{title}</Title>
         <Heading>{subtitle}</Heading>
