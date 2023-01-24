@@ -4,7 +4,7 @@ import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { Hero } from 'components/home/hero'
+import { Hero } from 'components/landing/hero'
 // import { Product } from 'components/home/product'
 // import { Demo } from 'components/home/demo'
 // import { Project } from 'components/home/projects'
@@ -14,6 +14,9 @@ import { HomeSection } from 'lib/@types/landing-types'
 import { useCallback, useState } from 'react'
 import { Newsletter } from 'components/common/newsletter'
 import { Client } from 'components/common/client'
+import { Partners } from 'components/landing/partner'
+import { WhyUs } from 'components/landing/why-us'
+import { AboutUs } from 'components/landing/about-us'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -22,7 +25,7 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      partners[]{
+      partnerP[]{
         ...,
        "logo": ${withDimensions('logo')},
       },  
@@ -98,6 +101,9 @@ export default function Home(props: SanityProps<any>) {
         }}
       >
         {renderObjectArray(sections, {
+          'landing.partners': Partners,
+          'landing.whyUs': WhyUs,
+          'landing.aboutUs': AboutUs,
           // 'landing.products': Product,
           // 'landing.demo': Demo,
           // 'landing.projects': Project,

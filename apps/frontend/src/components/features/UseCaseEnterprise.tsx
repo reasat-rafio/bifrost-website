@@ -1,5 +1,5 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Pagination } from 'src/components/home/HomeService/Pagination'
+import { Pagination } from 'components/landing/HomeService/Pagination'
 import Service from 'src/components/Service'
 import { Header } from 'src/components/ui/Header'
 import { EnterpriseSection } from 'lib/@types/use-case-types'

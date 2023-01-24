@@ -44,7 +44,7 @@ export const Hero: React.FC<IHomeSection> = ({
       <OnScrollBackdropEffect ratio={ratio} />
 
       <div className="container z-10 | relative | w-screen h-screen | flex lg:flex-row flex-col | lg:pt-16 pt-24 | overflow-y-clip">
-        <section className="flex-1 flex flex-col justify-center sm:space-y-10 space-y-5">
+        <section className="flex-1 flex flex-col justify-center sm:space-y-10 space-y-5 bg-red-300">
           <h1 className="font-primary lg:text-head-1 md:text-head-2 sm:text-head-4 text-head-3 | leading-none">
             <PortableText
               blocks={title}
@@ -68,7 +68,7 @@ export const Hero: React.FC<IHomeSection> = ({
             </Button>
           )}
         </section>
-        <figure className="flex lg:items-end">
+        <figure className="flex lg:items-end bg-yellow-300">
           <SanityImg
             className="mx-auto sm:w-[50vh] drop-shadow"
             builder={imageUrlBuilder}
