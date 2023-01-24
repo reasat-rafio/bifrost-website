@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Header } from 'src/components/ui/Header'
+import { Header } from 'components/ui/heading'
 import { motion } from 'framer-motion'
 import { AgendaProps, ReasonSection } from 'lib/@types/about-us-types'
 import { useRef, useState } from 'react'

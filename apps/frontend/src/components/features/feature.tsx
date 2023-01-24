@@ -1,6 +1,6 @@
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Description } from 'src/components/ui/Description'
-import { Header } from 'src/components/ui/Header'
+import { Description } from 'components/ui/description'
+import { Header } from 'components/ui/heading'
 import { FeaturesProps } from 'lib/@types/use-case-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'

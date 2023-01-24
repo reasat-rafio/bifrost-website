@@ -9,7 +9,7 @@ import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
 import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Header } from 'src/components/ui/Header'
+import { Header } from 'components/ui/heading'
 import { motion } from 'framer-motion'
 import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
 

@@ -1,4 +1,7 @@
 import { Button } from 'components/ui/button'
+import { Description } from 'components/ui/description'
+import { Heading } from 'components/ui/heading'
+import { Title } from 'components/ui/title'
 import { CTAButton } from 'lib/@types/global-types'
 import { Collection } from 'lib/@types/landing-types'
 import { SanityImg } from 'sanity-react-extra'
@@ -23,9 +26,9 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   return (
     <section className="relative z-10 | container mx-auto py-20">
       <div className="space-y-3 | font-light">
-        <h3 className="capitalize text-teal text-[24px]">{title}</h3>
-        <h5 className="text-[48px]">{subtitle}</h5>
-        <p className="text-[24px]">{description}</p>
+        <Title>{title}</Title>
+        <Heading>{subtitle}</Heading>
+        <Description>{description}</Description>
       </div>
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 | md:gap-20 sm:gap-14 gap-10 py-16">
         {collection.map(({ _key, description, image, title }) => (

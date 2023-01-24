@@ -1,4 +1,4 @@
-import { Header } from 'src/components/ui/Header'
+import { Header } from 'components/ui/heading'
 import { IBlog } from 'lib/@types/blog-types'
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'

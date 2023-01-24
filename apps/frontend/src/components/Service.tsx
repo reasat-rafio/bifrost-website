@@ -14,8 +14,8 @@ import { SanityImg } from 'sanity-react-extra'
 import { Service as ServiceInterface } from 'lib/@types/landing-types'
 import { imageUrlBuilder } from 'utils/sanity'
 import Button from './ui/_Button'
-import { Header } from './ui/Header'
-import { Description } from './ui/Description'
+import { Header } from './ui/heading'
+import { Description } from './ui/description'
 import { isWhatPercentOf } from 'src/lib/helpers'
 
 interface ServiceProps {
