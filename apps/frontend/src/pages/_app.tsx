@@ -21,6 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const is404Page = router.pathname === '/_error'
 
+  const Component_: any = Component
+
   useEffect(() => {
     setSeoTitle(pageProps.data?.page.seo?.title)
     setSeoDescription(pageProps.data?.page.seo?.description)
@@ -84,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </div>
           )} */}
 
-          <Component {...pageProps} />
+          <Component_ {...pageProps} />
           {/* <Toast /> */}
           {!is404Page && (
             <Footer
