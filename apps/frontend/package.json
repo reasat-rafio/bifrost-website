@@ -8,11 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "workspaces": {
-    "nohoist": [
-      "**"
-    ]
-  },
   "dependencies": {
     "@fontsource/roboto": "^4.5.3",
     "@formspark/use-formspark": "^0.1.38",
@@ -68,8 +63,5 @@
     "tailwindcss": "^3.0.17",
     "tsconfig": "*",
     "typescript": "4.5.5"
-  },
-  "resolutions": {
-    "**/@types/react": "17.0.38"
   }
 }
