@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
+  },
   "dependencies": {
     "@fontsource/roboto": "^4.5.3",
     "@formspark/use-formspark": "^0.1.38",
