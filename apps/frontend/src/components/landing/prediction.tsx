@@ -6,7 +6,7 @@ import { CTAButton } from 'lib/@types/global-types'
 import { useIntersection } from 'lib/hooks'
 import { useRef } from 'react'
 
-interface IntegrateProps {
+interface PredictionProps {
   type: string
   ctaButton: CTAButton
   showWave: boolean
@@ -14,7 +14,7 @@ interface IntegrateProps {
   title: string
 }
 
-export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle, showWave }) => {
+export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, subtitle, title }) => {
   const sectionRef = useRef(null)
   const intersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting ?? false
 

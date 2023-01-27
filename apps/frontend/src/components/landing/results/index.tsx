@@ -31,7 +31,7 @@ export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => 
         <Title>{title}</Title>
         <Heading>{heading}</Heading>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 | sm:gap-10 gap-5 lg:mt-20 mt-14 ">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 sm:gap-10 gap-5 lg:mt-20 mt-14 ">
           {results.map(({ _key, description, indicatorIcon, isPercentage, number }) => (
             <div key={_key}>
               <div className="flex items-center | space-x-4 | lg:text-head-1 md:text-head-2 sm:text-head-4 text-head-3 | text-transparent bg-clip-text | bg-gradient-to-br from-[#70FCEB] via-[#9BB8FF] to-[#B794FF]">
