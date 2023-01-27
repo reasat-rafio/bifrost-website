@@ -116,3 +116,11 @@ export interface VideoMp4Asset {
   _ref: string
   _type: string
 }
+
+export interface IUseCase {
+  _key: string
+  _type: string
+  image: SanityImage
+  name: string
+  url?: string
+}
