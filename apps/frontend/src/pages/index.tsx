@@ -13,6 +13,7 @@ import { useCallback, useState } from 'react'
 import { WhyUs } from 'components/landing/why-us'
 import { AboutUs } from 'components/landing/about-us'
 import { Partners } from 'components/landing/partners'
+import { Integrate } from 'components/landing/integrate'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -103,6 +104,7 @@ export default function Home(props: SanityProps<any>) {
           'landing.partners': Partners,
           'landing.whyUs': WhyUs,
           'landing.aboutUs': AboutUs,
+          'landing.integrate': Integrate,
           // 'landing.products': Product,
           // 'landing.demo': Demo,
           // 'landing.projects': Project,
