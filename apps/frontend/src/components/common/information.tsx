@@ -36,12 +36,11 @@ export const Information: React.FC<InformationProps> = ({
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth],
   )
-  console.log(intersecting)
 
   return (
-    <GradientBorder ref={sectionRef}>
-      <section className="relative z-10 container | grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10">
-        <section className="space-y-6 my-auto md:w-[85%] w-full mr-auto">
+    <GradientBorder innerClass="py-16" ref={sectionRef}>
+      <section className="relative z-10 container mx-auto  | grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10 ">
+        <section className="space-y-6 my-auto md:w-[85%] w-full mr-auto ">
           <Title>{title}</Title>
           <Heading>{heading}</Heading>
           <Description>{description}</Description>

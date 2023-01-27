@@ -21,18 +21,17 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
       borderRadious = '15px',
       gradient = 'primary__gradient',
       innerClass = '',
-      background = 'background__dark',
     },
     ref,
   ) => {
     return (
       <div
         ref={ref as React.LegacyRef<HTMLDivElement>}
-        className={clsx(className, gradient, 'relative')}
+        className={clsx(className, gradient, 'relative max-w-screen-2xl mx-auto')}
         style={{ padding: borderSize, borderRadius: borderRadious }}
       >
         <div
-          className={clsx(innerClass, background, 'flex flex-col justify-between')}
+          className={clsx(innerClass, 'bg-black flex flex-col justify-between')}
           style={{ borderRadius: borderRadious }}
         >
           {children}
