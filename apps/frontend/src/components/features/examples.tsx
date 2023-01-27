@@ -7,7 +7,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 import { MouseEvent, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
-import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
 const Examples: React.FC<ExamplesProps> = ({ examples, description, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
@@ -39,7 +39,7 @@ const Examples: React.FC<ExamplesProps> = ({ examples, description, title }) => 
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          variants={SlideUpParent()}
+          variants={ScaleUpParent}
           onMouseMove={onMouseMoveAction}
           className={clsx('cards | grid grid-cols-12 gap-5')}
         >
@@ -60,7 +60,7 @@ interface PerkProps extends ExampleProps {
 const Example: React.FC<PerkProps> = ({ image, description, title, imageWidth }) => {
   return (
     <motion.article
-      variants={SlideUpChild()}
+      variants={ScaleUpChild}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >
       <div className="card-content | space-y-3 | p-3 | font-light">

@@ -9,7 +9,7 @@ import { Hero } from 'components/landing/hero'
 import { HomeSection } from 'lib/@types/landing-types'
 import { useCallback, useState } from 'react'
 // import { Newsletter } from 'components/common/newsletter'
-// import { Client } from 'components/common/client'
+import { Client } from 'components/common/client'
 import { WhyUs } from 'components/landing/why-us'
 import { AboutUs } from 'components/landing/about-us'
 import { Partners } from 'components/landing/partners'
@@ -19,6 +19,7 @@ import { Prediction } from 'components/landing/prediction'
 import { Information } from 'components/common/information'
 import { Outputs } from 'components/landing/outputs'
 import { UseCase } from 'components/landing/use-case'
+import { CallOut } from 'components/landing/call-out'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -83,10 +84,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 export default function Home(props: SanityProps<any>) {
   const {
     data: {
-      page: {
-        sections,
-        // cleint
-      },
+      page: { sections, cleint },
     },
   } = useSanityQuery(query, props)
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
@@ -114,17 +112,18 @@ export default function Home(props: SanityProps<any>) {
           'landing.results': Results,
           'landing.prediction': Prediction,
           infoBlock: Information,
-          'landing.useCase': UseCase,
           // 'landing.products': Product,
           // 'landing.demo': Demo,
           // 'landing.projects': Project,
           // 'landing.reviews': Reviews,
         })}
-        {/* <Client {...cleint} /> */}
-        {/* {renderObjectArray(sections, {
-          newsletter: Newsletter,
-          contact: Contact,
-        })} */}
+        <Client {...cleint} />
+        {renderObjectArray(sections, {
+          'landing.useCase': UseCase,
+          'landing.callout': CallOut,
+          // newsletter: Newsletter,
+          // contact: Contact,
+        })}
       </div>
     </div>
   )

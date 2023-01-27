@@ -5,34 +5,16 @@ import { SanityImg } from 'sanity-react-extra'
 import { Autoplay, Mousewheel } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { imageUrlBuilder } from 'utils/sanity'
-import { Variants, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useRef } from 'react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/mousewheel'
-import { useRef } from 'react'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
 interface PartnersProps {
   type: string
   partners: Partner[]
-}
-
-export const VContainer: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-}
-
-export const VItems: Variants = {
-  visible: {
-    opacity: 1,
-    scale: 1,
-  },
-  hidden: {
-    opacity: 0,
-    scale: 0,
-  },
 }
 
 export const Partners: React.FC<PartnersProps> = ({ partners }) => {
@@ -45,7 +27,7 @@ export const Partners: React.FC<PartnersProps> = ({ partners }) => {
       ref={containerRef}
       initial="hidden"
       animate={intersection?.isIntersecting ? 'visible' : 'hidden'}
-      variants={VContainer}
+      variants={ScaleUpParent}
       className="container mx-auto"
     >
       <Swiper
@@ -89,7 +71,7 @@ export const Partners: React.FC<PartnersProps> = ({ partners }) => {
       >
         {partners.map(({ _key, name, url, logo }) => (
           <SwiperSlide className="my-auto" key={_key}>
-            <motion.div variants={VItems}>
+            <motion.div variants={ScaleUpChild}>
               {!!url ? (
                 <Link href={url}>
                   <a title={name ?? null}>

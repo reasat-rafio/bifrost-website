@@ -4,7 +4,7 @@ import { MouseEvent, useMemo } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useWindowSize } from 'lib/hooks'
-import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
 interface Perk {
   _key: string
@@ -59,7 +59,7 @@ export const Perks: React.FC<PerksProps> = ({ header, perks }) => {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={SlideUpParent()}
+        variants={ScaleUpParent()}
         onMouseMove={onMouseMoveAction}
         className={clsx('cards | grid grid-cols-12 gap-5')}
       >
@@ -77,7 +77,7 @@ interface PerkProps extends Perk {
 const Perk: React.FC<PerkProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
     <motion.article
-      variants={SlideUpChild()}
+      variants={ScaleUpChild()}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >
       <div className="card-content | space-y-3 | p-3 | font-light">

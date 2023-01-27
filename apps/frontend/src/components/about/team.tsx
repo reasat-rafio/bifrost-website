@@ -5,7 +5,7 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
-import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
 const Team: React.FC<TeamSection> = ({ title, members }) => {
   const { width: windowWidth } = useWindowSize() ?? {
@@ -29,13 +29,13 @@ const Team: React.FC<TeamSection> = ({ title, members }) => {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={SlideUpParent(0.15)}
+        variants={ScaleUpParent(0.15)}
         className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5"
       >
         {members.map((team) => (
           <motion.div
             key={team._key}
-            variants={SlideUpChild()}
+            variants={ScaleUpChild()}
             className="flex flex-col items-center"
           >
             <figure className="rounded-xl overflow-hidden !w-full max-h-[310px] aspect-square">

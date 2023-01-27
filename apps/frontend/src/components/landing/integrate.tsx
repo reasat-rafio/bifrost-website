@@ -1,6 +1,6 @@
 import { WaveScene } from 'components/common/wave-scene'
 import { Button } from 'components/ui/button'
-import { Heading } from 'components/ui/heading'
+import { Description } from 'components/ui/description'
 import { Title } from 'components/ui/title'
 import { CTAButton } from 'lib/@types/global-types'
 import { useIntersection } from 'lib/hooks'
@@ -24,7 +24,9 @@ export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle
       <div className="z-20 relative container mx-auto space-y-6">
         <div className="flex flex-col justify-center | space-y-8 lg:px-[4%] | font-light"></div>
         <Title className="text-center">{title}</Title>
-        <Heading className="text-center">{subtitle}</Heading>
+        <Description textBig className="text-center">
+          {subtitle}
+        </Description>
         <div className="text-center !mt-12">
           <Button type="href" variant="secondary" href={ctaButton.href}>
             {ctaButton.title}
