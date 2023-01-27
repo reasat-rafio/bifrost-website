@@ -1,4 +1,5 @@
 import { FcDoughnutChart } from 'react-icons/fc'
+import { MdHighlight } from 'react-icons/md'
 import { Rule } from 'sanity'
 
 const landingResults = {
@@ -52,7 +53,25 @@ const landingResults = {
             {
               name: 'description',
               type: 'array',
-              of: [{ type: 'block' }],
+              of: [
+                {
+                  type: 'block',
+                  marks: {
+                    decorators: [
+                      {
+                        title: 'Pop',
+                        value: 'pop',
+                        blockEditor: {
+                          icon: () => <MdHighlight />,
+                          render: ({ children }: { children: React.ReactNode }) => (
+                            <span style={{ color: '#70FCEB' }}>{children}</span>
+                          ),
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
               validation: (Rule: Rule) => Rule.required(),
             },
           ],

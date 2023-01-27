@@ -86,3 +86,12 @@ export interface AboutCollection {
   image: SanityImage
   title?: string
 }
+
+export interface Result {
+  _key: string
+  _type: string
+  description: any
+  indicatorIcon: 'increase' | 'decrease' | 'none'
+  isPercentage: boolean
+  number: number
+}
