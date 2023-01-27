@@ -32,7 +32,7 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subtitle',
+      name: 'description',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
