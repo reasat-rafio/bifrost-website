@@ -40,6 +40,7 @@ module.exports = {
 
         primary: '#B37AF8',
         secondary: '#29394A',
+        mauve: '#B794FF',
         'color-description': '#99A2D4',
 
         warning: '#F3CD68',

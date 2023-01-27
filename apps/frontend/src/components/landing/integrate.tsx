@@ -11,7 +11,7 @@ interface IntegrateProps {
   title: string
 }
 
-export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle, showWave }) => {
+export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle }) => {
   return (
     <section className="relative z-10 | container mx-auto lg:py-32 py-20">
       <div className="flex flex-col justify-center | space-y-8 lg:px-[4%] | font-light">
