@@ -3,11 +3,8 @@ import { CTAButton } from 'lib/@types/global-types'
 import { useWindowSize } from 'lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
-import { motion } from 'framer-motion'
 import { useMemo, useRef } from 'react'
-import { useIntersection } from 'lib/hooks'
-import clsx from 'clsx'
-import { GradientTitle } from './GradientTitle'
+// import { useIntersection } from 'lib/hooks'
 import { Title } from 'components/ui/title'
 import { Heading } from 'components/ui/heading'
 import { Description } from 'components/ui/description'
@@ -31,7 +28,7 @@ export const Information: React.FC<InformationProps> = ({
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef<HTMLElement>(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.5 })?.isIntersecting
+  // const intersecting = useIntersection(sectionRef, { threshold: 0.5 })?.isIntersecting
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth],

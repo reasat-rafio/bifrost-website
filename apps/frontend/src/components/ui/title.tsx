@@ -13,7 +13,7 @@ export const Title: React.FC<TitleProps> = ({ children, className, color = 'gree
         className,
         color === 'green' && 'text-teal',
         color === 'pink' && 'text-mauve',
-        'capitalize lg:text-[24px] sm:text-xl text-lg',
+        'uppercase lg:text-[24px] sm:text-xl text-lg',
       )}
     >
       {children}

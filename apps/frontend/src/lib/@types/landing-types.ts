@@ -124,3 +124,12 @@ export interface IUseCase {
   name: string
   url?: string
 }
+
+export interface ITestimonial {
+  _key: string
+  _type: string
+  image: SanityImage
+  name: string
+  quote: string
+  role: string
+}
