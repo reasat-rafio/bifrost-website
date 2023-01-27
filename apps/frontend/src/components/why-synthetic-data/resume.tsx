@@ -1,5 +1,5 @@
 import { CTAButton } from 'lib/@types/global-types'
-import { GradientBorder } from 'components/common/GradientBorder'
+import { GradientBorder } from 'components/ui/gradient-border'
 import { Button } from 'components/ui/button'
 import { PortableText } from 'utils/sanity'
 import { motion } from 'framer-motion'

@@ -11,6 +11,7 @@ import { GradientTitle } from './GradientTitle'
 import { Title } from 'components/ui/title'
 import { Heading } from 'components/ui/heading'
 import { Description } from 'components/ui/description'
+import { GradientBorder } from 'components/ui/gradient-border'
 
 interface InformationProps {
   type: string
@@ -35,32 +36,33 @@ export const Information: React.FC<InformationProps> = ({
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth],
   )
+  console.log(intersecting)
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative z-10 container | grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10"
-    >
-      <section className="space-y-6 my-auto md:w-[85%] w-full mr-auto">
-        <Title>{title}</Title>
-        <Heading>{heading}</Heading>
-        <Description>{description}</Description>
-        {!!cta && (
-          <div className="pt-6">
-            <Button type="href" variant="secondary" href={cta.href}>
-              {cta.title}
-            </Button>
-          </div>
-        )}
+    <GradientBorder ref={sectionRef}>
+      <section className="relative z-10 container | grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10">
+        <section className="space-y-6 my-auto md:w-[85%] w-full mr-auto">
+          <Title>{title}</Title>
+          <Heading>{heading}</Heading>
+          <Description>{description}</Description>
+          {!!cta && (
+            <div className="pt-6">
+              <Button type="href" variant="secondary" href={cta.href}>
+                {cta.title}
+              </Button>
+            </div>
+          )}
+        </section>
+        <figure className="rounded-[15px] overflow-hidden w-full">
+          <SanityImg
+            className="h-full w-full object-contain"
+            image={image}
+            alt={image.alt}
+            builder={imageUrlBuilder}
+            width={imageWidth}
+          />
+        </figure>
       </section>
-      <figure className="rounded-[15px] overflow-hidden w-full">
-        <SanityImg
-          className="h-full w-full object-contain"
-          image={image}
-          alt={image.alt}
-          builder={imageUrlBuilder}
-        />
-      </figure>
-    </section>
+    </GradientBorder>
   )
 }

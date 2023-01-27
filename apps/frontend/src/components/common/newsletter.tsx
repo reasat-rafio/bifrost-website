@@ -1,5 +1,5 @@
 import { PortableText } from 'utils/sanity'
-import { GradientBorder } from './GradientBorder'
+import { GradientBorder } from '../ui/gradient-border'
 import { CTAButton } from 'lib/@types/global-types'
 import { Button } from '../ui/button'
 import { motion } from 'framer-motion'

@@ -1,4 +1,4 @@
-import { GradientBorder } from 'src/components/common/GradientBorder'
+import { GradientBorder } from 'components/ui/gradient-border'
 // import { useCtx } from 'src/context/global'
 import React from 'react'
 import { motion } from 'framer-motion'
