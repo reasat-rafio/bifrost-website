@@ -17,6 +17,7 @@ import { Integrate } from 'components/landing/integrate'
 import { Results } from 'components/landing/results'
 import { Prediction } from 'components/landing/prediction'
 import { Information } from 'components/common/information'
+import { Outputs } from 'components/landing/outputs'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -107,6 +108,7 @@ export default function Home(props: SanityProps<any>) {
           'landing.partners': Partners,
           'landing.whyUs': WhyUs,
           'landing.aboutUs': AboutUs,
+          'landing.outputs': Outputs,
           'landing.integrate': Integrate,
           'landing.results': Results,
           'landing.prediction': Prediction,

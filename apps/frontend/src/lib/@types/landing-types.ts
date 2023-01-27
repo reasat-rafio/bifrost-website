@@ -95,3 +95,24 @@ export interface Result {
   isPercentage: boolean
   number: number
 }
+
+export interface AssetElement {
+  _key: string
+  _type: string
+  alt?: string
+  asset?: SanityImage
+  mp4?: string
+  video_mp4?: Video
+  video_webm?: Video
+  webm?: string
+}
+
+export interface Video {
+  _type: string
+  asset: VideoMp4Asset
+}
+
+export interface VideoMp4Asset {
+  _ref: string
+  _type: string
+}
