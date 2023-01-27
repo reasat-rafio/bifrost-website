@@ -46,7 +46,7 @@ export const Information: React.FC<InformationProps> = ({
           <Description>{description}</Description>
           {!!cta && (
             <div className="pt-6">
-              <Button type="href" variant="secondary" href={cta.href}>
+              <Button type="href" variant="outline" href={cta.href}>
                 {cta.title}
               </Button>
             </div>
