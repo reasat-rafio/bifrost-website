@@ -1,5 +1,6 @@
 import { Description } from 'components/ui/description'
 import { Heading } from 'components/ui/heading'
+import { Section } from 'components/ui/section'
 import { Title } from 'components/ui/title'
 import { AboutCollection } from 'lib/@types/landing-types'
 import { useWindowSize } from 'lib/hooks'
@@ -16,8 +17,8 @@ export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
   const LgScreen = windowWidth >= 1024
 
   return (
-    <section className="relative z-10 | container mx-auto lg:py-32 py-20">
-      <div className="space-y-20">
+    <Section borderBottom={false}>
+      <div className="sm:space-y-20 space-y-14">
         {collection.map(({ _key, description, heading, image, title }, index) => (
           <article key={_key} className="grid lg:grid-cols-2 col-span-1 | lg:gap-20 gap-10">
             {LgScreen ? (
@@ -43,7 +44,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
           </article>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }
 
@@ -54,7 +55,7 @@ interface IDescriptionBlock {
 }
 const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, heading }) => {
   return (
-    <section className="space-y-8 | font-light">
+    <section className="spacing_primary | font-light">
       {!!title && <Title>{title}</Title>}
       <Heading>{heading}</Heading>
       <Description>

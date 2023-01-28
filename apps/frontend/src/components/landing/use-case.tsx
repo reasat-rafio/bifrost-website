@@ -7,6 +7,7 @@ import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import Link from 'next/link'
 import 'swiper/css'
+import { Section } from 'components/ui/section'
 
 interface UseCaseProps {
   type: string
@@ -18,8 +19,8 @@ interface UseCaseProps {
 
 export const UseCase: React.FC<UseCaseProps> = ({ title, heading, description, useCases }) => {
   return (
-    <section className="relative z-10 | container mx-auto lg:py-32 py-20 | border-b border-secondary/80">
-      <div className="space-y-8 | font-light">
+    <Section>
+      <div className="spacing_primary | font-light">
         <Title>{title}</Title>
         <Heading>{heading}</Heading>
         <Description>{description}</Description>
@@ -61,6 +62,6 @@ export const UseCase: React.FC<UseCaseProps> = ({ title, heading, description, u
           ))}
         </Swiper>
       </div>
-    </section>
+    </Section>
   )
 }

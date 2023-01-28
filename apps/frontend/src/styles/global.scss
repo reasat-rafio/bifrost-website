@@ -18,6 +18,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.spacing_primary {
+  @apply sm:space-y-8 space-y-4;
+}
+
+.section_pading {
+  @apply lg:py-32 py-20;
+}
+
 .bifrost__card {
   background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
   backdrop-filter: blur(80px);

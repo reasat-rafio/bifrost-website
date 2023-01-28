@@ -4,6 +4,7 @@ import { Result } from 'lib/@types/landing-types'
 import { PortableText } from 'utils/sanity'
 import { DownArrowIcon, UpArrowIcon } from './graident-arrow-icons'
 import { Description } from 'components/ui/description'
+import { Section } from 'components/ui/section'
 
 interface ResultsProps {
   type: string
@@ -26,12 +27,12 @@ const renderIndecatorIcon = (indicatorIcon: Result['indicatorIcon']) => {
 }
 export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => {
   return (
-    <section className="relative z-10 | container mx-auto lg:py-32 py-20 | border-b border-secondary/80">
-      <div className="space-y-8 lg:px-[4%] | font-light">
+    <Section>
+      <div className="spacing_primary lg:px-[4%] | font-light">
         <Title>{title}</Title>
         <Heading>{heading}</Heading>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 sm:gap-10 gap-5 lg:mt-20 mt-14 ">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 sm:gap-10 gap-5 lg:mt-20 mt-14">
           {results.map(({ _key, description, indicatorIcon, isPercentage, number }) => (
             <div key={_key}>
               <div className="flex items-center | space-x-4 | lg:text-head-1 md:text-head-2 sm:text-head-4 text-head-3 | text-transparent bg-clip-text | bg-gradient-to-br from-[#70FCEB] via-[#9BB8FF] to-[#B794FF]">
@@ -62,6 +63,6 @@ export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => 
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

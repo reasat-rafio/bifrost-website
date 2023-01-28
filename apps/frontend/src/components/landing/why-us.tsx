@@ -1,6 +1,7 @@
 import { Button } from 'components/ui/button'
 import { Description } from 'components/ui/description'
 import { Heading } from 'components/ui/heading'
+import { Section } from 'components/ui/section'
 import { Title } from 'components/ui/title'
 import { CTAButton } from 'lib/@types/global-types'
 import { Collection } from 'lib/@types/landing-types'
@@ -27,13 +28,13 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   // const windowWidth = useWindowSize()?.width ?? 0
 
   return (
-    <section className="relative z-10 | container mx-auto lg:py-32 py-20 | border-b border-secondary/80">
-      <div className="space-y-8 | font-light">
+    <Section>
+      <div className="spacing_primary | font-light">
         <Title>{title}</Title>
         <Heading>{subtitle}</Heading>
         <Description>{description}</Description>
       </div>
-      <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 | md:gap-20 sm:gap-14 gap-10 md:py-28 py-16">
+      <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 md:gap-14 sm:gap-10 gap-4 md:py-28 sm:py-16 py-10">
         {collection.map(({ _key, description, image, title }) => (
           <article key={_key} className="space-y-5">
             <figure className="aspect-square max-h-7">
@@ -57,6 +58,6 @@ export const WhyUs: React.FC<WhyUsProps> = ({
           </Button>
         )}
       </div>
-    </section>
+    </Section>
   )
 }

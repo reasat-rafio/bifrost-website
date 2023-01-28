@@ -19,15 +19,14 @@ export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle
   const intersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting ?? false
 
   return (
-    <section ref={sectionRef} className="relative z-20 | lg:py-32 py-20 overflow-clip">
+    <section ref={sectionRef} className="relative z-20 |  overflow-clip section_pading">
       {!!showWave && <WaveScene play={intersecting} />}
-      <div className="z-20 relative container mx-auto space-y-6">
-        <div className="flex flex-col justify-center | space-y-8 lg:px-[4%] | font-light"></div>
+      <div className="z-20 relative container mx-auto spacing_primary">
         <Title className="text-center">{title}</Title>
         <Description textBig className="text-center">
           {subtitle}
         </Description>
-        <div className="text-center !mt-12">
+        <div className="text-center sm:!mt-12 !mt-8">
           <Button type="href" variant="secondary" href={ctaButton.href}>
             {ctaButton.title}
           </Button>

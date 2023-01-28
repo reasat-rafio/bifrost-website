@@ -1,6 +1,6 @@
 import { Button } from 'components/ui/button'
 import { Description } from 'components/ui/description'
-import { Title } from 'components/ui/title'
+import { Section } from 'components/ui/section'
 import { CTAButton } from 'lib/@types/global-types'
 import React from 'react'
 import { PortableText } from 'utils/sanity'
@@ -14,8 +14,8 @@ interface CallOutProps {
 
 export const CallOut: React.FC<CallOutProps> = ({ ctaButton, description, heading }) => {
   return (
-    <section className="z-20 relative container mx-auto space-y-6 lg:py-32 py-20">
-      <div className="flex flex-col justify-center | space-y-8 lg:px-[4%] | font-light"></div>
+    <Section borderBottom={false}>
+      <div className="flex flex-col justify-center | spacing_primary lg:px-[4%] | font-light"></div>
       <div className="text-center text-[64px] font-light">
         <PortableText
           blocks={heading}
@@ -37,6 +37,6 @@ export const CallOut: React.FC<CallOutProps> = ({ ctaButton, description, headin
           {ctaButton.title}
         </Button>
       </div>
-    </section>
+    </Section>
   )
 }

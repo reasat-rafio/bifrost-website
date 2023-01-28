@@ -9,6 +9,7 @@ import { Title } from 'components/ui/title'
 import { Heading } from 'components/ui/heading'
 import { Description } from 'components/ui/description'
 import { GradientBorder } from 'components/ui/gradient-border'
+import { Section } from 'components/ui/section'
 
 interface InformationProps {
   type: string
@@ -36,8 +37,12 @@ export const Information: React.FC<InformationProps> = ({
 
   return (
     <GradientBorder innerClass="py-16" ref={sectionRef}>
-      <section className="relative z-10 container mx-auto  | grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10 ">
-        <section className="space-y-6 my-auto md:w-[85%] w-full mr-auto ">
+      <Section
+        borderBottom={false}
+        padding={false}
+        className="grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10"
+      >
+        <section className="spacing_primary my-auto md:w-[85%] w-full mr-auto ">
           <Title>{title}</Title>
           <Heading>{heading}</Heading>
           <Description>{description}</Description>
@@ -58,7 +63,7 @@ export const Information: React.FC<InformationProps> = ({
             width={imageWidth}
           />
         </figure>
-      </section>
+      </Section>
     </GradientBorder>
   )
 }
