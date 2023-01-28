@@ -17,7 +17,7 @@ import 'swiper/css/mousewheel'
 
 export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
   const containerRef = useRef(null)
-  const intersection = useIntersection(containerRef, { threshold: 0.25 })
+  const intersection = useIntersection(containerRef, { threshold: 0.35 })
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (

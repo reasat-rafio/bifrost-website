@@ -19,7 +19,7 @@ interface PartnersProps {
 
 export const Partners: React.FC<PartnersProps> = ({ partners }) => {
   const containerRef = useRef(null)
-  const intersection = useIntersection(containerRef, { threshold: 0.25 })
+  const intersection = useIntersection(containerRef, { threshold: 0.35 })
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (

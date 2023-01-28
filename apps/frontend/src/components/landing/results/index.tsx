@@ -30,7 +30,7 @@ const renderIndecatorIcon = (indicatorIcon: Result['indicatorIcon']) => {
 }
 export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => {
   const sectionRef = useRef(null)
-  const isIntersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting ?? false
+  const isIntersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
 
   return (
     <Section ref={sectionRef}>

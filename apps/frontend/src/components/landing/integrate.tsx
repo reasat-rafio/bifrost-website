@@ -16,7 +16,7 @@ interface IntegrateProps {
 
 export const Integrate: React.FC<IntegrateProps> = ({ ctaButton, title, subtitle, showWave }) => {
   const sectionRef = useRef(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting ?? false
+  const intersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
 
   return (
     <section ref={sectionRef} className="relative z-20 |  overflow-clip section_pading">

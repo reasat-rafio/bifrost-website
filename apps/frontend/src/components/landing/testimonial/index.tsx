@@ -11,6 +11,7 @@ import { Autoplay, Keyboard, Mousewheel } from 'swiper'
 import 'swiper/css/autoplay'
 import 'swiper/css/keyboard'
 import 'swiper/css'
+import { useIntersection } from 'lib/hooks'
 
 interface TestimonialProps {
   type: string
@@ -20,13 +21,16 @@ interface TestimonialProps {
 
 export const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
   const sectionRef = useRef<HTMLElement>(null)
+  const isIntersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
 
   return (
     <GradientBorder innerClass="py-16" className="lg:my-32 my-20" ref={sectionRef}>
       <section className="relative z-10 container mx-auto">
-        <Title className="text-center">{title}</Title>
+        <Title animate={{ show: isIntersecting }} className="text-center">
+          {title}
+        </Title>
 
-        <div className="my-20">
+        <div className="lg:my-20 sm:my-12 my-10">
           <Swiper
             modules={[Autoplay, Mousewheel, Keyboard]}
             autoplay
@@ -60,25 +64,34 @@ const Testimonial: React.FC<ITestimonial> = ({ image, name, quote, role }) => {
   }, [blockquoteRef])
 
   return (
-    <section className="flex space-x-10 ">
-      <span style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}>
+    <section className="flex lg:space-x-10 sm:space-x-5 space-x-2">
+      <span
+        className="md:block hidden"
+        style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}
+      >
         <QuotationIcon1 />
       </span>
       <div className="flex-1">
-        <blockquote ref={blockquoteRef} className="text-[24px] font-light">
+        <blockquote
+          ref={blockquoteRef}
+          className="xl:text-[24px] lg:text-2xl sm:text-xl text-base font-light"
+        >
           “{quote}”
         </blockquote>
         <div className="flex mt-10">
           <figure className="flex-1">
             <SanityImg width={100} builder={imageUrlBuilder} image={image} alt={image?.alt} />
           </figure>
-          <div className="flex flex-col space-y-3 font-light">
-            <span className="text-[26px]">{name}</span>
-            <Description>{role}</Description>
+          <div className="flex items-end justify-center flex-col space-y-1 font-light">
+            <span className="xl:text-[26px] sm:text-xl text-base">{name}</span>
+            <span className="xl:text-[19px] sm:text-lg text-sm">{role}</span>
           </div>
         </div>
       </div>
-      <span style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}>
+      <span
+        className="md:block hidden"
+        style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}
+      >
         <QuotationIcon2 />
       </span>
     </section>

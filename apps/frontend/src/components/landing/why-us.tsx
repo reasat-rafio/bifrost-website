@@ -28,9 +28,8 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   collection,
   ctaButton,
 }) => {
-  // const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting ?? false
+  const intersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
 
   return (
     <Section ref={sectionRef}>
