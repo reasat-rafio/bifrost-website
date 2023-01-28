@@ -37,7 +37,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 md:gap-14 sm:gap-10 gap-4 md:py-28 sm:py-16 py-10">
         {collection.map(({ _key, description, image, title }) => (
           <article key={_key} className="space-y-5">
-            <figure className="aspect-square max-h-7">
+            <figure className="aspect-square w-[64px] h-[64px] border p-3 rounded-[10px] border-secondary/80">
               <SanityImg
                 className="h-full w-full object-contain"
                 width={50}
