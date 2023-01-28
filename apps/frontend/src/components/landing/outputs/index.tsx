@@ -27,13 +27,7 @@ export const Outputs: React.FC<OutputsProps> = ({ assets, title, heading, descri
       </div>
 
       <div className="mt-10">
-        <Swiper
-          slidesPerView={'auto'}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-        >
+        <Swiper slidesPerView={'auto'} spaceBetween={30}>
           {assets.map(({ _key, alt, mp4, asset, webm }) => (
             <SwiperSlide key={_key} className="!w-auto !h-[300px]">
               {!!webm || !!mp4 ? (

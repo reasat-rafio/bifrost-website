@@ -20,7 +20,7 @@ import { Information } from 'components/common/information'
 import { Outputs } from 'components/landing/outputs'
 import { UseCase } from 'components/landing/use-case'
 import { CallOut } from 'components/landing/call-out'
-import { Testimonial } from 'components/landing/testimonial'
+import { Testimonial } from 'components/landing/testimonial/indexx'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -111,7 +111,7 @@ export default function Home(props: SanityProps<any>) {
           'landing.outputs': Outputs,
           'landing.integrate': Integrate,
           'landing.results': Results,
-          // 'landing.prediction': Prediction,
+          'landing.prediction': Prediction,
           'landing.testimonial': Testimonial,
           infoBlock: Information,
           // 'landing.products': Product,
