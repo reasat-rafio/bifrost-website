@@ -43,7 +43,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({
           <motion.article
             initial="from"
             animate={intersecting ? 'to' : 'exit'}
-            variants={VFadeInOut({ delay: 0.415 + index * 0.05 })}
+            variants={VFadeInOut({ delay: 0.415 + index * 0.08 })}
             key={_key}
             className="space-y-5"
           >

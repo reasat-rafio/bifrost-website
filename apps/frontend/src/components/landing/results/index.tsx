@@ -35,8 +35,8 @@ export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => 
   return (
     <Section ref={sectionRef}>
       <div className="spacing_primary lg:px-[4%] | font-light">
-        <Title>{title}</Title>
-        <Heading>{heading}</Heading>
+        <Title animate={{ show: isIntersecting, delay: 0.1 }}>{title}</Title>
+        <Heading animate={{ show: isIntersecting, delay: 0.15 }}>{heading}</Heading>
 
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 sm:gap-10 gap-5 lg:mt-20 mt-14">
           {results.map(({ _key, description, indicatorIcon, isPercentage, number }) => (
@@ -51,7 +51,7 @@ export const Results: React.FC<ResultsProps> = ({ heading, results, title }) => 
                 </span>
               </div>
 
-              <Description>
+              <Description animate={{ show: isIntersecting, delay: 0.2 }}>
                 <PortableText
                   blocks={description}
                   serializers={{
