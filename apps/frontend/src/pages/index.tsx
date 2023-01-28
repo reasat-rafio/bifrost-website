@@ -22,6 +22,7 @@ import { UseCase } from 'components/landing/use-case'
 import { CallOut } from 'components/landing/call-out'
 import { Testimonials } from 'components/landing/testimonial'
 
+// TODO fix the metadata missing warning from assets[]
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "landingPage"][0] {
@@ -42,6 +43,7 @@ const query = groq`{
         asset->{
          ...,
          metadata{
+          ...,
           dimensions
           },
         },
@@ -52,7 +54,6 @@ const query = groq`{
         ...,
         "image": ${withDimensions('image')},
       },
-
       images[]{
         ...,
         asset->{

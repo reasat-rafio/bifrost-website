@@ -28,18 +28,18 @@ export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
                 {index % 2 === 0 ? (
                   <>
                     <DescriptionBlock description={description} heading={heading} title={title} />
-                    <ImageBlock index={index} image={image} />
+                    <ImageBlock windowWidth={windowWidth} index={index} image={image} />
                   </>
                 ) : (
                   <>
-                    <ImageBlock index={index} image={image} />
+                    <ImageBlock windowWidth={windowWidth} index={index} image={image} />
                     <DescriptionBlock description={description} heading={heading} title={title} />
                   </>
                 )}
               </>
             ) : (
               <>
-                <ImageBlock index={index} image={image} />
+                <ImageBlock windowWidth={windowWidth} index={index} image={image} />
                 <DescriptionBlock description={description} heading={heading} title={title} />
               </>
             )}
@@ -60,7 +60,7 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, hea
     <section className="spacing_primary | font-light">
       {!!title && <Title>{title}</Title>}
       <Heading>{heading}</Heading>
-      <Description className="prose max-w-none prose-ul:p-0 prose-ul:m-0">
+      <Description type="div" className="prose max-w-none prose-ul:p-0 prose-ul:m-0">
         <PortableText
           blocks={description}
           serializers={{
@@ -85,15 +85,22 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, hea
 interface IImageBlock {
   image: SanityImage
   index: number
+  windowWidth: number
 }
-const ImageBlock: React.FC<IImageBlock> = ({ image, index }) => {
+const ImageBlock: React.FC<IImageBlock> = ({ image, index, windowWidth }) => {
   return (
     <motion.figure
       initial="from"
       whileInView="to"
       variants={VFadeInOut({ flip: !!(index % 2), duration: 0.8 })}
     >
-      <SanityImg width={600} image={image} builder={imageUrlBuilder} alt={image.alt} />
+      <SanityImg
+        className="rounded-[15px] h-full w-full object-cover"
+        width={windowWidth >= 1280 ? 600 : windowWidth >= 640 ? 400 : 300}
+        image={image}
+        builder={imageUrlBuilder}
+        alt={image.alt}
+      />
     </motion.figure>
   )
 }

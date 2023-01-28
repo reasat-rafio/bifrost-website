@@ -17,9 +17,9 @@ export const UpArrowIcon: React.FC<UpArrowIconsProps> = ({}) => {
           y2="-4.90572"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#70FCEB" />
-          <stop offset="0.483161" stop-color="#9BB8FF" />
-          <stop offset="0.901042" stop-color="#B794FF" />
+          <stop stopColor="#70FCEB" />
+          <stop offset="0.483161" stopColor="#9BB8FF" />
+          <stop offset="0.901042" stopColor="#B794FF" />
         </linearGradient>
       </defs>
     </svg>
@@ -43,9 +43,9 @@ export const DownArrowIcon = () => {
           y2="42.9052"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#70FCEB" />
-          <stop offset="0.483161" stop-color="#9BB8FF" />
-          <stop offset="0.901042" stop-color="#B794FF" />
+          <stop stopColor="#70FCEB" />
+          <stop offset="0.483161" stopColor="#9BB8FF" />
+          <stop offset="0.901042" stopColor="#B794FF" />
         </linearGradient>
       </defs>
     </svg>

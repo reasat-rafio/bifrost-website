@@ -29,7 +29,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   ctaButton,
 }) => {
   const sectionRef = useRef(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
+  const intersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false
 
   return (
     <Section ref={sectionRef}>

@@ -5,9 +5,13 @@ import { AssetElement } from 'lib/@types/landing-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
-import 'swiper/css'
 import { Video } from './video'
 import { Section } from 'components/ui/section'
+import { useWindowSize } from 'lib/hooks'
+import { Autoplay, Keyboard, Mousewheel } from 'swiper'
+import 'swiper/css/autoplay'
+import 'swiper/css/keyboard'
+import 'swiper/css'
 
 interface OutputsProps {
   type: string
@@ -18,6 +22,8 @@ interface OutputsProps {
 }
 
 export const Outputs: React.FC<OutputsProps> = ({ assets, title, heading, description }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
+
   return (
     <Section>
       <div className="spacing_primary | font-light">
@@ -27,19 +33,27 @@ export const Outputs: React.FC<OutputsProps> = ({ assets, title, heading, descri
       </div>
 
       <div className="mt-10">
-        <Swiper slidesPerView={'auto'} spaceBetween={30}>
+        <Swiper
+          modules={[Autoplay, Mousewheel, Keyboard]}
+          speed={700}
+          grabCursor
+          keyboard
+          autoplay
+          slidesPerView={'auto'}
+          spaceBetween={30}
+        >
           {assets.map(({ _key, alt, mp4, asset, webm }) => (
-            <SwiperSlide key={_key} className="!w-auto !h-[300px]">
-              {!!webm || !!mp4 ? (
-                <Video mp4={mp4} webm={webm} />
-              ) : (
+            <SwiperSlide key={_key} className="!w-fit lg:!h-[300px] sm:!h-[250px] !h-[200px]">
+              {!!asset ? (
                 <SanityImg
-                  className="object-cover rounded-[15px]"
-                  height={300}
+                  className="object-cover h-full w-full rounded-[15px]"
+                  height={windowWidth >= 1024 ? 300 : windowWidth >= 640 ? 250 : 220}
                   builder={imageUrlBuilder}
                   image={asset}
                   alt={alt}
                 />
+              ) : (
+                <Video mp4={mp4} webm={webm} />
               )}
             </SwiperSlide>
           ))}

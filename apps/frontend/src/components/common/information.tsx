@@ -31,7 +31,7 @@ export const Information: React.FC<InformationProps> = ({
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef<HTMLElement>(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting
+  const intersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth],

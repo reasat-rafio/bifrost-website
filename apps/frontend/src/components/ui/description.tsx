@@ -6,6 +6,7 @@ interface DescriptionProps {
   className?: string
   children: ReactNode
   textBig?: boolean
+  type?: 'div' | 'p'
   animate?: {
     show?: boolean
     delay?: number
@@ -17,6 +18,7 @@ export const Description: React.FC<DescriptionProps> = ({
   className,
   textBig = false,
   animate,
+  type = 'p',
 }) => {
   const props = {
     className: `${className} ${
@@ -25,22 +27,46 @@ export const Description: React.FC<DescriptionProps> = ({
   }
   return (
     <>
-      {!!animate ? (
-        <AnimatePresence>
-          {animate.show && (
-            <motion.p
-              initial="from"
-              animate="to"
-              exit="exit"
-              variants={VFadeInOut({ delay: animate.delay })}
-              {...props}
-            >
-              {children as any}
-            </motion.p>
+      {type === 'p' ? (
+        <>
+          {!!animate ? (
+            <AnimatePresence>
+              {animate.show && (
+                <motion.p
+                  initial="from"
+                  animate="to"
+                  exit="exit"
+                  variants={VFadeInOut({ delay: animate.delay })}
+                  {...props}
+                >
+                  {children as any}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          ) : (
+            <p {...props}>{children}</p>
           )}
-        </AnimatePresence>
+        </>
       ) : (
-        <p {...props}>{children}</p>
+        <>
+          {!!animate ? (
+            <AnimatePresence>
+              {animate.show && (
+                <motion.div
+                  initial="from"
+                  animate="to"
+                  exit="exit"
+                  variants={VFadeInOut({ delay: animate.delay })}
+                  {...props}
+                >
+                  {children as any}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          ) : (
+            <div {...props}>{children}</div>
+          )}
+        </>
       )}
     </>
   )

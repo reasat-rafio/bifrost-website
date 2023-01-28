@@ -3,7 +3,6 @@ import { Title } from 'components/ui/title'
 import { ITestimonial } from 'lib/@types/landing-types'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Description } from 'components/ui/description'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { QuotationIcon1, QuotationIcon2 } from './quotation-icons'
@@ -11,7 +10,7 @@ import { Autoplay, Keyboard, Mousewheel } from 'swiper'
 import 'swiper/css/autoplay'
 import 'swiper/css/keyboard'
 import 'swiper/css'
-import { useIntersection } from 'lib/hooks'
+import { useIntersection, useWindowSize } from 'lib/hooks'
 
 interface TestimonialProps {
   type: string
@@ -21,7 +20,7 @@ interface TestimonialProps {
 
 export const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
   const sectionRef = useRef<HTMLElement>(null)
-  const isIntersecting = useIntersection(sectionRef, { threshold: 0.35 })?.isIntersecting ?? false
+  const isIntersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false
 
   return (
     <GradientBorder innerClass="py-16" className="lg:my-32 my-20" ref={sectionRef}>
@@ -55,6 +54,7 @@ export const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }
 }
 
 const Testimonial: React.FC<ITestimonial> = ({ image, name, quote, role }) => {
+  const windowWidth = useWindowSize()?.width ?? 0
   const blockquoteRef = useRef<HTMLElement>(null)
   const [blockquoteElemHeight, setBlockquoteElemHeight] = useState(0)
 
@@ -80,7 +80,13 @@ const Testimonial: React.FC<ITestimonial> = ({ image, name, quote, role }) => {
         </blockquote>
         <div className="flex mt-10">
           <figure className="flex-1">
-            <SanityImg width={100} builder={imageUrlBuilder} image={image} alt={image?.alt} />
+            <SanityImg
+              className="max-h-[100px] object-contain"
+              width={windowWidth >= 640 ? 100 : 80}
+              builder={imageUrlBuilder}
+              image={image}
+              alt={image?.alt}
+            />
           </figure>
           <div className="flex items-end justify-center flex-col space-y-1 font-light">
             <span className="xl:text-[26px] sm:text-xl text-base">{name}</span>

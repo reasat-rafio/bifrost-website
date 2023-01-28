@@ -19,7 +19,7 @@ interface PartnersProps {
 
 export const Partners: React.FC<PartnersProps> = ({ partners }) => {
   const containerRef = useRef(null)
-  const intersection = useIntersection(containerRef, { threshold: 0.35 })
+  const intersection = useIntersection(containerRef, { threshold: 0.3 })
   const windowWidth = useWindowSize()?.width ?? 0
 
   return (
@@ -35,6 +35,7 @@ export const Partners: React.FC<PartnersProps> = ({ partners }) => {
         className="!py-10 border-b border-secondary/80"
         centeredSlides
         loop
+        grabCursor
         slidesPerView={2}
         spaceBetween={50}
         breakpoints={{
@@ -75,11 +76,23 @@ export const Partners: React.FC<PartnersProps> = ({ partners }) => {
               {!!url ? (
                 <Link href={url}>
                   <a title={name ?? null}>
-                    <SanityImg builder={imageUrlBuilder} image={logo} width={200} alt={logo.alt} />
+                    <SanityImg
+                      className="max-h-[80px] object-contain"
+                      builder={imageUrlBuilder}
+                      image={logo}
+                      width={windowWidth >= 640 ? 200 : 100}
+                      alt={logo.alt}
+                    />
                   </a>
                 </Link>
               ) : (
-                <SanityImg builder={imageUrlBuilder} image={logo} width={200} alt={logo.alt} />
+                <SanityImg
+                  className="max-h-[80px] object-contain"
+                  builder={imageUrlBuilder}
+                  image={logo}
+                  width={windowWidth >= 640 ? 200 : 100}
+                  alt={logo.alt}
+                />
               )}
             </motion.div>
           </SwiperSlide>
