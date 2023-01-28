@@ -16,10 +16,7 @@ export const Description: React.FC<DescriptionProps> = ({
   children,
   className,
   textBig = false,
-  animate = {
-    delay: 0,
-    show: false,
-  },
+  animate,
 }) => {
   const props = {
     className: `${className} ${

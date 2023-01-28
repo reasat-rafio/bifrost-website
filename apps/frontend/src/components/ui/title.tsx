@@ -11,15 +11,7 @@ interface TitleProps {
   }
 }
 
-export const Title: React.FC<TitleProps> = ({
-  children,
-  className,
-  color = 'green',
-  animate = {
-    delay: 0,
-    show: false,
-  },
-}) => {
+export const Title: React.FC<TitleProps> = ({ children, className, color = 'green', animate }) => {
   const props = {
     className: `${className} ${color === 'green' && 'text-teal'} ${
       color === 'pink' && 'text-mauve'

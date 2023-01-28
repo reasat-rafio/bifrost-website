@@ -11,19 +11,12 @@ interface HeadingProps {
   }
 }
 
-export const Heading: React.FC<HeadingProps> = ({
-  children,
-  className,
-  animate = {
-    delay: 0,
-    show: false,
-  },
-}) => {
+export const Heading: React.FC<HeadingProps> = ({ children, className, animate }) => {
   const props = { className: `${className} xl:text-[48px] lg:text-5xl md:text-5xl text-3xl` }
 
   return (
     <>
-      {animate ? (
+      {!!animate ? (
         <AnimatePresence>
           {animate.show && (
             <motion.h4
