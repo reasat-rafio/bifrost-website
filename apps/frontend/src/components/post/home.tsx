@@ -1,4 +1,4 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 import { HomeSection } from 'lib/@types/blog-types'
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
 import { useVisibleScroll, useWindowSize } from 'lib/hooks'
@@ -10,7 +10,11 @@ interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
 }
 
-const Home: React.FC<IHomeSection> = ({ headline, subHeadline, setHeroSectionHeight }) => {
+const Home: React.FC<IHomeSection> = ({
+  // headline
+  subHeadline,
+  setHeroSectionHeight,
+}) => {
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? { height: 0, width: 0 }
   const sectionRef = useRef<HTMLElement>(null)
   const visibleScroll = useVisibleScroll(sectionRef)
@@ -35,7 +39,7 @@ const Home: React.FC<IHomeSection> = ({ headline, subHeadline, setHeroSectionHei
       <BackgroundNoise />
 
       <div className="z-10 relative container | md:h-[60vh] h-[70vh] | flex flex-col justify-center items-center">
-        <GradientTitle className="mx-auto">{headline}</GradientTitle>
+        {/* <GradientTitle className="mx-auto">{headline}</GradientTitle> */}
         <h1 className="xl:text-head-1 md:text-head-3 text-head-2-mobile leading-none font-primary text-center">
           {subHeadline}
         </h1>

@@ -1,4 +1,4 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeSection } from 'lib/@types/use-case-types'
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
@@ -14,7 +14,7 @@ interface IHomeSection extends HomeSection {
 
 const Home: React.FC<IHomeSection> = ({
   ctaButton,
-  heading,
+  // heading,
   subtitle,
   title,
   setHeroSectionHeight,
@@ -42,7 +42,7 @@ const Home: React.FC<IHomeSection> = ({
 
       <div className="relative z-10 | container min-h-screen | flex flex-col justify-center items-center | lg:py-[5%] py-[30%] | overflow-y-clip">
         <div className="flex flex-col | text-center | lg:space-y-12 space-y-5 ">
-          <GradientTitle className="mx-auto">{heading}</GradientTitle>
+          {/* <GradientTitle className="mx-auto">{heading}</GradientTitle> */}
           <h1 className="lg:text-head-1 text-head-2-mobile leading-none font-primary text-center">
             <PortableText
               blocks={title}

@@ -59,7 +59,7 @@ export const CollectionBlock: React.FC<CollectionProps> = ({ header, collection 
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={ScaleUpParent()}
+        variants={ScaleUpParent}
         onMouseMove={onMouseMoveAction}
         className={clsx('cards | grid grid-cols-12 gap-5')}
       >
@@ -77,7 +77,7 @@ interface ItemProps extends Collection {
 const Perk: React.FC<ItemProps> = ({ image, subtitle, title, imageWidth }) => {
   return (
     <motion.article
-      variants={ScaleUpChild()}
+      variants={ScaleUpChild}
       transition={{ type: 'tween', duration: 0.7 }}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >

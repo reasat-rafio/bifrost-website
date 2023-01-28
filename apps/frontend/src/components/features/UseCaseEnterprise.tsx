@@ -1,4 +1,4 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 // import { Pagination } from 'components/landing/HomeService/Pagination'
 import Service from 'src/components/Service'
 // import { Heading } from 'components/ui/heading'
@@ -8,9 +8,9 @@ import { ReactElement, useRef, useState } from 'react'
 
 export default function UseCaseEnterprise({
   enterprises,
-  // headline,
-  subHeadline,
-}: EnterpriseSection): ReactElement {
+}: // headline,
+// subHeadline,
+EnterpriseSection): ReactElement {
   const serviceRef = useRef<HTMLDivElement>(null)
 
   const [current, setCurrent] = useState(0)
@@ -42,7 +42,7 @@ export default function UseCaseEnterprise({
   return (
     <section className="container xl:pt-32 lg:pt-16 pt-14 ">
       <header className="max-w-2xl mx-auto ">
-        <GradientTitle className="mx-auto">{subHeadline}</GradientTitle>
+        {/* <GradientTitle className="mx-auto">{subHeadline}</GradientTitle> */}
         {/* <HeadingclassName="text-center">{headline}</Header> */}
       </header>
       <div

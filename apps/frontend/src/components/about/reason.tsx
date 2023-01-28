@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 // import { Heading } from 'components/ui/heading'
 import { motion } from 'framer-motion'
 import { AgendaProps, ReasonSection } from 'lib/@types/about-us-types'
@@ -8,7 +8,7 @@ import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder, PortableText } from 'utils/sanity'
 import { useIntersection } from 'lib/hooks'
 
-const Reason: React.FC<ReasonSection> = ({ agendas, title }) => {
+const Reason: React.FC<ReasonSection> = ({ agendas }) => {
   const sectionRef = useRef<HTMLElement>(null)
   const intersecting = useIntersection(sectionRef, { threshold: 0.5 })?.isIntersecting
   const [active, setActive] = useState(0)
@@ -16,7 +16,7 @@ const Reason: React.FC<ReasonSection> = ({ agendas, title }) => {
   return (
     <section ref={sectionRef} className="mx-5">
       <div className="z-10 relative | 3xl:max-w-6xl 2xl:max-w-5xl max-w-5xl | flex flex-col lg:items-start items-center | mx-auto lg:pt-16 xl:mb-40 lg:mb-20 mb-16 space-y-7">
-        <GradientTitle>{title}</GradientTitle>
+        {/* <GradientTitle>{title}</GradientTitle> */}
         <div className="grid lg:grid-cols-2 grid-cols-1 | lg:space-y-0 space-y-4">
           {/* <HeadingclassName="lg:text-left text-center">{subtitle}</Header> */}
           <div className="lg:pb-0 pb-5">

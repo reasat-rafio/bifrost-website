@@ -1,5 +1,5 @@
 import { Variants, motion } from 'framer-motion'
-import { Dispatch, RefObject, SetStateAction, useEffect } from 'react'
+import { Dispatch, RefObject, SetStateAction } from 'react'
 
 interface PlayIconProps {
   play: boolean

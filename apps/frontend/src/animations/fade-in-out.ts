@@ -1,6 +1,6 @@
 import { Variants } from 'framer-motion'
 
-const EASE = [0.16, 1, 0.3, 1]
+// const EASE = [0.16, 1, 0.3, 1]
 
 export function VFadeInOut({
   duration = 0.5,

@@ -1,4 +1,4 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 // import { Heading } from 'components/ui/heading'
 import { TeamSection } from 'lib/@types/about-us-types'
 import { useWindowSize } from 'react-use'
@@ -7,7 +7,7 @@ import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
 import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
-const Team: React.FC<TeamSection> = ({ title, members }) => {
+const Team: React.FC<TeamSection> = ({ members }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -22,20 +22,20 @@ const Team: React.FC<TeamSection> = ({ title, members }) => {
         viewport={{ once: true }}
         className="max-w-2xl mx-auto mb-7"
       >
-        <GradientTitle className="mx-auto">{title}</GradientTitle>
+        {/* <GradientTitle className="mx-auto">{title}</GradientTitle> */}
         {/* <Header>{subtitle}</Header> */}
       </motion.header>
       <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={ScaleUpParent(0.15)}
+        variants={ScaleUpParent}
         className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5"
       >
         {members.map((team) => (
           <motion.div
             key={team._key}
-            variants={ScaleUpChild()}
+            variants={ScaleUpChild}
             className="flex flex-col items-center"
           >
             <figure className="rounded-xl overflow-hidden !w-full max-h-[310px] aspect-square">
