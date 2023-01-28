@@ -8,6 +8,10 @@ import { Collection } from 'lib/@types/landing-types'
 // import { useWindowSize } from 'lib/hooks'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
+import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { useIntersection } from 'lib/hooks'
+import { VFadeInOut, VFadeInOutContainer } from 'animations/fade-in-out'
 
 interface WhyUsProps {
   type: string
@@ -26,13 +30,16 @@ export const WhyUs: React.FC<WhyUsProps> = ({
   ctaButton,
 }) => {
   // const windowWidth = useWindowSize()?.width ?? 0
+  const headerContainerRef = useRef(null)
+  const intersecting =
+    useIntersection(headerContainerRef, { threshold: 0.25 })?.isIntersecting ?? false
 
   return (
     <Section>
-      <div className="spacing_primary | font-light">
-        <Title>{title}</Title>
-        <Heading>{subtitle}</Heading>
-        <Description>{description}</Description>
+      <div ref={headerContainerRef} className="spacing_primary | font-light">
+        <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
+        <Heading animate={{ show: intersecting, delay: 0.15 }}>{subtitle}</Heading>
+        <Description animate={{ show: intersecting, delay: 0.2 }}>{description}</Description>
       </div>
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 | lg:gap-20 md:gap-14 sm:gap-10 gap-4 md:py-28 sm:py-16 py-10">
         {collection.map(({ _key, description, image, title }) => (
