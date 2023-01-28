@@ -92,12 +92,12 @@ export default function Home(props: SanityProps<any>) {
 
   return (
     <div>
-      {renderObjectArray(sections, {
+      {/* {renderObjectArray(sections, {
         'landing.home': useCallback(
           (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
           [],
         ),
-      })}
+      })} */}
       <div
         className="bg-black relative h-full"
         style={{
@@ -111,7 +111,7 @@ export default function Home(props: SanityProps<any>) {
           'landing.outputs': Outputs,
           'landing.integrate': Integrate,
           'landing.results': Results,
-          'landing.prediction': Prediction,
+          // 'landing.prediction': Prediction,
           'landing.testimonial': Testimonial,
           infoBlock: Information,
           // 'landing.products': Product,

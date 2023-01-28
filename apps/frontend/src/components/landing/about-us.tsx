@@ -54,12 +54,29 @@ interface IDescriptionBlock {
   description: any
 }
 const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, heading }) => {
+  console.log('here')
+
   return (
     <section className="spacing_primary | font-light">
       {!!title && <Title>{title}</Title>}
       <Heading>{heading}</Heading>
-      <Description>
-        <PortableText blocks={description} />
+      <Description className="prose max-w-none prose-ul:p-0 prose-ul:m-0">
+        <PortableText
+          blocks={description}
+          serializers={{
+            listItem: ({ children }: any) => {
+              return (
+                <span className="flex items-center space-x-3 mb-5">
+                  <span
+                    style={{ transform: `matrix(0.69, 0.72, -0.69, 0.72, 0, 0)` }}
+                    className="sm:w-[15.18px] sm:h-[15.18px] h-3 w-3 bg-[#B794FF] rounded-[4px]"
+                  />
+                  <span>{children}</span>
+                </span>
+              )
+            },
+          }}
+        />
       </Description>
     </section>
   )
