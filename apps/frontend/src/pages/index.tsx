@@ -20,7 +20,7 @@ import { Information } from 'components/common/information'
 import { Outputs } from 'components/landing/outputs'
 import { UseCase } from 'components/landing/use-case'
 import { CallOut } from 'components/landing/call-out'
-import { Testimonial } from 'components/landing/testimonial/indexx'
+import { Testimonials } from 'components/landing/testimonial'
 
 const query = groq`{
   "site": ${siteQuery},
@@ -92,12 +92,12 @@ export default function Home(props: SanityProps<any>) {
 
   return (
     <div>
-      {renderObjectArray(sections, {
+      {/* {renderObjectArray(sections, {
         'landing.home': useCallback(
           (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
           [],
         ),
-      })}
+      })} */}
       <div
         className="bg-black relative h-full"
         style={{
@@ -112,7 +112,7 @@ export default function Home(props: SanityProps<any>) {
           'landing.integrate': Integrate,
           'landing.results': Results,
           'landing.prediction': Prediction,
-          'landing.testimonial': Testimonial,
+          'landing.testimonial': Testimonials,
           infoBlock: Information,
           // 'landing.products': Product,
           // 'landing.demo': Demo,
