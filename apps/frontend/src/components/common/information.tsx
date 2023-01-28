@@ -4,12 +4,14 @@ import { useWindowSize } from 'lib/hooks'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { useMemo, useRef } from 'react'
-// import { useIntersection } from 'lib/hooks'
+import { useIntersection } from 'lib/hooks'
 import { Title } from 'components/ui/title'
 import { Heading } from 'components/ui/heading'
 import { Description } from 'components/ui/description'
 import { GradientBorder } from 'components/ui/gradient-border'
 import { Section } from 'components/ui/section'
+import { AnimatePresence, motion } from 'framer-motion'
+import { VFadeInOut } from 'animations/fade-in-out'
 
 interface InformationProps {
   type: string
@@ -29,7 +31,7 @@ export const Information: React.FC<InformationProps> = ({
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef<HTMLElement>(null)
-  // const intersecting = useIntersection(sectionRef, { threshold: 0.5 })?.isIntersecting
+  const intersecting = useIntersection(sectionRef, { threshold: 0.25 })?.isIntersecting
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth],
@@ -43,18 +45,33 @@ export const Information: React.FC<InformationProps> = ({
         className="grid md:grid-cols-2 grid-cols-1 md:gap-y-0 gap-y-10"
       >
         <section className="spacing_primary my-auto md:w-[85%] w-full mr-auto ">
-          <Title>{title}</Title>
-          <Heading>{heading}</Heading>
-          <Description>{description}</Description>
+          <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
+          <Heading animate={{ show: intersecting, delay: 0.15 }}>{heading}</Heading>
+          <Description animate={{ show: intersecting, delay: 0.2 }}>{description}</Description>
           {!!cta && (
-            <div className="pt-6">
-              <Button type="href" variant="outline" href={cta.href}>
-                {cta.title}
-              </Button>
-            </div>
+            <AnimatePresence>
+              {intersecting && (
+                <motion.div
+                  initial="from"
+                  animate="to"
+                  exit="exit"
+                  variants={VFadeInOut({ delay: 0.25 })}
+                  className="pt-6"
+                >
+                  <Button type="href" variant="outline" href={cta.href}>
+                    {cta.title}
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           )}
         </section>
-        <figure className="rounded-[15px] overflow-hidden w-full">
+        <motion.figure
+          initial="from"
+          whileInView="to"
+          variants={VFadeInOut({ flip: true, delay: 0.2, duration: 0.8 })}
+          className="rounded-[15px] overflow-hidden w-full"
+        >
           <SanityImg
             className="h-full w-full object-contain"
             image={image}
@@ -62,7 +79,7 @@ export const Information: React.FC<InformationProps> = ({
             builder={imageUrlBuilder}
             width={imageWidth}
           />
-        </figure>
+        </motion.figure>
       </Section>
     </GradientBorder>
   )
