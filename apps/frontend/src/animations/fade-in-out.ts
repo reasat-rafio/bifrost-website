@@ -5,14 +5,16 @@ const EASE = [0.16, 1, 0.3, 1]
 export function VFadeInOut({
   duration = 0.5,
   delay = 0,
+  flip = false,
 }: {
   duration?: number
   delay?: number
+  flip?: boolean
 } = {}): Variants {
   return {
     from: {
       opacity: 0,
-      x: -15,
+      x: flip ? 15 : -15,
       transition: {
         duration: duration,
         type: 'tween',
@@ -31,7 +33,7 @@ export function VFadeInOut({
     },
     exit: {
       opacity: 0,
-      x: -10,
+      x: flip ? 10 : -10,
       transition: {
         duration: duration,
         type: 'tween',

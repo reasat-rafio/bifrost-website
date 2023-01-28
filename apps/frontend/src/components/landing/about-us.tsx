@@ -3,9 +3,12 @@ import { Heading } from 'components/ui/heading'
 import { Section } from 'components/ui/section'
 import { Title } from 'components/ui/title'
 import { AboutCollection } from 'lib/@types/landing-types'
-import { useWindowSize } from 'lib/hooks'
+import { useIntersection, useWindowSize } from 'lib/hooks'
+import { useRef } from 'react'
 import { SanityImage, SanityImg } from 'sanity-react-extra'
 import { PortableText, imageUrlBuilder } from 'utils/sanity'
+import { motion } from 'framer-motion'
+import { VFadeInOut } from 'animations/fade-in-out'
 
 interface AboutUsProps {
   type: string
@@ -26,18 +29,18 @@ export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
                 {index % 2 === 0 ? (
                   <>
                     <DescriptionBlock description={description} heading={heading} title={title} />
-                    <ImageBlock image={image} />
+                    <ImageBlock index={index} image={image} />
                   </>
                 ) : (
                   <>
-                    <ImageBlock image={image} />
+                    <ImageBlock index={index} image={image} />
                     <DescriptionBlock description={description} heading={heading} title={title} />
                   </>
                 )}
               </>
             ) : (
               <>
-                <ImageBlock image={image} />
+                <ImageBlock index={index} image={image} />
                 <DescriptionBlock description={description} heading={heading} title={title} />
               </>
             )}
@@ -54,8 +57,6 @@ interface IDescriptionBlock {
   description: any
 }
 const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, heading }) => {
-  console.log('here')
-
   return (
     <section className="spacing_primary | font-light">
       {!!title && <Title>{title}</Title>}
@@ -84,11 +85,16 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({ title, description, hea
 
 interface IImageBlock {
   image: SanityImage
+  index: number
 }
-const ImageBlock: React.FC<IImageBlock> = ({ image }) => {
+const ImageBlock: React.FC<IImageBlock> = ({ image, index }) => {
   return (
-    <figure>
+    <motion.figure
+      initial="from"
+      whileInView="to"
+      variants={VFadeInOut({ flip: !!(index % 2), duration: 0.8 })}
+    >
       <SanityImg width={600} image={image} builder={imageUrlBuilder} alt={image.alt} />
-    </figure>
+    </motion.figure>
   )
 }
