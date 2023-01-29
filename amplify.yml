@@ -15,6 +15,10 @@ applications:
         baseDirectory: .next
         files:
           - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - apps/frontend/node_modules/**/*
 
   - appRoot: apps/sanity-studio
     frontend:
@@ -31,3 +35,7 @@ applications:
         baseDirectory: ./dist
         files:
           - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - apps/sanity-studio/node_modules/**/*
