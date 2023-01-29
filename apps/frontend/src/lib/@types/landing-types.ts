@@ -61,3 +61,75 @@ export interface ServiceSection {
   headline: string
   items: [Service]
 }
+
+export interface Partner {
+  _key: string
+  _type: string
+  logo: SanityImage
+  name?: string
+  url?: string
+}
+
+export interface Collection {
+  _key: string
+  _type: string
+  description: string
+  image: SanityImage
+  title: string
+}
+
+export interface AboutCollection {
+  _key: string
+  _type: string
+  description: any
+  heading: string
+  image: SanityImage
+  title?: string
+}
+
+export interface Result {
+  _key: string
+  _type: string
+  description: any
+  indicatorIcon: 'increase' | 'decrease' | 'none'
+  isPercentage: boolean
+  number: number
+}
+
+export interface AssetElement {
+  _key: string
+  _type: string
+  alt?: string
+  asset?: SanityImage
+  mp4?: string
+  video_mp4?: Video
+  video_webm?: Video
+  webm?: string
+}
+
+export interface Video {
+  _type: string
+  asset: VideoMp4Asset
+}
+
+export interface VideoMp4Asset {
+  _ref: string
+  _type: string
+}
+
+export interface IUseCase {
+  _key: string
+  _type: string
+  image: SanityImage
+  name: string
+  url?: string
+}
+
+export interface ITestimonial {
+  _key: string
+  _type: string
+  image: SanityImage
+  name: string
+  quote: string
+  role: string
+}

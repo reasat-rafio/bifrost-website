@@ -1,13 +1,13 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Header } from 'src/components/ui/Header'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { Heading } from 'components/ui/heading'
 import { TeamSection } from 'lib/@types/about-us-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
 import { motion } from 'framer-motion'
-import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
-const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
+const Team: React.FC<TeamSection> = ({ members }) => {
   const { width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
@@ -22,20 +22,20 @@ const Team: React.FC<TeamSection> = ({ title, subtitle, members }) => {
         viewport={{ once: true }}
         className="max-w-2xl mx-auto mb-7"
       >
-        <GradientTitle className="mx-auto">{title}</GradientTitle>
-        <Header>{subtitle}</Header>
+        {/* <GradientTitle className="mx-auto">{title}</GradientTitle> */}
+        {/* <Header>{subtitle}</Header> */}
       </motion.header>
       <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={SlideUpParent(0.15)}
+        variants={ScaleUpParent}
         className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5 py-5"
       >
         {members.map((team) => (
           <motion.div
             key={team._key}
-            variants={SlideUpChild()}
+            variants={ScaleUpChild}
             className="flex flex-col items-center"
           >
             <figure className="rounded-xl overflow-hidden !w-full max-h-[310px] aspect-square">

@@ -11,6 +11,7 @@ import hero from './objects/hero'
 import initial from './objects/initial'
 import quote from './objects/quote'
 import tag from './documents/tag'
+import video from './objects/video'
 
 import client from './documents/client'
 
@@ -23,11 +24,19 @@ import projects from './objects/common/project-collection-block'
 
 import landing from './documents/pages/landing'
 import landingHomeSection from './objects/landing/home'
-import landingProductsSection from './objects/landing/products'
+import landingWhyUs from './objects/landing/why-us'
+import landingAboutUs from './objects/landing/about-us'
+import landingOutputs from './objects/landing/output'
+import landingResults from './objects/landing/results'
+import landingPrediction from './objects/landing/prediction'
+import landingUseCase from './objects/landing/use-case'
+import landingCallout from './objects/landing/call-out'
+import landingPartners from './objects/landing/partners'
+import landingTestimonial from './objects/landing/testimonial'
+import landingIntegrate from './objects/landing/integrate'
+import landingProductsSection from './objects/landing/product'
 import landingDemoSection from './objects/landing/demo'
-import landingServicesSection from './objects/landing/services'
-import landingProjectsSection from './objects/landing/projects'
-import landingReviewsSection from './objects/landing/reviews'
+import landingServicesSection from './objects/landing/service'
 
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
@@ -106,17 +115,26 @@ export const schemaTypes = [
   initial,
   quote,
   tag,
+  video,
 
   contactUs,
   contactUsHomeSection,
 
   landing,
   landingHomeSection,
+  landingWhyUs,
+  landingAboutUs,
+  landingOutputs,
+  landingUseCase,
+  landingCallout,
+  landingPartners,
+  landingResults,
+  landingPrediction,
+  landingIntegrate,
   landingProductsSection,
   landingDemoSection,
   landingServicesSection,
-  landingProjectsSection,
-  landingReviewsSection,
+  landingTestimonial,
 
   aboutUs,
   aboutUsHomeSection,

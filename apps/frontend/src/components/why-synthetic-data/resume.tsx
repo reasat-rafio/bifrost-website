@@ -1,5 +1,5 @@
 import { CTAButton } from 'lib/@types/global-types'
-import { GradientBorder } from 'components/common/GradientBorder'
+import { GradientBorder } from 'components/ui/gradient-border'
 import { Button } from 'components/ui/button'
 import { PortableText } from 'utils/sanity'
 import { motion } from 'framer-motion'
@@ -26,7 +26,7 @@ export const Resume: React.FC<ResumeProps> = ({ headline, ctaButton }) => {
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text gradient__white__to__green">
+                    <span className="text-transparent bg-clip-text primary__gradient">
                       {children}
                     </span>
                   ),

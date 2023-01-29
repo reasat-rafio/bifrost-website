@@ -4,7 +4,7 @@ import { BlogBody } from 'lib/@types/blog-types'
 import { useIntersection, useWindowSize } from 'src/lib/hooks'
 import React, { Dispatch, Fragment, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { fadeInOut } from 'src/animations/fade-in-out'
+import { VFadeInOut } from 'src/animations/fade-in-out'
 
 interface SmScrollSpyProps {
   sectionWrapperHeight: number
@@ -37,7 +37,7 @@ export const SmScrollSpy: React.FC<SmScrollSpyProps> = ({
       ref={sectionRef}
     >
       <motion.div
-        variants={fadeInOut()}
+        variants={VFadeInOut()}
         initial="from"
         animate={sectionOnview?.isIntersecting ? 'to' : 'from'}
         className="sticky pointer-events-auto bifrost__gradient_pink  shadow"

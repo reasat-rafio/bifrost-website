@@ -1,6 +1,5 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
-import { Description } from 'src/components/ui/Description'
-import { Header } from 'src/components/ui/Header'
+import { Description } from 'components/ui/description'
+// import { Heading } from 'components/ui/heading'
 import { AboutSectionProps } from 'lib/@types/about-us-types'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from 'utils/sanity'
@@ -9,7 +8,7 @@ import { useRef } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
-const About: React.FC<AboutSectionProps> = ({ description, ctaButton, heading, image, title }) => {
+const About: React.FC<AboutSectionProps> = ({ description, ctaButton, image }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const sectionRef = useRef<HTMLElement>(null)
   const intersecting = useIntersection(sectionRef, { threshold: 0.5 })?.isIntersecting
@@ -37,8 +36,8 @@ const About: React.FC<AboutSectionProps> = ({ description, ctaButton, heading, i
             transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
             className="lg:p-12 p-6 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2"
           >
-            <GradientTitle>{heading}</GradientTitle>
-            <Header>{title}</Header>
+            {/* <GradientTitle>{heading}</GradientTitle> */}
+            {/* <Header>{title}</Header> */}
             <Description>{description}</Description>
 
             <div className="flex">

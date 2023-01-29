@@ -3,6 +3,7 @@ import React, { createRef, RefObject, useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 // TODO Adjust sanity so that this componnent become workable again
+// TODO remove this if not necessary for the new scope
 interface PrimaryWrapperProps {}
 
 export const PrimaryWrapper: React.FC<PrimaryWrapperProps> = (props) => {

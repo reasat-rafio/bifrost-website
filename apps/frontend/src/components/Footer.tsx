@@ -34,7 +34,7 @@ export default function Footer({
           <div className="flex gap-x-5">
             {socialButtons?.map((item) => (
               <Link key={item._id} href={item.url}>
-                <a className="gradient__white__to__green rounded-full p-[1px]">
+                <a className="primary__gradient rounded-full p-[1px]">
                   <figure className="bg-black text-white rounded-full p-3 overflow-hidden">
                     <SanityImg
                       className="sm:h-[15px] sm:w-[15px] h-[13px] w-[13px]"

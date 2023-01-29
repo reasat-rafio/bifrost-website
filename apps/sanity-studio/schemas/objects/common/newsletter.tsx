@@ -31,7 +31,7 @@ export default {
                 blockEditor: {
                   icon: () => <MdHighlight />,
                   render: ({ children }: { children: React.ReactNode }) => (
-                    <span style={{ color: '#C9FF71' }}>{children}</span>
+                    <span style={{ color: '#9BB8FF' }}>{children}</span>
                   ),
                 },
               },

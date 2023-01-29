@@ -1,5 +1,5 @@
-import { Description } from 'src/components/ui/Description'
-import { Header } from 'src/components/ui/Header'
+import { Description } from 'components/ui/description'
+import { Heading } from 'components/ui/heading'
 import { ExampleProps, ExamplesProps } from 'lib/@types/use-case-types'
 import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
@@ -7,9 +7,9 @@ import { imageUrlBuilder } from 'utils/sanity'
 import { MouseEvent, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
-import { SlideUpChild, SlideUpParent } from 'animations/slide-up'
+import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
 
-const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => {
+const Examples: React.FC<ExamplesProps> = ({ examples, description, title }) => {
   const windowWidth = useWindowSize()?.width ?? 0
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 400 : windowWidth > 768 ? 300 : 250),
@@ -32,14 +32,14 @@ const Examples: React.FC<ExamplesProps> = ({ examples, title, description }) => 
     <section className="z-10 relative xl:py-40 lg:py-20 py-16">
       <div className="container md:space-y-12 space-y-6">
         <header className="grid lg:grid-cols-2 gap-5 grid-cols-1">
-          <Header>{title}</Header>
+          <Heading>{title}</Heading>
           <Description>{description}</Description>
         </header>
         <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          variants={SlideUpParent()}
+          variants={ScaleUpParent}
           onMouseMove={onMouseMoveAction}
           className={clsx('cards | grid grid-cols-12 gap-5')}
         >
@@ -60,7 +60,7 @@ interface PerkProps extends ExampleProps {
 const Example: React.FC<PerkProps> = ({ image, description, title, imageWidth }) => {
   return (
     <motion.article
-      variants={SlideUpChild()}
+      variants={ScaleUpChild}
       className={clsx('card | xl:col-span-4 md:col-span-6 col-span-12 | h-[400px]')}
     >
       <div className="card-content | space-y-3 | p-3 | font-light">

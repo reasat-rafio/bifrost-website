@@ -8,15 +8,14 @@ const Client = {
   icon: IoPeopleOutline,
   fields: [
     {
-      name: 'headline',
+      name: 'title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subHeadline',
-      title: 'Sub-Headline',
+      name: 'subtitle',
       type: 'text',
-      validation: (Rule: Rule) => Rule.required(),
+      description: 'optional',
     },
     {
       name: 'clients',
@@ -30,6 +29,12 @@ const Client = {
             {
               name: 'name',
               type: 'string',
+              description: 'optional',
+            },
+            {
+              name: 'url',
+              type: 'url',
+              description: 'optional',
             },
             {
               name: 'logo',
@@ -53,8 +58,8 @@ const Client = {
   ],
   preview: {
     select: {
-      title: 'headline',
-      subtitle: 'subHeadline',
+      title: 'title',
+      subtitle: 'subtitle',
     },
   },
 }

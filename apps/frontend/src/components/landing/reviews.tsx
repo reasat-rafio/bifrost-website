@@ -8,7 +8,7 @@ import 'swiper/css/mousewheel'
 import 'swiper/css/pagination'
 import { imageUrlBuilder } from 'utils/sanity'
 import { ReviewSection } from 'lib/@types/landing-types'
-import { GradientBorder } from 'src/components/common/GradientBorder'
+import { GradientBorder } from 'components/ui/gradient-border'
 import { ArrowRight } from 'src/components/icons/ArrowRight'
 import { ArrowLeft } from 'src/components/icons/ArrowLeft'
 import { useWindowSize } from 'src/lib/hooks'
@@ -98,10 +98,10 @@ export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
                       </p>
 
                       <div className="relative  mb-5 hidden md:inline-block">
-                        <span className="sm:text-body-1 text-body-3 | uppercase w-auto text-transparent bg-clip-text gradient__white__to__green font-light ">
+                        <span className="sm:text-body-1 text-body-3 | uppercase w-auto text-transparent bg-clip-text primary__gradient font-light ">
                           {name}
                         </span>
-                        <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] gradient__white__to__green" />
+                        <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] primary__gradient" />
                       </div>
                       <span className="opacity-50 sm:text-body-3 text-body-1-mobile text-left hidden md:block">
                         {role}
@@ -122,10 +122,10 @@ export const Reviews: React.FC<ReviewSection> = ({ reviews }) => {
                       </GradientBorder>
                       <div>
                         <div className="relative mb-2 ">
-                          <span className="text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text gradient__white__to__green font-light ">
+                          <span className="text-[18px] leading-[22px] uppercase w-auto text-transparent bg-clip-text primary__gradient font-light ">
                             {name}
                           </span>
-                          <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] gradient__white__to__green" />
+                          <span className="w-full h-[0.1em] left-0 absolute bottom-[-4px] primary__gradient" />
                         </div>
                         <div className="opacity-50 md:text-body-3 text-base md:text-left text-right">
                           {role}

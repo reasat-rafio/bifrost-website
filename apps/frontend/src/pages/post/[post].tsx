@@ -1,6 +1,6 @@
 import { Body } from 'components/[blog]/body/body'
 import { Heading } from 'components/[blog]/heading'
-import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
+import { PrimaryWrapper } from 'components/common/primary-wapper'
 // import Newslettr from 'components/common/newsletter'
 import { BlogProps } from 'lib/@types/blog-types'
 import { siteQuery } from 'src/lib/query'

@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ headline, subHeadline, setHeroSectio
       <OnScrollBackdropEffect ratio={ratio} />
 
       <div className="container | xl:h-[60vh] md:h-[60vh] h-[70vh] | flex flex-col justify-center items-center">
-        <h1 className="w-full | xl:text-head-1 md:text-head-3 text-head-1-mobile font-primary | mb-3 | text-transparent bg-clip-text md:text-center text-left | leading-none | gradient__white__to__green">
+        <h1 className="w-full | xl:text-head-1 md:text-head-3 text-head-1-mobile font-primary | mb-3 | text-transparent bg-clip-text md:text-center text-left | leading-none | primary__gradient">
           {headline}
         </h1>
         {!!subHeadline && (

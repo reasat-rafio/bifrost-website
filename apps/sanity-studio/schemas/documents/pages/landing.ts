@@ -1,6 +1,4 @@
-import { defineType } from 'sanity'
-
-const LandingPage = defineType({
+const LandingPage = {
   name: 'landingPage',
   title: 'Landing Page',
   type: 'document',
@@ -16,12 +14,22 @@ const LandingPage = defineType({
       type: 'array',
       of: [
         { type: 'landing.home' },
+        { type: 'landing.partners' },
+        { type: 'landing.whyUs' },
+        { type: 'landing.aboutUs' },
+        { type: 'landing.outputs' },
+        { type: 'landing.integrate' },
+        { type: 'infoBlock' },
+        { type: 'landing.results' },
+        { type: 'landing.prediction' },
+        { type: 'landing.testimonial' },
+        { type: 'landing.useCase' },
+        { type: 'landing.callout' },
+
         { type: 'landing.products' },
         { type: 'landing.demo' },
         { type: 'landing.services' },
         { type: 'newsletter' },
-        { type: 'landing.projects' },
-        { type: 'landing.reviews' },
         { type: 'contact' },
       ],
     },
@@ -32,6 +40,6 @@ const LandingPage = defineType({
       subtitle: 'seo.description',
     },
   },
-})
+}
 
 export default LandingPage

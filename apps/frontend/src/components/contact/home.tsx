@@ -13,13 +13,13 @@ export default function Home({ contactInfos, headline }: HomeSection): ReactElem
       <div className="container min-h-screen flex lg:py-[5%] py-[30%] !overflow-hidden">
         <div className="grid grid-cols-12 justify-center items-center w-full m-auto gap-y-20 z-10">
           <section className="col-span-12">
-            <h1 className="lg:text-head-2 text-head-4 leading-none font-[375] bg-clip-text gradient__white__to__green text-transparent">
+            <h1 className="lg:text-head-2 text-head-4 leading-none font-[375] bg-clip-text primary__gradient text-transparent">
               <PortableText
                 blocks={headline}
                 serializers={{
                   marks: {
                     pop: ({ children }: any) => (
-                      <span className="text-transparent bg-clip-text gradient__white__to__green">
+                      <span className="text-transparent bg-clip-text primary__gradient">
                         {children}
                       </span>
                     ),

@@ -1,14 +1,14 @@
-import { BarStackHorizontalProps, TooltipData } from 'lib/@types/dataset-types'
+import type { BarStackHorizontalProps, TooltipData } from 'lib/@types/dataset-types'
 import React from 'react'
 import { Group } from '@visx/group'
 import { AxisBottom } from '@visx/axis'
-import { withTooltip } from '@visx/tooltip'
-import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
+import { withTooltip as WithTooltip } from '@visx/tooltip'
+import type { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip'
 import { useWindowSize } from 'src/lib/hooks'
 
 export const darkBlue = '#1B2B3D'
 
-export default withTooltip<BarStackHorizontalProps, TooltipData>(
+export default WithTooltip<BarStackHorizontalProps, TooltipData>(
   ({
     width,
     height,

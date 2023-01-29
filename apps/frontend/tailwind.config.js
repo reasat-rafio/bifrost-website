@@ -29,15 +29,18 @@ module.exports = {
         pinkSugar: '#E7ADFF',
         riceFlower: '#EEFFE9',
         honeySuckle: '#C9FF71',
-        neonBlue: '#7187FF',
         warning: '#F3CD68',
         danger: '#E95432',
         danger2: '#F3E5E8',
         success: '#2EFFB2',
         gray: '#B3BAC5',
 
+        neonBlue: '#7E6BF2',
+        teal: '#70FCEB',
+
         primary: '#B37AF8',
         secondary: '#29394A',
+        mauve: '#B794FF',
         'color-description': '#99A2D4',
 
         warning: '#F3CD68',

@@ -22,13 +22,14 @@ export interface AboutSectionProps {
 }
 
 export interface ClientsSection {
-  headline: string
-  subHeadline: string
+  title: string
+  subtitle?: string
   clients: [
     {
       _key: string
       name: string
       logo: SanityImage
+      url?: string
     },
   ]
 }

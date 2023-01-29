@@ -9,7 +9,7 @@
     ],
     "nohoist": [
       "**/next",
-      "**/react"
+      "**/node_modules/react"
     ]
   },
   "scripts": {

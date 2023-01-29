@@ -4,20 +4,25 @@ import type { GetStaticProps, GetStaticPropsContext } from 'next'
 import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { Hero } from 'components/home/hero'
-import { Product } from 'components/home/product'
-import { Demo } from 'components/home/demo'
-// import HomeService from 'src/components/home/HomeService/HomeService'
-import { Project } from 'components/home/projects'
-// import Ellipse from 'src/components/Ellipse'
-import { Reviews } from 'components/home/reviews'
-import { Contact } from 'src/components/common/contact'
+import { Hero } from 'components/landing/hero'
+// import { Contact } from 'components/common/contact'
 import { HomeSection } from 'lib/@types/landing-types'
-import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
 import { useCallback, useState } from 'react'
-import { Newsletter } from 'components/common/newsletter'
+// import { Newsletter } from 'components/common/newsletter'
 import { Client } from 'components/common/client'
+import { WhyUs } from 'components/landing/why-us'
+import { AboutUs } from 'components/landing/about-us'
+import { Partners } from 'components/landing/partners'
+import { Integrate } from 'components/landing/integrate'
+import { Results } from 'components/landing/results'
+import { Prediction } from 'components/landing/prediction'
+import { Information } from 'components/common/information'
+import { Outputs } from 'components/landing/outputs'
+import { UseCase } from 'components/landing/use-case'
+import { CallOut } from 'components/landing/call-out'
+import { Testimonials } from 'components/landing/testimonial'
 
+// TODO fix the metadata missing warning from assets[]
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "landingPage"][0] {
@@ -25,14 +30,29 @@ const query = groq`{
     sections[] {
       ...,
       "image": ${withDimensions('image')},
-      previews[]{
+      partners[]{
+        ...,
+       "logo": ${withDimensions('logo')},
+      },  
+      collection[]{
+        ...,
+        "image": ${withDimensions('image')},
+      },
+      assets[]{
         ...,
         asset->{
          ...,
          metadata{
+          ...,
           dimensions
           },
         },
+        "webm": video_webm.asset->url,
+        "mp4": video_mp4.asset->url
+      },
+      useCases[]{
+        ...,
+        "image": ${withDimensions('image')},
       },
       images[]{
         ...,
@@ -43,11 +63,7 @@ const query = groq`{
           },
         },
       },
-      projects[]{
-        ...,
-        "image": ${withDimensions('image')},
-      },
-      reviews[]{
+      testimonials[]{
         ...,
         "image": ${withDimensions('image')},
       },
@@ -76,44 +92,41 @@ export default function Home(props: SanityProps<any>) {
   const [heroSectionHeight, setHeroSectionHeight] = useState(0)
 
   return (
-    <div className="">
-      <PrimaryWrapper>
-        {renderObjectArray(sections, {
-          'landing.home': useCallback(
-            (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
-            [],
-          ),
-        })}
-      </PrimaryWrapper>
+    <div>
+      {renderObjectArray(sections, {
+        'landing.home': useCallback(
+          (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
+          [],
+        ),
+      })}
       <div
         className="bg-black relative h-full"
         style={{
           marginTop: heroSectionHeight,
         }}
       >
-        <PrimaryWrapper>
-          {renderObjectArray(sections, {
-            'landing.products': Product,
-            'landing.demo': Demo,
-            // 'landing.services': HomeService,
-            'landing.projects': Project,
-            'landing.reviews': Reviews,
-          })}
-          <Client {...cleint} />
-          {renderObjectArray(sections, {
-            newsletter: Newsletter,
-            contact: Contact,
-          })}
-        </PrimaryWrapper>
-        {/* <>
-          <Ellipse className="absolute top-[5%] left-[5%] w-[153px] h-[391px]" />
-          <Ellipse className="absolute top-[18%] right-[5%] w-[153px] h-[391px]" />
-          <Ellipse className="absolute top-[34%] left-[5%] w-[153px] h-[391px]" />
-          <Ellipse className="absolute top-[40%] right-[5%] w-[153px] h-[391px]" />
-          <Ellipse className="absolute top-[55%] right-[5%] w-[353px] h-[391px]" />
-          <Ellipse className="absolute top-[80%] left-[5%] w-[353px] h-[391px]" />
-          <Ellipse className="absolute top-[91%] right-[15%] w-[153px] h-[391px]" />
-        </> */}
+        {renderObjectArray(sections, {
+          'landing.partners': Partners,
+          'landing.whyUs': WhyUs,
+          'landing.aboutUs': AboutUs,
+          'landing.outputs': Outputs,
+          'landing.integrate': Integrate,
+          'landing.results': Results,
+          'landing.prediction': Prediction,
+          'landing.testimonial': Testimonials,
+          infoBlock: Information,
+          // 'landing.products': Product,
+          // 'landing.demo': Demo,
+          // 'landing.projects': Project,
+          // 'landing.reviews': Reviews,
+        })}
+        <Client {...cleint} />
+        {renderObjectArray(sections, {
+          'landing.useCase': UseCase,
+          'landing.callout': CallOut,
+          // newsletter: Newsletter,
+          // contact: Contact,
+        })}
       </div>
     </div>
   )

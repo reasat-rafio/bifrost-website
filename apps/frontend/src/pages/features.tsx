@@ -1,4 +1,4 @@
-import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
+import { PrimaryWrapper } from 'components/common/primary-wapper'
 // import Ellipse from 'src/components/Ellipse'
 // import UseCaseEnterprise from 'components/features/UseCaseEnterprise'
 import Feature from 'components/features/feature'

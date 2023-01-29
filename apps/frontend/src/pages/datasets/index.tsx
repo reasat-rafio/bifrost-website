@@ -1,4 +1,4 @@
-import { PrimaryWrapper } from 'src/components/common/PrimaryWapper'
+import { PrimaryWrapper } from 'components/common/primary-wapper'
 // import Ellipse from 'src/components/Ellipse'
 import { siteQuery } from 'src/lib/query'
 import { GetStaticProps, GetStaticPropsContext } from 'next'

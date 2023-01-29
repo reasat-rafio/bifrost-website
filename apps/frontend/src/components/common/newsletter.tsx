@@ -1,5 +1,5 @@
 import { PortableText } from 'utils/sanity'
-import { GradientBorder } from './GradientBorder'
+import { GradientBorder } from '../ui/gradient-border'
 import { CTAButton } from 'lib/@types/global-types'
 import { Button } from '../ui/button'
 import { motion } from 'framer-motion'
@@ -39,7 +39,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text gradient__white__to__green">
+                    <span className="text-transparent bg-clip-text primary__gradient">
                       {children}
                     </span>
                   ),

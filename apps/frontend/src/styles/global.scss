@@ -18,6 +18,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.spacing_primary {
+  @apply sm:space-y-8 space-y-4;
+}
+
+.section_pading {
+  @apply lg:py-32 py-20;
+}
+
 .bifrost__card {
   background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
   backdrop-filter: blur(80px);
@@ -44,8 +52,8 @@ html {
   @apply bg-gradient-to-r from-[#f8e9ff] via-[#e4acff] to-[#7187ff];
 }
 
-.gradient__white__to__green {
-  @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71];
+.primary__gradient {
+  @apply bg-gradient-to-r from-[#70FCEB] via-[#9BB8FF] to-[#B794FF];
 }
 
 .bifrost__gradient_dark_blue {

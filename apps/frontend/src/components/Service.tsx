@@ -13,9 +13,9 @@ import { useWindowSize } from 'react-use'
 import { SanityImg } from 'sanity-react-extra'
 import { Service as ServiceInterface } from 'lib/@types/landing-types'
 import { imageUrlBuilder } from 'utils/sanity'
-import Button from './ui/_Button'
-import { Header } from './ui/Header'
-import { Description } from './ui/Description'
+// import Button from './ui/_Button'
+// import { Heading } from './ui/heading'
+import { Description } from './ui/description'
 import { isWhatPercentOf } from 'src/lib/helpers'
 
 interface ServiceProps {
@@ -28,7 +28,7 @@ interface ServiceProps {
 }
 
 export default function Service({
-  item: { body, cardPosition, ctaButton, headline, image, imagePosition, subtitle },
+  item: { body, cardPosition, image, imagePosition, subtitle },
   index,
   rootRef,
   length,
@@ -145,7 +145,7 @@ export default function Service({
             'lg:right-0 xl:translate-y-0 lg:translate-y-[25%] translate-y-[70%]',
         )}
       >
-        <Header>{headline}</Header>
+        {/* <Header>{headline}</Header> */}
         {!!subtitle && (
           <h6 className="xl:text-[30px] md:text-[24px] text-[22px] font-light | leading-none">
             {subtitle}
@@ -153,9 +153,9 @@ export default function Service({
         )}
         <Description>{body}</Description>
         <div className="flex">
-          <Button>
+          {/* <Button>
             <a href={ctaButton.href}>{ctaButton.title}</a>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

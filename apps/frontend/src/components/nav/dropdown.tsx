@@ -47,7 +47,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ menu, darkBg }) => {
                   className={clsx(
                     'relative text-body-3 font-semibold',
                     router.asPath === pageUrl
-                      ? 'text-transparent bg-clip-text gradient__white__to__green'
+                      ? 'text-transparent bg-clip-text primary__gradient'
                       : 'text-white',
                   )}
                 >
@@ -58,7 +58,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ menu, darkBg }) => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.2 }}
-                      className="w-full h-[0.2em] left-0 absolute gradient__white__to__green"
+                      className="w-full h-[0.2em] left-0 absolute primary__gradient"
                     />
                   )}
                 </li>

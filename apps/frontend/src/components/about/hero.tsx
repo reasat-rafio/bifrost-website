@@ -1,4 +1,4 @@
-import { GradientTitle } from 'src/components/common/GradientTitle'
+// import { GradientTitle } from 'src/components/common/GradientTitle'
 import { BackgroundNoise } from 'components/ui/background-noise'
 import { HomeProps } from 'lib/@types/about-us-types'
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react'
@@ -12,13 +12,7 @@ interface IHomeSection extends HomeProps {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>
 }
 
-const Hero: React.FC<IHomeSection> = ({
-  ctaButton,
-  heading,
-  subtitle,
-  title,
-  setHeroSectionHeight,
-}) => {
+const Hero: React.FC<IHomeSection> = ({ ctaButton, subtitle, title, setHeroSectionHeight }) => {
   const { width: windowWidth, height: windowHeight } = useWindowSize() ?? { height: 0, width: 0 }
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -42,14 +36,14 @@ const Hero: React.FC<IHomeSection> = ({
 
       <div className="relative z-10 | container min-h-screen | flex flex-col justify-center items-center | lg:py-[5%] py-[30%] | overflow-y-clip">
         <div className="flex flex-col | text-center | lg:space-y-12 space-y-5 ">
-          <GradientTitle className="mx-auto">{heading}</GradientTitle>
+          {/* <GradientTitle className="mx-auto">{heading}</GradientTitle> */}
           <h1 className="lg:text-head-1 text-head-2-mobile leading-none font-primary text-center">
             <PortableText
               blocks={title}
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text gradient__white__to__green">
+                    <span className="text-transparent bg-clip-text primary__gradient">
                       {children}
                     </span>
                   ),
