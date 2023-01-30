@@ -5,12 +5,14 @@ applications:
       phases:
         preBuild:
           commands:
+            - ls
             - rm -rf node_modules
             - rm -rf apps/frontend/node_modules
             - corepack enable
             - pnpm install
         build:
           commands:
+            - ls
             - cd apps/frontend
             - pnpm build
       artifacts:
