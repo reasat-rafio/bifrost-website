@@ -11,8 +11,8 @@ applications:
             - pnpm install
         build:
           commands:
-            - pnpm build --scope=frontend
             - cd apps/frontend
+            - pnpm build
       artifacts:
         baseDirectory: .next
         files:
@@ -29,8 +29,8 @@ applications:
             - pnpm install
         build:
           commands:
-            - pnpm build --scope=sanity-studio
             - cd apps/sanity-studio
+            - pnpm build
       artifacts:
         baseDirectory: ./dist
         files:
