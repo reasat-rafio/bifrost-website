@@ -5,37 +5,33 @@ applications:
       phases:
         preBuild:
           commands:
-            - cd ../../
-            - yarn install
+            - rm -rf node_modules
+            - rm -rf apps/frontend/node_modules
+            - corepack enable
+            - pnpm install
         build:
           commands:
-            - yarn build --scope=frontend
+            - pnpm build --scope=frontend
             - cd apps/frontend
       artifacts:
         baseDirectory: .next
         files:
           - '**/*'
-      cache:
-        paths:
-          - node_modules/**/*
-          - apps/frontend/node_modules/**/*
 
   - appRoot: apps/sanity-studio
     frontend:
       phases:
         preBuild:
           commands:
-            - cd ../../
-            - yarn install
+            - rm -rf node_modules
+            - rm -rf apps/sanity-studio/node_modules
+            - corepack enable
+            - pnpm install
         build:
           commands:
-            - yarn build --scope=sanity-studio
+            - pnpm build --scope=sanity-studio
             - cd apps/sanity-studio
       artifacts:
         baseDirectory: ./dist
         files:
           - '**/*'
-      cache:
-        paths:
-          - node_modules/**/*
-          - apps/sanity-studio/node_modules/**/*

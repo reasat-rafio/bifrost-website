@@ -1,5 +1,6 @@
-import { setupNextSanity } from 'next-sanity-extra'
-
+import { SanityClientType, setupNextSanity } from 'next-sanity-extra'
+import type { PicoSanity } from 'picosanity'
+import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
 // Standard sanity config
 // Don't forget:
 // Setup SANITY_API_TOKEN (created from sanity admin)
@@ -19,5 +20,8 @@ const config = {
   token: process.env.SANITY_API_TOKEN,
 }
 
-export const { sanityClient, imageUrlBuilder, PortableText, sanityStaticProps, useSanityQuery } =
-  setupNextSanity(config)
+const nextSanity = setupNextSanity(config)
+export const { PortableText, sanityStaticProps, useSanityQuery } = nextSanity
+
+export const sanityClient: (type: SanityClientType) => PicoSanity = nextSanity.sanityClient
+export const imageUrlBuilder: ImageUrlBuilder = nextSanity.imageUrlBuilder
