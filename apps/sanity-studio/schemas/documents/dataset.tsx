@@ -1,7 +1,6 @@
 import { FiDatabase } from 'react-icons/fi'
 import { MdHighlight, MdOutlineCategory } from 'react-icons/md'
 import { CgEditFade } from 'react-icons/cg'
-import React from 'react'
 import { defineType, SanityDocument, Rule } from 'sanity'
 
 const Dataset = {

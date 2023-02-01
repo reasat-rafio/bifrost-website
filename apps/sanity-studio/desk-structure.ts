@@ -7,7 +7,15 @@ import {
   MdScreenSearchDesktop,
 } from 'react-icons/md'
 import { FcAbout, FcViewDetails } from 'react-icons/fc'
-import { GrActions, GrArticle, GrEdit, GrTestDesktop, GrView, GrWorkshop } from 'react-icons/gr'
+import {
+  GrActions,
+  GrArticle,
+  GrEdit,
+  GrResources,
+  GrTestDesktop,
+  GrView,
+  GrWorkshop,
+} from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
 import { FaSitemap, FaHome, FaRobot, FaBlackTie } from 'react-icons/fa'
@@ -73,6 +81,13 @@ export const AppStructure = (S: StructureBuilder) =>
                 id: 'landingPage',
                 title: 'Landing',
                 icon: FaHome,
+                slug: '',
+              }),
+              pageItem(S, {
+                schemaType: 'resourcesPage',
+                id: 'resourcesPage',
+                title: 'Resources',
+                icon: GrResources,
                 slug: '',
               }),
               pageItem(S, {
