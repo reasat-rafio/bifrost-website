@@ -1,6 +1,5 @@
 import { AiOutlineHome } from 'react-icons/ai'
 import { MdHighlight } from 'react-icons/md'
-import React from 'react'
 import { Rule } from 'sanity'
 
 export default {
