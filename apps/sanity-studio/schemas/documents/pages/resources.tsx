@@ -1,5 +1,4 @@
 import { GrResources } from 'react-icons/gr'
-import { MdHighlight } from 'react-icons/md'
 import { Rule } from 'sanity'
 
 const PageHeaderStyle = (props: { children: React.ReactNode }) => (
@@ -72,24 +71,6 @@ const resourcesPage = {
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
               { title: 'Underline', value: 'underline' },
-              {
-                title: 'Pop',
-                value: 'pop',
-                blockEditor: {
-                  icon: () => <MdHighlight />,
-                  render: ({ children }: { children: React.ReactNode }) => (
-                    <span
-                      style={{
-                        background: `linear-gradient(91.41deg, #70FCEB 4.55%, #9BB8FF 51.06%, #B794FF 91.28%)`,
-                        backgroundClip: 'text',
-                        color: 'transparent',
-                      }}
-                    >
-                      {children}
-                    </span>
-                  ),
-                },
-              },
             ],
           },
         },
