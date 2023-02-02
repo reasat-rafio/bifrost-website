@@ -14,7 +14,7 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from 'utils/sanity'
 import { RelatedBlogs } from 'components/[blog]/related-blog'
 import { Contact } from 'components/common/contact'
 import { Newsletter } from 'components/common/newsletter'
-import { ScrollDetective } from 'components/[blog]/body/scroll-detective'
+import { ScrollDetective } from 'components/common/scroll-detective'
 import { useIntersection } from 'lib/hooks'
 import { useScroll } from 'framer-motion'
 

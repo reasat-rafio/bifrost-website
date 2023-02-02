@@ -9,7 +9,10 @@ interface ArticleProps {
 
 export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
   return (
-    <article ref={ref as React.LegacyRef<HTMLDivElement>} className="px-6 pt-24 h-full">
+    <article
+      ref={ref as React.LegacyRef<HTMLDivElement>}
+      className="px-6 pt-24 h-full prose max-w-none"
+    >
       <PortableText blocks={body} serializers={Serializers} />
     </article>
   )

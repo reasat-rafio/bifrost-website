@@ -7,13 +7,13 @@ import { useWindowSize } from 'lib/hooks'
 
 export const Serializers = {
   types: {
-    block: (props) => {
+    block: (props: any) => {
       if (props.node.style === 'pageHeader') {
         return <h1></h1>
       } else if (props.node.style === 'sectionTitle') {
-        return <Title>{props.children}</Title>
+        return <Title className="font-light">{props.children}</Title>
       } else if (props.node.style === 'sectionSubtitle') {
-        return <Heading>{props.children}</Heading>
+        return <Heading className="text-white font-light">{props.children}</Heading>
       }
       return <p>{props.children}</p>
     },
