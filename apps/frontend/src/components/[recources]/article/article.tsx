@@ -3,6 +3,7 @@ import {
   RefObject,
   forwardRef,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
 import { PortableText } from "utils/sanity";
@@ -18,6 +19,7 @@ interface ArticleProps {
 }
 
 export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
+  const [navHeight, setNavbarHeight] = useState(0);
   const [sectionHeaders, setSectionHeaders] = useState<SectionHeaderProps[]>(
     []
   );
@@ -29,6 +31,11 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
   const { scrollYProgress } = useScroll({
     target: ref as RefObject<HTMLElement>,
   });
+
+  useLayoutEffect(() => {
+    const height = document.querySelector("#navbar").clientHeight;
+    setNavbarHeight(height);
+  }, []);
 
   // ? From the portable text getting the headers which are marked as sectionTitle in sanity
   useEffect(() => {
@@ -48,14 +55,21 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}
       />
-      <div>
+      <div
+        style={{ marginTop: navHeight }}
+        className="relative grid grid-cols-13 space-x-5 pt-10"
+      >
         <article
           ref={ref as React.LegacyRef<HTMLDivElement>}
-          className="prose-lg h-full max-w-none px-6 pt-24"
+          className="prose-lg col-span-11 h-full max-w-none px-6"
         >
           <PortableText blocks={body} serializers={Serializers} />
         </article>
-        <ScrollSpy sectionHeaders={sectionHeaders} />
+        <ScrollSpy
+          className="col-span-2"
+          sectionHeaders={sectionHeaders}
+          navHeight={navHeight}
+        />
       </div>
     </>
   );
