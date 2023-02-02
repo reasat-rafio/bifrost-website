@@ -11,13 +11,13 @@ interface ScrollSpyProps {
   navHeight: number;
 }
 
-export const ScrollSpy: React.FC<ScrollSpyProps> = ({
+export const ScrollSpyBig: React.FC<ScrollSpyProps> = ({
   className,
   navHeight,
   sectionHeaders,
 }) => {
   return (
-    <div className={clsx(className, " relative")}>
+    <aside className={clsx(className, " relative")}>
       <nav style={{ top: `${navHeight + 20}px` }} className="!sticky pl-5">
         <ul className="space-y-3 capitalize">
           {sectionHeaders.map(({ _key, text }) => (
@@ -33,6 +33,6 @@ export const ScrollSpy: React.FC<ScrollSpyProps> = ({
           }}
         />
       </nav>
-    </div>
+    </aside>
   );
 };

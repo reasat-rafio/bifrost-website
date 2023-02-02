@@ -11,7 +11,7 @@ import { Serializers } from "./serializers";
 import { useIntersection } from "lib/hooks";
 import { useScroll } from "framer-motion";
 import { ScrollDetective } from "components/common/scroll-detective";
-import { ScrollSpy, SectionHeaderProps } from "./scroll-spy";
+import { ScrollSpyBig, SectionHeaderProps } from "./scroll-spy/scroll-spy-big";
 import { ShareWith } from "./share-with";
 
 interface ArticleProps {
@@ -66,13 +66,13 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
       >
         <article
           ref={ref as React.LegacyRef<HTMLDivElement>}
-          className="prose-lg col-span-full h-full max-w-none lg:col-span-11 lg:pr-5"
+          className="prose-lg col-span-full h-full max-w-none px-6 lg:col-span-11 lg:pr-5"
         >
           <PortableText blocks={body} serializers={Serializers} />
           <ShareWith />
         </article>
 
-        <ScrollSpy
+        <ScrollSpyBig
           className="col-span-2 hidden lg:block"
           sectionHeaders={sectionHeaders}
           navHeight={navHeight}
