@@ -1,5 +1,5 @@
-import clsx from 'clsx'
-import { animationFrameEffect, useVisibleScrollEffect } from 'src/lib/hooks'
+import clsx from "clsx";
+import { animationFrameEffect, useVisibleScrollEffect } from "src/lib/hooks";
 import {
   Dispatch,
   ReactElement,
@@ -8,23 +8,23 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react'
-import { useWindowSize } from 'react-use'
-import { SanityImg } from 'sanity-react-extra'
-import { Service as ServiceInterface } from 'lib/@types/landing-types'
-import { imageUrlBuilder } from 'utils/sanity'
+} from "react";
+import { useWindowSize } from "react-use";
+import { SanityImg } from "sanity-react-extra";
+import { Service as ServiceInterface } from "lib/@types/landing-types";
+import { imageUrlBuilder } from "utils/sanity";
 // import Button from './ui/_Button'
 // import { Heading } from './ui/heading'
-import { Description } from './ui/description'
-import { isWhatPercentOf } from 'src/lib/helpers'
+import { Description } from "./ui/description";
+import { isWhatPercentOf } from "src/lib/helpers";
 
 interface ServiceProps {
-  item: ServiceInterface
-  index: number
-  rootRef: RefObject<Element>
-  length: number
-  setCurrent: Dispatch<SetStateAction<number>>
-  current: number
+  item: ServiceInterface;
+  index: number;
+  rootRef: RefObject<Element>;
+  length: number;
+  setCurrent: Dispatch<SetStateAction<number>>;
+  current: number;
 }
 
 export default function Service({
@@ -35,58 +35,64 @@ export default function Service({
   setCurrent,
   current,
 }: ServiceProps): ReactElement {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const descriptionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLDivElement>(null);
 
-  const [containerOffsetY, setContainerOffsetY] = useState(0)
+  const [containerOffsetY, setContainerOffsetY] = useState(0);
 
   useEffect(() => {
-    if (cardPosition === 'left')
-      setContainerOffsetY(isWhatPercentOf(90 / 2, descriptionRef?.current.clientWidth))
-    else if (cardPosition === 'bottom-right' || cardPosition === 'bottom-left')
-      setContainerOffsetY(isWhatPercentOf(-60 / 2, descriptionRef?.current.clientWidth))
-    else if (cardPosition === 'right')
-      setContainerOffsetY(isWhatPercentOf(-70 / 2, descriptionRef?.current.clientWidth))
-  }, [current])
+    if (cardPosition === "left")
+      setContainerOffsetY(
+        isWhatPercentOf(90 / 2, descriptionRef?.current.clientWidth)
+      );
+    else if (cardPosition === "bottom-right" || cardPosition === "bottom-left")
+      setContainerOffsetY(
+        isWhatPercentOf(-60 / 2, descriptionRef?.current.clientWidth)
+      );
+    else if (cardPosition === "right")
+      setContainerOffsetY(
+        isWhatPercentOf(-70 / 2, descriptionRef?.current.clientWidth)
+      );
+  }, [current]);
 
   const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
     width: 0,
     height: 0,
-  }
+  };
 
   const toggleVisibility = (visible: boolean) => {
     if (visible) {
       sectionRef.current.style.transform = `translate3d(0px, ${
-        windowWidth <= 1024 ? `${containerOffsetY / 2}px` : '0px'
-      }, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-      sectionRef.current.style.opacity = '1'
+        windowWidth <= 1024 ? `${containerOffsetY / 2}px` : "0px"
+      }, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
+      sectionRef.current.style.opacity = "1";
     } else {
-      sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`
-      sectionRef.current.style.opacity = '0'
+      sectionRef.current.style.transform = `translate3d(0px, -120%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
+      sectionRef.current.style.opacity = "0";
     }
-  }
+  };
 
   useVisibleScrollEffect(
     rootRef,
     (offsetBoundingRect, _, y) =>
       animationFrameEffect(() => {
-        const yDelta = y + windowHeight - offsetBoundingRect.top
-        const ratio = Math.max(0, Math.min(yDelta / windowHeight, length))
+        const yDelta = y + windowHeight - offsetBoundingRect.top;
+        const ratio = Math.max(0, Math.min(yDelta / windowHeight, length));
 
-        let transitionYValue = 0
-        let sectionRatio = 0
+        let transitionYValue = 0;
+        let sectionRatio = 0;
 
         if (index === length - 2) {
-          sectionRatio = 0
+          sectionRatio = 0;
         } else if (ratio >= 0 && ratio < index + 1.5) {
-          sectionRatio = 0
-          transitionYValue = 0
+          sectionRatio = 0;
+          transitionYValue = 0;
         } else if (ratio > index + 1.5 && ratio < index + 2) {
-          sectionRatio = ratio - (index + 1)
-          transitionYValue = 0 + (0.5 - sectionRatio) * 200
+          sectionRatio = ratio - (index + 1);
+          transitionYValue = 0 + (0.5 - sectionRatio) * 200;
         } else {
-          sectionRatio = 1
-          transitionYValue = -120
+          sectionRatio = 1;
+          transitionYValue = -120;
         }
 
         // if (isScroll) {
@@ -98,56 +104,60 @@ export default function Service({
         // }
         if (sectionRef.current) {
           if (transitionYValue === -120) {
-            toggleVisibility(false)
+            toggleVisibility(false);
           } else {
-            toggleVisibility(true)
+            toggleVisibility(true);
             if (ratio >= index + 1 || (ratio < 1 && index === 0)) {
-              setCurrent(index)
+              setCurrent(index);
             } else {
-              toggleVisibility(false)
+              toggleVisibility(false);
             }
           }
         }
       }),
-    [windowHeight, current],
-  )
+    [windowHeight, current]
+  );
 
   return (
     <div
       className={clsx(
-        'w-full h-full relative z-30 flex items-center transition-all duration-300 opacity-0 transform',
-        imagePosition === 'full' && 'justify-center',
-        imagePosition === 'right' && 'xl:justify-end justify-center',
-        imagePosition === 'left' && 'xl:justify-start justify-center',
+        "relative z-30 flex h-full w-full transform items-center opacity-0 transition-all duration-300",
+        imagePosition === "full" && "justify-center",
+        imagePosition === "right" && "justify-center xl:justify-end",
+        imagePosition === "left" && "justify-center xl:justify-start"
       )}
       ref={sectionRef}
     >
-      <div className={clsx(imagePosition !== 'full' && 'lg:w-[60%] w-full lg:h-[70%] h-full')}>
+      <div
+        className={clsx(
+          imagePosition !== "full" && "h-full w-full lg:h-[70%] lg:w-[60%]"
+        )}
+      >
         <SanityImg
-          className="w-full lg:max-h-[65vh] max-h-[50vh] rounded-[15px] object-cover"
+          className="max-h-[50vh] w-full rounded-primary object-cover lg:max-h-[65vh]"
           builder={imageUrlBuilder}
           image={image}
-          alt={image?.alt || 'image'}
+          alt={image?.alt || "image"}
           height={windowWidth >= 768 ? 1000 : 500}
         />
       </div>
       <div
         ref={descriptionRef}
         className={clsx(
-          '2xl:w-[55%] lg:w-[70%] w-[90%] absolute lg:p-12 xl:p-6 p-3 bifrost__transparent_card rounded-lg flex flex-col lg:space-y-6 space-y-2',
-          cardPosition === 'bottom-right' &&
-            'right-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[25%] translate-y-[60%]',
-          cardPosition === 'bottom-left' &&
-            'left-[5%] bottom-0 3xl:translate-y-[35%] lg:translate-y-[25%] translate-y-[60%]',
-          cardPosition === 'left' &&
-            'xl:left-0 xl:translate-y-0 lg:translate-y-0 translate-y-[-90%]',
-          cardPosition === 'right' &&
-            'lg:right-0 xl:translate-y-0 lg:translate-y-[25%] translate-y-[70%]',
+          "bifrost__transparent_card absolute flex w-[90%] flex-col space-y-2 rounded-lg p-3 lg:w-[70%] lg:space-y-6 lg:p-12 xl:p-6 2xl:w-[55%]",
+          cardPosition === "bottom-right" &&
+            "right-[5%] bottom-0 translate-y-[60%] lg:translate-y-[25%] 3xl:translate-y-[35%]",
+          cardPosition === "bottom-left" &&
+            "left-[5%] bottom-0 translate-y-[60%] lg:translate-y-[25%] 3xl:translate-y-[35%]",
+          cardPosition === "left" &&
+            "translate-y-[-90%] lg:translate-y-0 xl:left-0 xl:translate-y-0",
+          cardPosition === "right" &&
+            "translate-y-[70%] lg:right-0 lg:translate-y-[25%] xl:translate-y-0"
         )}
       >
         {/* <Header>{headline}</Header> */}
         {!!subtitle && (
-          <h6 className="xl:text-[30px] md:text-[24px] text-[22px] font-light | leading-none">
+          <h6 className="| text-[22px] font-light leading-none md:text-[24px] xl:text-[30px]">
             {subtitle}
           </h6>
         )}
@@ -159,5 +169,5 @@ export default function Service({
         </div>
       </div>
     </div>
-  )
+  );
 }

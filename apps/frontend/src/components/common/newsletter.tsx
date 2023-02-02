@@ -1,45 +1,45 @@
-import { PortableText } from 'utils/sanity'
-import { GradientBorder } from '../ui/gradient-border'
-import { CTAButton } from 'lib/@types/global-types'
-import { Button } from '../ui/button'
-import { motion } from 'framer-motion'
-import clsx from 'clsx'
+import { PortableText } from "utils/sanity";
+import { GradientBorder } from "../ui/gradient-border";
+import { CTAButton } from "lib/@types/global-types";
+import { Button } from "../ui/button";
+import { motion } from "framer-motion";
+import clsx from "clsx";
 
 interface NewsletterProps {
-  title: any
-  subtitle?: string
-  ctaButton: CTAButton
-  padding?: 'top' | 'bottom' | 'top-and-bottom'
+  title: any;
+  subtitle?: string;
+  ctaButton: CTAButton;
+  padding?: "top" | "bottom" | "top-and-bottom";
 }
 
 export const Newsletter: React.FC<NewsletterProps> = ({
   title,
   ctaButton,
   subtitle,
-  padding = 'bottom',
+  padding = "bottom",
 }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-200px' }}
-      transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
+      viewport={{ once: true, margin: "-200px" }}
+      transition={{ type: "tween", duration: 0.7, ease: "easeInOut" }}
       className={clsx(
-        'container z-10 relative text-center',
-        padding === 'top' && 'xl:pt-36 lg:pt-20 pt-16',
-        padding === 'bottom' && 'xl:pb-36 lg:pb-20 pb-16',
-        padding === 'top-and-bottom' && 'xl:py-36 lg:py-20 py-16',
+        "container relative z-10 text-center",
+        padding === "top" && "pt-16 lg:pt-20 xl:pt-36",
+        padding === "bottom" && "pb-16 lg:pb-20 xl:pb-36",
+        padding === "top-and-bottom" && "py-16 lg:py-20 xl:py-36"
       )}
     >
       <GradientBorder>
-        <div className="flex flex-col md:space-y-8 space-y-4 | md:py-20 py-10 px-5">
-          <h4 className="max-w-2xl mx-auto | xl:text-head-3 md:text-head-md text-head-3-mobile | font-primary | leading-none text-center">
+        <div className="| flex flex-col space-y-4 py-10 px-5 md:space-y-8 md:py-20">
+          <h4 className="| | | mx-auto max-w-2xl text-center text-head-3-mobile font-primary leading-none md:text-head-md xl:text-head-3">
             <PortableText
               blocks={title}
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="text-transparent bg-clip-text primary__gradient">
+                    <span className="primary__gradient bg-clip-text text-transparent">
                       {children}
                     </span>
                   ),
@@ -48,33 +48,37 @@ export const Newsletter: React.FC<NewsletterProps> = ({
             />
           </h4>
           {!!subtitle && (
-            <p className="md:text-body-2 text-sm font-light | max-w-lg mx-auto | leading-snug">
+            <p className="| | mx-auto max-w-lg text-sm font-light leading-snug md:text-body-2">
               {subtitle}
             </p>
           )}
 
-          <div className="max-w-lg mx-auto w-full relative flex">
+          <div className="relative mx-auto flex w-full max-w-lg">
             <input
               autoComplete="off"
-              className="w-full | md:py-6 py-4 px-5 | text-body-3 text-gray-700 leading-tight | rounded-[15px] | appearance-none focus:outline-none focus:shadow-outline shadow | input__dark "
+              className="| | text-gray-700 | | focus:shadow-outline | input__dark w-full appearance-none rounded-primary py-4 px-5 text-body-3 leading-tight shadow focus:outline-none md:py-6 "
               id="username"
               type="email"
               placeholder="Enter your email address"
             />
 
-            <div className="hidden md:block | z-10 absolute right-3 top-1/2 -translate-y-1/2">
-              <Button variant="primary" type="href" href={ctaButton?.href ?? ''}>
+            <div className="| absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 md:block">
+              <Button
+                variant="primary"
+                type="href"
+                href={ctaButton?.href ?? ""}
+              >
                 {ctaButton.title}
               </Button>
             </div>
           </div>
           <div className="block md:hidden">
-            <Button variant="primary" type="href" href={ctaButton?.href ?? ''}>
+            <Button variant="primary" type="href" href={ctaButton?.href ?? ""}>
               {ctaButton.title}
             </Button>
           </div>
         </div>
       </GradientBorder>
     </motion.section>
-  )
-}
+  );
+};

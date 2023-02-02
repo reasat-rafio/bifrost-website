@@ -1,23 +1,28 @@
-import { Description } from 'components/ui/description'
-import { Heading } from 'components/ui/heading'
-import { Title } from 'components/ui/title'
-import { IUseCase } from 'lib/@types/landing-types'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'utils/sanity'
-import Link from 'next/link'
-import 'swiper/css'
-import { Section } from 'components/ui/section'
+import { Description } from "components/ui/description";
+import { Heading } from "components/ui/heading";
+import { Title } from "components/ui/title";
+import { IUseCase } from "lib/@types/landing-types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { SanityImg } from "sanity-react-extra";
+import { imageUrlBuilder } from "utils/sanity";
+import Link from "next/link";
+import "swiper/css";
+import { Section } from "components/ui/section";
 
 interface UseCaseProps {
-  type: string
-  description: string
-  heading: string
-  title: string
-  useCases: IUseCase[]
+  type: string;
+  description: string;
+  heading: string;
+  title: string;
+  useCases: IUseCase[];
 }
 
-export const UseCase: React.FC<UseCaseProps> = ({ title, heading, description, useCases }) => {
+export const UseCase: React.FC<UseCaseProps> = ({
+  title,
+  heading,
+  description,
+  useCases,
+}) => {
   return (
     <Section>
       <div className="spacing_primary | font-light">
@@ -28,19 +33,19 @@ export const UseCase: React.FC<UseCaseProps> = ({ title, heading, description, u
 
       <div className="mt-10">
         <Swiper
-          slidesPerView={'auto'}
+          slidesPerView={"auto"}
           spaceBetween={30}
           pagination={{
             clickable: true,
           }}
         >
           {useCases.map(({ _key, image, name, url }) => (
-            <SwiperSlide key={_key} className="!w-auto !h-[300px] relative">
+            <SwiperSlide key={_key} className="relative !h-[300px] !w-auto">
               {!!url ? (
                 <Link href={url}>
                   <a>
                     <SanityImg
-                      className="object-cover rounded-[15px]"
+                      className="rounded-primary object-cover"
                       height={300}
                       builder={imageUrlBuilder}
                       image={image}
@@ -50,18 +55,20 @@ export const UseCase: React.FC<UseCaseProps> = ({ title, heading, description, u
                 </Link>
               ) : (
                 <SanityImg
-                  className="object-cover rounded-[15px]"
+                  className="rounded-primary object-cover"
                   height={300}
                   builder={imageUrlBuilder}
                   image={image}
                   alt={image.alt}
                 />
               )}
-              <p className="absolute bottom-10 left-1/2 drop-shadow -translate-x-1/2">{name}</p>
+              <p className="absolute bottom-10 left-1/2 -translate-x-1/2 drop-shadow">
+                {name}
+              </p>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
     </Section>
-  )
-}
+  );
+};

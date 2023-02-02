@@ -21,7 +21,7 @@ export const ScrollSpy: React.FC<ScrollSpyProps> = ({
       <nav style={{ top: `${navHeight + 20}px` }} className="!sticky pl-5">
         <ul className="space-y-3 capitalize">
           {sectionHeaders.map(({ _key, text }) => (
-            <li key={_key} className="text-body-3 ">
+            <li key={_key} className="cursor-pointer text-body-3">
               {text}
             </li>
           ))}

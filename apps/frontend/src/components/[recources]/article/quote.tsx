@@ -18,7 +18,7 @@ export const Quote: React.FC<QuoteProps> = ({ text, author, url }) => {
         onClick={onClickAction}
         className={clsx(
           !!url && "cursor-pointer",
-          "flex flex-col space-y-5 p-10 font-light md:space-y-10"
+          "flex flex-col space-y-5 px-8 py-5 font-light sm:py-5 sm:px-10 md:space-y-10 lg:py-10 lg:px-20"
         )}
       >
         <q className="text-head-6 md:text-head-5">{text}</q>
