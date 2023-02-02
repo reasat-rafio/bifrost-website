@@ -8,12 +8,16 @@ export const Serializers = {
   types: {
     block: (props: any) => {
       if (props.node.style === "pageHeader") {
-        return <h1></h1>;
+        return (
+          <h1 className="primary__gradient bg-clip-text py-2 font-primary text-transparent sm:text-head-5 md:text-4xl lg:text-[48px]">
+            {props.children}
+          </h1>
+        );
       } else if (props.node.style === "sectionTitle") {
         return <Title className="font-light">{props.children}</Title>;
       } else if (props.node.style === "sectionSubtitle") {
         return (
-          <Description textBig className="font-light text-white">
+          <Description type="h5" textBig className="font-light text-white">
             {props.children}
           </Description>
         );
