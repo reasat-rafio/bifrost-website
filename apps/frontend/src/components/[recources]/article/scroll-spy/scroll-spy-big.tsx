@@ -17,7 +17,7 @@ export const ScrollSpyBig: React.FC<ScrollSpyProps> = ({
   sectionHeaders,
 }) => {
   return (
-    <aside className={clsx(className, " relative")}>
+    <aside className={clsx(className, " relative mt-10")}>
       <nav style={{ top: `${navHeight + 20}px` }} className="!sticky pl-5">
         <ul className="space-y-3 capitalize">
           {sectionHeaders.map(({ _key, text }) => (

@@ -68,8 +68,8 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
         navHeight={navHeight}
       />
       <section
-        style={{ paddingTop: navHeight }}
-        className="relative grid grid-cols-13 pt-10"
+        style={{ paddingTop: navHeight + 50 }}
+        className="relative grid grid-cols-13 "
       >
         <article
           ref={ref as React.LegacyRef<HTMLDivElement>}
