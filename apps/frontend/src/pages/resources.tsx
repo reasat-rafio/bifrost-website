@@ -34,7 +34,6 @@ const Resources = (props: SanityProps<any>) => {
     data: { page },
   } = useSanityQuery(query, props)
   const articleRef = useRef(null)
-  console.log(page.body)
 
   return (
     <div className="container">

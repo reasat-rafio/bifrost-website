@@ -43,7 +43,7 @@ export const ScrollDetective: React.FC<ScrollDetectiveProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ ease: 'easeInOut', duration: 0.7 }}
-          className="fixed left-0 h-[5px] w-full origin-left bg-gradient-to-r from-pinkSugar to-neonBlue z-20 shadow"
+          className="fixed left-0 h-[5px] w-full origin-left primary__gradient z-20 shadow"
         />
       )}
     </AnimatePresence>
