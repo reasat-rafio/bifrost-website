@@ -3,6 +3,7 @@ import { SectionHeaderProps } from "./scroll-spy-big";
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import clsx from "clsx";
+import { useScrollDirection } from "lib/hooks";
 
 interface ScrollSpySmallProps {
   className?: string;
@@ -17,6 +18,8 @@ export const ScrollSpySmall: React.FC<ScrollSpySmallProps> = ({
   sectionHeaders,
   className,
 }) => {
+  const scrollDirection = useScrollDirection();
+
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
