@@ -44,9 +44,13 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
       .filter(({ style }) => style === "sectionTitle")
       .map((block: any) => ({
         _key: block?._key,
-        text: block?.children.map(({ text }) => text)[0],
+        text: block?.children.map(({ text }) => text)[0].toLowerCase(),
       }));
-    setSectionHeaders(sectionTitles);
+    setSectionHeaders([
+      { _key: String(crypto.randomUUID), text: "Overview" },
+      ...sectionTitles,
+      { _key: String(crypto.randomUUID), text: "Contact Us" },
+    ]);
   }, []);
 
   return (
@@ -57,16 +61,16 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
       />
       <div
         style={{ marginTop: navHeight }}
-        className="relative grid grid-cols-13 space-x-5 pt-10"
+        className="relative grid grid-cols-13 pt-10"
       >
         <article
           ref={ref as React.LegacyRef<HTMLDivElement>}
-          className="prose-lg col-span-11 h-full max-w-none px-6"
+          className="prose-lg col-span-full h-full max-w-none px-6 lg:col-span-11 lg:pr-5"
         >
           <PortableText blocks={body} serializers={Serializers} />
         </article>
         <ScrollSpy
-          className="col-span-2"
+          className="col-span-2 hidden lg:block"
           sectionHeaders={sectionHeaders}
           navHeight={navHeight}
         />
