@@ -13,6 +13,7 @@ import { useScroll } from "framer-motion";
 import { ScrollDetective } from "components/common/scroll-detective";
 import { ScrollSpyBig, SectionHeaderProps } from "./scroll-spy/scroll-spy-big";
 import { ShareWith } from "./share-with";
+import { ScrollSpySmall } from "./scroll-spy/scroll-spy-small";
 
 interface ArticleProps {
   ref?: ForwardedRef<HTMLElement>;
@@ -48,9 +49,9 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
         text: block?.children.map(({ text }) => text)[0].toLowerCase(),
       }));
     setSectionHeaders([
-      { _key: String(crypto.randomUUID), text: "Overview" },
+      { _key: crypto.randomUUID(), text: "Overview" },
       ...sectionTitles,
-      { _key: String(crypto.randomUUID), text: "Contact Us" },
+      { _key: crypto.randomUUID(), text: "Contact Us" },
     ]);
   }, []);
 
@@ -59,6 +60,12 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
       <ScrollDetective
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}
+      />
+      <ScrollSpySmall
+        className="block lg:hidden"
+        intersecting={articleIntersecting}
+        sectionHeaders={sectionHeaders}
+        navHeight={navHeight}
       />
       <section
         style={{ paddingTop: navHeight }}
