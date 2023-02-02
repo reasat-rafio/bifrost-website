@@ -19,7 +19,6 @@ export const ScrollSpySmall: React.FC<ScrollSpySmallProps> = ({
   className,
 }) => {
   const scrollDirection = useScrollDirection();
-
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
@@ -28,14 +27,23 @@ export const ScrollSpySmall: React.FC<ScrollSpySmallProps> = ({
 
   return (
     <AnimatePresence>
-      {intersecting && !!activeSection?.text && (
+      {intersecting && scrollDirection === "up" && (
         <motion.aside
-          className={clsx("fixed left-0 top-20 z-20 w-full", className)}
+          style={{ top: `${navHeight}px` }}
+          className={clsx("fixed left-0 z-20 w-full", className)}
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{
+            duration: 0.5,
+            type: "tween",
+            ease: "anticipate",
+          }}
         >
           <div className="container mx-auto rounded shadow">
             <Listbox value={activeSection} onChange={setActiveSection}>
               <div className="relative mt-1 capitalize">
-                <Listbox.Button className="primary__gradient relative flex w-full items-center justify-between rounded-[4px] p-4 text-left text-base font-semibold text-white drop-shadow-xl focus:outline-none">
+                <Listbox.Button className="primary__gradient relative flex w-full items-center justify-between rounded-[4px] p-4 text-left text-base font-semibold capitalize text-white drop-shadow-xl focus:outline-none">
                   {activeSection?.text}
                 </Listbox.Button>
                 <Transition
@@ -44,7 +52,7 @@ export const ScrollSpySmall: React.FC<ScrollSpySmallProps> = ({
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Listbox.Options className="primary__gradient shadow-raise absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-[4px] py-1 text-base shadow-md focus:outline-none">
+                  <Listbox.Options className="primary__gradient shadow-raise absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-[4px] py-1 text-sm shadow-md focus:outline-none">
                     {sectionHeaders.map((section, i) => (
                       <Listbox.Option
                         key={section._key}
@@ -55,15 +63,15 @@ export const ScrollSpySmall: React.FC<ScrollSpySmallProps> = ({
                           <>
                             <a
                               href={`#section-${i}`}
-                              onClick={(ev) => {
-                                ev.preventDefault();
-                                document
-                                  .querySelector(`#section-${i}`)
-                                  ?.scrollIntoView();
-                              }}
+                              //   onClick={(ev) => {
+                              //     ev.preventDefault();
+                              //     document
+                              //       .querySelector(`#section-${i}`)
+                              //       ?.scrollIntoView();
+                              //   }}
                               className={clsx(
                                 active
-                                  ? "text-copper-500 font-bold"
+                                  ? "text-copper-500 font-semibold"
                                   : "text-neutral-600"
                               )}
                             >
