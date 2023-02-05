@@ -5,9 +5,9 @@ const PageHeaderStyle = (props: { children: React.ReactNode }) => (
   <h1
     style={{
       fontSize: '40px',
-      background: `linear-gradient(91.41deg, #70FCEB 4.55%, #9BB8FF 51.06%, #B794FF 91.28%)`,
-      backgroundClip: 'text',
-      color: 'transparent',
+      // background: `linear-gradient(91.41deg, #70FCEB 4.55%, #9BB8FF 51.06%, #B794FF 91.28%)`,
+      // backgroundClip: 'text',
+      color: '#70FCEB',
     }}
   >
     {props.children}

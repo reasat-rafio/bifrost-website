@@ -1,5 +1,5 @@
-import { Article } from "components/[resources]/article/article";
-import { Form } from "components/[resources]/form";
+import { Article } from "components/[resource]/article/article";
+import { Form } from "components/[resource]/form";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
