@@ -4,7 +4,7 @@ import { BlogBody } from "lib/@types/blog-types";
 import React from "react";
 import { PortableText } from "utils/sanity";
 import { useWindowSize } from "lib/hooks";
-import { Quote, QuoteProps } from "../quote";
+import { Quote, QuoteProps } from "./quote";
 import { Title } from "components/ui/title";
 import { Description } from "components/ui/description";
 
@@ -30,7 +30,7 @@ const serializers = {
   },
 };
 
-export const BlogSection: React.FC<BlogBody> = ({
+export const ArticleSection: React.FC<BlogBody> = ({
   description,
   heading,
   subHeading,

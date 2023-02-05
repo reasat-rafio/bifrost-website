@@ -1,6 +1,6 @@
 import { BlogBody } from "lib/@types/blog-types";
 import React, { RefObject, useEffect, useState } from "react";
-import { Scrollspy } from "./body/scrollspy";
+import { Scrollspy } from "./scrollspy";
 import { NavBig } from "./navigation/nav-big";
 import { NavSmall } from "./navigation/nav-small";
 

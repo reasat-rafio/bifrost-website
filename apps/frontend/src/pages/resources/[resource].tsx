@@ -1,4 +1,4 @@
-import { Article } from "components/[resource]/article/article";
+import { Article } from "components/[resource]/article";
 import { Form } from "components/[resource]/form";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";

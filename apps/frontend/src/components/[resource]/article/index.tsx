@@ -7,10 +7,10 @@ import {
   useState,
 } from "react";
 import { useWindowSize } from "lib/hooks";
-import { ShareWith } from "./share-with";
+import { ShareWith } from "./body/share-with";
 import { BlogBody } from "lib/@types/blog-types";
 import { Overview } from "./body/overview";
-import { BlogSection } from "./body/blog-section";
+import { ArticleSection } from "./body/article-section";
 import { ScrollSpyWrapper } from "./scroll-spy-wrapper";
 
 interface ArticleProps {
@@ -25,7 +25,7 @@ const renderBlogArray = (body: BlogBody) => {
     case "overview":
       return <Overview {...body} />;
     case "section":
-      return <BlogSection {...body} />;
+      return <ArticleSection {...body} />;
     case "share":
       return <ShareWith />;
   }
