@@ -38,7 +38,8 @@ import landingProductsSection from './objects/landing/product'
 import landingDemoSection from './objects/landing/demo'
 import landingServicesSection from './objects/landing/service'
 
-import resourcesPage from './documents/resources'
+import resources from './documents/resources/resources'
+import resourcesTag from './documents/resources/tag'
 
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
@@ -138,8 +139,6 @@ export const schemaTypes = [
   landingServicesSection,
   landingTestimonial,
 
-  resourcesPage,
-
   aboutUs,
   aboutUsHomeSection,
   aboutUsAboutSection,
@@ -171,6 +170,9 @@ export const schemaTypes = [
   defectDetectionPage,
   naturalDisasterPage,
   defensePage,
+
+  resources,
+  resourcesTag,
 
   blog,
 

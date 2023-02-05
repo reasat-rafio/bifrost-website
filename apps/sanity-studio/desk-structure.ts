@@ -6,7 +6,7 @@ import {
   MdOutlineWorkOutline,
   MdScreenSearchDesktop,
 } from 'react-icons/md'
-import { FcAbout, FcViewDetails } from 'react-icons/fc'
+import { FcAbout, FcAcceptDatabase, FcViewDetails } from 'react-icons/fc'
 import {
   GrActions,
   GrArticle,
@@ -241,7 +241,17 @@ export const AppStructure = (S: StructureBuilder) =>
             ]),
         ),
 
-      S.documentTypeListItem('resource').title('Resource'),
+      S.listItem()
+        .title('Resources')
+        .icon(FcAcceptDatabase)
+        .child(
+          S.list()
+            .title('Resources')
+            .items([
+              S.documentTypeListItem('resource').title('Resources'),
+              S.documentTypeListItem('resourcesTag').title('Tags'),
+            ]),
+        ),
 
       S.listItem()
         .title('Dataset')

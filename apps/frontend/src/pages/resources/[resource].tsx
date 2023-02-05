@@ -6,11 +6,11 @@ import { groq } from "next-sanity";
 import { SanityProps } from "next-sanity-extra";
 import { useRef } from "react";
 import { withDimensions } from "sanity-react-extra";
-import { sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { sanityClient, sanityStaticProps, useSanityQuery } from "utils/sanity";
 
 const query = groq`{
   "site": ${siteQuery},
-  "page": *[_id == "resourcesPage"][0] {
+  "page": *[_type == "resource" && slug.current == $resource][0] {
     ...,
     "image": ${withDimensions("image")},
     body[]{
@@ -25,6 +25,26 @@ const query = groq`{
   }
 }`;
 
+const pathsQuery = groq`*[_type == 'resource'][]{
+  slug,
+  tags[]->{
+    name
+    }
+  }`;
+
+export const getStaticPaths = async () => {
+  const slugs = await sanityClient("anonymous").fetch(pathsQuery);
+
+  return {
+    paths: slugs
+      .filter((s: any) => s)
+      .map((s: any) => ({
+        params: { resource: s.slug.current, tags: s.tags },
+      })),
+    fallback: false,
+  };
+};
+
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => ({
@@ -37,10 +57,11 @@ const Resources = (props: SanityProps<any>) => {
     data: { page },
   } = useSanityQuery(query, props);
   const articleRef = useRef(null);
+  console.log(page.body);
 
   return (
     <div className="container">
-      <Article body={page.body} ref={articleRef} />
+      {/* <Article body={page.body} ref={articleRef} /> */}
       <Form />
     </div>
   );

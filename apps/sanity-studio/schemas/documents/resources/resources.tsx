@@ -48,6 +48,31 @@ const resourcePage = {
     {
       name: 'seo',
       type: 'seo',
+      description:
+        '"Title" Input field is used as the main source for generating the SEO-friendly "Slug" for the web page. Make sure to keep the title under 60 characters to ensure optimal SEO results.',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: (_: any, context: any) => context.parent.seo.title,
+      },
+    },
+    {
+      name: 'tags',
+      type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
+      options: {
+        layout: 'tags',
+      },
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'resourcesTag' },
+        },
+      ],
     },
     {
       name: 'body',
