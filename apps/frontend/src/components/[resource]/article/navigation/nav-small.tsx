@@ -33,7 +33,10 @@ export const NavSmall: React.FC<ScrollSpySmallProps> = ({
       {intersecting && (
         <motion.aside
           style={{ top: `${navbarHeight}px` }}
-          className={clsx("fixed left-0 z-20 w-full", className)}
+          className={clsx(
+            "fixed left-0 z-20 block w-full lg:hidden",
+            className
+          )}
           initial={{ y: -200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}

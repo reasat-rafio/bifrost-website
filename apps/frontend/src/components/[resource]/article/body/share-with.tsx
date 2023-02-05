@@ -15,7 +15,7 @@ export const ShareWith: React.FC<ShareWithProps> = ({}) => {
   }, [router.pathname]);
   return (
     <section className="relative mx-auto max-w-screen-2xl rounded-primary border-[1px] border-white">
-      <div className="flex items-center space-x-2 px-8 py-1 sm:py-5 sm:px-10 lg:py-10 lg:px-20">
+      <div className="flex items-center space-x-2 px-8 py-5 sm:py-5 sm:px-10 lg:py-10 lg:px-20">
         <span className="flex-1 text-base lg:text-[20px]">
           Share this article:{" "}
         </span>

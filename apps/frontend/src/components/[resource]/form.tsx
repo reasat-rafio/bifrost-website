@@ -33,7 +33,7 @@ export const Form: React.FC<FormProps> = ({}) => {
 
   return (
     <Section padding={false} borderBottom={false}>
-      <div className="relative z-20 mt-10 space-y-5 rounded-primary  bg-[#1A242F] p-20 sm:space-y-10">
+      <div className="relative z-20 mt-10 space-y-5 rounded-primary bg-[#1A242F] p-5 sm:space-y-10 md:p-12 xl:p-20">
         <header className="space-y-3 text-center font-light">
           <h2 className="primary__gradient mx-auto w-fit bg-clip-text text-[36px] uppercase text-transparent">
             Request a demo
@@ -45,9 +45,9 @@ export const Form: React.FC<FormProps> = ({}) => {
         </header>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-3 sm:space-y-6"
+          className="space-y-3 sm:space-y-6 "
         >
-          <div className="grid grid-cols-1 gap-x-0 sm:grid-cols-2 sm:gap-x-6">
+          <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
             <Input
               disabled={submitting}
               errorKey={errors.first_name?.message}
