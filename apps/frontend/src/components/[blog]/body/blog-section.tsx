@@ -50,15 +50,15 @@ const serializers = {
 export const BlogSection: React.FC<BlogBody> = ({
   description,
   heading,
-  hideHeading,
+  // hideHeading,
 }) => {
   return (
     <div className="prose-lg prose-cyan max-w-none">
-      {!hideHeading && (
-        <h4 className="mb-6 text-[32px] tracking-[0.02em] text-[#000610]">
-          {heading}
-        </h4>
-      )}
+      {/* {!hideHeading && ( */}
+      <h4 className="mb-6 text-[32px] tracking-[0.02em] text-[#000610]">
+        {heading}
+      </h4>
+      {/* )} */}
       <div className="">
         <PortableText blocks={description} serializers={serializers} />
       </div>

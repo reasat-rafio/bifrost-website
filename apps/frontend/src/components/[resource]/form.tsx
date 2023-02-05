@@ -18,11 +18,11 @@ export const Form: React.FC<FormProps> = ({}) => {
     mode: "onChange",
     resolver: yupResolver(ResourcesFormSchema),
   });
-  const [submit, submitting] = useFormspark({
+  const [_, submitting] = useFormspark({
     formId: process.env.NEXT_PUBLIC_FORM_ID,
   });
 
-  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async (data) => {
+  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async () => {
     try {
       // await submit({});
       reset();

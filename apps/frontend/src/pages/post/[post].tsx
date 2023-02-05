@@ -1,4 +1,3 @@
-import { Body } from "components/[blog]/body2/body";
 import { Heading } from "components/[blog]/heading";
 import { PrimaryWrapper } from "components/common/primary-wapper";
 // import Newslettr from 'components/common/newsletter'
@@ -17,6 +16,7 @@ import { Newsletter } from "components/common/newsletter";
 import { ScrollDetective } from "components/common/scroll-detective";
 import { useIntersection } from "lib/hooks";
 import { useScroll } from "framer-motion";
+import { Body } from "components/[blog]/body/body";
 
 const query = groq`{
   "site": ${siteQuery},

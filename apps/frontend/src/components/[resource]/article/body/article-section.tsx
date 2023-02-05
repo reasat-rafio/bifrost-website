@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { LightboxImage } from "src/components/ui/LightboxImage";
 import { BlogBody } from "lib/@types/blog-types";
 import React from "react";
