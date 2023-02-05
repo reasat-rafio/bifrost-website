@@ -10,6 +10,7 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from "utils/sanity";
 import { ScrollDetective } from "components/common/scroll-detective";
 import { useIntersection } from "lib/hooks";
 import { useScroll } from "framer-motion";
+import { RelatedResources } from "components/[resource]/related-resources";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -70,7 +71,7 @@ export const getStaticProps: GetStaticProps = async (
 const Resources = (props: SanityProps<any>) => {
   const {
     data: {
-      page: { heading, body, relatedBlogs },
+      page: { heading, body, relatedResources },
     },
   } = useSanityQuery(query, props);
   const articleRef = useRef(null);
@@ -81,8 +82,9 @@ const Resources = (props: SanityProps<any>) => {
   const { scrollYProgress } = useScroll({
     target: articleRef,
   });
+
   return (
-    <div>
+    <section>
       <ScrollDetective
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}
@@ -94,7 +96,8 @@ const Resources = (props: SanityProps<any>) => {
         ref={articleRef}
       />
       <Form />
-    </div>
+      <RelatedResources resources={relatedResources} />
+    </section>
   );
 };
 

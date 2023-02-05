@@ -23,7 +23,7 @@
 .card::before,
 .card::after {
   border-radius: inherit;
-  content: '';
+  content: "";
   height: 100%;
   left: 0px;
   opacity: 0;
@@ -48,7 +48,7 @@
   background: radial-gradient(
     200px circle at var(--mouse-x) var(--mouse-y),
     #eeffe9 0%,
-    #c9ff71 40.69%,
+    #70fceb 40.69%,
     #f8e9ff 70%,
     #e4acff 85.3%,
     #7187ff 102.69%,
