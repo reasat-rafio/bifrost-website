@@ -7,26 +7,33 @@ import { SanityProps } from "next-sanity-extra";
 import { useRef } from "react";
 import { withDimensions } from "sanity-react-extra";
 import { sanityClient, sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { ScrollDetective } from "components/common/scroll-detective";
+import { useIntersection } from "lib/hooks";
+import { useScroll } from "framer-motion";
 
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_type == "resource" && slug.current == $resource][0] {
     ...,
+    tags[]->,
     "image": ${withDimensions("image")},
     body[]{
       ...,
-      asset->{
+      "image": ${withDimensions("image")},
+      description[]{
         ...,
-        metadata {
-          dimensions
+        asset->{
+            ...,
+            metadata {
+              dimensions
+            }
         }
       }
-    }
+    },
    "relatedResources" : *[_type== "resource" && slug.current != $resource && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
       _id,
       heading,
       slug,
-      datetime,
       shortDescription,
       "image": ${withDimensions("image")},
     }
@@ -62,14 +69,23 @@ export const getStaticProps: GetStaticProps = async (
 
 const Resources = (props: SanityProps<any>) => {
   const {
-    data: { page },
+    data: {
+      page: { heading, body, relatedBlogs },
+    },
   } = useSanityQuery(query, props);
   const articleRef = useRef(null);
-  console.log(page.body);
 
+  const articleIntersecting = useIntersection(articleRef)?.isIntersecting;
+  const { scrollYProgress } = useScroll({
+    target: articleRef,
+  });
   return (
-    <div className="container">
-      <Article body={page.body} ref={articleRef} />
+    <div>
+      <ScrollDetective
+        intersecting={articleIntersecting}
+        scrollYProgress={scrollYProgress}
+      />
+      <Article heading={heading} body={body} ref={articleRef} />
       <Form />
     </div>
   );

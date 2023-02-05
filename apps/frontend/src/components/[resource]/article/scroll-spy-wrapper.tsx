@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { BlogBody } from "lib/@types/blog-types";
 import React, { RefObject, useEffect, useState } from "react";
 import { Scrollspy } from "./body/scrollspy";
-import { SmScrollSpy } from "./sm-scroll-spy";
 import { motion } from "framer-motion";
+import { SmScrollSpy } from "components/[blog]/sm-scroll-spy";
 
 interface ScrollSpyProps {
   sections: BlogBody[];

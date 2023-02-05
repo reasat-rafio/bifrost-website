@@ -1,5 +1,5 @@
 import { GrTag } from 'react-icons/gr'
-import { Rule, defineType } from 'sanity'
+import { Rule } from 'sanity'
 
 const resourcesTag = {
   name: 'resourcesTag',

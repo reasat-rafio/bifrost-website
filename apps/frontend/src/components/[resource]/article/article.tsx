@@ -1,6 +1,5 @@
 import {
   ForwardedRef,
-  RefObject,
   createRef,
   forwardRef,
   useEffect,
@@ -9,102 +8,83 @@ import {
 } from "react";
 import { PortableText } from "utils/sanity";
 import { Serializers } from "./serializers";
-import { useIntersection } from "lib/hooks";
+import { useIntersection, useWindowSize } from "lib/hooks";
 import { useScroll } from "framer-motion";
 import { ScrollDetective } from "components/common/scroll-detective";
 import { ScrollSpyBig, SectionHeaderProps } from "./scroll-spy/scroll-spy-big";
 import { ShareWith } from "./share-with";
 import { ScrollSpySmall } from "./scroll-spy/scroll-spy-small";
+import { BlogBody } from "lib/@types/blog-types";
+import { Overview } from "./body/overview";
+import { BlogSection } from "./body/blog-section";
+import { ScrollSpyWrapper } from "./scroll-spy-wrapper";
 
 interface ArticleProps {
+  heading: string;
   ref?: ForwardedRef<HTMLElement>;
   body: any;
 }
 
-export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
-  const [navHeight, setNavbarHeight] = useState(0);
-  const [articleSectionHeight, setArticleSectionHeight] = useState(0);
-  const [acticeElIndex, setActiveElIndex] = useState(0);
-  const [sectionRefs, setSectionRefs] = useState([]);
-  const [sectionHeaders, setSectionHeaders] = useState<SectionHeaderProps[]>(
-    []
-  );
+const renderBlogArray = (body: BlogBody) => {
+  switch (body._type) {
+    case "overview":
+      return <Overview {...body} />;
+    case "section":
+      return <BlogSection {...body} />;
+    case "share":
+      return <ShareWith />;
+  }
+};
 
-  const articleIntersecting = useIntersection(
-    ref as RefObject<HTMLElement>
-  )?.isIntersecting;
+const shareBlock: BlogBody = {
+  _key: crypto.randomUUID(),
+  _type: "share",
+  heading: "Share With",
+};
+export const Article: React.FC<ArticleProps> = forwardRef(
+  ({ body, heading }, ref) => {
+    const windowWidth = useWindowSize()?.width ?? 0;
+    const [sectionRefs, setSectionRefs] = useState([]);
+    const [navbarHeight, setNavbarHeight] = useState(0);
+    const sections = [...body, shareBlock];
+    const totalSectionsLength = sections.length;
 
-  const { scrollYProgress } = useScroll({
-    target: ref as RefObject<HTMLElement>,
-  });
+    useLayoutEffect(() => {
+      const height = document.querySelector("#navbar")?.clientHeight ?? 0;
+      setNavbarHeight(height);
+    }, [windowWidth]);
 
-  useLayoutEffect(() => {
-    const height = document.querySelector("#navbar").clientHeight;
-    setNavbarHeight(height);
-  }, []);
+    useEffect(() => {
+      setSectionRefs((sectionRefs) =>
+        [...Array(totalSectionsLength)].map(
+          (_, i) => sectionRefs[i] || createRef()
+        )
+      );
+    }, [totalSectionsLength]);
 
-  // ? From the portable text getting the headers which are marked as sectionTitle in sanity
-  useEffect(() => {
-    const sectionTitles = body
-      .filter(({ style }) => style === "sectionTitle")
-      .map((block: any) => ({
-        _key: block?._key,
-        text: block?.children.map(({ text }) => text)[0].toLowerCase(),
-        ref: createRef<HTMLElement>(),
-      }));
-    setSectionHeaders([
-      {
-        _key: crypto.randomUUID(),
-        text: "Overview",
-        ref: createRef<HTMLElement>(),
-      },
-      ...sectionTitles,
-      {
-        _key: crypto.randomUUID(),
-        text: "Contact Us",
-        ref: createRef<HTMLElement>(),
-      },
-    ]);
-  }, []);
-
-  useEffect(() => {
-    const articleHeight =
-      document.querySelector("[data-cy='resources-article-wrapper']")
-        ?.scrollHeight ?? 0;
-    setArticleSectionHeight(articleHeight);
-  }, []);
-
-  return (
-    <>
-      <ScrollDetective
-        intersecting={articleIntersecting}
-        scrollYProgress={scrollYProgress}
-      />
-      <ScrollSpySmall
-        className="block lg:hidden"
-        intersecting={articleIntersecting}
-        sectionHeaders={sectionHeaders}
-        navHeight={navHeight}
-      />
-      <section
-        data-cy="resources-article-wrapper"
-        style={{ paddingTop: navHeight + 50 }}
-        className="relative grid grid-cols-13 "
-      >
-        <article
-          ref={ref as React.LegacyRef<HTMLElement>}
-          className="prose-lg col-span-full h-full max-w-none px-6 lg:col-span-11 lg:pr-5"
+    return (
+      <article ref={ref} className="container h-full">
+        <ScrollSpyWrapper
+          paddingY={navbarHeight}
+          sections={sections}
+          sectionRefs={sectionRefs}
         >
-          <PortableText blocks={body} serializers={Serializers} />
-          <ShareWith />
-        </article>
-
-        <ScrollSpyBig
-          className="col-span-2 hidden lg:block"
-          sectionHeaders={sectionHeaders}
-          navHeight={navHeight}
-        />
-      </section>
-    </>
-  );
-});
+          <div
+            data-cy="section-wrapper"
+            className="relative mt-20 max-w-4xl space-y-10 rounded-lg text-white lg:col-span-9 lg:mt-0 2xl:max-w-5xl"
+          >
+            {sections.map((section, index) => (
+              <div
+                id={`section-${index}`}
+                key={section?._key ?? index}
+                ref={sectionRefs[index]}
+              >
+                {renderBlogArray({ ...section, title: heading })}
+              </div>
+            ))}
+          </div>
+        </ScrollSpyWrapper>
+      </article>
+    );
+  }
+);
