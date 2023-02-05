@@ -1,6 +1,7 @@
 import {
   ForwardedRef,
   RefObject,
+  createRef,
   forwardRef,
   useEffect,
   useLayoutEffect,
@@ -22,6 +23,9 @@ interface ArticleProps {
 
 export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
   const [navHeight, setNavbarHeight] = useState(0);
+  const [articleSectionHeight, setArticleSectionHeight] = useState(0);
+  const [acticeElIndex, setActiveElIndex] = useState(0);
+  const [sectionRefs, setSectionRefs] = useState([]);
   const [sectionHeaders, setSectionHeaders] = useState<SectionHeaderProps[]>(
     []
   );
@@ -41,18 +45,33 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
 
   // ? From the portable text getting the headers which are marked as sectionTitle in sanity
   useEffect(() => {
-    console.log(body);
     const sectionTitles = body
       .filter(({ style }) => style === "sectionTitle")
       .map((block: any) => ({
         _key: block?._key,
         text: block?.children.map(({ text }) => text)[0].toLowerCase(),
+        ref: createRef<HTMLElement>(),
       }));
     setSectionHeaders([
-      { _key: crypto.randomUUID(), text: "Overview" },
+      {
+        _key: crypto.randomUUID(),
+        text: "Overview",
+        ref: createRef<HTMLElement>(),
+      },
       ...sectionTitles,
-      { _key: crypto.randomUUID(), text: "Contact Us" },
+      {
+        _key: crypto.randomUUID(),
+        text: "Contact Us",
+        ref: createRef<HTMLElement>(),
+      },
     ]);
+  }, []);
+
+  useEffect(() => {
+    const articleHeight =
+      document.querySelector("[data-cy='resources-article-wrapper']")
+        ?.scrollHeight ?? 0;
+    setArticleSectionHeight(articleHeight);
   }, []);
 
   return (
@@ -68,11 +87,12 @@ export const Article: React.FC<ArticleProps> = forwardRef(({ body }, ref) => {
         navHeight={navHeight}
       />
       <section
+        data-cy="resources-article-wrapper"
         style={{ paddingTop: navHeight + 50 }}
         className="relative grid grid-cols-13 "
       >
         <article
-          ref={ref as React.LegacyRef<HTMLDivElement>}
+          ref={ref as React.LegacyRef<HTMLElement>}
           className="prose-lg col-span-full h-full max-w-none px-6 lg:col-span-11 lg:pr-5"
         >
           <PortableText blocks={body} serializers={Serializers} />

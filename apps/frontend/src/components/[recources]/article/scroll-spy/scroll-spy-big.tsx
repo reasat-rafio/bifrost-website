@@ -1,8 +1,10 @@
 import clsx from "clsx";
+import { RefObject } from "react";
 
 export interface SectionHeaderProps {
   _key: string;
   text: string;
+  ref: RefObject<HTMLElement>;
 }
 
 interface ScrollSpyProps {

@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import './background-effects.scss';
-@import './swiper.scss';
-@import './card.scss';
+@import "./background-effects.scss";
+@import "./swiper.scss";
+@import "./card.scss";
 
 @layer base {
   body {
@@ -19,25 +19,33 @@ html {
 }
 
 .spacing_primary {
-  @apply sm:space-y-8 space-y-4;
+  @apply space-y-4 sm:space-y-8;
 }
 
 .section_pading {
-  @apply lg:py-32 py-20;
+  @apply py-20 lg:py-[128px];
 }
 
 .bifrost__card {
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   backdrop-filter: blur(80px);
   border-radius: 15px;
 }
 
 .datasetInputs {
-  @apply w-full border border-[#1E2531] rounded-[6px] focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-honeySuckle  py-3 pl-3 pr-4 text-base text-gray focus:outline-none transition duration-300 bg-transparent;
+  @apply w-full rounded-[6px] border border-[#1E2531] bg-transparent py-3 pl-3  pr-4 text-base text-gray transition duration-300 focus:outline-none focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-honeySuckle;
 }
 
 .blog_page_navbar_background {
-  background: linear-gradient(138.39deg, rgba(0, 0, 0, 0.69) -7.57%, rgba(0, 0, 0, 08) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(0, 0, 0, 0.69) -7.57%,
+    rgba(0, 0, 0, 08) 107.25%
+  );
 }
 
 /* .__carouselBtn { */
@@ -61,7 +69,11 @@ html {
 }
 
 .project__item {
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   /*   backdrop-filter: blur(80px); */
   backdrop-filter: blur(80px);
   border-radius: 8px;
