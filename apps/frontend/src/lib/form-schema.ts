@@ -23,3 +23,11 @@ export const ResourcesFormSchema = yup.object().shape({
     .max(300, "Description can have a maximum of 300 words")
     .required(),
 });
+export interface ResourcesFormSchemaProps {
+  first_name: string;
+  last_name: string;
+  company_name: string;
+  work_email: string;
+  job_title: string;
+  job_description: string;
+}
