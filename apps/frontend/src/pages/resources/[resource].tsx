@@ -75,7 +75,9 @@ const Resources = (props: SanityProps<any>) => {
   } = useSanityQuery(query, props);
   const articleRef = useRef(null);
 
-  const articleIntersecting = useIntersection(articleRef)?.isIntersecting;
+  const articleIntersecting = useIntersection(articleRef, {
+    threshold: 0.05,
+  })?.isIntersecting;
   const { scrollYProgress } = useScroll({
     target: articleRef,
   });
@@ -85,7 +87,12 @@ const Resources = (props: SanityProps<any>) => {
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}
       />
-      <Article heading={heading} body={body} ref={articleRef} />
+      <Article
+        intersecting={articleIntersecting}
+        heading={heading}
+        body={body}
+        ref={articleRef}
+      />
       <Form />
     </div>
   );

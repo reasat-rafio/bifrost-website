@@ -7,7 +7,6 @@ import {
   useState,
 } from "react";
 import { useWindowSize } from "lib/hooks";
-import { ScrollSpyBig, SectionHeaderProps } from "./scroll-spy/scroll-spy-big";
 import { ShareWith } from "./share-with";
 import { BlogBody } from "lib/@types/blog-types";
 import { Overview } from "./body/overview";
@@ -18,6 +17,7 @@ interface ArticleProps {
   heading: string;
   ref?: ForwardedRef<HTMLElement>;
   body: any;
+  intersecting: boolean;
 }
 
 const renderBlogArray = (body: BlogBody) => {
@@ -37,7 +37,7 @@ const shareBlock: BlogBody = {
   heading: "Share With",
 };
 export const Article: React.FC<ArticleProps> = forwardRef(
-  ({ body, heading }, ref) => {
+  ({ body, heading, intersecting }, ref) => {
     const windowWidth = useWindowSize()?.width ?? 0;
     const [sectionRefs, setSectionRefs] = useState([]);
     const [navbarHeight, setNavbarHeight] = useState(0);
@@ -58,11 +58,12 @@ export const Article: React.FC<ArticleProps> = forwardRef(
     }, [totalSectionsLength]);
 
     return (
-      <article ref={ref} className="container h-full pt-40">
+      <article ref={ref} className="container h-full lg:pt-20 xl:pt-32">
         <ScrollSpyWrapper
           paddingY={navbarHeight}
           sections={sections}
           sectionRefs={sectionRefs}
+          intersecting={intersecting}
         >
           <section
             data-cy="section-wrapper"
