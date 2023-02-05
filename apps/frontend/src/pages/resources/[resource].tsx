@@ -22,6 +22,14 @@ const query = groq`{
         }
       }
     }
+   "relatedResources" : *[_type== "resource" && slug.current != $resource && count((tags[]->name)[@ in ^.tags[]->.name]) > 0][]{
+      _id,
+      heading,
+      slug,
+      datetime,
+      shortDescription,
+      "image": ${withDimensions("image")},
+    }
   }
 }`;
 
@@ -61,7 +69,7 @@ const Resources = (props: SanityProps<any>) => {
 
   return (
     <div className="container">
-      {/* <Article body={page.body} ref={articleRef} /> */}
+      <Article body={page.body} ref={articleRef} />
       <Form />
     </div>
   );

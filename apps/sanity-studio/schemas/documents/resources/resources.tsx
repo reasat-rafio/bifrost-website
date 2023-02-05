@@ -1,45 +1,9 @@
+import { BsIntersect } from 'react-icons/bs'
 import { GrResources } from 'react-icons/gr'
-import { Rule } from 'sanity'
+import { TiWaves } from 'react-icons/ti'
+import { Rule, SanityDocument } from 'sanity'
 
-const PageHeaderStyle = (props: { children: React.ReactNode }) => (
-  <h1
-    style={{
-      fontSize: '40px',
-      // background: `linear-gradient(91.41deg, #70FCEB 4.55%, #9BB8FF 51.06%, #B794FF 91.28%)`,
-      // backgroundClip: 'text',
-      color: '#70FCEB',
-    }}
-  >
-    {props.children}
-  </h1>
-)
-
-const SectionTitleStyle = (props: { children: React.ReactNode }) => (
-  <span
-    style={{
-      fontSize: '18px',
-      textTransform: 'uppercase',
-      color: '#70FCEB',
-      lineHeight: 'normal',
-      padding: 0,
-    }}
-  >
-    {props.children}
-  </span>
-)
-
-const SectionSubtitleStyle = (props: { children: React.ReactNode }) => (
-  <span
-    style={{
-      lineHeight: 'normal',
-      fontSize: '25px',
-    }}
-  >
-    {props.children}
-  </span>
-)
-
-const resourcePage = {
+const resource = {
   name: 'resource',
   title: 'Resource',
   type: 'document',
@@ -47,18 +11,41 @@ const resourcePage = {
   fields: [
     {
       name: 'seo',
+      title: 'SEO',
       type: 'seo',
-      description:
-        '"Title" Input field is used as the main source for generating the SEO-friendly "Slug" for the web page. Make sure to keep the title under 60 characters to ensure optimal SEO results.',
       validation: (Rule: Rule) => Rule.required(),
     },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true,
+    },
+    { name: 'heading', type: 'string', validation: (Rule: Rule) => Rule.required() },
     {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
       options: {
-        source: (_: any, context: any) => context.parent.seo.title,
+        source: (doc: SanityDocument) => doc.heading as string,
       },
+      validation: (Rule: Rule) => Rule.required(),
+    },
+
+    { name: 'shortDescription', type: 'text', validation: (Rule: Rule) => Rule.required() },
+    {
+      type: 'image',
+      name: 'image',
+      validation: (Rule: Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
     },
     {
       name: 'tags',
@@ -76,47 +63,115 @@ const resourcePage = {
     },
     {
       name: 'body',
+      title: 'Body',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
+      initialValue: [
+        {
+          _type: 'overview',
+          heading: 'Overview',
+        },
+      ],
       of: [
         {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'Page Header', value: 'pageHeader', component: PageHeaderStyle },
-            { title: 'Section Title', value: 'sectionTitle', component: SectionTitleStyle },
-            {
-              title: 'Section Subtitle',
-              value: 'sectionSubtitle',
-              component: SectionSubtitleStyle,
-            },
-          ],
-          marks: {
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Underline', value: 'underline' },
-            ],
-          },
-        },
-        {
-          type: 'quote',
-        },
-        {
-          type: 'image',
+          name: 'overview',
+          type: 'object',
+          icon: TiWaves,
           fields: [
             {
-              name: 'alt',
-              title: 'Alternative Text',
-              description: 'Important for SEO and accessibility',
+              name: 'heading',
               type: 'string',
               validation: (Rule: Rule) => Rule.required(),
             },
+            {
+              name: 'image',
+              type: 'image',
+              validation: (Rule: Rule) => Rule.required(),
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  description: 'Important for SEO and accessibility',
+                  type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
+            },
+            {
+              name: 'description',
+              type: 'array',
+              validation: (Rule: Rule) => Rule.required(),
+              of: [
+                { type: 'block' },
+                {
+                  type: 'image',
+                  fields: [
+                    {
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      description: 'Important for SEO and accessibility',
+                      type: 'string',
+                      validation: (Rule: Rule) => Rule.required(),
+                    },
+                  ],
+                },
+              ],
+            },
           ],
+        },
+        {
+          name: 'section',
+          type: 'object',
+          icon: BsIntersect,
+          fields: [
+            {
+              name: 'heading',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'subHeading',
+              type: 'text',
+            },
+            {
+              name: 'description',
+              type: 'array',
+              validation: (Rule: Rule) => Rule.required(),
+              of: [
+                { type: 'block' },
+                {
+                  type: 'image',
+                  fields: [
+                    {
+                      name: 'alt',
+                      title: 'Alternative Text',
+                      description: 'Important for SEO and accessibility',
+                      type: 'string',
+                      validation: (Rule: Rule) => Rule.required(),
+                    },
+                  ],
+                },
+                {
+                  type: 'quote',
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'heading',
+            },
+            prepare({ title }: any) {
+              return {
+                title,
+                icon: BsIntersect,
+              }
+            },
+          },
         },
       ],
     },
   ],
 }
 
-export default resourcePage
+export default resource
