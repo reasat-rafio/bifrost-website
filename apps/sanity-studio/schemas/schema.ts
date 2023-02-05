@@ -38,7 +38,7 @@ import landingProductsSection from './objects/landing/product'
 import landingDemoSection from './objects/landing/demo'
 import landingServicesSection from './objects/landing/service'
 
-import resourcesPage from './documents/pages/resources'
+import resourcesPage from './documents/resources'
 
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'

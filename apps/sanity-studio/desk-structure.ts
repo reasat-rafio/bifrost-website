@@ -83,13 +83,7 @@ export const AppStructure = (S: StructureBuilder) =>
                 icon: FaHome,
                 slug: '',
               }),
-              pageItem(S, {
-                schemaType: 'resourcesPage',
-                id: 'resourcesPage',
-                title: 'Resources',
-                icon: GrResources,
-                slug: '',
-              }),
+
               pageItem(S, {
                 schemaType: 'contactUsPage',
                 id: 'contactUsPage',
@@ -246,6 +240,8 @@ export const AppStructure = (S: StructureBuilder) =>
               S.documentTypeListItem('tag').title('Tags'),
             ]),
         ),
+
+      S.documentTypeListItem('resource').title('Resource'),
 
       S.listItem()
         .title('Dataset')

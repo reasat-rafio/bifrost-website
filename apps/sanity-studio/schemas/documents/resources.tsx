@@ -39,10 +39,10 @@ const SectionSubtitleStyle = (props: { children: React.ReactNode }) => (
   </span>
 )
 
-const resourcesPage = {
-  name: 'resourcesPage',
-  title: 'Resources',
-  type: 'object',
+const resourcePage = {
+  name: 'resource',
+  title: 'Resource',
+  type: 'document',
   icon: GrResources,
   fields: [
     {
@@ -94,4 +94,4 @@ const resourcesPage = {
   ],
 }
 
-export default resourcesPage
+export default resourcePage
