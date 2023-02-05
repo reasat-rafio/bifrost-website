@@ -6,14 +6,9 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
-import { PortableText } from "utils/sanity";
-import { Serializers } from "./serializers";
-import { useIntersection, useWindowSize } from "lib/hooks";
-import { useScroll } from "framer-motion";
-import { ScrollDetective } from "components/common/scroll-detective";
+import { useWindowSize } from "lib/hooks";
 import { ScrollSpyBig, SectionHeaderProps } from "./scroll-spy/scroll-spy-big";
 import { ShareWith } from "./share-with";
-import { ScrollSpySmall } from "./scroll-spy/scroll-spy-small";
 import { BlogBody } from "lib/@types/blog-types";
 import { Overview } from "./body/overview";
 import { BlogSection } from "./body/blog-section";
@@ -63,26 +58,27 @@ export const Article: React.FC<ArticleProps> = forwardRef(
     }, [totalSectionsLength]);
 
     return (
-      <article ref={ref} className="container h-full">
+      <article ref={ref} className="container h-full pt-40">
         <ScrollSpyWrapper
           paddingY={navbarHeight}
           sections={sections}
           sectionRefs={sectionRefs}
         >
-          <div
+          <section
             data-cy="section-wrapper"
-            className="relative mt-20 max-w-4xl space-y-10 rounded-lg text-white lg:col-span-9 lg:mt-0 2xl:max-w-5xl"
+            className="relative mt-20 space-y-10 text-white lg:col-span-10 lg:mt-0"
           >
             {sections.map((section, index) => (
               <div
                 id={`section-${index}`}
                 key={section?._key ?? index}
                 ref={sectionRefs[index]}
+                className="scroll-mt-28"
               >
                 {renderBlogArray({ ...section, title: heading })}
               </div>
             ))}
-          </div>
+          </section>
         </ScrollSpyWrapper>
       </article>
     );

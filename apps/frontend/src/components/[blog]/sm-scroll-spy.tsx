@@ -2,14 +2,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { BlogBody } from "lib/@types/blog-types";
 import { useIntersection, useWindowSize } from "src/lib/hooks";
-import React, {
-  Dispatch,
-  Fragment,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, Fragment, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { VFadeInOut } from "src/animations/fade-in-out";
 
@@ -32,7 +25,7 @@ export const SmScrollSpy: React.FC<SmScrollSpyProps> = ({
   const sectionOnview = useIntersection(sectionRef, { threshold: 0 });
   const [navbarHeight, setNavbarHeight] = useState(0);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const height = document.querySelector("#navbar").clientHeight;
     setNavbarHeight(height);
   }, [windowWidth]);
