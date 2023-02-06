@@ -1,4 +1,4 @@
-import { Form } from "components/resource/form";
+import { Form } from "components/[resource]/form";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
@@ -9,8 +9,8 @@ import { sanityClient, sanityStaticProps, useSanityQuery } from "utils/sanity";
 import { ScrollDetective } from "components/common/scroll-detective";
 import { useIntersection } from "lib/hooks";
 import { useScroll } from "framer-motion";
-import { RelatedResources } from "components/resource/related-resources";
-import { Article } from "components/resource/article";
+import { RelatedResources } from "components/[resource]/related-resources";
+import { Article } from "components/[resource]/article";
 
 const query = groq`{
   "site": ${siteQuery},

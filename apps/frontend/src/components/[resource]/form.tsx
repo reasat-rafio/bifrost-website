@@ -1,9 +1,9 @@
-import { useFormspark } from "@formspark/use-formspark";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/ui/button";
 import Input from "components/ui/input";
 import { Section } from "components/ui/section";
 import { ResourcesFormSchema, ResourcesFormSchemaProps } from "lib/form-schema";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface FormProps {}
@@ -18,16 +18,50 @@ export const Form: React.FC<FormProps> = ({}) => {
     mode: "onChange",
     resolver: yupResolver(ResourcesFormSchema),
   });
-  const [_, submitting] = useFormspark({
-    formId: process.env.NEXT_PUBLIC_FORM_ID,
-  });
+  const [formSate, setFormState] = useState<"submited" | "submitting" | null>(
+    null
+  );
 
-  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async () => {
+  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async ({
+    company_name,
+    first_name,
+    // job_description,
+    // job_title,
+    last_name,
+    work_email,
+  }) => {
     try {
-      // await submit({});
+      setFormState("submitting");
+      const response = await fetch(
+        "https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: JSON.stringify({
+            oid: "00D6S000001MkMU",
+            retURL: "https://bifrost.ai/thank-you",
+            first_name,
+            last_name,
+            email: work_email,
+            company: company_name,
+            city: "",
+            state: "",
+            // TODO debugging values. remove later
+            debug: "1",
+            debugEmail: "rafio@otterdev.io",
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log({ data });
+      setFormState("submited");
       reset();
     } catch (e) {
+      console.error(e);
     } finally {
+      setFormState(null);
     }
   };
 
@@ -49,14 +83,14 @@ export const Form: React.FC<FormProps> = ({}) => {
         >
           <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
             <Input
-              disabled={submitting}
+              disabled={formSate === "submitting"}
               errorKey={errors.first_name?.message}
               placeholder="First Name"
               type="text"
               {...register("first_name")}
             />
             <Input
-              disabled={submitting}
+              disabled={formSate === "submitting"}
               errorKey={errors.last_name?.message}
               placeholder="Last Name"
               type="text"
@@ -64,21 +98,21 @@ export const Form: React.FC<FormProps> = ({}) => {
             />
           </div>
           <Input
-            disabled={submitting}
+            disabled={formSate === "submitting"}
             errorKey={errors.company_name?.message}
             placeholder="Company Name"
             type="text"
             {...register("company_name")}
           />
           <Input
-            disabled={submitting}
+            disabled={formSate === "submitting"}
             errorKey={errors.work_email?.message}
             placeholder="Work Email"
             type="text"
             {...register("work_email")}
           />
           <Input
-            disabled={submitting}
+            disabled={formSate === "submitting"}
             errorKey={errors.job_title?.message}
             placeholder="Job Title"
             type="text"
@@ -87,7 +121,7 @@ export const Form: React.FC<FormProps> = ({}) => {
 
           <div>
             <textarea
-              disabled={submitting}
+              disabled={formSate === "submitting"}
               className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-transparent py-4 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
