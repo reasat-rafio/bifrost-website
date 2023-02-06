@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async (
 const Resources = (props: SanityProps<any>) => {
   const {
     data: {
-      page: { heading, body, relatedResources },
+      page: { relatedResources },
     },
   } = useSanityQuery(query, props);
   const articleRef = useRef(null);
