@@ -65,7 +65,7 @@ export const getStaticPaths = async () => {
     paths: slugs
       .filter((s: any) => s)
       .map((s: any) => ({ params: { post: s.slug.current, tags: s.tags } })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

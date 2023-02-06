@@ -57,7 +57,7 @@ export const getStaticPaths = async () => {
       .map((s: any) => ({
         params: { resource: s.slug.current, tags: s.tags },
       })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
