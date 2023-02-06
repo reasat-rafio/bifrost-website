@@ -13,6 +13,7 @@ specifiers:
   '@types/node': 17.0.13
   '@types/react': 17.0.38
   '@types/three': ^0.137.0
+  '@types/uuid': ^9.0.0
   '@visx/axis': ^2.6.0
   '@visx/grid': ^2.6.0
   '@visx/group': ^2.1.0
@@ -106,6 +107,7 @@ devDependencies:
   '@types/node': 17.0.13
   '@types/react': 17.0.38
   '@types/three': 0.137.0
+  '@types/uuid': 9.0.0
   eslint: 8.7.0
   eslint-config-next: 12.0.9_jqcf3swbpl2quobxpqr65ypi7y
   next-transpile-modules: 9.1.0
@@ -701,6 +703,10 @@ packages:
 
   /@types/three/0.137.0:
     resolution: {integrity: sha512-Xc5EAlfYmgrCLI/VlSVqiRJAtzhWF0Rw2jSq48nqJy+Hcb5sfDOXyfZn1+RNcHyi9l8CeCAXCZygO8IyeOJVEA==}
+    dev: true
+
+  /@types/uuid/9.0.0:
+    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
     dev: true
 
   /@typescript-eslint/parser/5.49.0_j2dpqr3duszxwhwhg5puk5zm6e:
