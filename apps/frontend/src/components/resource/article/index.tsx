@@ -12,6 +12,7 @@ import { BlogBody } from "lib/@types/blog-types";
 import { Overview } from "./body/overview";
 import { ArticleSection } from "./body/article-section";
 import { ScrollSpyWrapper } from "./scroll-spy-wrapper";
+import crypto from "crypto";
 
 interface ArticleProps {
   heading: string;
