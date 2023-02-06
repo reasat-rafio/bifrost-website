@@ -31,16 +31,17 @@ const renderBlogArray = (body: BlogBody) => {
   }
 };
 
-const shareBlock: BlogBody = {
-  _key: crypto.randomUUID(),
-  _type: "share",
-  heading: "Share With",
-};
 export const Article: React.FC<ArticleProps> = forwardRef(
   ({ body, heading, intersecting }, ref) => {
     const windowWidth = useWindowSize()?.width ?? 0;
     const [sectionRefs, setSectionRefs] = useState([]);
     const [navbarHeight, setNavbarHeight] = useState(0);
+
+    const shareBlock: BlogBody = {
+      _key: crypto.randomUUID(),
+      _type: "share",
+      heading: "Share With",
+    };
     const sections = [...body, shareBlock];
     const totalSectionsLength = sections.length;
 

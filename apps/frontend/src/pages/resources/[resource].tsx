@@ -10,7 +10,7 @@ import { ScrollDetective } from "components/common/scroll-detective";
 import { useIntersection } from "lib/hooks";
 import { useScroll } from "framer-motion";
 import { RelatedResources } from "components/[resource]/related-resources";
-import { Article } from "components/[resource]/article";
+// import { Article } from "components/[resource]/article";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -89,12 +89,12 @@ const Resources = (props: SanityProps<any>) => {
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}
       />
-      <Article
+      {/* <Article
         intersecting={articleIntersecting}
         heading={heading}
         body={body}
         ref={articleRef}
-      />
+      /> */}
       <Form />
       <RelatedResources resources={relatedResources} />
     </section>
