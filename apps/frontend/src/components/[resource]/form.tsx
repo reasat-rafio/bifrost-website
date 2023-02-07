@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import { Button } from "components/ui/button";
 import Input from "components/ui/input";
 import { Section } from "components/ui/section";
@@ -32,30 +33,21 @@ export const Form: React.FC<FormProps> = ({}) => {
   }) => {
     try {
       setFormState("submitting");
-      const response = await fetch(
-        "https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: JSON.stringify({
-            oid: "00D6S000001MkMU",
-            retURL: "https://bifrost.ai/thank-you",
-            first_name,
-            last_name,
-            email: work_email,
-            company: company_name,
-            city: "",
-            state: "",
-            // TODO debugging values. remove later
-            debug: "1",
-            debugEmail: "rafio@otterdev.io",
-          }),
-        }
-      );
-      const data = await response.json();
-      console.log({ data });
+      const response = await axios.post("/api/resource-form", {
+        oid: "00D6S000001MkMU",
+        retURL: "https://bifrost.ai/thank-you",
+        first_name,
+        last_name,
+        email: work_email,
+        company: company_name,
+        city: "",
+        state: "",
+        // TODO debugging values. remove later
+        debug: "1",
+        debugEmail: "rafio@otterdev.io",
+      });
+
+      console.log({ response });
       setFormState("submited");
       reset();
     } catch (e) {
