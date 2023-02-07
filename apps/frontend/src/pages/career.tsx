@@ -13,6 +13,7 @@ import { Resume } from "components/career/resume";
 import { Client } from "components/common/client";
 import { WhyUs } from "components/career/why-us";
 import About from "components/career/about";
+import { Info } from "components/career/info";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -67,6 +68,7 @@ const Career = (props: SanityProps<any>) => {
         style={{ marginTop: heroSectionHeight }}
       >
         {renderObjectArray(sections, {
+          infoBlock: Info,
           "careerPage.about": About,
           "careerPage.whyUs": WhyUs,
         })}

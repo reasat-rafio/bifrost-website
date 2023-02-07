@@ -62,7 +62,9 @@ export const WhyUs: React.FC<WhyUsProps> = ({
               />
             </figure>
             <h6 className="text-xl font-bold lg:text-[22px]">{title}</h6>
-            <p className="text-base opacity-80 lg:text-[19px]">{description}</p>
+            <Description className="opacity-80" variant="small">
+              {description}
+            </Description>
           </motion.article>
         ))}
       </div>

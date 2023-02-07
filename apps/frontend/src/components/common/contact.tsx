@@ -20,7 +20,7 @@ export const Contact: React.FC<ContactProps> = ({
   return (
     <Section borderBottom={false}>
       <div className="| spacing_primary | flex flex-col justify-center font-light lg:px-[4%]"></div>
-      <div className="text-center text-[64px] font-light">
+      <div className="text-center text-[64px] font-light leading-none">
         <PortableText
           blocks={heading}
           serializers={{
@@ -31,7 +31,9 @@ export const Contact: React.FC<ContactProps> = ({
                 </span>
               ),
               strong: ({ children }: any) => (
-                <span className="font-semibold">{children}</span>
+                <span className="primary__gradient bg-clip-text font-semibold text-transparent">
+                  {children}
+                </span>
               ),
             },
           }}
