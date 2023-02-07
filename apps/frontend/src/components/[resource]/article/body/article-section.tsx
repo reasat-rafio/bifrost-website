@@ -38,7 +38,7 @@ export const ArticleSection: React.FC<BlogBody> = ({
     <div className="prose-lg prose-cyan max-w-none">
       <Title className="font-light">{heading}</Title>
       {!!subHeading && (
-        <Description type="h5" textBig className="font-light text-white">
+        <Description type="h5" variant="big" className="font-light text-white">
           {subHeading}
         </Description>
       )}

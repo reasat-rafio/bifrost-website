@@ -17,8 +17,8 @@ const Career = defineType({
       of: [
         { type: 'careerPage.hero' },
         { type: 'infoBlock' },
-        { type: 'careerPage.perks' },
-        { type: 'resume' },
+        { type: 'careerPage.about' },
+        { type: 'careerPage.whyUs' },
         { type: 'contact' },
       ],
     }),

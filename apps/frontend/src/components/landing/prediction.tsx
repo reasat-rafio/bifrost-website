@@ -19,14 +19,17 @@ export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, sub
   const intersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false
 
   return (
-    <section ref={sectionRef} className="relative z-20 |  overflow-clip section_pading">
+    <section
+      ref={sectionRef}
+      className="| section_pading relative  z-20 overflow-clip"
+    >
       {!!showWave && <WaveScene play={intersecting} />}
-      <div className="z-20 relative container mx-auto spacing_primary">
+      <div className="spacing_primary container relative z-20 mx-auto">
         <Title className="text-center">{title}</Title>
-        <Description textBig className="text-center">
+        <Description variant="big" className="text-center">
           {subtitle}
         </Description>
-        <div className="text-center sm:!mt-12 !mt-8">
+        <div className="!mt-8 text-center sm:!mt-12">
           <Button type="href" variant="secondary" href={ctaButton.href}>
             {ctaButton.title}
           </Button>
@@ -35,10 +38,13 @@ export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, sub
 
       {!!showWave && (
         <div
-          className="z-10 pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
-          style={{ background: 'linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)' }}
+          className="pointer-events-none absolute bottom-0 left-0 z-10 h-[30vh] w-full"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)",
+          }}
         />
       )}
     </section>
-  )
+  );
 }

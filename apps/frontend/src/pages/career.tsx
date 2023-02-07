@@ -1,15 +1,18 @@
-import { Hero, HeroProps } from 'src/components/career/hero'
-import { Perks } from 'src/components/career/perks'
-import { siteQuery } from 'src/lib/query'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
-import { groq } from 'next-sanity'
-import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useState } from 'react'
-import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { Contact } from 'src/components/common/contact'
-import { Information } from 'components/common/information'
-import { Resume } from 'components/career/resume'
+import Hero from "src/components/career/hero";
+import { Perks } from "src/components/career/perks";
+import { siteQuery } from "src/lib/query";
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { groq } from "next-sanity";
+import { SanityProps } from "next-sanity-extra";
+import { useCallback, useState } from "react";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { Contact } from "src/components/common/contact";
+import { Information } from "components/common/information";
+import { Resume } from "components/career/resume";
+import { Client } from "components/common/client";
+import { WhyUs } from "components/career/why-us";
+import About from "components/career/about";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -17,45 +20,63 @@ const query = groq`{
     ...,
     sections[] {
       ...,
-      "image": ${withDimensions('image')},
-      perks[]{
+      "image": ${withDimensions("image")},
+      collection[]{
         ...,
-        "image": ${withDimensions('image')},
-      }
+        "image": ${withDimensions("image")},
+      },
+    },
+    "cleint" : *[_id == "client"][0] {
+      ...,
+      clients[]{
+        ...,
+        "logo": ${withDimensions("logo")},
+      },
     },
   }
-}`
+}`;
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => ({
   props: await sanityStaticProps({ context, query }),
   revalidate: 10,
-})
+});
 
 const Career = (props: SanityProps<any>) => {
   const {
-    data: { page },
-  } = useSanityQuery(query, props)
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+    data: {
+      page: { sections, cleint },
+    },
+  } = useSanityQuery(query, props);
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
 
   return (
     <div className="relative">
-      {renderObjectArray(page.sections, {
-        'careerPage.hero': useCallback(
-          (props: HeroProps) => <Hero {...props} setHeroSectionHeight={setHeroSectionHeight} />,
-          [],
+      {renderObjectArray(sections, {
+        "careerPage.hero": useCallback(
+          (props: any) => (
+            <Hero {...props} setHeroSectionHeight={setHeroSectionHeight} />
+          ),
+          []
         ),
       })}
 
-      <div className="relative z-10 bg-black" style={{ marginTop: heroSectionHeight }}>
-        {renderObjectArray(page.sections, {
-          infoBlock: Information,
-          'careerPage.perks': Perks,
-          'careerPage.resume': Resume,
+      <div
+        className="relative z-10 bg-black"
+        style={{ marginTop: heroSectionHeight }}
+      >
+        {renderObjectArray(sections, {
+          "careerPage.about": About,
+          "careerPage.whyUs": WhyUs,
+        })}
+        <Client {...cleint} />
+        {renderObjectArray(sections, {
           contact: Contact,
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Career
+export default Career;

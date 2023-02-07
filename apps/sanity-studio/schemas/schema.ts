@@ -57,6 +57,8 @@ import useCaseFeature from './objects/features/feature'
 import career from './documents/pages/career'
 import careerHero from './objects/career/hero'
 import careerPerks from './objects/career/perks'
+import careerAbout from './objects/career/about'
+import careerWhyUs from './objects/career/why-us'
 
 import whySyntheticDataPage from './documents/pages/why-synthetic-data'
 import whySyntheticDataPageHero from './objects/why-synthetic-data/hero'
@@ -150,6 +152,8 @@ export const schemaTypes = [
   career,
   careerHero,
   careerPerks,
+  careerAbout,
+  careerWhyUs,
 
   whySyntheticDataPage,
   whySyntheticDataPageHero,

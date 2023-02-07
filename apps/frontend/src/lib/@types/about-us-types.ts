@@ -13,10 +13,11 @@ export interface HomeProps {
 }
 
 export interface AboutSectionProps {
-  title: string;
+  title?: string;
   heading?: string;
   description?: string;
   image: SanityImage;
+  ctaButton?: CTAButton;
 }
 
 export interface ClientsSection {

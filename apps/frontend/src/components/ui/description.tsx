@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 interface DescriptionProps {
   className?: string;
   children: ReactNode;
-  textBig?: boolean;
+  variant?: "normal" | "big" | "small";
   type?: "div" | "p" | "h5";
   animate?: {
     show?: boolean;
@@ -16,14 +16,16 @@ interface DescriptionProps {
 export const Description: React.FC<DescriptionProps> = ({
   children,
   className,
-  textBig = false,
+  variant = "normal",
   animate,
   type = "p",
 }) => {
   const props = {
     className: `${className} ${
-      textBig
+      variant === "big"
         ? "lg:text-[36px] sm:text-3xl text-2xl"
+        : variant === "small"
+        ? "lg:text-[19px] sm:text-lg text-base"
         : "lg:text-[24px] sm:text-xl text-lg"
     }`,
   };
@@ -31,7 +33,7 @@ export const Description: React.FC<DescriptionProps> = ({
   const animationProps = {
     initial: "from",
     animate: "to",
-    exitL: "exit",
+    exit: "exit",
     variants: VFadeInOut({ delay: animate?.delay }),
   };
 

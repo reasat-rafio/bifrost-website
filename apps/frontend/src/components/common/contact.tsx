@@ -38,7 +38,7 @@ export const Contact: React.FC<ContactProps> = ({
         />
       </div>
       {!!description && (
-        <Description textBig className="mx-auto max-w-3xl text-center">
+        <Description variant="big" className="mx-auto max-w-3xl text-center">
           {description}
         </Description>
       )}

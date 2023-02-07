@@ -61,6 +61,7 @@ const About: React.FC<AboutSectionProps> = ({
             {description}
           </Description>
         )}
+
         <AnimatePresence>
           {!!ctaButton && intersecting && (
             <motion.div

@@ -25,7 +25,7 @@ const Reason: React.FC<ReasonSection> = ({ title, heading, agenda }) => {
 
       <section className="mt-10 grid grid-cols-1 space-y-5 sm:mt-14 sm:space-y-10 md:mt-20 md:grid-cols-2 md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32">
         <motion.div className="my-auto">
-          <Description textBig type="h5">
+          <Description variant="big" type="h5">
             {agenda.heading}
           </Description>
           <div className="prose-sm max-w-none md:prose-lg">

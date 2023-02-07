@@ -2,7 +2,7 @@ import { FaQuestionCircle } from 'react-icons/fa'
 import { Rule } from 'sanity'
 
 export default {
-  name: 'aboutUs.about',
+  name: 'careerPage.about',
   title: 'About',
   type: 'object',
   icon: FaQuestionCircle,

@@ -24,13 +24,13 @@ export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) =
     <motion.section
       ref={containerRef}
       initial="hidden"
-      animate={intersection?.isIntersecting ? 'visible' : 'hidden'}
+      animate={intersection?.isIntersecting ? "visible" : "hidden"}
       variants={ScaleUpParent}
-      className="container mx-auto space-y-6 lg:py-32 py-20 border-b border-secondary/80"
+      className="container mx-auto space-y-6 border-b border-secondary/80 py-20 lg:py-32"
     >
       <Title className="text-center">{title}</Title>
       {!!subtitle && (
-        <Description textBig className="text-center max-w-5xl mx-auto">
+        <Description variant="big" className="mx-auto max-w-5xl text-center">
           {subtitle}
         </Description>
       )}
@@ -103,5 +103,5 @@ export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) =
         ))}
       </Swiper>
     </motion.section>
-  )
+  );
 }
