@@ -23,7 +23,10 @@ const About: React.FC<AboutSectionProps> = ({
   })?.isIntersecting;
 
   return (
-    <Section ref={sectionRef} className="grid grid-cols-2 gap-32">
+    <Section
+      ref={sectionRef}
+      className="grid grid-cols-1 space-y-5 sm:space-y-10 md:grid-cols-2 md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32"
+    >
       <motion.figure
         initial="from"
         whileInView="to"
