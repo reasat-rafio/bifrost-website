@@ -9,15 +9,6 @@ export default {
   icon: AiOutlineHome,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
-    },
-    {
-      name: 'heading',
-      type: 'string',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
       name: 'title',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
@@ -45,7 +36,7 @@ export default {
       ],
     },
     {
-      name: 'subtitle',
+      name: 'description',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -57,7 +48,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'subtitle',
+      subtitle: 'description',
     },
     prepare(value: any) {
       const block = (value.title || []).find((block: any) => block._type === 'block')

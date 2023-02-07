@@ -8,28 +8,19 @@ export default {
   icon: FaQuestionCircle,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
-    },
-    {
-      name: 'heading',
-      type: 'string',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
       name: 'title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'description',
+      name: 'heading',
       type: 'text',
-      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'ctaButton',
-      type: 'ctaButton',
+      name: 'description',
+      type: 'text',
     },
+
     {
       name: 'image',
       type: 'image',
@@ -49,7 +40,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'description',
+      subtitle: 'heading',
       media: 'image',
     },
     prepare({ title, subtitle, media }: any) {

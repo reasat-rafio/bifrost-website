@@ -8,76 +8,60 @@ export default {
   icon: FaPodcast,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
-    },
-    {
       name: 'title',
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'subtitle',
+      name: 'heading',
       type: 'text',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'agendas',
-      type: 'array',
-      validation: (Rule: Rule) => Rule.required(),
-      of: [
+      name: 'agenda',
+      type: 'object',
+      fields: [
         {
-          name: 'agenda',
-          type: 'object',
+          name: 'heading',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'description',
+          type: 'array',
+          of: [{ type: 'block' }],
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'image',
+          type: 'image',
+          validation: (Rule: Rule) => Rule.required(),
           fields: [
             {
-              name: 'name',
+              name: 'alt',
+              title: 'Alternative Text',
+              description: 'Important for SEO and accessibility',
               type: 'string',
               validation: (Rule: Rule) => Rule.required(),
-            },
-            {
-              name: 'title',
-              type: 'string',
-              validation: (Rule: Rule) => Rule.required(),
-            },
-            {
-              name: 'description',
-              type: 'array',
-              of: [{ type: 'block' }],
-              validation: (Rule: Rule) => Rule.required(),
-            },
-            {
-              name: 'image',
-              type: 'image',
-              validation: (Rule: Rule) => Rule.required(),
-              fields: [
-                {
-                  name: 'alt',
-                  title: 'Alternative Text',
-                  description: 'Important for SEO and accessibility',
-                  type: 'string',
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-              ],
             },
           ],
-          preview: {
-            select: {
-              title: 'name',
-              subtitle: 'title',
-              media: 'image',
-            },
-            prepare({ title, subtitle, media }: any) {
-              return {
-                title,
-                subtitle,
-                media,
-                icon: FaPodcast,
-              }
-            },
-          },
         },
       ],
+      preview: {
+        select: {
+          title: 'heading',
+          subtitle: 'description',
+          media: 'image',
+        },
+        prepare({ title, subtitle, media }: any) {
+          return {
+            title,
+            subtitle,
+            media,
+            icon: FaPodcast,
+          }
+        },
+      },
     },
   ],
   preview: {

@@ -12,14 +12,7 @@ const AboutUs = {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [
-        { type: 'aboutUs.home' },
-        { type: 'aboutUs.about' },
-        { type: 'aboutUs.reason' },
-        { type: 'aboutUs.team' },
-        { type: 'newsletter' },
-        { type: 'contact' },
-      ],
+      of: [{ type: 'aboutUs.home' }, { type: 'aboutUs.about' }, { type: 'aboutUs.reason' }],
     },
   ],
   preview: {

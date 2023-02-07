@@ -9,11 +9,6 @@ export default {
   icon: AiOutlineHome,
   fields: [
     {
-      name: 'initials',
-      type: 'initials',
-    },
-
-    {
       name: 'title',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
