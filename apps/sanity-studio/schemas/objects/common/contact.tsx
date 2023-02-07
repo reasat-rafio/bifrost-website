@@ -36,7 +36,6 @@ const contact = {
     {
       name: 'description',
       type: 'text',
-      validation: (Rule: Rule) => Rule.isRequired(),
     },
     {
       name: 'ctaButton',

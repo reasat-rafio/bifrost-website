@@ -1,19 +1,18 @@
-import About from 'components/about/about'
-import Home from 'components/about/hero'
-import Reason from 'components/about/reason'
-import Team from 'components/about/team'
-import { siteQuery } from 'src/lib/query'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
-import { groq } from 'next-sanity'
-import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { PrimaryWrapper } from 'components/common/primary-wapper'
-import { useCallback, useState } from 'react'
-import { HomeProps } from 'lib/@types/about-us-types'
-import { Contact } from 'components/common/contact'
-import { Client } from 'components/common/client'
-import { Newsletter } from 'components/common/newsletter'
+import About from "components/about/about";
+import Hero from "components/about/hero";
+import Reason from "components/about/reason";
+import Team from "components/about/team";
+import { siteQuery } from "src/lib/query";
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { groq } from "next-sanity";
+import { SanityProps } from "next-sanity-extra";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { useCallback, useState } from "react";
+import { HomeProps } from "lib/@types/about-us-types";
+import { Contact } from "components/common/contact";
+import { Client } from "components/common/client";
+import { Newsletter } from "components/common/newsletter";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -21,49 +20,47 @@ const query = groq`{
     ...,
     sections[] {
       ...,
-      "image": ${withDimensions('image')},
-      agendas[]{
+      "image": ${withDimensions("image")},
+      agenda{
         ...,
-        "image": ${withDimensions('image')},
-      },
-      members[]{
-        ...,
-        "image": ${withDimensions('image')},
+        "image": ${withDimensions("image")},
       },
     },
     "cleint" : *[_id == "client"][0] {
       ...,
       clients[]{
         ...,
-        "logo": ${withDimensions('logo')},
+        "logo": ${withDimensions("logo")},
       },
     },
   },
-}`
+}`;
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => ({
   props: await sanityStaticProps({ context, query }),
   revalidate: 10,
-})
+});
 
 export default function AboutUs(props: SanityProps<any>) {
   const {
     data: {
       page: { sections, cleint },
     },
-  } = useSanityQuery(query, props)
+  } = useSanityQuery(query, props);
 
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
   return (
     <div>
-      <PrimaryWrapper>
-        {renderObjectArray(sections, {
-          'aboutUs.home': useCallback(
-            (p: HomeProps) => <Home setHeroSectionHeight={setHeroSectionHeight} {...p} />,
-            [],
+      {renderObjectArray(sections, {
+        "aboutUs.home": useCallback(
+          (p: HomeProps) => (
+            <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />
           ),
-        })}
-      </PrimaryWrapper>
+          []
+        ),
+      })}
       <div
         className="bg-black"
         style={{
@@ -71,18 +68,16 @@ export default function AboutUs(props: SanityProps<any>) {
           marginBottom: heroSectionHeight,
         }}
       >
-        <PrimaryWrapper>
-          {renderObjectArray(sections, {
-            'aboutUs.about': About,
-            'aboutUs.reason': Reason,
-            'aboutUs.team': Team,
-          })}
-          <Client {...cleint} />
-          {renderObjectArray(sections, {
-            newsletter: Newsletter,
-            contact: Contact,
-          })}
-        </PrimaryWrapper>
+        {renderObjectArray(sections, {
+          // "aboutUs.about": About,
+          // "aboutUs.reason": Reason,
+          // "aboutUs.team": Team,
+        })}
+        <Client {...cleint} />
+        {renderObjectArray(sections, {
+          // newsletter: Newsletter,
+          contact: Contact,
+        })}
       </div>
 
       <>
@@ -91,5 +86,5 @@ export default function AboutUs(props: SanityProps<any>) {
         {/* <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" /> */}
       </>
     </div>
-  )
+  );
 }

@@ -8,7 +8,7 @@ import { PortableText } from "utils/sanity";
 interface ContactProps {
   type: string;
   ctaButton: CTAButton;
-  description: string;
+  description?: string;
   heading: any;
 }
 
@@ -37,9 +37,12 @@ export const Contact: React.FC<ContactProps> = ({
           }}
         />
       </div>
-      <Description textBig className="mx-auto max-w-3xl text-center">
-        {description}
-      </Description>
+      {!!description && (
+        <Description textBig className="mx-auto max-w-3xl text-center">
+          {description}
+        </Description>
+      )}
+
       <div className="!mt-12 text-center">
         <Button type="href" variant="secondary" href={ctaButton.href}>
           {ctaButton.title}
