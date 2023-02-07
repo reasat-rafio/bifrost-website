@@ -13,10 +13,9 @@ export interface HomeProps {
 }
 
 export interface AboutSectionProps {
-  heading: string;
   title: string;
-  description: string;
-  ctaButton?: CTAButton;
+  heading?: string;
+  description?: string;
   image: SanityImage;
 }
 

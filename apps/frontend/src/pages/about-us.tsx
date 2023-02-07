@@ -69,7 +69,7 @@ export default function AboutUs(props: SanityProps<any>) {
         }}
       >
         {renderObjectArray(sections, {
-          // "aboutUs.about": About,
+          "aboutUs.about": About,
           // "aboutUs.reason": Reason,
           // "aboutUs.team": Team,
         })}
