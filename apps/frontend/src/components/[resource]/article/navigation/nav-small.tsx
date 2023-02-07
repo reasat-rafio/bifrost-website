@@ -49,8 +49,8 @@ export const NavSmall: React.FC<ScrollSpySmallProps> = ({
           <div className="container mx-auto rounded shadow">
             <Listbox value={selected} onChange={setSelected}>
               <div className="relative mt-1 capitalize">
-                <Listbox.Button className="primary__gradient relative flex w-full items-center justify-between rounded-[4px] p-4 text-left text-base font-semibold capitalize text-white drop-shadow-xl focus:outline-none">
-                  {selected?.heading}
+                <Listbox.Button className="primary__gradient relative flex w-full items-center justify-between rounded-[4px] px-4 py-2 text-left text-base font-semibold capitalize text-white drop-shadow-xl focus:outline-none">
+                  {selected?.heading.toLowerCase()}
                 </Listbox.Button>
                 <Transition
                   as={Fragment}
@@ -62,28 +62,25 @@ export const NavSmall: React.FC<ScrollSpySmallProps> = ({
                     {sections.map((section, i) => (
                       <Listbox.Option
                         key={section._key}
-                        className="relative select-none p-4 py-2 capitalize"
+                        className="relative select-none px-4 py-2 capitalize"
                         value={section}
                       >
                         {({ active }) => (
-                          <>
-                            <a
-                              href={`#section-${i}`}
-                              onClick={(ev) => {
-                                ev.preventDefault();
-                                document
-                                  .querySelector(`#section-${i}`)
-                                  ?.scrollIntoView();
-                              }}
-                              className={clsx(
-                                active
-                                  ? "text-copper-500 font-bold"
-                                  : "text-neutral-600"
-                              )}
-                            >
-                              {section.heading.toLowerCase()}
-                            </a>
-                          </>
+                          <button
+                            onClick={() =>
+                              document
+                                .querySelector(`#section-${i}`)
+                                ?.scrollIntoView()
+                            }
+                            className={clsx(
+                              "capitalize",
+                              active
+                                ? "text-copper-500 font-bold"
+                                : "text-neutral-600"
+                            )}
+                          >
+                            {section.heading.toLowerCase()}
+                          </button>
                         )}
                       </Listbox.Option>
                     ))}
