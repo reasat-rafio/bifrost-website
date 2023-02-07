@@ -1,7 +1,6 @@
 import About from "components/about/about";
 import Hero from "components/about/hero";
 import Reason from "components/about/reason";
-import Team from "components/about/team";
 import { siteQuery } from "src/lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
@@ -12,7 +11,6 @@ import { useCallback, useState } from "react";
 import { HomeProps } from "lib/@types/about-us-types";
 import { Contact } from "components/common/contact";
 import { Client } from "components/common/client";
-import { Newsletter } from "components/common/newsletter";
 
 const query = groq`{
   "site": ${siteQuery},

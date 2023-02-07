@@ -1,5 +1,4 @@
 import Hero from "src/components/career/hero";
-import { Perks } from "src/components/career/perks";
 import { siteQuery } from "src/lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
@@ -8,8 +7,6 @@ import { useCallback, useState } from "react";
 import { renderObjectArray, withDimensions } from "sanity-react-extra";
 import { sanityStaticProps, useSanityQuery } from "utils/sanity";
 import { Contact } from "src/components/common/contact";
-import { Information } from "components/common/information";
-import { Resume } from "components/career/resume";
 import { Client } from "components/common/client";
 import { WhyUs } from "components/career/why-us";
 import About from "components/career/about";
