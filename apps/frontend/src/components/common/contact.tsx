@@ -1,97 +1,50 @@
-import Input from 'components/ui/input'
-import { CTAButton } from 'lib/@types/global-types'
-import { useFormspark } from '@formspark/use-formspark'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { FormSchema } from 'src/lib/form-schema'
-import { useForm } from 'react-hook-form'
-import { Button } from 'components/ui/button'
-import { motion } from 'framer-motion'
+import { Button } from "components/ui/button";
+import { Description } from "components/ui/description";
+import { Section } from "components/ui/section";
+import { CTAButton } from "lib/@types/global-types";
+import React from "react";
+import { PortableText } from "utils/sanity";
 
 interface ContactProps {
-  headline: string
-  ctaButton: CTAButton
-}
-interface IFormInput {
-  name: string
-  email: string
-  message: string
+  type: string;
+  ctaButton: CTAButton;
+  description: string;
+  heading: any;
 }
 
-export const Contact: React.FC<ContactProps> = ({ headline, ctaButton }) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<IFormInput>({
-    mode: 'onChange',
-    resolver: yupResolver(FormSchema),
-  })
-  const [submit, submitting] = useFormspark({
-    formId: process.env.NEXT_PUBLIC_FORM_ID,
-  })
-
-  async function onSubmit({ email, message, name }: IFormInput) {
-    try {
-      await submit({ email, message, name })
-      // addToast({ id: uuidv4(), content: 'Thank you for getting in touch! ', type: 'success' })
-      reset()
-    } catch (e) {
-      // addToast({ id: uuidv4(), content: 'Error. Please Try again.', type: 'error' })
-    } finally {
-    }
-  }
-
+export const Contact: React.FC<ContactProps> = ({
+  ctaButton,
+  description,
+  heading,
+}) => {
   return (
-    <section className="container py-10 relative z-10">
-      <motion.h4
-        initial={{ y: 200 }}
-        whileInView={{ y: 0 }}
-        viewport={{ once: true }}
-        transition={{ type: 'tween', duration: 0.7, ease: 'easeInOut' }}
-        className="xl:text-head-2 md:text-head-3 text-head-2-mobile | font-primary | xl:w-[50%] lg:w-[60%] w-full | leading-none"
-      >
-        {headline}
-      </motion.h4>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="lg:w-[60%] w-full | mt-7 ml-auto | flex flex-col space-y-5"
-      >
-        <Input
-          disabled={submitting}
-          errorKey={errors.name?.message}
-          placeholder="Name"
-          type="text"
-          {...register('name')}
+    <Section borderBottom={false}>
+      <div className="| spacing_primary | flex flex-col justify-center font-light lg:px-[4%]"></div>
+      <div className="text-center text-[64px] font-light">
+        <PortableText
+          blocks={heading}
+          serializers={{
+            marks: {
+              pop: ({ children }: any) => (
+                <span className="primary__gradient bg-clip-text text-transparent">
+                  {children}
+                </span>
+              ),
+              strong: ({ children }: any) => (
+                <span className="font-semibold">{children}</span>
+              ),
+            },
+          }}
         />
-        <Input
-          disabled={submitting}
-          errorKey={errors.email?.message}
-          placeholder="Email"
-          type="text"
-          {...register('email')}
-        />
-
-        <div>
-          <textarea
-            disabled={submitting}
-            className="shadow w-full bg-transparent border border-[#8E8E8E] rounded-lg appearance-none lg:py-6 py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus-visible:ring-honeySuckle focus:ring-0 focus-visible:ring-1"
-            id="message"
-            placeholder="Message"
-            rows={4}
-            {...register('message')}
-          />
-          <span>
-            {errors.message?.message && (
-              <p className="my-2 text-xs text-red-500">{errors.message?.message}</p>
-            )}
-          </span>
-        </div>
-
-        <Button type="button" variant="secondary">
+      </div>
+      <Description textBig className="mx-auto max-w-3xl text-center">
+        {description}
+      </Description>
+      <div className="!mt-12 text-center">
+        <Button type="href" variant="secondary" href={ctaButton.href}>
           {ctaButton.title}
         </Button>
-      </form>
-    </section>
-  )
-}
+      </div>
+    </Section>
+  );
+};

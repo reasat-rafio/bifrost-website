@@ -1,26 +1,25 @@
-import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { siteQuery } from 'src/lib/query'
-import type { GetStaticProps, GetStaticPropsContext } from 'next'
-import { groq } from 'next-sanity'
-import { SanityProps } from 'next-sanity-extra'
-import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { Hero } from 'components/landing/hero'
-// import { Contact } from 'components/common/contact'
-import { HomeSection } from 'lib/@types/landing-types'
-import { useCallback, useState } from 'react'
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { siteQuery } from "src/lib/query";
+import type { GetStaticProps, GetStaticPropsContext } from "next";
+import { groq } from "next-sanity";
+import { SanityProps } from "next-sanity-extra";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { Hero } from "components/landing/hero";
+import { HomeSection } from "lib/@types/landing-types";
+import { useCallback, useState } from "react";
 // import { Newsletter } from 'components/common/newsletter'
-import { Client } from 'components/common/client'
-import { WhyUs } from 'components/landing/why-us'
-import { AboutUs } from 'components/landing/about-us'
-import { Partners } from 'components/landing/partners'
-import { Integrate } from 'components/landing/integrate'
-import { Results } from 'components/landing/results'
-import { Prediction } from 'components/landing/prediction'
-import { Information } from 'components/common/information'
-import { Outputs } from 'components/landing/outputs'
-import { UseCase } from 'components/landing/use-case'
-import { CallOut } from 'components/landing/call-out'
-import { Testimonials } from 'components/landing/testimonial'
+import { Client } from "components/common/client";
+import { WhyUs } from "components/landing/why-us";
+import { AboutUs } from "components/landing/about-us";
+import { Partners } from "components/landing/partners";
+import { Integrate } from "components/landing/integrate";
+import { Results } from "components/landing/results";
+import { Prediction } from "components/landing/prediction";
+import { Information } from "components/common/information";
+import { Outputs } from "components/landing/outputs";
+import { UseCase } from "components/landing/use-case";
+import { Testimonials } from "components/landing/testimonial";
+import { Contact } from "components/common/contact";
 
 // TODO fix the metadata missing warning from assets[]
 const query = groq`{
@@ -29,14 +28,14 @@ const query = groq`{
     ...,
     sections[] {
       ...,
-      "image": ${withDimensions('image')},
+      "image": ${withDimensions("image")},
       partners[]{
         ...,
-       "logo": ${withDimensions('logo')},
+       "logo": ${withDimensions("logo")},
       },  
       collection[]{
         ...,
-        "image": ${withDimensions('image')},
+        "image": ${withDimensions("image")},
       },
       assets[]{
         ...,
@@ -52,7 +51,7 @@ const query = groq`{
       },
       useCases[]{
         ...,
-        "image": ${withDimensions('image')},
+        "image": ${withDimensions("image")},
       },
       images[]{
         ...,
@@ -65,55 +64,59 @@ const query = groq`{
       },
       testimonials[]{
         ...,
-        "image": ${withDimensions('image')},
+        "image": ${withDimensions("image")},
       },
     },
     "cleint" : *[_id == "client"][0] {
       ...,
       clients[]{
         ...,
-        "logo": ${withDimensions('logo')},
+        "logo": ${withDimensions("logo")},
       },
     },
   },
-}`
+}`;
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => ({
   props: await sanityStaticProps({ context, query }),
   revalidate: 10,
-})
+});
 
 export default function Home(props: SanityProps<any>) {
   const {
     data: {
       page: { sections, cleint },
     },
-  } = useSanityQuery(query, props)
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+  } = useSanityQuery(query, props);
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
 
   return (
     <div>
       {renderObjectArray(sections, {
-        'landing.home': useCallback(
-          (p: HomeSection) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
-          [],
+        "landing.home": useCallback(
+          (p: HomeSection) => (
+            <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />
+          ),
+          []
         ),
       })}
       <div
-        className="bg-black relative h-full"
+        className="relative h-full bg-black"
         style={{
           marginTop: heroSectionHeight,
         }}
       >
         {renderObjectArray(sections, {
-          'landing.partners': Partners,
-          'landing.whyUs': WhyUs,
-          'landing.aboutUs': AboutUs,
-          'landing.outputs': Outputs,
-          'landing.integrate': Integrate,
-          'landing.results': Results,
-          'landing.prediction': Prediction,
-          'landing.testimonial': Testimonials,
+          "landing.partners": Partners,
+          "landing.whyUs": WhyUs,
+          "landing.aboutUs": AboutUs,
+          "landing.outputs": Outputs,
+          "landing.integrate": Integrate,
+          "landing.results": Results,
+          "landing.prediction": Prediction,
+          "landing.testimonial": Testimonials,
           infoBlock: Information,
           // 'landing.products': Product,
           // 'landing.demo': Demo,
@@ -122,12 +125,12 @@ export default function Home(props: SanityProps<any>) {
         })}
         <Client {...cleint} />
         {renderObjectArray(sections, {
-          'landing.useCase': UseCase,
-          'landing.callout': CallOut,
+          "landing.useCase": UseCase,
+          contact: Contact,
           // newsletter: Newsletter,
           // contact: Contact,
         })}
       </div>
     </div>
-  )
+  );
 }

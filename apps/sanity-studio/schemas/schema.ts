@@ -1,6 +1,5 @@
 import logos from './objects/site/logos'
 import nav from './objects/site/nav'
-import contactSection from './objects/site/contact'
 
 import ctaButton from './objects/ctaButton'
 import menuItem from './objects/menuItem'
@@ -15,6 +14,7 @@ import video from './objects/video'
 
 import client from './documents/client'
 
+import contact from './objects/common/contact'
 import imformation from './objects/common/information'
 import newsletter from './objects/common/newsletter'
 import resume from './objects/common/resume'
@@ -30,7 +30,6 @@ import landingOutputs from './objects/landing/output'
 import landingResults from './objects/landing/results'
 import landingPrediction from './objects/landing/prediction'
 import landingUseCase from './objects/landing/use-case'
-import landingCallout from './objects/landing/call-out'
 import landingPartners from './objects/landing/partners'
 import landingTestimonial from './objects/landing/testimonial'
 import landingIntegrate from './objects/landing/integrate'
@@ -98,7 +97,6 @@ import datasetDetails from './documents/pages/dataset-details'
 export const schemaTypes = [
   logos,
   nav,
-  contactSection,
   newsletter,
   resume,
   collection,
@@ -107,6 +105,7 @@ export const schemaTypes = [
 
   client,
   imformation,
+  contact,
 
   hero,
   seo,
@@ -128,7 +127,6 @@ export const schemaTypes = [
   landingAboutUs,
   landingOutputs,
   landingUseCase,
-  landingCallout,
   landingPartners,
   landingResults,
   landingPrediction,

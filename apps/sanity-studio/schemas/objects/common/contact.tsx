@@ -2,9 +2,9 @@ import { FcIdea } from 'react-icons/fc'
 import { MdHighlight } from 'react-icons/md'
 import { Rule } from 'sanity'
 
-const landingCallout = {
-  name: 'landing.callout',
-  title: 'Callout',
+const contact = {
+  name: 'contact',
+  title: 'Contact',
   type: 'object',
   icon: FcIdea,
   fields: [
@@ -67,4 +67,4 @@ const landingCallout = {
   },
 }
 
-export default landingCallout
+export default contact
