@@ -47,14 +47,13 @@ export interface TeamSection {
 
 export interface ReasonSection {
   title: string;
-  subtitle: string;
-  agendas: AgendaProps[];
+  heading: string;
+  agenda: AgendaProps;
 }
 
 export interface AgendaProps {
   _key: string;
-  name: string;
-  title: string;
+  heading: string;
   description: string;
   image: SanityImage;
 }

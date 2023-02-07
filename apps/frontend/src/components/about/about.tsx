@@ -30,6 +30,7 @@ const About: React.FC<AboutSectionProps> = ({
       <motion.figure
         initial="from"
         whileInView="to"
+        className="max-h-[520px]"
         variants={VFadeInOut({ duration: 0.8 })}
       >
         <SanityImg
@@ -41,7 +42,7 @@ const About: React.FC<AboutSectionProps> = ({
         />
       </motion.figure>
 
-      <section className="spacing_primary | font-light">
+      <section className="spacing_primary font-light">
         <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
         {!!heading && (
           <Heading animate={{ show: intersecting, delay: 0.15 }}>

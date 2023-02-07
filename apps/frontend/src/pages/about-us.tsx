@@ -70,21 +70,13 @@ export default function AboutUs(props: SanityProps<any>) {
       >
         {renderObjectArray(sections, {
           "aboutUs.about": About,
-          // "aboutUs.reason": Reason,
-          // "aboutUs.team": Team,
+          "aboutUs.reason": Reason,
         })}
         <Client {...cleint} />
         {renderObjectArray(sections, {
-          // newsletter: Newsletter,
           contact: Contact,
         })}
       </div>
-
-      <>
-        {/* <Ellipse className="z-10 absolute top-[10vh] right-[5vw] w-[253px] h-[391px]" /> */}
-        {/* <Ellipse className="z-10 absolute top-[0vh] right-[40vw] w-[353px] h-[391px]" /> */}
-        {/* <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" /> */}
-      </>
     </div>
   );
 }
