@@ -1,18 +1,24 @@
-import { VFadeInOut } from 'animations/fade-in-out'
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { ReactNode } from 'react'
+import { VFadeInOut } from "animations/fade-in-out";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { ReactNode } from "react";
 
 interface HeadingProps {
-  className?: string
-  children: ReactNode
+  className?: string;
+  children: ReactNode;
   animate?: {
-    show?: boolean
-    delay?: number
-  }
+    show?: boolean;
+    delay?: number;
+  };
 }
 
-export const Heading: React.FC<HeadingProps> = ({ children, className, animate }) => {
-  const props = { className: `${className} xl:text-[48px] lg:text-5xl md:text-5xl text-3xl` }
+export const Heading: React.FC<HeadingProps> = ({
+  children,
+  className,
+  animate,
+}) => {
+  const props = {
+    className: `${className} xl:text-[48px] lg:text-5xl md:text-5xl text-3xl`,
+  };
 
   return (
     <>
@@ -20,6 +26,7 @@ export const Heading: React.FC<HeadingProps> = ({ children, className, animate }
         <AnimatePresence>
           {animate.show && (
             <motion.h4
+              className="text-[40px] md:text-5xl xl:text-[48px]"
               initial="from"
               animate="to"
               exit="exit"
@@ -34,5 +41,5 @@ export const Heading: React.FC<HeadingProps> = ({ children, className, animate }
         <h4 {...props}>{children}</h4>
       )}
     </>
-  )
-}
+  );
+};

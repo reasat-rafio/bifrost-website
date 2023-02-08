@@ -40,43 +40,48 @@ export const Information: React.FC<InformationProps> = ({
   );
 
   return (
-    <GradientBorder innerClass="py-16" ref={sectionRef}>
+    <GradientBorder innerClass="md:py-16 py-8" ref={sectionRef}>
       <Section
         borderBottom={false}
         padding={false}
-        className="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-y-0"
+        className="flex flex-col-reverse md:flex-row"
       >
-        <section className="spacing_primary my-auto mr-auto w-full md:w-[85%] ">
-          <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
-          <Heading animate={{ show: intersecting, delay: 0.15 }}>
-            {heading}
-          </Heading>
-          <Description animate={{ show: intersecting, delay: 0.2 }}>
-            {description}
-          </Description>
-          {!!cta && (
-            <AnimatePresence>
-              {intersecting && (
-                <motion.div
-                  initial="from"
-                  animate="to"
-                  exit="exit"
-                  variants={VFadeInOut({ delay: 0.25 })}
-                  className="pt-6"
-                >
-                  <Button type="href" variant="outline" href={cta.href}>
-                    {cta.title}
-                  </Button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          )}
+        <section className="mt-10 flex w-full flex-1 justify-center md:mt-0">
+          <div className="spacing_primary my-auto mr-auto h-fit w-full md:w-[85%]">
+            <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
+            <Heading animate={{ show: intersecting, delay: 0.15 }}>
+              {heading}
+            </Heading>
+            <Description
+              variant="small"
+              animate={{ show: intersecting, delay: 0.2 }}
+            >
+              {description}
+            </Description>
+            {!!cta && (
+              <AnimatePresence>
+                {intersecting && (
+                  <motion.div
+                    initial="from"
+                    animate="to"
+                    exit="exit"
+                    variants={VFadeInOut({ delay: 0.25 })}
+                    className="pt-6"
+                  >
+                    <Button type="href" variant="outline" href={cta.href}>
+                      {cta.title}
+                    </Button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
+          </div>
         </section>
         <motion.figure
           initial="from"
           whileInView="to"
           variants={VFadeInOut({ flip: true, delay: 0.2, duration: 0.8 })}
-          className="w-full overflow-hidden rounded-primary"
+          className="w-full flex-1 overflow-hidden rounded-primary"
         >
           <SanityImg
             className="h-full w-full object-contain"
