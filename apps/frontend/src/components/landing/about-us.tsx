@@ -95,7 +95,8 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
       <Heading>{heading}</Heading>
       <Description
         type="div"
-        className="prose max-w-none prose-ul:m-0 prose-ul:p-0"
+        variant="small"
+        className="prose-sm max-w-none prose-ul:m-0 prose-ul:p-0"
       >
         <PortableText
           blocks={description}
