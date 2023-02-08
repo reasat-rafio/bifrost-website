@@ -76,6 +76,8 @@ import defectDetectionPage from './documents/pages/defect-detection'
 import naturalDisasterPage from './documents/pages/natural-disaster'
 import defensePage from './documents/pages/defense'
 
+import thankYouPage from './documents/pages/thank-you'
+
 import blog from './documents/blog'
 
 import blogListPage from './documents/pages/blog-list'
@@ -170,6 +172,8 @@ export const schemaTypes = [
   defectDetectionPage,
   naturalDisasterPage,
   defensePage,
+
+  thankYouPage,
 
   resources,
   resourcesTag,

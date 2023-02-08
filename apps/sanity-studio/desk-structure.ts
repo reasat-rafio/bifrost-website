@@ -24,6 +24,7 @@ import { SitePreview } from './components/site-preview'
 import { PageItemProps } from './types'
 import { AiOutlineFileSearch } from 'react-icons/ai'
 import { TiWeatherStormy } from 'react-icons/ti'
+import { TbHeart } from 'react-icons/tb'
 
 const singleItem = (S: StructureBuilder, { schemaType, id, title, icon }: PageItemProps) =>
   S.listItem({ schemaType, title, id, icon }).child(
@@ -215,8 +216,15 @@ export const AppStructure = (S: StructureBuilder) =>
               pageItem(S, {
                 schemaType: 'defensePage',
                 id: 'defensePage',
-                title: 'DefensePage',
+                title: 'Defense',
                 icon: GiArchiveResearch,
+                slug: '',
+              }),
+              pageItem(S, {
+                schemaType: 'thankYouPage',
+                id: 'thankYouPage',
+                title: 'Thank You',
+                icon: TbHeart,
                 slug: '',
               }),
             ]),
