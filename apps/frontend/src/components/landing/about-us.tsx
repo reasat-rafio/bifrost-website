@@ -25,11 +25,11 @@ export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
           ({ _key, description, heading, image, title }, index) => (
             <article
               key={_key}
-              className="| col-span-1 grid gap-10 lg:grid-cols-2 lg:gap-20"
+              className="col-span-1 grid gap-10 lg:grid-cols-2 lg:gap-20"
             >
               {LgScreen ? (
                 <>
-                  {index % 2 === 0 ? (
+                  {index % 2 !== 0 ? (
                     <>
                       <DescriptionBlock
                         description={description}

@@ -1,22 +1,28 @@
-import { WaveScene } from 'components/common/wave-scene'
-import { Button } from 'components/ui/button'
-import { Description } from 'components/ui/description'
-import { Title } from 'components/ui/title'
-import { CTAButton } from 'lib/@types/global-types'
-import { useIntersection } from 'lib/hooks'
-import { useRef } from 'react'
+import { WaveScene } from "components/common/wave-scene";
+import { Button } from "components/ui/button";
+import { Description } from "components/ui/description";
+import { Title } from "components/ui/title";
+import { CTAButton } from "lib/@types/global-types";
+import { useIntersection } from "lib/hooks";
+import { useRef } from "react";
 
 interface PredictionProps {
-  type: string
-  ctaButton: CTAButton
-  showWave: boolean
-  subtitle: string
-  title: string
+  type: string;
+  ctaButton: CTAButton;
+  showWave: boolean;
+  subtitle: string;
+  title: string;
 }
 
-export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, subtitle, title }) => {
-  const sectionRef = useRef(null)
-  const intersecting = useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false
+export const Prediction: React.FC<PredictionProps> = ({
+  ctaButton,
+  showWave,
+  subtitle,
+  title,
+}) => {
+  const sectionRef = useRef(null);
+  const intersecting =
+    useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false;
 
   return (
     <section
@@ -24,9 +30,9 @@ export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, sub
       className="| section_pading relative  z-20 overflow-clip"
     >
       {!!showWave && <WaveScene play={intersecting} />}
-      <div className="spacing_primary container relative z-20 mx-auto">
+      <div className="spacing_primary container relative z-20 mx-auto font-light">
         <Title className="text-center">{title}</Title>
-        <Description variant="big" className="text-center">
+        <Description variant="big" className="text-center tracking-[2px]">
           {subtitle}
         </Description>
         <div className="!mt-8 text-center sm:!mt-12">
@@ -47,4 +53,4 @@ export const Prediction: React.FC<PredictionProps> = ({ ctaButton, showWave, sub
       )}
     </section>
   );
-}
+};
