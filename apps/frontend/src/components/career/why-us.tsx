@@ -52,15 +52,13 @@ export const WhyUs: React.FC<WhyUsProps> = ({
             key={_key}
             className="space-y-5"
           >
-            <figure className="aspect-square h-[64px] w-[64px] rounded-[10px] border border-secondary/80 p-3">
-              <SanityImg
-                className="h-full w-full object-contain"
-                width={50}
-                builder={imageUrlBuilder}
-                image={image}
-                alt={image.alt}
-              />
-            </figure>
+            <SanityImg
+              className="aspect-square h-full max-h-[40px] w-full max-w-[40px] object-contain"
+              width={50}
+              builder={imageUrlBuilder}
+              image={image}
+              alt={image.alt}
+            />
             <h6 className="text-xl font-bold lg:text-[22px]">{title}</h6>
             <Description className="opacity-80" variant="small">
               {description}

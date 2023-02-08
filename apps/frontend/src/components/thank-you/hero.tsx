@@ -1,6 +1,5 @@
 // import { GradientTitle } from 'src/components/common/GradientTitle'
 import { BackgroundNoise } from "components/ui/background-noise";
-import { HomeProps } from "lib/@types/about-us-types";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { useVisibleScroll, useWindowSize } from "lib/hooks";
 import { WaveScene } from "components/common/wave-scene";
