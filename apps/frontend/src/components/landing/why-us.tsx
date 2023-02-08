@@ -53,7 +53,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({
             className="space-y-5"
           >
             <SanityImg
-              className="aspect-square h-full max-h-[40px] w-full max-w-[40px] object-contain"
+              className="aspect-square h-full max-h-[30px] w-full max-w-[30px] object-contain"
               width={50}
               builder={imageUrlBuilder}
               image={image}

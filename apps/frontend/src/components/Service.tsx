@@ -157,7 +157,7 @@ export default function Service({
       >
         {/* <Header>{headline}</Header> */}
         {!!subtitle && (
-          <h6 className="| text-[22px] font-light leading-none md:text-[24px] xl:text-[30px]">
+          <h6 className="| text-[22px] font-light leading-none md:text-p-2 xl:text-[30px]">
             {subtitle}
           </h6>
         )}

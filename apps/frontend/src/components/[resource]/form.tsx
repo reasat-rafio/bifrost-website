@@ -61,7 +61,7 @@ export const Form: React.FC<FormProps> = ({}) => {
     <Section padding={false} borderBottom={false}>
       <div className="relative z-20 mt-10 space-y-5 rounded-primary bg-[#1A242F] p-5 sm:space-y-10 md:p-12 xl:p-20">
         <header className="space-y-3 text-center font-light">
-          <h2 className="primary__gradient mx-auto w-fit bg-clip-text text-[36px] uppercase text-transparent">
+          <h2 className="primary__gradient mx-auto w-fit bg-clip-text text-p-1 uppercase text-transparent">
             Request a demo
           </h2>
           <p className="mx-auto max-w-4xl text-[14px]">
