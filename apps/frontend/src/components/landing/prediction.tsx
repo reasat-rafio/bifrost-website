@@ -32,7 +32,7 @@ export const Prediction: React.FC<PredictionProps> = ({
       {!!showWave && <WaveScene play={intersecting} />}
       <div className="spacing_primary container relative z-20 mx-auto font-light">
         <Title className="text-center">{title}</Title>
-        <Description variant="big" className="text-center tracking-[2px]">
+        <Description variant="big" className="text-center tracking-[2px] ">
           {subtitle}
         </Description>
         <div className="!mt-8 text-center sm:!mt-12">

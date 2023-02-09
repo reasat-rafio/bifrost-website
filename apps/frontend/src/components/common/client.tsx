@@ -1,24 +1,28 @@
-import { ClientsSection } from 'lib/@types/about-us-types'
-import { useWindowSize } from 'react-use'
-import { SanityImg } from 'sanity-react-extra'
-import { imageUrlBuilder } from 'utils/sanity'
-import { Autoplay, Mousewheel } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { motion } from 'framer-motion'
-import { ScaleUpChild, ScaleUpParent } from 'animations/scale-up'
-import { useRef } from 'react'
-import { useIntersection } from 'lib/hooks'
-import { Title } from 'components/ui/title'
-import Link from 'next/link'
-import { Description } from 'components/ui/description'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import 'swiper/css/mousewheel'
+import { ClientsSection } from "lib/@types/about-us-types";
+import { useWindowSize } from "react-use";
+import { SanityImg } from "sanity-react-extra";
+import { imageUrlBuilder } from "utils/sanity";
+import { Autoplay, Mousewheel } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
+import { ScaleUpChild, ScaleUpParent } from "animations/scale-up";
+import { useRef } from "react";
+import { useIntersection } from "lib/hooks";
+import { Title } from "components/ui/title";
+import Link from "next/link";
+import { Description } from "components/ui/description";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/mousewheel";
 
-export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
-  const containerRef = useRef(null)
-  const intersection = useIntersection(containerRef, { threshold: 0.3 })
-  const windowWidth = useWindowSize()?.width ?? 0
+export const Client: React.FC<ClientsSection> = ({
+  clients,
+  title,
+  subtitle,
+}) => {
+  const containerRef = useRef(null);
+  const intersection = useIntersection(containerRef, { threshold: 0.3 });
+  const windowWidth = useWindowSize()?.width ?? 0;
 
   return (
     <motion.section
@@ -26,9 +30,9 @@ export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) =
       initial="hidden"
       animate={intersection?.isIntersecting ? "visible" : "hidden"}
       variants={ScaleUpParent}
-      className="container mx-auto space-y-6 border-b border-secondary/80 py-20 lg:py-32"
+      className="container mx-auto space-y-6 border-b border-secondary/80 py-20 font-light lg:py-32"
     >
-      <Title className="text-center">{title}</Title>
+      <Title className="text-center leading-[2px]">{title}</Title>
       {!!subtitle && (
         <Description variant="big" className="mx-auto max-w-5xl text-center">
           {subtitle}
@@ -104,4 +108,4 @@ export const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) =
       </Swiper>
     </motion.section>
   );
-}
+};
