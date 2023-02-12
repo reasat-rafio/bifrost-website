@@ -11,6 +11,7 @@ import initial from './objects/initial'
 import quote from './objects/quote'
 import tag from './documents/tag'
 import video from './objects/video'
+import youTube from './objects/youtube'
 
 import client from './documents/client'
 
@@ -121,6 +122,7 @@ export const schemaTypes = [
   quote,
   tag,
   video,
+  youTube,
 
   contactUs,
   contactUsHomeSection,

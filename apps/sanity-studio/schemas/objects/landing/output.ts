@@ -41,6 +41,7 @@ const landingOutputs = {
           ],
         },
         { name: 'video', type: 'video' },
+        { name: 'youtube', type: 'youtube' },
       ],
     },
   ],

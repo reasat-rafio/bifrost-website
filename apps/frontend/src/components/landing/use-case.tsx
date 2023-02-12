@@ -7,8 +7,11 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import Link from "next/link";
 import { Section } from "components/ui/section";
-import "swiper/css";
+import { Autoplay, FreeMode, Keyboard, Mousewheel } from "swiper";
 import "swiper/css/free-mode";
+import "swiper/css/autoplay";
+import "swiper/css/keyboard";
+import "swiper/css";
 
 interface UseCaseProps {
   type: string;
@@ -34,12 +37,13 @@ export const UseCase: React.FC<UseCaseProps> = ({
 
       <div className="mt-10">
         <Swiper
+          modules={[Autoplay, Mousewheel, Keyboard, FreeMode]}
+          grabCursor
+          keyboard
+          autoplay
+          freeMode
           slidesPerView={"auto"}
           spaceBetween={30}
-          freeMode
-          pagination={{
-            clickable: true,
-          }}
         >
           {useCases.map(({ _key, image, name, url }) => (
             <SwiperSlide key={_key} className="relative !h-[300px] !w-auto">

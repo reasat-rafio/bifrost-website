@@ -8,7 +8,8 @@ import { imageUrlBuilder } from "utils/sanity";
 import { Video } from "./video";
 import { Section } from "components/ui/section";
 import { useWindowSize } from "lib/hooks";
-import { Autoplay, Keyboard, Mousewheel } from "swiper";
+import { Autoplay, FreeMode, Keyboard, Mousewheel } from "swiper";
+import "swiper/css/free-mode";
 import "swiper/css/autoplay";
 import "swiper/css/keyboard";
 import "swiper/css";
@@ -39,11 +40,11 @@ export const Outputs: React.FC<OutputsProps> = ({
 
       <div className="mt-10">
         <Swiper
-          modules={[Autoplay, Mousewheel, Keyboard]}
-          speed={700}
+          modules={[Autoplay, Mousewheel, Keyboard, FreeMode]}
           grabCursor
           keyboard
           autoplay
+          freeMode
           slidesPerView={"auto"}
           spaceBetween={30}
         >
