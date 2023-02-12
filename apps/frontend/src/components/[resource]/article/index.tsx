@@ -69,7 +69,7 @@ export const Article: React.FC<ArticleProps> = forwardRef(
         >
           <section
             data-cy="section-wrapper"
-            className="relative mt-20 space-y-10 text-white lg:col-span-10 lg:mt-0"
+            className="relative mt-36 space-y-10 text-white lg:col-span-10 lg:mt-0 "
           >
             {sections.map((section, index) => (
               <div
