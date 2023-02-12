@@ -41,13 +41,13 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
           >
             <motion.span
               onClick={onCloseAction}
-              className="fixed top-10 right-10 cursor-pointer rounded-full  bg-white p-1"
+              className="fixed top-10 right-10 z-20 cursor-pointer rounded-full bg-white p-1 backdrop-blur-lg"
               whileHover={{ scale: 1.1 }}
             >
               <X className="h-7 w-7 lg:h-9 lg:w-9" />
             </motion.span>
 
-            <div className="py-x mx-auto h-screen max-w-6xl items-center justify-center overflow-y-auto overflow-x-hidden lg:my-[10vh] lg:flex lg:h-[80vh] lg:py-0">
+            <div className="mx-auto flex h-screen max-w-6xl items-center justify-center overflow-y-auto overflow-x-hidden">
               {children}
             </div>
           </motion.div>
