@@ -5,7 +5,7 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { AppProvider } from "src/store/global";
 import Navbar from "components/nav/navbar";
-import Footer from "components/footer";
+import Footer from "components/footer/footer";
 import { useEffect, useState } from "react";
 // import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import "@styles/global.scss";
