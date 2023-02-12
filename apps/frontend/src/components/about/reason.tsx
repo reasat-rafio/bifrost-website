@@ -24,8 +24,8 @@ const Reason: React.FC<ReasonSection> = ({ title, heading, agenda }) => {
       </header>
 
       <section className="mt-10 grid grid-cols-1 space-y-5 sm:mt-14 sm:space-y-10 md:mt-20 md:grid-cols-2 md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32">
-        <motion.div className="my-auto space-y-2">
-          <h4 className="text-2xl font-light leading-[120%] tracking-[2px] drop-shadow-md sm:text-3xl lg:text-p-1">
+        <motion.div className="my-auto space-y-2 font-light">
+          <h4 className="text-2xl leading-[120%] tracking-[2px] drop-shadow-md sm:text-3xl lg:text-p-1">
             {agenda.heading}
           </h4>
           <Description

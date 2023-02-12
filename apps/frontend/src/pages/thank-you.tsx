@@ -1,6 +1,4 @@
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import Hero from "components/thank-you/hero";
-import { CTAButton, SEO } from "lib/@types/global-types";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
