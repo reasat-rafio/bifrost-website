@@ -1,3 +1,5 @@
+import { Rule } from 'sanity'
+
 const video = {
   name: 'video',
   title: 'Video',
@@ -14,6 +16,20 @@ const video = {
       type: 'file',
       title: 'MP4 - MPEG4',
       accept: 'video/mp4',
+    },
+    {
+      name: 'thumbnail',
+      type: 'image',
+      validation: (Rule: Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
     },
   ],
   preview: {

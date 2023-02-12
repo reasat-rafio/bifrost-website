@@ -13,6 +13,8 @@ import "swiper/css/free-mode";
 import "swiper/css/autoplay";
 import "swiper/css/keyboard";
 import "swiper/css";
+import { Youtube } from "./youtube";
+import { VideoThumbnail } from "./video-thumbnail";
 
 interface OutputsProps {
   type: string;
@@ -38,22 +40,24 @@ export const Outputs: React.FC<OutputsProps> = ({
         <Description>{description}</Description>
       </div>
 
-      <div className="mt-10">
+      <div className="relative z-10 mt-10">
         <Swiper
           modules={[Autoplay, Mousewheel, Keyboard, FreeMode]}
           grabCursor
           keyboard
+          observer
+          observeParents
           autoplay
           freeMode
           slidesPerView={"auto"}
           spaceBetween={30}
         >
-          {assets.map(({ _key, alt, mp4, asset, webm }) => (
+          {assets.map((asset) => (
             <SwiperSlide
-              key={_key}
+              key={asset._key}
               className="!h-[200px] !w-fit sm:!h-[250px] lg:!h-[300px]"
             >
-              {!!asset ? (
+              {asset._type === "image" ? (
                 <SanityImg
                   className="h-full w-full rounded-primary object-cover"
                   height={
@@ -61,10 +65,10 @@ export const Outputs: React.FC<OutputsProps> = ({
                   }
                   builder={imageUrlBuilder}
                   image={asset}
-                  alt={alt}
+                  alt={asset.alt}
                 />
               ) : (
-                <Video mp4={mp4} webm={webm} />
+                <VideoThumbnail {...asset} windowWidth={windowWidth} />
               )}
             </SwiperSlide>
           ))}

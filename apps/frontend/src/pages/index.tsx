@@ -46,6 +46,7 @@ const query = groq`{
           dimensions
           },
         },
+        "thumbnail": ${withDimensions("image")},
         "webm": video_webm.asset->url,
         "mp4": video_mp4.asset->url
       },
