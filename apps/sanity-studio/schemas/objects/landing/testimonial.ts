@@ -47,15 +47,15 @@ const landingTestimonial = {
               ],
             },
             {
-              name: 'quote',
+              name: 'testimony',
               type: 'text',
-              vlidation: (Rule: Rule) => Rule.required(),
+              vlidation: (Rule: Rule) => Rule.required().max(300),
             },
           ],
           preview: {
             select: {
               title: 'name',
-              subtitle: 'quote',
+              subtitle: 'testimony',
               media: 'image',
             },
           },

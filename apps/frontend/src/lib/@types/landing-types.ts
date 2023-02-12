@@ -141,6 +141,6 @@ export interface ITestimonial {
   _type: string;
   image: SanityImage;
   name: string;
-  quote: string;
+  testimony: string;
   role: string;
 }

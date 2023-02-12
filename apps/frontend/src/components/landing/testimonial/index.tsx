@@ -11,6 +11,7 @@ import "swiper/css/autoplay";
 import "swiper/css/keyboard";
 import "swiper/css";
 import { useIntersection, useWindowSize } from "lib/hooks";
+import { truncate } from "lib/helpers";
 
 interface TestimonialProps {
   type: string;
@@ -61,7 +62,12 @@ export const Testimonials: React.FC<TestimonialProps> = ({
   );
 };
 
-const Testimonial: React.FC<ITestimonial> = ({ image, name, quote, role }) => {
+const Testimonial: React.FC<ITestimonial> = ({
+  image,
+  name,
+  testimony,
+  role,
+}) => {
   const windowWidth = useWindowSize()?.width ?? 0;
   const blockquoteRef = useRef<HTMLElement>(null);
   const [blockquoteElemHeight, setBlockquoteElemHeight] = useState(0);
@@ -84,7 +90,7 @@ const Testimonial: React.FC<ITestimonial> = ({ image, name, quote, role }) => {
           ref={blockquoteRef}
           className="text-base font-light sm:text-xl lg:text-2xl xl:text-p-2"
         >
-          “{quote}”
+          “{truncate(testimony, 300)}”
         </blockquote>
         <div className="mt-10 flex">
           <figure className="flex-1">
