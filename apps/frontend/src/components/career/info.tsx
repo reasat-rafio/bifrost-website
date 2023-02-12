@@ -31,9 +31,6 @@ export const Info: React.FC<InfoProps> = ({
   );
   return (
     <Section className="spacing_primary font-light">
-      {!!title && <Title>{title}</Title>}
-      {!!heading && <Heading>{heading}</Heading>}
-      {!!description && <Description>{description}</Description>}
       <figure className="">
         <SanityImg
           className="h-full max-h-[460px] w-full rounded-primary object-cover"
@@ -43,6 +40,9 @@ export const Info: React.FC<InfoProps> = ({
           width={imageWidth}
         />
       </figure>
+      {!!title && <Title>{title}</Title>}
+      {!!heading && <Heading>{heading}</Heading>}
+      {!!description && <Description>{description}</Description>}
     </Section>
   );
 };
