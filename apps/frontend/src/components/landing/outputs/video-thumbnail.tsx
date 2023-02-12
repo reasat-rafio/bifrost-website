@@ -3,22 +3,25 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { AssetElement } from "lib/@types/landing-types";
 import { motion } from "framer-motion";
+import { Dispatch, SetStateAction } from "react";
 
-interface VideoThumbnailProps extends AssetElement {
+interface VideoThumbnailProps {
+  asset: AssetElement;
   windowWidth: number;
+  setSelectedVideo: Dispatch<SetStateAction<AssetElement>>;
 }
 
 export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
-  thumbnail,
   windowWidth,
-  _key,
+  setSelectedVideo,
+  asset,
 }) => {
-  const onClickAction = () => {};
+  const onClickAction = () => setSelectedVideo(asset);
 
   return (
     <motion.div
       layout
-      layoutId={_key}
+      layoutId={asset._key}
       className="h-full w-full overflow-hidden object-cover object-center"
     >
       <div className="relative h-full w-full">
@@ -27,8 +30,8 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
           className="h-full w-full rounded-primary object-cover"
           height={windowWidth >= 1024 ? 300 : windowWidth >= 640 ? 250 : 220}
           builder={imageUrlBuilder}
-          image={thumbnail}
-          alt={thumbnail?.alt ?? ""}
+          image={asset.thumbnail}
+          alt={asset.thumbnail?.alt ?? ""}
         />
       </div>
     </motion.div>

@@ -1,37 +1,45 @@
-import { useIntersection } from 'lib/hooks'
-import { useEffect, useRef, useState } from 'react'
-import { PlayIcon } from './play-icon'
+// import { useIntersection } from "lib/hooks";
+import { useEffect, useRef, useState } from "react";
+import { PlayIcon } from "./play-icon";
 
 interface VideoProps {
-  mp4?: string
-  webm?: string
+  mp4?: string;
+  webm?: string;
 }
 
 export const Video: React.FC<VideoProps> = (props) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-  const intersecting = useIntersection(videoRef, {
-    threshold: 0.1,
-  })?.isIntersecting
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  // const intersecting = useIntersection(videoRef, {
+  //   threshold: 0.1,
+  // })?.isIntersecting;
 
-  const [play, setPlay] = useState(false)
-  const [hovered, setHovered] = useState(false)
+  const [play, setPlay] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  // useEffect(() => {
+  //   if (!intersecting) {
+  //     setPlay(false);
+  //     videoRef?.current?.pause();
+  //   }
+  // }, [intersecting]);
   useEffect(() => {
-    if (intersecting) {
-      setPlay(false)
-      videoRef?.current?.pause()
-    }
-  }, [intersecting])
+    videoRef.current?.play();
+  }, []);
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="w-full h-full object-cover object-center overflow-hidden"
+      className="h-full w-full overflow-hidden object-cover object-center"
     >
       <div className="relative h-full w-full">
-        <PlayIcon play={play} hovered={hovered} setPlay={setPlay} videoRef={videoRef} />
+        <PlayIcon
+          play={play}
+          hovered={hovered}
+          setPlay={setPlay}
+          videoRef={videoRef}
+        />
         <video
-          className="h-full w-full object-cover introcution-video"
+          className="h-full w-full object-contain"
           ref={videoRef}
           width="100%"
           height="100%"
@@ -45,5 +53,5 @@ export const Video: React.FC<VideoProps> = (props) => {
         </video>
       </div>
     </div>
-  )
-}
+  );
+};

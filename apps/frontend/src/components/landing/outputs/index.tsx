@@ -5,7 +5,6 @@ import { AssetElement } from "lib/@types/landing-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
-import { Video } from "./video";
 import { Section } from "components/ui/section";
 import { useWindowSize } from "lib/hooks";
 import { Autoplay, FreeMode, Keyboard, Mousewheel } from "swiper";
@@ -13,8 +12,9 @@ import "swiper/css/free-mode";
 import "swiper/css/autoplay";
 import "swiper/css/keyboard";
 import "swiper/css";
-import { Youtube } from "./youtube";
 import { VideoThumbnail } from "./video-thumbnail";
+import { useState } from "react";
+import { Popup } from "./popup";
 
 interface OutputsProps {
   type: string;
@@ -31,6 +31,7 @@ export const Outputs: React.FC<OutputsProps> = ({
   description,
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0;
+  const [selectedVideo, setSelectedVideo] = useState<AssetElement | null>(null);
 
   return (
     <Section>
@@ -68,12 +69,17 @@ export const Outputs: React.FC<OutputsProps> = ({
                   alt={asset.alt}
                 />
               ) : (
-                <VideoThumbnail {...asset} windowWidth={windowWidth} />
+                <VideoThumbnail
+                  asset={asset}
+                  setSelectedVideo={setSelectedVideo}
+                  windowWidth={windowWidth}
+                />
               )}
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+      <Popup asset={selectedVideo} setSelectedVideo={setSelectedVideo} />
     </Section>
   );
 };
