@@ -6,8 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import Link from "next/link";
-import "swiper/css";
 import { Section } from "components/ui/section";
+import "swiper/css";
+import "swiper/css/free-mode";
 
 interface UseCaseProps {
   type: string;
@@ -35,6 +36,7 @@ export const UseCase: React.FC<UseCaseProps> = ({
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={30}
+          freeMode
           pagination={{
             clickable: true,
           }}
