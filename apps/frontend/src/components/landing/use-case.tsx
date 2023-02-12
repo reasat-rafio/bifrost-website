@@ -37,6 +37,7 @@ export const UseCase: React.FC<UseCaseProps> = ({
 
       <div className="mt-10">
         <Swiper
+          className="!p-1"
           modules={[Autoplay, Mousewheel, Keyboard, FreeMode]}
           grabCursor
           keyboard
@@ -46,7 +47,12 @@ export const UseCase: React.FC<UseCaseProps> = ({
           spaceBetween={30}
         >
           {useCases.map(({ _key, image, name, url }) => (
-            <SwiperSlide key={_key} className="relative !h-[300px] !w-auto">
+            <SwiperSlide
+              key={_key}
+              className="group relative !h-[300px] !w-auto"
+            >
+              <div className="absolute inset-0 rounded-primary opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
+
               {!!url ? (
                 <Link href={url}>
                   <a>
