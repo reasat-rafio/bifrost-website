@@ -20,7 +20,7 @@ export const Title: React.FC<TitleProps> = ({
   const props = {
     className: `${className} ${color === "green" && "text-teal"} ${
       color === "pink" && "text-mauve"
-    } uppercase lg:text-p-2 sm:text-xl text-lg`,
+    } uppercase lg:text-p-2 sm:text-xl text-lg leading-[120%] tracking-[2px]`,
   };
   return (
     <>

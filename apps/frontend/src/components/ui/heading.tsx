@@ -20,7 +20,7 @@ export const Heading: React.FC<HeadingProps> = ({
   el = "h3",
 }) => {
   const props = {
-    className: `${className} xl:text-[48px] lg:text-5xl md:text-5xl text-[40px]`,
+    className: `${className} drop-shadow-md xl:text-[48px] lg:text-5xl md:text-5xl text-[40px] leading-[120%] tracking-[0.02em]`,
   };
 
   const animationProps = {

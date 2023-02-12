@@ -21,7 +21,7 @@ export const Description: React.FC<DescriptionProps> = ({
   type = "p",
 }) => {
   const props = {
-    className: `${className} ${
+    className: `!tracking-[0.02em] ${className} ${
       variant === "big"
         ? "lg:text-p-1 sm:text-3xl text-2xl"
         : variant === "small"
