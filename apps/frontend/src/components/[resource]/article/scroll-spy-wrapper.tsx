@@ -89,13 +89,6 @@ const Navigations = ({
         intersecting={intersecting}
         sections={sections}
       />
-      {/* <SmScrollSpy
-        sectionWrapperHeight={sectionWrapperHeight}
-        paddingY={paddingY}
-        selected={selected}
-        setSelected={setSelected}
-        sections={sections}
-      /> */}
     </aside>
   );
 };

@@ -84,7 +84,8 @@ const Resources = (props: SanityProps<any>) => {
   });
 
   return (
-    <section>
+    <section className="relative">
+      <div className="absolute inset-0 h-[50vh] bg-midnight-blue" />
       <ScrollDetective
         intersecting={articleIntersecting}
         scrollYProgress={scrollYProgress}

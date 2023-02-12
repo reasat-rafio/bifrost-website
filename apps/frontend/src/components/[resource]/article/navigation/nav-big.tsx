@@ -37,7 +37,7 @@ export const NavBig: React.FC<ScrollSpyProps> = ({
         className="primary__gradient left-0 top-0 w-1 rounded"
       />
 
-      <ul className="mx-auto flex-1 space-y-6">
+      <ul className="mx-auto flex-1 space-y-3">
         {sections.map((section: any, i: number) => (
           <li key={section._key} className="flex items-center space-x-4 ">
             <motion.span

@@ -17,7 +17,7 @@ export const ShareWith: React.FC<ShareWithProps> = ({}) => {
 
   return (
     <div className="mt-10 flex justify-between rounded-primary border border-[#8E8E8E] px-8 py-8 xl:px-20 xl:py-16">
-      <h6 className="flex-1 text-base text-[#000610] lg:text-[20px]">
+      <h6 className="flex-1 text-base text-midnight-blue lg:text-[20px]">
         Share this article:
       </h6>
       <div className="flex space-x-5 xl:space-x-10">

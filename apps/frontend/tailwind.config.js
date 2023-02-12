@@ -42,6 +42,7 @@ module.exports = {
         secondary: "#29394A",
         mauve: "#B794FF",
         "color-description": "#99A2D4",
+        "midnight-blue": "#000610",
 
         warning: "#F3CD68",
         "worning-soft": "#FCF5E4",

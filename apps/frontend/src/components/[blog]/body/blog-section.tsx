@@ -31,7 +31,7 @@ const serializers = {
               }
             }}
             className={clsx(
-              "text-[25px] font-[275] text-[#000610] transition-all duration-300 xl:text-[40px]",
+              "text-[25px] font-[275] text-midnight-blue transition-all duration-300 xl:text-[40px]",
               !url && "cursor-pointer"
             )}
           >
@@ -55,7 +55,7 @@ export const BlogSection: React.FC<BlogBody> = ({
   return (
     <div className="prose-lg prose-cyan max-w-none">
       {/* {!hideHeading && ( */}
-      <h4 className="mb-6 text-[32px] tracking-[0.02em] text-[#000610]">
+      <h4 className="mb-6 text-[32px] tracking-[0.02em] text-midnight-blue">
         {heading}
       </h4>
       {/* )} */}
