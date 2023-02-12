@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useWindowSize } from "lib/hooks";
 import { Button } from "./ui/button";
 import clsx from "clsx";
+import { GradientBorder } from "./ui/gradient-border";
 
 interface FooterProps {
   logo: SanityImage;
@@ -18,8 +19,8 @@ export default function Footer({
 }: FooterProps): ReactElement {
   const windowWidth = useWindowSize()?.width ?? 0;
   return (
-    <footer className="relative z-10 bg-black">
-      <div className="container relative z-10 grid grid-cols-12 gap-y-5 py-14 text-white sm:py-16 md:gap-x-10 lg:py-24 xl:gap-y-0 xl:py-36">
+    <GradientBorder className="mb-10">
+      <footer className="container relative z-10 grid grid-cols-12 gap-y-5 py-14 text-white sm:py-16 md:gap-x-10 lg:py-24 xl:gap-y-0 xl:py-36">
         <section className="col-span-12 flex flex-col gap-y-3 md:gap-y-7 xl:col-span-4">
           <Link href="/">
             <a>
@@ -70,8 +71,8 @@ export default function Footer({
           {...newsletter}
         />
         <span className="col-span-12 xl:hidden">{copyright}</span>
-      </div>
-    </footer>
+      </footer>
+    </GradientBorder>
   );
 }
 
