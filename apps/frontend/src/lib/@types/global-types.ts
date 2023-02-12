@@ -4,11 +4,12 @@ export interface Footer {
   copyright: string;
   socialButtons: Social[];
   menu: MenuItem[];
-  newsletter: {
-    title: string;
-    subtitle: string;
-    ctaButton: CTAButton;
-  };
+  newsletter: NewsletterProps;
+}
+export interface NewsletterProps {
+  title: string;
+  subtitle: string;
+  ctaButton: CTAButton;
 }
 
 export interface Site {
