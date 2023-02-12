@@ -1,40 +1,42 @@
-import '@fontsource/roboto/300.css'
-import { imageUrlBuilder } from 'utils/sanity'
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import { NextSeo } from 'next-seo'
-import { AppProvider } from 'src/store/global'
-import Navbar from 'components/nav/navbar'
-import Footer from 'src/components/Footer'
-import { useEffect, useState } from 'react'
+import "@fontsource/roboto/300.css";
+import { imageUrlBuilder } from "utils/sanity";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { NextSeo } from "next-seo";
+import { AppProvider } from "src/store/global";
+import Navbar from "components/nav/navbar";
+import Footer from "components/footer";
+import { useEffect, useState } from "react";
 // import { ToastContaiern as Toast } from 'src/components/ui/Toast'
-import '@styles/global.scss'
-import { Dropdown as NavbarDropdown } from 'components/nav/dropdown'
-import { useRouter } from 'next/router'
-import { MenuDropdown } from 'components/nav/menu-dropdown'
+import "@styles/global.scss";
+import { Dropdown as NavbarDropdown } from "components/nav/dropdown";
+import { useRouter } from "next/router";
+import { MenuDropdown } from "components/nav/menu-dropdown";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  let faviconImage: string | null = null
-  const [seoTitle, setSeoTitle] = useState()
-  const [seoDescription, setSeoDescription] = useState()
-  const [ogImage, setOgImage] = useState()
-  const router = useRouter()
-  const is404Page = router.pathname === '/_error'
+  let faviconImage: string | null = null;
+  const [seoTitle, setSeoTitle] = useState();
+  const [seoDescription, setSeoDescription] = useState();
+  const [ogImage, setOgImage] = useState();
+  const router = useRouter();
+  const is404Page = router.pathname === "/_error";
 
-  const Component_: any = Component
+  const Component_: any = Component;
 
   useEffect(() => {
-    setSeoTitle(pageProps.data?.page.seo?.title)
-    setSeoDescription(pageProps.data?.page.seo?.description)
-    setOgImage(pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage)
+    setSeoTitle(pageProps.data?.page.seo?.title);
+    setSeoDescription(pageProps.data?.page.seo?.description);
+    setOgImage(
+      pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage
+    );
     if (pageProps.data?.site.logos.favicon) {
       faviconImage = imageUrlBuilder
         .image(pageProps.data?.site?.logos.favicon)
         .size(256, 256)
         .ignoreImageParams()
-        .url()
+        .url();
     }
-  }, [])
+  }, []);
 
   const openGraphImages = ogImage
     ? [
@@ -48,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         height: h,
         alt: `${seoTitle}`,
       }))
-    : []
+    : [];
 
   return (
     <div>
@@ -56,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" href={faviconImage} />
       </Head>
       <AppProvider>
-        <div className="bg-black relative overflow-clip text-white">
+        <div className="relative overflow-clip bg-black text-white">
           <NextSeo
             title={seoTitle}
             description={seoDescription}
@@ -97,7 +99,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </div>
       </AppProvider>
     </div>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

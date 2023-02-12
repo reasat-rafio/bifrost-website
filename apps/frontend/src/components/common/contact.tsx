@@ -19,36 +19,36 @@ export const Contact: React.FC<ContactProps> = ({
 }) => {
   return (
     <Section borderBottom={false}>
-      <div className="| spacing_primary | flex flex-col justify-center font-light lg:px-[4%]"></div>
-      <div className="text-center text-[64px] font-light leading-none">
-        <PortableText
-          blocks={heading}
-          serializers={{
-            marks: {
-              pop: ({ children }: any) => (
-                <span className="primary__gradient bg-clip-text text-transparent">
-                  {children}
-                </span>
-              ),
-              strong: ({ children }: any) => (
-                <span className="primary__gradient bg-clip-text font-semibold text-transparent">
-                  {children}
-                </span>
-              ),
-            },
-          }}
-        />
-      </div>
-      {!!description && (
-        <Description variant="big" className="mx-auto max-w-3xl text-center">
-          {description}
-        </Description>
-      )}
-
-      <div className="!mt-12 text-center">
-        <Button type="href" variant="secondary" href={ctaButton.href}>
-          {ctaButton.title}
-        </Button>
+      <div className="flex flex-col justify-center space-y-4 font-light sm:space-y-7 lg:space-y-12 lg:px-[4%]">
+        <div className="text-center text-[64px] font-light leading-none">
+          <PortableText
+            blocks={heading}
+            serializers={{
+              marks: {
+                pop: ({ children }: any) => (
+                  <span className="primary__gradient bg-clip-text text-transparent">
+                    {children}
+                  </span>
+                ),
+                strong: ({ children }: any) => (
+                  <span className="primary__gradient bg-clip-text font-semibold text-transparent">
+                    {children}
+                  </span>
+                ),
+              },
+            }}
+          />
+        </div>
+        {!!description && (
+          <Description variant="big" className="mx-auto max-w-3xl text-center">
+            {description}
+          </Description>
+        )}
+        <div className="flex items-center justify-center">
+          <Button type="href" variant="secondary" href={ctaButton.href}>
+            {ctaButton.title}
+          </Button>
+        </div>
       </div>
     </Section>
   );

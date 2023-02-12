@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useWindowSize } from "lib/hooks";
 import { Button } from "./ui/button";
 import clsx from "clsx";
-import { Description } from "./ui/description";
 
 interface FooterProps {
   logo: SanityImage;
@@ -48,7 +47,7 @@ export default function Footer({
               </Link>
             ))}
           </div>
-          <span className="| hidden text-lg opacity-70 xl:block">
+          <span className="hidden text-lg opacity-70 xl:block">
             {copyright}
           </span>
         </section>
@@ -58,7 +57,7 @@ export default function Footer({
           <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 md:gap-y-5">
             {menu?.map((menu) => (
               <Link key={menu._key} href={menu.pageUrl || menu.externalUrl}>
-                <a className="| text-lg opacity-70 transition-opacity hover:opacity-100">
+                <a className="text-lg opacity-70 transition-opacity hover:opacity-100">
                   {menu.title}
                 </a>
               </Link>
