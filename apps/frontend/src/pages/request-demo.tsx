@@ -1,3 +1,4 @@
+import { Form } from "components/request-demo/form";
 import Hero from "components/request-demo/hero";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
@@ -26,22 +27,12 @@ const RequestDemo = (props: SanityProps<any>) => {
     },
   } = useSanityQuery(query, props);
 
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
-
   return (
     <div>
       {renderObjectArray(sections, {
-        "requestDemoPage.home": useCallback(
-          (props: any) => (
-            <Hero {...props} setHeroSectionHeight={setHeroSectionHeight} />
-          ),
-          []
-        ),
+        "requestDemoPage.home": Hero,
       })}
-      <div
-        className="relative z-10 bg-midnight-blue"
-        style={{ marginTop: heroSectionHeight }}
-      />
+      <Form className="my-10 block lg:hidden" />
     </div>
   );
 };

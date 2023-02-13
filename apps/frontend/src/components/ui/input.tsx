@@ -10,6 +10,7 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   errorKey?: string;
   type?: string;
   shadow?: boolean;
+  textColor?: string;
 }
 
 const Input = React.forwardRef<any, any>(
@@ -23,6 +24,7 @@ const Input = React.forwardRef<any, any>(
       shadow = false,
       type = "text",
       inputClassName,
+      textColor = "#B6B6B6",
       ...rest
     },
     ref
@@ -34,11 +36,11 @@ const Input = React.forwardRef<any, any>(
           name={name}
           type={type}
           ref={ref}
-          // @ts-ignore
           placeholder={placeholderKey}
+          style={{ color: textColor }}
           className={clsx(
             innerClassName,
-            "text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-transparent py-3 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle md:py-5"
+            "focus:shadow-outline w-full appearance-none rounded-[10px] border border-[#43434A] bg-transparent py-3 px-5 text-sm leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle sm:text-body-3 md:py-5"
           )}
           autoComplete="off"
           spellCheck="false"

@@ -1,8 +1,7 @@
 import { WaveScene } from "components/common/wave-scene";
 import { useVisibleScroll, useWindowSize } from "src/lib/hooks";
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { BackgroundNoise } from "components/ui/background-noise";
-import { OnScrollBackdropEffect } from "components/ui/on-scroll-backdrop-effect";
 import { PortableText } from "utils/sanity";
 import { Description } from "components/ui/description";
 import { Form } from "./form";
@@ -10,20 +9,16 @@ import { Form } from "./form";
 interface IHomeSection {
   title: any[];
   subtitle: any[];
-  setHeroSectionHeight: Dispatch<SetStateAction<number>>;
 }
-const Hero: React.FC<IHomeSection> = ({
-  subtitle,
-  title,
-  setHeroSectionHeight,
-}) => {
+
+const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
   const { width: windowWidth, height: windowHeight } = useWindowSize() ?? {
     height: 0,
     width: 0,
   };
   const sectionRef = useRef<HTMLElement>(null);
-
   const visibleScroll = useVisibleScroll(sectionRef);
+  const [navbarHeight, setNavbarHeight] = useState(0);
   const ratio = visibleScroll
     ? Math.min(
         1,
@@ -35,21 +30,24 @@ const Hero: React.FC<IHomeSection> = ({
       )
     : 0;
 
-  useEffect(() => {
-    if (sectionRef?.current)
-      setHeroSectionHeight(sectionRef.current.clientHeight);
-  }, [windowWidth, sectionRef]);
+  useLayoutEffect(() => {
+    const height = document.querySelector("#navbar").clientHeight;
+    setNavbarHeight(height);
+  }, [windowWidth]);
 
   return (
-    <section
-      className="fixed top-0 left-0 w-full overflow-y-clip bg-midnight-blue"
-      ref={sectionRef}
-    >
+    <section className="relative w-full !overflow-hidden" ref={sectionRef}>
       <BackgroundNoise />
+      <div className="absolute bottom-0 left-0 h-[35vh] w-full bg-midnight-blue" />
       <WaveScene play={ratio < 0.7} />
-      <OnScrollBackdropEffect ratio={ratio} />
 
-      <div className="container relative z-10 flex min-h-screen items-center justify-center overflow-y-clip py-[30%] lg:py-[5%]">
+      <div
+        style={{
+          marginTop: navbarHeight,
+          minHeight: `calc(100vh - ${navbarHeight}px)`,
+        }}
+        className="container relative z-10 flex items-center justify-center overflow-y-clip py-[20%] lg:py-[5%] "
+      >
         <div className="flex flex-1 flex-col space-y-5 lg:space-y-10">
           <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
             <PortableText
@@ -89,7 +87,7 @@ const Hero: React.FC<IHomeSection> = ({
             />
           </Description>
         </div>
-        <Form className="flex-1" />
+        <Form className="hidden flex-1 lg:block" />
       </div>
 
       <div

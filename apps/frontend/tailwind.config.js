@@ -100,7 +100,4 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("prettier-plugin-tailwindcss"),
   ],
-  // variants: {
-  //   scrollbar: ['rounded'],
-  // },
 };

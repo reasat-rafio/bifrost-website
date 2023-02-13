@@ -66,11 +66,12 @@ export const Form: React.FC<FormProps> = ({ className }) => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={clsx(
-          "space-y-3 rounded-primary bg-[#1D1D22] p-10 sm:space-y-6"
+          "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 lg:p-10"
         )}
       >
         <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
           <Input
+            textColor="#ffffff"
             innerClassName="bg-[#09090D]"
             disabled={formSate === "submitting"}
             errorKey={errors.first_name?.message}
@@ -79,6 +80,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             {...register("first_name")}
           />
           <Input
+            textColor="#ffffff"
             innerClassName="bg-[#09090D]"
             disabled={formSate === "submitting"}
             errorKey={errors.last_name?.message}
@@ -88,6 +90,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           />
         </div>
         <Input
+          textColor="#ffffff"
           innerClassName="bg-[#09090D]"
           disabled={formSate === "submitting"}
           errorKey={errors.company_name?.message}
@@ -96,6 +99,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           {...register("company_name")}
         />
         <Input
+          textColor="#ffffff"
           innerClassName="bg-[#09090D]"
           disabled={formSate === "submitting"}
           errorKey={errors.work_email?.message}
@@ -104,6 +108,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           {...register("work_email")}
         />
         <Input
+          textColor="#ffffff"
           innerClassName="bg-[#09090D]"
           disabled={formSate === "submitting"}
           errorKey={errors.job_title?.message}
@@ -114,7 +119,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
         <div>
           <textarea
             disabled={formSate === "submitting"}
-            className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
+            className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
             id="message"
             placeholder="What can we help with?"
             rows={5}
@@ -128,6 +133,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             )}
           </span>
         </div>
+        <CheckBox />
         <Button
           width="full"
           actionType="submit"
@@ -138,5 +144,29 @@ export const Form: React.FC<FormProps> = ({ className }) => {
         </Button>
       </form>
     </GradientBorder>
+  );
+};
+
+const CheckBox = () => {
+  const [isChecked, setIsChecked] = useState(true);
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+  return (
+    <div>
+      <label htmlFor="checked-checkbox" className="flex items-center">
+        <input
+          id="checked-checkbox"
+          type="checkbox"
+          className="border-gray-300 !checked:bg-teal h-4 w-4 rounded bg-teal text-blue-600 focus:ring-2 focus:ring-blue-500"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
+        <span className="text-gray-900 ml-2 text-sm font-medium">
+          Checkbox UI Element
+        </span>
+      </label>
+    </div>
   );
 };
