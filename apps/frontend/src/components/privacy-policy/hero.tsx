@@ -42,7 +42,7 @@ const Hero: React.FC<IHomeSection> = ({
 
   return (
     <section
-      className="fixed top-0 left-0 w-full overflow-y-clip bg-black"
+      className="fixed top-0 left-0 w-full overflow-y-clip bg-midnight-blue"
       ref={sectionRef}
     >
       <BackgroundNoise />
@@ -50,7 +50,7 @@ const Hero: React.FC<IHomeSection> = ({
       <OnScrollBackdropEffect ratio={ratio} />
 
       <div className="container relative z-10 flex min-h-screen flex-col justify-center overflow-y-clip py-[30%] lg:py-[5%]">
-        <div className="flex flex-col space-y-5 lg:space-y-10 ">
+        <div className="flex flex-col space-y-5 lg:space-y-10">
           <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
             <PortableText
               blocks={title}
@@ -65,7 +65,9 @@ const Hero: React.FC<IHomeSection> = ({
               }}
             />
           </h1>
-          <Description className="max-w-3xl">{description}</Description>
+          {!!description && (
+            <Description className="max-w-3xl">{description}</Description>
+          )}
           {!!ctaButton && (
             <div className="pt-2 md:pt-4">
               <Button
@@ -84,7 +86,7 @@ const Hero: React.FC<IHomeSection> = ({
         className="pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
         style={{
           background:
-            "linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)",
+            "linear-gradient(180deg, rgba(3, 6, 10, 0) 0%, rgba(3, 6, 10, 0.83) 100%)",
         }}
       />
     </section>

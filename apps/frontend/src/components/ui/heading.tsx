@@ -7,7 +7,7 @@ interface HeadingProps {
   children: ReactNode;
   el?: "h2" | "h3" | "h4";
   variant?: "normal" | "big" | "small";
-
+  spacing?: boolean;
   animate?: {
     show?: boolean;
     delay?: number;
@@ -19,15 +19,21 @@ export const Heading: React.FC<HeadingProps> = ({
   className,
   animate,
   variant = "normal",
+  spacing = true,
   el = "h3",
 }) => {
   const props = {
     className: `${className} drop-shadow-md ${
       variant === "normal" &&
-      "xl:text-[48px] lg:text-5xl md:text-5xl text-[40px] md:!leading-[120%] md:!tracking-[0.02em] leading-[100%]"
+      `xl:text-[48px] lg:text-5xl md:text-5xl text-[40px] ${
+        spacing && "md:!leading-[120%] md:!tracking-[0.02em] leading-[100%]"
+      }`
     } ${
       variant === "small" &&
-      "text-2xl md:!leading-[48px] md:!tracking-[2px] sm:text-3xl lg:text-[38px] tracking-[0.02em] leading-[30px]"
+      `text-2xl sm:text-3xl lg:text-[38px] ${
+        spacing &&
+        "md:!leading-[48px] md:!tracking-[2px] tracking-[0.02em] leading-[30px]"
+      }`
     } `,
   };
 

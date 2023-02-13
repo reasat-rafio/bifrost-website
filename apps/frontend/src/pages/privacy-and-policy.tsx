@@ -1,4 +1,5 @@
 import Hero from "components/privacy-policy/hero";
+import { Policy } from "components/privacy-policy/policy";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
@@ -39,11 +40,11 @@ const PrivacyPolicy = (props: SanityProps<any>) => {
         ),
       })}
       <div
-        className="relative z-10 bg-black"
+        className="relative z-10 bg-midnight-blue"
         style={{ marginTop: heroSectionHeight }}
       >
         {renderObjectArray(sections, {
-          "privacyPolicyPage.policy": "",
+          "privacyPolicyPage.policy": Policy,
         })}
       </div>
     </div>
