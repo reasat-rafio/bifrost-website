@@ -53,7 +53,7 @@ const Hero: React.FC<IHomeSection> = ({
 
       <div className="container relative z-10 flex min-h-screen flex-col justify-center overflow-y-clip py-[30%] lg:py-[5%]">
         <div className="flex flex-col space-y-5 lg:space-y-10 ">
-          <h1 className="text-head-2-mobile font-primary leading-none lg:text-head-1">
+          <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
             <PortableText
               blocks={title}
               serializers={{
