@@ -30,7 +30,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({
 }) => {
   const sectionRef = useRef(null);
   const intersecting =
-    useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false;
+    useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
   return (
     <Section ref={sectionRef}>

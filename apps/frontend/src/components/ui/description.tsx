@@ -21,12 +21,12 @@ export const Description: React.FC<DescriptionProps> = ({
   type = "p",
 }) => {
   const props = {
-    className: `!leading-[48px] !tracking-[2px] ${className} ${
+    className: `${className} ${
       variant === "big"
-        ? "lg:text-p-1 sm:text-3xl text-2xl"
+        ? "lg:text-p-1 sm:text-3xl text-2xl !leading-[48px] !tracking-[2px]"
         : variant === "small"
-        ? "lg:text-p-3 sm:text-xl text-p-3-mobile"
-        : "lg:text-p-2 sm:text-2xl text-xl"
+        ? "lg:text-p-3 sm:text-xl text-p-3-mobile !tracking-[0.02em] "
+        : "lg:text-p-2 sm:text-2xl text-xl !tracking-[0.02em] "
     }`,
   };
 
