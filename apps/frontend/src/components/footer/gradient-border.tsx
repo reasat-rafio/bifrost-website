@@ -13,7 +13,7 @@ const gradientVariants = {
 export const GradientBorder: React.FC<GradientBorderProps> = ({ children }) => {
   return (
     <motion.div
-      className="primary__gradient relative mb-10 bg-black pt-[1px] sm:mx-5 xl:mx-auto "
+      className="primary__gradient relative mb-10 bg-black pt-[1px] xl:mx-auto "
       variants={gradientVariants}
       initial="initial"
       animate="animate"

@@ -10,7 +10,6 @@ import { useRef } from "react";
 import { useIntersection } from "lib/hooks";
 import { Title } from "components/ui/title";
 import Link from "next/link";
-import { Description } from "components/ui/description";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/mousewheel";
@@ -34,9 +33,9 @@ export const Client: React.FC<ClientsSection> = ({
     >
       <Title className="text-center leading-[2px]">{title}</Title>
       {!!subtitle && (
-        <Description variant="big" className="mx-auto max-w-5xl text-center">
+        <h3 className="mx-auto max-w-5xl text-center text-2xl leading-[48px] tracking-[2px] sm:text-3xl lg:text-[38px]">
           {subtitle}
-        </Description>
+        </h3>
       )}
 
       <Swiper
