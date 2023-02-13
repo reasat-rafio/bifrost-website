@@ -62,88 +62,90 @@ export const Form: React.FC<FormProps> = ({ className }) => {
   };
 
   return (
-    <GradientBorder className={className}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={clsx(
-          "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 lg:p-10"
-        )}
-      >
-        <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
-          <Input
-            textColor="#ffffff"
-            innerClassName="bg-[#09090D]"
-            disabled={formSate === "submitting"}
-            errorKey={errors.first_name?.message}
-            placeholder="First Name"
-            type="text"
-            {...register("first_name")}
-          />
-          <Input
-            textColor="#ffffff"
-            innerClassName="bg-[#09090D]"
-            disabled={formSate === "submitting"}
-            errorKey={errors.last_name?.message}
-            placeholder="Last Name"
-            type="text"
-            {...register("last_name")}
-          />
-        </div>
-        <Input
-          textColor="#ffffff"
-          innerClassName="bg-[#09090D]"
-          disabled={formSate === "submitting"}
-          errorKey={errors.company_name?.message}
-          placeholder="Company Name"
-          type="text"
-          {...register("company_name")}
-        />
-        <Input
-          textColor="#ffffff"
-          innerClassName="bg-[#09090D]"
-          disabled={formSate === "submitting"}
-          errorKey={errors.work_email?.message}
-          placeholder="Work Email"
-          type="text"
-          {...register("work_email")}
-        />
-        <Input
-          textColor="#ffffff"
-          innerClassName="bg-[#09090D]"
-          disabled={formSate === "submitting"}
-          errorKey={errors.job_title?.message}
-          placeholder="Job Title"
-          type="text"
-          {...register("job_title")}
-        />
-        <div>
-          <textarea
-            disabled={formSate === "submitting"}
-            className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
-            id="message"
-            placeholder="What can we help with?"
-            rows={5}
-            {...register("job_description")}
-          />
-          <span>
-            {errors.job_description?.message && (
-              <p className="my-2 text-xs text-danger">
-                {errors.job_description?.message}
-              </p>
-            )}
-          </span>
-        </div>
-        <CheckBox />
-        <Button
-          width="full"
-          actionType="submit"
-          variant="secondary"
-          type="button"
+    <section className={className}>
+      <GradientBorder>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={clsx(
+            "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 lg:p-10"
+          )}
         >
-          Get started
-        </Button>
-      </form>
-    </GradientBorder>
+          <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
+            <Input
+              textColor="#ffffff"
+              innerClassName="bg-[#09090D]"
+              disabled={formSate === "submitting"}
+              errorKey={errors.first_name?.message}
+              placeholder="First Name"
+              type="text"
+              {...register("first_name")}
+            />
+            <Input
+              textColor="#ffffff"
+              innerClassName="bg-[#09090D]"
+              disabled={formSate === "submitting"}
+              errorKey={errors.last_name?.message}
+              placeholder="Last Name"
+              type="text"
+              {...register("last_name")}
+            />
+          </div>
+          <Input
+            textColor="#ffffff"
+            innerClassName="bg-[#09090D]"
+            disabled={formSate === "submitting"}
+            errorKey={errors.company_name?.message}
+            placeholder="Company Name"
+            type="text"
+            {...register("company_name")}
+          />
+          <Input
+            textColor="#ffffff"
+            innerClassName="bg-[#09090D]"
+            disabled={formSate === "submitting"}
+            errorKey={errors.work_email?.message}
+            placeholder="Work Email"
+            type="text"
+            {...register("work_email")}
+          />
+          <Input
+            textColor="#ffffff"
+            innerClassName="bg-[#09090D]"
+            disabled={formSate === "submitting"}
+            errorKey={errors.job_title?.message}
+            placeholder="Job Title"
+            type="text"
+            {...register("job_title")}
+          />
+          <div>
+            <textarea
+              disabled={formSate === "submitting"}
+              className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
+              id="message"
+              placeholder="What can we help with?"
+              rows={5}
+              {...register("job_description")}
+            />
+            <span>
+              {errors.job_description?.message && (
+                <p className="my-2 text-xs text-danger">
+                  {errors.job_description?.message}
+                </p>
+              )}
+            </span>
+          </div>
+          <CheckBox />
+          <Button
+            width="full"
+            actionType="submit"
+            variant="secondary"
+            type="button"
+          >
+            Get started
+          </Button>
+        </form>
+      </GradientBorder>
+    </section>
   );
 };
 

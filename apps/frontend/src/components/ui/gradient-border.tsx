@@ -25,22 +25,29 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
     ref
   ) => {
     return (
-      <div
+      <section
         ref={ref as React.LegacyRef<HTMLDivElement>}
-        className={clsx(
-          className,
-          gradient,
-          "relative mx-5 max-w-screen-2xl xl:mx-8 3xl:mx-auto"
-        )}
-        style={{ padding: borderSize, borderRadius: borderRadious }}
+        className="flex w-full items-center justify-center px-5 lg:px-8"
       >
         <div
-          className={clsx(innerClass, "flex flex-col justify-between bg-black")}
-          style={{ borderRadius: borderRadious }}
+          className={clsx(
+            className,
+            gradient,
+            "relative w-full max-w-screen-2xl"
+          )}
+          style={{ padding: borderSize, borderRadius: borderRadious }}
         >
-          {children}
+          <div
+            className={clsx(
+              innerClass,
+              "flex flex-col justify-between bg-black"
+            )}
+            style={{ borderRadius: borderRadious }}
+          >
+            {children}
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 );
