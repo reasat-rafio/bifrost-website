@@ -13,6 +13,7 @@ import Link from "next/link";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/mousewheel";
+import { Heading } from "components/ui/heading";
 
 export const Client: React.FC<ClientsSection> = ({
   clients,
@@ -33,9 +34,9 @@ export const Client: React.FC<ClientsSection> = ({
     >
       <Title className="text-center leading-[2px]">{title}</Title>
       {!!subtitle && (
-        <h3 className="mx-auto max-w-5xl text-center text-2xl leading-[48px] tracking-[2px] sm:text-3xl lg:text-[38px]">
+        <Heading variant="small" className="mx-auto max-w-5xl text-center">
           {subtitle}
-        </h3>
+        </Heading>
       )}
 
       <Swiper
