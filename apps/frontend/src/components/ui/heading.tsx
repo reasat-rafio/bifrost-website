@@ -24,10 +24,10 @@ export const Heading: React.FC<HeadingProps> = ({
   const props = {
     className: `${className} drop-shadow-md ${
       variant === "normal" &&
-      "xl:text-[48px] lg:text-5xl md:text-5xl text-[40px] !leading-[120%] !tracking-[0.02em]"
+      "xl:text-[48px] lg:text-5xl md:text-5xl text-[40px] md:!leading-[120%] md:!tracking-[0.02em] leading-[100%]"
     } ${
       variant === "small" &&
-      "text-2xl !leading-[48px] !tracking-[2px] sm:text-3xl lg:text-[38px]"
+      "text-2xl md:!leading-[48px] md:!tracking-[2px] sm:text-3xl lg:text-[38px] tracking-[0.02em] leading-[30px]"
     } `,
   };
 

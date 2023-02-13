@@ -23,7 +23,7 @@ export const Description: React.FC<DescriptionProps> = ({
   const props = {
     className: `${className} ${
       variant === "big"
-        ? "lg:text-p-1 sm:text-3xl text-2xl !leading-[48px] !tracking-[2px]"
+        ? "lg:text-p-1 sm:text-3xl text-2xl md:!leading-[48px] md:!tracking-[2px] tracking-[0.02em] leading-[30px]"
         : variant === "small"
         ? "lg:text-p-3 sm:text-xl text-p-3-mobile !tracking-[0.02em] "
         : "lg:text-p-2 sm:text-2xl text-xl !tracking-[0.02em] "
