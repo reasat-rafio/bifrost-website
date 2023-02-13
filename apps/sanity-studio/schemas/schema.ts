@@ -43,6 +43,7 @@ import resourcesTag from './documents/resources/tag'
 
 import privacyPolicy from './documents/pages/privacy-policy'
 import privacyPolicyHome from './objects/privacy-policy/home'
+import privacyPolicyPolicy from './objects/privacy-policy/policy'
 
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
@@ -185,6 +186,7 @@ export const schemaTypes = [
 
   privacyPolicy,
   privacyPolicyHome,
+  privacyPolicyPolicy,
 
   blog,
 

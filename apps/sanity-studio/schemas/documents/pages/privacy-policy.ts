@@ -12,7 +12,7 @@ const PrivacyPolicy = {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'privacyPolicyPage.home' }],
+      of: [{ type: 'privacyPolicyPage.home' }, { type: 'privacyPolicyPage.policy' }],
     },
   ],
   preview: {
