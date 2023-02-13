@@ -7,6 +7,7 @@ import Link from "next/link";
 
 interface ButtonProps {
   className?: string;
+  width?: "fit" | "full";
   active?: boolean;
   type?: "submit" | "reset" | "button" | "href";
   loading?: boolean;
@@ -29,11 +30,13 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   color = "green",
   className = variant !== "outline" && "xl:px-12 px-8 py-2 xl:py-3",
-
+  width = "fit",
   onClick,
 }) => {
   const rootClassName = clsx(
-    "w-fit relative | xl:text-body-3 text-[14px] | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none uppercase | hover:shadow",
+    "relative | xl:text-body-3 text-[14px] | rounded-[4px] | !transition-all !ease-in-out duration-300 | outline-none uppercase | hover:shadow",
+    width === "fit" && "w-fit",
+    width === "full" && "w-full",
     loading && "!cursor-not-allowed",
     disabled && "cursor-not-allowed hover:cursor-not-allowed brightness-75",
     className,
