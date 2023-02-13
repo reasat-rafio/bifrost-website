@@ -41,6 +41,9 @@ import landingServicesSection from './objects/landing/service'
 import resources from './documents/resources/resources'
 import resourcesTag from './documents/resources/tag'
 
+import privacyPolicy from './documents/pages/privacy-policy'
+import privacyPolicyHome from './objects/privacy-policy/home'
+
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
 
@@ -179,6 +182,9 @@ export const schemaTypes = [
 
   resources,
   resourcesTag,
+
+  privacyPolicy,
+  privacyPolicyHome,
 
   blog,
 

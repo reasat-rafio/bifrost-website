@@ -6,7 +6,7 @@ import {
   MdOutlineWorkOutline,
   MdScreenSearchDesktop,
 } from 'react-icons/md'
-import { FcAbout, FcAcceptDatabase, FcViewDetails } from 'react-icons/fc'
+import { FcAbout, FcAcceptDatabase, FcPrivacy, FcViewDetails } from 'react-icons/fc'
 import {
   GrActions,
   GrArticle,
@@ -98,6 +98,13 @@ export const AppStructure = (S: StructureBuilder) =>
                 title: 'About Us',
                 icon: FcAbout,
                 slug: 'about-us',
+              }),
+              pageItem(S, {
+                schemaType: 'privacyPolicyPage',
+                id: 'privacyPolicyPage',
+                title: 'Privacy Policy',
+                icon: FcPrivacy,
+                slug: 'privacy-policy',
               }),
               pageItem(S, {
                 schemaType: 'useCasePage',
