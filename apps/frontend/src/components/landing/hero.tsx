@@ -67,7 +67,7 @@ export const Hero: React.FC<IHomeSection> = ({
               }}
             />
           </h1>
-          <h4 className="max-w-2xl overflow-hidden p-3 text-[20px] opacity-70 sm:text-body-2">
+          <h4 className="max-w-2xl overflow-hidden text-xl font-light leading-[32px] text-white sm:text-2xl lg:text-p-2">
             {subtitle}
           </h4>
           {!!ctaButton && (

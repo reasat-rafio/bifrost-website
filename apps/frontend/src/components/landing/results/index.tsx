@@ -34,8 +34,7 @@ export const Results: React.FC<ResultsProps> = ({
   title,
 }) => {
   const sectionRef = useRef(null);
-  const isIntersecting =
-    useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
+  const isIntersecting = useIntersection(sectionRef)?.isIntersecting ?? false;
 
   return (
     <Section ref={sectionRef}>
