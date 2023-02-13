@@ -22,7 +22,7 @@ export const Prediction: React.FC<PredictionProps> = ({
 }) => {
   const sectionRef = useRef(null);
   const intersecting =
-    useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false;
+    useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
   return (
     <section

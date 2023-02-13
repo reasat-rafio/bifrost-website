@@ -91,8 +91,8 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
 }) => {
   return (
     <section className="spacing_primary | font-light">
-      {!!title && <Title>{title}</Title>}
-      <Heading>{heading}</Heading>
+      {!!title && <Title el="h3">{title}</Title>}
+      <Heading el="h2">{heading}</Heading>
       <Description
         type="div"
         variant="small"

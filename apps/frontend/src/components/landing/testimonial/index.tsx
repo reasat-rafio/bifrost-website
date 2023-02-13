@@ -25,7 +25,7 @@ export const Testimonials: React.FC<TestimonialProps> = ({
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const isIntersecting =
-    useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false;
+    useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
   return (
     <GradientBorder

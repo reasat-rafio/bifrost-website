@@ -23,7 +23,7 @@ export const Integrate: React.FC<IntegrateProps> = ({
 }) => {
   const sectionRef = useRef(null);
   const intersecting =
-    useIntersection(sectionRef, { threshold: 0.3 })?.isIntersecting ?? false;
+    useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
   return (
     <section

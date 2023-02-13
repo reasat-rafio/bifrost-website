@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 interface HeadingProps {
   className?: string;
   children: ReactNode;
-  el?: "h3" | "h4";
+  el?: "h2" | "h3" | "h4";
   variant?: "normal" | "big" | "small";
 
   animate?: {
@@ -44,6 +44,11 @@ export const Heading: React.FC<HeadingProps> = ({
         <AnimatePresence>
           {animate.show && (
             <>
+              {el === "h2" && (
+                <motion.h2 {...animationProps} {...props}>
+                  {children as any}
+                </motion.h2>
+              )}
               {el === "h3" && (
                 <motion.h3 {...animationProps} {...props}>
                   {children as any}
@@ -59,6 +64,7 @@ export const Heading: React.FC<HeadingProps> = ({
         </AnimatePresence>
       ) : (
         <>
+          {el === "h2" && <h2 {...props}>{children}</h2>}
           {el === "h3" && <h3 {...props}>{children}</h3>}
           {el === "h4" && <h4 {...props}>{children}</h4>}
         </>
