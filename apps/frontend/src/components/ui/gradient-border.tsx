@@ -30,7 +30,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
         className={clsx(
           className,
           gradient,
-          "relative mx-2 max-w-screen-2xl sm:mx-5 xl:mx-auto"
+          "relative mx-5 max-w-screen-2xl lg:mx-8"
         )}
         style={{ padding: borderSize, borderRadius: borderRadious }}
       >
