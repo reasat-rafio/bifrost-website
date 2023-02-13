@@ -48,6 +48,8 @@ import privacyPolicyPolicy from './objects/privacy-policy/policy'
 import contactUs from './documents/pages/contact-us'
 import contactUsHomeSection from './objects/contact-us/home'
 
+import requestDemoPage from './documents/pages/request-a-demo'
+
 import aboutUs from './documents/pages/about-us'
 import aboutUsHomeSection from './objects/about-us/home'
 import aboutUsAboutSection from './objects/about-us/about'
@@ -130,6 +132,8 @@ export const schemaTypes = [
 
   contactUs,
   contactUsHomeSection,
+
+  requestDemoPage,
 
   landing,
   landingHomeSection,

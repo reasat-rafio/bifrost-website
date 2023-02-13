@@ -7,22 +7,14 @@ import {
   MdScreenSearchDesktop,
 } from 'react-icons/md'
 import { FcAbout, FcAcceptDatabase, FcPrivacy, FcViewDetails } from 'react-icons/fc'
-import {
-  GrActions,
-  GrArticle,
-  GrEdit,
-  GrResources,
-  GrTestDesktop,
-  GrView,
-  GrWorkshop,
-} from 'react-icons/gr'
+import { GrActions, GrArticle, GrEdit, GrTestDesktop, GrView, GrWorkshop } from 'react-icons/gr'
 import { RiPagesLine } from 'react-icons/ri'
 import { BsNewspaper } from 'react-icons/bs'
 import { FaSitemap, FaHome, FaRobot, FaBlackTie } from 'react-icons/fa'
 import { GiArchiveResearch } from 'react-icons/gi'
 import { SitePreview } from './components/site-preview'
 import { PageItemProps } from './types'
-import { AiOutlineFileSearch } from 'react-icons/ai'
+import { AiOutlineFileSearch, AiOutlineMail } from 'react-icons/ai'
 import { TiWeatherStormy } from 'react-icons/ti'
 import { TbHeart } from 'react-icons/tb'
 
@@ -104,7 +96,14 @@ export const AppStructure = (S: StructureBuilder) =>
                 id: 'privacyPolicyPage',
                 title: 'Privacy Policy',
                 icon: FcPrivacy,
-                slug: 'privacy-policy',
+                slug: 'privacy-and-policy',
+              }),
+              pageItem(S, {
+                schemaType: 'requestDemoPage',
+                id: 'requestDemoPage',
+                title: 'Request A Demo',
+                icon: AiOutlineMail,
+                slug: 'request-demo',
               }),
               pageItem(S, {
                 schemaType: 'useCasePage',
