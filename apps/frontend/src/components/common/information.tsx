@@ -40,11 +40,12 @@ export const Information: React.FC<InformationProps> = ({
   );
 
   return (
-    <GradientBorder innerClass="md:py-16 py-8" ref={sectionRef}>
+    <GradientBorder innerClass="md:p-16 sm:p-8 p-5" ref={sectionRef}>
       <Section
+        isContainer={false}
         borderBottom={false}
         padding={false}
-        className="flex flex-col-reverse md:flex-row"
+        className="flex flex-col-reverse pb-4 sm:pb-0 md:flex-row"
       >
         <section className="mt-10 flex w-full flex-1 justify-center md:mt-0">
           <div className="spacing_primary my-auto mr-auto h-fit w-full md:w-[85%]">
@@ -84,7 +85,7 @@ export const Information: React.FC<InformationProps> = ({
           className="w-full flex-1 overflow-hidden rounded-primary"
         >
           <SanityImg
-            className="h-full w-full object-contain"
+            className="h-full max-h-[515px] w-full object-cover"
             image={image}
             alt={image.alt}
             builder={imageUrlBuilder}
