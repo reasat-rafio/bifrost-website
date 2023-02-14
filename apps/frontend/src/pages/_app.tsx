@@ -52,10 +52,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       }))
     : [];
 
-  console.log("====================================");
-  console.log(router.pathname);
-  console.log("====================================");
-
   return (
     <div>
       <Head>

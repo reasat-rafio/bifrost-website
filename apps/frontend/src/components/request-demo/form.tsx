@@ -67,7 +67,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className={clsx(
-            "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 lg:p-10"
+            "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 sm:p-8 lg:p-10"
           )}
         >
           <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">

@@ -28,7 +28,7 @@ export const NavBig: React.FC<ScrollSpyProps> = ({
   return (
     <nav
       ref={stickyContainerRef}
-      className="sticky top-20 hidden overflow-visible p-4 lg:flex lg:space-x-5"
+      className="sticky top-20 hidden overflow-visible p-[30px] lg:flex lg:space-x-5"
     >
       <div
         style={{
