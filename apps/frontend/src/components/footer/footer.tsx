@@ -4,7 +4,7 @@ import { Footer as FooterType } from "lib/@types/global-types";
 import { imageUrlBuilder } from "utils/sanity";
 import Link from "next/link";
 import { useWindowSize } from "lib/hooks";
-import { Newsletter } from "./newsletter";
+// import { Newsletter } from "./newsletter";
 import { GradientBorder } from "./gradient-border";
 
 interface FooterProps {
@@ -14,7 +14,12 @@ interface FooterProps {
 
 export default function Footer({
   logo,
-  footer: { copyright, menu, socialButtons, newsletter },
+  footer: {
+    copyright,
+    menu,
+    socialButtons,
+    // newsletter
+  },
 }: FooterProps): ReactElement {
   const windowWidth = useWindowSize()?.width ?? 0;
   return (

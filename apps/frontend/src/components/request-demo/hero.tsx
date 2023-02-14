@@ -38,7 +38,6 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
   return (
     <section className="relative w-full !overflow-hidden" ref={sectionRef}>
       <BackgroundNoise />
-      <div className="absolute bottom-0 left-0 h-[35vh] w-full bg-midnight-blue" />
       <WaveScene play={ratio < 0.7} />
 
       <div
@@ -89,12 +88,11 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
         </div>
         <Form className="hidden flex-1 lg:block" />
       </div>
-
       <div
-        className="pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
+        className="pointer-events-none absolute bottom-0 left-0 z-10 h-[30vh] w-full"
         style={{
           background:
-            "linear-gradient(180deg, rgba(3, 6, 10, 0) 0%, rgba(3, 6, 10, 0.83) 100%)",
+            "linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)",
         }}
       />
     </section>
