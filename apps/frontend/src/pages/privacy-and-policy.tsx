@@ -27,26 +27,12 @@ const PrivacyPolicy = (props: SanityProps<any>) => {
     },
   } = useSanityQuery(query, props);
 
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
-
   return (
     <div className="relative">
       {renderObjectArray(sections, {
-        "privacyPolicyPage.home": useCallback(
-          (props: any) => (
-            <Hero {...props} setHeroSectionHeight={setHeroSectionHeight} />
-          ),
-          []
-        ),
+        "privacyPolicyPage.home": Hero,
+        "privacyPolicyPage.policy": Policy,
       })}
-      <div
-        className="relative z-10 bg-midnight-blue"
-        style={{ marginTop: heroSectionHeight }}
-      >
-        {renderObjectArray(sections, {
-          "privacyPolicyPage.policy": Policy,
-        })}
-      </div>
     </div>
   );
 };

@@ -1,28 +1,18 @@
 import { WaveScene } from "components/common/wave-scene";
 import { useVisibleScroll, useWindowSize } from "src/lib/hooks";
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { BackgroundNoise } from "components/ui/background-noise";
-import { OnScrollBackdropEffect } from "components/ui/on-scroll-backdrop-effect";
 import { HomeProps } from "lib/@types/about-us-types";
 import { PortableText } from "utils/sanity";
 import { Description } from "components/ui/description";
 import { Button } from "components/ui/button";
 
-interface IHomeSection extends HomeProps {
-  setHeroSectionHeight: Dispatch<SetStateAction<number>>;
-}
-const Hero: React.FC<IHomeSection> = ({
-  ctaButton,
-  description,
-  title,
-  setHeroSectionHeight,
-}) => {
-  const { width: windowWidth, height: windowHeight } = useWindowSize() ?? {
+const Hero: React.FC<HomeProps> = ({ ctaButton, description, title }) => {
+  const { height: windowHeight } = useWindowSize() ?? {
     height: 0,
     width: 0,
   };
   const sectionRef = useRef<HTMLElement>(null);
-
   const visibleScroll = useVisibleScroll(sectionRef);
   const ratio = visibleScroll
     ? Math.min(
@@ -35,21 +25,15 @@ const Hero: React.FC<IHomeSection> = ({
       )
     : 0;
 
-  useEffect(() => {
-    if (sectionRef?.current)
-      setHeroSectionHeight(sectionRef.current.clientHeight);
-  }, [windowWidth, sectionRef]);
-
   return (
     <section
-      className="fixed top-0 left-0 w-full overflow-y-clip bg-midnight-blue"
+      className="relative w-full overflow-y-clip bg-midnight-blue"
       ref={sectionRef}
     >
       <BackgroundNoise />
-      <WaveScene play={ratio < 0.7} />
-      <OnScrollBackdropEffect ratio={ratio} />
+      <WaveScene className="translate-y-[35vh]" play={ratio < 0.7} />
 
-      <div className="container relative z-10 flex min-h-screen flex-col justify-center overflow-y-clip py-[30%] lg:py-[5%]">
+      <div className="container relative z-10 flex min-h-[60vh] flex-col justify-center overflow-y-clip py-[30%] md:min-h-[60vh] lg:py-[5%]">
         <div className="flex flex-col space-y-5 lg:space-y-10">
           <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
             <PortableText
@@ -83,10 +67,10 @@ const Hero: React.FC<IHomeSection> = ({
       </div>
 
       <div
-        className="pointer-events-none absolute bottom-0 left-0 h-[30vh] w-full"
+        className="pointer-events-none absolute bottom-0 left-0 z-10 h-[30vh] w-full"
         style={{
           background:
-            "linear-gradient(180deg, rgba(3, 6, 10, 0) 0%, rgba(3, 6, 10, 0.83) 100%)",
+            "linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)",
         }}
       />
     </section>
