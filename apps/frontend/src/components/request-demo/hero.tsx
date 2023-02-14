@@ -31,7 +31,7 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
     : 0;
 
   useLayoutEffect(() => {
-    const height = document.querySelector("#navbar").clientHeight;
+    const height = document.querySelector("#navbar")?.clientHeight ?? 0;
     setNavbarHeight(height);
   }, [windowWidth]);
 

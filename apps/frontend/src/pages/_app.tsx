@@ -52,6 +52,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       }))
     : [];
 
+  console.log("====================================");
+  console.log(router.pathname);
+  console.log("====================================");
+
   return (
     <div>
       <Head>
@@ -66,7 +70,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               images: openGraphImages,
             }}
           />
-          {!is404Page && (
+          {!is404Page && router.pathname !== "/request-demo-standalone" && (
             <>
               <Navbar
                 darkLogo={pageProps.data?.site.logos.darkLogo}
@@ -90,7 +94,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           <Component_ {...pageProps} />
           {/* <Toast /> */}
-          {!is404Page && (
+          {!is404Page && router.pathname !== "/request-demo-standalone" && (
             <Footer
               logo={pageProps.data?.site.logos.logo}
               footer={pageProps.data?.site.nav.footer}
