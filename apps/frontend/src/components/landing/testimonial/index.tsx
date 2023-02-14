@@ -1,17 +1,15 @@
 import { GradientBorder } from "components/ui/gradient-border";
 import { Title } from "components/ui/title";
 import { ITestimonial } from "lib/@types/landing-types";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SanityImg } from "sanity-react-extra";
-import { imageUrlBuilder } from "utils/sanity";
-import { QuotationIcon1, QuotationIcon2 } from "./quotation-icons";
-import { Autoplay, Keyboard, Mousewheel } from "swiper";
+import { Autoplay, Keyboard, Mousewheel, Navigation } from "swiper";
+import { Testimonial } from "./testimonial";
+import { useIntersection } from "lib/hooks";
 import "swiper/css/autoplay";
 import "swiper/css/keyboard";
+import "swiper/css/navigation";
 import "swiper/css";
-import { useIntersection, useWindowSize } from "lib/hooks";
-import { truncate } from "lib/helpers";
 
 interface TestimonialProps {
   type: string;
@@ -24,96 +22,106 @@ export const Testimonials: React.FC<TestimonialProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+
   const isIntersecting =
     useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
   return (
     <GradientBorder
-      innerClass="py-16"
+      innerClass="px-[18px] py-[33px] lg:py-[67px] lg:px-[101px]"
       className="my-20 lg:my-32"
       ref={sectionRef}
     >
-      <section className="container relative z-10 mx-auto">
-        <Title animate={{ show: isIntersecting }} className="text-center">
-          {title}
-        </Title>
+      <section className=" z-10 grid grid-cols-12 items-center justify-center">
+        <button
+          ref={(node) => setPrevEl(node)}
+          className="col-span-1 mx-auto hidden max-w-[17px] items-center justify-center md:flex"
+        >
+          <ArrowLeft />
+        </button>
+        <div className="relative col-span-12 md:col-span-10">
+          <Title animate={{ show: isIntersecting }} className="text-center">
+            {title}
+          </Title>
 
-        <div className="my-10 sm:my-12 lg:my-20">
-          <Swiper
-            modules={[Autoplay, Mousewheel, Keyboard]}
-            autoplay
-            speed={700}
-            grabCursor
-            slidesPerView={1}
-            spaceBetween={30}
-            loop
-            keyboard
-            loopedSlides={testimonials.length}
+          <div className="my-10 sm:my-12 lg:my-20">
+            <Swiper
+              modules={[Autoplay, Mousewheel, Keyboard, Navigation]}
+              autoplay
+              speed={700}
+              grabCursor
+              slidesPerView={1}
+              spaceBetween={30}
+              navigation={{ prevEl, nextEl }}
+              loop
+              keyboard
+              loopedSlides={testimonials.length}
+            >
+              {testimonials.map((testimonial) => (
+                <SwiperSlide key={testimonial._key}>
+                  <Testimonial {...testimonial} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+        <button
+          ref={(node) => setNextEl(node)}
+          className="col-span-1 mx-auto hidden max-w-[17px] items-center justify-center md:flex"
+        >
+          <ArrowRight />
+        </button>
+
+        {/* Mobile Navigation button  */}
+        <div className="col-span-12 flex justify-between md:hidden">
+          <button
+            ref={(node) => setPrevEl(node)}
+            className="col-span-1  flex max-w-[17px] items-center justify-center"
           >
-            {testimonials.map((testimonial) => (
-              <SwiperSlide key={testimonial._key}>
-                <Testimonial {...testimonial} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <ArrowLeft />
+          </button>
+          <button
+            ref={(node) => setNextEl(node)}
+            className="col-span-1  flex max-w-[17px] items-center justify-center"
+          >
+            <ArrowRight />
+          </button>
         </div>
       </section>
     </GradientBorder>
   );
 };
 
-const Testimonial: React.FC<ITestimonial> = ({
-  image,
-  name,
-  testimony,
-  role,
-}) => {
-  const windowWidth = useWindowSize()?.width ?? 0;
-  const blockquoteRef = useRef<HTMLElement>(null);
-  const [blockquoteElemHeight, setBlockquoteElemHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const height = blockquoteRef?.current.getBoundingClientRect().height ?? 0;
-    setBlockquoteElemHeight(height);
-  }, [blockquoteRef]);
-
+const ArrowLeft = () => {
   return (
-    <section className="flex space-x-2 sm:space-x-5 lg:space-x-10">
-      <span
-        className="hidden md:block"
-        style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}
-      >
-        <QuotationIcon1 />
-      </span>
-      <div className="flex-1">
-        <blockquote
-          ref={blockquoteRef}
-          className="text-base font-light sm:text-xl lg:text-2xl xl:text-p-2"
-        >
-          “{truncate(testimony, 300)}”
-        </blockquote>
-        <div className="mt-10 flex">
-          <figure className="flex-1">
-            <SanityImg
-              className="max-h-[100px] object-contain"
-              width={windowWidth >= 640 ? 100 : 80}
-              builder={imageUrlBuilder}
-              image={image}
-              alt={image?.alt}
-            />
-          </figure>
-          <div className="flex flex-col items-end justify-center space-y-1 font-light">
-            <span className="text-base sm:text-xl xl:text-[26px]">{name}</span>
-            <span className="text-sm sm:text-lg xl:text-[19px]">{role}</span>
-          </div>
-        </div>
-      </div>
-      <span
-        className="hidden md:block"
-        style={{ transform: `translate(0, ${blockquoteElemHeight / 2}px)` }}
-      >
-        <QuotationIcon2 />
-      </span>
-    </section>
+    <svg
+      width="20"
+      height="63"
+      viewBox="0 0 20 63"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 62L2 31.5L19 1" stroke="#70FCEB" stroke-width="2" />
+    </svg>
+  );
+};
+
+const ArrowRight = () => {
+  return (
+    <svg
+      width="20"
+      height="63"
+      viewBox="0 0 20 63"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 0.999999L18 31.5L0.999999 62"
+        stroke="#70FCEB"
+        stroke-width="2"
+      />
+    </svg>
   );
 };
