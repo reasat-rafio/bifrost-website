@@ -19,8 +19,8 @@ export default function Footer({
   const windowWidth = useWindowSize()?.width ?? 0;
   return (
     <GradientBorder>
-      <footer className="container relative z-10 grid grid-cols-12 gap-y-5 py-14 text-white sm:py-16 md:gap-x-10 lg:py-24 xl:gap-y-0 xl:py-36">
-        <section className="col-span-12 flex flex-col gap-y-3 md:gap-y-7 xl:col-span-4">
+      <footer className="container relative z-10 grid grid-cols-12 gap-y-5 py-14 text-white sm:py-16 md:gap-x-10 md:py-24 lg:gap-y-0 lg:py-36">
+        <section className="col-span-12 flex flex-col gap-y-3 md:gap-y-7 lg:col-span-4">
           <Link href="/">
             <a>
               <SanityImg
@@ -47,12 +47,12 @@ export default function Footer({
               </Link>
             ))}
           </div>
-          <span className="hidden text-lg opacity-70 xl:block">
+          <span className="hidden text-lg opacity-70 lg:block">
             {copyright}
           </span>
         </section>
-        <hr className="col-span-12 md:hidden" />
-        <section className="col-span-12 flex flex-col gap-y-3 md:col-span-6 md:gap-y-7 xl:col-span-4">
+        <hr className="col-span-12 lg:hidden" />
+        <section className="col-span-12 flex flex-col gap-y-3 md:col-span-6 md:gap-y-7 lg:col-span-4">
           <h6 className="text-[20px] font-semibold">Quick Links</h6>
           <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 md:gap-y-5">
             {menu?.map((menu) => (
@@ -64,12 +64,12 @@ export default function Footer({
             ))}
           </div>
         </section>
-        <hr className="col-span-12 md:hidden" />
-        <Newsletter
-          className="col-span-12 flex flex-col gap-y-7 md:col-span-6 xl:col-span-4"
+        <hr className="col-span-12 lg:hidden" />
+        {/* <Newsletter
+          className="col-span-12 flex flex-col gap-y-7 md:col-span-6 lg:col-span-4"
           {...newsletter}
-        />
-        <span className="col-span-12 xl:hidden">{copyright}</span>
+        /> */}
+        <span className="col-span-12 lg:hidden">{copyright}</span>
       </footer>
     </GradientBorder>
   );

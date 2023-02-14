@@ -4,7 +4,6 @@ import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
 import { SanityProps } from "next-sanity-extra";
-import { useCallback, useState } from "react";
 import { renderObjectArray } from "sanity-react-extra";
 import { sanityStaticProps, useSanityQuery } from "utils/sanity";
 
@@ -28,12 +27,12 @@ const PrivacyPolicy = (props: SanityProps<any>) => {
   } = useSanityQuery(query, props);
 
   return (
-    <div className="relative">
+    <>
       {renderObjectArray(sections, {
         "privacyPolicyPage.home": Hero,
         "privacyPolicyPage.policy": Policy,
       })}
-    </div>
+    </>
   );
 };
 
