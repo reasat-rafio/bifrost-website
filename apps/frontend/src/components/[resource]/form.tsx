@@ -33,7 +33,7 @@ export const Form: React.FC<FormProps> = ({}) => {
   }) => {
     try {
       setFormState("submitting");
-      const response = await axios.post("/api/resource-form", {
+      const response = await axios.post("/api/request-demo", {
         oid: "00D6S000001MkMU",
         retURL: "https://bifrost.ai/thank-you",
         first_name,
