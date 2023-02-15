@@ -47,45 +47,7 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
         }}
         className="container relative z-10 flex items-center justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
       >
-        <div className="flex flex-1 flex-col space-y-5 lg:space-y-10">
-          <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
-            <PortableText
-              blocks={title}
-              serializers={{
-                marks: {
-                  pop: ({ children }: any) => (
-                    <span className="primary__gradient bg-clip-text text-transparent">
-                      {children}
-                    </span>
-                  ),
-                },
-              }}
-            />
-          </h1>
-          <Description
-            type="div"
-            className="prose-sm max-w-none prose-ul:m-0 prose-ul:p-0"
-          >
-            <PortableText
-              blocks={subtitle}
-              serializers={{
-                listItem: ({ children }: any) => {
-                  return (
-                    <span className="mb-5 flex items-center space-x-3 text-p-3-mobile leading-[25px] !tracking-[0.02em] sm:text-xl md:!leading-[30px] lg:text-p-3">
-                      <span
-                        style={{
-                          transform: `matrix(0.69, 0.72, -0.69, 0.72, 0, 0)`,
-                        }}
-                        className="h-3 w-3 rounded-[4px] bg-[#B794FF] sm:h-[15.18px] sm:w-[15.18px]"
-                      />
-                      <span>{children}</span>
-                    </span>
-                  );
-                },
-              }}
-            />
-          </Description>
-        </div>
+        <SectionSummary subtitle={subtitle} title={title} />
         <Form className="hidden flex-1 lg:block" />
       </div>
       <div
@@ -96,6 +58,53 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
         }}
       />
     </section>
+  );
+};
+
+const SectionSummary: React.FC<{ title: any; subtitle: any }> = ({
+  title,
+  subtitle,
+}) => {
+  return (
+    <div className="flex flex-1 flex-col space-y-5 lg:space-y-10">
+      <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
+        <PortableText
+          blocks={title}
+          serializers={{
+            marks: {
+              pop: ({ children }: any) => (
+                <span className="primary__gradient bg-clip-text text-transparent">
+                  {children}
+                </span>
+              ),
+            },
+          }}
+        />
+      </h1>
+      <Description
+        type="div"
+        className="prose-sm max-w-none prose-ul:m-0 prose-ul:p-0"
+      >
+        <PortableText
+          blocks={subtitle}
+          serializers={{
+            listItem: ({ children }: any) => {
+              return (
+                <span className="mb-5 flex items-center space-x-3 text-p-3-mobile leading-[25px] !tracking-[0.02em] sm:text-xl md:!leading-[30px] lg:text-p-3">
+                  <span
+                    style={{
+                      transform: `matrix(0.69, 0.72, -0.69, 0.72, 0, 0)`,
+                    }}
+                    className="h-3 w-3 rounded-[4px] bg-[#B794FF] sm:h-[15.18px] sm:w-[15.18px]"
+                  />
+                  <span>{children}</span>
+                </span>
+              );
+            },
+          }}
+        />
+      </Description>
+    </div>
   );
 };
 
