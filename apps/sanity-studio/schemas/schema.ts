@@ -34,9 +34,6 @@ import landingUseCase from './objects/landing/use-case'
 import landingPartners from './objects/landing/partners'
 import landingTestimonial from './objects/landing/testimonial'
 import landingIntegrate from './objects/landing/integrate'
-import landingProductsSection from './objects/landing/product'
-import landingDemoSection from './objects/landing/demo'
-import landingServicesSection from './objects/landing/service'
 
 import resources from './documents/resources/resources'
 import resourcesTag from './documents/resources/tag'
@@ -145,9 +142,6 @@ export const schemaTypes = [
   landingResults,
   landingPrediction,
   landingIntegrate,
-  landingProductsSection,
-  landingDemoSection,
-  landingServicesSection,
   landingTestimonial,
 
   aboutUs,

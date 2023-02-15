@@ -117,10 +117,6 @@ export default function Home(props: SanityProps<any>) {
           "landing.prediction": Prediction,
           "landing.testimonial": Testimonials,
           infoBlock: Information,
-          // 'landing.products': Product,
-          // 'landing.demo': Demo,
-          // 'landing.projects': Project,
-          // 'landing.reviews': Reviews,
         })}
         <Client {...cleint} />
         {renderObjectArray(sections, {
