@@ -63,7 +63,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
 
   return (
     <section className={className}>
-      <GradientBorder>
+      <GradientBorder padding={false}>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className={clsx(

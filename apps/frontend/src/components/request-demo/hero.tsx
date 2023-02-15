@@ -45,7 +45,7 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
           marginTop: navbarHeight,
           minHeight: `calc(100vh - ${navbarHeight}px)`,
         }}
-        className="container relative z-10 flex items-center justify-center overflow-y-clip py-[20%] lg:py-[5%] "
+        className="container relative z-10 flex items-center justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
       >
         <div className="flex flex-1 flex-col space-y-5 lg:space-y-10">
           <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">

@@ -31,7 +31,7 @@ const RequestDemo = (props: SanityProps<any>) => {
       {renderObjectArray(sections, {
         "requestDemoPage.home": Hero,
       })}
-      <Form className="my-10 block lg:hidden" />
+      <Form className="my-10 block px-5 lg:hidden" />
     </div>
   );
 };

@@ -25,11 +25,6 @@ const LandingPage = {
         { type: 'landing.testimonial' },
         { type: 'landing.useCase' },
         { type: 'contact' },
-
-        { type: 'landing.products' },
-        { type: 'landing.demo' },
-        { type: 'landing.services' },
-        { type: 'newsletter' },
       ],
     },
   ],

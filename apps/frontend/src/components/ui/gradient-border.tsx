@@ -9,6 +9,7 @@ interface GradientBorderProps {
   innerClass?: string;
   background?: string;
   children?: any;
+  padding?: boolean;
   ref?: React.ForwardedRef<HTMLElement>;
 }
 
@@ -16,6 +17,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
   (
     {
       children,
+      padding = true,
       className,
       borderSize = "1px",
       borderRadious = "15px",
@@ -27,7 +29,10 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
     return (
       <section
         ref={ref as React.LegacyRef<HTMLDivElement>}
-        className="flex w-full items-center justify-center px-5 lg:px-8"
+        className={clsx(
+          "flex w-full items-center justify-center",
+          padding && "px-5 lg:px-8"
+        )}
       >
         <div
           className={clsx(
