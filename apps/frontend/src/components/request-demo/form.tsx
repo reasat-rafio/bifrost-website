@@ -161,7 +161,7 @@ const CheckBox = () => {
         <input
           id="checked-checkbox"
           type="checkbox"
-          className="border-gray-300 !checked:bg-teal h-4 w-4 rounded bg-teal text-blue-600 focus:ring-2 focus:ring-blue-500"
+          className="border-gray-300 !checked:bg-teal h-4 w-4 rounded accent-teal focus:ring-2 focus:ring-teal"
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
