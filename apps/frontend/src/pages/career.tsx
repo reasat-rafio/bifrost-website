@@ -51,14 +51,14 @@ const Career = (props: SanityProps<any>) => {
 
   return (
     <div className="relative">
-      {/* {renderObjectArray(sections, {
+      {renderObjectArray(sections, {
         "careerPage.hero": useCallback(
           (props: any) => (
             <Hero {...props} setHeroSectionHeight={setHeroSectionHeight} />
           ),
           []
         ),
-      })} */}
+      })}
 
       <div
         className="relative z-10 bg-black"

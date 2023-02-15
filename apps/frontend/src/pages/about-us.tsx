@@ -51,14 +51,14 @@ export default function AboutUs(props: SanityProps<any>) {
   const [heroSectionHeight, setHeroSectionHeight] = useState(0);
   return (
     <div>
-      {/* {renderObjectArray(sections, {
+      {renderObjectArray(sections, {
         "aboutUs.home": useCallback(
           (p: HomeProps) => (
             <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />
           ),
           []
         ),
-      })} */}
+      })}
       <div
         className="bg-black"
         style={{

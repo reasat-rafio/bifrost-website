@@ -4,7 +4,7 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { useIntersection, useWindowSize } from "lib/hooks";
 import { useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Section } from "components/ui/section";
 import { Title } from "components/ui/title";
 import { Heading } from "components/ui/heading";
@@ -61,20 +61,17 @@ const About: React.FC<AboutSectionProps> = ({
             {description}
           </Description>
         )}
-        <AnimatePresence>
-          {!!ctaButton && intersecting && (
-            <motion.div
-              initial="from"
-              animate="to"
-              exit="exit"
-              variants={VFadeInOut({ delay: 0.25 })}
-            >
-              <Button variant="outline" type="href" href={ctaButton.href}>
-                {ctaButton.title}
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {!!ctaButton && (
+          <motion.div
+            initial="from"
+            animate={intersecting ? "to" : "from"}
+            variants={VFadeInOut({ delay: 0.25 })}
+          >
+            <Button variant="outline" type="href" href={ctaButton.href}>
+              {ctaButton.title}
+            </Button>
+          </motion.div>
+        )}
       </section>
     </Section>
   );

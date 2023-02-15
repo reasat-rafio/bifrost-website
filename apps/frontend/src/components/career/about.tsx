@@ -21,7 +21,7 @@ const About: React.FC<AboutSectionProps> = ({
   const windowWidth = useWindowSize()?.width ?? 0;
   const sectionRef = useRef<HTMLElement>(null);
   const intersecting = useIntersection(sectionRef, {
-    threshold: 0.5,
+    threshold: 0.1,
   })?.isIntersecting;
 
   return (
@@ -62,20 +62,17 @@ const About: React.FC<AboutSectionProps> = ({
           </Description>
         )}
 
-        <AnimatePresence>
-          {!!ctaButton && intersecting && (
-            <motion.div
-              initial="from"
-              animate="to"
-              exit="exit"
-              variants={VFadeInOut({ delay: 0.25 })}
-            >
-              <Button variant="outline" type="href" href={ctaButton.href}>
-                {ctaButton.title}
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {!!ctaButton && (
+          <motion.div
+            initial="from"
+            animate={intersecting ? "to" : "from"}
+            variants={VFadeInOut({ delay: 0.25 })}
+          >
+            <Button variant="outline" type="href" href={ctaButton.href}>
+              {ctaButton.title}
+            </Button>
+          </motion.div>
+        )}
       </section>
     </Section>
   );

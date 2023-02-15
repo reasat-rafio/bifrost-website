@@ -1,5 +1,5 @@
 import { VFadeInOut } from "animations/fade-in-out";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 
 interface HeadingProps {
@@ -39,35 +39,30 @@ export const Heading: React.FC<HeadingProps> = ({
 
   const animationProps = {
     initial: "form",
-    animate: "to",
-    exit: "exit",
+    animate: animate?.show ? "to" : "from",
     variants: VFadeInOut({ delay: animate?.delay }),
   };
 
   return (
     <>
       {!!animate ? (
-        <AnimatePresence>
-          {animate.show && (
-            <>
-              {el === "h2" && (
-                <motion.h2 {...animationProps} {...props}>
-                  {children as any}
-                </motion.h2>
-              )}
-              {el === "h3" && (
-                <motion.h3 {...animationProps} {...props}>
-                  {children as any}
-                </motion.h3>
-              )}
-              {el === "h4" && (
-                <motion.h4 {...animationProps} {...props}>
-                  {children as any}
-                </motion.h4>
-              )}
-            </>
+        <>
+          {el === "h2" && (
+            <motion.h2 {...animationProps} {...props}>
+              {children as any}
+            </motion.h2>
           )}
-        </AnimatePresence>
+          {el === "h3" && (
+            <motion.h3 {...animationProps} {...props}>
+              {children as any}
+            </motion.h3>
+          )}
+          {el === "h4" && (
+            <motion.h4 {...animationProps} {...props}>
+              {children as any}
+            </motion.h4>
+          )}
+        </>
       ) : (
         <>
           {el === "h2" && <h2 {...props}>{children}</h2>}

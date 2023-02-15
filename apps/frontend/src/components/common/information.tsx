@@ -10,7 +10,7 @@ import { Heading } from "components/ui/heading";
 import { Description } from "components/ui/description";
 import { GradientBorder } from "components/ui/gradient-border";
 import { Section } from "components/ui/section";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { VFadeInOut } from "animations/fade-in-out";
 
 interface InformationProps {
@@ -64,21 +64,16 @@ const Information: React.FC<InformationProps> = ({
               {description}
             </Description>
             {!!cta && (
-              <AnimatePresence>
-                {intersecting && (
-                  <motion.div
-                    initial="from"
-                    animate="to"
-                    exit="exit"
-                    variants={VFadeInOut({ delay: 0.25 })}
-                    className="pt-6"
-                  >
-                    <Button type="href" variant="outline" href={cta.href}>
-                      {cta.title}
-                    </Button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div
+                initial="from"
+                animate={intersecting ? "to" : "from"}
+                variants={VFadeInOut({ delay: 0.25 })}
+                className="pt-6"
+              >
+                <Button type="href" variant="outline" href={cta.href}>
+                  {cta.title}
+                </Button>
+              </motion.div>
             )}
           </div>
         </section>

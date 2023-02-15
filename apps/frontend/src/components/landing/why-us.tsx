@@ -34,7 +34,7 @@ const WhyUs: React.FC<WhyUsProps> = ({
 
   return (
     <Section ref={sectionRef}>
-      <div className="spacing_primary | font-light">
+      <div className="spacing_primary font-light">
         <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
         <Heading animate={{ show: intersecting, delay: 0.15 }}>
           {subtitle}
@@ -43,7 +43,7 @@ const WhyUs: React.FC<WhyUsProps> = ({
           {description}
         </Description>
       </div>
-      <div className="| grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 sm:gap-10 sm:py-16 md:gap-14 md:py-28 lg:gap-20 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 sm:gap-10 sm:py-16 md:gap-14 md:py-28 lg:gap-20 xl:grid-cols-3">
         {collection.map(({ _key, description, image, title }, index) => (
           <motion.article
             initial="from"

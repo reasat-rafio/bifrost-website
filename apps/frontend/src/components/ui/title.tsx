@@ -27,34 +27,28 @@ export const Title: React.FC<TitleProps> = ({
   return (
     <>
       {!!animate ? (
-        <AnimatePresence>
-          {animate.show && (
-            <>
-              {el === "h2" && (
-                <motion.h2
-                  initial="from"
-                  animate="to"
-                  exit="exit"
-                  variants={VFadeInOut({ delay: animate.delay })}
-                  {...props}
-                >
-                  {children as any}
-                </motion.h2>
-              )}
-              {el === "h3" && (
-                <motion.h3
-                  initial="from"
-                  animate="to"
-                  exit="exit"
-                  variants={VFadeInOut({ delay: animate.delay })}
-                  {...props}
-                >
-                  {children as any}
-                </motion.h3>
-              )}
-            </>
+        <>
+          {el === "h2" && (
+            <motion.h2
+              initial="from"
+              animate={animate?.show ? "to" : "from"}
+              variants={VFadeInOut({ delay: animate.delay })}
+              {...props}
+            >
+              {children as any}
+            </motion.h2>
           )}
-        </AnimatePresence>
+          {el === "h3" && (
+            <motion.h3
+              initial="from"
+              animate={animate?.show ? "to" : "from"}
+              variants={VFadeInOut({ delay: animate.delay })}
+              {...props}
+            >
+              {children as any}
+            </motion.h3>
+          )}
+        </>
       ) : (
         <>
           {el === "h2" && <h2 {...props}>{children}</h2>}

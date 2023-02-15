@@ -32,8 +32,7 @@ export const Description: React.FC<DescriptionProps> = ({
 
   const animationProps = {
     initial: "from",
-    animate: "to",
-    exit: "exit",
+    animate: animate?.show ? "to" : "from",
     variants: VFadeInOut({ delay: animate?.delay }),
   };
 
@@ -42,13 +41,9 @@ export const Description: React.FC<DescriptionProps> = ({
       {type === "p" ? (
         <>
           {!!animate ? (
-            <AnimatePresence>
-              {animate.show && (
-                <motion.p {...animationProps} {...props}>
-                  {children as any}
-                </motion.p>
-              )}
-            </AnimatePresence>
+            <motion.p {...animationProps} {...props}>
+              {children as any}
+            </motion.p>
           ) : (
             <p {...props}>{children}</p>
           )}
@@ -56,13 +51,9 @@ export const Description: React.FC<DescriptionProps> = ({
       ) : type === "h5" ? (
         <>
           {!!animate ? (
-            <AnimatePresence>
-              {animate.show && (
-                <motion.h5 {...animationProps} {...props}>
-                  {children as any}
-                </motion.h5>
-              )}
-            </AnimatePresence>
+            <motion.h5 {...animationProps} {...props}>
+              {children as any}
+            </motion.h5>
           ) : (
             <div {...props}>{children}</div>
           )}
@@ -70,13 +61,9 @@ export const Description: React.FC<DescriptionProps> = ({
       ) : (
         <>
           {!!animate ? (
-            <AnimatePresence>
-              {animate.show && (
-                <motion.div {...animationProps} {...props}>
-                  {children as any}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div {...animationProps} {...props}>
+              {children as any}
+            </motion.div>
           ) : (
             <div {...props}>{children}</div>
           )}

@@ -47,7 +47,7 @@ const Results: React.FC<ResultsProps> = ({ heading, results, title }) => {
           {results.map(
             ({ _key, description, indicatorIcon, isPercentage, number }) => (
               <div key={_key}>
-                <div className="| | | | flex items-center space-x-4 bg-gradient-to-br from-[#70FCEB] via-[#9BB8FF] to-[#B794FF] bg-clip-text text-head-3 text-transparent sm:text-head-4 md:text-head-2 lg:text-head-1">
+                <div className="flex items-center space-x-4 bg-gradient-to-br from-[#70FCEB] via-[#9BB8FF] to-[#B794FF] bg-clip-text text-head-3 text-transparent sm:text-head-4 md:text-head-2 lg:text-head-1">
                   <div className="flex">
                     <Counter
                       animationStart={isIntersecting}
