@@ -1,12 +1,9 @@
-import { yupResolver } from "@hookform/resolvers/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Button } from "components/ui/button";
 import Input from "components/ui/input";
 import { Section } from "components/ui/section";
-import {
-  ResourcesFormSchema,
-  ResourcesFormSchemaProps,
-} from "lib/form-schemas";
+import { IRequsetADemoSchema, RequsetADemoSchema } from "lib/form-schemas";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -18,21 +15,22 @@ export const Form: React.FC<FormProps> = ({}) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ResourcesFormSchemaProps>({
+  } = useForm<IRequsetADemoSchema>({
     mode: "onChange",
-    resolver: yupResolver(ResourcesFormSchema),
+    resolver: zodResolver(RequsetADemoSchema),
   });
+
   const [formSate, setFormState] = useState<"submited" | "submitting" | null>(
     null
   );
 
-  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async ({
+  const onSubmit: SubmitHandler<IRequsetADemoSchema> = async ({
     company_name,
     first_name,
     // job_description,
     // job_title,
     last_name,
-    work_email,
+    email,
   }) => {
     try {
       setFormState("submitting");
@@ -41,7 +39,7 @@ export const Form: React.FC<FormProps> = ({}) => {
         retURL: "https://bifrost.ai/thank-you",
         first_name,
         last_name,
-        email: work_email,
+        email: email,
         company: company_name,
         city: "",
         state: "",
@@ -76,7 +74,7 @@ export const Form: React.FC<FormProps> = ({}) => {
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-3 sm:space-y-6 "
         >
-          <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
+          <div className="grid grid-cols-1  gap-3 sm:grid-cols-2 sm:gap-6">
             <Input
               disabled={formSate === "submitting"}
               errorKey={errors.first_name?.message}
@@ -91,6 +89,20 @@ export const Form: React.FC<FormProps> = ({}) => {
               type="text"
               {...register("last_name")}
             />
+            <Input
+              disabled={formSate === "submitting"}
+              errorKey={errors.email?.message}
+              placeholder="Email"
+              type="text"
+              {...register("email")}
+            />
+            <Input
+              disabled={formSate === "submitting"}
+              errorKey={errors.contact_number?.message}
+              placeholder="Contact Number"
+              type="text"
+              {...register("contact_number")}
+            />
           </div>
           <Input
             disabled={formSate === "submitting"}
@@ -99,20 +111,6 @@ export const Form: React.FC<FormProps> = ({}) => {
             type="text"
             {...register("company_name")}
           />
-          <Input
-            disabled={formSate === "submitting"}
-            errorKey={errors.work_email?.message}
-            placeholder="Work Email"
-            type="text"
-            {...register("work_email")}
-          />
-          <Input
-            disabled={formSate === "submitting"}
-            errorKey={errors.job_title?.message}
-            placeholder="Job Title"
-            type="text"
-            {...register("job_title")}
-          />
 
           <div>
             <textarea
@@ -120,13 +118,13 @@ export const Form: React.FC<FormProps> = ({}) => {
               className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-transparent py-4 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
-              rows={5}
-              {...register("job_description")}
+              rows={3}
+              {...register("description")}
             />
             <span>
-              {errors.job_description?.message && (
+              {errors.description?.message && (
                 <p className="my-2 text-xs text-danger">
-                  {errors.job_description?.message}
+                  {errors.description?.message}
                 </p>
               )}
             </span>

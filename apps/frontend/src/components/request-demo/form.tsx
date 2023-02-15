@@ -34,7 +34,6 @@ export const Form: React.FC<FormProps> = ({ className }) => {
     // job_title,
     last_name,
     email,
-    // work_email,
   }) => {
     try {
       setFormState("submitting");
@@ -54,7 +53,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
 
       console.log({ response });
       setFormState("submited");
-      reset();
+      // reset();
     } catch (e) {
       console.error(e);
     } finally {
