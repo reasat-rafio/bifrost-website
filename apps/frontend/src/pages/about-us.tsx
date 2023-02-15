@@ -1,16 +1,16 @@
 import About from "components/about/about";
 import Hero from "components/about/hero";
 import Reason from "components/about/reason";
-import { siteQuery } from "src/lib/query";
+import Client from "components/common/client";
+import Contact from "components/common/contact";
+import { HomeProps } from "lib/@types/about-us-types";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
 import { SanityProps } from "next-sanity-extra";
-import { renderObjectArray, withDimensions } from "sanity-react-extra";
-import { sanityStaticProps, useSanityQuery } from "utils/sanity";
 import { useCallback, useState } from "react";
-import { HomeProps } from "lib/@types/about-us-types";
-import { Contact } from "components/common/contact";
-import { Client } from "components/common/client";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { siteQuery } from "src/lib/query";
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
 
 const query = groq`{
   "site": ${siteQuery},

@@ -133,6 +133,7 @@ export default function Navbar({
                   builder={imageUrlBuilder}
                   image={logo}
                   height={120}
+                  alt="Bifrost logo"
                   className={clsx(
                     "h-full w-full cursor-pointer object-contain transition-all"
                   )}

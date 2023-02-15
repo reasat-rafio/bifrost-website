@@ -33,6 +33,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
     >
       <section className=" z-10 grid grid-cols-12 items-center justify-center">
         <button
+          aria-label="previous slide"
           ref={(node) => setPrevEl(node)}
           className="col-span-1 mx-auto hidden max-w-[17px] items-center justify-center md:flex"
         >
@@ -65,6 +66,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
           </div>
         </div>
         <button
+          aria-label="next slide"
           ref={(node) => setNextEl(node)}
           className="col-span-1 mx-auto hidden max-w-[17px] items-center justify-center md:flex"
         >
@@ -74,14 +76,16 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
         {/* Mobile Navigation button  */}
         <div className="col-span-12 flex justify-between md:hidden">
           <button
+            aria-label="previous slide"
             ref={(node) => setPrevEl(node)}
-            className="col-span-1  flex max-w-[17px] items-center justify-center"
+            className="col-span-1 flex max-w-[17px] items-center justify-center"
           >
             <ArrowLeft />
           </button>
           <button
+            aria-label="next slide"
             ref={(node) => setNextEl(node)}
-            className="col-span-1  flex max-w-[17px] items-center justify-center"
+            className="col-span-1 flex max-w-[17px] items-center justify-center"
           >
             <ArrowRight />
           </button>

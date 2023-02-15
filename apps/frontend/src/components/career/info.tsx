@@ -17,14 +17,8 @@ interface InfoProps {
   cta?: CTAButton;
 }
 
-export const Info: React.FC<InfoProps> = ({
-  description,
-  image,
-  title,
-  heading,
-}) => {
+const Info: React.FC<InfoProps> = ({ description, image, title, heading }) => {
   const windowWidth = useWindowSize()?.width ?? 0;
-
   const imageWidth = useMemo(
     () => (windowWidth >= 1280 ? 1200 : windowWidth > 768 ? 700 : 400),
     [windowWidth]
@@ -46,3 +40,5 @@ export const Info: React.FC<InfoProps> = ({
     </Section>
   );
 };
+
+export default Info;

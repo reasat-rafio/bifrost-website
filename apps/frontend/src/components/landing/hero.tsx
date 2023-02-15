@@ -78,6 +78,7 @@ const Hero: React.FC<IHomeSection> = ({
         </section>
         <figure className="flex lg:items-end">
           <SanityImg
+            loading="eager"
             className="mx-auto drop-shadow sm:w-[50vh]"
             builder={imageUrlBuilder}
             width={windowWidth >= 1024 ? 600 : windowWidth >= 640 ? 350 : 250}

@@ -59,7 +59,7 @@ const WhyUs: React.FC<WhyUsProps> = ({
               image={image}
               alt={image.alt}
             />
-            <h6 className="text-xl font-bold lg:text-[22px]">{title}</h6>
+            <h4 className="text-xl font-bold lg:text-[22px]">{title}</h4>
             <Description className="opacity-80" variant="small">
               {description}
             </Description>

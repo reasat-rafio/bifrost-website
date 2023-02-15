@@ -1,16 +1,16 @@
-import Hero from "src/components/career/hero";
-import { siteQuery } from "src/lib/query";
+import About from "components/career/about";
+import Info from "components/career/info";
+import WhyUs from "components/career/why-us";
+import Client from "components/common/client";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
 import { SanityProps } from "next-sanity-extra";
 import { useCallback, useState } from "react";
 import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import Hero from "src/components/career/hero";
+import Contact from "src/components/common/contact";
+import { siteQuery } from "src/lib/query";
 import { sanityStaticProps, useSanityQuery } from "utils/sanity";
-import { Contact } from "src/components/common/contact";
-import { Client } from "components/common/client";
-import { WhyUs } from "components/career/why-us";
-import About from "components/career/about";
-import { Info } from "components/career/info";
 
 const query = groq`{
   "site": ${siteQuery},
