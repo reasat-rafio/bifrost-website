@@ -51,7 +51,7 @@
     "swiper": "^7.3.1",
     "three": "^0.137.5",
     "uuid": "^8.3.2",
-    "yup": "^0.32.11",
+    "zod": "^3.20.6",
     "zustand": "^4.1.5"
   },
   "devDependencies": {

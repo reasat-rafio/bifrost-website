@@ -2,7 +2,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { Button } from "components/ui/button";
 import Input from "components/ui/input";
-import { ResourcesFormSchema, ResourcesFormSchemaProps } from "lib/form-schema";
+import {
+  ResourcesFormSchema,
+  ResourcesFormSchemaProps,
+} from "lib/form-schemas";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import clsx from "clsx";

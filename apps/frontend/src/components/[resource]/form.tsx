@@ -3,7 +3,10 @@ import axios from "axios";
 import { Button } from "components/ui/button";
 import Input from "components/ui/input";
 import { Section } from "components/ui/section";
-import { ResourcesFormSchema, ResourcesFormSchemaProps } from "lib/form-schema";
+import {
+  ResourcesFormSchema,
+  ResourcesFormSchemaProps,
+} from "lib/form-schemas";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
