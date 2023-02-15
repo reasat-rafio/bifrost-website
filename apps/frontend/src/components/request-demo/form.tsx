@@ -1,15 +1,12 @@
-import { yupResolver } from "@hookform/resolvers/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Button } from "components/ui/button";
-import Input from "components/ui/input";
-import {
-  ResourcesFormSchema,
-  ResourcesFormSchemaProps,
-} from "lib/form-schemas";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
 import clsx from "clsx";
+import { Button } from "components/ui/button";
 import { GradientBorder } from "components/ui/gradient-border";
+import Input from "components/ui/input";
+import { IRequsetADemoSchema, RequsetADemoSchema } from "lib/form-schemas";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface FormProps {
   className?: string;
@@ -21,22 +18,23 @@ export const Form: React.FC<FormProps> = ({ className }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ResourcesFormSchemaProps>({
+  } = useForm<IRequsetADemoSchema>({
     mode: "onChange",
-    resolver: yupResolver(ResourcesFormSchema),
+    resolver: zodResolver(RequsetADemoSchema),
   });
 
   const [formSate, setFormState] = useState<"submited" | "submitting" | null>(
     null
   );
 
-  const onSubmit: SubmitHandler<ResourcesFormSchemaProps> = async ({
+  const onSubmit: SubmitHandler<IRequsetADemoSchema> = async ({
     company_name,
     first_name,
     // job_description,
     // job_title,
     last_name,
-    work_email,
+    email,
+    // work_email,
   }) => {
     try {
       setFormState("submitting");
@@ -45,7 +43,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
         retURL: "https://bifrost.ai/thank-you",
         first_name,
         last_name,
-        email: work_email,
+        email: email,
         company: company_name,
         city: "",
         state: "",
@@ -106,12 +104,12 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             textColor="#ffffff"
             innerClassName="bg-[#09090D]"
             disabled={formSate === "submitting"}
-            errorKey={errors.work_email?.message}
+            errorKey={errors.email?.message}
             placeholder="Work Email"
             type="text"
-            {...register("work_email")}
+            {...register("email")}
           />
-          <Input
+          {/* <Input
             textColor="#ffffff"
             innerClassName="bg-[#09090D]"
             disabled={formSate === "submitting"}
@@ -119,7 +117,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             placeholder="Job Title"
             type="text"
             {...register("job_title")}
-          />
+          /> */}
           <div>
             <textarea
               disabled={formSate === "submitting"}
@@ -127,12 +125,12 @@ export const Form: React.FC<FormProps> = ({ className }) => {
               id="message"
               placeholder="What can we help with?"
               rows={5}
-              {...register("job_description")}
+              {...register("description")}
             />
             <span>
-              {errors.job_description?.message && (
+              {errors.description?.message && (
                 <p className="my-2 text-xs text-danger">
-                  {errors.job_description?.message}
+                  {errors.description?.message}
                 </p>
               )}
             </span>
