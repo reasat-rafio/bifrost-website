@@ -71,7 +71,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             "space-y-3 rounded-primary bg-[#1D1D22] p-5 sm:space-y-6 sm:p-8 lg:p-10"
           )}
         >
-          <div className="grid grid-cols-1 gap-x-0 space-y-3 sm:grid-cols-2 sm:gap-x-6 sm:space-y-0">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6">
             <Input
               textColor="#ffffff"
               innerClassName="bg-[#09090D]"
@@ -90,7 +90,26 @@ export const Form: React.FC<FormProps> = ({ className }) => {
               type="text"
               {...register("last_name")}
             />
+            <Input
+              textColor="#ffffff"
+              innerClassName="bg-[#09090D]"
+              disabled={formSate === "submitting"}
+              errorKey={errors.email?.message}
+              placeholder="Email"
+              type="text"
+              {...register("email")}
+            />
+            <Input
+              textColor="#ffffff"
+              innerClassName="bg-[#09090D]"
+              disabled={formSate === "submitting"}
+              errorKey={errors.contact_number?.message}
+              placeholder="Contact Number"
+              type="text"
+              {...register("contact_number")}
+            />
           </div>
+
           <Input
             textColor="#ffffff"
             innerClassName="bg-[#09090D]"
@@ -100,31 +119,13 @@ export const Form: React.FC<FormProps> = ({ className }) => {
             type="text"
             {...register("company_name")}
           />
-          <Input
-            textColor="#ffffff"
-            innerClassName="bg-[#09090D]"
-            disabled={formSate === "submitting"}
-            errorKey={errors.email?.message}
-            placeholder="Work Email"
-            type="text"
-            {...register("email")}
-          />
-          {/* <Input
-            textColor="#ffffff"
-            innerClassName="bg-[#09090D]"
-            disabled={formSate === "submitting"}
-            errorKey={errors.job_title?.message}
-            placeholder="Job Title"
-            type="text"
-            {...register("job_title")}
-          /> */}
           <div>
             <textarea
               disabled={formSate === "submitting"}
               className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
-              rows={5}
+              rows={3}
               {...register("description")}
             />
             <span>
