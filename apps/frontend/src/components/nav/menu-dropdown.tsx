@@ -1,6 +1,5 @@
 import { Portal } from "@reach/portal";
 import { AnimatePresence, motion } from "framer-motion";
-// import { DropdownListProps } from 'lib/@types/global-types'
 import Link from "next/link";
 import { useState } from "react";
 import { SanityImg } from "sanity-react-extra";
@@ -31,7 +30,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
             exit={{ opacity: 0 }}
             transition={{ ease: "easeInOut" }}
             style={{ top: `${height + 20}px` }}
-            className="| | | | | fixed z-20 w-[358px] rounded-[8px] border border-gray/60 bg-[#0A0A0E]/90 p-7 text-white backdrop-blur-3xl "
+            className="fixed z-20 w-[358px] rounded-[8px] border border-gray/60 bg-[#0A0A0E]/90 p-7 text-white backdrop-blur-3xl "
             onMouseLeave={() => {
               setInterseting(false);
               setModalState("hidden");
@@ -47,7 +46,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                   transition={{ duration: 0.4 }}
                   className="flex space-x-5 "
                 >
-                  <figure className="| col-span-2 flex items-start justify-start">
+                  <figure className="col-span-2 flex items-start justify-start">
                     <SanityImg
                       className="h-[24px] w-[24px] object-contain"
                       width={30}
@@ -56,12 +55,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                       alt={title}
                     />
                   </figure>
-                  <section className="| flex flex-1 flex-col space-y-2">
+                  <section className="flex flex-1 flex-col space-y-2">
                     <h6 className="text-body-3 uppercase">{title}</h6>
                     <span className="text-[#B6BEE8]">{description}</span>
                     {!!ctaButton && (
                       <Link href={ctaButton?.href ?? "/"}>
-                        <a className="| flex space-x-3 overflow-hidden text-[#B37AF8]">
+                        <a className="flex space-x-3 overflow-hidden text-[#B37AF8]">
                           <AnimatedText text={ctaButton.title} />
                           <ArrowICon />
                         </a>
@@ -91,13 +90,13 @@ const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
     >
       {letters.map((letter, index) => (
         <motion.span
-          className="block"
+          className="block whitespace-pre-wrap"
           key={letter + index}
           initial={{ y: 0 }}
           animate={{
-            y: hovered ? [0, 5, 0] : 0,
+            y: hovered ? [0, 1.5, 0] : 0,
             transition: {
-              delay: index * 0.1,
+              delay: index * 0.05,
             },
           }}
         >
@@ -138,6 +137,5 @@ const Pointer: React.FC<{}> = () => {
     ></div>
   );
 };
-
 
 export default MenuDropdown;
