@@ -28,7 +28,7 @@ const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
   return (
     <GradientBorder
       innerClass="px-[18px] py-[33px] lg:py-[67px] lg:px-[101px]"
-      className="my-20 lg:my-32"
+      className="my-20 max-w-[1230px] lg:my-32"
       ref={sectionRef}
     >
       <section className=" z-10 grid grid-cols-12 items-center justify-center">
