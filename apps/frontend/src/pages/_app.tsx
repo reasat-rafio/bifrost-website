@@ -1,42 +1,27 @@
-import "@fontsource/roboto/300.css";
-import { imageUrlBuilder } from "utils/sanity";
+import Footer from "components/footer/footer";
+import Navbar from "components/nav/navbar";
+import { NextSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { NextSeo } from "next-seo";
-import { AppProvider } from "src/store/global";
-import Navbar from "components/nav/navbar";
-import Footer from "components/footer/footer";
-import { useEffect, useState } from "react";
+import { imageUrlBuilder } from "utils/sanity";
 // import { ToastContaiern as Toast } from 'src/components/ui/Toast'
 import "@styles/global.scss";
 import { Dropdown as NavbarDropdown } from "components/nav/dropdown";
-import { useRouter } from "next/router";
 import { MenuDropdown } from "components/nav/menu-dropdown";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  let faviconImage: string | null = null;
-  const [seoTitle, setSeoTitle] = useState();
-  const [seoDescription, setSeoDescription] = useState();
-  const [ogImage, setOgImage] = useState();
   const router = useRouter();
   const is404Page = router.pathname === "/_error";
-
-  const Component_: any = Component;
-
-  useEffect(() => {
-    setSeoTitle(pageProps.data?.page.seo?.title);
-    setSeoDescription(pageProps.data?.page.seo?.description);
-    setOgImage(
-      pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage
-    );
-    if (pageProps.data?.site.logos.favicon) {
-      faviconImage = imageUrlBuilder
+  const ogImage =
+    pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage;
+  let faviconImage = pageProps.data?.site.logos.favicon
+    ? imageUrlBuilder
         .image(pageProps.data?.site?.logos.favicon)
         .size(256, 256)
         .ignoreImageParams()
-        .url();
-    }
-  }, []);
+        .url()
+    : null;
 
   const openGraphImages = ogImage
     ? [
@@ -48,57 +33,59 @@ function MyApp({ Component, pageProps }: AppProps) {
         url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
         width: w,
         height: h,
-        alt: `${seoTitle}`,
+        alt: `${pageProps.data?.page.seo?.title}`,
       }))
     : [];
 
   return (
-    <div>
+    <>
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" type="image/png" href={faviconImage} />
       </Head>
-      <AppProvider>
-        <div className="relative overflow-clip bg-black text-white">
-          <NextSeo
-            title={seoTitle}
-            description={seoDescription}
-            openGraph={{
-              images: openGraphImages,
-            }}
-          />
-          {!is404Page && router.pathname !== "/request-demo-standalone" && (
-            <>
-              <Navbar
-                darkLogo={pageProps.data?.site.logos.darkLogo}
-                logo={pageProps.data?.site.logos.logo}
-                menu={pageProps.data?.site.nav.menu}
-                darkBg={!!pageProps?.darkNavbar}
-              />
-              <MenuDropdown />
-              <NavbarDropdown
-                menu={pageProps.data?.site.nav.menu}
-                darkBg={!!pageProps?.darkNavbar}
-              />
-            </>
-          )}
-
-          {/* {pageProps.data?.page._type !== 'blog' && (
-            <div className="absolute top-0 left-0 w-[100vw] h-[100vh]">
-              <div className="__background__noise__" />
-            </div>
-          )} */}
-
-          <Component_ {...pageProps} />
-          {/* <Toast /> */}
-          {!is404Page && router.pathname !== "/request-demo-standalone" && (
-            <Footer
+      <div className="relative overflow-clip bg-black text-white">
+        <NextSeo
+          title={pageProps.data?.page.seo?.title}
+          description={pageProps.data?.page.seo?.description}
+          openGraph={{
+            images: openGraphImages,
+          }}
+        />
+        {!is404Page && router.pathname !== "/request-demo-standalone" && (
+          <>
+            <Navbar
+              darkLogo={pageProps.data?.site.logos.darkLogo}
               logo={pageProps.data?.site.logos.logo}
-              footer={pageProps.data?.site.nav.footer}
+              menu={pageProps.data?.site.nav.menu}
+              darkBg={!!pageProps?.darkNavbar}
             />
-          )}
-        </div>
-      </AppProvider>
-    </div>
+            <MenuDropdown />
+            <NavbarDropdown
+              menu={pageProps.data?.site.nav.menu}
+              darkBg={!!pageProps?.darkNavbar}
+            />
+          </>
+        )}
+
+        <Component {...pageProps} />
+        {/* <Toast /> */}
+        {!is404Page && router.pathname !== "/request-demo-standalone" && (
+          <Footer
+            logo={pageProps.data?.site.logos.logo}
+            footer={pageProps.data?.site.nav.footer}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

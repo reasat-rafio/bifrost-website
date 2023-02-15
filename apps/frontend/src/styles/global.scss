@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,14 +44,6 @@ html {
     rgba(0, 0, 0, 0.69) -7.57%,
     rgba(0, 0, 0, 08) 107.25%
   );
-}
-
-/* .__carouselBtn { */
-/*   @apply bg-gradient-to-r from-[#eeffe9] via-[#acffeb] to-[#c9ff71] text-transparent bg-clip-text; */
-/* } */
-.section {
-  color: white;
-  z: 10;
 }
 
 .bifrost__gradient_pink {

@@ -1,12 +1,12 @@
-import { Portal } from '@reach/portal'
-import { AnimatePresence, motion } from 'framer-motion'
+import { Portal } from "@reach/portal";
+import { AnimatePresence, motion } from "framer-motion";
 // import { DropdownListProps } from 'lib/@types/global-types'
-import Link from 'next/link'
-import { useState } from 'react'
-import { SanityImg } from 'sanity-react-extra'
-import useGlobalStore from 'store/global.store'
-import useMegamenuDropownStore from 'store/megamenu-dropdown.sore'
-import { imageUrlBuilder } from 'utils/sanity'
+import Link from "next/link";
+import { useState } from "react";
+import { SanityImg } from "sanity-react-extra";
+import useGlobalStore from "store/global.store";
+import useMegamenuDropownStore from "store/megamenu-dropdown.store";
+import { imageUrlBuilder } from "utils/sanity";
 
 interface MenuDropdownProps {}
 export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
@@ -16,29 +16,29 @@ export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
     data,
     setModalState,
     setInterseting,
-  } = useMegamenuDropownStore()
+  } = useMegamenuDropownStore();
   const {
     navbarDimentions: { height },
-  } = useGlobalStore()
+  } = useGlobalStore();
 
   return (
     <Portal>
       <AnimatePresence>
-        {modalState === 'visible' && (
+        {modalState === "visible" && (
           <motion.div
             initial={{ opacity: 0, x }}
             animate={{ opacity: 1, x }}
             exit={{ opacity: 0 }}
-            transition={{ ease: 'easeInOut' }}
+            transition={{ ease: "easeInOut" }}
             style={{ top: `${height + 20}px` }}
-            className="fixed z-20 | w-[358px] | p-7 | border-gray/60 border | text-white | bg-[#0A0A0E]/90 backdrop-blur-3xl rounded-[8px] "
+            className="| | | | | fixed z-20 w-[358px] rounded-[8px] border border-gray/60 bg-[#0A0A0E]/90 p-7 text-white backdrop-blur-3xl "
             onMouseLeave={() => {
-              setInterseting(false)
-              setModalState('hidden')
+              setInterseting(false);
+              setModalState("hidden");
             }}
             onMouseEnter={() => setInterseting(true)}
           >
-            <ul className="flex flex-col space-y-8 relative z-20">
+            <ul className="relative z-20 flex flex-col space-y-8">
               {data?.map(({ _key, description, image, title, ctaButton }) => (
                 <motion.li
                   key={_key}
@@ -47,21 +47,21 @@ export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                   transition={{ duration: 0.4 }}
                   className="flex space-x-5 "
                 >
-                  <figure className="col-span-2 | flex justify-start items-start">
+                  <figure className="| col-span-2 flex items-start justify-start">
                     <SanityImg
-                      className="object-contain w-[24px] h-[24px]"
+                      className="h-[24px] w-[24px] object-contain"
                       width={30}
                       image={image}
                       builder={imageUrlBuilder}
                       alt={title}
                     />
                   </figure>
-                  <section className="flex-1 | flex flex-col space-y-2">
+                  <section className="| flex flex-1 flex-col space-y-2">
                     <h6 className="text-body-3 uppercase">{title}</h6>
                     <span className="text-[#B6BEE8]">{description}</span>
                     {!!ctaButton && (
-                      <Link href={ctaButton?.href ?? '/'}>
-                        <a className="text-[#B37AF8] overflow-hidden | flex space-x-3">
+                      <Link href={ctaButton?.href ?? "/"}>
+                        <a className="| flex space-x-3 overflow-hidden text-[#B37AF8]">
                           <AnimatedText text={ctaButton.title} />
                           <ArrowICon />
                         </a>
@@ -76,15 +76,19 @@ export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
         )}
       </AnimatePresence>
     </Portal>
-  )
-}
+  );
+};
 
 const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
-  const [hovered, setHover] = useState(false)
-  const letters = Array.from(text)
+  const [hovered, setHover] = useState(false);
+  const letters = Array.from(text);
 
   return (
-    <div className="flex" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <div
+      className="flex"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       {letters.map((letter, index) => (
         <motion.span
           className="block"
@@ -101,8 +105,8 @@ const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
         </motion.span>
       ))}
     </div>
-  )
-}
+  );
+};
 
 const ArrowICon: React.FC<{}> = () => {
   return (
@@ -112,7 +116,7 @@ const ArrowICon: React.FC<{}> = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -120,17 +124,17 @@ const ArrowICon: React.FC<{}> = () => {
         d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
       />
     </svg>
-  )
-}
+  );
+};
 
 const Pointer: React.FC<{}> = () => {
-  const { setInterseting } = useMegamenuDropownStore()
+  const { setInterseting } = useMegamenuDropownStore();
 
   return (
     <div
       onMouseEnter={() => setInterseting(true)}
       style={{ clipPath: `polygon(0 0, 100% 0, 100% 100%, 50% 50%)` }}
-      className="absolute top-0 h-7 w-7 bg-[#0A0A0E] -translate-y-1/2 -rotate-45 border-gray/60 border-t border-r rounded"
+      className="absolute top-0 h-7 w-7 -translate-y-1/2 -rotate-45 rounded border-t border-r border-gray/60 bg-[#0A0A0E]"
     ></div>
-  )
-}
+  );
+};

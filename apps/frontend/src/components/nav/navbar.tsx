@@ -19,7 +19,7 @@ import { DropdownListProps, MenuItem } from "lib/@types/global-types";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import useGlobalStore from "../../store/global.store";
-import useMegamenuDropownStore from "store/megamenu-dropdown.sore";
+import useMegamenuDropownStore from "store/megamenu-dropdown.store";
 
 interface NavbarProps {
   logo: SanityImage;
