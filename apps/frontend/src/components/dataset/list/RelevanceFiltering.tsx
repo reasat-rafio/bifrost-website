@@ -45,7 +45,7 @@ export const RelevanceFiltering: React.FC<RelevanceFilteringProps> = ({ length }
                   <path
                     d="M1 1.75L7 7.75L13 1.75"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />

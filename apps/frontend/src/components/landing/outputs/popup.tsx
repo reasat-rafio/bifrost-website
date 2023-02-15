@@ -5,12 +5,12 @@ import { ModalWrapper } from "components/common/modal-wrapper";
 import { Video } from "./video";
 import { Youtube } from "./youtube";
 
-interface PopupProps {
+export interface PopupProps {
   asset: AssetElement;
   setSelectedVideo: Dispatch<SetStateAction<AssetElement>>;
 }
 
-export const Popup: React.FC<PopupProps> = ({ asset, setSelectedVideo }) => {
+const Popup: React.FC<PopupProps> = ({ asset, setSelectedVideo }) => {
   useEffect(() => {
     window.addEventListener("scroll", () => setSelectedVideo(null));
     return () =>
@@ -34,3 +34,5 @@ export const Popup: React.FC<PopupProps> = ({ asset, setSelectedVideo }) => {
     </ModalWrapper>
   );
 };
+
+export default Popup;

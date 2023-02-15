@@ -14,7 +14,7 @@ interface IntegrateProps {
   title: string;
 }
 
-export const Integrate: React.FC<IntegrateProps> = ({
+const Integrate: React.FC<IntegrateProps> = ({
   ctaButton,
   title,
   subtitle,
@@ -27,7 +27,7 @@ export const Integrate: React.FC<IntegrateProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="section_pading relative  z-20 overflow-clip"
+      className="section_pading relative z-20 overflow-clip"
     >
       {!!showWave && <WaveScene play={intersecting} />}
       <div className="spacing_primary container relative z-20 mx-auto">
@@ -54,3 +54,5 @@ export const Integrate: React.FC<IntegrateProps> = ({
     </section>
   );
 };
+
+export default Integrate;

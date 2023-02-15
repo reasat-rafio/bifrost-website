@@ -70,7 +70,7 @@ const PlayIcon = ({ onClick }: { onClick: () => void }) => {
         height="108.43"
         rx="54.2149"
         stroke="white"
-        stroke-width="2.42981"
+        strokeWidth="2.42981"
       />
     </motion.svg>
   );

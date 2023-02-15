@@ -14,7 +14,7 @@ interface AboutUsProps {
   collection: AboutCollection[];
 }
 
-export const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
+const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
   const windowWidth = useWindowSize()?.width ?? 0;
   const LgScreen = windowWidth >= 1024;
 
@@ -135,7 +135,7 @@ const ImageBlock: React.FC<IImageBlock> = ({ image, index, windowWidth }) => {
     >
       <SanityImg
         className="h-full w-full rounded-primary object-cover"
-        width={windowWidth >= 1280 ? 600 : windowWidth >= 640 ? 400 : 300}
+        width={windowWidth >= 1280 ? 800 : windowWidth >= 640 ? 400 : 300}
         image={image}
         builder={imageUrlBuilder}
         alt={image.alt}
@@ -143,3 +143,5 @@ const ImageBlock: React.FC<IImageBlock> = ({ image, index, windowWidth }) => {
     </motion.figure>
   );
 };
+
+export default AboutUs;

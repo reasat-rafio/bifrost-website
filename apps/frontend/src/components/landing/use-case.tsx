@@ -21,7 +21,7 @@ interface UseCaseProps {
   useCases: IUseCase[];
 }
 
-export const UseCase: React.FC<UseCaseProps> = ({
+const UseCase: React.FC<UseCaseProps> = ({
   title,
   heading,
   description,
@@ -84,3 +84,5 @@ export const UseCase: React.FC<UseCaseProps> = ({
     </Section>
   );
 };
+
+export default UseCase;

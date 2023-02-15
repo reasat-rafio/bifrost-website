@@ -17,7 +17,7 @@ interface PartnersProps {
   partners: Partner[];
 }
 
-export const Partners: React.FC<PartnersProps> = ({ partners }) => {
+const Partners: React.FC<PartnersProps> = ({ partners }) => {
   const containerRef = useRef(null);
   const intersection = useIntersection(containerRef, { threshold: 0.15 });
   const windowWidth = useWindowSize()?.width ?? 0;
@@ -101,3 +101,5 @@ export const Partners: React.FC<PartnersProps> = ({ partners }) => {
     </motion.section>
   );
 };
+
+export default Partners;

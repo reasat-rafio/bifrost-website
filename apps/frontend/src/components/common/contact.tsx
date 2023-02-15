@@ -12,7 +12,7 @@ interface ContactProps {
   heading: any;
 }
 
-export const Contact: React.FC<ContactProps> = ({
+const Contact: React.FC<ContactProps> = ({
   ctaButton,
   description,
   heading,
@@ -53,3 +53,5 @@ export const Contact: React.FC<ContactProps> = ({
     </Section>
   );
 };
+
+export default Contact;

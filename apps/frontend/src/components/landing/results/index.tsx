@@ -1,6 +1,6 @@
 import { Heading } from "components/ui/heading";
 import { Title } from "components/ui/title";
-import { Result } from "lib/@types/landing-types";
+import type { Result } from "lib/@types/landing-types";
 import { PortableText } from "utils/sanity";
 import { DownArrowIcon, UpArrowIcon } from "./graident-arrow-icons";
 import { Description } from "components/ui/description";
@@ -28,11 +28,7 @@ const renderIndecatorIcon = (indicatorIcon: Result["indicatorIcon"]) => {
       break;
   }
 };
-export const Results: React.FC<ResultsProps> = ({
-  heading,
-  results,
-  title,
-}) => {
+const Results: React.FC<ResultsProps> = ({ heading, results, title }) => {
   const sectionRef = useRef(null);
   const isIntersecting = useIntersection(sectionRef)?.isIntersecting ?? false;
 
@@ -65,7 +61,10 @@ export const Results: React.FC<ResultsProps> = ({
                   </span>
                 </div>
 
-                <Description animate={{ show: isIntersecting, delay: 0.2 }}>
+                <Description
+                  type="div"
+                  animate={{ show: isIntersecting, delay: 0.2 }}
+                >
                   <PortableText
                     blocks={description}
                     serializers={{
@@ -118,3 +117,5 @@ const Counter = ({
 
   return <p ref={nodeRef} />;
 };
+
+export default Results;

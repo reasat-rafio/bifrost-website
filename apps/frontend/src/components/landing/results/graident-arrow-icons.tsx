@@ -2,11 +2,17 @@ interface UpArrowIconsProps {}
 
 export const UpArrowIcon: React.FC<UpArrowIconsProps> = ({}) => {
   return (
-    <svg width="22" height="38" viewBox="0 0 22 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="22"
+      height="38"
+      viewBox="0 0 22 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M1.17589 11.8236L11.1425 1.85697M11.1425 1.85697L21.1092 11.8236M11.1425 1.85697L11.1432 37.1426"
         stroke="url(#paint0_linear_3812_1898)"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <defs>
         <linearGradient
@@ -23,16 +29,22 @@ export const UpArrowIcon: React.FC<UpArrowIconsProps> = ({}) => {
         </linearGradient>
       </defs>
     </svg>
-  )
-}
+  );
+};
 
 export const DownArrowIcon = () => {
   return (
-    <svg width="22" height="38" viewBox="0 0 22 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="22"
+      height="38"
+      viewBox="0 0 22 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M1.17589 26.1759L11.1425 36.1425M11.1425 36.1425L21.1092 26.1759M11.1425 36.1425L11.1432 0.856959"
         stroke="url(#paint0_linear_3812_1904)"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <defs>
         <linearGradient
@@ -49,5 +61,5 @@ export const DownArrowIcon = () => {
         </linearGradient>
       </defs>
     </svg>
-  )
-}
+  );
+};

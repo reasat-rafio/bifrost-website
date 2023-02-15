@@ -21,7 +21,7 @@ interface WhyUsProps {
   title: string;
 }
 
-export const WhyUs: React.FC<WhyUsProps> = ({
+const WhyUs: React.FC<WhyUsProps> = ({
   title,
   subtitle,
   description,
@@ -81,3 +81,5 @@ export const WhyUs: React.FC<WhyUsProps> = ({
     </Section>
   );
 };
+
+export default WhyUs;

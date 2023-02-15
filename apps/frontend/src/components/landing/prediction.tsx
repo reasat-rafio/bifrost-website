@@ -14,7 +14,7 @@ interface PredictionProps {
   title: string;
 }
 
-export const Prediction: React.FC<PredictionProps> = ({
+const Prediction: React.FC<PredictionProps> = ({
   ctaButton,
   showWave,
   subtitle,
@@ -54,3 +54,5 @@ export const Prediction: React.FC<PredictionProps> = ({
     </section>
   );
 };
+
+export default Prediction;

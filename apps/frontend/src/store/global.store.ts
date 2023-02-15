@@ -1,15 +1,15 @@
-import create from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 type INavbarDimentions = {
-  width: number
-  height: number
-}
+  width: number;
+  height: number;
+};
 interface IGlobalStore {
-  showNavDropDown: boolean
-  navbarDimentions: INavbarDimentions
-  setShowNavDropDown: (data: boolean) => void
-  setNabarDimensions: (data: INavbarDimentions) => void
+  showNavDropDown: boolean;
+  navbarDimentions: INavbarDimentions;
+  setShowNavDropDown: (data: boolean) => void;
+  setNabarDimensions: (data: INavbarDimentions) => void;
 }
 
 const useGlobalStore = create(
@@ -26,7 +26,7 @@ const useGlobalStore = create(
         ...state,
         navbarDimentions,
       })),
-  })),
-)
+  }))
+);
 
-export default useGlobalStore
+export default useGlobalStore;

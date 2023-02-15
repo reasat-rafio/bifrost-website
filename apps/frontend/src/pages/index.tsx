@@ -1,27 +1,25 @@
-import { sanityStaticProps, useSanityQuery } from "utils/sanity";
-import { siteQuery } from "src/lib/query";
+import Client from "components/common/client";
+import Contact from "components/common/contact";
+import Information from "components/common/information";
+import AboutUs from "components/landing/about-us";
+import Hero from "components/landing/hero";
+import Integrate from "components/landing/integrate";
+import Outputs from "components/landing/outputs";
+import Partners from "components/landing/partners";
+import Prediction from "components/landing/prediction";
+import Results from "components/landing/results";
+import Testimonials from "components/landing/testimonial";
+import UseCase from "components/landing/use-case";
+import WhyUs from "components/landing/why-us";
+import type { HomeSection } from "lib/@types/landing-types";
 import type { GetStaticProps, GetStaticPropsContext } from "next";
 import { groq } from "next-sanity";
 import { SanityProps } from "next-sanity-extra";
-import { renderObjectArray, withDimensions } from "sanity-react-extra";
-import { Hero } from "components/landing/hero";
-import { HomeSection } from "lib/@types/landing-types";
 import { useCallback, useState } from "react";
-// import { Newsletter } from 'components/common/newsletter'
-import { Client } from "components/common/client";
-import { WhyUs } from "components/landing/why-us";
-import { AboutUs } from "components/landing/about-us";
-import { Partners } from "components/landing/partners";
-import { Integrate } from "components/landing/integrate";
-import { Results } from "components/landing/results";
-import { Prediction } from "components/landing/prediction";
-import { Information } from "components/common/information";
-import { Outputs } from "components/landing/outputs";
-import { UseCase } from "components/landing/use-case";
-import { Testimonials } from "components/landing/testimonial";
-import { Contact } from "components/common/contact";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { siteQuery } from "src/lib/query";
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
 
-// TODO fix the metadata missing warning from assets[]
 const query = groq`{
   "site": ${siteQuery},
   "page": *[_id == "landingPage"][0] {
@@ -37,7 +35,7 @@ const query = groq`{
         ...,
         "image": ${withDimensions("image")},
       },
-      assets[]{
+      assets[] {
         ...,
         asset->{
          ...,
@@ -46,7 +44,7 @@ const query = groq`{
           dimensions
           },
         },
-        "thumbnail": ${withDimensions("image")},
+        "thumbnail": ${withDimensions("thumbnail")},
         "webm": video_webm.asset->url,
         "mp4": video_mp4.asset->url
       },
@@ -128,8 +126,6 @@ export default function Home(props: SanityProps<any>) {
         {renderObjectArray(sections, {
           "landing.useCase": UseCase,
           contact: Contact,
-          // newsletter: Newsletter,
-          // contact: Contact,
         })}
       </div>
     </div>

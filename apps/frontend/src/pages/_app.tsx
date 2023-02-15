@@ -1,13 +1,19 @@
+import dynamic from "next/dynamic";
+import "@styles/global.scss";
 import Footer from "components/footer/footer";
 import Navbar from "components/nav/navbar";
 import { NextSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { imageUrlBuilder } from "utils/sanity";
-// import { ToastContaiern as Toast } from 'src/components/ui/Toast'
-import "@styles/global.scss";
-import { Dropdown as NavbarDropdown } from "components/nav/dropdown";
-import { MenuDropdown } from "components/nav/menu-dropdown";
+import type { NavbarDropdownProps } from "components/nav/dropdown";
+const NavbarDropdown = dynamic<NavbarDropdownProps>(
+  () => import("components/nav/dropdown"),
+  { ssr: false }
+);
+const MenuDropdown = dynamic<{}>(() => import("components/nav/menu-dropdown"), {
+  ssr: false,
+});
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {

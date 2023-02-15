@@ -1,20 +1,24 @@
+import dynamic from "next/dynamic";
 import { Description } from "components/ui/description";
 import { Heading } from "components/ui/heading";
+import { Section } from "components/ui/section";
 import { Title } from "components/ui/title";
 import { AssetElement } from "lib/@types/landing-types";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { SanityImg } from "sanity-react-extra";
-import { imageUrlBuilder } from "utils/sanity";
-import { Section } from "components/ui/section";
 import { useWindowSize } from "lib/hooks";
-import { Autoplay, FreeMode, Keyboard, Mousewheel } from "swiper";
-import "swiper/css/free-mode";
-import "swiper/css/autoplay";
-import "swiper/css/keyboard";
-import "swiper/css";
-import { VideoThumbnail } from "./video-thumbnail";
 import { useState } from "react";
-import { Popup } from "./popup";
+import { SanityImg } from "sanity-react-extra";
+import { Autoplay, FreeMode, Keyboard, Mousewheel } from "swiper";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/free-mode";
+import "swiper/css/keyboard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { imageUrlBuilder } from "utils/sanity";
+import { VideoThumbnail } from "./video-thumbnail";
+import type { PopupProps } from "./popup";
+const Popup = dynamic<PopupProps>(() => import("./popup"), {
+  ssr: false,
+});
 
 interface OutputsProps {
   type: string;
@@ -24,7 +28,7 @@ interface OutputsProps {
   title: string;
 }
 
-export const Outputs: React.FC<OutputsProps> = ({
+const Outputs: React.FC<OutputsProps> = ({
   assets,
   title,
   heading,
@@ -83,3 +87,5 @@ export const Outputs: React.FC<OutputsProps> = ({
     </Section>
   );
 };
+
+export default Outputs;

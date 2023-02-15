@@ -13,7 +13,7 @@ interface IHomeSection extends HomeSection {
   setHeroSectionHeight: Dispatch<SetStateAction<number>>;
 }
 
-export const Hero: React.FC<IHomeSection> = ({
+const Hero: React.FC<IHomeSection> = ({
   title,
   subtitle,
   ctaButton,
@@ -97,3 +97,5 @@ export const Hero: React.FC<IHomeSection> = ({
     </section>
   );
 };
+
+export default Hero;

@@ -1,24 +1,24 @@
-import { DropdownListProps } from 'lib/@types/global-types'
-import create from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { DropdownListProps } from "lib/@types/global-types";
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-type IModalState = 'hidden' | 'visible'
-type IPosition = { x: number; y: number }
+type IModalState = "hidden" | "visible";
+type IPosition = { x: number; y: number };
 
 interface IMengaMenuStore {
-  modalState: IModalState
-  position: IPosition
-  data: DropdownListProps[] | null
-  interseting: boolean
-  setModalState: (modalState: IModalState) => void
-  setPosition: (position: IPosition) => void
-  setData: (data: DropdownListProps[]) => void
-  setInterseting: (data: boolean) => void
+  modalState: IModalState;
+  position: IPosition;
+  data: DropdownListProps[] | null;
+  interseting: boolean;
+  setModalState: (modalState: IModalState) => void;
+  setPosition: (position: IPosition) => void;
+  setData: (data: DropdownListProps[]) => void;
+  setInterseting: (data: boolean) => void;
 }
 
 const useMegamenuDropownStore = create(
   devtools<IMengaMenuStore>((set) => ({
-    modalState: 'hidden',
+    modalState: "hidden",
     data: null,
     interseting: false,
     position: {
@@ -45,7 +45,7 @@ const useMegamenuDropownStore = create(
         ...state,
         interseting,
       })),
-  })),
-)
+  }))
+);
 
-export default useMegamenuDropownStore
+export default useMegamenuDropownStore;

@@ -15,11 +15,7 @@ import "swiper/css/autoplay";
 import "swiper/css/mousewheel";
 import { Heading } from "components/ui/heading";
 
-export const Client: React.FC<ClientsSection> = ({
-  clients,
-  title,
-  subtitle,
-}) => {
+const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
   const containerRef = useRef(null);
   const intersection = useIntersection(containerRef, { threshold: 0.3 });
   const windowWidth = useWindowSize()?.width ?? 0;
@@ -109,3 +105,5 @@ export const Client: React.FC<ClientsSection> = ({
     </motion.section>
   );
 };
+
+export default Client;

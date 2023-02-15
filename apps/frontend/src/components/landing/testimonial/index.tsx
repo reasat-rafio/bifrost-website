@@ -17,10 +17,7 @@ interface TestimonialProps {
   title: string;
 }
 
-export const Testimonials: React.FC<TestimonialProps> = ({
-  testimonials,
-  title,
-}) => {
+const Testimonials: React.FC<TestimonialProps> = ({ testimonials, title }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
@@ -103,7 +100,7 @@ const ArrowLeft = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M19 62L2 31.5L19 1" stroke="#70FCEB" stroke-width="2" />
+      <path d="M19 62L2 31.5L19 1" stroke="#70FCEB" strokeWidth="2" />
     </svg>
   );
 };
@@ -120,8 +117,10 @@ const ArrowRight = () => {
       <path
         d="M1 0.999999L18 31.5L0.999999 62"
         stroke="#70FCEB"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );
 };
+
+export default Testimonials;

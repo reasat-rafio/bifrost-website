@@ -22,7 +22,7 @@ interface InformationProps {
   cta?: CTAButton;
 }
 
-export const Information: React.FC<InformationProps> = ({
+const Information: React.FC<InformationProps> = ({
   image,
   title,
   heading,
@@ -96,3 +96,5 @@ export const Information: React.FC<InformationProps> = ({
     </GradientBorder>
   );
 };
+
+export default Information;

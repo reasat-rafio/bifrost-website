@@ -9,7 +9,7 @@ import useMegamenuDropownStore from "store/megamenu-dropdown.store";
 import { imageUrlBuilder } from "utils/sanity";
 
 interface MenuDropdownProps {}
-export const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
+const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   const {
     modalState,
     position: { x },
@@ -138,3 +138,6 @@ const Pointer: React.FC<{}> = () => {
     ></div>
   );
 };
+
+
+export default MenuDropdown;
