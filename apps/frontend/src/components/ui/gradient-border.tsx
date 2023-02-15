@@ -45,7 +45,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
           <div
             className={clsx(
               innerClass,
-              "flex flex-col justify-between bg-black"
+              "flex flex-col justify-between bg-red-700"
             )}
             style={{ borderRadius: borderRadious }}
           >

@@ -45,13 +45,13 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
           marginTop: navbarHeight,
           minHeight: `calc(100vh - ${navbarHeight}px)`,
         }}
-        className="container relative z-10 flex items-center justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
+        className="container relative z-20 flex items-center justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
       >
         <SectionSummary subtitle={subtitle} title={title} />
-        <Form className="hidden flex-1 lg:block" />
+        <Form className=" hidden flex-1 lg:block" />
       </div>
       <div
-        className="pointer-events-none absolute bottom-0 left-0 z-10 h-[30vh] w-full"
+        className="pointer-events-none absolute bottom-0 left-0 z-10 h-[30vh] w-full bg-red-600"
         style={{
           background:
             "linear-gradient(180deg, rgba(1, 7, 17, 0) 0%, #010711 100%)",

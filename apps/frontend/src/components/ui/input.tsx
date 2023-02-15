@@ -21,7 +21,7 @@ const Input = React.forwardRef<any, any>(
       name,
       errorKey,
       placeholderKey,
-      shadow = false,
+      shadow = true,
       type = "text",
       inputClassName,
       textColor = "#B6B6B6",
@@ -40,7 +40,8 @@ const Input = React.forwardRef<any, any>(
           style={{ color: textColor }}
           className={clsx(
             innerClassName,
-            "focus:shadow-outline w-full appearance-none rounded-[10px] border border-[#43434A] bg-transparent py-3 px-5 text-sm leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle sm:text-body-3 md:py-5"
+            "w-full appearance-none rounded-[10px] border border-[#43434A] bg-transparent py-3 px-5 text-sm leading-tight  focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle sm:text-body-3 md:py-5",
+            shadow && "focus:shadow-outline shadow"
           )}
           autoComplete="off"
           spellCheck="false"

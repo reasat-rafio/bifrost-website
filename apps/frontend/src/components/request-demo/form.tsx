@@ -53,7 +53,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
 
       console.log({ response });
       setFormState("submited");
-      // reset();
+      reset();
     } catch (e) {
       console.error(e);
     } finally {
@@ -72,6 +72,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
         >
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6">
             <Input
+              shadow={false}
               textColor="#ffffff"
               innerClassName="bg-[#09090D]"
               disabled={formSate === "submitting"}
@@ -81,6 +82,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
               {...register("first_name")}
             />
             <Input
+              shadow={false}
               textColor="#ffffff"
               innerClassName="bg-[#09090D]"
               disabled={formSate === "submitting"}
@@ -90,6 +92,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
               {...register("last_name")}
             />
             <Input
+              shadow={false}
               textColor="#ffffff"
               innerClassName="bg-[#09090D]"
               disabled={formSate === "submitting"}
@@ -99,6 +102,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
               {...register("email")}
             />
             <Input
+              shadow={false}
               textColor="#ffffff"
               innerClassName="bg-[#09090D]"
               disabled={formSate === "submitting"}
@@ -110,6 +114,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           </div>
 
           <Input
+            shadow={false}
             textColor="#ffffff"
             innerClassName="bg-[#09090D]"
             disabled={formSate === "submitting"}
@@ -121,7 +126,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           <div>
             <textarea
               disabled={formSate === "submitting"}
-              className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
+              className="text-gray-700 w-full appearance-none rounded-lg border border-[#43434A] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
               rows={3}
