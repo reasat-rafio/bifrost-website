@@ -18,6 +18,7 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const highlightBtn = menu.filter((men) => men.highlight)[0];
   const [blockScroll, allowScroll] = useScrollBlock();
+  const [activeSubMenuKey, setActiveSubMenuKey] = useState<null | string>(null);
 
   useLayoutEffect(() => {
     setNavbarHeight(document.querySelector("#navbar")?.clientHeight);
@@ -58,7 +59,12 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
               {menu
                 .filter((men) => !men.highlight)
                 .map((menuItem) => (
-                  <NavItem key={menuItem._key} {...menuItem} />
+                  <NavItem
+                    key={menuItem._key}
+                    activeSubMenuKey={activeSubMenuKey}
+                    setActiveSubMenuKey={setActiveSubMenuKey}
+                    {...menuItem}
+                  />
                 ))}
             </motion.ul>
             {!!highlightBtn && (

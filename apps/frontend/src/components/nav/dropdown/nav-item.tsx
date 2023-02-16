@@ -1,38 +1,58 @@
 import type { MenuItem } from "lib/@types/global-types";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { AnimatedText, ArrowICon, Pointer } from "../menu-dropdown";
+import useGlobalStore from "store/global.store";
 
-const NavItem: React.FC<MenuItem> = ({
+interface NavItemProps extends MenuItem {
+  activeSubMenuKey: null | string;
+  setActiveSubMenuKey: Dispatch<SetStateAction<null | string>>;
+}
+
+const NavItem: React.FC<NavItemProps> = ({
+  _key,
   title,
   dropdownList,
   pageUrl,
   externalUrl,
+  activeSubMenuKey,
+  setActiveSubMenuKey,
 }) => {
-  const [active, setActive] = useState(false);
+  const { setShowNavDropDown } = useGlobalStore();
 
   return (
     <>
       <li className="relative py-[25px] text-[20px] font-semibold">
         {!!dropdownList?.length ? (
+          // Has submenu
           <button
             className="container flex w-full items-center justify-between outline-none"
-            onClick={() => setActive(!active)}
+            onClick={() =>
+              setActiveSubMenuKey(activeSubMenuKey === _key ? null : _key)
+            }
           >
             <span>{title}</span>
-            {!!dropdownList?.length && <DirectionArrow active={active} />}
+            <DirectionArrow active={activeSubMenuKey === _key} />
           </button>
         ) : (
+          // No submenu
           <Link href={pageUrl || externalUrl}>
-            <a className="container block w-full">{title}</a>
+            <a
+              onClick={() => setShowNavDropDown(false)}
+              className="container block w-full"
+            >
+              {title}
+            </a>
           </Link>
         )}
       </li>
       <AnimatePresence>
-        {active && <SubMenuItems dropdownList={dropdownList} />}
+        {activeSubMenuKey === _key && (
+          <SubMenuItems dropdownList={dropdownList} />
+        )}
       </AnimatePresence>
     </>
   );
@@ -41,6 +61,8 @@ const NavItem: React.FC<MenuItem> = ({
 const SubMenuItems: React.FC<{
   dropdownList: MenuItem["dropdownList"];
 }> = ({ dropdownList }) => {
+  const { setShowNavDropDown } = useGlobalStore();
+
   return (
     <motion.li
       initial={{ opacity: 0, height: 0 }}
@@ -75,7 +97,10 @@ const SubMenuItems: React.FC<{
               </span>
               {!!ctaButton && (
                 <Link href={ctaButton?.href ?? "/"}>
-                  <a className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]">
+                  <a
+                    onClick={() => setShowNavDropDown(false)}
+                    className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]"
+                  >
                     <AnimatedText
                       className="text-[12px]"
                       text={ctaButton.title}

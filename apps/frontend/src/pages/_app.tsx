@@ -15,33 +15,40 @@ const MenuDropdown = dynamic<{}>(() => import("components/nav/menu-dropdown"), {
   ssr: false,
 });
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import useGlobalStore from "store/global.store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const { setShowNavDropDown } = useGlobalStore();
   const is404Page = router.pathname === "/_error";
   const ogImage =
     pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage;
   let faviconImage = pageProps.data?.site.logos.favicon
     ? imageUrlBuilder
-      .image(pageProps.data?.site?.logos.favicon)
-      .size(256, 256)
-      .ignoreImageParams()
-      .url()
+        .image(pageProps.data?.site?.logos.favicon)
+        .size(256, 256)
+        .ignoreImageParams()
+        .url()
     : null;
 
   const openGraphImages = ogImage
     ? [
-      { w: 800, h: 600 },
-      { w: 1200, h: 630 },
-      { w: 600, h: 600 },
-      { w: 256, h: 256 },
-    ].map(({ w, h }) => ({
-      url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
-      width: w,
-      height: h,
-      alt: `${pageProps.data?.page.seo?.title}`,
-    }))
+        { w: 800, h: 600 },
+        { w: 1200, h: 630 },
+        { w: 600, h: 600 },
+        { w: 256, h: 256 },
+      ].map(({ w, h }) => ({
+        url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
+        width: w,
+        height: h,
+        alt: `${pageProps.data?.page.seo?.title}`,
+      }))
     : [];
+
+  useEffect(() => {
+    setShowNavDropDown(false);
+  }, [router.pathname]);
 
   return (
     <>
