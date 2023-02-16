@@ -11,7 +11,7 @@ import { SanityProps } from "next-sanity-extra";
 import { useCallback, useState } from "react";
 import { renderObjectArray, withDimensions } from "sanity-react-extra";
 import { sanityStaticProps, useSanityQuery } from "utils/sanity";
-import { Contact } from "components/common/contact";
+import Contact from "components/common/contact";
 import { Newsletter } from "components/common/newsletter";
 import Posts from "components/post/posts";
 

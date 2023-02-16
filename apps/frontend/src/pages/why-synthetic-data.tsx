@@ -1,5 +1,5 @@
-// import { Contact } from 'components/common/contact'
-import { Information } from "components/common/information";
+// import Contact  from "src/components/common/contact";
+import Information from "components/common/information";
 import { Hero, HeroProps } from "components/why-synthetic-data/hero";
 import { CollectionBlock } from "components/common/header-and-card-collection-block";
 import { Resume } from "components/why-synthetic-data/resume";

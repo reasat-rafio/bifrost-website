@@ -1,4 +1,4 @@
-// import { Contact } from "components/common/contact";
+// import Contact  from "components/common/contact";
 import { Hero, HeroProps } from "components/common/primary-hero";
 import { Newsletter } from "components/common/newsletter";
 import { siteQuery } from "lib/query";
@@ -8,7 +8,7 @@ import { SanityProps } from "next-sanity-extra";
 import { useCallback, useState } from "react";
 import { renderObjectArray, withDimensions } from "sanity-react-extra";
 import { useSanityQuery, sanityStaticProps } from "utils/sanity";
-import { ProjectsBlock } from "components/common/projects-block";
+// import { ProjectsBlock } from "components/common/projects-block";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -54,7 +54,7 @@ const ObjectDetection = (props: SanityProps<any>) => {
         style={{ marginTop: heroSectionHeight }}
       >
         {renderObjectArray(page.sections, {
-          projects: ProjectsBlock,
+          // projects: ProjectsBlock,
           newsletter: Newsletter,
           // contact: Contact,
         })}

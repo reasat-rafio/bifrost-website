@@ -1,18 +1,18 @@
-import { PrimaryWrapper } from 'components/common/primary-wapper'
+import { PrimaryWrapper } from "components/common/primary-wapper";
 // import Ellipse from 'src/components/Ellipse'
-import { siteQuery } from 'src/lib/query'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
-import { groq } from 'next-sanity'
-import { SanityProps } from 'next-sanity-extra'
-import { useCallback, useEffect, useState } from 'react'
-import { renderObjectArray, withDimensions } from 'sanity-react-extra'
-import { sanityStaticProps, useSanityQuery } from 'utils/sanity'
-import { DatasetList } from 'components/dataset/list/dataset-list'
+import { siteQuery } from "src/lib/query";
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { groq } from "next-sanity";
+import { SanityProps } from "next-sanity-extra";
+import { useCallback, useEffect, useState } from "react";
+import { renderObjectArray, withDimensions } from "sanity-react-extra";
+import { sanityStaticProps, useSanityQuery } from "utils/sanity";
+import { DatasetList } from "components/dataset/list/dataset-list";
 // import { useCtx } from 'src/context/global'
-import { Contact } from 'components/common/contact'
-import { Hero, HeroProps } from 'components/dataset/home'
-import useDatasetStore from 'store/dataset.store'
-import { FilteringLogic } from 'components/dataset/filter'
+import Contact from "src/components/common/contact";
+import { Hero, HeroProps } from "components/dataset/home";
+import useDatasetStore from "store/dataset.store";
+import { FilteringLogic } from "components/dataset/filter";
 
 const query = groq`{
   "site": ${siteQuery},
@@ -20,7 +20,7 @@ const query = groq`{
     ...,
     notFound {
       ...,
-    "image": ${withDimensions('image')},
+    "image": ${withDimensions("image")},
     }
   },
   "datasets": *[_type == "dataset"][]{
@@ -29,19 +29,21 @@ const query = groq`{
     slug,
     subHeading,
     taskTypes,
-    "image": ${withDimensions('images[0]')},
+    "image": ${withDimensions("images[0]")},
    categories[]->,
    tasks[]-> 
   },
   "categories": *[_type == "category"][] ,
   "taskTypes": *[_type == "taskType"][] ,
   "labelFormat": *[_type == "labelFormat"][]
-}`
+}`;
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => ({
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => ({
   props: await sanityStaticProps({ context, query }),
   revalidate: 10,
-})
+});
 
 export default function Dataset(props: SanityProps<any>) {
   const {
@@ -52,9 +54,9 @@ export default function Dataset(props: SanityProps<any>) {
       datasets,
       taskTypes,
     },
-  } = useSanityQuery(query, props)
+  } = useSanityQuery(query, props);
 
-  const [heroSectionHeight, setHeroSectionHeight] = useState(0)
+  const [heroSectionHeight, setHeroSectionHeight] = useState(0);
 
   const {
     setAllCategories,
@@ -62,23 +64,31 @@ export default function Dataset(props: SanityProps<any>) {
     setAllDatasets,
     setSortedDatasets,
     setAllTaskTypes,
-  } = useDatasetStore()
+  } = useDatasetStore();
 
   useEffect(() => {
-    setAllCategories(categories)
-    setAllLabelFormat(labelFormat)
-    setSortedDatasets(datasets)
-    setAllDatasets(datasets)
-    setAllTaskTypes(taskTypes)
-  }, [setAllCategories, setAllLabelFormat, setSortedDatasets, setAllDatasets, setAllTaskTypes])
+    setAllCategories(categories);
+    setAllLabelFormat(labelFormat);
+    setSortedDatasets(datasets);
+    setAllDatasets(datasets);
+    setAllTaskTypes(taskTypes);
+  }, [
+    setAllCategories,
+    setAllLabelFormat,
+    setSortedDatasets,
+    setAllDatasets,
+    setAllTaskTypes,
+  ]);
 
   return (
     <div>
       <PrimaryWrapper>
         {renderObjectArray(sections, {
           primaryHero: useCallback(
-            (p: HeroProps) => <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />,
-            [],
+            (p: HeroProps) => (
+              <Hero setHeroSectionHeight={setHeroSectionHeight} {...p} />
+            ),
+            []
           ),
         })}
       </PrimaryWrapper>
@@ -105,5 +115,5 @@ export default function Dataset(props: SanityProps<any>) {
         <Ellipse className="z-10 absolute top-[20vh] right-[15vw] w-[153px] h-[391px]" />
       </> */}
     </div>
-  )
+  );
 }

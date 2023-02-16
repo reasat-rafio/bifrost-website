@@ -4,7 +4,7 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { useIntersection, useWindowSize } from "lib/hooks";
 import { useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Section } from "components/ui/section";
 import { Title } from "components/ui/title";
 import { Heading } from "components/ui/heading";

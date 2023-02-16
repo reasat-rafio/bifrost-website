@@ -1,5 +1,5 @@
 import { VFadeInOut } from "animations/fade-in-out";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface TitleProps {
   children: React.ReactNode;

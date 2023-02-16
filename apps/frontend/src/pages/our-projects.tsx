@@ -1,6 +1,6 @@
-// import { Contact } from 'components/common/contact'
+// import Contact  from "src/components/common/contact";
 import { Newsletter } from "components/common/newsletter";
-import { ProjectsBlock } from "components/common/projects-block";
+// import { ProjectsBlock } from "components/common/projects-block";
 import { Hero, HeroProps } from "components/our-projects/hero";
 import { siteQuery } from "lib/query";
 import { GetStaticProps, GetStaticPropsContext } from "next";
@@ -54,7 +54,7 @@ const OurProjects = (props: SanityProps<any>) => {
         style={{ marginTop: heroSectionHeight }}
       >
         {renderObjectArray(page.sections, {
-          projects: ProjectsBlock,
+          // projects: ProjectsBlock,
           newsletter: Newsletter,
           // contact: Contact,
         })}

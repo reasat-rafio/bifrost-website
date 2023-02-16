@@ -1,5 +1,5 @@
 import { VFadeInOut } from "animations/fade-in-out";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 
 interface DescriptionProps {
