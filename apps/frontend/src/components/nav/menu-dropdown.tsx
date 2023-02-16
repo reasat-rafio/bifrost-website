@@ -1,4 +1,5 @@
 import { Portal } from "@reach/portal";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -78,19 +79,22 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   );
 };
 
-export const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
+export const AnimatedText: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className = "text-[14px]",
+}) => {
   const [hovered, setHover] = useState(false);
   const letters = Array.from(text);
 
   return (
     <div
-      className="flex"
+      className={clsx("flex", className)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       {letters.map((letter, index) => (
         <motion.span
-          className="block whitespace-pre-wrap text-[14px]"
+          className="block whitespace-pre-wrap"
           key={letter + index}
           initial={{ y: 0 }}
           animate={{

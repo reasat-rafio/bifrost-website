@@ -16,10 +16,10 @@ const NavItem: React.FC<MenuItem> = ({
 
   return (
     <>
-      <li className="relative py-[25px] px-[16px] text-body-3 font-semibold">
+      <li className="relative py-[25px] text-[20px] font-semibold">
         {!!dropdownList?.length ? (
           <button
-            className="flex w-full items-center justify-between outline-none"
+            className="container flex w-full items-center justify-between outline-none"
             onClick={() => setActive(!active)}
           >
             <span>{title}</span>
@@ -27,7 +27,7 @@ const NavItem: React.FC<MenuItem> = ({
           </button>
         ) : (
           <Link href={pageUrl || externalUrl}>
-            <a>{title}</a>
+            <a className="container block w-full">{title}</a>
           </Link>
         )}
       </li>
@@ -43,37 +43,43 @@ const SubMenuItems: React.FC<{
 }> = ({ dropdownList }) => {
   return (
     <motion.li
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
       transition={{ ease: "easeInOut" }}
-      className="px-[16px] py-[25px]"
     >
-      <ul className="relative z-20 flex flex-col space-y-[14px]">
+      <ul className="relative z-20 flex flex-col space-y-[14px] py-[25px]">
         {dropdownList?.map(({ _key, description, image, title, ctaButton }) => (
           <motion.li
             key={_key}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="flex space-x-5 "
+            className="container flex space-x-5"
           >
             <figure className="col-span-2 flex items-start justify-start">
               <SanityImg
-                className="h-[24px] w-[24px] object-contain"
+                className="h-[16px] w-[16px] object-contain"
                 width={30}
                 image={image}
                 builder={imageUrlBuilder}
                 alt={title}
               />
             </figure>
-            <section className="flex flex-1 flex-col space-y-[6px]">
-              <h6 className="text-body-3 uppercase">{title}</h6>
-              <span className="text-[#B6BEE8]">{description}</span>
+            <section className="flex flex-1 flex-col">
+              <h6 className="text-[14px] font-normal uppercase leading-none">
+                {title}
+              </h6>
+              <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
+                {description}
+              </span>
               {!!ctaButton && (
                 <Link href={ctaButton?.href ?? "/"}>
-                  <a className="flex space-x-3 overflow-hidden text-[#B37AF8]">
-                    <AnimatedText text={ctaButton.title} />
+                  <a className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]">
+                    <AnimatedText
+                      className="text-[12px]"
+                      text={ctaButton.title}
+                    />
                     <ArrowICon />
                   </a>
                 </Link>
@@ -92,6 +98,7 @@ const DirectionArrow: React.FC<{ active: boolean }> = ({ active }) => {
     <motion.svg
       initial={{ rotate: 0 }}
       animate={{ rotate: active ? 180 : 0 }}
+      transition={{ ease: "anticipate" }}
       width="20"
       height="12"
       viewBox="0 0 20 12"

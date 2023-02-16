@@ -100,7 +100,7 @@ export default function Navbar({
       id="navbar"
       onMouseLeave={handleMouseLeave}
       className={clsx(
-        "| fixed top-0 left-0 z-40 w-full border-b border-white/5",
+        "fixed top-0 left-0 z-40 w-full border-b border-white/5",
         scroll
           ? smallNav
             ? darkBg
@@ -114,12 +114,12 @@ export default function Navbar({
         showNavDropDown && "bg-secondary/5 backdrop-blur-3xl"
       )}
     >
-      <div className={clsx("container")}>
+      <div className="container">
         <motion.div
           initial={{ padding: "14px 0" }}
           animate={{ padding: scroll ? `10px 0` : `14px 0` }}
           transition={{ type: "spring", duration: 0.4 }}
-          className=" | | container mx-auto flex w-full items-center justify-between space-x-5"
+          className="mx-auto flex w-full items-center justify-between space-x-5"
         >
           <motion.figure
             initial={{ scale: 1 }}

@@ -41,22 +41,28 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
             mass: 0.4,
             stiffness: 300,
           }}
-          style={{ top: `${navbarHeight}px` }}
+          style={{
+            top: `${navbarHeight}px`,
+            paddingBottom: `${navbarHeight}px`,
+          }}
           className={clsx(
-            "fixed z-30 h-full min-h-screen w-full overflow-y-scroll backdrop-blur-3xl",
+            "fixed z-30 h-full min-h-screen w-full overflow-y-auto backdrop-blur-3xl",
             darkBg ? "bg-black/90" : "bg-secondary/5"
           )}
         >
           <div className="">
-            <ul className="flex flex-col justify-center divide-y divide-[#8B52FF]/40 border-b border-[#8B52FF]/40">
+            <motion.ul
+              layout
+              className="flex flex-col justify-center divide-y divide-[#8B52FF]/40 border-b border-[#8B52FF]/40"
+            >
               {menu
                 .filter((men) => !men.highlight)
                 .map((menuItem) => (
                   <NavItem key={menuItem._key} {...menuItem} />
                 ))}
-            </ul>
+            </motion.ul>
             {!!highlightBtn && (
-              <div className="h-full px-[16px] py-[25px]">
+              <div className="container block w-full px-[16px] py-[25px]">
                 <Button
                   type="href"
                   href={highlightBtn.pageUrl || highlightBtn.externalUrl}
