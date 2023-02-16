@@ -60,7 +60,10 @@ export const Article: React.FC<ArticleProps> = forwardRef(
     }, [totalSectionsLength]);
 
     return (
-      <article ref={ref} className="container h-full lg:pt-20 xl:pt-32">
+      <article
+        ref={ref}
+        className="mx-auto h-full max-w-[920px] px-5 lg:pt-20 xl:pt-32"
+      >
         <ScrollSpyWrapper
           paddingY={navbarHeight}
           sections={sections}

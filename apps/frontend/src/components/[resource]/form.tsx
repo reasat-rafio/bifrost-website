@@ -59,7 +59,12 @@ export const Form: React.FC<FormProps> = ({}) => {
   };
 
   return (
-    <Section padding={false} borderBottom={false}>
+    <Section
+      className="mx-auto mt-[54px] max-w-[920px] px-5 sm:mt-[108px]"
+      isContainer={false}
+      padding={false}
+      borderBottom={false}
+    >
       <div className="relative z-20 mt-10 space-y-5 rounded-primary bg-[#1A242F] p-5 sm:space-y-10 md:p-12 xl:p-20">
         <header className="space-y-3 text-center font-light">
           <h2 className="primary__gradient mx-auto w-fit bg-clip-text text-p-1 uppercase text-transparent">
@@ -115,7 +120,7 @@ export const Form: React.FC<FormProps> = ({}) => {
           <div>
             <textarea
               disabled={formSate === "submitting"}
-              className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#8E8E8E] bg-transparent py-4 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
+              className="text-gray-700 focus:shadow-outline w-full appearance-none rounded-lg border border-[#43434A] bg-transparent py-4 px-5 leading-tight shadow focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
               rows={3}
