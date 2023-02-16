@@ -41,7 +41,7 @@ const Hero: React.FC<HomeProps> = ({ ctaButton, description, title }) => {
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="primary__gradient bg-clip-text text-transparent">
+                    <span className="primary__gradient break-words bg-clip-text text-transparent">
                       {children}
                     </span>
                   ),

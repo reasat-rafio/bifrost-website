@@ -70,7 +70,7 @@ const Hero: React.FC<IHomeSection> = ({
             />
           )}
 
-          <h1 className="text-head-2-mobile font-primary leading-none lg:text-head-1">
+          <h1 className="break-words text-head-2-mobile font-primary leading-none lg:text-head-1">
             <PortableText
               blocks={title}
               serializers={{

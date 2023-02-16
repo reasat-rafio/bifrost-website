@@ -162,7 +162,7 @@ export default function Navbar({
                   className={clsx(
                     "relative text-body-1-mobile font-semibold xl:text-body-3",
                     router.asPath === pageUrl
-                      ? "primary__gradient bg-clip-text text-transparent"
+                      ? "primary__gradient break-words bg-clip-text text-transparent"
                       : "text-white"
                   )}
                 >

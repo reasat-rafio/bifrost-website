@@ -67,7 +67,7 @@ const SectionSummary: React.FC<{ title: any; subtitle: any }> = ({
 }) => {
   return (
     <div className="flex flex-1 flex-col space-y-5 lg:space-y-10">
-      <h1 className="text-head-2-mobile font-light leading-none lg:text-head-1">
+      <h1 className="break-words text-head-2-mobile font-light leading-none lg:text-head-1">
         <PortableText
           blocks={title}
           serializers={{
