@@ -6,9 +6,9 @@ import { NextSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { imageUrlBuilder } from "utils/sanity";
-import type { NavbarDropdownProps } from "components/nav/dropdown";
+import type { NavbarDropdownProps } from "components/nav/dropdown/dropdown";
 const NavbarDropdown = dynamic<NavbarDropdownProps>(
-  () => import("components/nav/dropdown"),
+  () => import("components/nav/dropdown/dropdown"),
   { ssr: false }
 );
 const MenuDropdown = dynamic<{}>(() => import("components/nav/menu-dropdown"), {
@@ -23,24 +23,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     pageProps.data?.page.seo?.seoImage ?? pageProps.data?.site?.ogImage;
   let faviconImage = pageProps.data?.site.logos.favicon
     ? imageUrlBuilder
-        .image(pageProps.data?.site?.logos.favicon)
-        .size(256, 256)
-        .ignoreImageParams()
-        .url()
+      .image(pageProps.data?.site?.logos.favicon)
+      .size(256, 256)
+      .ignoreImageParams()
+      .url()
     : null;
 
   const openGraphImages = ogImage
     ? [
-        { w: 800, h: 600 },
-        { w: 1200, h: 630 },
-        { w: 600, h: 600 },
-        { w: 256, h: 256 },
-      ].map(({ w, h }) => ({
-        url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
-        width: w,
-        height: h,
-        alt: `${pageProps.data?.page.seo?.title}`,
-      }))
+      { w: 800, h: 600 },
+      { w: 1200, h: 630 },
+      { w: 600, h: 600 },
+      { w: 256, h: 256 },
+    ].map(({ w, h }) => ({
+      url: `${imageUrlBuilder.image(ogImage).width(w).height(h).url()}`,
+      width: w,
+      height: h,
+      alt: `${pageProps.data?.page.seo?.title}`,
+    }))
     : [];
 
   return (

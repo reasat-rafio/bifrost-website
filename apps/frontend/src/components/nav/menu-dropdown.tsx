@@ -78,7 +78,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   );
 };
 
-const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
+export const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
   const [hovered, setHover] = useState(false);
   const letters = Array.from(text);
 
@@ -90,7 +90,7 @@ const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
     >
       {letters.map((letter, index) => (
         <motion.span
-          className="block whitespace-pre-wrap"
+          className="block whitespace-pre-wrap text-[14px]"
           key={letter + index}
           initial={{ y: 0 }}
           animate={{
@@ -107,7 +107,7 @@ const AnimatedText: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const ArrowICon: React.FC<{}> = () => {
+export const ArrowICon: React.FC<{}> = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ const ArrowICon: React.FC<{}> = () => {
   );
 };
 
-const Pointer: React.FC<{}> = () => {
+export const Pointer: React.FC<{}> = () => {
   const { setInterseting } = useMegamenuDropownStore();
 
   return (
@@ -134,7 +134,7 @@ const Pointer: React.FC<{}> = () => {
       onMouseEnter={() => setInterseting(true)}
       style={{ clipPath: `polygon(0 0, 100% 0, 100% 100%, 50% 50%)` }}
       className="absolute top-0 h-7 w-7 -translate-y-1/2 -rotate-45 rounded border-t border-r border-gray/60 bg-[#0A0A0E]"
-    ></div>
+    />
   );
 };
 
