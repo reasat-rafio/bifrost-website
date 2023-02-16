@@ -34,7 +34,7 @@ export const NavBig: React.FC<ScrollSpyProps> = ({
         style={{
           height: `${Math.min(stickyContainerHeight, windowHeight - 20)}px`,
         }}
-        className="primary__gradient left-0 top-0 w-1 rounded"
+        className="primary__gradient left-0 top-0 w-[1px] rounded"
       />
 
       <ul className="mx-auto flex-1 space-y-3">
