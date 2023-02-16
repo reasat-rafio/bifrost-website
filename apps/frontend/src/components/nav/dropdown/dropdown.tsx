@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { Button } from "components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { MenuItem } from "lib/@types/global-types";
-import { useWindowSize } from "lib/hooks";
-import { useLayoutEffect, useState } from "react";
+import { useScrollBlock, useWindowSize } from "lib/hooks";
+import { useEffect, useLayoutEffect, useState } from "react";
 import useGlobalStore from "store/global.store";
 import NavItem from "./nav-item";
 
@@ -17,10 +17,16 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
   const { showNavDropDown } = useGlobalStore();
   const [navbarHeight, setNavbarHeight] = useState(0);
   const highlightBtn = menu.filter((men) => men.highlight)[0];
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   useLayoutEffect(() => {
     setNavbarHeight(document.querySelector("#navbar")?.clientHeight);
   }, [windowWidth]);
+
+  useEffect(() => {
+    if (showNavDropDown) blockScroll();
+    else allowScroll();
+  }, [showNavDropDown]);
 
   return (
     <AnimatePresence>
@@ -37,11 +43,11 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
           }}
           style={{ top: `${navbarHeight}px` }}
           className={clsx(
-            " fixed z-30  min-h-screen w-full backdrop-blur-3xl",
+            "fixed z-30 h-full min-h-screen w-full overflow-y-scroll backdrop-blur-3xl",
             darkBg ? "bg-black/90" : "bg-secondary/5"
           )}
         >
-          <div className="!overflow-y !h-full">
+          <div className="">
             <ul className="flex flex-col justify-center divide-y divide-[#8B52FF]/40 border-b border-[#8B52FF]/40">
               {menu
                 .filter((men) => !men.highlight)
@@ -50,7 +56,7 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
                 ))}
             </ul>
             {!!highlightBtn && (
-              <div className="px-[16px] py-[25px]">
+              <div className="h-full px-[16px] py-[25px]">
                 <Button
                   type="href"
                   href={highlightBtn.pageUrl || highlightBtn.externalUrl}
