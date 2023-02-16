@@ -25,11 +25,11 @@ const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <>
-      <li className="relative py-[25px] text-[20px] font-semibold">
+      <li className="relative  font-semibold">
         {!!dropdownList?.length ? (
           // Has submenu
           <button
-            className="container flex w-full items-center justify-between outline-none"
+            className="container flex w-full items-center justify-between py-[25px] text-[20px] outline-none"
             onClick={() =>
               setActiveSubMenuKey(activeSubMenuKey === _key ? null : _key)
             }
@@ -42,7 +42,7 @@ const NavItem: React.FC<NavItemProps> = ({
           <Link href={pageUrl || externalUrl}>
             <a
               onClick={() => setShowNavDropDown(false)}
-              className="container block w-full"
+              className="container block w-full py-[25px] text-[20px]"
             >
               {title}
             </a>
