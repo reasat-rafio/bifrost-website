@@ -37,11 +37,11 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
           }}
           style={{ top: `${navbarHeight}px` }}
           className={clsx(
-            "fixed z-30 min-h-screen w-full overflow-y-auto backdrop-blur-3xl",
+            " fixed z-30  min-h-screen w-full backdrop-blur-3xl",
             darkBg ? "bg-black/90" : "bg-secondary/5"
           )}
         >
-          <div>
+          <div className="!overflow-y !h-full">
             <ul className="flex flex-col justify-center divide-y divide-[#8B52FF]/40 border-b border-[#8B52FF]/40">
               {menu
                 .filter((men) => !men.highlight)
