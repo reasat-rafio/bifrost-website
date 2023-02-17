@@ -25,7 +25,7 @@ class MyDocument extends Document {
           <NextScript />
           <noscript
             dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FTQQ5K" height="0" width="0" style="display: none; visibility: hidden;" />`,
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}" height="0" width="0" style="display: none; visibility: hidden;" />`,
             }}
           />
         </body>
