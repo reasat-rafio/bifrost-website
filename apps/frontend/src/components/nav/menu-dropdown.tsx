@@ -1,8 +1,6 @@
 import { Portal } from "@reach/portal";
-import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import { SanityImg } from "sanity-react-extra";
 import useGlobalStore from "store/global.store";
 import useMegamenuDropownStore from "store/megamenu-dropdown.store";
@@ -62,7 +60,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                     {!!ctaButton && (
                       <Link href={ctaButton?.href ?? "/"}>
                         <a className="flex space-x-3 overflow-hidden text-[#B37AF8]">
-                          <AnimatedText text={ctaButton.title} />
+                          <span className="text-[14px]">{ctaButton.title}</span>
                           <ArrowICon />
                         </a>
                       </Link>
@@ -79,37 +77,37 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
   );
 };
 
-export const AnimatedText: React.FC<{ text: string; className?: string }> = ({
-  text,
-  className = "text-[14px]",
-}) => {
-  const [hovered, setHover] = useState(false);
-  const letters = Array.from(text);
+// export const AnimatedText: React.FC<{ text: string; className?: string }> = ({
+//   text,
+//   className = "text-[14px]",
+// }) => {
+//   const [hovered, setHover] = useState(false);
+//   const letters = Array.from(text);
 
-  return (
-    <div
-      className={clsx("flex", className)}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {letters.map((letter, index) => (
-        <motion.span
-          className="block whitespace-pre-wrap"
-          key={letter + index}
-          initial={{ y: 0 }}
-          animate={{
-            y: hovered ? [0, 1.5, 0] : 0,
-            transition: {
-              delay: index * 0.05,
-            },
-          }}
-        >
-          {letter}
-        </motion.span>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className={clsx("flex", className)}
+//       onMouseEnter={() => setHover(true)}
+//       onMouseLeave={() => setHover(false)}
+//     >
+//       {letters.map((letter, index) => (
+//         <motion.span
+//           className="block whitespace-pre-wrap"
+//           key={letter + index}
+//           initial={{ y: 0 }}
+//           animate={{
+//             y: hovered ? [0, 1.5, 0] : 0,
+//             transition: {
+//               delay: index * 0.05,
+//             },
+//           }}
+//         >
+//           {letter}
+//         </motion.span>
+//       ))}
+//     </div>
+//   );
+// };
 
 export const ArrowICon: React.FC<{}> = () => {
   return (

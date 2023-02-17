@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
-import { AnimatedText, ArrowICon, Pointer } from "../menu-dropdown";
+import { ArrowICon, Pointer } from "../menu-dropdown";
 import useGlobalStore from "store/global.store";
 
 interface NavItemProps extends MenuItem {
@@ -101,10 +101,13 @@ const SubMenuItems: React.FC<{
                     onClick={() => setShowNavDropDown(false)}
                     className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]"
                   >
-                    <AnimatedText
+                    {/* <AnimatedText
                       className="text-[12px]"
                       text={ctaButton.title}
-                    />
+                    /> */}
+                    <span className="whitespace-pre-wrap text-[12px]">
+                      {ctaButton.title}
+                    </span>
                     <ArrowICon />
                   </a>
                 </Link>
