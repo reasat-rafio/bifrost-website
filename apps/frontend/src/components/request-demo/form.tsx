@@ -126,7 +126,7 @@ export const Form: React.FC<FormProps> = ({ className }) => {
           <div>
             <textarea
               disabled={formSate === "submitting"}
-              className="text-gray-700 w-full appearance-none rounded-lg border border-[#43434A] bg-[#09090D] bg-transparent py-4 px-5 leading-tight text-white focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
+              className="text-gray-700 w-full appearance-none rounded-lg border border-[#43434A] bg-[#09090D] py-4 px-5 leading-tight text-white focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle lg:py-6"
               id="message"
               placeholder="What can we help with?"
               rows={3}
