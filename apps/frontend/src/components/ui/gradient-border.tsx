@@ -10,6 +10,7 @@ interface GradientBorderProps {
   background?: string;
   children?: any;
   padding?: boolean;
+  maxWidth?: " max-w-screen-2xl" | "max-w-[1230px]";
   ref?: React.ForwardedRef<HTMLElement>;
 }
 
@@ -23,6 +24,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
       borderRadious = "15px",
       gradient = "primary__gradient",
       innerClass = "",
+      maxWidth = "max-w-screen-2xl",
     },
     ref
   ) => {
@@ -35,11 +37,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
         )}
       >
         <div
-          className={clsx(
-            className,
-            gradient,
-            "relative w-full max-w-screen-2xl"
-          )}
+          className={clsx(className, gradient, maxWidth, "relative w-full")}
           style={{ padding: borderSize, borderRadius: borderRadious }}
         >
           <div

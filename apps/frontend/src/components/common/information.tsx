@@ -41,9 +41,9 @@ const Information: React.FC<InformationProps> = ({
 
   return (
     <GradientBorder
-      className="max-w-[1230px]"
-      innerClass="md:p-16 sm:p-8 p-5"
       ref={sectionRef}
+      maxWidth="max-w-[1230px]"
+      innerClass="md:p-16 sm:p-8 p-5"
     >
       <Section
         isContainer={false}
