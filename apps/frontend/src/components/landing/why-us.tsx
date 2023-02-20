@@ -9,7 +9,7 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { useIntersection } from "lib/hooks";
+import { useIntersection, useWindowSize } from "lib/hooks";
 import { VFadeInOut } from "animations/fade-in-out";
 
 interface WhyUsProps {
@@ -29,11 +29,22 @@ const WhyUs: React.FC<WhyUsProps> = ({
   ctaButton,
 }) => {
   const sectionRef = useRef(null);
+  const windowWidth = useWindowSize()?.width ?? 0;
+  const isBigScreen = windowWidth >= 768;
   const intersecting =
     useIntersection(sectionRef, { threshold: 0.15 })?.isIntersecting ?? false;
 
+  const animationProps = (index: number) =>
+    isBigScreen
+      ? {
+          initial: "from",
+          animate: intersecting ? "to" : "exit",
+          variants: VFadeInOut({ delay: 0.415 + index * 0.08 }),
+        }
+      : {};
+
   return (
-    <Section ref={sectionRef}>
+    <Section className="md:text-clip" ref={sectionRef}>
       <div className="spacing_primary font-light">
         <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
         <Heading animate={{ show: intersecting, delay: 0.15 }}>
@@ -46,10 +57,8 @@ const WhyUs: React.FC<WhyUsProps> = ({
       <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 sm:gap-10 sm:py-16 md:gap-14 md:py-28 lg:gap-20 xl:grid-cols-3">
         {collection.map(({ _key, description, image, title }, index) => (
           <motion.article
-            initial="from"
-            animate={intersecting ? "to" : "exit"}
-            variants={VFadeInOut({ delay: 0.415 + index * 0.08 })}
             key={_key}
+            {...animationProps(index)}
             className="space-y-5"
           >
             <SanityImg

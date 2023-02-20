@@ -1,5 +1,6 @@
 import { VFadeInOut } from "animations/fade-in-out";
 import { motion } from "framer-motion";
+import { useWindowSize } from "lib/hooks";
 
 interface TitleProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export const Title: React.FC<TitleProps> = ({
   animate,
   el = "h2",
 }) => {
+  const windowWidth = useWindowSize()?.width ?? 0;
   const props = {
     className: `${className} ${color === "green" && "text-teal"} ${
       color === "pink" && "text-mauve"
@@ -26,7 +28,7 @@ export const Title: React.FC<TitleProps> = ({
   };
   return (
     <>
-      {!!animate ? (
+      {!!animate && windowWidth >= 768 ? (
         <>
           {el === "h2" && (
             <motion.h2

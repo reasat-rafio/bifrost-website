@@ -1,5 +1,6 @@
 import { VFadeInOut } from "animations/fade-in-out";
 import { motion } from "framer-motion";
+import { useWindowSize } from "lib/hooks";
 import React, { ReactNode } from "react";
 
 interface HeadingProps {
@@ -22,6 +23,7 @@ export const Heading: React.FC<HeadingProps> = ({
   spacing = true,
   el = "h3",
 }) => {
+  const windowWidth = useWindowSize()?.width ?? 0;
   const props = {
     className: `${className} drop-shadow-md ${
       variant === "normal" &&
@@ -45,7 +47,7 @@ export const Heading: React.FC<HeadingProps> = ({
 
   return (
     <>
-      {!!animate ? (
+      {!!animate && windowWidth >= 768 ? (
         <>
           {el === "h2" && (
             <motion.h2 {...animationProps} {...props}>

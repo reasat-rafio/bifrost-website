@@ -20,9 +20,18 @@ const About: React.FC<AboutSectionProps> = ({
 }) => {
   const windowWidth = useWindowSize()?.width ?? 0;
   const sectionRef = useRef<HTMLElement>(null);
+  const isBigScreen = windowWidth >= 768;
   const intersecting = useIntersection(sectionRef, {
     threshold: 0.1,
   })?.isIntersecting;
+
+  const animationProps = isBigScreen
+    ? {
+        initial: "from",
+        animate: intersecting ? "to" : "from",
+        variants: VFadeInOut({ delay: 0.25 }),
+      }
+    : {};
 
   return (
     <Section
@@ -58,11 +67,7 @@ const About: React.FC<AboutSectionProps> = ({
         )}
 
         {!!ctaButton && (
-          <motion.div
-            initial="from"
-            animate={intersecting ? "to" : "from"}
-            variants={VFadeInOut({ delay: 0.25 })}
-          >
+          <motion.div {...animationProps}>
             <Button variant="outline" type="href" href={ctaButton.href}>
               {ctaButton.title}
             </Button>

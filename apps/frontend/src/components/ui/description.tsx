@@ -1,5 +1,6 @@
 import { VFadeInOut } from "animations/fade-in-out";
 import { motion } from "framer-motion";
+import { useWindowSize } from "lib/hooks";
 import React, { ReactNode } from "react";
 
 interface DescriptionProps {
@@ -20,6 +21,7 @@ export const Description: React.FC<DescriptionProps> = ({
   animate,
   type = "p",
 }) => {
+  const windowWidth = useWindowSize()?.width ?? 0;
   const props = {
     className: `${className} ${
       variant === "big"
@@ -40,7 +42,7 @@ export const Description: React.FC<DescriptionProps> = ({
     <>
       {type === "p" ? (
         <>
-          {!!animate ? (
+          {!!animate && windowWidth >= 768 ? (
             <motion.p {...animationProps} {...props}>
               {children as any}
             </motion.p>
@@ -50,7 +52,7 @@ export const Description: React.FC<DescriptionProps> = ({
         </>
       ) : type === "h5" ? (
         <>
-          {!!animate ? (
+          {!!animate && windowWidth >= 768 ? (
             <motion.h5 {...animationProps} {...props}>
               {children as any}
             </motion.h5>
@@ -60,7 +62,7 @@ export const Description: React.FC<DescriptionProps> = ({
         </>
       ) : (
         <>
-          {!!animate ? (
+          {!!animate && windowWidth >= 768 ? (
             <motion.div {...animationProps} {...props}>
               {children as any}
             </motion.div>
