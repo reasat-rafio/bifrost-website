@@ -4,10 +4,6 @@ import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
 import { Autoplay, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion } from "framer-motion";
-import { ScaleUpChild, ScaleUpParent } from "animations/scale-up";
-import { useRef } from "react";
-import { useIntersection } from "lib/hooks";
 import { Title } from "components/ui/title";
 import Link from "next/link";
 import "swiper/css";
@@ -16,18 +12,10 @@ import "swiper/css/mousewheel";
 import { Heading } from "components/ui/heading";
 
 const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
-  const containerRef = useRef(null);
-  const intersection = useIntersection(containerRef, { threshold: 0.3 });
   const windowWidth = useWindowSize()?.width ?? 0;
 
   return (
-    <motion.section
-      ref={containerRef}
-      initial="hidden"
-      animate={intersection?.isIntersecting ? "visible" : "hidden"}
-      variants={ScaleUpParent}
-      className="container mx-auto space-y-6 border-b border-secondary/80 py-20 font-light lg:py-32"
-    >
+    <section className="container mx-auto space-y-6 border-b border-secondary/80 py-20 font-light lg:py-32">
       <Title className="text-center leading-[2px]">{title}</Title>
       {!!subtitle && (
         <Heading variant="small" className="mx-auto max-w-5xl text-center">
@@ -76,7 +64,7 @@ const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
       >
         {clients.map(({ _key, name, url, logo }) => (
           <SwiperSlide className="my-auto" key={_key}>
-            <motion.div variants={ScaleUpChild}>
+            <div>
               {!!url ? (
                 <Link href={url}>
                   <a title={name ?? null}>
@@ -98,11 +86,11 @@ const Client: React.FC<ClientsSection> = ({ clients, title, subtitle }) => {
                   alt={logo.alt}
                 />
               )}
-            </motion.div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
-    </motion.section>
+    </section>
   );
 };
 

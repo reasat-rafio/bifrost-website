@@ -77,12 +77,7 @@ const Information: React.FC<InformationProps> = ({
             )}
           </div>
         </section>
-        <motion.figure
-          initial="from"
-          whileInView="to"
-          variants={VFadeInOut({ flip: true, delay: 0.2, duration: 0.8 })}
-          className="w-full flex-1 overflow-hidden rounded-primary"
-        >
+        <figure className="w-full flex-1 overflow-hidden rounded-primary">
           <SanityImg
             className="h-full max-h-[515px] w-full object-cover"
             image={image}
@@ -90,7 +85,7 @@ const Information: React.FC<InformationProps> = ({
             builder={imageUrlBuilder}
             width={imageWidth}
           />
-        </motion.figure>
+        </figure>
       </Section>
     </GradientBorder>
   );

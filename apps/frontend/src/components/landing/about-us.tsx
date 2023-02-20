@@ -7,7 +7,6 @@ import { useWindowSize } from "lib/hooks";
 import { SanityImage, SanityImg } from "sanity-react-extra";
 import { PortableText, imageUrlBuilder } from "utils/sanity";
 import { motion } from "framer-motion";
-import { VFadeInOut } from "animations/fade-in-out";
 
 interface AboutUsProps {
   type: string;
@@ -128,13 +127,9 @@ interface IImageBlock {
   index: number;
   windowWidth: number;
 }
-const ImageBlock: React.FC<IImageBlock> = ({ image, index, windowWidth }) => {
+const ImageBlock: React.FC<IImageBlock> = ({ image, windowWidth }) => {
   return (
-    <motion.figure
-      initial="from"
-      whileInView="to"
-      variants={VFadeInOut({ flip: !!(index % 2), duration: 0.8 })}
-    >
+    <motion.figure>
       <SanityImg
         className="h-full w-full rounded-primary object-cover"
         width={windowWidth >= 1280 ? 800 : windowWidth >= 640 ? 400 : 300}

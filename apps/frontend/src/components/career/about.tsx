@@ -29,12 +29,7 @@ const About: React.FC<AboutSectionProps> = ({
       ref={sectionRef}
       className="grid grid-cols-1 space-y-5 sm:space-y-10 md:grid-cols-2 md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32"
     >
-      <motion.figure
-        initial="from"
-        whileInView="to"
-        className="max-h-[520px]"
-        variants={VFadeInOut({ duration: 0.8 })}
-      >
+      <figure className="max-h-[520px]">
         <SanityImg
           className="h-full w-full rounded-primary object-cover"
           width={windowWidth >= 1280 ? 600 : windowWidth >= 640 ? 400 : 300}
@@ -42,7 +37,7 @@ const About: React.FC<AboutSectionProps> = ({
           builder={imageUrlBuilder}
           alt={image.alt}
         />
-      </motion.figure>
+      </figure>
 
       <section className="spacing_primary font-light">
         {!!title && (
