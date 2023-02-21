@@ -105,12 +105,12 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
             listItem: ({ children }: any) => {
               return (
                 <li className="">
-                  <div className="mb-5 flex items-center space-x-3">
+                  <div className="mb-5 flex space-x-3">
                     <span
                       style={{
                         transform: `matrix(0.69, 0.72, -0.69, 0.72, 0, 0)`,
                       }}
-                      className="h-3 w-3 rounded-[4px] bg-[#B794FF] sm:h-[15.18px] sm:w-[15.18px]"
+                      className="mt-[10px] h-3 w-3 rounded-[4px] bg-[#B794FF] sm:h-[15.18px] sm:w-[15.18px]"
                     />
                     <span className="flex-1">{children}</span>
                   </div>
