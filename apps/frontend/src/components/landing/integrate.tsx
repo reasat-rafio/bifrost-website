@@ -32,10 +32,10 @@ const Integrate: React.FC<IntegrateProps> = ({
       {!!showWave && <WaveScene play={intersecting} />}
       <div className="spacing_primary container relative z-20 mx-auto">
         <Title className="text-center">{title}</Title>
-        <Heading variant="small" className="text-center">
+        <h4 className="text-center text-2xl font-light !leading-[120%] !tracking-[2px] sm:text-3xl lg:text-[36px]">
           {subtitle}
-        </Heading>
-        <div className="!mt-8 text-center sm:!mt-12">
+        </h4>
+        <div className="!mt-8 text-center sm:!mt-14">
           <Button type="href" variant="secondary" href={ctaButton.href}>
             {ctaButton.title}
           </Button>
