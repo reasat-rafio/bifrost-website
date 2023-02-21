@@ -5,6 +5,7 @@ import React, {
   SetStateAction,
   useEffect,
   useState,
+  useCallback,
 } from "react";
 import { HomeSection } from "lib/@types/landing-types";
 import { imageUrlBuilder, PortableText } from "utils/sanity";
@@ -31,8 +32,9 @@ const Hero: React.FC<IHomeSection> = ({
     width: 0,
   };
   const sectionRef = useRef<HTMLElement>(null);
-  const lineRef = useRef<HTMLElement>(null);
-  const [headingFontSize, setHeadingFontSize] = useState(80);
+  const lineRef = useRef<HTMLHeadingElement>(null);
+  const [headingFontSize, setHeadingFontSize] = useState(92);
+  // const [activeFontSize, setActiveFontSize] = useState(92);
   const visibleScroll = useVisibleScroll(sectionRef);
   const ratio = visibleScroll
     ? Math.min(
@@ -48,7 +50,7 @@ const Hero: React.FC<IHomeSection> = ({
   const collapseWhiteSpace = (value: string) =>
     value.trim().replace(/\s+/g, " ");
 
-  const extractLinesFromTextNode = (textNode: ChildNode) => {
+  const extractLinesFromTextNode = useCallback((textNode: ChildNode) => {
     if (textNode.nodeType !== 3) {
       throw new Error("Lines can only be extracted from text nodes.");
     }
@@ -71,24 +73,72 @@ const Hero: React.FC<IHomeSection> = ({
     }
     lines = lines.map((characters) => collapseWhiteSpace(characters.join("")));
     return lines;
-  };
+  }, []);
 
-  useEffect(() => {
-    if (lineRef.current) {
-      const source = lineRef.current.firstChild;
-      const lines = extractLinesFromTextNode(source);
-      console.log(lines.length);
-      if (lines.length !== 1) {
-        setHeadingFontSize(headingFontSize - 5);
-      }
-    }
-  }, [lineRef, headingFontSize, windowWidth]);
+  // useEffect(() => {
+  //   let timeoutId: ReturnType<typeof setTimeout>;
+  //   function handleResize() {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(() => {
+  //       const el = lineRef.current;
+  //       const lineHeight = parseInt(getComputedStyle(el).lineHeight);
+  //       const maxHeight = lineHeight * 2; // change this to adjust the maximum height of the text
+  //       const currentHeight = el.offsetHeight;
+
+  //       if (currentHeight > maxHeight) {
+  //         let fontSize = parseInt(getComputedStyle(el).fontSize);
+  //         while (el.offsetHeight > maxHeight) {
+  //           fontSize--;
+  //           el.style.fontSize = `${fontSize}px`;
+  //         }
+  //       } else {
+  //         const windowWidth = window.innerWidth;
+  //         let fontSize =
+  //           windowWidth >= 1024
+  //             ? 92
+  //             : windowWidth >= 768
+  //             ? 80
+  //             : windowWidth >= 640
+  //             ? 55
+  //             : 42;
+  //         el.style.fontSize = `${fontSize}px`;
+  //       }
+  //     }, 100);
+  //   }
+
+  //   handleResize();
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   if (lineRef.current) {
+  //     const source = lineRef.current.firstChild;
+  //     const lines = extractLinesFromTextNode(source);
+  //     const activeFontSize =
+  // windowWidth >= 1024
+  //   ? 92
+  //   : windowWidth >= 768
+  //   ? 80
+  //   : windowWidth >= 640
+  //   ? 55
+  //   : 42;
+
+  //     if (lines.length !== 1) {
+  //       setHeadingFontSize(activeFontSize - 10);
+  //     } else setHeadingFontSize(activeFontSize);
+  //   }
+  // }, [lineRef, headingFontSize, windowWidth, setHeadingFontSize]);
 
   useEffect(() => {
     if (sectionRef?.current)
       setHeroSectionHeight(sectionRef.current.clientHeight);
   }, [windowWidth, sectionRef]);
-
+  console.log("====================================");
+  console.log({ headingFontSize });
+  console.log("====================================");
   return (
     <section
       ref={sectionRef}
@@ -101,6 +151,7 @@ const Hero: React.FC<IHomeSection> = ({
       <div className="container relative z-10 flex h-screen w-screen flex-col overflow-y-clip pt-24 lg:flex-row lg:pt-16">
         <section className="flex flex-1 flex-col justify-center space-y-5 sm:space-y-10">
           <h1
+            ref={lineRef}
             style={{ fontSize: headingFontSize }}
             className="font-light leading-none"
           >
@@ -110,10 +161,7 @@ const Hero: React.FC<IHomeSection> = ({
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span
-                      ref={lineRef}
-                      className="primary__gradient bg-clip-text text-transparent"
-                    >
+                    <span className="primary__gradient bg-clip-text text-transparent">
                       {children}
                     </span>
                   ),
