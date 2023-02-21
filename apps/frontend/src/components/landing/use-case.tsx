@@ -49,15 +49,19 @@ const UseCase: React.FC<UseCaseProps> = ({
           {useCases.map(({ _key, image, name, url }) => (
             <SwiperSlide
               key={_key}
-              className="group relative !h-[300px] !w-auto"
+              style={{
+                background:
+                  "linear-gradient(0deg, #29394A 12.21%, rgba(0, 0, 0, 0) 37.46%)",
+                backgroundBlendMode: "multiply, normal",
+              }}
+              className="group relative !h-[300px] !w-auto rounded-[10px]"
             >
-              <div className="absolute inset-0 rounded-primary opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
-
+              <div className="absolute inset-0 rounded-[10px] opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
               {!!url ? (
                 <Link href={url}>
                   <a>
                     <SanityImg
-                      className="rounded-primary object-cover"
+                      className="rounded-[10px] object-cover"
                       height={300}
                       builder={imageUrlBuilder}
                       image={image}
@@ -67,7 +71,7 @@ const UseCase: React.FC<UseCaseProps> = ({
                 </Link>
               ) : (
                 <SanityImg
-                  className="rounded-primary object-cover"
+                  className="rounded-[10px] object-cover"
                   height={300}
                   builder={imageUrlBuilder}
                   image={image}
