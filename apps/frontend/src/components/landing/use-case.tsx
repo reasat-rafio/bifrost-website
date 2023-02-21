@@ -29,7 +29,7 @@ const UseCase: React.FC<UseCaseProps> = ({
 }) => {
   return (
     <Section>
-      <div className="spacing_primary | font-light">
+      <div className="spacing_primary font-light">
         <Title>{title}</Title>
         <Heading>{heading}</Heading>
         <Description>{description}</Description>

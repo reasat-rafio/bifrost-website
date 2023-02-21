@@ -49,9 +49,9 @@ const Information: React.FC<InformationProps> = ({
         isContainer={false}
         borderBottom={false}
         padding={false}
-        className="flex flex-col-reverse pb-4 sm:pb-0 md:flex-row"
+        className="flex flex-col md:flex-row"
       >
-        <section className="mt-10 flex w-full flex-1 justify-center md:mt-0">
+        <section className="flex w-full flex-1 justify-center ">
           <div className="spacing_primary my-auto mr-auto h-fit w-full md:w-[85%]">
             <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
             <Heading animate={{ show: intersecting, delay: 0.15 }}>
@@ -64,22 +64,17 @@ const Information: React.FC<InformationProps> = ({
               {description}
             </Description>
             {!!cta && (
-              <motion.div
-                initial="from"
-                animate={intersecting ? "to" : "from"}
-                variants={VFadeInOut({ delay: 0.25 })}
-                className="pt-6"
-              >
+              <div className="sm:pt-6">
                 <Button type="href" variant="outline" href={cta.href}>
                   {cta.title}
                 </Button>
-              </motion.div>
+              </div>
             )}
           </div>
         </section>
-        <figure className="w-full flex-1 overflow-hidden rounded-primary">
+        <figure className="mt-[64px] w-full flex-1 overflow-hidden md:mt-0">
           <SanityImg
-            className="h-full max-h-[515px] w-full object-cover"
+            className="h-full max-h-[515px] w-full rounded-primary object-cover"
             image={image}
             alt={image.alt}
             builder={imageUrlBuilder}
