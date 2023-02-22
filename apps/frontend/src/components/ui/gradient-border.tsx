@@ -33,7 +33,7 @@ export const GradientBorder: React.FC<GradientBorderProps> = forwardRef(
         ref={ref as React.LegacyRef<HTMLDivElement>}
         className={clsx(
           "flex w-full items-center justify-center",
-          padding && "px-5 lg:px-8"
+          padding && "px-[2rem] lg:px-[4rem] xl:px-[6rem] 2xl:px-[11rem]"
         )}
       >
         <div
