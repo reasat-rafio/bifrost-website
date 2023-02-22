@@ -63,7 +63,12 @@ module.exports = {
         "head-1": "92px",
         "head-2": "80px",
         "head-3": "62px",
-        "head-4": "55px",
+        "head-4": [
+          "55px",
+          {
+            fontWeight: "200",
+          },
+        ],
         "head-md": "42px",
         "head-5": "26px",
         "head-6": "18px",
@@ -71,7 +76,12 @@ module.exports = {
         "body-2": "22px",
         "body-3": "16px",
         "p-1": "36px",
-        "p-2": "24px",
+        "p-2": [
+          "24px",
+          {
+            fontWeight: "200",
+          },
+        ],
         "p-3": "19px",
         "p-3-mobile": "16px",
         "head-1-mobile": "52px",
