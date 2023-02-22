@@ -130,6 +130,9 @@ const Hero: React.FC<IHomeSection> = ({
                   pop: ({ children }: any) => (
                     <span
                       ref={gradientSpanRef}
+                      style={{
+                        WebkitBoxDecorationBreak: "clone",
+                      }}
                       className="primary__gradient bg-clip-text text-transparent"
                     >
                       {children}

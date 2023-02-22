@@ -22,7 +22,12 @@ export default function Home({
                 serializers={{
                   marks: {
                     pop: ({ children }: any) => (
-                      <span className="primary__gradient bg-clip-text text-transparent">
+                      <span
+                        style={{
+                          WebkitBoxDecorationBreak: "clone",
+                        }}
+                        className="primary__gradient bg-clip-text text-transparent"
+                      >
                         {children}
                       </span>
                     ),
