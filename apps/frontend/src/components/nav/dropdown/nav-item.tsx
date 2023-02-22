@@ -123,7 +123,7 @@ const DirectionArrow: React.FC<{ active: boolean }> = ({ active }) => {
     >
       <path
         d="M20 1.88769L10 11.8877L-4.37114e-07 1.8877L1.775 0.112696L10 8.33769L18.225 0.112695L20 1.88769Z"
-        fill="#B37AF8"
+        fill="#70FCEB"
       />
     </motion.svg>
   );
