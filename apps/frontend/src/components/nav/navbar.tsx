@@ -145,7 +145,7 @@ export default function Navbar({
             initial={{ display: "flex" }}
             animate={{ display: smallNav ? "none" : "flex" }}
             transition={{ delay: smallNav ? 0.4 : 0 }}
-            className="| flex-1 items-center justify-center space-x-7 xl:space-x-10"
+            className="| flex-1 items-center justify-center space-x-7 xl:space-x-[60px]"
           >
             {menu
               .filter((men) => !men.highlight)
