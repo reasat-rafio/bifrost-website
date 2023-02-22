@@ -148,7 +148,7 @@ const Hero: React.FC<IHomeSection> = ({
             </Button>
           )}
         </section>
-        <figure className="flex lg:items-end">
+        <figure className="flex lg:items-center">
           <SanityImg
             loading="eager"
             className="mx-auto drop-shadow sm:w-[40vh]"
