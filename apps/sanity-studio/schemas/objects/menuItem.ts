@@ -52,8 +52,9 @@ export default {
               validation: (Rule: Rule) => Rule.required(),
             },
             {
-              name: 'ctaButton',
-              type: 'ctaButton',
+              name: 'url',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
           ],
           preview: {
