@@ -135,7 +135,7 @@ export default function Navbar({
                   height={120}
                   alt="Bifrost logo"
                   className={clsx(
-                    "h-full w-full cursor-pointer object-contain transition-all"
+                    "h-full w-fit cursor-pointer object-contain transition-all"
                   )}
                 />
               </a>
