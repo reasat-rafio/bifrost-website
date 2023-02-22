@@ -71,7 +71,7 @@ const SubMenuItems: React.FC<{
       transition={{ ease: "easeInOut" }}
     >
       <ul className="relative z-20 flex flex-col space-y-[14px] py-[25px]">
-        {dropdownList?.map(({ _key, description, image, title, ctaButton }) => (
+        {dropdownList?.map(({ _key, description, image, title, url }) => (
           <motion.li
             key={_key}
             initial={{ opacity: 0 }}
@@ -88,25 +88,19 @@ const SubMenuItems: React.FC<{
                 alt={title}
               />
             </figure>
-            <section className="flex flex-1 flex-col">
-              <h6 className="text-[14px] font-normal leading-none">{title}</h6>
-              <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
-                {description}
-              </span>
-              {!!ctaButton && (
-                <Link href={ctaButton?.href ?? "/"}>
-                  <a
-                    onClick={() => setShowNavDropDown(false)}
-                    className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]"
-                  >
-                    <span className="whitespace-pre-wrap text-[12px]">
-                      {ctaButton.title}
-                    </span>
-                    <ArrowICon />
-                  </a>
-                </Link>
-              )}
-            </section>
+            <Link href={url}>
+              <a
+                onClick={() => setShowNavDropDown(false)}
+                className="flex flex-1 flex-col"
+              >
+                <h6 className="text-[14px] font-normal leading-none">
+                  {title}
+                </h6>
+                <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
+                  {description}
+                </span>
+              </a>
+            </Link>
           </motion.li>
         ))}
       </ul>

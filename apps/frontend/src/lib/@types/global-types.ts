@@ -40,7 +40,7 @@ export interface DropdownListProps {
   image: SanityImage;
   title: string;
   description: string;
-  ctaButton?: CTAButton;
+  url: string;
 }
 
 export interface Social {

@@ -36,36 +36,34 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
             }}
             onMouseEnter={() => setInterseting(true)}
           >
-            <ul className="relative z-20 flex flex-col space-y-8">
-              {data?.map(({ _key, description, image, title, ctaButton }) => (
+            <ul className="relative z-20 flex flex-col space-y-4">
+              {data?.map(({ _key, description, image, title, url }) => (
                 <motion.li
                   key={_key}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4 }}
-                  className="flex space-x-5 "
                 >
-                  <figure className="col-span-2 flex items-start justify-start">
-                    <SanityImg
-                      className="h-[24px] w-[24px] object-contain"
-                      width={30}
-                      image={image}
-                      builder={imageUrlBuilder}
-                      alt={title}
-                    />
-                  </figure>
-                  <section className="flex flex-1 flex-col space-y-2">
-                    <h6 className="text-body-3 uppercase">{title}</h6>
-                    <span className="text-[#B6BEE8]">{description}</span>
-                    {!!ctaButton && (
-                      <Link href={ctaButton?.href ?? "/"}>
-                        <a className="flex space-x-3 overflow-hidden text-[#B37AF8]">
-                          <span className="text-[14px]">{ctaButton.title}</span>
-                          <ArrowICon />
-                        </a>
-                      </Link>
-                    )}
-                  </section>
+                  <Link href={url} passHref>
+                    <motion.a
+                      whileHover={{ backgroundColor: "#1A1E20" }}
+                      className="flex space-x-5 rounded-[8px] p-[14px]"
+                    >
+                      <figure className="col-span-2 flex items-start justify-start">
+                        <SanityImg
+                          className="h-[24px] w-[24px] object-contain"
+                          width={30}
+                          image={image}
+                          builder={imageUrlBuilder}
+                          alt={title}
+                        />
+                      </figure>
+                      <section className="flex flex-1 flex-col space-y-2">
+                        <h6 className="text-body-3 uppercase">{title}</h6>
+                        <span className="text-[#B6BEE8]">{description}</span>
+                      </section>
+                    </motion.a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -109,24 +107,24 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
 //   );
 // };
 
-export const ArrowICon: React.FC<{}> = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="h-6 w-6"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-      />
-    </svg>
-  );
-};
+// export const ArrowICon: React.FC<{}> = () => {
+//   return (
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       fill="none"
+//       viewBox="0 0 24 24"
+//       strokeWidth={1.5}
+//       stroke="currentColor"
+//       className="h-6 w-6"
+//     >
+//       <path
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//         d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+//       />
+//     </svg>
+//   );
+// };
 
 export const Pointer: React.FC<{}> = () => {
   const { setInterseting } = useMegamenuDropownStore();
