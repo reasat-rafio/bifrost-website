@@ -146,7 +146,7 @@ export default function Enterprise({
               {item.headline}
             </h5>
             {!!item?.subtitle && (
-              <h6 className="| text-[22px] font-light leading-none md:text-p-2 xl:text-[30px]">
+              <h6 className="text-[22px] font-light leading-none md:text-p-2 xl:text-[30px]">
                 {item.subtitle}
               </h6>
             )}

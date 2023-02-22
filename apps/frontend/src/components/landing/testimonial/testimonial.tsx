@@ -32,7 +32,7 @@ export const Testimonial: React.FC<ITestimonial> = ({
       <div className="flex-1">
         <blockquote
           ref={blockquoteRef}
-          className="text-base font-light sm:text-xl lg:text-2xl xl:text-p-2"
+          className="text-base font-[200] sm:text-xl lg:text-2xl xl:text-p-2"
         >
           “{truncate(testimony, 300)}”
         </blockquote>

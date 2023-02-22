@@ -97,7 +97,7 @@ const SubMenuItems: React.FC<{
                   {title}
                 </h6>
                 {!!description && (
-                  <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
+                  <span className="mt-[6px] text-[14px] font-[200] leading-[20px] tracking-[0px] text-white">
                     {description}
                   </span>
                 )}
