@@ -54,7 +54,7 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
           <div className="">
             <motion.ul
               layout
-              className="flex flex-col justify-center divide-y divide-[#8B52FF]/40 border-b border-[#8B52FF]/40"
+              className="flex flex-col justify-center divide-y divide-secondary/40 border-b border-secondary/40"
             >
               {menu
                 .filter((men) => !men.highlight)
@@ -71,6 +71,8 @@ const Dropdown: React.FC<NavbarDropdownProps> = ({ menu, darkBg }) => {
               <div className="container block w-full px-[16px] py-[25px]">
                 <Button
                   type="href"
+                  color="green"
+                  variant="secondary"
                   href={highlightBtn.pageUrl || highlightBtn.externalUrl}
                 >
                   {highlightBtn?.title}

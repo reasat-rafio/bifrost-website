@@ -89,9 +89,7 @@ const SubMenuItems: React.FC<{
               />
             </figure>
             <section className="flex flex-1 flex-col">
-              <h6 className="text-[14px] font-normal uppercase leading-none">
-                {title}
-              </h6>
+              <h6 className="text-[14px] font-normal leading-none">{title}</h6>
               <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
                 {description}
               </span>
@@ -101,10 +99,6 @@ const SubMenuItems: React.FC<{
                     onClick={() => setShowNavDropDown(false)}
                     className="flex items-center space-x-3 overflow-hidden leading-none text-[#B37AF8]"
                   >
-                    {/* <AnimatedText
-                      className="text-[12px]"
-                      text={ctaButton.title}
-                    /> */}
                     <span className="whitespace-pre-wrap text-[12px]">
                       {ctaButton.title}
                     </span>

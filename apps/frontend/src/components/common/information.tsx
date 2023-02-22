@@ -10,8 +10,6 @@ import { Heading } from "components/ui/heading";
 import { Description } from "components/ui/description";
 import { GradientBorder } from "components/ui/gradient-border";
 import { Section } from "components/ui/section";
-import { motion } from "framer-motion";
-import { VFadeInOut } from "animations/fade-in-out";
 
 interface InformationProps {
   type: string;
