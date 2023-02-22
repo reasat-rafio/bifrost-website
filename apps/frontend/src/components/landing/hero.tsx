@@ -33,7 +33,7 @@ const Hero: React.FC<IHomeSection> = ({
   };
   const sectionRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLHeadingElement>(null);
-  const [headingFontSize, setHeadingFontSize] = useState(92);
+  const [headingFontSize, _] = useState(92);
   // const [activeFontSize, setActiveFontSize] = useState(92);
   const visibleScroll = useVisibleScroll(sectionRef);
   const ratio = visibleScroll
@@ -47,33 +47,33 @@ const Hero: React.FC<IHomeSection> = ({
       )
     : 0;
 
-  const collapseWhiteSpace = (value: string) =>
-    value.trim().replace(/\s+/g, " ");
+  // const collapseWhiteSpace = (value: string) =>
+  //   value.trim().replace(/\s+/g, " ");
 
-  const extractLinesFromTextNode = useCallback((textNode: ChildNode) => {
-    if (textNode.nodeType !== 3) {
-      throw new Error("Lines can only be extracted from text nodes.");
-    }
+  // const extractLinesFromTextNode = useCallback((textNode: ChildNode) => {
+  //   if (textNode.nodeType !== 3) {
+  //     throw new Error("Lines can only be extracted from text nodes.");
+  //   }
 
-    textNode.textContent = collapseWhiteSpace(textNode.textContent);
-    const textContent = textNode.textContent;
-    const range = document.createRange();
-    let lines = [];
-    let lineCharacters = [];
+  //   textNode.textContent = collapseWhiteSpace(textNode.textContent);
+  //   const textContent = textNode.textContent;
+  //   const range = document.createRange();
+  //   let lines = [];
+  //   let lineCharacters = [];
 
-    for (let i = 0; i < textContent.length; i++) {
-      range.setStart(textNode, 0);
-      range.setEnd(textNode, i + 1);
-      let lineIndex = range.getClientRects().length - 1;
-      if (!lines[lineIndex]) {
-        lines.push((lineCharacters = []));
-      }
+  //   for (let i = 0; i < textContent.length; i++) {
+  //     range.setStart(textNode, 0);
+  //     range.setEnd(textNode, i + 1);
+  //     let lineIndex = range.getClientRects().length - 1;
+  //     if (!lines[lineIndex]) {
+  //       lines.push((lineCharacters = []));
+  //     }
 
-      lineCharacters.push(textContent.charAt(i));
-    }
-    lines = lines.map((characters) => collapseWhiteSpace(characters.join("")));
-    return lines;
-  }, []);
+  //     lineCharacters.push(textContent.charAt(i));
+  //   }
+  //   lines = lines.map((characters) => collapseWhiteSpace(characters.join("")));
+  //   return lines;
+  // }, []);
 
   // useEffect(() => {
   //   let timeoutId: ReturnType<typeof setTimeout>;
@@ -136,9 +136,7 @@ const Hero: React.FC<IHomeSection> = ({
     if (sectionRef?.current)
       setHeroSectionHeight(sectionRef.current.clientHeight);
   }, [windowWidth, sectionRef]);
-  console.log("====================================");
-  console.log({ headingFontSize });
-  console.log("====================================");
+
   return (
     <section
       ref={sectionRef}
