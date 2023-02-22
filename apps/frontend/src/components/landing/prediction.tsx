@@ -27,7 +27,7 @@ const Prediction: React.FC<PredictionProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="section_pading relative  z-20 overflow-clip"
+      className="section_pading relative  z-20 overflow-hidden"
     >
       {!!showWave && <WaveScene play={intersecting} />}
       <div className="spacing_primary container relative z-20 mx-auto font-light">
