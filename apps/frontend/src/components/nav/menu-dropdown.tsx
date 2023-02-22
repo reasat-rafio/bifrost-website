@@ -58,9 +58,11 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
                           alt={title}
                         />
                       </figure>
-                      <section className="flex flex-1 flex-col space-y-2">
+                      <section className="flex flex-1 flex-col space-y-[10px]">
                         <h6 className="text-body-3">{title}</h6>
-                        <span className="text-[#B6BEE8]">{description}</span>
+                        {!!description && (
+                          <span className="text-[#B6BEE8]">{description}</span>
+                        )}
                       </section>
                     </motion.a>
                   </Link>

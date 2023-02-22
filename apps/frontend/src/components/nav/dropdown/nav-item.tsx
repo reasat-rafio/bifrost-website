@@ -91,14 +91,16 @@ const SubMenuItems: React.FC<{
             <Link href={url}>
               <a
                 onClick={() => setShowNavDropDown(false)}
-                className="flex flex-1 flex-col"
+                className="flex flex-1 flex-col "
               >
                 <h6 className="text-[14px] font-normal leading-none">
                   {title}
                 </h6>
-                <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
-                  {description}
-                </span>
+                {!!description && (
+                  <span className="mt-[6px] text-[12px] font-light text-[#B6BEE8]">
+                    {description}
+                  </span>
+                )}
               </a>
             </Link>
           </motion.li>

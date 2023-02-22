@@ -39,7 +39,7 @@ export interface DropdownListProps {
   _key: string;
   image: SanityImage;
   title: string;
-  description: string;
+  description?: string;
   url: string;
 }
 

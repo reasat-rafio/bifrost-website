@@ -49,7 +49,6 @@ export default {
             {
               name: 'description',
               type: 'text',
-              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'url',
