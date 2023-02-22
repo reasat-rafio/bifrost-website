@@ -1,3 +1,8 @@
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+import "core-js/stable";
+import "intersection-observer";
+
 import dynamic from "next/dynamic";
 import "@styles/global.scss";
 import Footer from "components/footer/footer";
@@ -7,6 +12,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { imageUrlBuilder } from "utils/sanity";
 import type { NavbarDropdownProps } from "components/nav/dropdown/dropdown";
+
 const NavbarDropdown = dynamic<NavbarDropdownProps>(
   () => import("components/nav/dropdown/dropdown"),
   { ssr: false }
