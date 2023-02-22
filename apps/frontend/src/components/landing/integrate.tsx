@@ -1,6 +1,5 @@
 import { WaveScene } from "components/common/wave-scene";
 import { Button } from "components/ui/button";
-import { Heading } from "components/ui/heading";
 import { Title } from "components/ui/title";
 import { CTAButton } from "lib/@types/global-types";
 import { useIntersection } from "lib/hooks";

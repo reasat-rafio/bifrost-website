@@ -90,32 +90,10 @@ const Hero: React.FC<IHomeSection> = ({
   }, [windowWidth, sectionRef]);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (windowWidth >= 1280) {
-        setFontSize(92);
-      } else if (windowWidth >= 1024) {
-        setFontSize(80);
-      } else if (windowWidth >= 640) {
-        setFontSize(62);
-      } else if (windowWidth > 280) {
-        setFontSize(42);
-      } else {
-        setFontSize(30);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
     let intervalId: number;
     const myLoop = () => {
       if (lines > 1) {
-        setFontSize(Math.min(fontSize - 15, 32));
+        setFontSize(Math.min(fontSize - 15, 30));
         intervalId = window.setTimeout(myLoop, 1);
       } else {
         setFontSize(Math.min(fontSize + 5, 92));

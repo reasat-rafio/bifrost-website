@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { SanityImg } from "sanity-react-extra";
 import { imageUrlBuilder } from "utils/sanity";
-import { ArrowICon, Pointer } from "../menu-dropdown";
+import { Pointer } from "../menu-dropdown";
 import useGlobalStore from "store/global.store";
 
 interface NavItemProps extends MenuItem {
