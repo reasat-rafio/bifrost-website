@@ -132,11 +132,9 @@ export default function Navbar({
                 <SanityImg
                   builder={imageUrlBuilder}
                   image={logo}
-                  height={120}
+                  height={windowWidth >= 640 ? 120 : 40}
                   alt="Bifrost logo"
-                  className={clsx(
-                    "h-full w-fit cursor-pointer object-contain transition-all"
-                  )}
+                  className={clsx("h-full w-fit cursor-pointer object-contain")}
                 />
               </a>
             </Link>
