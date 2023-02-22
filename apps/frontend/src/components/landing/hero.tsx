@@ -32,9 +32,10 @@ const Hero: React.FC<IHomeSection> = ({
     width: 0,
   };
   const sectionRef = useRef<HTMLElement>(null);
-  const lineRef = useRef<HTMLHeadingElement>(null);
-  const [headingFontSize, _] = useState(92);
-  // const [activeFontSize, setActiveFontSize] = useState(92);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const gradientSpanRef = useRef<HTMLElement>(null);
+  const [fontSize, setFontSize] = useState(92);
+  const [lines, setLines] = useState(1);
   const visibleScroll = useVisibleScroll(sectionRef);
   const ratio = visibleScroll
     ? Math.min(
@@ -47,95 +48,83 @@ const Hero: React.FC<IHomeSection> = ({
       )
     : 0;
 
-  // const collapseWhiteSpace = (value: string) =>
-  //   value.trim().replace(/\s+/g, " ");
+  const collapseWhiteSpace = (value: string) =>
+    value.trim().replace(/\s+/g, " ");
 
-  // const extractLinesFromTextNode = useCallback((textNode: ChildNode) => {
-  //   if (textNode.nodeType !== 3) {
-  //     throw new Error("Lines can only be extracted from text nodes.");
-  //   }
+  const extractLinesFromTextNode = useCallback((textNode: ChildNode) => {
+    if (textNode.nodeType !== 3) {
+      throw new Error("Lines can only be extracted from text nodes.");
+    }
 
-  //   textNode.textContent = collapseWhiteSpace(textNode.textContent);
-  //   const textContent = textNode.textContent;
-  //   const range = document.createRange();
-  //   let lines = [];
-  //   let lineCharacters = [];
+    textNode.textContent = collapseWhiteSpace(textNode.textContent);
+    const textContent = textNode.textContent;
+    const range = document.createRange();
+    let lines = [];
+    let lineCharacters = [];
 
-  //   for (let i = 0; i < textContent.length; i++) {
-  //     range.setStart(textNode, 0);
-  //     range.setEnd(textNode, i + 1);
-  //     let lineIndex = range.getClientRects().length - 1;
-  //     if (!lines[lineIndex]) {
-  //       lines.push((lineCharacters = []));
-  //     }
+    for (let i = 0; i < textContent.length; i++) {
+      range.setStart(textNode, 0);
+      range.setEnd(textNode, i + 1);
+      let lineIndex = range.getClientRects().length - 1;
+      if (!lines[lineIndex]) {
+        lines.push((lineCharacters = []));
+      }
 
-  //     lineCharacters.push(textContent.charAt(i));
-  //   }
-  //   lines = lines.map((characters) => collapseWhiteSpace(characters.join("")));
-  //   return lines;
-  // }, []);
+      lineCharacters.push(textContent.charAt(i));
+    }
+    lines = lines.map((characters) => collapseWhiteSpace(characters.join("")));
+    return lines;
+  }, []);
 
-  // useEffect(() => {
-  //   let timeoutId: ReturnType<typeof setTimeout>;
-  //   function handleResize() {
-  //     clearTimeout(timeoutId);
-  //     timeoutId = setTimeout(() => {
-  //       const el = lineRef.current;
-  //       const lineHeight = parseInt(getComputedStyle(el).lineHeight);
-  //       const maxHeight = lineHeight * 2; // change this to adjust the maximum height of the text
-  //       const currentHeight = el.offsetHeight;
-
-  //       if (currentHeight > maxHeight) {
-  //         let fontSize = parseInt(getComputedStyle(el).fontSize);
-  //         while (el.offsetHeight > maxHeight) {
-  //           fontSize--;
-  //           el.style.fontSize = `${fontSize}px`;
-  //         }
-  //       } else {
-  //         const windowWidth = window.innerWidth;
-  //         let fontSize =
-  //           windowWidth >= 1024
-  //             ? 92
-  //             : windowWidth >= 768
-  //             ? 80
-  //             : windowWidth >= 640
-  //             ? 55
-  //             : 42;
-  //         el.style.fontSize = `${fontSize}px`;
-  //       }
-  //     }, 100);
-  //   }
-
-  //   handleResize();
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (lineRef.current) {
-  //     const source = lineRef.current.firstChild;
-  //     const lines = extractLinesFromTextNode(source);
-  //     const activeFontSize =
-  // windowWidth >= 1024
-  //   ? 92
-  //   : windowWidth >= 768
-  //   ? 80
-  //   : windowWidth >= 640
-  //   ? 55
-  //   : 42;
-
-  //     if (lines.length !== 1) {
-  //       setHeadingFontSize(activeFontSize - 10);
-  //     } else setHeadingFontSize(activeFontSize);
-  //   }
-  // }, [lineRef, headingFontSize, windowWidth, setHeadingFontSize]);
+  useEffect(() => {
+    if (gradientSpanRef.current) {
+      const source = gradientSpanRef.current.firstChild;
+      const lines = extractLinesFromTextNode(source);
+      setLines(lines.length);
+    }
+  }, [gradientSpanRef, windowWidth, setLines, fontSize]);
 
   useEffect(() => {
     if (sectionRef?.current)
       setHeroSectionHeight(sectionRef.current.clientHeight);
   }, [windowWidth, sectionRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (windowWidth >= 1280) {
+        setFontSize(92);
+      } else if (windowWidth >= 1024) {
+        setFontSize(80);
+      } else if (windowWidth >= 640) {
+        setFontSize(62);
+      } else if (windowWidth > 280) {
+        setFontSize(42);
+      } else {
+        setFontSize(30);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    let intervalId: number;
+    const myLoop = () => {
+      if (lines > 1) {
+        setFontSize(Math.min(fontSize - 15, 32));
+        intervalId = window.setTimeout(myLoop, 1);
+      } else {
+        setFontSize(Math.min(fontSize + 5, 92));
+        intervalId = window.setTimeout(myLoop, 1);
+      }
+    };
+    myLoop();
+    return () => window.clearTimeout(intervalId);
+  }, [windowWidth, setFontSize, lines]);
 
   return (
     <section
@@ -146,20 +135,25 @@ const Hero: React.FC<IHomeSection> = ({
       <WaveScene play={ratio < 0.7} />
       <OnScrollBackdropEffect ratio={ratio} />
 
-      <div className="container relative z-10 flex h-screen w-screen flex-col overflow-y-clip pt-24 lg:flex-row lg:pt-16">
+      <div className="container relative z-10 flex h-screen w-screen flex-col overflow-y-clip pt-24 lg:flex-row lg:space-x-5 lg:pt-16">
         <section className="flex flex-1 flex-col justify-center space-y-5 sm:space-y-10">
           <h1
-            ref={lineRef}
-            style={{ fontSize: headingFontSize }}
+            ref={headingRef}
+            style={{ fontSize: fontSize }}
             className="font-light leading-none"
           >
-            {/* <h1 className="text-head-md font-light leading-none sm:text-head-4 md:text-head-2 lg:text-head-1"> */}
+            {/* <h1
+            className="text-head-md font-light leading-none sm:text-head-4 md:text-head-2 lg:text-head-1"
+          > */}
             <PortableText
               blocks={title}
               serializers={{
                 marks: {
                   pop: ({ children }: any) => (
-                    <span className="primary__gradient bg-clip-text text-transparent">
+                    <span
+                      ref={gradientSpanRef}
+                      className="primary__gradient bg-clip-text text-transparent"
+                    >
                       {children}
                     </span>
                   ),
@@ -179,7 +173,7 @@ const Hero: React.FC<IHomeSection> = ({
         <figure className="flex lg:items-end">
           <SanityImg
             loading="eager"
-            className="mx-auto drop-shadow sm:w-[50vh]"
+            className="mx-auto drop-shadow sm:w-[40vh]"
             builder={imageUrlBuilder}
             width={windowWidth >= 1024 ? 600 : windowWidth >= 640 ? 350 : 250}
             image={image}
@@ -200,3 +194,121 @@ const Hero: React.FC<IHomeSection> = ({
 };
 
 export default Hero;
+
+/* 
+
+ const { height: windowHeight, width: windowWidth } = useWindowSize() ?? {
+    height: 0,
+    width: 0,
+  };
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLHeadingElement>(null);
+  const gradientSpanRef = useRef<HTMLElement>(null);
+  const [fontSize, setFontSize] = useState(92);
+  const visibleScroll = useVisibleScroll(sectionRef);
+  const [hasLineBreak, setHasLineBreak] = useState(false);
+  console.log("====================================");
+  console.log({ hasLineBreak });
+  console.log("====================================");
+  const ratio = visibleScroll
+    ? Math.min(
+        1,
+        Math.max(
+          0,
+          (visibleScroll.y - visibleScroll.offsetBoundingRect.top) /
+            windowHeight
+        )
+      )
+    : 0;
+
+  useEffect(() => {
+    if (sectionRef?.current)
+      setHeroSectionHeight(sectionRef.current.clientHeight);
+  }, [windowWidth, sectionRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth >= 1280) {
+        setFontSize(92);
+      }
+      // else if (screenWidth >= 1024) {
+      //   setFontSize(80);
+      // } else if (screenWidth >= 640) {
+      //   setFontSize(62);
+      // } else if (screenWidth > 280) {
+      //   setFontSize(42);
+      // } else {
+      //   setFontSize(30);
+      // }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function detectLineBreaks(element: HTMLElement) {
+    const rects = element.getClientRects();
+    let lastBottom = 0;
+    let lineBreaks = 0;
+    for (let i = 0; i < rects.length; i++) {
+      const rect = rects[i];
+      if (rect.bottom > lastBottom) {
+        lastBottom = rect.bottom;
+      } else {
+        lineBreaks++;
+      }
+    }
+    return lineBreaks;
+  }
+
+  useEffect(() => {
+    const header = headerRef?.current;
+    if (header) {
+      const headerWidth = header.offsetWidth;
+      const gradientSpan = gradientSpanRef?.current;
+      if (gradientSpan) {
+        const gradientSpanWidth = gradientSpan.getBoundingClientRect().width;
+        const headerFontSize = parseFloat(
+          window.getComputedStyle(header).getPropertyValue("font-size")
+        );
+        const lineBreaks = detectLineBreaks(gradientSpan);
+
+        if (gradientSpanWidth > headerWidth) {
+          let newFontSize = headerFontSize;
+          while (gradientSpanWidth > headerWidth && newFontSize > 1) {
+            newFontSize -= 1;
+            header.style.fontSize = `${newFontSize}px`;
+          }
+        }
+      }
+    }
+  }, [fontSize, headerRef, gradientSpanRef]);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      const div = gradientSpanRef.current;
+      console.log("====================================");
+      console.log(
+        gradientSpanRef.current.getBoundingClientRect().width,
+        gradientSpanRef.current.scrollHeight
+      );
+      console.log("====================================");
+      if (div && div.clientHeight < div.scrollHeight) {
+        setHasLineBreak(true);
+      } else {
+        setHasLineBreak(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+*/
