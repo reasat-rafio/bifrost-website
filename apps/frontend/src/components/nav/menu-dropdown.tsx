@@ -36,7 +36,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({}) => {
             }}
             onMouseEnter={() => setInterseting(true)}
           >
-            <ul className="relative z-20 flex flex-col space-y-4">
+            <ul className="relative z-20 flex max-h-[60vh] flex-col space-y-4 overflow-y-auto scrollbar-thin scrollbar-thumb-secondary">
               {data?.map(({ _key, description, image, title, url }) => (
                 <motion.li
                   key={_key}
