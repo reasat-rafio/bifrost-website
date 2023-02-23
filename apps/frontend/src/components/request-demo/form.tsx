@@ -28,27 +28,22 @@ export const Form: React.FC<FormProps> = ({ className }) => {
   );
 
   const onSubmit: SubmitHandler<IRequsetADemoSchema> = async ({
-    company_name,
+    company_name: company,
     first_name,
-    // job_description,
-    // job_title,
+    description,
     last_name,
     email,
+    contact_number,
   }) => {
     try {
       setFormState("submitting");
       const response = await axios.post("/api/request-demo", {
-        oid: "00D6S000001MkMU",
-        retURL: "https://bifrost.ai/thank-you",
         first_name,
         last_name,
-        email: email,
-        company: company_name,
-        city: "",
-        state: "",
-        // TODO debugging values. remove later
-        debug: "1",
-        debugEmail: "rafio@otterdev.io",
+        email,
+        company,
+        contact_number,
+        description,
       });
 
       console.log({ response });
