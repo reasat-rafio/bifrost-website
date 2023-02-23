@@ -45,7 +45,10 @@ const Contact: React.FC<ContactProps> = ({
           />
         </div>
         {!!description && (
-          <Description variant="big" className="mx-auto max-w-3xl text-center">
+          <Description
+            variant="big"
+            className="mx-auto max-w-3xl text-center font-extralight"
+          >
             {description}
           </Description>
         )}

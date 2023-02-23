@@ -31,7 +31,7 @@ const Integrate: React.FC<IntegrateProps> = ({
       {!!showWave && <WaveScene play={intersecting} />}
       <div className="spacing_primary container relative z-20 mx-auto">
         <Title className="text-center">{title}</Title>
-        <h4 className="text-center text-2xl font-light !leading-[120%] !tracking-[2px] text-ghost-white sm:text-3xl lg:text-[36px]">
+        <h4 className="text-center text-2xl font-extralight !leading-[120%] !tracking-[2px] text-ghost-white sm:text-3xl lg:text-[36px]">
           {subtitle}
         </h4>
         <div className="!mt-8 text-center sm:!mt-14">
