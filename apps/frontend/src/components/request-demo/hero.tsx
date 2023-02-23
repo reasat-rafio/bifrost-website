@@ -38,14 +38,17 @@ const Hero: React.FC<IHomeSection> = ({ subtitle, title }) => {
   return (
     <section className="relative w-full !overflow-hidden" ref={sectionRef}>
       <BackgroundNoise />
-      <WaveScene play={ratio < 0.7} />
+      <WaveScene
+        className="translate-y-[40%] md:translate-y-[35%]"
+        play={ratio < 0.7}
+      />
 
       <div
         style={{
           marginTop: navbarHeight,
           minHeight: `calc(100vh - ${navbarHeight}px)`,
         }}
-        className="container relative z-20 flex items-center justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
+        className="container relative z-20 flex items-start justify-center overflow-y-clip py-[20%] lg:space-x-5 lg:py-[5%]"
       >
         <SectionSummary subtitle={subtitle} title={title} />
         <Form className=" hidden flex-1 lg:block" />
