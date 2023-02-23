@@ -34,6 +34,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
                         description={description}
                         heading={heading}
                         title={title}
+                        index={index}
                       />
                       <ImageBlock
                         windowWidth={windowWidth}
@@ -51,6 +52,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
                       <DescriptionBlock
                         description={description}
                         heading={heading}
+                        index={index}
                         title={title}
                       />
                     </>
@@ -66,6 +68,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
                   <DescriptionBlock
                     description={description}
                     heading={heading}
+                    index={index}
                     title={title}
                   />
                 </>
@@ -82,18 +85,27 @@ interface IDescriptionBlock {
   title?: string;
   heading: string;
   description: any;
+  index: number;
 }
 const DescriptionBlock: React.FC<IDescriptionBlock> = ({
   title,
   description,
   heading,
+  index,
 }) => {
   return (
     <section className="spacing_primary flex-1 font-light">
       {!!title && <Title el="h3">{title}</Title>}
-      <Heading variant="small" el="h2">
-        {heading}
-      </Heading>
+      {index === 0 ? (
+        <Heading className="text-[#FCF9FF]" el="h2">
+          {heading}
+        </Heading>
+      ) : (
+        <Heading className="text-[#FCF9FF]" variant="small" el="h3">
+          {heading}
+        </Heading>
+      )}
+
       <Description
         type="div"
         variant="small"

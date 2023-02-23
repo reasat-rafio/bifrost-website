@@ -17,7 +17,7 @@ interface HeadingProps {
 
 export const Heading: React.FC<HeadingProps> = ({
   children,
-  className,
+  className = "",
   animate,
   variant = "normal",
   spacing = true,
