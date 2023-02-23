@@ -24,7 +24,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ collection }) => {
           ({ _key, description, heading, image, title }, index) => (
             <article
               key={_key}
-              className="col-span-1 grid gap-10 lg:grid-cols-2 lg:gap-20"
+              className="flex flex-col-reverse gap-10 lg:flex-row lg:gap-20"
             >
               {LgScreen ? (
                 <>
@@ -89,7 +89,7 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
   heading,
 }) => {
   return (
-    <section className="spacing_primary | font-light">
+    <section className="spacing_primary flex-1 font-light">
       {!!title && <Title el="h3">{title}</Title>}
       <Heading variant="small" el="h2">
         {heading}
@@ -131,7 +131,7 @@ interface IImageBlock {
 }
 const ImageBlock: React.FC<IImageBlock> = ({ image, windowWidth }) => {
   return (
-    <motion.figure>
+    <motion.figure className="flex-1">
       <SanityImg
         className="h-full w-full rounded-primary object-cover"
         width={windowWidth >= 1280 ? 900 : windowWidth >= 640 ? 500 : 300}

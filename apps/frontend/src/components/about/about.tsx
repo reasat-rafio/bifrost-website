@@ -36,9 +36,9 @@ const About: React.FC<AboutSectionProps> = ({
   return (
     <Section
       ref={sectionRef}
-      className="grid grid-cols-1 space-y-5 sm:space-y-10 md:grid-cols-2 md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32"
+      className="flex flex-col-reverse space-y-5 sm:space-y-10  md:flex-row md:gap-14 md:space-y-0 lg:gap-20 xl:gap-32"
     >
-      <figure className="max-h-[520px]">
+      <figure className="mt-12 max-h-[520px] flex-1 md:mt-0">
         <SanityImg
           className="h-full w-full rounded-primary object-cover"
           width={windowWidth >= 1280 ? 600 : windowWidth >= 640 ? 400 : 300}
@@ -48,7 +48,7 @@ const About: React.FC<AboutSectionProps> = ({
         />
       </figure>
 
-      <section className="spacing_primary font-light">
+      <section className="spacing_primary flex-1 font-light">
         {!!title && (
           <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
         )}

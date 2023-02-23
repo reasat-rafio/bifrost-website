@@ -24,19 +24,23 @@ const Info: React.FC<InfoProps> = ({ description, image, title, heading }) => {
     [windowWidth]
   );
   return (
-    <Section className="spacing_primary font-light">
-      <figure className="">
-        <SanityImg
-          className="h-full max-h-[460px] w-full rounded-primary object-cover"
-          image={image}
-          alt={image.alt}
-          builder={imageUrlBuilder}
-          width={imageWidth}
-        />
-      </figure>
-      {!!title && <Title>{title}</Title>}
-      {!!heading && <Heading>{heading}</Heading>}
-      {!!description && <Description>{description}</Description>}
+    <Section>
+      <article className="spacing_primary flex flex-col-reverse font-light md:flex-col">
+        <figure className="mt-8 md:mt-0">
+          <SanityImg
+            className="h-full max-h-[460px] w-full rounded-primary object-cover"
+            image={image}
+            alt={image.alt}
+            builder={imageUrlBuilder}
+            width={imageWidth}
+          />
+        </figure>
+        <section className="spacing_primary">
+          {!!title && <Title>{title}</Title>}
+          {!!heading && <Heading>{heading}</Heading>}
+          {!!description && <Description>{description}</Description>}
+        </section>
+      </article>
     </Section>
   );
 };
