@@ -46,46 +46,52 @@ const UseCase: React.FC<UseCaseProps> = ({
           slidesPerView={"auto"}
           spaceBetween={30}
         >
-          {useCases.map(({ _key, image, name, url }) => (
+          {useCases.map((usecase) => (
             <SwiperSlide
-              key={_key}
-              style={{
-                background:
-                  "linear-gradient(0deg, #29394A 12.21%, rgba(0, 0, 0, 0) 37.46%)",
-                backgroundBlendMode: "multiply, normal",
-              }}
+              key={usecase._key}
               className="group relative !h-[300px] !w-auto rounded-[10px]"
             >
-              <div className="absolute inset-0 rounded-[10px] opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
-              {!!url ? (
-                <Link href={url}>
+              {!!usecase?.url ? (
+                <Link href={usecase.url}>
                   <a>
-                    <SanityImg
-                      className="rounded-[10px] object-cover"
-                      height={300}
-                      builder={imageUrlBuilder}
-                      image={image}
-                      alt={image.alt}
-                    />
+                    <UseCaseItem {...usecase} />
                   </a>
                 </Link>
               ) : (
-                <SanityImg
-                  className="rounded-[10px] object-cover"
-                  height={300}
-                  builder={imageUrlBuilder}
-                  image={image}
-                  alt={image.alt}
-                />
+                <UseCaseItem {...usecase} />
               )}
-              <p className="absolute bottom-10 left-1/2 -translate-x-1/2 drop-shadow">
-                {name}
-              </p>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
     </Section>
+  );
+};
+
+const UseCaseItem: React.FC<IUseCase> = ({ image, name, url }) => {
+  return (
+    <>
+      <div className="absolute inset-0 rounded-[10px] opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
+      <SanityImg
+        className="rounded-[10px] object-cover"
+        height={300}
+        builder={imageUrlBuilder}
+        image={image}
+        alt={image.alt}
+      />
+      <div
+        style={{
+          background:
+            "linear-gradient(0deg, #29394A 12.21%, rgba(0, 0, 0, 0) 37.46%)",
+          backgroundBlendMode: "multiply, normal",
+        }}
+        className="absolute inset-0 flex h-full w-full items-end justify-center rounded-[10px]"
+      >
+        <p className="mb-[16px] p-2 text-[18px] leading-[120%] text-[#FCF9FF] drop-shadow">
+          {name}
+        </p>
+      </div>
+    </>
   );
 };
 
