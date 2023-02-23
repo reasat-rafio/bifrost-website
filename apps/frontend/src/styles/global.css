@@ -4,35 +4,55 @@
 .background__blur {
   -webkit-backdrop-filter: blur(40px);
   backdrop-filter: blur(40px);
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
 }
 .bifrost__transparent_card {
   -webkit-backdrop-filter: blur(40px);
   backdrop-filter: blur(40px);
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   border: 0.3px solid #4e6181;
   border-radius: 15px;
 }
 .bifrost__transparent__card {
   border-radius: 15px;
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   -webkit-backdrop-filter: blur(80px);
   backdrop-filter: blur(80px);
 }
 .__transparent__background {
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   -webkit-backdrop-filter: blur(80px);
   backdrop-filter: blur(80px);
 }
 .background__dark {
-  background: linear-gradient(138.39deg, rgb(18, 23, 35) -7.57%, rgb(7, 13, 23) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgb(18, 23, 35) -7.57%,
+    rgb(7, 13, 23) 107.25%
+  );
 }
 .__background__noise__::after {
-  background-image: url('../../public/noise.png');
+  background-image: url("../../public/noise.png");
   transition: opacity 1s ease-in-out;
   -webkit-animation: grain 8s steps(10) infinite;
   animation: grain 8s steps(10) infinite;
-  content: '';
+  content: "";
   height: 300%;
   width: 300%;
   left: -50%;
@@ -125,7 +145,12 @@
   border-radius: 8px;
 }
 #gallery::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
+  background: linear-gradient(
+    90deg,
+    #eeffe9 0%,
+    #acffeb 35.3%,
+    #c9ff71 102.69%
+  );
   border-radius: 8px;
 }
 #customScrollbar::-webkit-scrollbar {
@@ -136,7 +161,12 @@
   border-radius: 8px;
 }
 #customScrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #eeffe9 0%, #acffeb 35.3%, #c9ff71 102.69%);
+  background: linear-gradient(
+    90deg,
+    #eeffe9 0%,
+    #acffeb 35.3%,
+    #c9ff71 102.69%
+  );
   border-radius: 8px;
 }
 .root:global {
@@ -160,7 +190,7 @@
 .card::before,
 .card::after {
   border-radius: inherit;
-  content: '';
+  content: "";
   height: 100%;
   left: 0px;
   opacity: 0;
@@ -210,16 +240,24 @@ html {
   scroll-behavior: smooth;
 }
 .bifrost__card {
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   -webkit-backdrop-filter: blur(80px);
   backdrop-filter: blur(80px);
   border-radius: 15px;
 }
 .datasetInputs {
-  @apply w-full border border-[#1E2531] rounded-[6px] focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-honeySuckle  py-3 pl-3 pr-4 text-base text-gray focus:outline-none transition duration-300 bg-transparent;
+  @apply w-full rounded-[6px] border border-[#1E2531] bg-transparent py-3 pl-3  pr-4 text-base text-gray transition duration-300 focus:outline-none focus:ring-0 focus-visible:ring-[1px] focus-visible:ring-teal;
 }
 .blog_page_navbar_background {
-  background: linear-gradient(138.39deg, rgba(0, 0, 0, 0.69) -7.57%, rgb(0, 0, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(0, 0, 0, 0.69) -7.57%,
+    rgb(0, 0, 0) 107.25%
+  );
 }
 .section {
   color: #fff;
@@ -235,7 +273,11 @@ html {
   @apply bg-gradient-to-r from-[#29394A] to-[#06101B];
 }
 .project__item {
-  background: linear-gradient(138.39deg, rgba(48, 69, 97, 0.2) -7.57%, rgba(0, 6, 16, 0) 107.25%);
+  background: linear-gradient(
+    138.39deg,
+    rgba(48, 69, 97, 0.2) -7.57%,
+    rgba(0, 6, 16, 0) 107.25%
+  );
   -webkit-backdrop-filter: blur(80px);
   backdrop-filter: blur(80px);
   border-radius: 8px;

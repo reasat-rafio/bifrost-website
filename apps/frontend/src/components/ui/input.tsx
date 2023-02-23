@@ -40,7 +40,7 @@ const Input = React.forwardRef<any, any>(
           style={{ color: textColor }}
           className={clsx(
             innerClassName,
-            "w-full appearance-none rounded-[10px] border border-[#43434A] py-3 px-5 text-sm leading-tight  focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-honeySuckle sm:text-body-3 md:py-5",
+            "w-full appearance-none rounded-[10px] border border-[#43434A] py-3 px-5 text-sm leading-tight  focus:outline-none focus:ring-0 focus-visible:ring-1 focus-visible:ring-teal sm:text-body-3 md:py-5",
             shadow && "focus:shadow-outline shadow"
           )}
           autoComplete="off"
