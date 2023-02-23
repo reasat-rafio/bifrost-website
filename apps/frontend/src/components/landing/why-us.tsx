@@ -54,7 +54,7 @@ const WhyUs: React.FC<WhyUsProps> = ({
           {description}
         </Description>
       </div>
-      <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 sm:gap-10 sm:py-16 md:gap-14 md:py-28 lg:gap-20 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-10 py-10 sm:grid-cols-2 sm:py-16 md:gap-14 md:py-28 lg:gap-20 xl:grid-cols-3">
         {collection.map(({ _key, description, image, title }, index) => (
           <motion.article
             key={_key}
