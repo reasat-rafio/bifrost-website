@@ -52,7 +52,10 @@ const Information: React.FC<InformationProps> = ({
         <section className="flex w-full flex-1 justify-center ">
           <div className="spacing_primary my-auto mr-auto h-fit w-full md:w-[85%]">
             <Title animate={{ show: intersecting, delay: 0.1 }}>{title}</Title>
-            <Heading animate={{ show: intersecting, delay: 0.15 }}>
+            <Heading
+              className="text-ghost-white"
+              animate={{ show: intersecting, delay: 0.15 }}
+            >
               {heading}
             </Heading>
             <Description

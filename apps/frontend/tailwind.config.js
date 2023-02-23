@@ -48,6 +48,7 @@ module.exports = {
         "worning-soft": "#FCF5E4",
         danger: "#E95432",
         "danger-soft": "#F3E5E8",
+        "ghost-white": "#FCF9FF",
       },
       gridTemplateColumns: {
         13: "repeat(13, minmax(0, 1fr))",

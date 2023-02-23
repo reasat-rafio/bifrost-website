@@ -37,6 +37,7 @@ const Results: React.FC<ResultsProps> = ({ heading, results, title }) => {
       <div className="spacing_primary | font-light lg:px-[4%]">
         <Title animate={{ show: isIntersecting, delay: 0.1 }}>{title}</Title>
         <Heading
+          className="text-ghost-white"
           variant="small"
           animate={{ show: isIntersecting, delay: 0.15 }}
         >

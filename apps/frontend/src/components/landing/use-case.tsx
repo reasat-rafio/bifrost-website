@@ -31,8 +31,8 @@ const UseCase: React.FC<UseCaseProps> = ({
     <Section>
       <div className="spacing_primary font-light">
         <Title>{title}</Title>
-        <Heading>{heading}</Heading>
-        <Description>{description}</Description>
+        <Heading className="text-ghost-white">{heading}</Heading>
+        <Description className="text-ghost-white">{description}</Description>
       </div>
 
       <div className="mt-10">
@@ -68,7 +68,7 @@ const UseCase: React.FC<UseCaseProps> = ({
   );
 };
 
-const UseCaseItem: React.FC<IUseCase> = ({ image, name, url }) => {
+const UseCaseItem: React.FC<IUseCase> = ({ image, name }) => {
   return (
     <>
       <div className="absolute inset-0 rounded-[10px] opacity-0 outline-double outline-2 outline-teal transition-all duration-300 group-hover:opacity-100" />
@@ -87,7 +87,7 @@ const UseCaseItem: React.FC<IUseCase> = ({ image, name, url }) => {
         }}
         className="absolute inset-0 flex h-full w-full items-end justify-center rounded-[10px]"
       >
-        <p className="mb-[16px] p-2 text-[18px] leading-[120%] text-[#FCF9FF] drop-shadow">
+        <p className="mb-[16px] p-2 text-[18px] leading-[120%] text-ghost-white drop-shadow">
           {name}
         </p>
       </div>

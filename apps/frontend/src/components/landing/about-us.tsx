@@ -97,7 +97,7 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
     <section className="spacing_primary flex-1 font-light">
       {!!title && <Title el="h3">{title}</Title>}
       <Heading
-        className="text-[#FCF9FF]"
+        className="text-ghost-white"
         variant={index === 0 ? "normal" : "small"}
         el="h3"
       >
