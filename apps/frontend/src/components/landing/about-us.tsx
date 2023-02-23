@@ -96,16 +96,13 @@ const DescriptionBlock: React.FC<IDescriptionBlock> = ({
   return (
     <section className="spacing_primary flex-1 font-light">
       {!!title && <Title el="h3">{title}</Title>}
-      {index === 0 ? (
-        <Heading className="text-[#FCF9FF]" el="h2">
-          {heading}
-        </Heading>
-      ) : (
-        <Heading className="text-[#FCF9FF]" variant="small" el="h3">
-          {heading}
-        </Heading>
-      )}
-
+      <Heading
+        className="text-[#FCF9FF]"
+        variant={index === 0 ? "normal" : "small"}
+        el="h3"
+      >
+        {heading}
+      </Heading>
       <Description
         type="div"
         variant="small"
